@@ -1,0 +1,133 @@
+name: Release and Publish
+
+# Auto-release on every merge to main:
+# 1) bump package.json patch
+# 2) commit + tag as the Pereira Tech Talks bot
+# 3) push with AUTOMATION_GITHUB_TOKEN (must bypass rulesets on main)
+# 4) create a GitHub Release
+#
+# Why not release-please / semantic-release yet?
+# This site ships content frequently and uses a simple always-patch bump.
+# PR-based tools (release-please) are excellent when you want reviewable
+# release PRs and Conventional Commit–driven bumps; we keep the lighter
+# merge→patch flow here and document the trade-off in WORKFLOWS.md.
+#
+# Branch protection: AUTOMATION_GITHUB_TOKEN (or a GitHub App) must be
+# allowed to bypass "require pull request" on main for the version commit.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+concurrency:
+  # Never cancel an in-flight release (mid-push / mid-tag is unsafe).
+  group: release-and-publish-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release_and_publish:
+    if: github.event.pull_request.merged == true
+    name: 'Release and Publish'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Always release from the merge commit on main — not the PR head tip.
+          # Releasing from the head tip and pushing to main is a non-FF update
+          # after GitHub creates the merge commit, and leaves orphan tags when
+          # the branch push is rejected by rulesets.
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+          fetch-tags: true
+          token: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
+          # Keep the automation token for subsequent git push.
+          persist-credentials: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.15.0'
+
+      - name: Get pnpm store path
+        id: pnpm-store
+        run: |
+          STORE_PATH=$(corepack pnpm store path --silent)
+          echo "STORE_PATH=${STORE_PATH}" >> "$GITHUB_OUTPUT"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Configure git identity
+        env:
+          RELEASE_BOT_NAME: Pereira Tech Talks
+          RELEASE_BOT_EMAIL: pereiratechtalks@gmail.com
+        run: |
+          git config user.name "${RELEASE_BOT_NAME}"
+          git config user.email "${RELEASE_BOT_EMAIL}"
+          git config advice.skippedCherryPicks false
+
+      - name: Build release notes
+        run: bash .github/scripts/get_github_release_log.sh
+
+      - name: Prepare release (bump, commit, tag)
+        id: prepare
+        env:
+          RELEASE_BOT_NAME: Pereira Tech Talks
+        run: |
+          corepack pnpm install --frozen-lockfile
+          corepack pnpm run release
+          TAG="$(cat .release_tag)"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          # Push main FIRST, then the tag. `--follow-tags` can publish the tag
+          # even when the branch push is rejected (GH013 ruleset), leaving an
+          # orphan tag that blocks the next release.
+          #
+          # Requires ruleset bypass for the automation actor on main.
+          if ! git push origin "HEAD:main"; then
+            echo "::error::Failed to push release commit to main (often GH013: ruleset requires a PR)."
+            echo "::error::Grant AUTOMATION_GITHUB_TOKEN's actor bypass on the main ruleset, then re-run."
+            git tag -d "${TAG}" || true
+            exit 1
+          fi
+          git push origin "refs/tags/${TAG}"
+
+      - name: Publish GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          name: Release ${{ steps.prepare.outputs.tag }}
+          tag: ${{ steps.prepare.outputs.tag }}
+          bodyFile: git_logs_output.txt
+          token: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
+          # Idempotent if the workflow is re-run after a partial success.
+          allowUpdates: true
+          makeLatest: true
+
+  cleanup_caches:
+    needs: release_and_publish
+    if: success()
+    name: 'Cleanup caches'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger cleanup caches workflow
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
+        run: |
+          # Do not pass client_payload via -f '{}': gh sends a string and the
+          # API returns 422 ("{}" is not an object). Omit it — the field is optional.
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/dispatches" \
+            -f event_type='cleanup_caches'

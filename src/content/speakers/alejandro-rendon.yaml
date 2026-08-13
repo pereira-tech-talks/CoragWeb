@@ -1,0 +1,20 @@
+name: "Alejandro E. Rendón"
+role:
+  en: "Senior Software Engineer at GenLogs"
+  es: "Senior Software Engineer en GenLogs"
+bio:
+  en: "Senior Software Engineer at GenLogs and co-organizer of Pereira Tech Day. Community speaker — at the OpenClaw Moltys meetup at UTP he shared how he uses OpenClaw in personal day-to-day workflows, beyond demos into setups that actually stick."
+  es: "Senior Software Engineer en GenLogs y co-organizador de Pereira Tech Day. Ponente de la comunidad: en el meetup OpenClaw Moltys en la UTP compartió cómo usa OpenClaw en flujos personales del día a día, más allá de las demos, en configuraciones que de verdad se quedan."
+photo:
+  src: /images/speakers/alejandro-rendon.webp
+  alt:
+    en: "Portrait of Alejandro E. Rendón"
+    es: "Retrato de Alejandro E. Rendón"
+social:
+  linkedin: "https://www.linkedin.com/in/arendondiosa/"
+talks: []
+location:
+  city: Pereira
+  country: Colombia
+languages:
+  - es

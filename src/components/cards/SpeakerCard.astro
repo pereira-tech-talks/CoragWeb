@@ -1,0 +1,123 @@
+---
+/**
+ * PTT v3.0.0 speaker card — preview card for a `speakers` collection entry.
+ * Article + inner profile link so social anchors are not nested.
+ */
+
+import type { CollectionEntry } from 'astro:content';
+import SpeakerSocialLinks from '@/components/speakers/SpeakerSocialLinks.astro';
+import { getCalendarYear } from '@/lib/dates';
+import { getUrlPrefix, type Language, tr } from '@/lib/i18n';
+
+interface Props {
+  speaker: CollectionEntry<'speakers'>;
+  lang: Language;
+  loading?: 'lazy' | 'eager';
+  talkCount?: number;
+  latestTalkDate?: Date | null;
+}
+
+const {
+  speaker,
+  lang,
+  loading = 'lazy',
+  talkCount: talkCountProp,
+  latestTalkDate = null,
+} = Astro.props;
+
+const prefix = getUrlPrefix(lang);
+const role = tr(speaker.data.role, lang);
+const photoSrc = speaker.data.photo.src;
+const photoAlt =
+  tr(speaker.data.photo.alt, lang) || `Portrait of ${speaker.data.name}`;
+const url = `${prefix}/speakers/${speaker.id}/`;
+const talkCount = talkCountProp ?? speaker.data.talks?.length ?? 0;
+
+const lastTalkLabel = (() => {
+  if (!latestTalkDate) return null;
+  const formatted = new Intl.DateTimeFormat(lang === 'es' ? 'es-CO' : 'en-US', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(latestTalkDate);
+  // Upcoming editions (e.g. a revealed Pereira Tech Day speaker) produce a
+  // future date — "last talk" would read wrong there.
+  const upcoming = latestTalkDate.getTime() > Date.now();
+  if (upcoming) {
+    return lang === 'es'
+      ? `Próxima charla: ${formatted}`
+      : `Next talk: ${formatted}`;
+  }
+  return lang === 'es'
+    ? `Última charla: ${formatted}`
+    : `Last talk: ${formatted}`;
+})();
+
+const talkCountNoun =
+  talkCount > 0
+    ? lang === 'es'
+      ? talkCount === 1
+        ? 'charla'
+        : 'charlas'
+      : talkCount === 1
+        ? 'talk'
+        : 'talks'
+    : null;
+
+const latestYear = latestTalkDate ? getCalendarYear(latestTalkDate) : null;
+---
+
+<article
+  class="group flex h-full flex-col items-center overflow-hidden rounded-2xl bg-ptt-bg-elevated p-6 text-center shadow-sm ring-1 ring-ptt-border transition hover:shadow-lg hover:ring-ptt-primary/30 dark:hover:ring-ptt-primary-dark/40"
+  data-umami-event="speaker_card_view"
+  data-umami-event-slug={speaker.id}
+>
+  <a
+    href={url}
+    data-umami-event="speaker_card_click"
+    data-umami-event-slug={speaker.id}
+    class="flex flex-col items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+  >
+    <div
+      class="relative h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-ptt-primary/20 to-ptt-bg-dark/20 shadow-sm ring-2 ring-ptt-bg-elevated"
+    >
+      <img
+        decoding="async"
+        src={photoSrc}
+        alt={photoAlt}
+        width="112"
+        height="112"
+        loading={loading}
+        class="h-full w-full object-cover"
+      />
+    </div>
+    <h3
+      class="mt-4 text-lg font-semibold text-ptt group-hover:text-ptt-primary dark:group-hover:text-ptt-primary-dark"
+    >
+      {speaker.data.name}
+    </h3>
+    <p class="mt-1 text-sm text-ptt-secondary">
+      {role}
+    </p>
+  </a>
+
+  {
+    (lastTalkLabel || talkCountNoun) && (
+      <div class="mt-4 flex flex-col items-center gap-2">
+        {talkCountNoun && (
+          <p
+            class="text-xs font-semibold uppercase tracking-[0.14em] text-ptt-primary dark:text-ptt-primary-dark"
+          >
+            {talkCount} {talkCountNoun}
+            {latestYear && !lastTalkLabel ? ` · ${latestYear}` : ''}
+          </p>
+        )}
+        {lastTalkLabel && (
+          <p class="text-xs text-ptt-secondary">{lastTalkLabel}</p>
+        )}
+      </div>
+    )
+  }
+
+  <SpeakerSocialLinks speaker={speaker} variant="icons" class="mt-4" />
+</article>

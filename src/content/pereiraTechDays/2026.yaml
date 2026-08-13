@@ -1,0 +1,618 @@
+year: 2026
+title:
+  en: Pereira Tech Day 2026
+  es: Pereira Tech Day 2026
+tagline:
+  en: Where talent, technology, and brands meet.
+  es: Donde el talento, la tecnología y las marcas se encuentran.
+description:
+  en: |-
+    Pereira Tech Day is an event jointly organized by the PereiraJS, Python Pereira, Pereira Tech Talks, and Joint Developer communities. We join forces to create a diverse, enriching event, with talks covering many different facets of technology.
+
+    At Pereira Tech Day, our goal is to share topics related to the tech world with the community, focused on inspiring and motivating people. This year's talks will not only cover technology topics, but also career paths, community building, and motivation — encouraging attendees to keep exploring, researching, and diving into the wonderful world of technology.
+  es: |-
+    Pereira Tech Day es un evento organizado en conjunto por las comunidades de PereiraJS, Python Pereira, Pereira Tech Talks y Joint Developer. Unimos fuerzas para crear un evento diverso y enriquecedor, con charlas que abarcan diferentes aspectos de la tecnología.
+
+    En Pereira Tech Day, nuestro objetivo es compartir con la comunidad temas relacionados al mundo tecnológico, enfocados en inspirar y motivar a las personas. Las charlas de este año no solo cubrirán temas tecnológicos, sino también trayectorias profesionales, desarrollo comunitario y motivación, buscando incentivar a los asistentes a seguir explorando, investigando y adentrándose en el maravilloso mundo de la tecnología.
+date: 2026-08-22
+startTime: "08:00"
+endTime: "14:00"
+venue:
+  name: "UTP: Auditorio Jorge Roa Martínez, Pereira"
+  city: Pereira
+  country: Colombia
+  mapUrl: "https://maps.app.goo.gl/XBexd1kkRm4kbsdt6"
+mode: in-person
+expectedAttendance:
+  en: "300+ expected attendees"
+  es: "300+ asistentes esperados"
+aboutTopics:
+  - en: Artificial Intelligence
+    es: Inteligencia Artificial
+  - en: Software Development
+    es: Desarrollo de software
+  - en: Cybersecurity
+    es: Ciber Seguridad
+aboutMedia:
+  src: /images/pereira-tech-days/2026/about-panel.webp
+  alt:
+    en: Group photo of Pereira Tech Day attendees on stage at UTP
+    es: Foto grupal de asistentes de Pereira Tech Day en el escenario de la UTP
+hero:
+  src: /images/pereira-tech-days/2026/mascot/hero.webp
+  alt:
+    en: Pereira Tech Day 2026 mascot — a howler monkey with a laptop at UTP
+    es: Mascota de Pereira Tech Day 2026 — un mono aullador con laptop en la UTP
+  layout: banner
+# Localized 16:9 card art (same bilingual artwork as ogImage, WebP for listings)
+cardImage:
+  es: /images/pereira-tech-days/2026/mascot/card-hero-sm.webp
+  en: /images/pereira-tech-days/2026/mascot/card-hero-sm-en.webp
+# Dedicated 1200×630 share cards (event title, date, venue, sponsors + mascot)
+ogImage:
+  es: /images/pereira-tech-days/2026/og.jpg
+  en: /images/pereira-tech-days/2026/og-en.jpg
+brandKit:
+  # Photocopy of legacy /pereira-tech-day/ (measured 2026-08-07).
+  # primary=teal CTA/countdown; accent=coral text-safe on cream (≥4.5:1); year cyan via --ptd-year-cyan in hero.
+  paletteLight:
+    primary: "#3a7f7c"
+    accent: "#c93c3c"
+    bg: "#fef7f3"
+    bgElevated: "#ffffff"
+    text: "#1f3f59"
+    textMuted: "#6b5e58"
+    border: "#eadcd4"
+  paletteDark:
+    primary: "#3ab9c9"
+    accent: "#f06d6d"
+    bg: "#1a2a38"
+    bgElevated: "#243447"
+    text: "#fef7f3"
+    textMuted: "#c4b8b0"
+    border: "#3a4a5a"
+  typography:
+    headingFamily: "Bebas Neue, \"Arial Black\", sans-serif"
+    headingTransform: uppercase
+    headingTracking: 0.12em
+    fontSources:
+      - family: Bebas Neue
+        npmPackage: "@fontsource/bebas-neue"
+  hero:
+    backgroundImage: /images/pereira-tech-days/2026/hero-illustration.webp
+  ui:
+    buttonShape: pill
+    cardShape: rounded
+sectionBackgrounds:
+  about: /images/pereira-tech-days/2026/sections/about-bg.png
+  pricing: /images/pereira-tech-days/2026/sections/pricing-bg.png
+  sponsors: /images/pereira-tech-days/2026/sections/sponsors-bg.webp
+  team: /images/pereira-tech-days/2026/sections/team-bg.png
+  community: /images/pereira-tech-days/2026/sections/community-bg.png
+  faqs: /images/pereira-tech-days/2026/sections/faqs-bg.png
+  join: /images/pereira-tech-days/2026/sections/join-illustration.webp
+# Tentative agenda (published 2026-08-08). Times are 24h in site timezone and
+# render as 12h AM/PM. Session slots without `speaker` show a numbered
+# "to be revealed" placeholder until the line-up is announced.
+scheduleTentative: true
+schedule:
+  - time: "07:30"
+    endTime: "08:00"
+    type: registration
+    title:
+      en: Pre-registration
+      es: Pre-registro
+    description:
+      en: Check in, pick up your badge, and grab a coffee before we start.
+      es: Registra tu llegada, recoge tu escarapela y toma un café antes de comenzar.
+  - time: "08:00"
+    endTime: "08:30"
+    type: opening
+    title:
+      en: Event kickoff
+      es: Inicio del evento
+    description:
+      en: Welcome from the organizing communities and how the day will run.
+      es: Bienvenida de las comunidades organizadoras y cómo será la jornada.
+  - time: "08:30"
+    endTime: "09:10"
+    type: talk
+    speaker: oscar-granada
+    title:
+      en: "Skills for the tech industry in the AI era"
+      es: "Habilidades para industria tech en la era de la IA"
+    description:
+      en: >-
+        Many people think coding is the only skill that matters — and that AI will
+        replace programmers because of it. That is not true: there is much more to
+        the craft. This talk outlines the skill set a web solutions architect needs
+        in the age of AI.
+      es: >-
+        Muchos piensan que codificar es la única habilidad necesaria y por esto la IA
+        va a reemplazar a los programadores, pero esto no es verdad: hay mucho más.
+        Esta charla acota el set de habilidades necesarias para un arquitecto de
+        soluciones web en la era de la IA.
+  - time: "09:15"
+    endTime: "09:55"
+    type: talk
+    speaker: debbie-arredondo
+    title:
+      en: "Complex projects in a couple of hours — building complex things has never been this accessible"
+      es: "Proyectos complejos en un par de horas — construir lo complejo nunca fue tan accesible"
+    description:
+      en: >-
+        Turning an idea into a project has always been slow and expensive, and that
+        barrier made us think twice before starting something new. With emerging
+        technologies, costs that used to be steep — like acquiring specific, hidden
+        knowledge — have flattened out. This talk shows how Debbie built projects
+        before, how they get built now, and how the cost of work such as research
+        has dropped to a level that opens the door to entirely new possibilities.
+      es: >-
+        Convertir una idea en un proyecto siempre ha sido un proceso lento y costoso,
+        y esa barrera hacía que pensáramos dos veces si valía la pena empezar una
+        nueva idea. Con las tecnologías emergentes, costos antaño tan altos como
+        obtener conocimiento específico y oculto se han aplanado. Esta charla muestra
+        cómo Debbie ha desarrollado proyectos en el pasado, cómo lo hace ahora, y cómo
+        el costo de tareas como la investigación ha bajado a niveles que abren la
+        puerta a nuevas posibilidades.
+  - time: "10:00"
+    endTime: "10:40"
+    type: talk
+  - time: "10:45"
+    endTime: "10:50"
+    type: sponsor-break
+    title:
+      en: Sponsor break
+      es: Sponsor break
+  - time: "10:50"
+    endTime: "11:20"
+    type: break
+    title:
+      en: Break and networking
+      es: Descanso y networking
+    description:
+      en: Refreshments, coffee station, and time to meet the rest of the community.
+      es: Refrigerio, estación de café y tiempo para conocer al resto de la comunidad.
+  - time: "11:25"
+    endTime: "12:05"
+    type: talk
+    speaker: eliana-osorio
+    title:
+      en: "Nobody arrives in tech empty-handed"
+      es: "Nadie llega a la tecnología con las manos vacías"
+    description:
+      en: >-
+        Do you think entering tech means starting from zero? The reality is different.
+        Every profession leaves skills, experiences, and ways of solving problems that
+        also belong in technology. This talk shows how to spot those transferable skills
+        and turn prior experience into an advantage — whether you come from administration,
+        psychology, design, education, accounting, beauty, or any other field. Through real
+        stories and practical tools, we explore why tech needs more than people who can
+        code: it needs different perspectives, collaboration, communication, leadership,
+        and constant learning. Changing careers is not starting from zero — it is
+        discovering the value of everything you already bring.
+      es: >-
+        ¿Crees que para entrar a la industria tecnológica debes empezar desde cero? La
+        realidad es otra. Cada profesión deja habilidades, experiencias y formas de
+        resolver problemas que también tienen un lugar en el mundo de la tecnología. En
+        esta charla descubrirás cómo identificar esas habilidades transferibles y convertir
+        tu experiencia previa en una ventaja para construir una carrera en esta industria,
+        sin importar si vienes de administración, psicología, diseño, educación, contabilidad,
+        belleza o cualquier otra profesión. A través de historias reales y herramientas
+        prácticas, exploraremos por qué la tecnología necesita mucho más que personas que
+        sepan programar: necesita perspectivas diferentes, capaces de colaborar, comunicar,
+        liderar y aprender constantemente. Porque cambiar de carrera no significa empezar
+        de cero: significa descubrir el valor de todo lo que ya traes contigo.
+  - time: "12:10"
+    endTime: "12:50"
+    type: talk
+  - time: "12:55"
+    endTime: "13:00"
+    type: sponsor-break
+    title:
+      en: "Sponsor break #2"
+      es: "Sponsor break #2"
+  - time: "13:00"
+    endTime: "13:30"
+    type: lightning
+    title:
+      en: Lightning talks
+      es: Charlas relámpago
+    description:
+      en: Short, high-energy talks from our sponsors and the community.
+      es: Charlas cortas y de alta energía de nuestros patrocinadores y la comunidad.
+  - time: "13:35"
+    endTime: "13:50"
+    type: closing
+    title:
+      en: Raffles and closing
+      es: Sorteos y cierre
+    description:
+      en: Sponsor raffles, thank-yous, and the group photo that closes the day.
+      es: Sorteos de los patrocinadores, agradecimientos y la foto grupal que cierra la jornada.
+keynotes: []
+lightningTalks: []
+sponsors:
+  - slug: ase-utp
+    tier: gold
+  - slug: github
+    tier: gold
+  - slug: veritran
+    tier: gold
+  - slug: dailybot
+    tier: bronze
+organizers:
+  - santiago-bernal
+  - sebastian-agudelo
+  - andres-torres
+  - sebastian-franco
+  - eliana-osorio
+  - mega-barto
+  - sergio-florez
+  - katherine-lopez
+  - luisa-banol
+  - sergio-estrella
+  - melisa-escobar # moved up from `collaborators` on 2026-08-13
+# Empty on purpose — the Colaboradores section renders only when this list has
+# entries, so clearing it hides the section without a code change.
+collaborators: []
+communities:
+  - name: Python Pereira
+    logo: /images/communities/pypereira.png
+    url: "https://pypereira.co/"
+  - name: JointDev
+    logo: /images/communities/jointdev.png
+    url: "https://jointdevweb.firebaseapp.com/"
+  - name: PereiraJS
+    logo: /images/communities/perjs.jpeg
+    url: "https://perjs.org/"
+  - name: Pereira Tech Talks
+    logo: /images/communities/ptt.png
+    url: "https://pereiratechtalks.org/"
+  - name: QA Conf
+    logo: /images/communities/qaconf.png
+    url: "https://qaconf.co"
+  - name: Backbone UTP
+    logo: /images/communities/backbone-utp.png
+    url: "https://backboneutp.com"
+gallery: []
+sponsorshipPlans:
+  - tier: silver
+    title:
+      en: Silver Sponsor
+      es: Silver Sponsor
+    subtitle:
+      en: Visibility and relationship building.
+      es: Visibilidad y relacionamiento.
+    price: "200"
+    period:
+      en: USD
+      es: USD
+    benefits:
+      - en: Logo on web/brochure
+        es: Logo en web/brochure
+      - en: Official mention
+        es: Mención oficial
+      - en: Social media thank-you
+        es: Agradecimiento en redes
+      - en: Logo on printed and virtual materials
+        es: Logo en material impreso y virtual
+    ctaLabel:
+      en: Contact us
+      es: Contactar
+    ctaUrl: "https://wa.me/?text=Hola%2C%20deseo%20saber%20el%20proceso%20para%20el%20rango%20%22Silver%20Sponsor%22%20para%20Pereira%20Tech%20Day."
+  - tier: gold
+    title:
+      en: Gold Sponsor
+      es: Gold Sponsor
+    subtitle:
+      en: Direct access.
+      es: Acceso directo.
+    price: "500"
+    period:
+      en: USD
+      es: USD
+    featured: true
+    benefits:
+      - en: Lightning talk (3 min)
+        es: Lightning talk (3 min)
+      - en: Attendee database (with consent)
+        es: Base de datos (con autorización)
+      - en: Social media post
+        es: Publicación en redes
+      - en: Networking invitation
+        es: Invitación a networking
+      - en: Logo on printed and virtual materials
+        es: Logo en material impreso y virtual
+    ctaLabel:
+      en: Contact us
+      es: Contactar
+    ctaUrl: "https://wa.me/?text=Hola%2C%20deseo%20saber%20el%20proceso%20para%20el%20rango%20%22Gold%20Sponsor%22%20para%20Pereira%20Tech%20Day."
+  - tier: platinum
+    title:
+      en: Platinum Sponsor
+      es: Platinum Sponsor
+    subtitle:
+      en: High impact.
+      es: Alto impacto.
+    price: "1000+"
+    period:
+      en: USD
+      es: USD
+    benefits:
+      - en: Featured lightning talk (5 min)
+        es: Lightning talk destacado (5 min)
+      - en: Brand booth (2x2m)
+        es: Stand de marca (2x2m)
+      - en: Brand activation
+        es: Activación de marca
+      - en: Dedicated reel
+        es: Reel dedicado
+      - en: Priority for 2027
+        es: Prioridad 2027
+      - en: Logo on printed and virtual materials
+        es: Logo en material impreso y virtual
+    ctaLabel:
+      en: Contact us
+      es: Contactar
+    ctaUrl: "mailto:pereiratechtalks@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20de%20Pereira%20Tech%20Talks"
+extraPartnerships:
+  - title:
+      en: Custom Support
+      es: Apoyo Personalizado
+    subtitle:
+      en: Tailored modalities and alliances.
+      es: Modalidades y alianzas a la medida.
+    items:
+      - title:
+          en: Modalities
+          es: Modalidades
+      - description:
+          en: Monetary contribution
+          es: Aporte monetario
+      - description:
+          en: In-kind contribution
+          es: Aporte en especie
+      - description:
+          en: Hybrid modality
+          es: Modalidad híbrida
+      - subtitle:
+          en: Benefits scale with total value
+          es: Los beneficios se escalan según el valor total
+      - title:
+          en: Special collaborations
+          es: Colaboraciones especiales
+      - description:
+          en: Catering and coffee breaks
+          es: Alimentación y coffee breaks
+      - description:
+          en: Kits and merchandising
+          es: Kits y merchandising
+      - description:
+          en: Services and technology
+          es: Servicios y tecnología
+      - description:
+          en: Logistics
+          es: Logística
+      - subtitle:
+          en: Each alliance is built around your goals.
+          es: Cada alianza se construye a la medida de tus objetivos.
+    ctaLabel:
+      en: Contact us
+      es: Contactar
+    ctaUrl: "https://wa.me/?text=Hola%2C%20deseo%20saber%20el%20proceso%20para%20%22Apoyo%20Personalizado%22%20para%20Pereira%20Tech%20Day."
+  - title:
+      en: Open Alliance and Vaki
+      es: Alianza Abierta y Vaki
+    subtitle:
+      en: Community support.
+      es: Apoyo comunitario.
+    items:
+      - subtitle:
+          en: Your support makes this event possible, no matter the size. We welcome organizations and individuals who want to be part of the ecosystem.
+          es: Tu apoyo hace posible este evento, sin importar el tamaño. Buscamos organizaciones y personas que quieran ser parte activa del ecosistema.
+      - title:
+          en: Ways to support
+          es: Vías de apoyo
+      - description:
+          en: Monetary contribution
+          es: Aporte monetario
+      - description:
+          en: In-kind contribution
+          es: Aporte en especie
+      - description:
+          en: Hybrid modality
+          es: Modalidad híbrida
+      - title:
+          en: Rewards
+          es: Recompensas
+      - description:
+          en: Public recognition
+          es: Reconocimiento público
+      - description:
+          en: Social media mentions
+          es: Menciones en redes
+      - description:
+          en: Inclusion in official event thank-yous
+          es: Inclusión en los agradecimientos oficiales del evento
+    ctaLabel:
+      en: Visit our Vaki
+      es: Visita nuestro Vaki
+    ctaUrl: "https://vaki.co/vaki/pereiratechday"
+faqs:
+  - question:
+      en: How can I register?
+      es: ¿Cómo puedo registrarme?
+    answer:
+      en: Registration is open on Luma. Capacity is limited (around 200 seats), so reserve your spot as soon as you can.
+      es: Las inscripciones están abiertas en Luma. Solo tenemos alrededor de 200 cupos, así que reserva tu lugar cuanto antes.
+    linkUrl: "https://luma.com/6lo3vt4x"
+    linkLabel:
+      en: Register on Luma
+      es: Inscribirse en Luma
+    whilePostponed:
+      answer:
+        en: >-
+          Registration is closed for now. The event is postponed indefinitely,
+          so there is nothing to sign up for yet. When we have a new date we
+          will reopen registration and announce it on our channels.
+        es: >-
+          Las inscripciones están cerradas por ahora. El evento está pospuesto
+          indefinidamente, así que todavía no hay nada a lo que registrarse.
+          Cuando tengamos nueva fecha reabriremos las inscripciones y lo
+          anunciaremos por nuestros canales.
+  - question:
+      en: Is the event free?
+      es: ¿El evento es gratuito?
+    answer:
+      en: Yes, Pereira Tech Day is completely free.
+      es: Sí, el evento es totalmente gratuito.
+  - question:
+      en: How many days does the event last?
+      es: ¿Cuántos días dura el evento?
+    answer:
+      en: One day — Saturday, August 22, 2026.
+      es: El evento es un solo día, el sábado 22 de agosto de 2026.
+    whilePostponed:
+      answer:
+        en: >-
+          It was planned as a single day, Saturday, August 22, 2026. That date
+          is no longer valid: the event is postponed indefinitely and we have
+          not set a new one yet.
+        es: >-
+          Estaba planeado como un solo día, el sábado 22 de agosto de 2026. Esa
+          fecha ya no aplica: el evento está pospuesto indefinidamente y aún no
+          tenemos una nueva.
+  - question:
+      en: Can I attend if I am not from UTP?
+      es: ¿Si no soy de la UTP puedo asistir?
+    answer:
+      en: Yes. Pereira Tech Day is open to anyone interested in technology and learning.
+      es: Sí puedes asistir; este es un evento abierto a todo público interesado en aprender más sobre estos temas.
+  - question:
+      en: How can my organization become a sponsor?
+      es: ¿Cómo puede mi organización convertirse en patrocinador del evento?
+    answer:
+      en: Email pereiratechtalks@gmail.com with your interest. Sponsorship plans are on this page, and we are open to new proposals.
+      es: Escríbenos a pereiratechtalks@gmail.com indicando que estás interesado en patrocinarnos. Los planes están en la sección Planes de esta página, pero estamos abiertos a nuevas propuestas.
+    whilePostponed:
+      answer:
+        en: >-
+          While the event is postponed we are not running sponsorship sales. If
+          you would like to support the community anyway, write to
+          pereiratechtalks@gmail.com — we will get back to you.
+        es: >-
+          Mientras el evento esté pospuesto no estamos gestionando patrocinios.
+          Si de todas formas quieres apoyar a la comunidad, escríbenos a
+          pereiratechtalks@gmail.com y te respondemos.
+  - question:
+      en: What topics will Pereira Tech Day cover?
+      es: ¿Qué temas se hablarán en el Pereira Tech Day?
+    answer:
+      en: We will have a full day of software development, data science, machine learning, infrastructure, and more.
+      es: Tendremos un día de desarrollo de software, data science, machine learning, infraestructura y más.
+  - question:
+      en: Will food be provided?
+      es: ¿El evento cuenta con alimentación garantizada?
+    answer:
+      en: Thanks to the organizing team and our sponsors, we plan morning and afternoon refreshments plus coffee throughout the day.
+      es: Gracias a la gestión del equipo organizador y a patrocinadores, contaremos con refrigerios en la mañana y en la tarde, además de una estación de café durante todo el día.
+  - question:
+      en: Can I attend only part of the day without registering?
+      es: ¿Solo quiero/puedo asistir durante unas horas sin registrarse?
+    answer:
+      en: No. Seats are limited and we expect attendees who can stay for the full program.
+      es: No, contamos con cupos limitados y esperamos que los ocupen personas que puedan asistir durante toda la jornada.
+  - question:
+      en: Will I receive a certificate of attendance?
+      es: ¿Recibiré un certificado de asistencia?
+    answer:
+      en: >-
+        Yes. After the event you receive a personal diploma link you can open,
+        print or save as PDF, and share. You can also verify it online.
+      es: >-
+        Sí. Después del evento recibes un enlace personal al diploma que puedes abrir,
+        imprimir o guardar como PDF, y compartir. También puedes verificarlo en línea.
+    linkUrl: /pereira-tech-days/2026/certificates/ptd26_demo_a7k3m9qx
+    linkLabel:
+      en: View a demo certificate
+      es: Ver un certificado de demostración
+  - question:
+      en: Do I need to bring a laptop?
+      es: ¿Necesito llevar mi computador?
+    answer:
+      en: It is not required, but you may bring one for notes.
+      es: No es necesario, aunque si quieres tomar apuntes lo puedes traer.
+  - question:
+      en: Is the venue safe?
+      es: ¿El sitio es seguro?
+    answer:
+      en: Yes, but keep an eye on personal belongings — organizers are not responsible for lost items.
+      es: Sí, pero debes estar pendiente de tus objetos personales; los organizadores no se hacen responsables por pérdidas o hurtos durante el evento.
+  - question:
+      en: Code of Conduct
+      es: Código de Conducta
+    answer:
+      en: To foster a welcoming environment, Pereira Tech Day follows the Pereira Tech Talks Code of Conduct.
+      es: Con el fin de crear un ambiente sensible y abierto para todos, la organización de Pereira Tech Day está comprometida con el Código de Conducta de Pereira Tech Talks.
+    linkUrl: "/conduct"
+    linkLabel:
+      en: Read the Code of Conduct
+      es: Leer el Código de Conducta
+# Registration link is intentionally KEPT while the edition is postponed: it is
+# suppressed at the render layer (`getEditionRegistrationUrl`), not deleted, so
+# rescheduling does not mean rebuilding it from memory.
+linkMeetupCom: "https://luma.com/6lo3vt4x"
+
+# ---------------------------------------------------------------------------
+# POSTPONED — 2026-08-13, after the earthquake in Pereira.
+#
+# TO RESTORE THIS EDITION: change `status` back to `rsvp-open` and set
+# `active: false` on src/content/notifications/ptd-2026-postponed.yaml and
+# `active: true` on src/content/notifications/ptd-2026.yaml. Nothing else.
+# The `postponement` block below is ignored in any other status and can stay
+# as a record of what happened. Full procedure:
+# docs/features/PEREIRA_TECH_DAYS.md#postponing-an-edition
+# ---------------------------------------------------------------------------
+status: postponed
+postponement:
+  since: 2026-08-13
+  headline:
+    es: Pereira Tech Day queda pospuesto indefinidamente
+    en: Pereira Tech Day is postponed indefinitely
+  body:
+    es: >-
+      Debido a los hechos ocurridos en nuestra ciudad, Pereira Tech Day queda
+      pospuesto indefinidamente. Hoy nuestra prioridad es acompañar, apoyar y
+      estar con nuestra comunidad.
+    en: >-
+      Following the events in our city, Pereira Tech Day is postponed
+      indefinitely. Right now our priority is to accompany, support, and stand
+      with our community.
+  closing:
+    es: Fuerza, Pereira. ❤️
+    en: Fuerza, Pereira. ❤️
+  # Localized artwork — the stamp is typeset per language.
+  image:
+    src:
+      es: /images/pereira-tech-days/2026/postponed.webp
+      en: /images/pereira-tech-days/2026/postponed-en.webp
+    alt:
+      es: >-
+        Pieza gráfica de Pereira Tech Day con el sello "Se pospone
+        indefinidamente" sobre la ilustración del mono aullador
+      en: >-
+        Pereira Tech Day artwork stamped "Postponed indefinitely" over the
+        howler monkey illustration
+  ogImage:
+    es: /images/pereira-tech-days/2026/postponed-og.jpg
+    en: /images/pereira-tech-days/2026/postponed-og-en.jpg
+  # Everything listed here returns automatically when `status` is restored.
+  hideSections:
+    - registration # "Inscribirse" CTA + Luma link
+    - countdown # live countdown to the announced date
+    - pricing # sponsorship plans + Vaki
+    - schedule # tentative agenda timeline
+    - speakers # line-up grid
+    - lightning # lightning talks (incl. the "to be announced" ghost cards)
+draft: false
