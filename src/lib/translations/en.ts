@@ -14,6 +14,9 @@ export const en: SiteTranslations = {
     lead: 'We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind.',
     ctaPrimary: 'I want to help',
     ctaSecondary: 'How it works',
+    heroChips: ['It is published', 'It is coordinated', 'The evidence stays'],
+    heroAppCardAlt:
+      'Ayuda Directa application screen on a phone, showing the highest-priority emergency',
 
     problemEyebrow: 'The problem',
     problemTitle: 'The intent is there. The connection is what fails.',

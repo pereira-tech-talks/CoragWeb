@@ -14,6 +14,9 @@ export const es: SiteTranslations = {
     lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.',
     ctaPrimary: 'Quiero ayudar',
     ctaSecondary: 'Cómo funciona',
+    heroChips: ['Se publica', 'Se coordina', 'Queda la evidencia'],
+    heroAppCardAlt:
+      'Pantalla de la aplicación Ayuda Directa en un teléfono, con la emergencia de mayor prioridad',
 
     problemEyebrow: 'El problema',
     problemTitle: 'La intención existe. La conexión falla.',

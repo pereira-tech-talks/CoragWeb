@@ -80,6 +80,10 @@ export interface HomeCopy {
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
+  /** Three verb-phrase chips under the hero CTAs, drawn from the howSteps vocabulary. */
+  heroChips: string[];
+  /** Alt text for the phone-framed app screenshot overlapping the hero photo. */
+  heroAppCardAlt: string;
 
   // Beats 1 + 2 — the intent exists, the connection fails
   problemEyebrow: string;
