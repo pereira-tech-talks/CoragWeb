@@ -128,18 +128,19 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 {
   preloadFonts && (
     <>
+      {/* Body copy is Poppins 400; display headings are Outfit (variable). */}
       <link
         rel="preload"
-        href="/fonts/atkinson-regular.woff"
+        href="/fonts/poppins-400-latin.woff2"
         as="font"
-        type="font/woff"
+        type="font/woff2"
         crossorigin
       />
       <link
         rel="preload"
-        href="/fonts/atkinson-bold.woff"
+        href="/fonts/outfit-var-latin.woff2"
         as="font"
-        type="font/woff"
+        type="font/woff2"
         crossorigin
       />
     </>
@@ -149,7 +150,7 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <!-- Header logo preload (prevents alt text flash on navigation).
      Skip on pages that preload a larger LCP image (e.g. home hero). -->
 {preloadHeaderLogo && (
-  <link rel="preload" href="/images/pereira-tech-talks/topbar-logo.webp" as="image" type="image/webp" />
+  <link rel="preload" href="/images/brand/corag-wordmark-light.webp" as="image" type="image/webp" />
 )}
 
 <!-- Early connection for Cloudflare Web Analytics (when injected) -->
@@ -234,7 +235,7 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
     name: 'Pereira Tech Talks',
     alternateName: 'PTT',
     url: Astro.site?.href,
-    logo: new URL('/images/brand/logo-horizontal-color.svg', Astro.site).href,
+    logo: new URL('/images/brand/corag-wordmark.png', Astro.site).href,
     description:
       'Tech community of Pereira, Risaralda, Colombia. Monthly meetups, Pereira Tech Day, Speaker School, La Biblioteca del Mañana, and the AI Channel.',
     foundingLocation: {

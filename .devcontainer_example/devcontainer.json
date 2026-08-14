@@ -1,5 +1,5 @@
 {
-  "name": "PerTechTalks Website - Astro",
+  "name": "Corag Website - Astro",
   "dockerComposeFile": "../docker/local/docker-compose.yaml",
   "service": "pertechtalksvscode",
   "workspaceFolder": "/app",

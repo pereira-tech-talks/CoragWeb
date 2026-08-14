@@ -181,17 +181,17 @@ function navClick(item: string) {
       >
         <img
           class="h-8 w-auto dark:hidden"
-          src="/images/pereira-tech-talks/topbar-logo-primary.webp"
+          src="/images/brand/corag-wordmark.webp"
           alt=""
-          width={120}
-          height={48}
+          width={342}
+          height={100}
         />
         <img
           class="hidden h-8 w-auto dark:block"
-          src="/images/pereira-tech-talks/topbar-logo.webp"
+          src="/images/brand/corag-wordmark-light.webp"
           alt=""
-          width={120}
-          height={48}
+          width={342}
+          height={100}
         />
       </a>
       <button

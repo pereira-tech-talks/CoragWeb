@@ -1,11 +1,11 @@
 {
-  "name": "Pereira Tech Talks — Technology community of Pereira, Colombia",
-  "short_name": "Pereira Tech Talks",
-  "description": "Community of builders, speakers, and learners shaping the future of technology from Pereira, Colombia to the world.",
+  "name": "Corag — El ecosistema de impacto social",
+  "short_name": "Corag",
+  "description": "Conectamos a fundaciones, gobiernos, empresas y personas con oportunidades reales de ayudar, con transparencia y trazabilidad.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FAFBFB",
-  "theme_color": "#1F6F73",
+  "background_color": "#FFE2E9",
+  "theme_color": "#78020E",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -16,6 +16,12 @@
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/favicon.svg",
