@@ -1,6 +1,6 @@
 ---
 title: "How to choose a good foundation to volunteer with"
-description: "Three marks of a serious organization, six areas short of people, and the signal that disqualifies a foundation immediately."
+description: "Three marks of a serious organization, six areas that are short of people, and the one signal that disqualifies a foundation immediately."
 pubDate: 2026-06-09
 heroImage: "/images/blog/posts/best-foundations-to-volunteer-with-in-colombia/hero.webp"
 heroLayout: banner
