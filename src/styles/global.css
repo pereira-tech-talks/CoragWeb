@@ -115,94 +115,199 @@
 }
 
 /*
- * Pereira Tech Talks v3.0.0 design tokens.
- * Single source of truth: docs/BRAND_GUIDE.md and
- * analysis_results/BRAND_PALETTE.md (Task 1).
+ * Corag design tokens — the single source of truth for the site's palette.
  *
- * Tailwind 4 generates utility classes for every --color-ptt-* token:
- *   bg-ptt-primary, text-ptt-primary, border-ptt-primary, etc.
+ * Authority: docs/BRAND_GUIDE.md, itself derived from the official
+ * `Manual de Identidad Visual` (assets/brand/). Every value below that is NOT
+ * one of the manual's four official colors was derived and verified in
+ * analysis_results/CONTRAST_AUDIT.md — nothing here is a guess.
  *
- * Per-edition Pereira Tech Day kits (Task 12) override these tokens
- * inside [data-edition-theme="{year}"] only — never globally.
+ * Tailwind 4 generates a utility class for every --color-corag-* token:
+ *   bg-corag-primary, text-corag-secondary, border-corag-border, ...
+ *
+ * ── Official brand colors (Manual, p. 13) ────────────────────────────────
+ *   #78020E  vino        primary            AAA on every light ground
+ *   #BC727C  vino 50%    DECORATIVE ONLY    fails AA on all light grounds
+ *   #FFC7D5  rosa        brand color, not a tint
+ *   #FFE2E9  rosa 50%    rosa claro
+ *
+ * ── The dark-mode inversion ──────────────────────────────────────────────
+ * In light mode the brand color is WINE; in dark mode it is ROSA. Wine on a
+ * dark ground measures 1.52:1 and is unusable, while rosa measures 10.67:1.
+ * Both are official colors, so dark mode stays on-brand without inventing
+ * anything. Do not "fix" this by forcing wine into dark mode.
  */
 @theme {
-  /* Shipped body font — Atkinson Hyperlegible (already @font-face above).
-   * Brand Guide previously claimed Inter; that was never loaded. */
+  /* Official typography (Manual, p. 17). @font-face declarations are above. */
   --font-sans:
-    "Atkinson", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
+  --font-display:
+    "Outfit", "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* PTT global palette — light mode (defaults) */
-  --color-ptt-primary: #1f6f73;
-  --color-ptt-primary-strong: #155054;
-  --color-ptt-primary-soft: #e1f2f1;
-  /* Dark-mode variants exposed as utility classes so components can opt-in
-   * to the dark-mode primary/accent in any context (e.g. against a dark
-   * hero canvas in light mode). These never change between modes. */
-  --color-ptt-primary-dark: #3fa8ad;
-  --color-ptt-accent: #e8a33d;
-  --color-ptt-accent-strong: #b87c1f;
-  --color-ptt-accent-dark: #f4b95c;
-  --color-ptt-bg: #fafbfb;
-  --color-ptt-bg-elevated: #ffffff;
-  /* Always-dark hero canvas (same in light and dark mode). Used by hero
-   * sections that intentionally remain dark regardless of theme so the
-   * brand keeps its night identity above the fold. */
-  --color-ptt-bg-dark: #08191a;
-  --color-ptt-border: #e2e8e8;
-  --color-ptt-border-strong: #c9d4d5;
-  --color-ptt-text: #0f2a2c;
-  --color-ptt-text-secondary: #4a6164;
-  --color-ptt-text-muted: #6e8589;
-  /* Short aliases for the two most-used text tokens. Dozens of components
-   * across the codebase (and AGENTS.md itself) reference `text-ptt` /
-   * `text-ptt-secondary` as shorthand for `text-ptt-text` /
-   * `text-ptt-text-secondary`. These re-export via var() so they inherit
-   * the same automatic light/dark flip — no separate .dark declaration
-   * needed. */
-  --color-ptt: var(--color-ptt-text);
-  --color-ptt-secondary: var(--color-ptt-text-secondary);
-  --color-ptt-success: #2e8757;
-  --color-ptt-warning: #c68417;
-  --color-ptt-danger: #b83a3a;
-  --color-ptt-info: #1f6f73;
+  /* ── Brand ─────────────────────────────────────────────────────────── */
+  --color-corag-primary: #78020e;
+  --color-corag-primary-strong: #5a0109;
+  --color-corag-primary-soft: #ffe2e9;
+  /* The dark-mode primary, exposed as a utility in both modes so a component
+   * sitting on an intentionally dark canvas in light mode can opt into it. */
+  --color-corag-primary-light: #ffc7d5;
+  /*
+   * ── Solid brand fill — the pair that does NOT flip ─────────────────
+   *
+   * `--color-corag-primary` flips wine -> rosa in dark mode, which is right
+   * for FOREGROUND use (text, links, icons, focus rings) but wrong for a
+   * SOLID FILL: white or rosa-claro text on a rosa button measures ~1.5:1.
+   *
+   * So a filled brand surface uses this pair instead, identical in both
+   * themes: wine ground, rosa-claro label, 9.54:1. A primary button needs no
+   * dark variant at all.
+   *
+   *   ✅ bg-corag-fill text-corag-on-fill   hover:bg-corag-fill-strong
+   *   ❌ bg-corag-primary text-white        (breaks in dark mode)
+   */
+  --color-corag-fill: #78020e;
+  --color-corag-fill-strong: #5a0109;
+  --color-corag-on-fill: #ffe2e9;
+
+  --color-corag-rosa: #ffc7d5;
+  --color-corag-rosa-soft: #ffe2e9;
+  /*
+   * ⚠️ DECORATIVE ONLY — the manual's official 50% wine. It fails WCAG AA on
+   * every light ground (2.46–3.60). Permitted: large text >=24px or >=19px
+   * bold, hairlines, decorative shapes, icon fills with an accessible label.
+   * NEVER body text. See CONTRAST_AUDIT.md §3.
+   */
+  --color-corag-accent: #bc727c;
+
+  /* ── Surfaces ──────────────────────────────────────────────────────── */
+  --color-corag-bg: #fbf8f5;
+  --color-corag-bg-elevated: #ffffff;
+  --color-corag-bg-brand: #ffe2e9;
+  --color-corag-bg-brand-strong: #ffc7d5;
+  /* Always-dark canvas — identical in both modes, so hero sections can keep
+   * the wine-black identity above the fold regardless of theme. */
+  --color-corag-bg-dark: #231518;
+
+  /* ── Borders ───────────────────────────────────────────────────────── */
+  /* `border` and `border-strong` are decorative hairlines (WCAG 1.4.11 exempt).
+   * Inputs, selects and control edges MUST use `border-interactive`, which is
+   * the only one that clears the 3:1 non-text requirement. */
+  --color-corag-border: #e8e0dc;
+  --color-corag-border-strong: #c9b9b5;
+  --color-corag-border-interactive: #968f8d;
+
+  /* ── Text ──────────────────────────────────────────────────────────── */
+  --color-corag-text: #251f20;
+  --color-corag-text-secondary: #574f51;
+  --color-corag-text-muted: #635b5d;
+  /* Short aliases: `text-corag` / `text-corag-secondary`. They re-export via
+   * var() so they inherit the light/dark flip with no extra .dark rule. */
+  --color-corag: var(--color-corag-text);
+  --color-corag-secondary: var(--color-corag-text-secondary);
+
+  /* ── Semantic status ───────────────────────────────────────────────── */
+  /* Not in the manual — derived. Verified against the page grounds and their
+   * own soft chip background. They are NOT verified against the rosa brand
+   * surfaces, because status chips never sit on brand surfaces. */
+  --color-corag-success: #24735d; /* entregado, con evidencia */
+  --color-corag-success-soft: #e7f3ee;
+  --color-corag-warning: #995d30; /* en organizacion */
+  --color-corag-warning-soft: #f6ecdf;
+  --color-corag-info: #3c6176;
+  --color-corag-info-soft: #eaf1f4;
+  --color-corag-danger: #a43536; /* urgente */
+  --color-corag-danger-soft: #fdecec;
+
+  /* ── Radius ────────────────────────────────────────────────────────── */
+  --radius-corag-sm: 12px;
+  --radius-corag-md: 18px;
+  --radius-corag-lg: 28px;
+
+  /* ── Elevation — wine-tinted on purpose, not neutral grey ──────────── */
+  --shadow-corag-sm: 0 8px 24px rgb(60 2 12 / 0.08);
+  --shadow-corag-lg: 0 28px 70px rgb(60 2 12 / 0.14);
 
   /*
-   * Legacy aliases kept for transitional compatibility with components
-   * that still reference --color-main and --color-secondary while the
-   * v3.0.0 migration progresses. These re-map to the PTT brand so old
-   * usages immediately re-skin to the new identity instead of clashing.
-   * NEW components MUST use --color-ptt-* tokens (or the bg-ptt-*,
-   * text-ptt-*, border-ptt-* utility classes Tailwind 4 generates).
+   * Legacy Tailwind default override inherited from the previous site. 148
+   * usages of `gray-50` depend on it, so removing it is a visual change, not a
+   * rename. Task 5 decides whether those usages move to corag neutrals.
    */
-  --color-main: #08191a; /* legacy → PTT dark canvas */
-  --color-secondary: #1f6f73; /* legacy → PTT primary */
   --color-gray-50: #f1f5f9;
+
+  /*
+   * ⚠️ TEMPORARY COMPATIBILITY LAYER — DELETED BY TASK 5.
+   *
+   * 2,289 `ptt-*` references across 137 files still point at the old token
+   * names. These aliases keep every one of them rendering in Corag colors
+   * while the codemod runs, so the tree never enters a broken state and the
+   * rename stays reviewable.
+   *
+   * If you are reading this after Task 5 completed, it is a bug: remove it.
+   */
+  --color-ptt-primary: var(--color-corag-primary);
+  --color-ptt-primary-strong: var(--color-corag-primary-strong);
+  --color-ptt-primary-soft: var(--color-corag-primary-soft);
+  --color-ptt-primary-dark: var(--color-corag-primary-light);
+  --color-ptt-accent: var(--color-corag-accent);
+  --color-ptt-accent-strong: var(--color-corag-primary-strong);
+  --color-ptt-accent-dark: var(--color-corag-rosa);
+  --color-ptt-bg: var(--color-corag-bg);
+  --color-ptt-bg-elevated: var(--color-corag-bg-elevated);
+  --color-ptt-bg-dark: var(--color-corag-bg-dark);
+  --color-ptt-border: var(--color-corag-border);
+  --color-ptt-border-strong: var(--color-corag-border-strong);
+  --color-ptt-text: var(--color-corag-text);
+  --color-ptt-text-secondary: var(--color-corag-text-secondary);
+  --color-ptt-text-muted: var(--color-corag-text-muted);
+  --color-ptt: var(--color-corag-text);
+  --color-ptt-secondary: var(--color-corag-text-secondary);
+  --color-ptt-success: var(--color-corag-success);
+  --color-ptt-warning: var(--color-corag-warning);
+  --color-ptt-danger: var(--color-corag-danger);
+  --color-ptt-info: var(--color-corag-info);
+  --color-main: var(--color-corag-bg-dark);
+  --color-secondary: var(--color-corag-primary);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* PTT global palette — dark mode override */
+/*
+ * Dark mode. Ground is #231518 — wine-tinted, not neutral grey, so dark mode
+ * still reads as Corag. Every value verified in CONTRAST_AUDIT.md §6 against
+ * all three dark surfaces (bg, elevated, brand).
+ */
 .dark {
-  --color-ptt-primary: #3fa8ad;
-  --color-ptt-primary-strong: #5bbfc4;
-  --color-ptt-primary-soft: #0f2a2c;
-  --color-ptt-accent: #f4b95c;
-  --color-ptt-accent-strong: #ffd27a;
-  --color-ptt-bg: #08191a;
-  --color-ptt-bg-elevated: #0f2a2c;
-  --color-ptt-border: #1e3d40;
-  --color-ptt-border-strong: #2a5256;
-  --color-ptt-text: #e8f0ef;
-  --color-ptt-text-secondary: #b5c7c9;
-  --color-ptt-text-muted: #8fa3a6;
-  --color-ptt-success: #4fb07f;
-  --color-ptt-warning: #e2a848;
-  --color-ptt-danger: #e0635f;
-  --color-ptt-info: #3fa8ad;
+  /* The brand flips wine -> rosa. See the note at the top of this file. */
+  --color-corag-primary: #ffc7d5;
+  --color-corag-primary-strong: #ffe2e9;
+  --color-corag-primary-soft: #3a1a20;
 
-  /* Legacy aliases — softer petroleum on dark to reduce visual intensity */
-  --color-secondary: #3fa8ad;
+  --color-corag-bg: #231518;
+  --color-corag-bg-elevated: #2e1b1f;
+  --color-corag-bg-brand: #3a1a20;
+  --color-corag-bg-brand-strong: #4a2128;
+
+  --color-corag-border: #3e2a2e;
+  --color-corag-border-strong: #5c4247;
+  --color-corag-border-interactive: #7f6c6f;
+
+  --color-corag-text: #f0e3e4;
+  --color-corag-text-secondary: #d6c4c7;
+  --color-corag-text-muted: #92888a;
+
+  --color-corag-success: #559381;
+  --color-corag-success-soft: #16302a;
+  --color-corag-warning: #b37b4f;
+  --color-corag-warning-soft: #33240f;
+  --color-corag-info: #6e8b9b;
+  --color-corag-info-soft: #17262e;
+  --color-corag-danger: #c37073;
+  --color-corag-danger-soft: #331416;
+
+  --shadow-corag-sm: 0 8px 24px rgb(0 0 0 / 0.35);
+  --shadow-corag-lg: 0 28px 70px rgb(0 0 0 / 0.5);
 }
 
 @layer components {

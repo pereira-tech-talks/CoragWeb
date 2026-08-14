@@ -220,8 +220,9 @@ const importantLabel = lang === 'es' ? 'IMPORTANTE' : 'IMPORTANT';
 function severityClass(severity: LocalizedNotification['severity']): string {
   switch (severity) {
     case 'important':
-      // Pin light-mode teal — `bg-ptt-primary` flips to #3FA8AD under `.dark`.
-      return 'bg-[#1f6f73] text-white';
+      // Pin the light-mode wine — `bg-corag-primary` flips to rosa under `.dark`,
+      // and rosa cannot carry white text.
+      return 'bg-[#78020e] text-white';
     case 'warning':
       return 'bg-ptt-bg-elevated text-ptt border-b border-ptt-border';
     case 'success':
