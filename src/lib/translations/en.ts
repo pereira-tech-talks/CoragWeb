@@ -6,6 +6,38 @@ import type { SiteTranslations } from './types';
 
 export const en: SiteTranslations = {
   // Site metadata
+  home: {
+    eyebrow: 'The social impact ecosystem',
+    title: 'We have the courage to serve and transform lives',
+    lead: 'We connect people who want to help with those who need it most, so that aid is transparent, measurable and consistent.',
+    ctaPrimary: 'I want to help',
+    ctaSecondary: 'How it works',
+    problemTitle: 'The intent is there. The connection is what fails.',
+    problemBody:
+      'Plenty of people want to give or get involved, but cannot find a way to do it that feels trustworthy, close and meaningful. Aid ends up scattered across WhatsApp threads, one-off forms and spreadsheets nobody opens again.',
+    trustTitle: 'The bridge holds because of evidence',
+    trustBody:
+      'Saying you are transparent is easy. Publishing the receipt takes courage. That is why every contribution has a named person behind it, and every peso has a destination you can check.',
+    pillars: [
+      {
+        title: 'Transparent',
+        body: 'We publish how much came in and how much was spent with verified evidence. Two separate numbers, both public.',
+      },
+      {
+        title: 'Measurable',
+        body: 'Every delivery is recorded with the person responsible, the date and the evidence. Nothing loses its trail.',
+      },
+      {
+        title: 'Consistent',
+        body: 'Not a campaign that appears and disappears. A network that keeps working between one emergency and the next.',
+      },
+    ],
+    productEyebrow: 'Flagship product',
+    productTitle: 'Ayuda Directa',
+    productBody:
+      'Publishing a need, offering help, contributing and tracking your contribution all happen in the application. That is where the map, the coordination and the evidence live.',
+    productCta: 'Join the movement',
+  },
   siteTitle: 'Pereira Tech Talks',
   siteTitleFull:
     'Pereira Tech Talks — Technology community of Pereira, Colombia',
@@ -14,6 +46,7 @@ export const en: SiteTranslations = {
 
   // Navigation
   nav: {
+    app: 'Go to the app',
     home: 'Home',
     blog: 'Blog',
     about: 'About',

@@ -6,20 +6,12 @@ import Footer from '@/components/Footer.astro';
 import LanguageRedirect from '@/components/LanguageRedirect.astro';
 import Header from '@/components/layout/Header.svelte';
 import TopNotificationBar from '@/components/layout/TopNotificationBar.svelte';
-import PtdEditionHeader from '@/components/pereira-tech-days/PtdEditionHeader.svelte';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { DESCRIPTION_MAX, truncateToBand } from '@/lib/meta-description';
 import {
   getActiveNotifications,
   localizeNotification,
 } from '@/lib/notifications';
-import { isPereiraTechDayPath } from '@/lib/pereiraTechDay';
-
-interface PtdEditionNavItem {
-  year: number;
-  href: string;
-  label: string;
-}
 
 interface Props {
   lang: string;
@@ -39,19 +31,6 @@ interface Props {
   preloadFonts?: boolean;
   lcpImageHref?: string;
   lcpImageMedia?: string;
-  /**
-   * Site chrome variant. `ptd-edition` swaps the global Corag header for the
-   * minimal Pereira Tech Day nav (current edition + previous editions).
-   */
-  chrome?: 'default' | 'ptd-edition';
-  /** Required when chrome is `ptd-edition`. */
-  ptdYear?: number;
-  /** Other editions for the PTD header dropdown. */
-  ptdEditions?: PtdEditionNavItem[];
-  /** PTD header surface: dark navy (2024) or light (2026). */
-  ptdChromeVariant?: 'dark' | 'light';
-  /** In-page anchors shown in the PTD header (e.g. the agenda). */
-  ptdAnchors?: Array<{ href: string; label: string }>;
 }
 
 const {
@@ -70,21 +49,12 @@ const {
   preloadFonts = true,
   lcpImageHref,
   lcpImageMedia,
-  chrome = 'default',
-  ptdYear,
-  ptdEditions = [],
-  ptdChromeVariant = 'dark',
-  ptdAnchors = [],
 } = Astro.props;
-
-const isPtdEditionChrome =
-  chrome === 'ptd-edition' && typeof ptdYear === 'number';
 
 const language = lang as Language;
 const prefix = getUrlPrefix(language);
 /** No announcement chrome on any PTD URL (hub, editions, certificates). */
-const suppressTopNotifications =
-  isPtdEditionChrome || isPereiraTechDayPath(Astro.url.pathname);
+const suppressTopNotifications = false;
 const activeNotifications = suppressTopNotifications
   ? []
   : (await getActiveNotifications()).map((entry) => {
@@ -110,10 +80,7 @@ const activeNotifications = suppressTopNotifications
 const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
 ---
 
-<html
-  lang={lang}
-  class:list={[isPtdEditionChrome && ptdChromeVariant === 'dark' && 'dark']}
->
+<html lang={lang}>
   <head>
     <BaseHead
       title={title}
@@ -134,32 +101,13 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
     />
     <slot name="head" />
     <LanguageRedirect lang={lang} />
-    {
-      isPtdEditionChrome ? (
-        ptdChromeVariant === 'dark' ? (
-          <script is:inline>
-            document.documentElement.classList.add('dark');
-          </script>
-        ) : (
-          <script is:inline>
-            document.documentElement.classList.remove('dark');
-          </script>
-        )
-      ) : (
-        <script is:inline>
+    <script is:inline>
   (function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');})();
 </script>
-      )
-    }
   </head>
   <body
     class:list={[
-      'flex flex-col min-h-screen text-corag',
-      isPtdEditionChrome && ptdChromeVariant === 'dark'
-        ? 'bg-[#030620]'
-        : isPtdEditionChrome && ptdChromeVariant === 'light'
-          ? 'bg-[#fef7f3]'
-          : 'bg-corag-bg',
+      'flex flex-col min-h-screen text-corag bg-corag-bg',
       activeNotifications.length > 0 && 'has-top-notification',
     ]}
   >
@@ -178,8 +126,6 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
         'sticky top-0 z-50',
         /* Light PTD: keep chrome transparent so the hero illustration
            fades under the glass header (2024-style), not a solid cream bar. */
-        isPtdEditionChrome && ptdChromeVariant === 'light' && 'overflow-visible bg-transparent',
-        isPtdEditionChrome && ptdChromeVariant === 'dark' && 'bg-[#030620]',
       ]}
     >
       {
@@ -191,20 +137,7 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
           />
         )
       }
-      {
-        isPtdEditionChrome ? (
-          <PtdEditionHeader
-            client:idle
-            lang={lang}
-            year={ptdYear}
-            editions={ptdEditions}
-            anchors={ptdAnchors}
-            variant={ptdChromeVariant}
-          />
-        ) : (
-          <Header client:load lang={lang} />
-        )
-      }
+      <Header client:load lang={lang} />
     </div>
     {/*
       Keep --corag-chrome-height in sync with sticky chrome (header ±
@@ -277,22 +210,12 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
     <main
       id="main-content"
       class:list={[
-        'flex-1',
-        isPtdEditionChrome && ptdChromeVariant === 'dark'
-          ? 'bg-[#030620]'
-          : isPtdEditionChrome && ptdChromeVariant === 'light'
-            ? 'bg-[#fef7f3]'
-            : 'bg-corag-bg',
+        'flex-1 bg-corag-bg',
       ]}
     >
       <slot />
     </main>
-    <Footer
-      lang={lang}
-      variant={
-        isPtdEditionChrome && ptdChromeVariant === 'dark' ? 'ptd-dark' : 'default'
-      }
-    />
+    <Footer lang={lang} />
     {/* client:load — WebMCP scanners detect tools on first paint; client:visible misses them. */}
     <WebMCPBridge client:load lang={lang as 'en' | 'es'} />
     {/*

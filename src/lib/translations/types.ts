@@ -12,7 +12,33 @@ export interface PagePassion {
   link: string;
 }
 
+export interface HomePillar {
+  title: string;
+  body: string;
+}
+
+/**
+ * Home page copy, structured around the six-beat argument in docs/MESSAGING.md.
+ */
+export interface HomeCopy {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  problemTitle: string;
+  problemBody: string;
+  trustTitle: string;
+  trustBody: string;
+  pillars: HomePillar[];
+  productEyebrow: string;
+  productTitle: string;
+  productBody: string;
+  productCta: string;
+}
+
 export interface SiteTranslations {
+  home: HomeCopy;
   // Site metadata
   siteTitle: string;
   siteTitleFull: string;
@@ -20,6 +46,8 @@ export interface SiteTranslations {
 
   // Navigation
   nav: {
+    /** The Ayuda Directa application CTA in the chrome. */
+    app: string;
     home: string;
     blog: string;
     about: string;

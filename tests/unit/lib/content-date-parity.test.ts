@@ -1,5 +1,5 @@
 /**
- * Regression: meetup/blog filename date prefix must match frontmatter dates.
+ * Regression: blog filename date prefix must match frontmatter dates.
  * Part of PLAN_audit_meetup_blog_date_parity Task 12.
  */
 import { readdirSync, readFileSync } from 'node:fs';
@@ -35,38 +35,6 @@ function fieldDate(fm: string, key: string): string | null {
 }
 
 describe('content date parity (filename ↔ frontmatter)', () => {
-  it('meetups: filename date equals date and pubDate', () => {
-    const files = listContentFiles(join(ROOT, 'meetups')).filter(
-      (p) =>
-        !p.includes(`${join('meetups', 'en')}`) &&
-        !p.includes(`${join('meetups', 'es')}`)
-    );
-    expect(files.length).toBeGreaterThan(50);
-
-    const mismatches: string[] = [];
-    for (const path of files) {
-      const name = path.split('/').pop() ?? '';
-      const prefix = name.match(DATE_PREFIX)?.[1];
-      if (!prefix) {
-        mismatches.push(`${name}: missing YYYY-MM-DD_ prefix`);
-        continue;
-      }
-      const fm = frontmatterBlock(readFileSync(path, 'utf8'));
-      const date = fieldDate(fm, 'date');
-      const pubDate = fieldDate(fm, 'pubDate');
-      if (date && date !== prefix) {
-        mismatches.push(`${name}: date ${date} ≠ filename ${prefix}`);
-      }
-      if (pubDate && pubDate !== prefix) {
-        mismatches.push(`${name}: pubDate ${pubDate} ≠ filename ${prefix}`);
-      }
-      if (date && pubDate && date !== pubDate) {
-        mismatches.push(`${name}: date ${date} ≠ pubDate ${pubDate}`);
-      }
-    }
-    expect(mismatches).toEqual([]);
-  });
-
   it('blog EN/ES: filename date equals pubDate (non-demo)', () => {
     const mismatches: string[] = [];
     for (const lang of ['en', 'es'] as const) {

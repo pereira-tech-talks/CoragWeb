@@ -19,6 +19,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
+import { APP_URL } from '@/lib/constances';
 import {
   chromeNavPaths,
   internalNavPaths,
@@ -38,6 +39,9 @@ function chromePathsFrom(file: string): Set<string> {
   }
   // The logo links `prefix || '/'`, which is the home entry.
   if (/href=\{prefix \|\| '\/'\}/.test(source)) found.add('/');
+  // The application CTA is an external link bound to the APP_URL constant
+  // rather than a prefixed path, so it is matched by identifier.
+  if (/href=\{APP_URL\}/.test(source)) found.add(APP_URL);
   return found;
 }
 

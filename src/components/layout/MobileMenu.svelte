@@ -7,6 +7,7 @@
 import { onDestroy, onMount, tick } from 'svelte';
 import { fade } from 'svelte/transition';
 import { EVENTS, trackEvent } from '@/lib/analytics';
+import { APP_URL } from '@/lib/constances';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -217,16 +218,6 @@ function navClick(item: string) {
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('home')}
       >{t.nav.home}</a>
-      <a
-        href="{prefix}/meetups"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('meetups')}
-      >{t.nav.meetups}</a>
-      <a
-        href="{prefix}/pereira-tech-day"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('pereira_tech_day')}
-      >{t.nav.pereiraTechDays}</a>
       <!-- Calendar nav link hidden temporarily — page still at /calendar -->
       <a
         href="{prefix}/blog"
@@ -262,13 +253,8 @@ function navClick(item: string) {
             transition:fade={{ duration: 120 }}
           >
             <a href="{prefix}/about" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('about')}>{t.nav.about}</a>
-            <a href="{prefix}/speakers" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('speakers')}>{t.nav.speakers}</a>
-            <a href="{prefix}/communities" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('communities')}>{t.nav.communities}</a>
             <a href="{prefix}/contributors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributors')}>{t.nav.contributors}</a>
-            <a href="{prefix}/sponsors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('sponsors')}>{t.nav.sponsors}</a>
-            <a href="{prefix}/verticals" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('verticals')}>{t.nav.verticals}</a>
             <a href="{prefix}/channels" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('channels')}>{t.nav.channels}</a>
-            <a href="{prefix}/press" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('press')}>{t.nav.press}</a>
           </div>
         {/if}
       </div>
@@ -278,6 +264,13 @@ function navClick(item: string) {
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('contact')}
       >{t.nav.contact}</a>
+
+      <!-- The application — the primary action, so it reads as a button. -->
+      <a
+        href={APP_URL}
+        class="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-full bg-corag-fill px-5 py-3 text-lg font-semibold text-corag-on-fill focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        on:click={() => navClick('app')}
+      >{t.nav.app}</a>
     </nav>
 
     <!-- Utilities footer -->

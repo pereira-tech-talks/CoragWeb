@@ -74,9 +74,6 @@ const {
   getPastEvents,
   getEventsByType,
 } = await import('@/lib/event');
-const { getVerticals, getActiveVerticals, getVerticalBySlug } = await import(
-  '@/lib/vertical'
-);
 
 describe('channels', () => {
   it('sorts by declared order, not by id', async () => {
@@ -136,26 +133,5 @@ describe('events', () => {
       'past-workshop',
       'mid-workshop',
     ]);
-  });
-});
-
-describe('verticals', () => {
-  it('sorts by declared order', async () => {
-    expect((await getVerticals()).map((v) => v.id)).toEqual([
-      'speaker-school',
-      'retired-program',
-      'ai-channel',
-    ]);
-  });
-
-  it('excludes archived programs from the active list', async () => {
-    const active = (await getActiveVerticals()).map((v) => v.id);
-    expect(active).toEqual(['speaker-school', 'ai-channel']);
-    expect(active).not.toContain('retired-program');
-  });
-
-  it('finds one by slug', async () => {
-    expect((await getVerticalBySlug('ai-channel'))?.id).toBe('ai-channel');
-    expect(await getVerticalBySlug('nope')).toBeUndefined();
   });
 });

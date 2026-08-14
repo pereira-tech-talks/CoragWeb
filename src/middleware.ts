@@ -25,14 +25,18 @@
  * Do NOT debug Astro routing, file-system caches, or `[...slug]` vs `[slug]`
  * before checking this allowlist first.
  *
- * v3.0.0 transition note:
- *   The legacy personal-page slugs that previously shipped with the seed clone
- *   (`cv`, `dailybot`, `entrepreneur`, `foodie`, `hobbies`, `portfolio`,
- *   `tech-talks`, `trading`) have been deleted from `src/pages/` and their
- *   page components removed from `src/components/pages/` as part of Task 16
- *   (legacy content removal). New Corag top-level routes (`/meetups`,
- *   `/pereira-tech-days`, `/talks`, etc.) will be added back to the allowlist
- *   by Tasks 9–13 when their pages land.
+ * corag.org migration note:
+ *   The Pereira Tech Talks community routes (`/meetups`, `/talks`, `/speakers`,
+ *   `/slides`, `/verticals`, `/pereira-tech-day(s)`, `/communities`,
+ *   `/certificates`, `/press`, `/call-for-speakers`, `/calendar`, `/sponsors`)
+ *   were removed with their collections. Each has a 301 in
+ *   `public/_redirects` pointing at its closest Corag equivalent.
+ *
+ *   The new Corag routes (`/como-funciona`, `/transparencia`, `/emergencias`,
+ *   `/lideres`, `/desarrolladores`, `/aliados`, `/sobre-corag`,
+ *   `/colaboradores`, `/privacidad`) must each be added here as their pages
+ *   land — a route missing from this allowlist works in dev and 404s in
+ *   production.
  */
 import { defineMiddleware } from 'astro:middleware';
 
@@ -41,23 +45,8 @@ const KNOWN_ROOT_PATHS = new Set([
   'about',
   'blog',
   'contact',
-  'slides',
-  'meetups',
-  'pereira-tech-day',
-  'pereira-tech-days',
-  'speakers',
-  'talks',
-  'calendar',
-  'communities',
-  'sponsors',
   'contributors',
-  'verticals',
-  'call-for-speakers',
-  'sponsor-us',
   'channels',
-  'certificates',
-  'press',
-  'community',
   'conduct',
   'contributing',
   'governance',
@@ -75,23 +64,8 @@ const KNOWN_EN_PATHS = new Set([
   'about',
   'blog',
   'contact',
-  'slides',
-  'meetups',
-  'pereira-tech-day',
-  'pereira-tech-days',
-  'speakers',
-  'talks',
-  'calendar',
-  'communities',
-  'sponsors',
   'contributors',
-  'verticals',
-  'call-for-speakers',
-  'sponsor-us',
   'channels',
-  'certificates',
-  'press',
-  'community',
   'conduct',
   'contributing',
   'governance',

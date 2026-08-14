@@ -82,7 +82,6 @@ vi.mock('astro:content', () => ({
 }));
 
 const contributor = await import('@/lib/contributor');
-const slides = await import('@/lib/slides');
 
 describe('contributor directory', () => {
   it('sorts by declared order, then by name', async () => {
@@ -146,68 +145,5 @@ describe('contributor directory', () => {
     expect(input.map((c: { id: string }) => c.id)).toEqual(
       CONTRIBUTORS.map((c) => c.id)
     );
-  });
-});
-
-describe('slide decks', () => {
-  it('strips the language and date prefix from an id', () => {
-    expect(slides.getDeckSlug('en/2026-04-25_demo-revealjs-features')).toBe(
-      'demo-revealjs-features'
-    );
-    expect(slides.getDeckSlug('demo-revealjs-features')).toBe(
-      'demo-revealjs-features'
-    );
-  });
-
-  it('recognizes drafts', () => {
-    expect(slides.isDraftDeck({ data: { draft: true } } as never)).toBe(true);
-    expect(slides.isDraftDeck({ data: { draft: false } } as never)).toBe(false);
-    expect(slides.isDraftDeck({ data: {} } as never)).toBe(false);
-  });
-
-  it('recognizes a scheduled deck by its publication date', () => {
-    expect(
-      slides.isScheduledDeck({ data: { pubDate: day('2099-01-01') } } as never)
-    ).toBe(true);
-    expect(
-      slides.isScheduledDeck({ data: { pubDate: day('2020-01-01') } } as never)
-    ).toBe(false);
-  });
-
-  it('narrows deck types by discriminant', () => {
-    // The collection's discriminant is `native` | `external` — `internal` and
-    // `external-embed` are the authoring vocabulary in the docs, not the schema.
-    const internal = { data: { type: 'native' } } as never;
-    const external = { data: { type: 'external' } } as never;
-    expect(slides.isNativeDeck(internal)).toBe(true);
-    expect(slides.isNativeDeck(external)).toBe(false);
-    expect(slides.isExternalDeck(external)).toBe(true);
-    expect(slides.isExternalDeck(internal)).toBe(false);
-  });
-
-  it('returns only the requested language, newest first', async () => {
-    const en = await slides.getSlideDecks('en');
-    expect(en.map((d) => d.id)).toEqual([
-      'en/2026-04-25_demo-revealjs-features',
-      'en/2025-01-10_older-deck',
-    ]);
-    expect((await slides.getSlideDecks('es')).map((d) => d.id)).toEqual([
-      'es/2026-04-25_demo-revealjs-features',
-    ]);
-  });
-
-  it('builds timeline entries with a resolved slug and type', async () => {
-    const timeline = await slides.getSlidesTimelineIndex('en');
-    expect(timeline[0]).toMatchObject({
-      slug: 'demo-revealjs-features',
-      lang: 'en',
-      title: 'Demo deck',
-      type: 'native',
-    });
-    expect(timeline[1]).toMatchObject({
-      type: 'external',
-      externalUrl: 'https://deck.test/older',
-      provider: 'Speaker Deck',
-    });
   });
 });

@@ -7,12 +7,9 @@ import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
-import SlideIndicator from '@/components/blog/SlideIndicator.svelte';
-import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
-  getPostSlug,
   getReadingTimeFromContent,
   getRelatedPosts,
   getSeriesNavigation,
@@ -26,7 +23,6 @@ import { formatCalendarDate } from '@/lib/dates';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { buildMetaDescription } from '@/lib/meta-description';
-import { getDeckForPost, getDeckSlug } from '@/lib/slides';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -60,16 +56,6 @@ const seriesInfo = post.data.series
   ? await getSeriesNavigation(post.data.series, post.id, lang)
   : null;
 
-// Companion slide deck for this post (if any). Drives the floating SlideIndicator.
-const postSlug = getPostSlug(post.id);
-const relatedDeck = await getDeckForPost(
-  postSlug,
-  lang,
-  post.data.relatedSlide
-);
-const relatedDeckHref = relatedDeck
-  ? `${prefix}/slides/${getDeckSlug(relatedDeck.id)}`
-  : null;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
   tags: tags ?? [],
@@ -212,7 +198,7 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
         readingTimeMinutes={readingTimeMinutes}
       />
       <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-corag-primary prose-img:block prose-img:mx-auto">
-        <Content components={{ TypewriterDemo }} />
+        <Content />
       </div>
       <div class="mt-12 space-y-8">
         <BlogPostFooter
@@ -227,7 +213,7 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
-    {(seriesInfo || relatedDeck) && (
+    {seriesInfo && (
       <div class="fixed bottom-4 right-18 sm:right-20 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
         <div class="pointer-events-auto contents">
           {seriesInfo && (
@@ -237,14 +223,6 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
               currentChapter={seriesInfo.currentIndex + 1}
               totalChapters={seriesInfo.posts.length}
               seriesTitle={t.seriesNames[seriesInfo.name] || seriesInfo.title}
-            />
-          )}
-          {relatedDeck && relatedDeckHref && (
-            <SlideIndicator
-              client:idle
-              lang={lang}
-              href={relatedDeckHref}
-              deckTitle={relatedDeck.data.title}
             />
           )}
         </div>

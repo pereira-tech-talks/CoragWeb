@@ -1,29 +1,19 @@
 ---
-import EditionCard from '@/components/cards/EditionCard.astro';
-import MeetupShowcaseCard from '@/components/cards/MeetupShowcaseCard.astro';
-import VerticalCard from '@/components/cards/VerticalCard.astro';
+/**
+ * Corag home page.
+ *
+ * Structure follows the six-beat argument in `docs/MESSAGING.md`:
+ *   1 la intención existe → 2 la conexión falla → 3 Corag es el puente →
+ *   4 el puente se sostiene con evidencia → 5 Ayuda Directa → 6 únete al movimiento
+ *
+ * The home page is the only surface that runs all six beats.
+ */
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
-import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
-import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
-import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
-import PtdAnnouncementStrip from '@/components/home/PtdAnnouncementStrip.astro';
-import LinkArrow from '@/components/ui/LinkArrow.astro';
-import Section from '@/components/ui/Section.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getDefaultOgImage } from '@/lib/constances';
-import type { Language } from '@/lib/i18n';
-import { getUrlPrefix, tr } from '@/lib/i18n';
-import type { MeetupShowcaseItem } from '@/lib/meetup';
-import { getMeetups, getUpcomingMeetupShowcase } from '@/lib/meetup';
-import {
-  getEditionCountdownTargets,
-  getEditions,
-  isPostponedEdition,
-} from '@/lib/pereiraTechDay';
-import { getActiveSponsors } from '@/lib/sponsor';
+import { appUrl, getDefaultOgImage } from '@/lib/constances';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
-import { getActiveVerticals } from '@/lib/vertical';
 
 interface Props {
   lang: Language;
@@ -32,46 +22,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
-const hs = t.homeSections;
-
-const upcomingShowcase = await getUpcomingMeetupShowcase();
-const latestMeetups = (await getMeetups()).slice(0, 3);
-const editions = await getEditions();
-const upcomingEdition = editions.find(
-  (e) => e.data.status === 'announced' || e.data.status === 'rsvp-open'
-);
-/**
- * The strip promotes the current edition — including a postponed one, which
- * still owns the slot but switches to notice mode. `postponedEdition` is
- * `undefined` in every other status, so restoring the edition status restores
- * the promotional strip with no code change here.
- */
-const postponedEdition = editions.find(isPostponedEdition);
-const stripEdition = upcomingEdition ?? postponedEdition;
-const lastEdition =
-  stripEdition ?? editions.find((e) => e.data.status === 'completed');
-// Only ever counts down to an edition that is actually going ahead.
-const ptdCountdown = upcomingEdition
-  ? getEditionCountdownTargets(upcomingEdition)
-  : null;
-const ptdPostponement = postponedEdition?.data.postponement;
-const ptdPostponedImage = ptdPostponement?.image
-  ? {
-      src: tr(ptdPostponement.image.src, lang),
-      alt: tr(ptdPostponement.image.alt, lang),
-    }
-  : undefined;
-const verticals = await getActiveVerticals();
-const sponsors = (await getActiveSponsors()).slice(0, 12);
-
-const meetupsToShow: MeetupShowcaseItem[] =
-  upcomingShowcase.length > 0
-    ? upcomingShowcase.slice(0, 3)
-    : latestMeetups.map((meetup) => ({ type: 'meetup', data: meetup }));
-const meetupsHeading =
-  upcomingShowcase.length > 0
-    ? hs.meetups.upcomingTitle
-    : hs.meetups.latestTitle;
+const h = t.home;
 ---
 
 <MainLayout
@@ -80,216 +31,113 @@ const meetupsHeading =
   description={t.siteDescription}
   image={getDefaultOgImage(lang)}
   preloadHeaderLogo={false}
-  preloadFonts={false}
-  lcpImageHref="/images/home/hero-dark-480.webp"
-  lcpImageMedia="(max-width: 1023px)"
-  keywords={
-    lang === 'en'
-      ? [
-          'Pereira Tech Talks',
-          'tech community Pereira',
-          'Risaralda tech meetups',
-          'tech community Colombia',
-          'Pereira Tech Day',
-          'Speaker School',
-          'La Biblioteca del Mañana',
-        ]
-      : [
-          'Pereira Tech Talks',
-          'comunidad tecnología Pereira',
-          'meetups tecnología Risaralda',
-          'comunidad tecnología Colombia',
-          'Pereira Tech Day',
-          'Escuela de Speakers',
-          'La Biblioteca del Mañana',
-        ]
-  }
 >
-  <HeroSection
-    name={t.siteTitle}
-    tagline={t.hero.tagline}
-    description={t.hero.description}
-    typewriterWords={t.hero.typewriterWords}
-    meetupsLabel={t.hero.ctaMeetups}
-    meetupsHref={`${prefix}/meetups/`}
-    ptdLabel={t.hero.ctaPtd}
-    ptdHref={`${prefix}/pereira-tech-day/`}
-    contactLabel={t.hero.ctaContact}
-    contactHref={`${prefix}/contact/`}
-    scrollLabel={t.hero.scrollLabel}
-  />
+  {/* ── Beat 3 + the coraje statement ───────────────────────────────── */}
+  <section class="bg-corag-bg-dark">
+    <div class="main-container py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-rosa"
+        >
+          {h.eyebrow}
+        </p>
+        <h1
+          class="mt-4 font-display text-4xl font-bold leading-tight text-corag-on-fill sm:text-5xl md:text-6xl"
+        >
+          {h.title}
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-corag-rosa">
+          {h.lead}
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href={appUrl('/aportar')}
+            class="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-rosa px-7 py-3 font-semibold text-corag-bg-dark transition-colors hover:bg-corag-rosa-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-rosa"
+          >
+            {h.ctaPrimary}
+          </a>
+          <a
+            href={`${prefix}/como-funciona`}
+            class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-corag-rosa/60 px-7 py-3 font-semibold text-corag-rosa transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-rosa"
+          >
+            {h.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="home-below-fold">
-  <PtdAnnouncementStrip
-    lang={lang}
-    eyebrow={ptdPostponement ? hs.ptdStrip.postponedEyebrow : hs.ptdStrip.eyebrow}
-    title={hs.ptdStrip.title}
-    subtitle={
-      ptdPostponement ? tr(ptdPostponement.headline, lang) : hs.ptdStrip.subtitle
-    }
-    ctaLabel={ptdPostponement ? hs.ptdStrip.postponedCta : hs.ptdStrip.cta}
-    dateLabel={hs.ptdStrip.date}
-    venueLabel={hs.ptdStrip.venue}
-    attendanceLabel={hs.ptdStrip.attendance}
-    targetDate={ptdCountdown?.targetDate}
-    endDate={ptdCountdown?.endDate}
-    postponed={Boolean(ptdPostponement)}
-    postponedBody={ptdPostponement ? tr(ptdPostponement.body, lang) : undefined}
-    postponedClosing={
-      ptdPostponement ? tr(ptdPostponement.closing, lang) : undefined
-    }
-    postponedImage={ptdPostponedImage}
-  />
+  <div id="main-after-hero"></div>
 
-  <HomeSection
-    title={hs.about.title}
-    description={hs.about.description}
-    ctaText={hs.about.cta}
-    ctaLink={`${prefix}/about`}
-    cta2Text={hs.about.cta2}
-    cta2Link={`${prefix}/contact`}
-    image="/images/pereira-tech-days/2026/about-panel.webp"
-    imageAlt={
-      lang === 'es'
-        ? 'Foto grupal de asistentes de Pereira Tech Day en el escenario de la UTP'
-        : 'Group photo of Pereira Tech Day attendees on the UTP stage'
-    }
-    imageWidth={1280}
-    imageHeight={849}
-    imageCrop="portrait"
-    contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
-  />
+  {/* ── Beats 1 + 2 — intent exists, connection fails ────────────────── */}
+  <section class="bg-corag-bg">
+    <div class="main-container py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <h2 class="font-display text-2xl font-semibold text-corag sm:text-3xl">
+          {h.problemTitle}
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-corag-secondary">
+          {h.problemBody}
+        </p>
+      </div>
+    </div>
+  </section>
 
-  {
-    sponsors.length > 0 && (
-      <Section
-        eyebrow={hs.sponsors.eyebrow}
-        title={hs.sponsors.title}
-        subtitle={hs.sponsors.subtitle}
-        surface="alt"
+  {/* ── Beat 4 — the bridge holds because of evidence ────────────────── */}
+  <section class="bg-corag-bg-brand">
+    <div class="main-container py-16 sm:py-20">
+      <h2 class="font-display text-2xl font-semibold text-corag sm:text-3xl">
+        {h.trustTitle}
+      </h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-corag-secondary">
+        {h.trustBody}
+      </p>
+      <dl class="mt-10 grid gap-6 sm:grid-cols-3">
+        {
+          h.pillars.map((pillar) => (
+            <div class="rounded-[18px] border border-corag-border bg-corag-bg-elevated p-6 shadow-corag-sm">
+              <dt class="font-display text-lg font-semibold text-corag">
+                {pillar.title}
+              </dt>
+              <dd class="mt-2 text-corag-secondary">{pillar.body}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {/* ── Beat 5 + 6 — Ayuda Directa, then the invitation ──────────────── */}
+  <section class="bg-corag-bg">
+    <div class="main-container py-16 sm:py-20">
+      <div
+        class="rounded-[28px] bg-corag-fill px-6 py-12 text-center sm:px-12 sm:py-16"
       >
-        <ul class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-          {sponsors.map((sponsor) => {
-            /**
-             * Same card + height-led sizing so wide wordmarks match.
-             * Squarer marks (ASE) need a taller cap to match perceived weight.
-             */
-            const logoSize =
-              sponsor.id === 'ase-utp'
-                ? 'h-[4.25rem] w-auto max-w-full object-contain'
-                : 'h-14 w-auto max-w-full object-contain';
-            return (
-              <li>
-                <a
-                  href={sponsor.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="group flex w-full flex-col items-center gap-2.5 rounded-xl bg-corag-bg-elevated p-5 ring-1 ring-corag-border transition motion-reduce:transition-none hover:shadow-lg hover:ring-corag-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-                >
-                  <span class="flex h-16 w-full max-w-[13rem] items-center justify-center">
-                    <img
-                      src={sponsor.data.logo.light}
-                      alt=""
-                      width="240"
-                      height="64"
-                      loading="lazy"
-                      class={`${logoSize} dark:hidden`}
-                    />
-                    <img
-                      src={sponsor.data.logo.dark}
-                      alt=""
-                      width="240"
-                      height="64"
-                      loading="lazy"
-                      class={`hidden ${logoSize} dark:block`}
-                    />
-                  </span>
-                  <span class="text-center text-xs font-semibold leading-snug text-corag transition-colors group-hover:text-corag-primary dark:group-hover:text-corag-primary-light">
-                    {sponsor.data.name}
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-8">
-          <LinkArrow href={`${prefix}/sponsors/`}>{hs.sponsors.cta}</LinkArrow>
-          <LinkArrow href={`${prefix}/sponsor-us/`}>{hs.sponsors.ctaJoin}</LinkArrow>
-        </div>
-      </Section>
-    )
-  }
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-rosa"
+        >
+          {h.productEyebrow}
+        </p>
+        <h2
+          class="mt-3 font-display text-3xl font-bold text-corag-on-fill sm:text-4xl"
+        >
+          {h.productTitle}
+        </h2>
+        <p
+          class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-corag-rosa"
+        >
+          {h.productBody}
+        </p>
+        <a
+          href={appUrl('/')}
+          class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-rosa px-7 py-3 font-semibold text-corag-bg-dark transition-colors hover:bg-corag-rosa-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-rosa"
+        >
+          {h.productCta}
+        </a>
+      </div>
+    </div>
+  </section>
 
-  {/* Calendar / upcoming meetups — hidden temporarily (restore: drop `false &&`). */}
-  {
-    false && meetupsToShow.length > 0 && (
-      <Section eyebrow={hs.meetups.eyebrow} title={meetupsHeading} surface="alt">
-        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {meetupsToShow.map((item) => (
-            <li>
-              <MeetupShowcaseCard item={item} lang={lang} />
-            </li>
-          ))}
-        </ul>
-        <div class="mt-10">
-          <LinkArrow href={`${prefix}/meetups/`}>{hs.meetups.cta}</LinkArrow>
-        </div>
-      </Section>
-    )
-  }
-
-  {
-    lastEdition && (
-      <Section
-        eyebrow={hs.ptd.eyebrow}
-        title={hs.ptd.title}
-        subtitle={hs.ptd.subtitle}
-      >
-        <div class="grid gap-6 lg:grid-cols-2">
-          <EditionCard edition={lastEdition} lang={lang} />
-          {editions
-            .filter((e) => e.id !== lastEdition.id)
-            .slice(0, 1)
-            .map((edition) => (
-              <EditionCard edition={edition} lang={lang} />
-            ))}
-        </div>
-      </Section>
-    )
-  }
-
-  {
-    verticals.length > 0 && (
-      <Section
-        eyebrow={hs.verticals.eyebrow}
-        title={hs.verticals.title}
-        subtitle={hs.verticals.subtitle}
-        surface="alt"
-      >
-        <ul class="grid gap-6 sm:grid-cols-2">
-          {verticals.map((vertical) => (
-            <li>
-              <VerticalCard vertical={vertical} lang={lang} />
-            </li>
-          ))}
-        </ul>
-        <div class="mt-10">
-          <LinkArrow href={`${prefix}/verticals/`}>{hs.verticals.cta}</LinkArrow>
-        </div>
-      </Section>
-    )
-  }
-
-  <BlogPreviewSection lang={lang} grouped surface="default" />
-
+  <BlogPreviewSection lang={lang} />
   <ContactSection lang={lang} />
-  </div>
 </MainLayout>
-
-<style>
-  /* Skip style/layout for below-fold blocks until needed — cuts LCP render delay. */
-  .home-below-fold {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 2400px;
-  }
-</style>

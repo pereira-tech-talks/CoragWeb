@@ -33,7 +33,8 @@ const endpoints = findMdEndpoints(PAGES_DIR);
 
 describe('agent-markdown endpoint delivery', () => {
   it('finds the markdown endpoints', () => {
-    expect(endpoints.length).toBeGreaterThan(30);
+    // Floor, not a target. Rises again as the Corag pages land.
+    expect(endpoints.length).toBeGreaterThan(12);
   });
 
   it('exposes every twin at the page URL plus .md, never at /index.md', () => {

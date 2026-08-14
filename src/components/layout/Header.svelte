@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import { EVENTS, trackEvent } from '@/lib/analytics';
+import { APP_URL } from '@/lib/constances';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -100,8 +101,6 @@ function closeAllDropdowns() {
     </a>
 
     <div class="hidden lg:flex items-center gap-6">
-      <a href="{prefix}/meetups" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'meetups' })}>{t.nav.meetups}</a>
-      <a href="{prefix}/pereira-tech-day" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'pereira_tech_day' })}>{t.nav.pereiraTechDays}</a>
       <!-- Calendar nav link hidden temporarily — page still at /calendar -->
       <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
 
@@ -145,18 +144,21 @@ function closeAllDropdowns() {
             style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
           >
             <a href="{prefix}/about" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about' })}>{t.nav.about}</a>
-            <a href="{prefix}/speakers" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'speakers' })}>{t.nav.speakers}</a>
-            <a href="{prefix}/communities" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'communities' })}>{t.nav.communities}</a>
             <a href="{prefix}/contributors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributors' })}>{t.nav.contributors}</a>
-            <a href="{prefix}/sponsors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'sponsors' })}>{t.nav.sponsors}</a>
-            <a href="{prefix}/verticals" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'verticals' })}>{t.nav.verticals}</a>
             <a href="{prefix}/channels" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'channels' })}>{t.nav.channels}</a>
-            <a href="{prefix}/press" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'press' })}>{t.nav.press}</a>
           </div>
         {/if}
       </div>
 
       <a href="{prefix}/contact" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contact' })}>{t.nav.contact}</a>
+
+      <!-- The application. Every transactional action happens there, so this is
+           the primary action in the chrome. -->
+      <a
+        href={APP_URL}
+        class="inline-flex min-h-[44px] items-center rounded-full bg-corag-fill px-5 py-2 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'app' })}
+      >{t.nav.app}</a>
 
       <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
       <div

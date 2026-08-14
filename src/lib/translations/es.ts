@@ -6,6 +6,38 @@ import type { SiteTranslations } from './types';
 
 export const es: SiteTranslations = {
   // Site metadata
+  home: {
+    eyebrow: 'El ecosistema de impacto social',
+    title: 'Tenemos coraje para servir y transformar vidas',
+    lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante.',
+    ctaPrimary: 'Quiero ayudar',
+    ctaSecondary: 'Cómo funciona',
+    problemTitle: 'La intención existe. La conexión falla.',
+    problemBody:
+      'Muchas personas quieren donar o vincularse a una causa, pero no encuentran cómo hacerlo de manera confiable, cercana y significativa. La ayuda termina repartida entre cadenas de WhatsApp, formularios sueltos y hojas de cálculo que nadie vuelve a mirar.',
+    trustTitle: 'El puente se sostiene con evidencia',
+    trustBody:
+      'Decir que somos transparentes es fácil. Publicar la cuenta requiere coraje. Por eso cada aporte tiene un responsable con nombre, y cada peso tiene un destino que puedes revisar.',
+    pillars: [
+      {
+        title: 'Transparente',
+        body: 'Publicamos cuánto se recibió y cuánto se usó con evidencia verificada. Son dos números distintos, y los dos son públicos.',
+      },
+      {
+        title: 'Medible',
+        body: 'Cada entrega queda registrada con su responsable, su fecha y su evidencia. No se pierde el rastro.',
+      },
+      {
+        title: 'Constante',
+        body: 'No es una campaña que aparece y desaparece. Es una red que sigue funcionando entre una emergencia y la siguiente.',
+      },
+    ],
+    productEyebrow: 'Producto insignia',
+    productTitle: 'Ayuda Directa',
+    productBody:
+      'Publicar una necesidad, ofrecer ayuda, aportar y seguir tu aporte ocurre en la aplicación. Allí vive el mapa, la coordinación y la evidencia.',
+    productCta: 'Únete al movimiento',
+  },
   siteTitle: 'Pereira Tech Talks',
   siteTitleFull:
     'Pereira Tech Talks — Comunidad de tecnología de Pereira, Colombia',
@@ -14,6 +46,7 @@ export const es: SiteTranslations = {
 
   // Navigation
   nav: {
+    app: 'Ir a la aplicación',
     home: 'Inicio',
     blog: 'Blog',
     about: 'Sobre nosotros',

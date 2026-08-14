@@ -2,10 +2,13 @@
  * The site's navigation surface, in one place.
  *
  * Before this module the structure existed three times — `Header.svelte` /
- * `MobileMenu.svelte`, `Footer.astro`, and a hand-maintained `SITE_NAV_SECTIONS`
- * inside `markdown-for-agents.ts`. The Markdown copy had drifted: it linked
- * `/talks`, which is a 301 to `/meetups/`, and it was missing `/communities`,
- * `/calendar` and `/slides`, all of which are real routes.
+ * `MobileMenu.svelte`, `Footer.astro`, and a hand-maintained copy inside
+ * `markdown-for-agents.ts` — and they had drifted apart. One source now.
+ *
+ * ⚠️ Every path here must resolve to a page that exists. The Corag routes
+ * (`/como-funciona`, `/transparencia`, `/emergencias`, `/lideres`,
+ * `/desarrolladores`, `/aliados`) are added as their pages land, together with
+ * their `src/middleware.ts` allowlist entries.
  *
  * The footer and the agent-Markdown Site Navigation block are both derived from
  * here. The Svelte chrome keeps its own markup (see the Task 8 log) but its
@@ -15,6 +18,7 @@
  *
  * Part of PLAN_sitewide_language_seo_aeo_audit Task 8.
  */
+import { APP_URL } from '@/lib/constances';
 import { DEFAULT_LANGUAGE, getUrlPrefix, isValidLanguage } from '@/lib/i18n';
 
 export interface NavEntry {
@@ -40,7 +44,7 @@ export const SITE_NAVIGATION: NavGroup[] = [
     entries: [
       { label: { en: 'Home', es: 'Inicio' }, path: '/', inChrome: true },
       {
-        label: { en: 'About', es: 'Sobre nosotros' },
+        label: { en: 'About', es: 'Sobre Corag' },
         path: '/about',
         inChrome: true,
       },
@@ -49,62 +53,21 @@ export const SITE_NAVIGATION: NavGroup[] = [
         path: '/contact',
         inChrome: true,
       },
-      {
-        label: { en: 'Call for Speakers', es: 'Convocatoria de ponentes' },
-        path: '/call-for-speakers',
-      },
     ],
   },
   {
     title: { en: 'Community', es: 'Comunidad' },
     entries: [
       {
-        label: { en: 'Pereira Tech Day', es: 'Pereira Tech Day' },
-        path: '/pereira-tech-day',
-        inChrome: true,
-      },
-      {
-        label: { en: 'Meetups', es: 'Meetups' },
-        path: '/meetups',
-        inChrome: true,
-      },
-      {
-        label: { en: 'Community calendar', es: 'Calendario comunitario' },
-        path: '/calendar',
-      },
-      {
-        label: { en: 'Programs', es: 'Programas' },
-        path: '/verticals',
-        inChrome: true,
-      },
-      {
-        label: { en: 'Speakers', es: 'Ponentes' },
-        path: '/speakers',
-        inChrome: true,
-      },
-      {
-        label: { en: 'Allied communities', es: 'Comunidades aliadas' },
-        path: '/communities',
-        inChrome: true,
-      },
-      {
-        label: { en: 'Contributors', es: 'Contribuyentes' },
+        label: { en: 'Contributors', es: 'Colaboradores' },
         path: '/contributors',
         inChrome: true,
       },
-      {
-        label: { en: 'Sponsors', es: 'Patrocinadores' },
-        path: '/sponsors',
-        inChrome: true,
-      },
-      { label: { en: 'Sponsor us', es: 'Patrocínanos' }, path: '/sponsor-us' },
       {
         label: { en: 'Channels', es: 'Canales' },
         path: '/channels',
         inChrome: true,
       },
-      { label: { en: 'Press', es: 'Prensa' }, path: '/press', inChrome: true },
-      { label: { en: 'Community', es: 'Comunidad' }, path: '/community' },
       {
         label: { en: 'Contributing', es: 'Cómo contribuir' },
         path: '/contributing',
@@ -124,36 +87,21 @@ export const SITE_NAVIGATION: NavGroup[] = [
         label: { en: 'Blog series', es: 'Series del blog' },
         path: '/blog/series',
       },
-      { label: { en: 'Slides', es: 'Slides' }, path: '/slides' },
     ],
   },
   {
-    title: { en: 'Connect', es: 'Conectar' },
+    title: { en: 'Ayuda Directa', es: 'Ayuda Directa' },
     entries: [
       {
-        label: { en: 'GitHub', es: 'GitHub' },
-        path: 'https://github.com/pereira-tech-talks',
+        /*
+         * The application. Every transactional action lives there, so this is
+         * the most important outbound link on the site — it belongs in the
+         * navigation, not only in page CTAs.
+         */
+        label: { en: 'Go to the app', es: 'Ir a la aplicación' },
+        path: APP_URL,
         external: true,
-      },
-      {
-        label: { en: 'LinkedIn', es: 'LinkedIn' },
-        path: 'https://www.linkedin.com/company/pereira-tech-talks/',
-        external: true,
-      },
-      {
-        label: { en: 'X/Twitter', es: 'X/Twitter' },
-        path: 'https://x.com/pertechtalks',
-        external: true,
-      },
-      {
-        label: { en: 'Instagram', es: 'Instagram' },
-        path: 'https://www.instagram.com/pertechtalks',
-        external: true,
-      },
-      {
-        label: { en: 'WhatsApp', es: 'WhatsApp' },
-        path: 'https://chat.whatsapp.com/GI5ZismAsqA4a4EPHnJ6RG',
-        external: true,
+        inChrome: true,
       },
     ],
   },
