@@ -125,9 +125,9 @@ public/images/blog/
 
 | Post Slug | Files | Size | Formats |
 |-----------|------:|-----:|---------|
-| `nodeschool-day-pereira` | 10 | 1.1 MB | JPG + WebP |
+| `how-to-tell-if-a-foundation-is-trustworthy` | 4 | 380 KB | WebP |
 | `blockchain-industrial-revolution` | 13 | 1020 KB | JPG + WebP |
-| `meetup-recap-march-2026` | 5 | 412 KB | JPG + PNG |
+| `how-to-donate-without-getting-scammed` | 4 | 372 KB | WebP |
 | `internet-of-things` | 5 | 304 KB | JPG + WebP |
 | `webvr-aframe` | 4 | 268 KB | JPG + WebP |
 | `what-is-blockchain` | 3 | 192 KB | JPG + WebP |

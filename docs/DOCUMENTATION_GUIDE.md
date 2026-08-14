@@ -297,7 +297,7 @@ Update documentation when:
 - [ ] Feature documented in relevant guide
 - [ ] Examples provided
 - [ ] Related docs updated
-- [ ] DOCUMENTATION_INVENTORY.md updated if new file
+- [ ] `docs/README.md` index updated if a new file was added
 
 ### For Documentation PRs
 

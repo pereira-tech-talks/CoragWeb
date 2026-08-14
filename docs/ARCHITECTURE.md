@@ -118,7 +118,7 @@ src/
 │   ├── series/              # Blog series definitions
 │   └── tags/                # Tag definitions
 │
-├── content.config.ts        # Collection schemas (+ notifications, meetups, PTD, …)
+├── content.config.ts        # Collection schemas (blog, pages, authors, channels, contributors, tags, series, notifications)
 ├── env.d.ts                 # TypeScript environment
 │
 ├── layouts/
@@ -331,7 +331,16 @@ const authors = defineCollection({
   }),
 });
 
-export const collections = { blog, tags, series, slides, pages, authors };
+export const collections = {
+  blog,
+  tags,
+  series,
+  pages,
+  authors,
+  channels,
+  contributors,
+  notifications,
+};
 ```
 
 > **See:** [Authors](./features/AUTHORS.md) for the full multi-author guide.
@@ -365,12 +374,12 @@ src/content/
 │   └── sergio-florez.yaml               # One YAML file per author
 ├── blog/
 │   ├── en/                              # English posts
-│   │   ├── 2026-01-15_meetup-recap-january.md
-│   │   ├── 2026-02-12_speaker-school-launch.md
+│   │   ├── 2026-03-10_how-to-donate-without-getting-scammed.md
+│   │   ├── 2026-04-07_how-social-foundations-work-in-colombia.md
 │   │   └── ...
 │   └── es/                              # Spanish posts (matching filenames, English slugs)
-│       ├── 2026-01-15_meetup-recap-january.md
-│       ├── 2026-02-12_speaker-school-launch.md
+│       ├── 2026-03-10_how-to-donate-without-getting-scammed.md
+│       ├── 2026-04-07_how-social-foundations-work-in-colombia.md
 │       └── ...
 └── tags/
     ├── ai.md
@@ -488,7 +497,7 @@ const { Content } = await render(post);
 
 **Why it matters when adding a new page:**
 
-When you add a new top-level page (e.g. `/slides`, `/foo`), you MUST also add `'<name>'` to:
+When you add a new top-level page (e.g. `/how-it-works`, `/foo`), you MUST also add `'<name>'` to:
 
 - `KNOWN_ROOT_PATHS` — for the English version (`/<name>`)
 - `KNOWN_EN_PATHS` — for the Spanish version (`/es/<name>`), if it exists

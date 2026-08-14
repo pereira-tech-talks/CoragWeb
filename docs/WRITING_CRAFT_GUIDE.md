@@ -6,7 +6,9 @@ Where the Writing Voice Guide covers **what the voice sounds like** (vocabulary,
 
 This guide was distilled from refinement sessions on actual long-form posts (particularly the extensive refinement of `2026-04-11_openclaw-your-assistant-your-machine-your-rules`) plus pattern analysis across the 10 most recent blog posts in the previous personal-blog era. Every rule here has a concrete origin in work that was accepted or rejected by an editor.
 
-> **Corag v3.0.0 context:** Corag now hosts content from multiple authors — community organizers, speakers, vertical leads, mentors, and guests. The craft principles here are **transferable** across authors: verification, narrative structure, pacing, redundancy detection, source attribution, and the bilingual quote pattern apply equally to a meetup recap, a Pereira Tech Day editorial, a Speaker School cohort update, and a personal essay. Where a section is specific to long-form personal essays (e.g., the OpenClaw case study in §19), read it as the canonical refinement playbook — the same moves apply when a community member writes a deep-dive. For community-mode adaptations (meetup recaps, edition recaps, speaker pages), see §21 below.
+> **Scope:** the craft principles here — verification, narrative structure, pacing, redundancy detection, source attribution, bilingual parity — apply across every content type Corag publishes. Where a section is written for long-form essays, read it as the canonical refinement playbook; the same moves apply to a 900-word practical guide. For per-type adaptations, see §21.
+>
+> **The rule that outranks every other rule on this site:** never publish a figure you cannot back. Corag's whole argument is that unverified numbers are the problem. A blog post that invents a statistic to sound authoritative does more damage than a weaker post that stays honest.
 
 ---
 
@@ -144,7 +146,7 @@ Strong long-form posts open and close with the same image, phrase, or idea. This
 
 Long-form pieces work well as three acts:
 
-- **Act 1 — The setup**: establishes the characters, the world, the problem. Personal anchors (memory, meetup conversation, observation). Ends with the inciting incident.
+- **Act 1 — The setup**: establishes the characters, the world, the problem. Personal anchors (a memory, a conversation in the field, an observation). Ends with the inciting incident.
 - **Act 2 — The exploration**: the middle, where the actual thing is explained. Technical content, examples, context. The longest act.
 - **Act 3 — The meaning**: what this actually means. Author's opinion, stakes, call to curiosity.
 
@@ -528,9 +530,9 @@ Three beats. Question → mantra → ritual. Each stands alone; each lifts the n
 Analyzing the 10 most recent posts, openings fall into a few repeatable patterns:
 
 1. **Personal memory anchor**: *"I didn't come to Isaac Asimov through books. I came through the movies."* (Asimov)
-2. **Meetup / community scene**: *"One day we were chatting in the Corag community..."* (Library of Tomorrow) / *"Recently, I was at a great Corag meetup..."* (Permanent Hackathon)
+2. **Field scene**: *"Estábamos organizando el frente del Eje Cafetero cuando llegó la tercera lista de mercados para el mismo barrio."*
 3. **Observation statement**: *"In the last few months, I've noticed something..."* (Art of Directing Agents)
-4. **Thesis + backstory**: *"At the end of 2025, during the last meetup of the year, I gave a talk..."* (Programmer to Orchestrator)
+4. **Thesis + backstory**: *"La primera vez que publicamos un recibo, la conversación con el donante cambió por completo. Esto es lo que aprendimos."*
 5. **Reaction to news**: *"It seemed like a normal day until I checked my feeds..."* (Claude Mythos)
 6. **Callback to past work**: *"In 2018, I wrote an article about blockchain..."* (Agent Economy)
 7. **Concept-first hook**: *"'Your assistant. Your machine. Your rules.' Six words..."* (OpenClaw) — this one uses a quoted phrase as the hook, then unpacks it.
@@ -827,55 +829,81 @@ The rules exist because they come from concrete mistakes that had to be fixed. B
 
 ---
 
-## 21. Community-Content Adaptations (Corag v3.0.0)
+## 21. Content-Type Adaptations
 
-The principles above were forged on long-form personal essays. Most Corag content is shorter, faster, and community-attributed. Here is how the same craft applies, adapted.
+The principles above were forged on long-form personal essays. Most Corag
+content is shorter and organizationally attributed. Here is how the same craft
+applies, adapted.
 
-### 21.1 Meetup recap (600–1,200 words)
+### 21.1 Practical guide (700–1,000 words)
 
-- **Verification is the same**: every speaker name, attendee name, attendance count, and venue must be checkable.
-- **Opening**: a scene, one sentence. Not a roster. ("On March 14 we packed Sala 3 of UTP — 60 builders, four talks.")
-- **Structure**: Scene → talks (one paragraph each, with the speaker's actual claim, not a topic label) → impromptu moments → forward-looking close.
-- **Quotes**: one speaker quote and one attendee quote. Short. Linked to source if from social media after the meetup.
-- **Figures**: optional, but if used, follow the `<figure>` + `<figcaption>` pattern from §8 with photo credit in the caption.
-- **Closer**: forward-looking, concrete date for next meetup if known. The `Let's keep building` ritual closer (§12) is optional for recaps.
+The dominant form on this blog: *how to verify a foundation*, *how to donate
+safely*, *how to start volunteering*.
 
-### 21.2 Pereira Tech Day edition recap (1,500–3,000 words)
+- **Open on the reader's actual situation**, not on a definition. "Recibes una
+  solicitud de donación por redes. La causa parece urgente." puts them in the
+  moment where they need the advice.
+- **Structure is the content.** Numbered or named steps, each with its own
+  heading. If the reader can only skim the headings, they should still be able
+  to act.
+- **Name the friction honestly.** "Verification takes fifteen minutes" is more
+  persuasive than pretending it is effortless, because the reader already knows
+  it is not.
+- **One idea per section.** A section that needs a sub-argument is two sections.
+- **Close on the thing they can do next**, linked.
 
-- The edition page (`/pereira-tech-days/{year}`) is the **journalistic record**: timestamps, talks, attendance, sponsors. Not a narrative.
-- The blog recap that follows is **reflective**: what worked, what broke, what we learned. Three-act structure (§4) applies cleanly.
-- The bookend pattern (§4) works well: open with the moment that captured the day; close on the same moment one year later when announcing the next edition.
-- Use the per-edition brand kit only **inside** the edition route. Recaps that live on the blog use the global Corag voice and brand.
+### 21.2 Explainer (700–1,000 words)
 
-### 21.3 Speaker deep-dive (long-form, single author)
+*What social impact is. The difference between an NGO and a foundation.*
 
-- The speaker writes their own deep-dive in their voice, with full first-person singular.
-- All the long-form craft applies: verification (§1), source attribution (§2), three-act structure (§4), pacing (§5), figures (§8), redundancy detection (§9), atemporal references (§10), Spanish-specific craft (§11), the signature closer (§12), opening patterns (§13), header patterns (§14), refinement patterns (§15), accessible technical writing (§15.x), bilingual parity (§16), pre-publish checklist (§17).
-- Editor's role: enforce the checklist, not rewrite the voice.
+- **Lead with the strict definition**, then earn it. Vague terms are vague
+  because nobody commits to a definition; committing is the value.
+- **Give the uncomfortable version.** The distinction that costs something —
+  "if the community returns to its original state when you leave, there was no
+  transformation" — is the sentence people remember.
+- **Side-by-side comparisons beat adjectives.** Two short paragraphs showing
+  activity and impact do more than a paragraph describing the difference.
 
-### 21.4 Vertical update (Speaker School, La Biblioteca del Mañana, AI Channel)
+### 21.3 Field report
 
-- Status-of-the-program register: cohort dates, focus, shipped work, how to join.
-- 400–800 words.
-- Plural voice ("we ran cohort 03"). First-person singular only when one organizer is sharing their experience running the program.
-- Closer: a concrete next step for the reader (apply for cohort 04, register for the next session).
+- **Verification is the whole job.** Every figure, every name, every delivery
+  must be checkable against published evidence. This is the one content type
+  where a wrong number is not an embarrassment but a breach of the promise.
+- **No headcounts, quantities or outcomes without a source.**
+- **Never use somebody's situation as the emotional payload.** Report what was
+  needed, what was delivered, and what backs it.
 
-### 21.5 Personal essay (single author, opinion-led)
+### 21.4 Technical note
 
-- Long-form personal essays follow the full craft guide as written. The OpenClaw case study (§19) is the canonical example.
-- The byline must be the individual author, not Corag. This is how the reader knows it's first-person opinion and not the community speaking.
-- Hot takes are allowed; unverified facts are not.
+- The author writes in their own voice, developer to developer.
+- **State what is not ready.** A note that documents an endpoint we cannot
+  guarantee costs more credibility than one that says it is coming.
+- All the long-form craft still applies: verification, source attribution,
+  atemporal references, bilingual parity, the pre-publish checklist.
+
+### 21.5 Policy
+
+- Enforceable sentences. If a rule has no consequence attached, it is a value
+  statement, and it belongs in the brand guide instead.
+- **Name what is undefined.** Governance that pretends every process is settled
+  is less trustworthy than governance that lists its gaps.
 
 ### 21.6 Editor's adaptation rule
 
-When an editor receives a draft from a community contributor:
+When an editor receives a draft:
 
-1. **Verify first** (§1). Every claim, every number, every quote.
-2. **Voice second** (see [WRITING_VOICE_GUIDE.md](./WRITING_VOICE_GUIDE.md)). Do not flatten the author's voice. Apply only the anti-AI-slop blocklist and the orthography rules.
-3. **Bilingual parity third** (§16). Spanish first if possible.
-4. **Figures and markup last**. The author writes prose; the editor adds the `<figure>` markup and image dimensions.
+1. **Verify first.** Every claim, every number, every quote. On this site
+   specifically, an unverifiable figure is not a style problem — it contradicts
+   the argument the whole project makes.
+2. **Voice second** (see [WRITING_VOICE_GUIDE.md](./WRITING_VOICE_GUIDE.md)). Do
+   not flatten the author's voice. Apply the anti-slop blocklist and the
+   orthography rules.
+3. **Parity third.** Spanish first where possible; the English version is a real
+   translation.
+4. **Figures and markup last.** The author writes prose; the editor adds the
+   markup and the image dimensions.
 
-The editor's job is to make the post publishable, not to rewrite it.
+The editor's job is to make the piece publishable, not to rewrite it.
 
 ---
 

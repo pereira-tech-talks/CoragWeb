@@ -223,53 +223,35 @@ No component changes are needed — the tag will automatically appear with its l
 
 ## Bilingual Content
 
-### Bodies: the `{slug}.en.md` sibling
+### Bodies: one file per language
 
-Some collections keep **one** entry per item — meetups, verticals — because
-their structured data (date, venue, speakers, talks, sponsors) has no language
-dimension and duplicating it would let the two copies drift. Only the prose
-needs a language. That prose lives in a sibling file:
+Blog posts and page twins keep **one file per language**, sharing a filename:
 
 ```
-src/content/meetups/
-├── 2026-06-24_qa-pilar-del-software.md      ← frontmatter + Spanish body
-└── 2026-06-24_qa-pilar-del-software.en.md   ← English body only, no frontmatter
+src/content/blog/es/2026-03-10_how-to-donate-without-getting-scammed.md
+src/content/blog/en/2026-03-10_how-to-donate-without-getting-scammed.md
 
-src/content/verticals/
-├── speaker-school.md
-└── speaker-school.en.md
+src/content/pages/es/about.md
+src/content/pages/en/about.md
 ```
 
-The loader's `generateId` strips `.en`, so both files share an id and the join
-needs no mapping table. The sibling is a **body-only** collection
-(`meetupBodiesEn`, `verticalBodiesEn`) with a `z.object({}).loose()` schema —
-it must never restate structured data.
+The filename — including the English slug and the date prefix — is the join.
+There is no mapping table and no id juggling.
 
-**Selecting a body:**
+> **A previous iteration used a `{slug}.en.md` sibling** for collections whose
+> structured data had no language dimension. Those collections are gone. The
+> mechanism is worth remembering only because `parity:check` still supports both
+> shapes, and because it teaches the underlying rule: never duplicate structured
+> data across languages, only prose.
 
-```typescript
-import { getMeetupBodyEntry } from '@/lib/meetup';
+**Frontmatter is per language too**, which means `title` and `description` are
+plain strings rather than `{ en, es }` objects. The English title must be **real
+English**, not the Spanish title with one word swapped.
 
-const { entry, untranslated } = await getMeetupBodyEntry(meetup, lang);
-const { Content } = await render(entry);
-```
-
-`getVerticalBodyEntry` is the same shape for verticals.
-
-**The fallback is labelled, never silent.** When English is requested and no
-sibling exists, the Spanish body is served with `untranslated: true`, and the
-page renders a visible notice above it. Omitting the body instead would hide
-real content; serving it unlabelled is the defect this mechanism exists to
-remove. The language audit keeps flagging such a page until it is translated.
-
-**To add a translation:** create `{slug}.en.md` next to the entry containing
-only the English body. Nothing else changes — no frontmatter edit, no schema
-change, no rebuild of the structured data.
-
-> Frontmatter stays bilingual separately: `title`, `description` and
-> `hero.alt` use the `{ en, es }` shape. `title.en` must be **real English**,
-> not the Spanish title with one word swapped — `tests/unit/lib/bilingual-body-parity.test.ts`
-> fails on the latter.
+**Bilingual fields still exist** in the collections that keep one entry —
+`channels`, `authors`, `contributors` — using the `{ en, es }` shape. Those are
+audited by `parity:check` for emptiness on one side and for a field that tells
+the reader to go read the other language.
 
 ### Content parity — a different question from language integrity
 
@@ -304,7 +286,7 @@ on judgement calls gets switched off.
 
 **The rule for authors:** whatever one language carries, the other carries —
 same sources, same structure, same talks. Only section *labels* differ:
-`### Fuentes`/`### Sources`, `**Ponente:**`/`**Speaker:**`.
+`## Sigue leyendo`/`## Keep reading`, `por`/`by`.
 
 ### Blog Posts
 
@@ -551,7 +533,6 @@ Before committing any content change, verify:
 - [ ] The `lang` prop is passed through the full component hierarchy
 - [ ] Page Markdown files exist in both `src/content/pages/en/` and `src/content/pages/es/`
 - [ ] When page content or translations change, corresponding `.md` files updated (both languages)
-- [ ] Every meetup and vertical has a `{slug}.en.md` body sibling
 - [ ] `pnpm run lang:check` reports **0 flagged pages**
 
 ## Known Limitations

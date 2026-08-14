@@ -43,14 +43,11 @@ export const EVENTS = {
   COPY_LINK: 'copy_link',
   SERIES_NAV: 'series_nav',
   SERIES_INDICATOR_CLICK: 'series_indicator_click',
-  SLIDE_INDICATOR_CLICK: 'slide_indicator_click',
   POST_INDICATOR_CLICK: 'post_indicator_click',
   LIGHTBOX_OPEN: 'lightbox_open',
   CONTACT_FORM_SUBMIT: 'contact_form_submit',
   CONTACT_FORM_ERROR: 'contact_form_error',
   NEWSLETTER_SUBSCRIBE: 'newsletter_subscribe',
-  PTD_SUBSCRIBE: 'ptd_subscribe',
-  PTD_CTA_CLICK: 'ptd_cta_click',
   SOCIAL_CLICK: 'social_click',
   OUTBOUND_CLICK: 'outbound_click',
   SCROLL_DEPTH: 'scroll_depth',
@@ -61,23 +58,7 @@ export const EVENTS = {
   MARKDOWN_REQUEST: 'markdown_request',
   NOTIFICATION_CTA: 'notification_cta',
   NOTIFICATION_MODAL_OPEN: 'notification_modal_open',
-  CALENDAR_FILTER: 'calendar_filter',
-  CALENDAR_VIEW: 'calendar_view',
-  CALENDAR_SUBSCRIBE: 'calendar_subscribe',
-  CALENDAR_LUMA: 'calendar_luma',
-  COMMUNITY_CLICK: 'community_click',
-  SPEAKER_CARD_CLICK: 'speaker_card_click',
-  MEETUP_CARD_CLICK: 'meetup_card_click',
-  TALK_CARD_CLICK: 'talk_card_click',
-  SPEAKER_APPLICATION_SUBMIT: 'speaker_application_submit',
-  SPEAKER_SCHOOL_APPLY_SUBMIT: 'speaker_school_apply_submit',
-  CALENDAR_INTAKE_SUBMIT: 'calendar_intake_submit',
   CONDUCT_REPORT_SUBMIT: 'conduct_report_submit',
-  SPONSOR_INQUIRY_SUBMIT: 'sponsor_inquiry_submit',
-  CERTIFICATE_PRINT: 'certificate_print',
-  CERTIFICATE_SHARE: 'certificate_share',
-  CERTIFICATE_COPY: 'certificate_copy',
-  CERTIFICATE_JSON: 'certificate_json',
 } as const;
 
 export type AnalyticsEventName = (typeof EVENTS)[keyof typeof EVENTS];
@@ -85,23 +66,19 @@ export type AnalyticsEventName = (typeof EVENTS)[keyof typeof EVENTS];
 export interface AnalyticsContext {
   lang: string;
   section: string;
-  edition_year?: number;
 }
 
 /** Long-form routes where scroll_depth is meaningful (not listing pages). */
 const SCROLL_DEPTH_PATH_PATTERNS: ReadonlyArray<RegExp> = [
-  /^\/blog\/[^/]+\/?$/,
-  /^\/en\/blog\/[^/]+\/?$/,
-  /^\/meetups\/[^/]+\/?$/,
-  /^\/en\/meetups\/[^/]+\/?$/,
-  /^\/about\/?$/,
-  /^\/en\/about\/?$/,
-  /^\/about-us\/?$/,
-  /^\/en\/about-us\/?$/,
-  /^\/pereira-tech-day\/?$/,
-  /^\/en\/pereira-tech-day\/?$/,
-  /^\/pereira-tech-days\/\d{4}\/?$/,
-  /^\/en\/pereira-tech-days\/\d{4}\/?$/,
+  /^\/(en\/)?blog\/[^/]+\/?$/,
+  /^\/(en\/)?about\/?$/,
+  /^\/(en\/)?how-it-works\/?$/,
+  /^\/(en\/)?transparency\/?$/,
+  /^\/(en\/)?emergencies\/?$/,
+  /^\/(en\/)?leaders\/?$/,
+  /^\/(en\/)?partners\/?$/,
+  /^\/(en\/)?developers\/?$/,
+  /^\/(en\/)?privacy\/?$/,
 ];
 
 /**
@@ -119,26 +96,7 @@ export function normalizePathname(pathname: string): string {
 export function getPageSection(pathname: string): string {
   const clean = normalizePathname(pathname);
   if (clean === '/' || clean === '') return 'home';
-  const segment = clean.split('/').filter(Boolean)[0];
-  // Singular landing and year archive share the same analytics section.
-  if (segment === 'pereira-tech-day') return 'pereira-tech-days';
-  return segment ?? 'home';
-}
-
-/**
- * Extract PTD edition year when on an edition route.
- * Singular landing `/pereira-tech-day` maps to the current flagship year (2026).
- */
-export function getEditionYear(pathname: string): number | undefined {
-  const match = pathname.match(/\/pereira-tech-days\/(\d{4})/);
-  if (match) {
-    const year = Number.parseInt(match[1], 10);
-    return Number.isFinite(year) ? year : undefined;
-  }
-  if (/\/pereira-tech-day\/?$/.test(pathname)) {
-    return 2026;
-  }
-  return undefined;
+  return clean.split('/').filter(Boolean)[0] ?? 'home';
 }
 
 /**
@@ -148,15 +106,7 @@ export function getAnalyticsContext(
   lang: string,
   pathname: string
 ): AnalyticsContext {
-  const context: AnalyticsContext = {
-    lang,
-    section: getPageSection(pathname),
-  };
-  const editionYear = getEditionYear(pathname);
-  if (editionYear !== undefined) {
-    context.edition_year = editionYear;
-  }
-  return context;
+  return { lang, section: getPageSection(pathname) };
 }
 
 /**
@@ -219,9 +169,6 @@ export function trackEventWithContext(
     section: context.section,
     ...eventData,
   };
-  if (context.edition_year !== undefined) {
-    merged.edition_year = context.edition_year;
-  }
   trackEvent(eventName, merged);
 }
 

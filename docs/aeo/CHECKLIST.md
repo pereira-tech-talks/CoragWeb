@@ -108,7 +108,7 @@ grep "BlogPosting" dist/blog/how-to-tell-if-a-foundation-is-trustworthy/index.ht
 find dist -name "*.md" | wc -l
 
 # Verify per-edition theme on the latest Tech Day page
-grep 'data-edition-theme' dist/pereira-tech-days/2026/index.html
+grep 'BreadcrumbList' dist/how-it-works/index.html
 ```
 
 ## Schedule

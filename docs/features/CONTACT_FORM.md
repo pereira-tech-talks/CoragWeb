@@ -1,33 +1,44 @@
-# Contact & community intake (v3)
+# Contact and conduct intake
 
-> **Canonical guide:** [FORMS.md](./FORMS.md) — Dailybot Forms architecture,
-> `_form` discriminator, UUIDs, env vars, CoC privacy, and local testing.
+> **Canonical guide:** [FORMS.md](./FORMS.md) — the DailyBot architecture, the
+> `_form` discriminator, the environment-driven form ids, the anonymity
+> guarantee, and local testing.
 
 `POST /api/contact` (`functions/api/contact.ts`) is the shared edge endpoint for
-all community intakes. **Dailybot is the system of record.** Optional Resend
-auto-ack may run after a successful Dailybot response.
+both public intakes. **DailyBot is the system of record.** An optional Resend
+acknowledgement may run after a successful DailyBot response and never blocks it.
 
 | Surface | Route | `_form` |
 |---------|-------|---------|
-| General contact | `/contact` | `contact` |
-| Call for Speakers | `/call-for-speakers` | `cfs` |
-| Speaker School | `/verticals/speaker-school` | `speaker-school` |
-| Sponsor us | `/sponsor-us` | `sponsor` |
-| Community calendar | `/calendar#calendar-intake` | `calendar` |
-| Code of Conduct | `/conduct#conduct-report-form` | `conduct` |
+| General contact | `/contact`, `/en/contact` | `contact` |
+| Code of Conduct report | `/conduct#conduct-report-form` | `conduct` |
 
-Contact topics (UI): `general` · `collaboration` · `the-library-of-tomorrow` ·
-`press` · `other`. CFS / sponsorship / conduct use dedicated pages.
+## Contact topics
+
+`general` · `organization` · `ally` · `press` · `report` · `conduct` · `other`
+
+The topic can be deep-linked: `/contact?topic=ally` preselects it. Several pages
+do this — `/partners` links to the ally topic, `/privacy` to `report`. Retired
+topics from the previous site resolve through the alias table rather than
+falling through to nothing.
+
+## Client modules
+
+- **Validators:** `src/lib/contact-form.ts` — also the source of the canonical
+  topic list and the acknowledgement email copy
+- **Focus helper:** `src/lib/form-ui.ts`
+- **UI:** `ContactForm.svelte`, `ConductReportForm.svelte`
+- **Tests:** `tests/unit/lib/contact-form.test.ts`,
+  `tests/unit/functions/contact-dailybot.test.ts`
 
 All intakes POST JSON to `CONTACT_FORM.apiEndpoint` (default `/api/contact`).
-There is **no** Google Forms fallback.
+There is no Google Forms fallback and no client-side email.
 
-### Client modules
+## What the forms must never collect
 
-- Validators: `src/lib/contact-form.ts`
-- Focus helper: `src/lib/form-ui.ts`
-- UI: `ContactForm.svelte`, `SpeakersApplicationForm.svelte`,
-  `SponsorInquiryForm.svelte`, `SpeakerSchoolForm.svelte`,
-  `CalendarIntakeForm.svelte`, `ConductReportForm.svelte`
-- Tests: `tests/unit/lib/contact-form.test.ts`,
-  `tests/unit/functions/contact-dailybot.test.ts`
+The contact form takes a message and a topic. Anything about a specific person's
+situation — a location, a household, a need — belongs in the application, where
+it is governed by the evidence and privacy rules, not in an email inbox.
+
+If a form on this site starts asking for that, the form is in the wrong
+repository.

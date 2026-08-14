@@ -71,7 +71,7 @@ Every page automatically gets these tags through `MainLayout` → `BaseHead`:
 Blog posts can provide per-post keywords via the `keywords` frontmatter field. These are specific search phrases (distinct from categorical tags) that match how users search for the content.
 
 - **Blog posts with `keywords`:** Rendered as `<meta name="keywords" content="phrase 1, phrase 2, ...">`
-- **Pages without `keywords`:** Falls back to global site keywords (Corag, Pereira tech community, bilingual tech events Colombia, La Biblioteca del Mañana, Pereira Tech Day, etc.)
+- **Pages without `keywords`:** Falls back to the global site keywords declared in `BaseHead.astro` (Corag, ayuda directa, impacto social, transparencia, donaciones verificadas, …)
 - **JSON-LD:** BlogPosting `keywords` field uses the `keywords` array when present, tags as fallback
 
 **Tags vs Keywords:**
@@ -224,7 +224,6 @@ All content MUST exist in both languages:
 - Recommended: 1200x630px JPEG (widest crawler support)
 - Default fallback: `/images/og-default.jpg` (Spanish) and `/images/og-default-en.jpg` (English) via `getDefaultOgImage(lang)` — home + pages without a custom `image`
 - For blog posts: can set `heroImage` in frontmatter
-- For Pereira Tech Day editions: optional `ogImage` in the edition YAML — string or `{ en, es }` (falls back to `hero.src`)
 
 ## AI Engine Optimization (AEO)
 
@@ -374,8 +373,8 @@ It asserts, per URL:
 | Canonical | present and absolute; self-referential unless the page is a declared alias |
 | `hreflang` | `es`, `en` and `x-default` present, and the alternate page exists in the build |
 | OG + Twitter | title, description, image and URL all populated |
-| JSON-LD | parses, and the type matches the page (`Event` for meetups and PTD editions, `Person` for speakers, `BlogPosting` for posts) |
-| `robots` | `noindex` only on the certificate and verify surfaces |
+| JSON-LD | parses, and the type matches the page (`BlogPosting` for posts, `Organization` sitewide, `BreadcrumbList` where breadcrumbs render) |
+| `robots` | `noindex` only on `/internal/**`, which is stripped from the production build anyway |
 | Verification | **no** `google-site-verification` tag anywhere (`CLAUDE.md` §11 — GSC is DNS-only) |
 
 Uniqueness is scoped **per language** on purpose: a Spanish page and its English
@@ -384,10 +383,9 @@ competitors, and `hreflang` already says so.
 
 ### Descriptions are composed, not hand-tuned
 
-284 of 482 URLs once sat outside the 130–160 band. The cause was structural —
-pages handed the layout a field authored for another job (a speaker page passed
-the bio; a meetup archive stub passed a two-line note). `src/lib/meta-description.ts`
-composes instead:
+Descriptions drift out of the 130–160 band structurally, not by accident: a page
+hands the layout a field authored for another job — an author bio, a two-line
+stub — and it lands short. `src/lib/meta-description.ts` composes instead:
 
 ```typescript
 import { buildMetaDescription, metaPhrases } from '@/lib/meta-description';
@@ -406,9 +404,10 @@ maximum as a last line of defence, so no page can exceed it whatever it passes i
 
 ### Alias canonicals
 
-`/pereira-tech-day` and `/pereira-tech-days/{currentYear}` serve the same
-edition. The year URL passes `canonicalPath` through `MainLayout` → `BaseHead`
-so it canonicalizes to the promoted URL; past editions stay self-canonical.
+When two URLs serve the same page, the alias passes `canonicalPath` through
+`MainLayout` → `BaseHead` so it canonicalizes to the promoted URL. Nothing on
+the current site needs this, and the mechanism stays because the next alias
+will.
 
 ## Checklists
 
@@ -419,6 +418,8 @@ so it canonicalizes to the promoted URL; past editions stay self-canonical.
 - [ ] BreadcrumbList JSON-LD schema added via `<Fragment slot="head">`
 - [ ] Page exists in both `src/pages/` (ES, root) and `src/pages/en/` (EN)
 - [ ] Translation strings added to both `en.ts` and `es.ts`
+- [ ] Route added to `src/middleware.ts` — otherwise it 404s in production
+- [ ] `.md` twin endpoint added, and `pnpm run md:check:strict` passes
 - [ ] `llms.txt` Core Sections updated with new page
 - [ ] `llms-full.txt` Pages section updated
 - [ ] Verify hreflang in generated HTML

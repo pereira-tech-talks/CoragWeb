@@ -39,7 +39,7 @@ The website supports dark and light themes with:
 |-----------|------|------|
 | Theme Script | Inlined in layouts | Initial theme detection (no external request) |
 | ThemeToggle | `src/components/layout/ThemeToggle.svelte` | Header / mobile menu theme toggle |
-| ThemeToggle (FAB) | `src/components/ThemeToggle.astro` | Legacy FAB still used on certificate pages |
+| ThemeToggle (FAB) | `src/components/ThemeToggle.astro` | Astro variant, kept for pages rendered without the Svelte header |
 | MainLayout | `src/layouts/MainLayout.astro` | Inlines theme script in head; header hosts the toggle |
 | global.css | `src/styles/global.css` | Dark mode configuration |
 
@@ -65,7 +65,7 @@ The theme script runs inline before the page paints to prevent flash (no externa
 
 **Location (site chrome):** `src/components/layout/ThemeToggle.svelte` — compact control in the header (next to Contact) and in the mobile menu.
 
-**Location (certificate FAB):** `src/components/ThemeToggle.astro` — floating button still used on certificate pages.
+**Location (Astro variant):** `src/components/ThemeToggle.astro` — a floating button for surfaces that render without the Svelte header.
 
 The header toggle persists to `localStorage['theme']` and fires the Umami `theme_toggle` event.
 

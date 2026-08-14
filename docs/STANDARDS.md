@@ -540,9 +540,9 @@ Corag uses **America/Bogota** (`SITE_TIMEZONE`, UTC−5, no DST) as the site clo
 
 | Kind of date | Storage | Display / logic |
 |--------------|---------|-----------------|
-| Content calendar dates (`pubDate`, meetup `date`, `lastUpdated`) | `YYYY-MM-DD` → midnight UTC | `formatCalendarDate*` with `timeZone: 'UTC'` so the authored day never shifts |
-| Scheduling gates (scheduled posts, upcoming meetups/events) | Same calendar strings | Compare against **today in Bogota** via `getTodayInSiteTimezone()` |
-| Wall-clock event times (PTD `startTime`, countdowns) | Date + `HH:mm` | `combineCalendarDateAndTime()` → ISO with `SITE_TIMEZONE_OFFSET` (`-05:00`) |
+| Content calendar dates (`pubDate`, `lastUpdated`) | `YYYY-MM-DD` → midnight UTC | `formatCalendarDate*` with `timeZone: 'UTC'` so the authored day never shifts |
+| Scheduling gates (scheduled posts) | Same calendar strings | Compare against **today in Bogota** via `getTodayInSiteTimezone()` |
+| Wall-clock times (countdowns, if any return) | Date + `HH:mm` | `combineCalendarDateAndTime()` → ISO with `SITE_TIMEZONE_OFFSET` (`-05:00`) |
 | Real timestamps (`issuedAt`, verification) | Full ISO instant | `formatInstantInSiteTimezone()` with `SITE_TIMEZONE` |
 
 **Do not** call `toLocaleDateString()` or `getFullYear()` on content dates without these helpers.

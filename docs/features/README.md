@@ -10,11 +10,14 @@ This directory contains detailed documentation for specific features implemented
 | Blog Posts | [BLOG_POSTS.md](./BLOG_POSTS.md) | Post structure, naming, frontmatter, hero layouts |
 | Blog Content Lifecycle | [BLOG_CONTENT_LIFECYCLE.md](./BLOG_CONTENT_LIFECYCLE.md) | Draft, scheduled, published, demo visibility rules |
 | Blog Search | [BLOG_SEARCH.md](./BLOG_SEARCH.md) | Client-side search functionality |
+| Content QA Checklist | [CONTENT_QA_CHECKLIST.md](./CONTENT_QA_CHECKLIST.md) | Gates before shipping content |
+| Contact Form | [CONTACT_FORM.md](./CONTACT_FORM.md) | Client-side intake contract |
+| Contributors | [CONTRIBUTORS.md](./CONTRIBUTORS.md) | The team directory |
 | Dark Mode | [DARK_MODE.md](./DARK_MODE.md) | Theme toggle and persistence |
+| Forms | [FORMS.md](./FORMS.md) | DailyBot intake architecture and env contract |
 | Image Optimization | [IMAGE_OPTIMIZATION.md](./IMAGE_OPTIMIZATION.md) | Sharp-based image pipeline and staging workflow |
 | Internationalization | [I18N.md](./I18N.md) | Multi-language support |
 | Pagination | [PAGINATION.md](./PAGINATION.md) | Blog post pagination |
-| Pereira Tech Days | [PEREIRA_TECH_DAYS.md](./PEREIRA_TECH_DAYS.md) | Edition routes, content schema, upcoming/past templates, `EditionScope`, component map |
 | Public Assets | [PUBLIC_ASSETS.md](./PUBLIC_ASSETS.md) | Static assets structure (`public/`) |
 | RSS Feed | [RSS_FEED.md](./RSS_FEED.md) | RSS feed generation |
 

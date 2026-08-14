@@ -4,14 +4,15 @@ Agent-facing gates before shipping content or closing a content DWP.
 
 ## Bilingual parity
 
-- [ ] Blog/slides/pages: EN and ES twins exist with the same English slug
-- [ ] Meetups and verticals: entry under `src/content/{meetups,verticals}/` with
-      `title`/`description`/`hero.alt` in both `en` and `es`, **plus a
-      `{slug}.en.md` body sibling**
-- [ ] `title.en` is real English, not the Spanish title with a word swapped
-- [ ] Each body speaks one language — a Spanish body writes `### Fuentes` and
-      `por`, an English body `### Sources` and `by`
-- [ ] YAML entities (`speakers`, `sponsors`, …): `en`/`es` fields filled — no Spanish pasted into `en`
+- [ ] Blog posts and page twins: ES and EN files exist under
+      `src/content/{blog,pages}/{es,en}/`, sharing the same English slug and
+      the same date prefix
+- [ ] The English title is real English, not the Spanish title with a word
+      swapped
+- [ ] Each body speaks one language — a Spanish body writes `## Sigue leyendo`
+      and `por`, an English body `## Keep reading` and `by`
+- [ ] YAML entities (`authors`, `channels`, `contributors`): `en`/`es` fields
+      filled — no Spanish pasted into `en`
 
 ## Content parity — same content, not just the same language
 
@@ -24,12 +25,10 @@ is the separate question of whether the two versions say the **same thing**.
       `---` rule before the Sources block in both
 - [ ] Real paragraph breaks, not soft line breaks — a single newline renders as
       a space, so `**Ponente:** Ana\n**Rol:** CTO` runs together on one line
-- [ ] Linked talks' abstracts appear in both bodies, each in its own language,
-      taken as authored — not translated from the other when both exist
-- [ ] Generated boilerplate abstracts (*"Charla de {speaker} en el meetup …"*)
-      left out; they restate what the body already says
-- [ ] Every external link verified to resolve **to what it claims** — an event
-      ID returning 200 may still be somebody else's event
+- [ ] Every external link verified to resolve **to what it claims** — a URL
+      returning 200 may still point at something else entirely
+- [ ] Every figure in the body is one we can back. An unverifiable statistic is
+      a liability the moment somebody checks it, and on this site especially
 - [ ] `pnpm run parity:check` reports 0 `content-loss` and 0 `structural`
 
 ## Orthography
@@ -39,9 +38,10 @@ is the separate question of whether the two versions say the **same thing**.
 
 ## Voice & completeness
 
-- [ ] No placeholders: `[TODO]`, `[TBD]`, `[AUTHOR]`, “Historical Corag meetup” boilerplate
+- [ ] No placeholders: `[TODO]`, `[TBD]`, `[AUTHOR]`, or filler boilerplate
 - [ ] Follow [Writing Voice Guide](../WRITING_VOICE_GUIDE.md)
-- [ ] Meetup EN summaries are real English (or an honest archive note), not Spanish paste
+- [ ] No CTA promising a channel we do not run. Social is Facebook, Instagram
+      and the WhatsApp group — nothing else
 
 ## Language integrity
 
@@ -58,9 +58,11 @@ is the separate question of whether the two versions say the **same thing**.
       well-formed front block, one Site Navigation block, and content coverage
 - [ ] Entity references carry a name **and** a link to that entity's own `.md`
 - [ ] Agent MD twins updated under `src/content/pages/{en,es}/` when page copy
-      changes — unless the page is now generated (home, communities, calendar,
-      contact, call-for-speakers, `/pereira-tech-day`), in which case it follows
-      the source automatically
+      changes — unless the page's twin is generated from the same source the
+      HTML renders (the institutional pages, the blog index, contact), in which
+      case it follows automatically
+- [ ] For `conduct`, `governance` and `contributing`, remember the content file
+      **is** the page body. Editing it changes the live site
 
 ## SEO / AEO
 

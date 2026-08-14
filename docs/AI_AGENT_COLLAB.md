@@ -249,7 +249,7 @@ If conflicts arise:
 
 The vendored `deepworkplan` skill (v2.17.0) ships five opt-in addons; this repo wires in **three** — `ai-diff-reviewer` (Flow A, local-only), `dependency-upgrade`, and `design-system`. All are **best-effort and never block** DWP `create`/`execute`. The core methodology has **zero** dependency on any of them — declining or uninstalling any addon still leaves a fully AI-first repo.
 
-> The `dailybot` and `devcontainer` addons ship inside the skill pack but are **not installed** here. DailyBot still appears across the site as a community **sponsor** (`src/content/sponsors/dailybot.yaml`) and in the branch/PR naming conventions — that content is unrelated to the DWP addon.
+> The `dailybot` and `devcontainer` addons ship inside the skill pack but are **not installed** here. DailyBot appears in this repo as the forms backend for `POST /api/contact` and in the branch/PR naming conventions — neither is related to the DWP addon.
 
 ### AI Diff Reviewer — Security Review augmentation (Flow A, local-only)
 

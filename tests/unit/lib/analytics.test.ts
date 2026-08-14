@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   EVENTS,
   getAnalyticsContext,
-  getEditionYear,
   getPageSection,
   normalizePathname,
   PII_DENYLIST_KEYS,
@@ -35,31 +34,20 @@ describe('analytics helpers', () => {
 
     it('returns first segment for nested routes', () => {
       expect(getPageSection('/blog/my-post')).toBe('blog');
-      expect(getPageSection('/en/meetups/slug')).toBe('meetups');
-    });
-  });
-
-  describe('getEditionYear', () => {
-    it('extracts year from PTD edition URLs', () => {
-      expect(getEditionYear('/pereira-tech-days/2026')).toBe(2026);
-      expect(getEditionYear('/en/pereira-tech-days/2024/schedule')).toBe(2024);
-      expect(getEditionYear('/pereira-tech-day')).toBe(2026);
-      expect(getEditionYear('/en/pereira-tech-day/')).toBe(2026);
-      expect(getEditionYear('/blog/post')).toBeUndefined();
+      expect(getPageSection('/en/blog/tag/donations')).toBe('blog');
+      expect(getPageSection('/how-it-works')).toBe('how-it-works');
     });
   });
 
   describe('getAnalyticsContext', () => {
-    it('merges lang, section, and edition_year', () => {
-      expect(getAnalyticsContext('es', '/pereira-tech-days/2026')).toEqual({
+    it('merges lang and section', () => {
+      expect(getAnalyticsContext('es', '/blog/how-to-donate-safely')).toEqual({
         lang: 'es',
-        section: 'pereira-tech-days',
-        edition_year: 2026,
+        section: 'blog',
       });
-      expect(getAnalyticsContext('es', '/pereira-tech-day')).toEqual({
-        lang: 'es',
-        section: 'pereira-tech-days',
-        edition_year: 2026,
+      expect(getAnalyticsContext('en', '/en/transparency')).toEqual({
+        lang: 'en',
+        section: 'transparency',
       });
     });
   });
@@ -73,16 +61,16 @@ describe('analytics helpers', () => {
 
   describe('shouldTrackScrollDepth', () => {
     it('enables on long-form routes', () => {
-      expect(shouldTrackScrollDepth('/blog/astro-guide')).toBe(true);
-      expect(shouldTrackScrollDepth('/en/meetups/january-meetup')).toBe(true);
+      expect(shouldTrackScrollDepth('/blog/how-to-donate-safely')).toBe(true);
+      expect(shouldTrackScrollDepth('/en/blog/how-to-donate-safely')).toBe(true);
       expect(shouldTrackScrollDepth('/about')).toBe(true);
-      expect(shouldTrackScrollDepth('/pereira-tech-days/2026')).toBe(true);
-      expect(shouldTrackScrollDepth('/pereira-tech-day')).toBe(true);
+      expect(shouldTrackScrollDepth('/how-it-works')).toBe(true);
+      expect(shouldTrackScrollDepth('/en/transparency')).toBe(true);
     });
 
     it('disables on listing pages', () => {
       expect(shouldTrackScrollDepth('/blog')).toBe(false);
-      expect(shouldTrackScrollDepth('/meetups')).toBe(false);
+      expect(shouldTrackScrollDepth('/blog/tag/donations')).toBe(false);
       expect(shouldTrackScrollDepth('/')).toBe(false);
     });
   });

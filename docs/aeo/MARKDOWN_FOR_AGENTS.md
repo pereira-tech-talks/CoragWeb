@@ -65,7 +65,8 @@ The full per-page-type section lists live in
    `Key: value` lines · `---`.
 2. **No bare slugs.** Every entity reference resolves to a human-readable label
    **and** links to that entity's own `.md`:
-   `- [Sergio Alexander Flórez](/en/speakers/sergio-florez.md) — Co-founder & CTO at DailyBot`.
+   `- [#donations](/en/blog/tag/donations) — 8` on the blog index, or a linked
+   author row on a post.
    A line that is only a slug is a defect.
 3. **One language per page.** Content — and metadata keys — are in the page's own
    language. `Fecha:` on `/`, `Date:` on `/en`.
@@ -108,14 +109,14 @@ empty band, biased toward the mirror cluster.
 
 The size floor exists because every page carries a fixed amount of text with no
 Markdown equivalent — button labels, date formatting, timeline affordances. On a
-29-word speaker profile that fixed cost is 27% of the page; on a 300-word one it
+29-word page that fixed cost is 27% of the content; on a 300-word one it
 is 3%. Below ~60 content words the ratio measures page size rather than
 completeness. **Required-section presence applies to every page regardless of
 size** — that is the binding half of the contract.
 
 Two documented exemptions carry a lower floor: `/calendar` (0.70 — the calendar
 island renders event text with no build-time source) and
-`/contact`, `/call-for-speakers` (0.75 — form control labels and validation
+`/contact` (0.78 — form control labels and validation
 strings). A page type that cannot reach 0.85 is a serializer gap until it earns
 an entry in that table with a measured reason.
 

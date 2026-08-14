@@ -324,12 +324,11 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | Dimension | Description | Example |
 |-----------|-------------|---------|
 | `lang` | Active locale | `es`, `en` |
-| `section` | First URL path segment | `blog`, `meetups` |
-| `edition_year` | PTD edition year when applicable | `2026` |
+| `section` | First URL path segment | `blog`, `transparency`, `how-it-works` |
 
 ### Scroll depth policy
 
-`scroll_depth` fires on **long-form pages only** (blog posts, meetup detail, about, PTD editions) — not on listing pages. Implemented in `MainLayout.astro` via `shouldTrackScrollDepth()`. Thresholds: 25%, 50%, 75%, 100% (once each per page load).
+`scroll_depth` fires on **long-form pages only** (blog posts, `/about`, and the institutional pages) — not on listing or tag pages. Implemented in `MainLayout.astro` via `shouldTrackScrollDepth()`. Thresholds: 25%, 50%, 75%, 100% (once each per page load).
 
 ### Event Catalog
 
@@ -345,7 +344,6 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `pagination_click` | Blog pagination | `{ page }` | BlogPagination.svelte |
 | `share_click` | Social share button | `{ platform }` | ShareButtons.astro |
 | `copy_link` | Copy link button | — | CopyLinkButton.svelte |
-| `series_nav` | Series navigation | `{ action }` | SeriesNavigation.astro |
 | `series_indicator_click` | Series indicator scroll | — | SeriesIndicator.svelte |
 | `lightbox_open` | Image lightbox opened | — | BlogImageLightbox.svelte |
 | `contact_form_submit` | Contact form submitted | `{ reason }` | ContactForm.svelte |
@@ -355,28 +353,10 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `outbound_click` | External link click | `{ url }` | MainLayout.astro (delegated) |
 | `scroll_depth` | Scroll milestone | `{ depth }` | MainLayout.astro (long-form policy) |
 | `scroll_to_timeline` | Scroll-to-timeline button | — | ScrollToTimeline.svelte |
-| `timeline_click` | Timeline card title click | `{ page, slug }` | PortfolioTimeline, DailyBotTimeline, EntrepreneurTimeline, TechTalksTimeline, TradingTimeline |
-| `ptd_subscribe` | PTD edition email signup | `{ year, lang?, section? }` | PtdSubscribeForm.svelte |
-| `ptd_cta_click` | PTD hero/section CTA | `{ cta, year? }` | PTD pages (P1 wiring) |
-| `speaker_application_submit` | Call for speakers form | — | SpeakersApplicationForm.svelte |
-| `speaker_school_apply_submit` | Speaker School application form | — | SpeakerSchoolForm.svelte |
-| `calendar_intake_submit` | Community calendar proposal form | — | CalendarIntakeForm.svelte |
+| `timeline_click` | Timeline card title click | `{ page, slug }` | Timeline components |
 | `conduct_report_submit` | Code of Conduct report form | `{ anonymous }` only — never incident text | ConductReportForm.svelte |
-| `sponsor_inquiry_submit` | Sponsor inquiry form | — | SponsorInquiryForm.svelte |
 | `notification_cta` | Notification CTA clicked | `{ id }` | TopNotificationBar.svelte |
 | `notification_modal_open` | Notification modal opened | `{ id }` | TopNotificationBar.svelte |
-| `calendar_filter` | Calendar filter toggle | `{ slug, action }` | CalendarHub.svelte |
-| `calendar_view` | Calendar view mode | `{ mode }` | CalendarHub.svelte |
-| `calendar_subscribe` | ICS subscribe click | `{ slug }` | CalendarHub.svelte |
-| `calendar_luma` | Luma RSVP link | `{ slug }` | CalendarHub.svelte |
-| `community_click` | Community card | `{ slug }` | CommunityCard.astro |
-| `speaker_card_click` | Speaker directory card | `{ slug }` | SpeakerCard.astro |
-| `meetup_card_click` | Meetup timeline card | `{ slug, status }` | MeetupCard.astro |
-| `talk_card_click` | Talk card | `{ slug }` | TalkCard.astro |
-| `certificate_print` | Certificate print | `{ cert_id }` | CertificateActions.svelte |
-| `certificate_share` | Certificate native share | `{ cert_id }` | CertificateActions.svelte |
-| `certificate_copy` | Certificate link copy | `{ cert_id }` | CertificateActions.svelte |
-| `certificate_json` | Certificate JSON download | `{ cert_id }` | CertificateActions.svelte |
 | `ai_bot_visit` | AI crawler page visit (server-side) | `{ bot, path, method }` | `functions/_middleware.ts` (edge middleware) |
 | `unknown_bot_visit` | Unknown bot crawl (server-side) | `{ bot, path, method, user_agent }` | `functions/_middleware.ts` (edge middleware) |
 | `markdown_request` | Markdown endpoint request (server-side) | `{ bot, path, source, user_agent }` | `functions/_middleware.ts` (edge middleware) |
@@ -397,12 +377,12 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `nav_click` | Click any nav link in header | `item: "blog"`, `source: "desktop"` |
 | `language_switch` | Click EN/ES toggle | `from: "en"`, `to: "es"` |
 | `theme_toggle` | Click sun/moon button | `theme: "dark"` or `"light"` |
-| `blog_search` | Type 2+ chars in blog search | `query: "astro"`, `results: 3` |
-| `tag_filter` | Click a tag on the blog page | `tag: "tech"` |
-| `blog_card_click` | Click a blog post title | `slug: "astro-in-action"` |
+| `blog_search` | Type 2+ chars in blog search | `query: "donar"`, `results: 8` |
+| `tag_filter` | Click a tag on the blog page | `tag: "donations"` |
+| `blog_card_click` | Click a blog post title | `slug: "how-to-donate-safely-in-colombia"` |
 | `share_click` | Click a share button on a post | `platform: "twitter"` |
-| `contact_form_submit` | Submit the contact form | `reason: "project"` |
-| `social_click` | Click GitHub/LinkedIn in footer | `platform: "github"` |
+| `contact_form_submit` | Submit the contact form | `reason: "ally"` |
+| `social_click` | Click a social link in the footer | `platform: "instagram"` |
 | `scroll_depth` | Scroll to bottom of a blog post | `depth: "100"` |
 | `timeline_click` | Click a post title in any timeline | `page: "portfolio"`, `slug: "..."` |
 

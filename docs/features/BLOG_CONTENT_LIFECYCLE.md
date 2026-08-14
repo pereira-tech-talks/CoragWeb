@@ -2,7 +2,7 @@
 
 Guide to blog post visibility states for Corag: published, scheduled, draft, and demo.
 
-> **Scope:** This guide covers the `blog` collection. The same lifecycle states (published / scheduled / draft / demo) and the helpers in `src/lib/blog.ts` apply uniformly to other Corag collections that use a publish date — `meetups`, `events`, `pereiraTechDays`, `talks`. When a sibling helper exists (e.g., `src/lib/meetup.ts`), it imports the same `isScheduledPost`, `isDraftPost`, `isDemoPost`, `shouldHideDrafts`, and `isPostVisibleInProduction` primitives. The rules below are written for blog posts; substitute the collection name as needed.
+> **Scope:** This guide covers the `blog` collection — the only one with a publish date today. The lifecycle states (published / scheduled / draft / demo) and the helpers in `src/lib/blog.ts` are written generically, so a future dated collection can import the same `isScheduledPost`, `isDraftPost`, `isDemoPost`, `shouldHideDrafts` and `isPostVisibleInProduction` primitives rather than reimplementing them.
 
 ## Overview
 

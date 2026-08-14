@@ -1,123 +1,126 @@
-# Community intake forms (Dailybot)
+# Public intake forms (DailyBot)
 
-Every public Corag intake form posts to the Cloudflare Pages
-Function `POST /api/contact` (`functions/api/contact.ts`), which forwards
-structured responses to the **Dailybot Forms** public API. Dailybot is the
-**system of record**. Optional **Resend** auto-ack may run after a successful
-Dailybot `201` and must never block success.
+Both public Corag forms post to the Cloudflare Pages Function
+`POST /api/contact` (`functions/api/contact.ts`), which forwards structured
+responses to the **DailyBot Forms** public API. DailyBot is the **system of
+record**. An optional **Resend** auto-acknowledgement may run after a successful
+DailyBot `201` and must never block success.
 
-There is no local Dailybot mock — exercising Forms against a real
-`DAILYBOT_API_KEY` hits the live Corag org. Prefer unit tests for
-mapping; when you must smoke, prefix subjects/messages with `[TEST]` and delete
-junk responses afterward.
+There is no local DailyBot mock — exercising Forms against a real
+`DAILYBOT_API_KEY` hits the live workspace. Prefer unit tests for mapping; when
+you must smoke-test, prefix subjects and messages with `[TEST]` and delete the
+junk responses afterwards.
 
-Canonical UUIDs and choice lookups live in `functions/api/_dailybot.ts`.
+## The two forms
 
-## Overview
+| Form | UI | Route | `_form` |
+|------|----|-------|---------|
+| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` |
+| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` |
 
-| Form | UI | Route | `_form` | Dailybot form |
-|------|----|-------|---------|---------------|
-| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` | Corag Contact |
-| Call for Speakers | `SpeakersApplicationForm.svelte` | `/call-for-speakers` | `cfs` | Corag Call for Speakers |
-| Speaker School | `SpeakerSchoolForm.svelte` | `/verticals/speaker-school` | `speaker-school` | Corag Speaker School |
-| Sponsors | `SponsorInquiryForm.svelte` | `/sponsor-us` | `sponsor` | Corag Sponsors |
-| Community calendar | `CalendarIntakeForm.svelte` | `/calendar#calendar-intake` | `calendar` | Corag Community Calendar |
-| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` | Corag Code of Conduct |
+Newsletter signup is disabled in the UI and has no backend.
 
-Newsletter signup is disabled in the UI and has **no** Google Forms (or other)
-backend until a Dailybot form is added for it.
+## Form and question ids come from the environment
+
+This is the part most likely to surprise you. The DailyBot form uuid and its
+question uuids are **not** in source. They are read at request time from:
+
+| Variable | Shape |
+|----------|-------|
+| `DAILYBOT_CONTACT_FORM` | `{"uuid":"<form-uuid>","q":{"NAME":"…","EMAIL":"…","TOPIC":"…","SUBJECT":"…","MESSAGE":"…","LANG":"…","PAGE_PATH":"…"}}` |
+| `DAILYBOT_CONDUCT_FORM` | `{"uuid":"…","q":{"INCIDENT":"…","WHEN":"…","PEOPLE":"…","ANONYMOUS":"…","REPORTER_NAME":"…","REPORTER_EMAIL":"…","FOLLOWUP":"…","LANG":"…","PAGE_PATH":"…"}}` |
+
+`resolveFormConfig()` in `functions/api/_dailybot.ts` parses them and validates
+that every required question id is present. **A missing, unparseable or partial
+mapping returns 503 and sends nothing.**
+
+That is deliberate. The ids used to be baked into source, and they belonged to a
+different workspace — a misconfigured deploy would have silently posted real
+submissions into somebody else's forms. Failing closed is the safe direction.
 
 ## Environment
 
 | Variable | Where | Notes |
 |----------|-------|-------|
-| `DAILYBOT_API_KEY` | Cloudflare / local Functions only | **Never** `PUBLIC_*`. Header `X-API-KEY`. |
-| `PUBLIC_CONTACT_API_ENDPOINT` | Build | Optional override. Defaults to `/api/contact` in `CONTACT_FORM`. |
-| `RESEND_API_KEY` + `CONTACT_FROM_EMAIL` | Optional | Submitter ack after Dailybot success |
-| `CONTACT_TO_*` | Optional | Legacy org-mirror inboxes if Resend mirror is enabled |
-| `CONTACT_RATE_LIMIT` / `CONTACT_RATE_WINDOW_MS` | Optional | Default 8 / 600000 |
+| `DAILYBOT_API_KEY` | Cloudflare / local Functions only | **Never** `PUBLIC_*`. Sent as `X-API-KEY`. |
+| `DAILYBOT_CONTACT_FORM`, `DAILYBOT_CONDUCT_FORM` | Same | Required. Without them the endpoint 503s. |
+| `PUBLIC_CONTACT_API_ENDPOINT` | Build | Optional override. Defaults to `/api/contact`. |
+| `RESEND_API_KEY` + `CONTACT_FROM_EMAIL` | Optional | Submitter acknowledgement after DailyBot success |
+| `CONTACT_RATE_LIMIT` / `CONTACT_RATE_WINDOW_MS` | Optional | Default 8 requests / 600000 ms |
 | `CONTACT_ALLOWED_ORIGINS` | Optional | CORS allowlist |
 
-Local stub: `docker/local/pertechtalks/.env.example`.  
-Rotation notes: [ENVIRONMENT_SETUP.md](../ENVIRONMENT_SETUP.md).
-
 **Local Functions:** plain `pnpm run dev` does **not** run Cloudflare Pages
-Functions. Use `wrangler pages dev` (or a Preview deploy) with
-`DAILYBOT_API_KEY` bound for end-to-end form smoke. Operator checklist for
-secrets + optional labeled smokes:
-`.dwp/plans/PLAN_dailybot_forms_integration/analysis_results/ENV_SMOKE_CHECKLIST.md`
-(plan-local; not in git).
+Functions. Use `wrangler pages dev` (or a preview deploy) with the variables
+bound for an end-to-end smoke test.
 
 ## API contract
 
 ```json
 {
   "_form": "contact",
+  "name": "…",
   "email": "…",
+  "topic": "ally",
+  "subject": "…",
+  "message": "…",
   "lang": "es",
   "page_path": "/contact/",
-  "website": "",
-  "…formFields": "…"
+  "website": ""
 }
 ```
 
-- `_form`: `contact` \| `cfs` \| `speaker-school` \| `sponsor` \| `calendar` \| `conduct`
-- Legacy without `_form`: `reason`/`topic` maps `tech-talk`→`cfs`, `sponsorship`→`sponsor`, `conduct`→`conduct`, else→`contact`
-- Honeypot `website` must be empty (fake `200` if filled; never forwarded)
-- Dailybot POST: `https://api.dailybot.com/v1/forms/{uuid}/responses/` with `{ content, automation: true }`
+- `_form`: `contact` | `conduct`
+- Without `_form`, `reason`/`topic` maps `conduct`/`coc` → `conduct`, everything
+  else → `contact`
+- Honeypot `website` must be empty. If filled, the endpoint returns a fake `200`
+  and forwards nothing
+- DailyBot POST: `https://api.dailybot.com/v1/forms/{uuid}/responses/` with
+  `{ content, automation: true }`
+
+## Contact topics
+
+The canonical set lives in `src/lib/contact-form.ts` and is mirrored for the
+Function in `functions/_lib/intake-helpers.ts`:
+
+`general` · `organization` · `ally` · `press` · `report` · `conduct` · `other`
+
+Retired topics from the previous site (`sponsorship`, `collaboration`,
+`tech-talk`, `cfs`, `speaker`, `project`) are kept in the alias table so an old
+bookmarked link still lands on a live topic instead of falling through.
 
 ### Multiple-choice values
 
-This org’s Dailybot forms use **choice value === label** (e.g. `"General"`).
-Server helpers map site slugs (`general`, `lightning`, `gold`) → labels via
-`lookupChoice` in `_dailybot.ts`. Do not invent a parallel slugify POST contract.
+This workspace's DailyBot forms use **choice value === label** (e.g. `"General"`,
+`"Ally"`). `lookupChoice` in `_dailybot.ts` maps site slugs to labels. Do not
+invent a parallel slugified POST contract — the API rejects it.
 
-Booleans send JSON `true` / `false` (Dailybot `boolean` question type).
+Booleans send JSON `true` / `false`, not `"Yes"` / `"No"`.
 
-## Form UUIDs
+## The conduct form's anonymity guarantee
 
-| Form | UUID |
-|------|------|
-| Corag Contact | `cd036d4a-2bde-48ef-83da-3fa69d91d971` |
-| Corag Call for Speakers | `2a3b568c-9255-4d5a-a29c-8f220ae427ce` |
-| Corag Speaker School | `a7bb66f2-082c-4d36-b687-13d4d1c5ed80` |
-| Corag Sponsors | `f3469d2d-df7b-4007-8ff8-e8c61de7b80d` |
-| Corag Community Calendar | `22f3540c-669d-42b8-8365-abed7bb07cda` |
-| Corag Code of Conduct | `ce944b4b-bd99-4836-a14e-c583773952a4` |
+When `anonymous` is set, the handler clears `email` **before** any mapping, so:
 
-Public intakes report to Slack `#all-corag` (`C0BNTQVCGJ2`).
-**Code of Conduct** is `owner_and_admins` only, `--no-public`, **no** Slack
-report channel.
+- No name or email reaches DailyBot, even if the client sends them.
+- No Resend acknowledgement fires, because there is nowhere to send it.
 
-### Question UUID map (summary)
+`tests/unit/functions/contact-dailybot.test.ts` pins both behaviours, including
+the case where a client sneaks an address into an anonymous payload.
 
-Full constants: `CONTACT_Q`, `CFS_Q`, `SPEAKER_SCHOOL_Q`, `SPONSORS_Q`,
-`CALENDAR_Q`, `CONDUCT_Q` in `functions/api/_dailybot.ts`.
+## Error mapping
 
-Every form includes `lang` (Spanish / English) and `page_path` (normalized
-pathname metadata).
+| Upstream | Returned | `error` |
+|----------|----------|---------|
+| No `DAILYBOT_API_KEY` | 503 | `backend_not_configured` |
+| Form mapping missing or partial | 503 | `backend_not_configured` |
+| DailyBot 401 / 403 | 502 | `backend_not_configured` |
+| DailyBot rejects a choice | 400 | `invalid_choice` |
+| DailyBot missing required | 400 | `missing_required` |
+| Network failure | 502 | `send_failed` |
 
-## Anti-spam & privacy
+A 401 from DailyBot is our misconfiguration, not the caller's — the client gets
+a 502 and a message that does not leak the upstream status.
 
-1. Honeypot `website` on every client form
-2. Length caps + email validation (`src/lib/contact-form.ts`)
-3. Isolate-local rate limit on `/api/contact`
-4. CoC: anonymous mode omits reporter name/email server-side; analytics events
-   must never include incident text (`conduct_report_submit` → `{ anonymous }` only)
+## Related
 
-## Client modules
-
-- Validators / helpers: `src/lib/contact-form.ts`, `src/lib/form-ui.ts`
-- Shared UX: idle / submitting / success + submit-another; focus first invalid;
-  `aria-invalid` / `aria-describedby` / live regions
-- Unit tests: `tests/unit/lib/contact-form.test.ts`,
-  `tests/unit/functions/dailybot.test.ts`,
-  `tests/unit/functions/contact-dailybot.test.ts`
-
-## Related docs
-
-- [Contact form (legacy note)](./CONTACT_FORM.md) — points here
-- [Security](../SECURITY.md) — threat model for intakes + CoC
-- [Call for Speakers](../CALL_FOR_SPEAKERS.md)
-- [Sponsorship](../SPONSORSHIP.md)
-- [Analytics](../ANALYTICS.md) — form submit events
+- [Contact Form](./CONTACT_FORM.md) — the client-side component contract
+- [Security](../SECURITY.md) — the threat model these rules come from

@@ -49,13 +49,13 @@ src/content/
 │   │   ├── _demo/                       # Demo posts (dev only, never in production)
 │   │   │   ├── 2025-01-01_demo-hero-banner.md
 │   │   │   └── ...
-│   │   ├── 2026-03-22_march-2026-meetup-recap.md
+│   │   ├── 2026-03-10_how-to-donate-without-getting-scammed.md
 │   │   ├── 2022-07-08_first-post.md
 │   │   └── ...
 │   └── es/                              # Spanish posts (matching filenames, English slugs)
 │       ├── _demo/                       # Demo posts (matching en/_demo/)
 │       │   └── ...
-│       ├── 2026-03-22_march-2026-meetup-recap.md
+│       ├── 2026-03-10_how-to-donate-without-getting-scammed.md
 │       └── ...
 └── tags/                              # Unified taxonomy (17 tags)
     ├── tech.md                        # tier: primary
@@ -135,13 +135,13 @@ schema: z.object({
 
 ```markdown
 ---
-title: 'March 2026 Meetup — AI Agents in Production'
-description: 'Recap of the March Corag meetup at UTP. Three talks on agent observability, RAG, and guardrails.'
+title: 'Cómo donar sin caer en estafas por internet'
+description: 'Cinco señales de alerta, cuatro formas de donar seguro y la regla de las 48 horas para las campañas que aparecen tras una tragedia.'
 pubDate: '2026-03-22'
-heroImage: '/images/blog/posts/march-2026-meetup-recap/hero.webp'
+heroImage: '/images/blog/posts/how-to-donate-without-getting-scammed/hero.webp'
 heroLayout: 'banner'
-tags: ['ai-agents', 'community', 'meetup']
-keywords: ['Pereira meetup AI agents', 'agent observability talk', 'RAG patterns Colombia', 'agent guardrails']
+tags: ['donations', 'verification']
+keywords: ['donar sin estafas', 'verificar fundación', 'campañas falsas donaciones']
 ---
 ```
 
@@ -177,7 +177,7 @@ Full-width image above the title. Best for **landscape/wide images** (16:9, 2:1 
 │                                         │
 ├─────────────────────────────────────────┤
 │          Mar 22, 2026 - 5 min           │
-│   March 2026 Meetup — AI Agents         │
+│   Cómo donar sin caer en estafas      │
 │              #ai-agents                 │
 ├─────────────────────────────────────────┤
 │  Post content...                        │
@@ -194,7 +194,7 @@ Two-column layout: title and metadata on the left, image on the right. Stacks ve
 ┌─────────────────────────────────────────┐
 │                           │             │
 │  Mar 22, 2026 - 5 min    │             │
-│  March 2026 Meetup —     │   [Image]   │
+│  Cómo donar sin caer   │   [Image]   │
 │  AI Agents in Production │             │
 │  #ai-agents              │             │
 │                           │             │
@@ -212,7 +212,7 @@ Small thumbnail with text-focused layout. Image floats left at 160x160px (128x12
 ```
 ┌─────────────────────────────────────────┐
 │  ┌──────┐  Mar 22, 2026 - 5 min        │
-│  │      │  March 2026 Meetup —         │
+│  │      │  Cómo donar sin caer       │
 │  │ img  │  AI Agents in Production      │
 │  │      │  #ai-agents                   │
 │  └──────┘                               │
@@ -228,7 +228,7 @@ No hero image area. Just title and metadata, centered. Best for **text-only post
 ```
 ┌─────────────────────────────────────────┐
 │          Mar 22, 2026 - 5 min           │
-│   March 2026 Meetup — AI Agents         │
+│   Cómo donar sin caer en estafas      │
 │              #ai-agents                 │
 ├─────────────────────────────────────────┤
 │  Post content...                        │
@@ -251,7 +251,7 @@ Blog images are stored in per-post folders under `public/images/blog/`:
 ```
 public/images/blog/
 ├── posts/                    # Per-post image folders
-│   ├── march-2026-meetup-recap/
+│   ├── how-to-donate-without-getting-scammed/
 │   │   ├── hero.webp         # Hero/cover image (WebP only)
 │   │   ├── full_logo_white.webp
 │   │   └── social_1.webp     # Inline images

@@ -142,15 +142,6 @@ Site-wide `TopNotificationBar` reads from the `notifications` content collection
 - **Non-dismissible** — the bar has no close control; it only collapses while the page is scrolled away from the top.
 - **Modal** focus trap is client UX only — content remains author-controlled YAML.
 
-### PTD subscribe (`functions/api/ptd-subscribe.ts`)
-
-Cloudflare Pages Function for Pereira Tech Day interest signups:
-
-- Email validated and length-capped; year/lang bounded.
-- Forwards to `PTD_SUBSCRIBE_SHEETS_URL` (server env only — never `PUBLIC_*`).
-- CORS origin allowlist via `CONTACT_ALLOWED_ORIGINS`.
-- Returns generic errors; no secrets or sheet contents in responses.
-
 ### Community calendar feeds
 
 The `/calendar` page embeds **public** Google Calendar IDs from the `communityCalendars` content collection. Security rules:
@@ -165,7 +156,15 @@ To add a calendar, organizers must make the Google Calendar public and submit th
 
 ### Community intakes (`/api/contact` → Dailybot)
 
-All community forms (`ContactForm`, CFS, Speaker School, Sponsors, Calendar, Conduct) post to `POST /api/contact`, which forwards to **Dailybot Forms** (`DAILYBOT_API_KEY`, server-only). See [FORMS.md](./features/FORMS.md).
+Both public forms (`ContactForm`, `ConductReportForm`) post to `POST /api/contact`, which forwards to **DailyBot Forms**. Three server-only secrets are involved and none may be `PUBLIC_*`:
+
+- `DAILYBOT_API_KEY`
+- `DAILYBOT_CONTACT_FORM` / `DAILYBOT_CONDUCT_FORM` — JSON holding the form and question ids
+
+The form ids are **configuration, not source**. Baking them in would mean a
+misconfigured deploy silently posting real submissions into another workspace's
+forms, so a missing or partial mapping returns 503 and sends nothing. See
+[FORMS.md](./features/FORMS.md).
 
 | Control | Implementation |
 |---------|----------------|
@@ -206,9 +205,9 @@ no more.**
 - Twins are generated **only for pages the build emits**. Draft and scheduled
   content never reaches a page, so it never reaches a twin — verified against
   the build: 10 draft blog posts, 0 twins.
-- Pages marked `noindex` (certificates, verify) have **no** `.md` twin.
+- Pages marked `noindex` have **no** `.md` twin. Today that is only `/internal/**`, which is deleted from the production build.
   Asserted against `dist/` during the Task 13 review.
-- Serializers read the same filtered helpers the pages read (`getMeetups`,
+- Serializers read the same filtered helpers the pages read (`getChannels`,
   `getEditions`, `getSlideDecks`), so a draft filter added in one place applies
   to both surfaces.
 - Twins resolve entity references to names and links. They must not introduce
@@ -388,22 +387,6 @@ If a secret is accidentally committed:
 2. **Remove from history** - Use `git filter-branch` or BFG Repo-Cleaner
 3. **Audit usage** - Check if secret was used maliciously
 4. **Update documentation** - Prevent recurrence
-
-## Event Certificates (W3C VC Level 2)
-
-Static attendance diplomas use Ed25519 signing at build time — never in the browser.
-
-| Secret / asset | Handling |
-|----------------|----------|
-| `CERT_SIGNING_PRIVATE_KEY` | CI/Cloudflare secret only; base64 32-byte Ed25519 seed |
-| `public/.well-known/did.json` | Public key only — safe to commit |
-| `tests/fixtures/cert-test-signing-key.json` | TEST ONLY — never use in production |
-| Attendee CSV | `tmp/` only; emails stripped at import |
-| `src/data/certificates/registry.json` | Names + opaque IDs; no emails |
-
-Scripts: `pnpm run certs:import`, `certs:sign`, `certs:verify`. See `docs/features/CERTIFICATES.md` and operator runbook in plan `analysis_results/CERT_OPERATOR_RUNBOOK.md`.
-
-Signing library (`src/lib/certificates/crypto/sign.ts`) must not be imported from client bundles. Verification uses browser-safe `verify.ts` only.
 
 ## Resources
 

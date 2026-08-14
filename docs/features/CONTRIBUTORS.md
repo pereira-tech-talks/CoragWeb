@@ -36,10 +36,10 @@ The Zod enum may still allow `mentor` / `founding-organizer`, but the page does 
 1. Add `src/content/contributors/{english-slug}.yaml` + avatar under `public/images/contributors/`.
 2. For current organizers: `roles: [organizer]`, omit `inactiveSince`.
 3. For past / alumni: set `inactiveSince` and usually include `alumni`.
-4. Keep **slugs stable** — PTD editions reference them via `getContributorsBySlugs`.
+4. Keep **slugs stable** — other surfaces reference them via `getContributorsBySlugs`.
 
 ## Related
 
-- PTD team grids reuse `getContributorsBySlugs`
+- Team grids reuse `getContributorsBySlugs`
 - Authors collection is separate (`docs/features/AUTHORS.md`)
 - Agent markdown: `/contributors/index.md` (and `/en/...`)

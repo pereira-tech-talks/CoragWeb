@@ -9,7 +9,7 @@ Corag publishes content from **multiple authors** — community organizers, vert
 This guide captures three things:
 
 1. **The Corag community voice** — what every Corag post should sound like, regardless of author.
-2. **Author-mode patterns** — how the voice flexes for meetup pages, meetup recaps, technical deep-dives, event coverage, and personal essays.
+2. **Author-mode patterns** — how the voice flexes for institutional pages, practical guides, explainers, field reports, technical notes and policy.
 3. **Anti-AI-slop discipline** — the patterns that signal AI-generated writing and how to avoid them. The voice rules win when they collide with the slop list.
 
 Editors enforce this guide before publishing. The `content-writer` agent uses it as its operating manual. The `i18n-guardian` agent enforces the bilingual parity rules.
@@ -22,20 +22,19 @@ The brand voice in [Brand Guide § Brand voice](./BRAND_GUIDE.md#brand-voice) is
 
 ### 2.1 The four anchors
 
-1. **Warm.** Corag is a community, not a corporate brand. Posts read like a knowledgeable friend, not a press release.
-2. **Professional.** Every claim is verifiable. Every number has a source. Every quote has a link.
-3. **Plurally inclusive.** Default to "we" / "us" / "the community." Use first-person singular only when a specific author owns the experience being narrated.
-4. **Community-driven.** Stories center on people doing the work — speakers, attendees, organizers — not on the abstract "industry" or "ecosystem."
+1. **Warm.** Corag coordinates aid between people who are frequently having a bad time. Copy reads like a knowledgeable neighbour — not a press release, and not a charity appeal.
+2. **Verifiable.** Every claim is checkable. Every number has a source. If we cannot back it, it does not ship. That is the project's whole argument, applied to its own writing.
+3. **Plurally inclusive.** Default to "we" / "us". Use first-person singular only when a specific author owns the experience being narrated.
+4. **Never at the expense of the person receiving.** The coraje is ours. Someone receiving aid is a neighbour, not the backdrop for another person's virtue.
 
 ### 2.2 What the voice sounds like
 
-- **Authority comes from lived experience**, not citations. "We ran 130+ talks since 2017" beats "Studies show meetups drive engagement."
-- **Sentence rhythm is varied.** Short punchy openers ("We almost didn't run the November meetup.") next to longer explanatory sentences. Avoid uniform length.
-- **Strategic em-dash asides** for mid-thought corrections — "Not to teach. To discuss." — and parenthetical thoughts.
-- **Failure is data.** When something didn't work, say so directly and clinically. "The Discord experiment didn't take. We went back to WhatsApp." No self-pity, no dramatization.
-- **Roughness is allowed.** Run-on sentences, thinking-out-loud moments, transitions that don't fully resolve. Not every paragraph needs to land with a clean conclusion.
-- **Specificity over abstraction.** Real names, real venues, real dates, real attendance counts, real talk titles.
-- **Dry, self-aware humor.** "We rebuilt the whole site to remove three blog posts. Worth it."
+- **Authority comes from the mechanism**, not from adjectives. "The evidence is reviewed before it is published" beats "we are deeply committed to transparency."
+- **Sentence rhythm is varied.** Short openers next to longer explanatory sentences. Avoid uniform length.
+- **Strategic em-dash asides** for mid-thought corrections — "Not a promise. A receipt." — and parenthetical thoughts.
+- **Limits get stated.** "The public specification is not published yet" is better copy than an evasion, and it is what earns trust when it does ship.
+- **Specificity over abstraction.** A named responsable, a dated delivery, a figure with a source.
+- **Dry, self-aware humour**, used sparingly and never near somebody's hardship.
 
 ### 2.3 What the voice never does
 
@@ -45,24 +44,25 @@ The brand voice in [Brand Guide § Brand voice](./BRAND_GUIDE.md#brand-voice) is
 - Uses marketing language in the body of an article
 - Claims false modesty
 - Uses voseo in Spanish (`tenés`, `podés`, `sabés` — always tuteo: `tienes`, `puedes`, `sabes`)
-- Confuses Pereira-specific stories for universal stories
-- Speaks for the community when only one author was in the room — say "I" then
+- Aims the coraje at the person receiving aid. Nobody needs to be told they are brave for being in a bad situation
+- Publishes a number it cannot back
+- Uses somebody's hardship as an emotional lever to produce a donation
 
 ### 2.4 Author-mode flex
 
-Multiple authors publish on Corag. The voice anchors stay constant, but the register flexes by content type:
+The voice anchors stay constant; the register flexes by content type:
 
 | Mode | Subject | Voice flex | Example opening |
 |---|---|---|---|
-| **Meetup page (collection)** | Canonical event page in `src/content/meetups/` (`/meetups/{slug}`) | Organization plural ("we"); short archive/program copy; no invented people or counts | "On April 11 we filled a UTP hall with red lobster claws and working demos — an OpenClaw Moltys morning of configs, experiments, and questions from the floor." |
-| **Meetup recap (blog)** | Reflective blog post about a past meetup (`src/content/blog/{en,es}/`) | Plural or first-person by byline; scene-setting; speaker- and attendee-quoted; longer than the collection page | "On March 14 we packed Sala 3 of UTP — 60 builders, four talks, one full hour of impromptu pair-debugging at the back tables." |
-| **Speaker deep-dive** | A speaker's technical talk, expanded into prose | First-person if speaker is the author; third-person if an editor is writing the recap | "I gave a talk at Corag in February on agentic web standards. Here's the longer version of what I couldn't fit in 25 minutes." |
-| **Event coverage** | Pereira Tech Day, hackathons | Plural, journalistic, timestamped | "Pereira Tech Day 2024 ran for one full day at UTP — 11 talks, 240 attendees, four sponsors, and a closing panel that ran 30 minutes over." |
-| **Vertical update** | Speaker School, La Biblioteca del Mañana, AI Channel | Plural, status-of-the-program | "Speaker School cohort 03 wrapped in April. Eight speakers shipped a talk; six of them landed it at Corag or another community within 60 days." |
-| **Personal essay** | A community member sharing a hard-won lesson | First-person singular, opinionated, can be raw | "I gave my first talk at Corag in 2018. It was bad. Here is what I would tell my 24-year-old self before walking on stage." |
-| **Series chapter** | Long-form serial like *La Biblioteca del Mañana* | Owned by one author, plural where the community is involved | (See WRITING_CRAFT_GUIDE §4 for series structure.) |
+| **Institutional page** | How the model works, what gets published, the limits | Organizational plural; declarative; the mechanism first | "Corag holds nobody's money. It connects the person who needs with the person who can, puts a named responsable in between, and publishes the account afterwards." |
+| **Practical guide (blog)** | How to verify, how to donate, how to start | Second person; concrete steps; the friction named honestly | "Recibes una solicitud de donación por redes. La causa parece urgente. Antes de transferir, una alarma pregunta: ¿esto es real?" |
+| **Explainer (blog)** | A definition or a distinction people get wrong | Declarative; one idea per section; the uncomfortable version first | "Impacto social es el cambio sostenible, medible y directo. Si falta cualquiera de los tres, lo que tienes es actividad social." |
+| **Field report** | What a delivery actually involved | Plural; dated; evidence-linked; no adjectives doing the work of facts | "El frente del Eje Cafetero cerró la semana con 40 mercados entregados. La evidencia está publicada por entrega." |
+| **Technical note** | Integration, the API, how the site is built | Direct, developer-to-developer; states what is not ready | "Many interfaces, one network of data. The public specification is not published yet, and here is why." |
+| **Policy** | Conduct, governance, privacy | Plain, enforceable sentences; no legalese padding | "No presentar evidencia es la falta más grave, porque rompe exactamente aquello que hace verificable a Corag." |
 
-When the **byline** is a single author, first-person singular is fine. When the byline is *Corag* (organizational voice), default to plural and avoid sentences that require an embodied "I."
+When the **byline** is a single author, first-person singular is fine. When it is
+*Equipo Corag*, default to plural and avoid sentences that need an embodied "I".
 
 ### 2.5 Spanish is the primary language
 
@@ -82,13 +82,13 @@ Spanish is the primary language of the community. English is a first-class inter
 | Over-polishing | "That simplicity wasn't a limitation — it was the web's greatest feature. The barrier to entry was low. The feedback loop was instant." | "It worked. No bundlers, no transpilers, no configuration ritual before you could render Hello World." |
 | Data obsession | 5 subsections of survey citations with tables: State of JS, Rising Stars, Stack Overflow, Aggregate Picture | "The surveys all point the same way: 88% retention. That's rare in JavaScript land." |
 | Structural regularity | Every post: Hook > Problem > Solution > Data > Conclusion. Every section: Statement > Explanation > Code > Transition | Vary structure: sometimes code first, sometimes a question, sometimes a 2-sentence section |
-| No failure narratives | "Corag has been a great community since day one." | "The first three meetups were six people in a coworking. Two of them I had begged to come." |
+| No failure narratives | "Corag has always worked smoothly." | "El primer frente se coordinó por WhatsApp y perdimos dos entregas por duplicado. Por eso existe el mapa." |
 | Length explosion | 5,000–10,000 word posts covering every angle | 2,500–4,000 words. Cut redundant evidence, merge similar sections |
 | AI vocabulary | "genuinely," "comprehensive," "this is where X shines," "radical premise," "beautifully simple" | "actually," "real," "this is where they win," "simple bet," "small" |
 | Series recap dump | "In chapter one I did X. In chapter two I did Y. In chapter three I did Z." | Open with the new chapter's own hook. Reference prior chapters only when directly relevant. The series navigation shows the full list. |
 | Bridge / teaser sections | "## The Bridge to Chapter 7" — long preview of what's next | End each chapter on its own conclusion. A short forward-looking sentence is fine; a multi-paragraph teaser is not. |
 | Excessive cross-references | "In chapter three I covered X. In chapter six I mentioned Y. As I explained in chapter one..." | Weave context naturally: state the fact, optionally link it. Each post should stand on its own. |
-| Corporate community-speak | "Corag is a leading-edge synergistic ecosystem revolutionizing tech in the region." | "Corag runs monthly meetups in Pereira since 2017." |
+| Corporate speak | "Corag is a leading-edge synergistic ecosystem revolutionizing social impact." | "Corag conecta a quien necesita con quien puede, y publica la evidencia de cada entrega." |
 | Hype punctuation | "¡Postula ya — cupos limitados!" / "Apply now — limited spots!!!" | "Postula como ponente. Cierre el 30 de abril." / "Apply by April 30." |
 
 ---
@@ -102,7 +102,7 @@ Spanish is the primary language of the community. English is a first-class inter
 - Personal specifics (names, dates, venues, project names, version numbers, attendance counts)
 - Rough transitions (not every section needs a smooth bridge)
 - At least 1 opinion stated without evidence ("I think," "in my experience," "creo que," "en mi experiencia")
-- Where appropriate: a community-mode anchor ("Nos pasó en el meetup de marzo…", "At the November meetup we…")
+- Where appropriate, an operational anchor ("Nos pasó en el frente del Eje Cafetero…", "The first time we published a receipt…")
 
 ---
 
@@ -114,7 +114,7 @@ Spanish is the primary language of the community. English is a first-class inter
 - Run the grep below before publishing
 
 ```bash
-grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/ src/content/meetups/ src/content/events/ src/content/pereiraTechDays/
+grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/
 ```
 
 Expected: zero matches. If any match is found, fix before committing.
@@ -137,7 +137,7 @@ Expected: zero matches. If any match is found, fix before committing.
 [ ] Spanish content uses tuteo (tú), not voseo (vos)?
 [ ] If byline is "Corag" (org voice), does the post avoid first-person-singular sentences that require an embodied "I"?
 [ ] If byline is a single author, are community-attributed claims clearly marked as theirs?
-[ ] Meetup collection pages: body is not only an import stub; no invented attendance/talks/people; sponsors vs allies wording correct?
+[ ] Every figure in the piece is one we can back, and no organization is named as trustworthy without our having verified it?
 ```
 ---
 
@@ -222,7 +222,7 @@ Closers that rely on abstractions ("la web", "el ecosistema", "la industria", "t
 - **Abstract**: *"gane o pierda, la web queda mejor."*
 - **Concrete**: *"gane o pierda, los que construimos en la web salimos ganando."*
 
-The concrete version puts the reader in the sentence via "los que construimos" + "salimos." For Corag, the natural collective is often "los que construimos en Pereira" or "la comunidad que se reúne cada mes."
+The concrete version puts the reader in the sentence. For Corag, the natural collective is "quienes coordinamos" or "quienes aportan", never an abstract "el sector".
 
 ### 8.5 Bridge jargon with one familiar anchor, not three
 
@@ -255,96 +255,65 @@ The goal is not to remove technical substance. It's to make sure a reader who do
 
 ---
 
-## 9. Community-Mode Specifics
+## 9. Content-Mode Specifics
 
-Corag publishes more than blog posts. The voice rules apply across collections, with these adaptations:
+The voice rules apply everywhere. These are the adaptations per surface.
 
-### 9.1 Meetup pages (`src/content/meetups/`)
+### 9.1 Institutional pages (`InstitutionalPageCopy` in the locale files)
 
-Meetup **collection pages** are the canonical public record of each monthly event (`/meetups/{slug}`, `/en/meetups/{slug}`). They are **not** blog meetup recaps. Recaps live under `src/content/blog/` and follow the **Meetup recap (blog)** row in §2.4 — longer, reflective, quote-heavy. Collection pages stay shorter, factual, and organization-voiced.
+The seven pages under "How Corag works" explain the model. They exist to be
+quoted, so:
 
-#### Voice
+- **Answer in the first two paragraphs.** An answer in section four does not get
+  cited by anything, human or machine.
+- **Lead with the mechanism, not the intention.** "The evidence goes through
+  administrative review before publication" beats "we take transparency very
+  seriously."
+- **State the limits in their own section.** `/transparency` has "what is not
+  settled yet". `/developers` says the public specification is not published.
+  Both are load-bearing, not disclaimers.
+- **Open a page about danger with the warning.** `/emergencies` leads with
+  "Corag is not an emergency service" before anything else, because someone
+  arriving in a crisis reads the first block and nothing more.
+- **Descriptions land in 130–160 characters** per language and are concrete.
 
-- Default to **plural organization voice**: "we" / "nos" / "la comunidad." The byline is Corag.
-- Use first-person singular **only** when quoting or attributing a **named organizer** (or speaker) who owns that sentence — e.g. a short attributed line from Sergio Flórez, not an embodied "I" in the org narrative.
-- Warm, specific, professional. No press-release hype, no corporate community-speak.
+### 9.2 Blog posts (`src/content/blog/{es,en}/`)
 
-#### Structure
+- **One question per post.** Two posts half-answering the same question compete
+  with each other for the same reader.
+- **Real headings.** A run of fifteen paragraphs with no `##` is not a long-form
+  article, it is a wall.
+- **Lists where the source enumerates.** "El primer indicador… el segundo
+  indicador…" is a list pretending to be prose.
+- **Every figure is one we can back.** If a case study needs numbers we do not
+  have, describe the shape of the intervention instead and say so.
+- **Close on something Corag actually does.** Not a channel we do not run, not a
+  podcast that does not exist, not a promise we have not built.
+- **Both languages, same English slug, same date.** The English version is a
+  real translation, not the Spanish with words swapped.
 
-Keep bodies lean and scannable:
+### 9.3 Policy pages (`src/content/pages/{es,en}/`)
 
-1. **Short scene-setting opener** — place, vibe, or why this night mattered (1–3 sentences).
-2. **What we ran** — themes, talks, or format, using only evidenced titles and people (frontmatter, flyer, audit).
-3. **Practical details** — when, where, mode, how to join (or that it already happened).
-4. **Optional resources** — slides, recordings, external docs, related links.
+`conduct`, `governance` and `contributing` are content files rendered as live
+pages. Editing them changes the site.
 
-Honest archive blurbs are fine when evidence is thin (title + date + venue only). Prefer a short true paragraph over a fake roster.
+- **Enforceable sentences, no legalese padding.** "No presentar evidencia es la
+  falta más grave" is a rule. "We strive to maintain the highest standards" is
+  not.
+- **Say what is undefined.** A governance document that pretends every process
+  is settled is less trustworthy than one that names the gaps.
+- **Never write a rule you would not apply to a partner organization.** The
+  moment a policy has exceptions for allies, it stops being a policy.
 
-#### Never leave import stubs
+### 9.4 Forms copy
 
-- **Do not** leave a body that is only: `Originally published on Meetup.com / Luma — see the link in the frontmatter for full details.`
-- Import links may stay in frontmatter or Resources; the markdown body must still read as a Corag page.
-- Placeholders (`[TODO:]`, `[TBD]`, etc.) are forbidden — see §5.
-
-#### Language & frontmatter quality
-
-- **Spanish orthography is mandatory** — ñ, áéíóú, ¿¡. No missing accents.
-- **Tuteo only** — never voseo (`tenés`, `podés`, `sabés`).
-- Bilingual `title.en` / `title.es` and `description.en` / `description.es` required.
-- **Descriptions: 130–160 characters** per language (meta-quality). Specific and concrete; not a keyword dump.
-- Write Spanish first when possible; English is a first-class international rendition, not an afterthought.
-
-#### Sponsors vs allies wording
-
-Flyer labels decide the collection — never guess:
-
-| Flyer / copy cue | Treat as | Wording |
-|------------------|----------|---------|
-| **Sponsored by** / **Patrocinado por** | Sponsor (`sponsors` / `meetup.sponsors`) | Thank sponsors as sponsors; match frontmatter slugs |
-| Peer meetup / community logos, “comunidad aliada” | Allied community (`communities`) | “comunidades aliadas” / “allied communities” — **never** call them sponsors |
-| **Organized by** / Corag logo | Organizer | Do not list Corag as a sponsor |
-
-Venue (e.g. UTP as location) is not a sponsor unless it appears under Sponsored by. Ambiguous logos stay out of prose claims until classified.
-
-#### Meetup-specific anti-slop
-
-- **No fake attendance** — do not invent headcounts, “sala llena,” or “record turnout” without a source.
-- **No invented talk titles or people** — if the flyer/audit/frontmatter does not evidence a talk or speaker, omit them or say names are still being confirmed.
-- Do not contradict frontmatter `speakers` / `talks` / `sponsors` in the body.
-- Do not paste a personal blog recap wholesale; rewrite in Corag org voice (see `openclaw-moltys-utp` as a recent collection-page example).
-- Keep the general AI-slop blocklist (§3, §7); collection pages especially avoid length explosion and marketing CTAs.
-
-#### Length & naming
-
-- Typical body: a few short sections — enough for a visitor to understand the night, not a 1,000-word essay.
-- Name speakers by full name on first reference when they appear; keep claims aligned with linked talk/speaker entries.
-
-**Blog meetup recaps** (separate content type): when publishing a reflective post in `src/content/blog/`, use the **Meetup recap (blog)** mode in §2.4 — scene-setting, speaker- and attendee-quoted, roughly 600–1,200 words, with a forward-looking line for the next meetup when the date is known. Do not treat the collection page as a substitute for that post, or the post as a dump of the collection body.
-
-### 9.2 Pereira Tech Day editions (`src/content/pereiraTechDays/`)
-
-- The edition page is the canonical record. Be journalistic: timestamps, talk count, attendance, sponsors.
-- The recap blog post that follows is reflective, not journalistic — what worked, what didn't, what the community learned.
-- Per-edition brand kit applies; voice and tone do not change.
-
-### 9.3 Speaker / Talk pages (`src/content/speakers/`, `src/content/talks/`)
-
-- Speaker bios are third-person, written for an international audience. 80–150 words.
-- Talk descriptions are written from the speaker's perspective, edited by Corag for clarity.
-- Both languages required.
-
-### 9.4 Vertical pages (Speaker School, La Biblioteca del Mañana, AI Channel, Monthly Meetups)
-
-- Status-of-the-program register: cohort dates, current focus, recent shipped work, how to join.
-- Avoid "we are excited to announce." State the announcement directly.
-
-### 9.5 Forms copy (Contact, Call for Speakers, Sponsor-Us)
-
-- Plain Spanish first, English mirrored.
-- One-sentence-per-question instructions.
-- Confirmation messages are warm but short — "Recibido. Te respondemos en 3 días hábiles."
-
----
+- **Say what happens after they press send.** How it is treated, who sees it,
+  roughly when they hear back.
+- **The conduct form states the anonymity guarantee in the form itself**, not in
+  a linked policy. If anonymity is chosen, no name or email is stored — that is
+  worth saying where the decision is made.
+- **Route urgency out.** Any form that could receive a crisis message says, in
+  the form, that this is not an emergency service and points at the right place.
 
 ## 10. References
 
@@ -360,4 +329,4 @@ Venue (e.g. UTP as location) is not a sponsor unless it appears under Sponsored 
 ---
 
 **Last updated:** 2026-08-08
-**Origin:** Distilled from Corag brand voice & tone, the previous personal-blog refinement library, Corag v3.0.0 multi-author requirements, and meetup collection voice rules (organization pages vs blog recaps).
+**Origin:** Distilled from the Corag brand manual's voice section, the messaging platform in [MESSAGING.md](./MESSAGING.md), and the editorial decisions taken while migrating the blog archive — chiefly that an unverifiable figure never ships.
