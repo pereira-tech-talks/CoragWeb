@@ -452,86 +452,52 @@ export const es: SiteTranslations = {
   allTags: 'Todas las etiquetas',
   tagNames: {
     // Primary tags
-    tech: 'Tecnología',
-    talks: 'Charlas',
+    volunteering: 'Voluntariado',
+    donations: 'Donaciones',
+    foundations: 'Fundaciones y ONG',
+    'social-impact': 'Impacto social',
     community: 'Comunidad',
-    keynote: 'Keynote',
-    workshop: 'Taller',
-    'lightning-talk': 'Lightning Talk',
-    // Secondary tags (topics)
-    'web-development': 'Desarrollo Web',
-    javascript: 'JavaScript',
-    ai: 'IA y ML',
-    blockchain: 'Blockchain',
-    devops: 'DevOps',
-    python: 'Python',
-    university: 'Universidad',
-    database: 'Bases de Datos',
-    iot: 'IoT',
-    design: 'Diseño',
-    mobile: 'Móvil',
-    'ai-agents': 'Agentes de IA',
+    // Secondary tags
+    colombia: 'Colombia',
+    'getting-started': 'Para empezar',
+    verification: 'Verificación',
+    organizations: 'Organizaciones',
+    measurement: 'Medición',
     // Subtopic tags
-    astro: 'Astro',
-    svelte: 'Svelte',
-    cloudflare: 'Cloudflare',
-    docker: 'Docker',
-    graphql: 'GraphQL',
-    django: 'Django',
-    kotlin: 'Kotlin',
-    claude: 'Claude',
-    mcp: 'MCP',
-    flutter: 'Flutter',
+    technology: 'Tecnología',
+    pereira: 'Pereira',
+    youth: 'Niñez y juventud',
   },
   tagDescriptions: {
     // Primary tags
-    tech: 'Tutoriales, guías y artículos técnicos de la comunidad.',
-    talks: 'Charlas, slides, videos y eventos.',
+    volunteering:
+      'Donar tiempo: cómo empezar sin experiencia previa, dónde buscar cerca de ti y qué esperar realmente durante las primeras semanas en terreno.',
+    donations:
+      'Donar dinero o en especie sin que se pierda por el camino: qué sirve de verdad, cómo verificar antes de transferir y cómo pedir el recibo.',
+    foundations:
+      'Cómo funcionan por dentro las fundaciones y las ONG, en qué se diferencian y cómo comprobar que una es real antes de apoyarla con algo.',
+    'social-impact':
+      'Qué es el impacto social, cómo se genera y cómo se mide sin engañarse: la diferencia incómoda entre hacer actividad y transformar algo.',
     community:
-      'Artículos sobre la comunidad — gobernanza, colaboración y cómo se organiza la red.',
-    keynote: 'Presentaciones y charlas sobre el modelo de Corag.',
-    workshop:
-      'Talleres prácticos — sesiones de varias horas con código, ejercicios y guía paso a paso.',
-    'lightning-talk':
-      'Lightning talks — presentaciones cortas de 5 a 10 minutos con una idea contundente.',
-    // Secondary tags (topics)
-    'web-development':
-      'Frameworks, frontend, fullstack — Astro, Svelte, Vue, Meteor, CSS, Webpack.',
-    javascript:
-      'Ecosistema JavaScript — Vue.js, Webpack, Meteor, A-Frame, Node.',
-    ai: 'Inteligencia artificial, machine learning, deep learning y LLMs.',
-    blockchain:
-      'Blockchain, criptomonedas, Bitcoin, Ethereum y contratos inteligentes.',
-    devops: 'Docker, contenedores, serverless, microservicios y despliegue.',
-    python: 'Ecosistema Python — Django, TensorFlow, MyPy, Spark.',
-    university: 'Trabajos académicos, investigación y proyectos estudiantiles.',
-    database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
-    iot: 'Internet de las cosas, sensores, hardware e interfaces de voz.',
-    design: 'Diseño visual, branding, diseño web y UX.',
-    mobile:
-      'Desarrollo móvil — Android, iOS, frameworks multiplataforma y el camino de aprender a publicar para dispositivos móviles.',
-    'ai-agents':
-      'Agentes de IA y la web agéntica — sistemas autónomos, uso de herramientas, patrones de orquestación, MCP y los estándares .well-known para agentes.',
+      'Parches, jornadas y proyectos donde la gente se organiza para ayudar, y cómo entrar en uno que siga existiendo dentro de dos años.',
+    // Secondary tags
+    colombia:
+      'Contexto colombiano: marco legal, organizaciones activas y las realidades locales que definen cómo se coordina la ayuda en el territorio.',
+    'getting-started':
+      'Guías para quien quiere ayudar y todavía no sabe por dónde empezar. Sin requisitos previos, sin experiencia y sin necesidad de dinero.',
+    verification:
+      'Cómo comprobar que una organización, una cuenta o una entrega es real, antes de comprometer tu tiempo, tus cosas o tu dinero con ella.',
+    organizations:
+      'Empresas, entidades públicas y ONG que se suman al trabajo social, y qué modelos de aporte funcionan de verdad más allá de la donación.',
+    measurement:
+      'Indicadores, líneas base y evidencia: cómo se demuestra que algo cambió de verdad, en lugar de suponerlo a partir de buenas anécdotas.',
     // Subtopic tags
-    astro:
-      'Framework Astro — arquitectura de islas, Content Collections, MDX y builds estáticos.',
-    svelte:
-      'Svelte y SvelteKit — componentes reactivos, runes y patrones de hidratación.',
-    cloudflare:
-      'Cloudflare Pages, Workers, R2 y la plataforma de la web agéntica.',
-    docker:
-      'Contenedores Docker, autoría de Dockerfiles y orquestación de múltiples servicios.',
-    graphql:
-      'APIs GraphQL — esquemas, resolvers, federación y patrones de cliente.',
-    django:
-      'Framework Django — ORM, configuraciones multi-base, admin y despliegue.',
-    kotlin:
-      'Lenguaje y ecosistema Kotlin — Kotlin Multiplatform, Compose Multiplatform, Android, herramientas para JVM.',
-    claude:
-      'Claude — la familia de modelos de Anthropic y los runtimes de agentes construidos sobre ellos (Claude Code, Skills, Files API).',
-    mcp: 'Model Context Protocol — comunicación estandarizada agente↔herramienta, tarjetas de servidor y la capa de estándares de la web agéntica.',
-    flutter:
-      'Flutter — framework móvil multiplataforma basado en Dart, widgets y los trade-offs frente a nativo y Kotlin Multiplatform.',
+    technology:
+      'Plataformas, datos e interoperabilidad aplicados a la ayuda humanitaria, con los tres riesgos de la digitalización que casi nadie menciona.',
+    pereira:
+      'Organizaciones, eventos y oportunidades para ayudar en Pereira y en el Eje Cafetero, donde Corag tiene operación activa en terreno.',
+    youth:
+      'Programas dirigidos a la niñez en situación vulnerable y a jóvenes que quieren empezar a aportar sin esperar a tener una carrera terminada.',
   },
 
   // Series names and descriptions (keyed by series slug). Vacío durante la transición a v3.0.0.

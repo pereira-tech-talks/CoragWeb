@@ -107,5 +107,64 @@
 /community                    /partners/                     301
 /en/community                 /en/partners/                  301
 
+# ---------------------------------------------------------------------------
+# Blog archive migrated from corag.org
+# ---------------------------------------------------------------------------
+# The 51 posts moved from Spanish source slugs to English ones (repo rule 21).
+# Each old path redirects so whatever link equity exists survives the move.
+
+/blog/a-que-organizaciones-sociales-puedo-ayudar-desde-mi-ciudad        /blog/which-organizations-to-help-in-your-city/                    301
+/blog/actividades-sociales-para-ayudar-personas-en-colombia             /blog/social-activities-to-help-people-in-colombia/                301
+/blog/como-apoyar-proyectos-sociales-desde-empresas-en-colombia         /blog/how-companies-can-support-social-projects-in-colombia/       301
+/blog/como-ayudar-a-personas-necesitadas-en-colombia-hoy                /blog/how-to-help-people-in-need-in-colombia/                      301
+/blog/como-ayudar-familias-en-pobreza-extrema-en-colombia               /blog/how-to-help-families-in-extreme-poverty/                     301
+/blog/como-ayudar-sin-dinero-en-colombia-opciones-reales                /blog/how-to-help-without-money/                                   301
+/blog/como-crear-impacto-social-desde-cero-paso-a-paso                  /blog/how-to-create-social-impact-from-scratch/                    301
+/blog/como-donar-sin-caer-en-estafas-en-internet                        /blog/how-to-donate-without-getting-scammed/                       301
+/blog/como-empezar-a-hacer-voluntariado-sin-experiencia-previa          /blog/how-to-start-volunteering-with-no-experience/                301
+/blog/como-encontrar-fundaciones-verificadas-en-mi-ciudad               /blog/how-to-find-verified-foundations-in-your-city/               301
+/blog/como-encontrar-voluntariado-cerca-de-mi-facilmente                /blog/how-to-find-volunteering-near-you/                           301
+/blog/como-funcionan-las-fundaciones-sociales-en-colombia               /blog/how-social-foundations-work-in-colombia/                     301
+/blog/como-funcionan-los-proyectos-de-impacto-social-hoy                /blog/how-social-impact-projects-work-today/                       301
+/blog/como-hacer-donaciones-seguras-en-colombia-paso-a-paso             /blog/how-to-donate-safely-in-colombia/                            301
+/blog/como-involucrarse-en-proyectos-sociales-activos-cerca-de-mi       /blog/how-to-join-active-social-projects-near-you/                 301
+/blog/como-la-tecnologia-esta-cambiando-el-voluntariado-en-el-mundo     /blog/how-technology-is-changing-volunteering/                     301
+/blog/como-medir-el-impacto-de-un-proyecto-social-correctamente         /blog/how-to-measure-social-project-impact/                        301
+/blog/como-participar-en-actividades-sociales-en-mi-ciudad-hoy          /blog/how-to-take-part-in-social-activities-in-your-city/          301
+/blog/como-participar-en-parches-sociales-en-mi-ciudad                  /blog/how-to-join-a-parche-social/                                 301
+/blog/como-participar-en-proyectos-que-generan-impacto-real             /blog/how-to-join-projects-with-real-impact/                       301
+/blog/como-saber-si-una-fundacion-es-confiable-o-real                   /blog/how-to-tell-if-a-foundation-is-trustworthy/                  301
+/blog/como-ser-voluntario-en-colombia-paso-a-paso                       /blog/how-to-volunteer-in-colombia-step-by-step/                   301
+/blog/como-unirme-a-comunidades-de-impacto-social-reales                /blog/how-to-join-real-social-impact-communities/                  301
+/blog/como-unirme-a-proyectos-de-voluntariado-activos-en-colombia       /blog/how-to-join-active-volunteering-projects-in-colombia/        301
+/blog/diferencia-entre-ong-y-fundacion-social-explicada-facil           /blog/ngo-vs-social-foundation-explained/                          301
+/blog/donde-donar-alimentos-en-pereira-de-forma-segura                  /blog/where-to-donate-food-in-pereira-safely/                      301
+/blog/donde-encontrar-eventos-sociales-en-pereira-hoy                   /blog/where-to-find-social-events-in-pereira/                      301
+/blog/donde-hacer-voluntariado-en-pereira-hoy                           /blog/where-to-volunteer-in-pereira/                               301
+/blog/ejemplos-de-impacto-social-en-comunidades-vulnerables             /blog/examples-of-social-impact-in-vulnerable-communities/         301
+/blog/estrategias-transformacion-digital-2026                           /blog/digital-transformation-strategies-for-social-organizations/  301
+/blog/eventos-de-voluntariado-en-colombia-este-mes                      /blog/volunteering-events-in-colombia-this-month/                  301
+/blog/experiencias-de-voluntariado-reales-en-colombia                   /blog/real-volunteering-experiences-in-colombia/                   301
+/blog/fundaciones-confiables-en-colombia-para-donar-hoy                 /blog/trustworthy-foundations-in-colombia-to-donate-to/            301
+/blog/fundaciones-que-reciben-donaciones-confiables-en-colombia         /blog/foundations-that-receive-donations-safely-in-colombia/       301
+/blog/innovacion-en-impacto-social-en-america-latina-hoy                /blog/social-impact-innovation-in-latin-america/                   301
+/blog/lista-de-organizaciones-sociales-activas-en-colombia              /blog/list-of-active-social-organizations-in-colombia/             301
+/blog/mejores-fundaciones-para-hacer-voluntariado-en-colombia           /blog/best-foundations-to-volunteer-with-in-colombia/              301
+/blog/ong-en-colombia-que-trabajan-con-comunidades-vulnerables          /blog/ngos-in-colombia-working-with-vulnerable-communities/        301
+/blog/organizaciones-que-buscan-voluntarios-en-colombia-ahora           /blog/organizations-looking-for-volunteers-in-colombia/            301
+/blog/plataformas-digitales-para-conectar-personas-con-causas-sociales  /blog/digital-platforms-that-connect-people-with-social-causes/    301
+/blog/por-que-el-impacto-social-es-clave-en-las-empresas-modernas       /blog/why-social-impact-matters-for-modern-companies/              301
+/blog/proyectos-sociales-activos-que-necesitan-apoyo-hoy                /blog/active-social-projects-that-need-support/                    301
+/blog/que-es-impacto-social-y-como-se-genera-realmente                  /blog/what-social-impact-is-and-how-it-is-created/                 301
+/blog/que-es-responsabilidad-social-empresarial-con-ejemplos-reales     /blog/what-corporate-social-responsibility-is/                     301
+/blog/que-fundaciones-ayudan-ninos-en-situacion-vulnerable              /blog/foundations-that-help-children-at-risk/                      301
+/blog/que-hacen-las-organizaciones-sin-fines-de-lucro-realmente         /blog/what-nonprofits-actually-do/                                 301
+/blog/que-necesito-para-ser-voluntario-social-en-mi-ciudad              /blog/what-you-need-to-volunteer-in-your-city/                     301
+/blog/que-se-puede-donar-a-comunidades-vulnerables-realmente            /blog/what-you-can-actually-donate-to-vulnerable-communities/      301
+/blog/que-significa-transformacion-social-en-la-vida-real               /blog/what-social-transformation-means-in-real-life/               301
+/blog/que-son-los-parches-sociales-y-como-participar-en-ellos           /blog/what-parches-sociales-are-and-how-to-join/                   301
+/blog/voluntariado-para-jovenes-en-colombia-oportunidades-reales        /blog/volunteering-for-young-people-in-colombia/                   301
+/blog/como-ser-voluntario-en-colombia-paso-a-paso-corag                 /blog/how-to-volunteer-in-colombia-step-by-step/                   301
+
 /es                               /                                               301
 /es/*                             /:splat                                         301

@@ -66,9 +66,38 @@ const reportIdx = argv.indexOf('--report');
 const REPORT_DIR = reportIdx !== -1 ? argv[reportIdx + 1] : null;
 
 /** Collections whose prose lives in a `{slug}.md` + `{slug}.en.md` pair. */
-const PAIRED_COLLECTIONS = ['meetups', 'verticals'];
+const PAIRED_COLLECTIONS = [];
+
+/**
+ * Collections split by language directory — `{collection}/es/{file}.md` and
+ * `{collection}/en/{file}.md`, sharing a filename.
+ *
+ * The blog is shaped this way and was invisible to this audit for as long as
+ * the audit only knew about sibling-file pairs: it reported "every pair carries
+ * the same content" while auditing zero pairs. A gate that passes vacuously is
+ * worse than no gate, because it is quoted as evidence.
+ */
+const DIRECTORY_PAIRED_COLLECTIONS = ['blog', 'pages'];
 
 const CONTENT = join(process.cwd(), 'src', 'content');
+
+function directoryPairsIn(collection) {
+  const esDir = join(CONTENT, collection, 'es');
+  const enDir = join(CONTENT, collection, 'en');
+  if (!existsSync(esDir)) return [];
+  const isEntry = (f) => f.endsWith('.md') && !f.startsWith('.');
+  const enFiles = existsSync(enDir)
+    ? new Set(readdirSync(enDir).filter(isEntry))
+    : new Set();
+
+  return readdirSync(esDir)
+    .filter(isEntry)
+    .map((f) => ({
+      id: `${collection}/${f}`,
+      es: readFileSync(join(esDir, f), 'utf-8'),
+      en: enFiles.has(f) ? readFileSync(join(enDir, f), 'utf-8') : null,
+    }));
+}
 
 function pairsIn(collection) {
   const dir = join(CONTENT, collection);
@@ -100,6 +129,11 @@ console.log('⚖️  Bilingual Content-Parity Audit\n');
 const results = [];
 for (const collection of PAIRED_COLLECTIONS) {
   for (const pair of pairsIn(collection)) {
+    results.push(comparePair(pair));
+  }
+}
+for (const collection of DIRECTORY_PAIRED_COLLECTIONS) {
+  for (const pair of directoryPairsIn(collection)) {
     results.push(comparePair(pair));
   }
 }

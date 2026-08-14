@@ -449,85 +449,52 @@ export const en: SiteTranslations = {
   allTags: 'All Tags',
   tagNames: {
     // Primary tags
-    tech: 'Tech',
-    talks: 'Talks',
+    volunteering: 'Volunteering',
+    donations: 'Donations',
+    foundations: 'Foundations & NGOs',
+    'social-impact': 'Social impact',
     community: 'Community',
-    keynote: 'Keynote',
-    workshop: 'Workshop',
-    'lightning-talk': 'Lightning Talk',
-    // Secondary tags (topics)
-    'web-development': 'Web Development',
-    javascript: 'JavaScript',
-    ai: 'AI & ML',
-    blockchain: 'Blockchain',
-    devops: 'DevOps',
-    python: 'Python',
-    university: 'University',
-    database: 'Databases',
-    iot: 'IoT',
-    design: 'Design',
-    mobile: 'Mobile',
-    'ai-agents': 'AI Agents',
+    // Secondary tags
+    colombia: 'Colombia',
+    'getting-started': 'Getting started',
+    verification: 'Verification',
+    organizations: 'Organizations',
+    measurement: 'Measurement',
     // Subtopic tags
-    astro: 'Astro',
-    svelte: 'Svelte',
-    cloudflare: 'Cloudflare',
-    docker: 'Docker',
-    graphql: 'GraphQL',
-    django: 'Django',
-    kotlin: 'Kotlin',
-    claude: 'Claude',
-    mcp: 'MCP',
-    flutter: 'Flutter',
+    technology: 'Technology',
+    pereira: 'Pereira',
+    youth: 'Children & youth',
   },
   tagDescriptions: {
     // Primary tags
-    tech: 'Tutorials, guides, and technical articles from the community.',
-    talks: 'Tech talks, slides, videos, and events.',
+    volunteering:
+      'Giving time: how to start with no experience, where to look near you, and what the first few weeks in the field are actually like.',
+    donations:
+      'Giving money or goods without it getting lost on the way: what actually helps, how to verify before transferring, how to get the receipt.',
+    foundations:
+      'How foundations and NGOs work on the inside, how they differ from each other, and how to confirm one is real before supporting it.',
+    'social-impact':
+      'What social impact is, how it gets created, and how to measure it honestly: the uncomfortable gap between activity and transformation.',
     community:
-      'Community-focused articles — governance, collaboration, and how the network organizes itself.',
-    keynote: 'Talks and presentations about the Corag model.',
-    workshop:
-      'Hands-on workshops — practical, multi-hour sessions with code, exercises, and step-by-step guidance.',
-    'lightning-talk':
-      'Lightning talks — short 5–10 minute presentations that pack a single sharp idea.',
-    // Secondary tags (topics)
-    'web-development':
-      'Frameworks, frontend, fullstack — Astro, Svelte, Vue, Meteor, CSS, Webpack.',
-    javascript:
-      'JavaScript ecosystem — Vue.js, Webpack, Meteor, A-Frame, Node.',
-    ai: 'Artificial intelligence, machine learning, deep learning, and LLMs.',
-    blockchain:
-      'Blockchain, cryptocurrency, Bitcoin, Ethereum, and smart contracts.',
-    devops: 'Docker, containers, serverless, microservices, and deployment.',
-    python: 'Python ecosystem — Django, TensorFlow, MyPy, Spark.',
-    university: 'Academic coursework, research, and student projects.',
-    database: 'SQL, NoSQL, MongoDB, and multi-database architecture.',
-    iot: 'Internet of Things, sensors, hardware, and voice interfaces.',
-    design: 'Visual design, branding, web design, and UX.',
-    mobile:
-      'Mobile development — Android, iOS, cross-platform frameworks, and the journey of learning to ship for handhelds.',
-    'ai-agents':
-      'AI agents and the agentic web — autonomous systems, tool use, orchestration patterns, MCP, and the .well-known agent standards.',
+      'The groups, field days and projects where people organise to help, and how to join one that will still be there two years from now.',
+    // Secondary tags
+    colombia:
+      'The Colombian context: legal framework, active organizations, and the local realities that shape how aid gets coordinated on the ground.',
+    'getting-started':
+      'Guides for anyone who wants to help and does not yet know where to begin. No prerequisites, no experience, and no money required at all.',
+    verification:
+      'How to confirm that an organization, an account or a delivery is real, before committing your time, your goods or your money to it.',
+    organizations:
+      'Companies, public bodies and NGOs joining social work, and which models of contribution actually hold up beyond just writing a cheque.',
+    measurement:
+      'Indicators, baselines and evidence: how you demonstrate that something actually changed, rather than assuming it from good anecdotes.',
     // Subtopic tags
-    astro:
-      'Astro framework — islands architecture, Content Collections, MDX, and static-site builds.',
-    svelte:
-      'Svelte and SvelteKit — reactive components, runes, and hydration patterns.',
-    cloudflare: 'Cloudflare Pages, Workers, R2, and the agentic-web platform.',
-    docker:
-      'Docker containers, Dockerfile authoring, and multi-service orchestration.',
-    graphql:
-      'GraphQL APIs — schemas, resolvers, federation, and client patterns.',
-    django:
-      'Django framework — ORM, multi-database setups, admin, and deployment.',
-    kotlin:
-      'Kotlin language and ecosystem — Kotlin Multiplatform, Compose Multiplatform, Android, JVM tooling.',
-    claude:
-      "Claude — Anthropic's model family and the agent runtimes built on top (Claude Code, Skills, Files API).",
-    mcp: 'Model Context Protocol — standardized agent↔tool communication, server cards, and the agentic-web standards layer.',
-    flutter:
-      'Flutter — Dart-based cross-platform mobile framework, widgets, and the trade-offs versus native and Kotlin Multiplatform.',
+    technology:
+      'Platforms, data and interoperability applied to humanitarian aid, with the three risks of digitalisation that almost nobody mentions.',
+    pereira:
+      'Organizations, events and opportunities to help in Pereira and in the Eje Cafetero, where Corag has active operations on the ground.',
+    youth:
+      'Programmes for children at risk, and for young people who want to start contributing without waiting to finish a degree beforehand.',
   },
 
   // Series names and descriptions (keyed by series slug). Empty during the v3.0.0 transition.

@@ -71,8 +71,7 @@ Hace falta:
   sufrimiento.
 - Revisión de accesibilidad sobre pantallas reales.
 
-La [guía de marca](https://corag.app) y el sistema de diseño están documentados
-en el repositorio.
+La guía de marca y el sistema de diseño están documentados en el repositorio.
 
 ---
 
