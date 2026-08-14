@@ -48,6 +48,13 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
+# Facebook / Meta link-preview crawlers (Sharing Debugger, WhatsApp, Messenger)
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
 User-agent: cohere-ai
 Allow: /
 

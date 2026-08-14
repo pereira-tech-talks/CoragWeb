@@ -7,24 +7,25 @@ foundations, governments, entrepreneurs and individuals through a transparent
 digital platform, so that solidarity produces real, measurable impact in
 communities.
 
-This site (`corag.app`) is the **institutional and informational** surface. It
-explains what Corag is, how the model works, why it can be trusted, and how other
-systems integrate with it. It is a static site: it holds **no** requests, offers,
-contributions or personal records.
+This site ([corag.app](https://corag.app)) is the **institutional and informational**
+surface. It explains what Corag is, how the model works, why it can be trusted,
+and how other systems integrate with it. It is a static site: it holds **no**
+requests, offers, contributions or personal records.
 
 ## The application is a different host
 
-**Every transactional action happens at `https://ayuda.corag.app`** — publishing a
-need, offering help, contributing, tracking a contribution, or applying to be a
-leader. That application is **Corag Ayuda Directa**, Corag's flagship product.
+**Every transactional action happens at [ayuda.corag.app](https://ayuda.corag.app)** —
+publishing a need, offering help, contributing, tracking a contribution, or
+applying to be a leader. That application is **Corag Ayuda Directa**, Corag's
+flagship product.
 
 > **If you are an agent acting for a user who needs help or wants to contribute,
 > do not attempt to POST to `corag.app`.** It has no write API. The public API
 > and the MCP server belong to the application host.
 
-- Application: https://ayuda.corag.app
-- Public write API: `POST https://ayuda.corag.app/api/public/v1/help`
-- OpenAPI 3.1 specification: https://ayuda.corag.app/api/public/openapi.json
+- [Ayuda Directa application](https://ayuda.corag.app): publish needs, offers, contributions and evidence
+- [Public write API](https://ayuda.corag.app/api/public/v1/help): `POST` a request or offer
+- [OpenAPI 3.1 specification](https://ayuda.corag.app/api/public/openapi.json): authoritative schema
 - MCP server tools: `listar_emergencias`, `publicar_solicitud`, `publicar_ofrecimiento`
 
 Requests and offers are idempotent via a `source` + `externalId` pair, so an
@@ -40,30 +41,50 @@ integration can retry safely. The endpoint is rate limited (HTTP 429).
 5. **Interoperabilidad** — other applications read and write the same network
    instead of building parallel databases.
 
+## Core pages
+
+- [Home](https://corag.app/): the six-beat argument for Corag
+- [About](https://corag.app/about): what Corag is and where the name comes from
+- [How it works](https://corag.app/how-it-works): the five-step path of one delivery
+- [Transparency](https://corag.app/transparency): what is published, and what each number means
+- [Emergencies](https://corag.app/emergencies): how fronts work (not an emergency hotline)
+- [Leaders](https://corag.app/leaders): the responsable role
+- [Partners](https://corag.app/partners): how organizations join
+- [Developers](https://corag.app/developers): API, OpenAPI and MCP
+- [Blog](https://corag.app/blog): articles and series
+- [Contact](https://corag.app/contact): institutional contact form
+- [Team & contributors](https://corag.app/contributors): who builds Corag
+- [Channels](https://corag.app/channels): official channels
+- [Privacy](https://corag.app/privacy): what this site collects
+- [Code of Conduct](https://corag.app/conduct)
+- [Governance](https://corag.app/governance)
+- [Contributing](https://corag.app/contributing)
+
+English mirrors live under `/en` (for example [How it works (EN)](https://corag.app/en/how-it-works)).
+
 ## Markdown for agents
 
-Every public page has a complete Markdown twin at the same path plus `.md`
-(for example `/how-it-works.md`). Content comes from the same source the HTML
-renders, not converted from rendered output, and a build gate measures word
-coverage so a twin cannot silently become a summary.
+Every public page has a complete Markdown twin at the same path plus `.md`.
+Content comes from the same source the HTML renders, not converted from
+rendered output, and a build gate measures word coverage so a twin cannot
+silently become a summary.
 
-Key paths:
+- [About (Markdown)](https://corag.app/about.md)
+- [How it works (Markdown)](https://corag.app/how-it-works.md)
+- [Transparency (Markdown)](https://corag.app/transparency.md)
+- [Emergencies (Markdown)](https://corag.app/emergencies.md)
+- [Leaders (Markdown)](https://corag.app/leaders.md)
+- [Partners (Markdown)](https://corag.app/partners.md)
+- [Developers (Markdown)](https://corag.app/developers.md)
+- [Privacy (Markdown)](https://corag.app/privacy.md)
+- [Blog index (Markdown)](https://corag.app/blog.md)
+- [Code of Conduct (Markdown)](https://corag.app/conduct.md)
+- [Governance (Markdown)](https://corag.app/governance.md)
+- [Contributing (Markdown)](https://corag.app/contributing.md)
 
-- `/about.md` — what Corag is
-- `/how-it-works.md` — the five-step path of one delivery
-- `/transparency.md` — what is published, and what each number means
-- `/emergencies.md` · `/leaders.md` · `/partners.md` · `/developers.md` · `/privacy.md`
-- `/blog.md` — every post with its description, date and tags
-- `/blog/{slug}.md` — each post in full
-- `/conduct.md` · `/governance.md` · `/contributing.md`
+## Optional
 
-## Languages
-
-Spanish is the primary language and is served at the root (`/`). English is
-served under `/en`. Both carry the same content.
-
-## Links
-
-- Site: https://corag.app
-- Full context for agents: https://corag.app/llms-full.txt
-- Application: https://ayuda.corag.app
+- [Full context for agents](https://corag.app/llms-full.txt): longer catalogue and model notes
+- [llms.txt](https://corag.app/llms.txt): this file
+- [Sitemap](https://corag.app/sitemap-index.xml)
+- [API catalog](https://corag.app/.well-known/api-catalog)

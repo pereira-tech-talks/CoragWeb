@@ -210,8 +210,31 @@ All content MUST exist in both languages:
 > **Host must match the URL you share.** Absolute OG URLs are built from
 > `astro.config.mjs` → `site` (override with `PUBLIC_SITE_URL` / `SITE`).
 > While sharing `https://corag.app/`, `site` must be that
-> origin. Pointing `og:image` at apex `corag.app` today follows
-> redirects into the legacy stack and 404s — Facebook then shows the favicon.
+> origin.
+
+### Facebook / WhatsApp preview returns 403
+
+If [Sharing Debugger](https://developers.facebook.com/tools/debug/) reports
+HTTP **403** and blames `robots.txt`, check Cloudflare first. Our
+`robots.txt` allows `*` (and explicitly `facebookexternalhit` / `Facebot`);
+from a normal client the page and `og:image` (`/images/og-default.jpg`,
+1200×630) both return **200** with correct meta tags.
+
+Facebook's crawler is often blocked at the edge by **Bot Fight Mode**,
+**Super Bot Fight Mode**, **Under Attack**, or a country/ASN WAF rule.
+Cloudflare's own guide:
+[Issues sharing to Facebook](https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/).
+
+**Fix in the Cloudflare dashboard (not in this repo):**
+
+1. Security → Events — confirm blocks for ASNs `32934` / `63293` or UA
+   `facebookexternalhit`.
+2. Prefer a WAF **Skip** rule for those ASNs (skip Bot Fight / Security Level)
+   over turning off all bot protection.
+3. If **Bot Fight Mode** (free) is on: it cannot be skipped with WAF Skip —
+   disable it or move to Super Bot Fight Mode with an exception.
+4. Re-scrape with **Fetch new scrape information** in the Debugger after the
+   rule lands.
 
 ### Twitter Card Tags
 
@@ -251,20 +274,20 @@ Every page and blog post serves native Markdown for AI consumption:
 
 | File | Purpose | Update When |
 |------|---------|-------------|
-| `public/llms.txt` | Short-form site description for AI crawlers | Adding/removing pages or sections |
+| `public/llms.txt` | Short-form site description for AI crawlers (Markdown: `#` H1 + `[text](url)` links) | Adding/removing pages or sections |
 | `public/llms-full.txt` | Comprehensive site description | Major content or structure changes |
 | `public/robots.txt` | AI crawler allow directives | New AI crawlers emerge |
 
 ### Maintenance
 
 When adding a new page section:
-1. Add the page to `llms.txt` Core Sections list
-2. Add a description to `llms-full.txt` Pages section
+1. Add the page to `llms.txt` as a Markdown link (`[Title](https://corag.app/…)`)
+2. Add a description to `llms-full.txt` Links section
 3. No robots.txt change needed (global `Allow: /` covers new pages)
 
 ### Current AI Crawlers Allowed
 
-GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, Bytespider, CCBot, PerplexityBot, Applebot-Extended, Amazonbot, Meta-ExternalAgent, cohere-ai.
+GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, Bytespider, CCBot, PerplexityBot, Applebot-Extended, Amazonbot, Meta-ExternalAgent, facebookexternalhit, Facebot, cohere-ai.
 
 ## Images & Performance
 
@@ -420,8 +443,8 @@ will.
 - [ ] Translation strings added to both `en.ts` and `es.ts`
 - [ ] Route added to `src/middleware.ts` — otherwise it 404s in production
 - [ ] `.md` twin endpoint added, and `pnpm run md:check:strict` passes
-- [ ] `llms.txt` Core Sections updated with new page
-- [ ] `llms-full.txt` Pages section updated
+- [ ] `llms.txt` updated with a Markdown link to the new page
+- [ ] `llms-full.txt` Links section updated
 - [ ] Verify hreflang in generated HTML
 - [ ] Verify OG tags in generated HTML
 

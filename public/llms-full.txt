@@ -143,6 +143,8 @@ No accounts, no personal records, no aid data. See `/privacy`.
 
 ## 5. Links
 
-- Site: https://corag.app
-- Application: https://ayuda.corag.app
-- Short agent summary: https://corag.app/llms.txt
+- [Site](https://corag.app): institutional surface (this host)
+- [Application](https://ayuda.corag.app): Corag Ayuda Directa
+- [Short agent summary](https://corag.app/llms.txt): compact catalogue
+- [Public write API](https://ayuda.corag.app/api/public/v1/help)
+- [OpenAPI 3.1](https://ayuda.corag.app/api/public/openapi.json)
