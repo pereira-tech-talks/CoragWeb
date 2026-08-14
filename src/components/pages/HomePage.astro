@@ -53,6 +53,10 @@ const appHomeDesktopBase =
   lang === 'en'
     ? '/images/home/app/app-home-desktop-en'
     : '/images/home/app/app-home-desktop';
+const appAportarMobileBase =
+  lang === 'en'
+    ? '/images/home/app/app-aportar-mobile-en'
+    : '/images/home/app/app-aportar-mobile';
 
 /*
  * The problem act renders each fragment AS the artifact it names — a chat
@@ -524,8 +528,8 @@ const btnSecondary =
               class="absolute -bottom-10 -right-2 hidden w-44 overflow-hidden rounded-[1.9rem] border-[6px] border-corag-bg-dark bg-corag-bg-dark shadow-corag-lg sm:block lg:-right-6 lg:w-52"
             >
               <img
-                src="/images/home/app/app-aportar-mobile-390.webp"
-                srcset="/images/home/app/app-aportar-mobile-390.webp 390w, /images/home/app/app-aportar-mobile-780.webp 780w"
+                src={`${appAportarMobileBase}-390.webp`}
+                srcset={`${appAportarMobileBase}-390.webp 390w, ${appAportarMobileBase}-780.webp 780w`}
                 sizes="13rem"
                 alt={h.productScreenshotMobileAlt}
                 width={390}

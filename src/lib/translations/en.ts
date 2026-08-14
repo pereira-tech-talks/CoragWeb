@@ -630,7 +630,7 @@ export const en: SiteTranslations = {
                 title: 'Someone publishes a need',
                 body: 'A family, a community leader or an organization records what is missing and where. The request becomes visible to the network instead of being buried in a chat thread.',
                 figure: {
-                  srcBase: '/images/pages/app/app-solicitar-mobile',
+                  srcBase: '/images/pages/app/app-solicitar-mobile-en',
                   widths: [390, 780],
                   alt: 'Ayuda Directa "request help" form on a phone, with empty fields',
                   width: 390,
@@ -642,7 +642,7 @@ export const en: SiteTranslations = {
                 title: 'A responsable takes it on',
                 body: 'Whoever coordinates in that territory owns the delivery. They have a name, a validated identity, and a verified connection to the area or the organization.',
                 figure: {
-                  srcBase: '/images/pages/app/app-registro-lider-desktop',
+                  srcBase: '/images/pages/app/app-registro-lider-desktop-en',
                   widths: [640, 1280],
                   alt: 'Ayuda Directa leader application screen, with the form empty',
                   width: 1280,
@@ -654,7 +654,7 @@ export const en: SiteTranslations = {
                 title: 'Someone contributes',
                 body: 'The contribution goes by direct transfer to the responsable’s verified account. Corag is not an intermediary for the money and takes no cut for moving it.',
                 figure: {
-                  srcBase: '/images/home/app/app-aportar-mobile',
+                  srcBase: '/images/home/app/app-aportar-mobile-en',
                   widths: [390, 780],
                   alt: 'Ayuda Directa "how do you want to help?" flow on a phone, with the contribution options',
                   width: 390,
@@ -670,7 +670,7 @@ export const en: SiteTranslations = {
                 title: 'The evidence gets published',
                 body: 'Photos, receipts and figures are uploaded within the window, go through administrative review, and only then get published. Until that moment the contribution counts as received, not as used.',
                 figure: {
-                  srcBase: '/images/pages/app/app-seguimiento-mobile',
+                  srcBase: '/images/pages/app/app-seguimiento-mobile-en',
                   widths: [390, 780],
                   alt: 'Ayuda Directa private contribution follow-up screen, with the search empty',
                   width: 390,
@@ -749,7 +749,7 @@ export const en: SiteTranslations = {
     eyebrow: 'The accounts',
     lead: 'Saying you are transparent is easy. Publishing the receipt takes courage. Here is what we publish, what it means exactly, and where the limits are.',
     heroFigure: {
-      srcBase: '/images/pages/app/app-avances-desktop',
+      srcBase: '/images/pages/app/app-avances-desktop-en',
       widths: [640, 960, 1240],
       alt: 'Ayuda Directa progress band: the total received beside the total donated with evidence',
       width: 1240,
@@ -966,7 +966,7 @@ export const en: SiteTranslations = {
           {
             kind: 'figure',
             figure: {
-              srcBase: '/images/pages/app/app-registro-lider-desktop',
+              srcBase: '/images/pages/app/app-registro-lider-desktop-en',
               widths: [640, 1280],
               alt: 'Ayuda Directa leader application screen, with the form empty',
               width: 1280,
