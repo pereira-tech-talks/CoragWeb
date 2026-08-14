@@ -110,6 +110,8 @@ export const en: SiteTranslations = {
       'If you want to help, contribute or publish a need, that happens in the application. If you build software, want to become an ally, or want to join the team, start here.',
     closingCtaApp: 'Go to the app',
     closingCtaTeam: 'I want to contribute',
+    closingChannelsTitle: 'Official channels',
+    closingChannelApp: 'Ayuda Directa',
   },
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — The social impact ecosystem',

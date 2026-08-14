@@ -78,6 +78,19 @@ Ver [documentación para desarrolladores](/developers).
 
 ---
 
+## ¿Te sumas?
+
+Si quieres ayudar, aportar o publicar una necesidad, eso ocurre en la
+aplicación. Si construyes software, quieres ser aliado o quieres colaborar con
+el equipo, empieza por aquí.
+
+Canales oficiales: [Ayuda Directa](https://ayuda.corag.app),
+[WhatsApp](https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2),
+[Instagram](https://www.instagram.com/app.corag/) y
+[Facebook](https://www.facebook.com/appcorag).
+
+---
+
 ## Enlaces
 
 - [Cómo funciona](/how-it-works)

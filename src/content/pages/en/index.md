@@ -77,6 +77,19 @@ See the [developer documentation](/en/developers).
 
 ---
 
+## Will you join?
+
+If you want to help, contribute or publish a need, that happens in the
+application. If you build software, want to become an ally or want to work
+with the team, start here.
+
+Official channels: [Ayuda Directa](https://ayuda.corag.app),
+[WhatsApp](https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2),
+[Instagram](https://www.instagram.com/app.corag/) and
+[Facebook](https://www.facebook.com/appcorag).
+
+---
+
 ## Links
 
 - [How it works](/en/how-it-works)

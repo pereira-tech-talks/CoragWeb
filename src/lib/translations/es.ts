@@ -110,6 +110,8 @@ export const es: SiteTranslations = {
       'Si quieres ayudar, aportar o publicar una necesidad, eso ocurre en la aplicación. Si construyes software, quieres ser aliado o quieres colaborar con el equipo, empieza por aquí.',
     closingCtaApp: 'Ir a la aplicación',
     closingCtaTeam: 'Quiero colaborar',
+    closingChannelsTitle: 'Canales oficiales',
+    closingChannelApp: 'Ayuda Directa',
   },
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — El ecosistema de impacto social',

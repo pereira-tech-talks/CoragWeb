@@ -135,6 +135,10 @@ export interface HomeCopy {
   closingBody: string;
   closingCtaApp: string;
   closingCtaTeam: string;
+  /** Lead-in for the official-channels strip in the closing act. */
+  closingChannelsTitle: string;
+  /** Label for the application pill in the channels strip. */
+  closingChannelApp: string;
 }
 
 export interface SiteTranslations {
