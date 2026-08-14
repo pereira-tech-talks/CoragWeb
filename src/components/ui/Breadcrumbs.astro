@@ -62,7 +62,7 @@ const separatorClass = onDark ? 'text-white/50' : 'text-corag-secondary';
           {item.href && index < items.length - 1 ? (
             <a
               href={item.href}
-              class={`${linkHoverClass} transition-colors`}
+              class={`inline-flex min-h-[24px] items-center ${linkHoverClass} transition-colors`}
             >
               {item.label}
             </a>

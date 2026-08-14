@@ -750,7 +750,9 @@ const btnSecondary =
       padding-bottom: 2rem;
     }
     .hero-eyebrow.hero-eyebrow {
-      font-size: 0.65rem;
+      /* 12px floor: anything smaller fails the legibility bar on phones. */
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
     }
     .hero-title.hero-title {
       font-size: 1.875rem;

@@ -53,7 +53,9 @@
     "responsive:capture:quick": "node scripts/responsive-audit/capture.mjs --quick",
     "test:responsive": "playwright test tests/e2e/responsive/",
     "test:responsive:update": "playwright test tests/e2e/responsive/ --update-snapshots",
-    "release": "bash .github/scripts/prepare_release.sh"
+    "release": "bash .github/scripts/prepare_release.sh",
+    "responsive:audit": "node scripts/responsive-audit/audit-layout.mjs --base=http://localhost:9999",
+    "responsive:audit:quick": "node scripts/responsive-audit/audit-layout.mjs --base=http://localhost:9999 --quick"
   },
   "dependencies": {
     "@astrojs/check": "0.9.10",

@@ -10,6 +10,12 @@ interface Props {
   ctaLabel?: string;
   ctaHref?: string;
   class?: string;
+  /**
+   * Heading level for the title. Defaults to `h2` because an empty state
+   * usually replaces a whole section: when it sits directly under the page
+   * `h1`, an `h3` would skip a level.
+   */
+  headingLevel?: 'h2' | 'h3';
 }
 
 const {
@@ -18,7 +24,10 @@ const {
   ctaLabel,
   ctaHref,
   class: className = '',
+  headingLevel = 'h2',
 } = Astro.props;
+
+const Heading = headingLevel;
 ---
 
 <div
@@ -38,9 +47,9 @@ const {
       d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75z"
     ></path>
   </svg>
-  <h3 class="text-lg font-semibold text-corag">
+  <Heading class="text-lg font-semibold text-corag">
     {title}
-  </h3>
+  </Heading>
   {
     description && (
       <p class="mt-2 max-w-md text-corag-secondary">

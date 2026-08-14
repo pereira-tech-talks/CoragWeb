@@ -13,6 +13,7 @@ import Eyebrow from '@/components/ui/Eyebrow.astro';
 import Section from '@/components/ui/Section.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { renderInlineMarkdown } from '@/lib/inline-markdown';
 import { getTranslations } from '@/lib/translations';
 
 import type {
@@ -93,9 +94,10 @@ const externalAttrs = (link: InstitutionalLink) =>
               {block.kind === 'prose' && (
                 <div class="max-w-3xl space-y-5">
                   {block.paragraphs.map((paragraph) => (
-                    <p class="text-lg leading-relaxed text-corag-secondary">
-                      {paragraph}
-                    </p>
+                    <p
+                      class="text-lg leading-relaxed text-corag-secondary"
+                      set:html={renderInlineMarkdown(paragraph)}
+                    />
                   ))}
                 </div>
               )}
@@ -146,7 +148,7 @@ const externalAttrs = (link: InstitutionalLink) =>
                         class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-corag-primary dark:bg-corag-primary-light"
                         aria-hidden="true"
                       />
-                      <span>{item}</span>
+                      <span class="min-w-0" set:html={renderInlineMarkdown(item)} />
                     </li>
                   ))}
                 </ul>

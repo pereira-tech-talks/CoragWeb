@@ -39,7 +39,7 @@ function toggleTheme() {
   type="button"
   class="theme-toggle group inline-flex cursor-pointer items-center justify-center transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary
     {placement === 'header'
-      ? 'h-5 w-5 shrink-0 p-0 text-corag hover:text-corag-primary dark:text-white dark:hover:text-white/85'
+      ? 'relative h-6 w-6 shrink-0 p-0 text-corag hover:text-corag-primary dark:text-white dark:hover:text-white/85 after:absolute after:-inset-2.5 after:content-[\'\']'
       : 'min-h-[44px] gap-2.5 rounded-full border border-corag-border px-4 py-2 text-base text-corag hover:border-corag-primary dark:border-white/20 dark:text-white'}"
   aria-label={ariaLabel}
   aria-pressed={isDark}
