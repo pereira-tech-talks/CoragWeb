@@ -608,7 +608,7 @@ export const en: SiteTranslations = {
     eyebrow: 'The model',
     lead: 'Corag holds nobody’s money. It connects the person who needs with the person who can, puts a named responsable in between, and publishes the account afterwards. Here is the path, step by step.',
     heroFigure: {
-      srcBase: '/images/home/app/app-home-desktop',
+      srcBase: '/images/home/app/app-home-desktop-en',
       widths: [640, 960, 1280, 1920],
       alt: 'Ayuda Directa home screen on desktop, with the priority emergency and the global progress',
       width: 1280,
@@ -1112,7 +1112,7 @@ export const en: SiteTranslations = {
     eyebrow: 'Integrations',
     lead: 'Many interfaces, one network of data. The highest-impact path is not building another aid application: it is making the one you build talk to the one that already exists.',
     heroFigure: {
-      srcBase: '/images/home/app/app-home-desktop',
+      srcBase: '/images/home/app/app-home-desktop-en',
       widths: [640, 960, 1280, 1920],
       alt: 'Ayuda Directa home screen, one of the clients of the public API',
       width: 1280,

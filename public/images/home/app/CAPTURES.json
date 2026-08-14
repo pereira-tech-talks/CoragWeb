@@ -43,6 +43,46 @@
       }
     },
     {
+      "key": "app-home-desktop-en",
+      "source": "English UI twin of app-home-desktop (same emergency, English locale).",
+      "capturedAt": "2026-08-14T18:13:00.000Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "deviceScaleFactor": 2,
+      "crop": null,
+      "files": [
+        {
+          "file": "app-home-desktop-en-640.webp",
+          "width": 640,
+          "bytes": 15798
+        },
+        {
+          "file": "app-home-desktop-en-960.webp",
+          "width": 960,
+          "bytes": 28202
+        },
+        {
+          "file": "app-home-desktop-en-1280.webp",
+          "width": 1280,
+          "bytes": 37842
+        },
+        {
+          "file": "app-home-desktop-en-1920.webp",
+          "width": 1920,
+          "bytes": 58876
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-home-desktop-en.jpg",
+      "personalDataPolicy": "Home shows aggregate counts only (English UI). Used on /en home product beat and English institutional heroes.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Reviewed for real names, phone numbers, exact addresses and identifiable faces before shipping. Aggregate counts only.",
+        "date": "2026-08-14"
+      }
+    },
+    {
       "key": "app-home-mobile",
       "source": "https://ayuda.corag.app/",
       "capturedAt": "2026-08-14T14:41:57.255Z",
@@ -69,6 +109,36 @@
       "personalDataCheck": {
         "status": "passed",
         "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    },
+    {
+      "key": "app-home-mobile-en",
+      "source": "English UI twin of app-home-mobile (same emergency, English locale).",
+      "capturedAt": "2026-08-14T18:10:00.000Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 2,
+      "crop": null,
+      "files": [
+        {
+          "file": "app-home-mobile-en-390.webp",
+          "width": 390,
+          "bytes": 26188
+        },
+        {
+          "file": "app-home-mobile-en-780.webp",
+          "width": 780,
+          "bytes": 54008
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-home-mobile-en.jpg",
+      "personalDataPolicy": "Same aggregate-only home at mobile viewport (English UI). Serves the hero mini-card on /en.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Reviewed for real names, phone numbers, exact addresses and identifiable faces before shipping. Aggregate counts only.",
         "date": "2026-08-14"
       }
     },

@@ -95,7 +95,7 @@ the responsables and the evidence live.
 
 [Join the movement](https://ayuda.corag.app)
 
-![Ayuda Directa home screen on desktop, with the priority emergency and the live global progress](/images/home/app/app-home-desktop-1280.webp)
+![Ayuda Directa home screen on desktop, with the priority emergency and the live global progress](/images/home/app/app-home-desktop-en-1280.webp)
 
 ![Ayuda Directa "How do you want to help?" flow on a phone](/images/home/app/app-aportar-mobile-390.webp)
 

@@ -44,6 +44,16 @@ const routes = {
   team: `${prefix}/contributors`,
 };
 
+/** App captures: Spanish by default; English UI when lang is `en`. */
+const appHomeMobileBase =
+  lang === 'en'
+    ? '/images/home/app/app-home-mobile-en'
+    : '/images/home/app/app-home-mobile';
+const appHomeDesktopBase =
+  lang === 'en'
+    ? '/images/home/app/app-home-desktop-en'
+    : '/images/home/app/app-home-desktop';
+
 /*
  * The problem act renders each fragment AS the artifact it names — a chat
  * bubble, a loose form, a spreadsheet, a call, a fading post, a stale list.
@@ -211,8 +221,8 @@ const btnSecondary =
             >
               <div class="aspect-[3/4]">
                 <img
-                  src="/images/home/app/app-home-mobile-390.webp"
-                  srcset="/images/home/app/app-home-mobile-390.webp 390w, /images/home/app/app-home-mobile-780.webp 780w"
+                  src={`${appHomeMobileBase}-390.webp`}
+                  srcset={`${appHomeMobileBase}-390.webp 390w, ${appHomeMobileBase}-780.webp 780w`}
                   sizes="16rem"
                   alt={h.heroAppCardAlt}
                   width={390}
@@ -498,8 +508,8 @@ const btnSecondary =
                 ></span>
               </div>
               <img
-                src="/images/home/app/app-home-desktop-1280.webp"
-                srcset="/images/home/app/app-home-desktop-640.webp 640w, /images/home/app/app-home-desktop-960.webp 960w, /images/home/app/app-home-desktop-1280.webp 1280w, /images/home/app/app-home-desktop-1920.webp 1920w"
+                src={`${appHomeDesktopBase}-1280.webp`}
+                srcset={`${appHomeDesktopBase}-640.webp 640w, ${appHomeDesktopBase}-960.webp 960w, ${appHomeDesktopBase}-1280.webp 1280w, ${appHomeDesktopBase}-1920.webp 1920w`}
                 sizes="(min-width: 1024px) 60vw, 100vw"
                 alt={h.productScreenshotDesktopAlt}
                 width={1280}
