@@ -79,6 +79,8 @@ export const en: SiteTranslations = {
         body: 'Money goes to verified leaders’ accounts, not to a central treasury. Every contribution is attributable.',
       },
     ],
+    trustHonestyLine:
+      'The real numbers live in the application, always current. Every contribution is attributable to a responsable and to its evidence.',
     trustCta: 'How traceability works',
 
     productEyebrow: 'Flagship product',

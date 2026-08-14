@@ -44,10 +44,13 @@ formularios sueltos, hojas de cálculo, llamadas y listas que nadie actualiza.
 
 - **Recibido** — cuánto entró. Es el número fácil de mostrar, y por sí solo no
   dice nada.
-- **Usado con evidencia** — cuánto se gastó con soporte verificado. Este es el
-  número que importa.
+- **Utilizado con evidencia** — cuánto se gastó con soporte verificado. Este es
+  el número que importa.
 - **Transferencia directa** — el dinero va a cuentas de responsables verificados,
   no a una tesorería central. Cada aporte es atribuible.
+
+Los números reales viven en la aplicación, siempre al día. Cada aporte es
+atribuible a un responsable y a su evidencia.
 
 ---
 

@@ -71,7 +71,7 @@ export const es: SiteTranslations = {
         body: 'Cuánto entró. Es el número fácil de mostrar, y por sí solo no dice nada.',
       },
       {
-        title: 'Usado con evidencia',
+        title: 'Utilizado con evidencia',
         body: 'Cuánto se gastó con soporte verificado: recibos, fotos, resultados. Este es el número que importa.',
       },
       {
@@ -79,6 +79,8 @@ export const es: SiteTranslations = {
         body: 'El dinero va a cuentas de responsables verificados, no a una tesorería central. Cada aporte es atribuible.',
       },
     ],
+    trustHonestyLine:
+      'Los números reales viven en la aplicación, siempre al día. Cada aporte es atribuible a un responsable y a su evidencia.',
     trustCta: 'Cómo funciona la trazabilidad',
 
     productEyebrow: 'Producto insignia',

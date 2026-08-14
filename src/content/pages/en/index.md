@@ -48,6 +48,9 @@ forms, spreadsheets, phone calls and lists nobody updates.
 - **Direct transfer** — money goes to verified leaders' accounts, not to a
   central treasury. Every contribution is attributable.
 
+The real numbers live in the application, always current. Every contribution is
+attributable to a responsable and to its evidence.
+
 ---
 
 ## Ayuda Directa

@@ -105,6 +105,8 @@ export interface HomeCopy {
   trustTitle: string;
   trustBody: string;
   pillars: HomePillar[];
+  /** Beat-4 honesty line: the real numbers live in the application. Never contains digits. */
+  trustHonestyLine: string;
   trustCta: string;
 
   // Beat 5 — the flagship product
