@@ -220,6 +220,17 @@ ayudar"*, *"Seguir mi aporte"* — three words, no adjectives.
 Both are Corag. Do not import the app's clipped register into marketing copy, and
 do not import marketing warmth into an emergency flow.
 
+### The messaging platform
+
+**What we say, in what order, and in whose words** lives in
+[`MESSAGING.md`](./MESSAGING.md) — the coraje positioning, the six-beat
+argument, the approved lexicon, the proof points, and the rules for where coraje
+belongs and where it must never appear. Every page that states the value
+proposition writes from that document.
+
+The one rule worth repeating here: **the coraje is ours, never aimed at the
+people receiving aid.**
+
 ### Spanish is the source language
 
 Spanish is written first and English is a real translation of it — never the

@@ -47,17 +47,14 @@ describe('umami proxy helpers', () => {
 
   describe('buildUmamiProxyRequestHeaders', () => {
     it('forwards client IP and user agent', () => {
-      const request = new Request(
-        'https://corag.org/api/umami/api/send',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'CF-Connecting-IP': '203.0.113.10',
-            'User-Agent': 'Mozilla/5.0 Test',
-          },
-        }
-      );
+      const request = new Request('https://corag.org/api/umami/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'CF-Connecting-IP': '203.0.113.10',
+          'User-Agent': 'Mozilla/5.0 Test',
+        },
+      });
 
       const headers = buildUmamiProxyRequestHeaders(request);
       expect(headers.get('Content-Type')).toBe('application/json');

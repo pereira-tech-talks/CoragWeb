@@ -112,9 +112,7 @@ describe('serializePostToAgentMarkdown', () => {
     });
 
     expect(result).toContain('Language: es');
-    expect(result).toContain(
-      'Canonical: https://corag.org/blog/empty-body'
-    );
+    expect(result).toContain('Canonical: https://corag.org/blog/empty-body');
   });
 
   it('should handle empty/undefined body gracefully', () => {
@@ -231,9 +229,7 @@ describe('serializePageToAgentMarkdown', () => {
       '> The bilingual technology community of Pereira, Colombia.'
     );
     expect(result).toContain('Language: en');
-    expect(result).toContain(
-      'Canonical: https://corag.org/en/about'
-    );
+    expect(result).toContain('Canonical: https://corag.org/en/about');
     expect(result).toContain('Last Updated: 2026-03-09');
     expect(result).toContain('## Who We Are');
   });

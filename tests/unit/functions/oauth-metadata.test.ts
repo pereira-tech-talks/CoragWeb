@@ -18,23 +18,15 @@ describe('oauth metadata helpers', () => {
 
   describe('buildOAuthProtectedResourceMetadata', () => {
     it('matches request origin for apex and v3', () => {
-      const apex = buildOAuthProtectedResourceMetadata(
-        'https://corag.org'
-      );
+      const apex = buildOAuthProtectedResourceMetadata('https://corag.org');
       expect(apex.resource).toBe('https://corag.org');
-      expect(apex.authorization_servers).toEqual([
-        'https://corag.org',
-      ]);
+      expect(apex.authorization_servers).toEqual(['https://corag.org']);
       expect(apex.bearer_methods_supported).toContain('header');
       expect(apex.scopes_supported).toContain('public:read');
 
-      const v3 = buildOAuthProtectedResourceMetadata(
-        'https://corag.org'
-      );
+      const v3 = buildOAuthProtectedResourceMetadata('https://corag.org');
       expect(v3.resource).toBe('https://corag.org');
-      expect(v3.authorization_servers).toEqual([
-        'https://corag.org',
-      ]);
+      expect(v3.authorization_servers).toEqual(['https://corag.org']);
     });
   });
 
