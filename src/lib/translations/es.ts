@@ -847,6 +847,16 @@ export const es: SiteTranslations = {
       'Qué hace Corag cuando ocurre una emergencia, cómo se abre un frente, cómo pedir ayuda y qué no somos: esto no es un servicio de urgencias.',
     eyebrow: 'Respuesta',
     lead: 'En una emergencia el problema rara vez es la falta de generosidad. Es que nadie sabe qué hace falta, dónde, ni quién ya lo está cubriendo.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-map-desktop',
+      widths: [640, 1280],
+      alt: 'Mapa de Ayuda Directa con los grupos de solicitudes y ofrecimientos sobre el Eje Cafetero',
+      width: 1280,
+      height: 1050,
+      frame: 'browser',
+      caption:
+        'Vista real del mapa de la aplicación. Los grupos que se ven son datos vivos en el momento de la captura.',
+    },
     sections: [
       {
         heading: 'Antes que nada',
@@ -923,6 +933,16 @@ export const es: SiteTranslations = {
       'Qué asume quien coordina ayuda en Corag, cómo se valida, qué obligaciones acepta con la evidencia y qué pasa cuando no las cumple.',
     eyebrow: 'Responsables',
     lead: 'El sistema de responsables es la dependencia crítica de toda la plataforma. Si esa validación falla, nada de lo demás importa.',
+    heroFigure: {
+      srcBase: '/images/pages/app/app-registro-lider-desktop',
+      widths: [640, 1280],
+      alt: 'Pantalla de postulación para líder en Ayuda Directa, con el formulario vacío',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'Vista real de la aplicación: la postulación ocurre allí, no en este sitio.',
+    },
     sections: [
       {
         heading: 'Qué hace un responsable',
@@ -1069,6 +1089,16 @@ export const es: SiteTranslations = {
       'La API pública de Corag: sin autenticación, idempotente por diseño, con servidor MCP. Qué se puede construir encima y cómo publicar tu primera solicitud.',
     eyebrow: 'Integraciones',
     lead: 'Muchas interfaces, una sola red de datos. El camino con más impacto no es construir otra aplicación de ayuda: es que la que construyas hable con la que ya existe.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-home-desktop',
+      widths: [640, 960, 1280, 1920],
+      alt: 'Pantalla principal de Ayuda Directa, uno de los clientes de la API pública',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'Ayuda Directa es un cliente de la misma API abierta que documentamos aquí. Los datos que se ven son datos vivos.',
+    },
     sections: [
       {
         heading: 'El problema que resuelve una API abierta',
@@ -1183,6 +1213,7 @@ export const es: SiteTranslations = {
       'Qué datos maneja Corag, dónde se guardan, qué se publica y qué nunca, cómo pedir que se corrija algo y qué hacemos con la información de este sitio.',
     eyebrow: 'Tus datos',
     lead: 'Corag coordina ayuda entre personas que casi siempre están pasando un mal momento. Cómo tratamos sus datos es parte del servicio, no una nota al pie.',
+    sectionIndexLabel: 'En esta página',
     sections: [
       {
         heading: 'Las dos superficies, dos tratamientos',

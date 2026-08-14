@@ -837,6 +837,16 @@ export const en: SiteTranslations = {
       'What Corag does when an emergency happens, how a front opens, how to ask for help, and what we are not: this is not an emergency service.',
     eyebrow: 'Response',
     lead: 'In an emergency the problem is rarely a shortage of generosity. It is that nobody knows what is needed, where, or who is already covering it.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-map-desktop',
+      widths: [640, 1280],
+      alt: 'Ayuda Directa map with clusters of requests and offers over the Eje Cafetero region',
+      width: 1280,
+      height: 1050,
+      frame: 'browser',
+      caption:
+        'A real view of the application map. The clusters shown are live data at capture time.',
+    },
     sections: [
       {
         heading: 'First of all',
@@ -909,6 +919,16 @@ export const en: SiteTranslations = {
       'What coordinating aid in Corag actually commits you to, how you get validated, what the evidence obligation is, and what happens if you miss it.',
     eyebrow: 'Responsables',
     lead: 'The responsable system is the critical trust dependency of the whole platform. If that validation fails, nothing else matters.',
+    heroFigure: {
+      srcBase: '/images/pages/app/app-registro-lider-desktop',
+      widths: [640, 1280],
+      alt: 'Ayuda Directa leader application screen, with the form empty',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'A real view of the application: the application happens there, not on this site.',
+    },
     sections: [
       {
         heading: 'What a responsable does',
@@ -1055,6 +1075,16 @@ export const en: SiteTranslations = {
       "Corag's public API: no authentication, idempotent by design, with an MCP server. What is worth building on it, and how to publish your first request.",
     eyebrow: 'Integrations',
     lead: 'Many interfaces, one network of data. The highest-impact path is not building another aid application: it is making the one you build talk to the one that already exists.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-home-desktop',
+      widths: [640, 960, 1280, 1920],
+      alt: 'Ayuda Directa home screen, one of the clients of the public API',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'Ayuda Directa is a client of the same open API documented here. The data shown is live.',
+    },
     sections: [
       {
         heading: 'The problem an open API solves',
@@ -1169,6 +1199,7 @@ export const en: SiteTranslations = {
       'What data Corag handles, where it lives, what gets published and what never does, how to ask for a correction, and what this site collects.',
     eyebrow: 'Your data',
     lead: 'Corag coordinates aid between people who are usually having a bad time. How we treat their data is part of the service, not a footnote.',
+    sectionIndexLabel: 'On this page',
     sections: [
       {
         heading: 'Two surfaces, two treatments',
