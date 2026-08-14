@@ -62,7 +62,9 @@ describe('analytics helpers', () => {
   describe('shouldTrackScrollDepth', () => {
     it('enables on long-form routes', () => {
       expect(shouldTrackScrollDepth('/blog/how-to-donate-safely')).toBe(true);
-      expect(shouldTrackScrollDepth('/en/blog/how-to-donate-safely')).toBe(true);
+      expect(shouldTrackScrollDepth('/en/blog/how-to-donate-safely')).toBe(
+        true
+      );
       expect(shouldTrackScrollDepth('/about')).toBe(true);
       expect(shouldTrackScrollDepth('/how-it-works')).toBe(true);
       expect(shouldTrackScrollDepth('/en/transparency')).toBe(true);
