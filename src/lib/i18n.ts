@@ -171,7 +171,7 @@ export function getAlternateUrls(
 }
 
 /**
- * Bilingual i18n value used by v3 collections (meetups, events, PTDs,
+ * Localized value used by collections that carry Spanish and English copy
  * verticals, sponsors, etc.) — accepts either a plain string (language-
  * neutral, rendered as-is) or a `{ en, es }` object.
  */

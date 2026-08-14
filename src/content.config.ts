@@ -6,7 +6,7 @@ import { z } from 'astro/zod';
  * Reusable Zod helpers for v3.0.0 collections.
  */
 
-// String value or {en, es} bilingual object. New collections (meetups, events,
+// String value or an {en, es} object. New collections (meetups, events,
 // PTDs, verticals, etc.) accept either form. The string form is treated as
 // language-neutral and is rendered as-is for both languages.
 const i18nString = z.union([
@@ -166,7 +166,7 @@ const authors = defineCollection({
  * A meetup keeps ONE source of truth for its structured data (date, venue,
  * speakers, talks, sponsors); only the prose needs a language dimension. Both
  * bodies stay real Markdown files so they render through the same Sätteri
- * pipeline — see `analysis_results/BILINGUAL_BODY_DECISION.md`.
+ * pipeline.
  *
  * `generateId` strips `.en`, so an entry's id equals its meetup's id and the
  * join needs no mapping table.

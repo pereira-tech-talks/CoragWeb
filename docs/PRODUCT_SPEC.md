@@ -1,365 +1,363 @@
-# Product Specification
+# Product Specification — corag.app
 
 ## Overview
 
-**Pereira Tech Talks** (Corag) is the bilingual technology community of Pereira, Risaralda, Colombia. The website at `pereiratechtalks.org` is the public face and operational backbone of the community — a platform for monthly meetups, the flagship Pereira Tech Day annual conference, the Speaker School, the verticals (La Biblioteca del Mañana, AI channel, and others), and the bilingual blog and slide deck library that comes out of all of it.
+**Corag** is *el ecosistema de impacto social* — a platform that connects
+foundations, governments, companies, social entrepreneurs and individuals with
+real, verifiable opportunities to help.
 
-This document covers v3.0.0 — a full rewrite that replaced the previous Corag site (xergioalex.com-based clone) with a community-first, AI-agent-friendly, bilingual platform built on the Astro 7 / Svelte 5 / Tailwind 4 stack.
+This repository is **`corag.app`**, Corag's institutional site. Its job is to
+make someone understand Corag, believe in it, and cross over to the product.
+
+**`ayuda.corag.app`** is a separate deployment: **Corag Ayuda Directa**, the
+flagship product where the actual coordination happens.
+
+```
+Corag — el ecosistema de impacto social          ← this site, corag.app
+   └── Ayuda Directa — producto insignia         → ayuda.corag.app
+          └── Emergencia activa
+```
+
+Getting that split wrong is the most common way to write incorrect copy or code
+here. **If it stores something about a real person's need, it belongs in the
+application.** This site holds no aid data and has no write API.
+
+---
 
 ## Brand Positioning
 
-**Primary identity:** Bilingual technology community of Pereira, Risaralda, Colombia — with international presence.
+**Primary identity:** the social-impact ecosystem — a community of professionals,
+organizations and volunteers who make help visible and accountable.
 
-Corag is positioned as the **community of builders** for the Eje Cafetero region: a place where developers, designers, founders, students, and curious people meet to learn together, present what they're working on, and ship things in public. It is intentionally bilingual (Spanish and English) so that the work that happens in Pereira is legible to the rest of the world from day one.
+> **Tenemos coraje para servir y transformar vidas.**
 
-**Value propositions (one per audience):**
+The name comes from **coraje**. The heart replacing the `o` in the wordmark
+carries **amor**. The official brand manual states the mark transmits *coraje,
+innovación y amor*.
 
-- **For local builders:** A safe, friendly stage to present your first talk, level up your craft, and find collaborators within walking distance.
-- **For students and career changers:** A bilingual learning ladder — meetups → Speaker School → talks → mentorship — that is free and merit-based.
-- **For experienced engineers:** A peer-level community to share advanced topics (AI agents, distributed systems, security, infrastructure) without leaving the city.
-- **For sponsors:** A high-signal community of pre-screened, English-speaking technical talent in Colombia.
-- **For international speakers and partners:** A trustworthy local host with a track record of professionally produced events and bilingual content.
+Corag exists because of a specific, ordinary failure:
+
+> Many people want to donate or get involved, but cannot find a way to do it that
+> is **confiable, cercana y significativa**.
+
+Not a shortage of generosity — a shortage of connection. Aid fragments across
+WhatsApp threads, one-off forms, spreadsheets and phone calls, and the people who
+could help never meet the people who need it.
+
+**Values:** Colaboración · Empatía · Confianza · Amor · Innovación social ·
+Transparencia.
+
+Full positioning, the six-beat argument and the approved lexicon:
+[`MESSAGING.md`](./MESSAGING.md).
+
+### Value propositions, by audience
+
+| Audience | What Corag offers them |
+|---|---|
+| Someone who needs help | A way to publish a real need and have it seen by people who can act on it |
+| Someone who wants to help | A concrete, verifiable place to put time, goods or money — and proof of where it went |
+| A contributor of money | Direct transfer to a named, verified responsable, with published evidence of use |
+| A leader / coordinator | Tools to organize a front, register deliveries and account for what was received |
+| An organization or foundation | A shared coordination layer instead of another isolated internal system |
+| A government or municipality | Territorial visibility of needs and offers, without building a platform |
+| A developer | A public API, an OpenAPI spec and an MCP server — build a client, not another silo |
+| An AI agent | A machine-readable surface, and a clear boundary about where writes belong |
+
+---
 
 ## Vision
 
-Make Pereira a recognized hub of the global technology conversation — a place where world-class engineering happens in Spanish and English at the same time, and where the next generation of Colombian builders learns the craft in public.
+> Convertirse en la plataforma global líder en innovación social, donde donar,
+> servir y transformar vidas sea una experiencia divertida, confiable y
+> profundamente humana.
 
-The website must:
+### Mission
 
-- Communicate, in 3 seconds, that Corag is a real, active, professional bilingual technology community of Pereira, Risaralda, Colombia.
-- Make every public-facing piece of community content (events, talks, slides, blog posts, channels, sponsors) discoverable, citable, and accessible to AI agents.
-- Render correctly under per-edition branding for Pereira Tech Day editions (each year ships its own brand kit).
-- Maintain Lighthouse 100 across Performance / Accessibility / Best Practices / SEO.
-- Be operable by a small staff of community organizers without engineering bottlenecks.
-- Be AI-agent-driven: every public page has a Markdown twin, every collection has a JSON or Markdown index, and the internal hub documents the running system for the agents that maintain it.
+> Conectar a fundaciones, gobiernos, emprendedores y personas a través de una
+> plataforma digital transparente y creativa, que incentive la solidaridad
+> mediante experiencias dinámicas, accesibles y con impacto real en las
+> comunidades.
+
+### What this site is for
+
+1. **Explain** what Corag is and how the model works.
+2. **Earn trust** by showing the mechanism, not by claiming trustworthiness.
+3. **Hand over** to `ayuda.corag.app` for every action.
+4. **Recruit** — developers, organizations, volunteers, leaders.
+5. **Stay legible to machines**, because Corag's thesis is interoperability.
+
+---
 
 ## Target Audience
 
-1. **Local builders and students** in Pereira and the Eje Cafetero — the primary in-person audience.
-2. **The Spanish-speaking LATAM tech community** — secondary audience that consumes content remotely.
-3. **International speakers, sponsors, and partner communities** — third audience that needs a polished English experience.
-4. **AI agents and answer engines** — explicit audience: the site is engineered for AEO from the ground up.
-5. **Press and recruiters** — looking for talent and stories from a credible bilingual source.
+**Primary** — people affected by an emergency, people who want to help, and the
+leaders who coordinate between them.
+
+**Secondary** — foundations, NGOs, companies and municipalities evaluating
+whether to join the network.
+
+**Tertiary** — developers, and the AI agents acting on someone's behalf.
+
+Corag operates from Colombia, in Spanish, with an English surface so the model is
+legible to organizations and contributors outside the country.
+
+---
 
 ## Information Architecture
 
-See [INFORMATION_ARCHITECTURE.md](INFORMATION_ARCHITECTURE.md) for the canonical URL surface, navigation, and content relationships. Top-level sections:
+Spanish is served at the root; English lives under `/en`.
 
-- **Home** (`/`, `/es/`) — value proposition, what Corag is, verticals, upcoming events, recent meetups, blog preview, sponsors strip, contact.
-- **About** (`/about`, `/es/sobre-nosotros`) — who we are, mission, history, team.
-- **Pereira Tech Days** (`/pereira-tech-days`, `/pereira-tech-days/{year}`) — flagship annual conference; per-edition brand kit.
-- **Meetups** (`/meetups`, `/en/meetups`) — monthly community gatherings; recap, photos, slides, talks.
-- **Events** (`/events`, `/es/eventos`) — special one-off events that aren't Tech Days or meetups.
-- **Verticals** (`/verticals/...`) — La Biblioteca del Mañana, AI channel, Speaker School, etc.
-- **Speaker School** (`/speaker-school`, `/es/escuela-de-ponentes`) — first-class section: how to become a Corag speaker.
-- **Blog** (`/blog`, `/es/blog`) — bilingual articles, series, tags, search.
-- **Slides** (`/slides`, `/es/slides`) — Reveal.js decks, external embeds, external links.
-- **Speakers** (`/speakers`) — bios + talks index.
-- **Contributors** (`/contributors`, `/es/contribuyentes`) — community contributors.
-- **Sponsors** (`/sponsors`, `/es/patrocinadores`) — current and historical sponsors.
-- **Channels** (`/channels`, `/es/canales`) — official communication channels.
-- **Call for Speakers** (`/call-for-speakers`, `/es/convocatoria-de-ponentes`) — always-open form.
-- **Contact** (`/contact`, `/es/contacto`).
+| Route | Purpose |
+|---|---|
+| `/` | The full argument: problem, bridge, evidence, product, invitation |
+| `/como-funciona` | The lifecycle end to end, plus the three flows (necesidad, ofrecimiento, aporte) |
+| `/transparencia` | Recibido vs. utilizado con evidencia · moderation · transferencia directa |
+| `/emergencias` | What an emergency is in Corag, frentes operativos, the live one |
+| `/lideres` | What a leader is, how they are validated, what they are accountable for |
+| `/desarrolladores` | REST API, OpenAPI 3.1, MCP, idempotency, rate limits |
+| `/aliados` | Organizations, foundations, companies, municipalities |
+| `/colaboradores` | The team building Corag, by area, with a recruiting CTA |
+| `/sobre-corag` | Mission, model, governance, the origin of the name |
+| `/contacto` | Institutional contact — **not** a channel for requesting aid |
+| `/blog` | Editorial: the model, the field, the technology |
+| `/privacidad` · `/conducta` · `/gobernanza` · `/contribuir` | Legal and community |
+
+Every route is registered in `src/middleware.ts`. A route missing from that
+allowlist works in dev and 404s in production.
+
+---
 
 ## Key Features
 
-### 1. Homepage
+### 1. Home
 
-**Purpose:** Pass the 3-second test and route visitors to the right section.
+Runs the full six-beat argument from `MESSAGING.md`. Leads with the coraje
+statement, names the problem, presents the bridge, shows the evidence mechanism,
+introduces Ayuda Directa, and invites. Every action routes to the application.
 
-**Sections (in order):**
+### 2. How it works
 
-- **Hero** — bilingual headline ("Pereira Tech Talks"), one-line value proposition, primary CTAs (Next meetup · Submit a talk).
-- **What we do** — three to four cards summarizing meetups, Pereira Tech Days, Speaker School, La Biblioteca del Mañana.
-- **Upcoming** — next event (countdown if within 30 days), or the most recent recap when nothing upcoming.
-- **Latest meetups** — three most recent recaps with date, theme, and photo.
-- **Verticals** — featured strip explaining the active programs.
-- **Blog preview** — three latest posts.
-- **Sponsors** — logos strip with link to `/sponsors`.
-- **Channels** — short description of communication channels with quick join.
-- **CTAs** — Submit a talk · Become a sponsor · Subscribe.
+The lifecycle — necesidad → publicación → geolocalización → matching →
+coordinación → entrega → evidencia → verificación → trazabilidad — plus the
+request/offer model with its urgency levels and categories.
 
-### 2. Pereira Tech Days
+### 3. Transparency
 
-**Purpose:** Showcase the flagship annual conference and preserve the history of past editions.
+The differentiator, given its own page. **Money received** and **money used with
+evidence** are two separate public figures. Evidence is moderated before
+publication. Contributions go by direct transfer to verified leader accounts
+rather than a central treasury, which reduces custodial risk and makes every
+contribution attributable.
 
-**Per-edition pages:** `/pereira-tech-days/{year}` — each edition can ship its own `brandKit` (palette, typography, hero assets) that overrides Corag defaults via `[data-edition-theme="{year}"]`. Speaker grid, schedule, sponsors of that edition, recap, and embedded slide decks.
+### 4. Emergencies
 
-### 3. Meetups
+An emergency is the top-level entity, and the platform is built for many — not
+only the current one. Large emergencies split into **frentes operativos**, each
+with its own needs, responsables, conversations, priorities and evidence.
 
-**Purpose:** Document every monthly meetup as a first-class artifact, separate from blog posts.
+### 5. Leaders
 
-Each meetup entry contains: theme, date, venue, attendance, recap, photos, talks (with embedded slide decks where available), speakers, sponsors of that meetup.
+What a leader is, how they are validated and approved, and what they are
+accountable for. This is the system's critical trust dependency and the page says
+so plainly.
 
-### 4. Speaker School
+### 6. Developers
 
-**Purpose:** Lower the barrier to giving a first talk in Pereira.
+The most strategically important page. Documents `POST /api/public/v1/help`, the
+OpenAPI 3.1 spec, the MCP server and its tools, `source` + `externalId`
+idempotency, rate limiting and geographic validation.
 
-A first-class vertical with curriculum, mentor list, application form, and a public list of graduates. A pipeline that funnels into the Call for Speakers.
+> **Muchas interfaces, una sola red de datos.** During an emergency, several
+> teams build parallel applications, each with its own database of needs — which
+> produces more fragmentation, not less. The API exists so a new client becomes a
+> client *of one network* rather than a new silo.
 
-### 5. La Biblioteca del Mañana
+**Everything on this page is verified against the live OpenAPI spec.** Nothing is
+documented that the spec does not confirm.
 
-**Purpose:** Corag's flagship learning vertical — the community's reading and study group around emerging technology.
+### 7. Allies and contributors
 
-### 6. AI Channel
+`/aliados` for organizations; `/colaboradores` for the people building Corag,
+grouped by area, with a recruiting call to action. Neither page ever lists an
+invented organization or person.
 
-**Purpose:** Specialized vertical for AI / agent / LLM topics — recurring meetups and a dedicated content stream.
+### 8. Blog
 
-### 7. Blog
+Editorial on the model, the field and the technology. Tags, series, authors,
+search, RSS, pagination and per-post agent-Markdown twins.
 
-**Purpose:** Bilingual long-form articles from community contributors.
+### 9. Contact
 
-- Content Collections with strict schema (`title`, `description`, `pubDate`, `heroImage`, `tags`, `series`, `seriesOrder`, `author`).
-- Date-prefixed filenames, English slugs (even for Spanish posts).
-- Language-sharded search index (`/api/posts-en.json`, `/api/posts-es.json`).
-- Series support with auto-rendered navigation.
-- Hero image layouts: banner, side-by-side, minimal, none.
+Institutional intakes only, relayed through Cloudflare Pages Functions to
+Dailybot Forms. Every form page states prominently, **above** the form, that
+requesting or offering aid happens in the application — a form here that quietly
+swallowed an emergency need would be a real harm, not a UX flaw.
 
-### 8. Slides
+### 10. Agent-readable surface
 
-**Purpose:** Library of every deck presented at Corag events.
+Every public page has a **complete** Markdown twin at its path plus `.md`, served
+from the original source Markdown rather than converted from rendered HTML. Plus
+`llms.txt`, `llms-full.txt` and `.well-known` descriptors.
 
-Three deck types in one collection (`internal` Reveal.js, `external-embed`, `external-link`). Decks are linked from talk and meetup pages. The Reveal.js theme inherits Corag brand tokens.
+Because Corag's thesis is interoperability, these files carry one instruction
+above all: **this host has no write API — publishing a need or a contribution
+happens at `ayuda.corag.app`.** An agent that POSTs a humanitarian need here
+reaches nobody.
 
-### 9. Call for Speakers
+### 11. Language support
 
-**Purpose:** Always-open submission funnel.
+Spanish is the primary language and is served at the root. English is served
+under `/en`. Both carry the same content — the same sources, the same structure —
+not merely correct content in each, and `pnpm run parity:check` enforces it.
 
-Public bilingual form, transparent review process documented in `docs/CALL_FOR_SPEAKERS.md`.
+Spanish is also the **source** language: copy is written in Spanish and
+translated to English, never the reverse. Diacritics are mandatory.
 
-### 10. Sponsors
-
-**Purpose:** Make sponsorship legible and transparent.
-
-Tier model documented in `docs/SPONSORSHIP.md`. Public list of current and historical sponsors, what each sponsorship paid for, what we delivered.
-
-### 11. Contributors
-
-**Purpose:** Recognize the people who make Corag happen.
-
-Public list of organizers, mentors, speakers, and recurring contributors.
-
-### 12. Channels
-
-**Purpose:** Make it obvious where the community talks.
-
-Inventory of official Corag channels (Discord, X, Instagram, LinkedIn, GitHub, YouTube, etc.) with a description of what flows through each.
-
-### 13. Agent-Friendly Markdown Endpoints
-
-**Purpose:** Make every page natively legible to AI agents and LLMs.
-
-- Native Markdown twins for every public HTML page (`.md` URLs).
-- Content negotiation via `Accept: text/markdown` header (Cloudflare middleware).
-- Discovery via `llms.txt`, `llms-full.txt`, `robots.txt`, `/.well-known/api-catalog`, `/.well-known/mcp/server-card.json`, `/auth.md`, origin-aware OAuth PRM/AS metadata, WebMCP tools, and DNS-AID `_agents` records.
-- See [Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md).
-
-### 14. Multilingual Support
-
-**Purpose:** Corag is bilingual by default.
-
-- Spanish at `/` (primary), English at `/en/`.
-- All slugs in English (filenames, series IDs, image directories) — even for Spanish content.
-- Spanish content must use proper diacritical marks (ñ, á, é, í, ó, ú, ü, interrogative accents).
-- All UI strings live in `src/lib/translations/{en,es}.ts` — no hardcoded user-visible text.
+---
 
 ## Design Principles
 
-### Visual Design
+### Visual
 
-1. **Brand-led, not personal-led** — the brand is Corag, not any individual.
-2. **Per-edition flexibility** — each Pereira Tech Day edition can ship its own design without breaking the global system.
-3. **Dark mode parity** — every page must work equally well in light and dark.
-4. **Mobile-first responsive** — most local visitors arrive on mobile.
-5. **Bilingual visual hierarchy** — copy length differs between EN and ES; layouts must accommodate both.
+- The official palette: wine `#78020E`, rosa `#FFC7D5`, rosa claro `#FFE2E9`,
+  and the decorative 50% wine `#BC727C`.
+- **Outfit** for display, **Poppins** for body — both self-hosted, no external
+  font request.
+- Warm rather than clinical. The rosa family is what keeps the brand from reading
+  severe.
+- Radius 12 / 18 / 28px; wine-tinted elevation, never neutral grey.
+- Dark mode flips the brand from wine to rosa, because wine on a dark ground
+  measures 1.52:1. Both are official colors.
 
-### Messaging Principles
+Full contract: [`DESIGN.md`](./DESIGN.md). Identity: [`BRAND_GUIDE.md`](./BRAND_GUIDE.md).
 
-1. **Plural voice** — "we", not "I". Corag speaks for the community.
-2. **Local pride, global posture** — proudly Pereira, professionally international.
-3. **Specific over abstract** — exact dates, exact venues, exact talk titles.
-4. **Anti-AI-slop** — see `docs/WRITING_VOICE_GUIDE.md` for the vocabulary blocklist and voice rules.
+### Messaging
 
-### Color Palette & Typography
+Five principles from the official manual: **cálido y humano · inspirador y
+movilizador · claro y sencillo · juvenil y fresco · esperanzador**.
 
-See **[Brand Guide](BRAND_GUIDE.md)** for the complete Corag v3.0.0 palette (deep teal/petroleum primary, amber accent, deep green-teal dark backgrounds, full state colors), typography (Atkinson Hyperlegible), and the per-edition brand kit contract.
+Two registers: this site is warm and hopeful; the application during a live
+emergency is operationally direct. Never mix them.
 
-**Quick reference:**
+**The coraje is ours, never aimed at the people receiving aid.**
 
-```css
-/* Light mode */
---color-corag-primary: #1F6F73;        /* Deep teal — CTAs, links, focus */
---color-corag-accent: #E8A33D;          /* Amber — large text, pills */
---color-corag-bg: #FAFBFB;
---color-corag-text: #0F2A2C;
+### Imagery
 
-/* Dark mode */
---color-corag-primary: #3FA8AD;
---color-corag-bg: #08191A;              /* Deep green-teal */
---color-corag-text: #E8F0EF;
-```
+Warm natural light, tight human crops (often hands), real and diverse people —
+**the moment of connection, never the moment of suffering**. No disaster imagery,
+no misery as leverage.
+
+---
 
 ## Technical Requirements
 
 ### Performance
 
-- **Static Site Generation** — pre-rendered HTML on Cloudflare Pages.
-- **Partial Hydration** — Svelte islands only where interactivity is needed; default to `client:visible` / `client:idle` over `client:load`.
-- **Optimized Assets** — WebP heroes, prebuild image pipeline (`pnpm run images:webp`), purged CSS via Tailwind 4.
-- **Lighthouse 100** — verified by `pnpm run lighthouse` and a CI budget.
+- Static generation. `.astro` by default; Svelte islands only where genuinely
+  interactive, with the laziest viable hydration.
+- Every image carries `width` and `height`. No layout shift.
+- Self-hosted fonts with `font-display: swap`.
+- Lighthouse: 100 across categories is the target, enforced by `pnpm run lighthouse`.
 
 ### SEO & AEO
 
-- **JSON-LD structured data** on every page (Organization, Event, BlogPosting, BreadcrumbList, …).
-- **Hreflang** alternate links for every bilingual page.
-- **Markdown endpoints** for every public page.
-- **OpenAPI** spec at `/openapi.json` describing public JSON endpoints.
-- **MCP server card** at `/.well-known/mcp/server-card.json`.
+- `NGO`/`Organization` JSON-LD, `BlogPosting`, `BreadcrumbList`.
+- Reciprocal hreflang across `es` / `en` / `x-default`.
+- Meta descriptions 130–160 characters, enforced by `pnpm run seo:check`.
+- GSC verification is **DNS-only** — never add a `google-site-verification` tag.
 
 ### Accessibility
 
-- **WCAG 2.1 AA** baseline; AAA where possible (text on `--corag-bg`).
-- Approved text colors only (`text-gray-600 dark:text-gray-300` or `text-corag-text-secondary`); no `text-gray-400/500`.
-- Image dimensions on every `<img>`.
-- Disclosure pattern for nav dropdowns (not `role="menu"`).
+- WCAG AA: 4.5:1 body, 3:1 large text and meaningful UI boundaries.
+- Every token's contrast is measured, not estimated.
+- Keyboard operable throughout, with visible focus.
+- `prefers-reduced-motion` honored by every non-essential animation.
 
-### Browser Support
+### Privacy
 
-- Modern browsers (Chrome, Firefox, Safari, Edge) — current and previous major version.
-- Mobile browsers (iOS Safari, Chrome Mobile).
-- No IE11 support.
+This site collects only what a contact form submission carries. No accounts, no
+personal records, no aid data. Corag's audience may include people in vulnerable
+situations, so no PII reaches logs.
+
+---
 
 ## User Flows
 
-### Visitor → Next Meetup
+### Someone who needs help
 
-```
-Home
- └── Upcoming card
-       └── Meetup detail
-             ├── RSVP / channel link
-             ├── Speakers and talks
-             └── Slide decks (when available)
-```
+1. Arrives at `/` — usually from a share, not a search.
+2. The primary action is unmistakable and points at the application.
+3. → `ayuda.corag.app`, where the need is published, geolocated and matched.
 
-### Visitor → Submit a Talk
+> This site never collects a need. Every path leads to the application.
 
-```
-Home / Speakers / Speaker School
- └── Call for Speakers
-       ├── Bilingual form
-       └── docs/CALL_FOR_SPEAKERS.md (linked)
-```
+### Someone who wants to contribute
 
-### Pereira Tech Day visitor
+1. `/` → `/transparencia` — how do I know it arrives?
+2. Sees the mechanism: two numbers, named responsables, moderated evidence.
+3. → `ayuda.corag.app/aportar`.
 
-```
-/pereira-tech-days
- ├── Latest edition (per-edition theme active)
- │     ├── Speakers
- │     ├── Schedule
- │     ├── Sponsors of that edition
- │     └── Recap / embedded decks
- └── Archive — every past edition with its own theme
-```
+### An organization evaluating Corag
 
-### Agent / LLM crawler
+1. `/sobre-corag` → `/como-funciona` → `/transparencia`.
+2. `/aliados` for how to join.
+3. `/contacto` for an institutional conversation.
 
-```
-/llms.txt → list of canonical URLs
- ├── /openapi.json → JSON endpoints
- ├── /.well-known/mcp/server-card.json
- └── /<page>.md → Markdown twin of each page
-```
+### A developer
+
+1. `/desarrolladores` — the problem, the API, the quickstart.
+2. Fetches the OpenAPI spec from the application host.
+3. Builds a client that syncs with Corag instead of starting a new database.
+
+### An AI agent
+
+1. Reads `/llms.txt` — learns immediately that this host has no write API.
+2. Follows the pointer to the application's API and MCP server.
+3. Reads any page's `.md` twin for complete content.
+
+---
 
 ## Content Strategy
 
-### Tag Taxonomy
+### Editorial standards
 
-Three-tier taxonomy (primary / secondary / subtopic) defined in `src/content/tags/*.md`. See [docs/features/BLOG_POSTS.md](features/BLOG_POSTS.md). Max 5 tags per post. Never auto-create tags — propose with `/audit-taxonomy` and let a human approve.
+- Spanish first, English as a real translation.
+- Every claim must be one the site can stand behind. "Verificado" and "con
+  evidencia" mean specific things.
+- Never publish a live figure this static site cannot verify — link to the
+  application instead.
+- No placeholder content, ever.
 
-### Content Cadence
+### Tag taxonomy
 
-- **Meetups:** monthly recaps published within 7 days of the event.
-- **Pereira Tech Day:** annual; per-edition microsite published 4+ weeks before the event, recap within 30 days.
-- **Blog posts:** opportunistic, driven by community contributors.
-- **Slide decks:** uploaded the day of (or before) the talk.
+Three tiers (primary / secondary / subtopic), max five tags per post, at least
+one primary. Tags are never created without approval — propose with
+`/audit-taxonomy`.
 
-### Editorial Standards
-
-- Every published post passes the `/audit-post` skill before merging.
-- Every series passes `/audit-series`.
-- Spanish content always carries proper orthography (validated by automated grep in CI).
-- No placeholder content in any merged post.
-
-## Future Enhancements
-
-1. **Dedicated mobile app** for event check-in and live polls.
-2. **Talk video archive** (currently external-link only).
-3. **Mentor matching** for Speaker School graduates.
-4. **Sponsor self-service portal** for logo updates and reporting.
-5. **Multi-edition theme runtime improvements** — preview theme switcher in the internal hub.
-6. **Additional languages** — Portuguese is the natural next step given the LATAM scope.
+---
 
 ## Success Metrics
 
-### Brand Effectiveness
+These measure **the website**, not the aid. This repo cannot measure whether help
+arrived; the application does that, and conflating the two would be exactly the
+overclaiming the brand guide forbids.
 
-- **3-second test:** Visitors immediately understand "Corag is a real, professional bilingual technology community of Pereira, Colombia, and there is something happening soon."
-- **Internal hub completeness:** every page renders correctly in light and dark; every brand decision has a Brand Book entry.
+| Metric | Why it matters |
+|---|---|
+| Handoff rate to `ayuda.corag.app` | The site's actual job |
+| `/desarrolladores` → integrations started | The interoperability thesis working |
+| `/colaboradores` → contributors joined | Recruiting |
+| Institutional contacts from `/aliados` | Organizations entering the network |
+| Lighthouse 100 across categories | The site loads for people on bad connections |
+| `md:check`, `lang:check`, `seo:check`, `parity:check` all clean | The agent and language surfaces stay honest |
+| Zero placeholder content in production | Basic integrity |
 
-### Community Engagement
+---
 
-- Monthly meetup attendance.
-- Number of new speakers per quarter.
-- Speaker School completion rate.
-- Cross-language engagement ratio (EN vs ES sessions).
+## Future Enhancements
 
-### Technical Performance
-
-- Lighthouse 100 across all four scores on the homepage and a representative blog post.
-- Build time under 60 seconds.
-- Zero `xergioalex` references in production source.
-
-### Content Health
-
-- Blog parity (every post EN+ES).
-- Meetup recap timeliness (within 7 days).
-- Slide deck attachment rate (every talk eventually gets a deck).
-
-## Constraints
-
-### Technical
-
-- **Static hosting** — Cloudflare Pages, no server runtime.
-- **Build time** — must stay reasonable as the content base grows.
-- **Bundle size** — minimize JavaScript payload to protect Lighthouse.
-
-### Content
-
-- **Language** — code, comments, and internal docs in English; user-facing content bilingual.
-- **Maintenance** — small staff of volunteer organizers; AI agents must be able to perform routine maintenance.
-
-## Deployment
-
-### Hosting
-
-- **Platform:** Cloudflare Pages.
-- **Domain:** `pereiratechtalks.org`.
-- **SSL:** Cloudflare-issued.
-
-### Process
-
-1. Build with `pnpm run build`.
-2. Output to `dist/`.
-3. Cloudflare Pages serves from `dist/`.
-4. Internal pages (`/internal/*`) are excluded from production via post-build deletion, sitemap filter, and `noindex` meta — verified by CI.
-
-## Related Documentation
-
-- [Information Architecture](INFORMATION_ARCHITECTURE.md) — Canonical URL surface and routing.
-- [Brand Guide](BRAND_GUIDE.md) — Corag brand contract.
-- [Architecture](ARCHITECTURE.md) — Technical implementation.
-- [Development Commands](DEVELOPMENT_COMMANDS.md) — Build scripts.
-- [Standards](STANDARDS.md) — Coding conventions.
-- [README](../README.md) — Project overview and quick start.
+- A true vector logo master, replacing the raster-wrapped `favicon.svg`.
+- Live figures pulled from the application's public API at runtime, degrading
+  gracefully when it is unreachable — never baked into the build.
+- Case studies once there are completed emergencies with published evidence.
+- An integrations directory listing the clients built on the API.

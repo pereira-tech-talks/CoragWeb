@@ -231,6 +231,23 @@ proposition writes from that document.
 The one rule worth repeating here: **the coraje is ours, never aimed at the
 people receiving aid.**
 
+### Never describe Corag as "bilingual"
+
+Corag is **a community of professionals, organizations and volunteers** — that is
+the identity. The site being available in Spanish and English is a *capability*,
+not a positioning claim, and calling Corag "a bilingual community" makes a
+language accident sound like the point.
+
+| ❌ | ✅ |
+|---|---|
+| "the bilingual community of…" | "a community of professionals and organizations" |
+| "our bilingual platform" | "available in Spanish and English" |
+| "intentionally bilingual" | *(drop it — say what the site does, not what label it wears)* |
+
+State the language support where it is useful — a technical doc, an i18n guide, a
+footer switcher — as the plain fact that Spanish is served at `/` and English at
+`/en`. Never as an adjective describing who Corag is.
+
 ### Spanish is the source language
 
 Spanish is written first and English is a real translation of it — never the

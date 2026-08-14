@@ -43,7 +43,7 @@ content/
 
 The date prefix uses `pubDate` and is stripped from URLs (clean slugs: `/blog/my-post/`).
 
-**Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**.
+**Language requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**.
 
 ### Schema
 

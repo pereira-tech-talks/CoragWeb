@@ -45,10 +45,10 @@ const mockPage = {
   id: 'en/about',
   data: {
     title: 'About — Pereira Tech Talks',
-    description: 'The bilingual technology community of Pereira, Colombia.',
+    description: 'El ecosistema de impacto social.',
     lastUpdated: new Date('2026-03-09'),
   },
-  body: '## Who We Are\n\nWe are Pereira Tech Talks, a bilingual community of builders.',
+  body: '## Who We Are\n\nWe are Corag, a community of professionals and volunteers.',
 };
 
 const mockPageNoLastUpdated = {
@@ -226,7 +226,7 @@ describe('serializePageToAgentMarkdown', () => {
 
     expect(result).toContain('# About — Pereira Tech Talks');
     expect(result).toContain(
-      '> The bilingual technology community of Pereira, Colombia.'
+      '> El ecosistema de impacto social.'
     );
     expect(result).toContain('Language: en');
     expect(result).toContain('Canonical: https://corag.app/en/about');

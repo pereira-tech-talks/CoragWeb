@@ -34,7 +34,7 @@ export const GET: APIRoute = async () => {
   const markdown = serializeGenericToMarkdown({
     title: 'Team — Pereira Tech Talks',
     description:
-      'Active organizing team of Pereira Tech Talks plus alumni and past organizers. Bilingual directory at /en/contributors.',
+      'The people building Corag, by area, plus those who contributed before. Directory at /en/contributors.',
     lang,
     canonical: `${SITE_URL}/en/contributors`,
     metadata: [

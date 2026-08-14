@@ -14,7 +14,7 @@ real opportunities to help, transparently and traceably.
 
 | Surface | What it is | Repository |
 |---|---|---|
-| **`corag.app`** | The institutional site: what Corag is, how the model works, why it can be trusted, how to integrate with it. Static, bilingual. | **this repo** |
+| **`corag.app`** | The institutional site: what Corag is, how the model works, why it can be trusted, how to integrate with it. Static, in Spanish and English. | **this repo** |
 | **`ayuda.corag.app`** | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | separate |
 
 Every *transactional* action — publishing a need, offering help, contributing,
@@ -85,11 +85,11 @@ node scripts/build-brand-assets.mjs
 
 ---
 
-## Bilingual by construction
+## Language support
 
 Spanish is the **primary** language and is served at the root (`/`). English is
-first-class and served under `/en`. Both carry the same content — not merely
-correct content in each.
+served under `/en`. Both carry the same content — the same sources, the same
+structure — not merely correct content in each.
 
 Spanish is also the **source** language: copy is written in Spanish first and
 translated to English, never the reverse. Diacritics are mandatory.
@@ -144,7 +144,7 @@ Wrappers never import `MainLayout`, and `lang` is always a string literal.
 | [`docs/DESIGN.md`](./docs/DESIGN.md) | The UI contract — tokens, patterns, anti-patterns |
 | [`docs/PRODUCT_SPEC.md`](./docs/PRODUCT_SPEC.md) | Vision, audiences, the model |
 | [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | How the site is put together |
-| [`docs/I18N_GUIDE.md`](./docs/I18N_GUIDE.md) | Bilingual conventions |
+| [`docs/I18N_GUIDE.md`](./docs/I18N_GUIDE.md) | Spanish/English conventions |
 | [`docs/TESTING_GUIDE.md`](./docs/TESTING_GUIDE.md) | Test setup and conventions |
 | [`docs/SECURITY.md`](./docs/SECURITY.md) | Threat model |
 

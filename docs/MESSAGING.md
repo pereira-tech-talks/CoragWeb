@@ -173,6 +173,12 @@ Beyond the blocklist in [`BRAND_GUIDE.md`](./BRAND_GUIDE.md) §5:
   mechanism instead of the sentiment, use the mechanism.
 - **Hero framing.** People who receive aid are neighbours, not the backdrop for
   someone else's virtue. People who give are doing a normal human thing well.
+- **Calling Corag "bilingual."** The site is available in Spanish and English;
+  that is a capability, not an identity. Corag is a community of professionals,
+  organizations and volunteers. Describing it as "the bilingual community"
+  promotes a language accident into the positioning and displaces the actual
+  claim. State the language support as a plain fact where it is useful, never as
+  an adjective for who Corag is.
 - **Borrowing the app's emergency register for marketing copy.** *"Necesito
   ayuda"* is right in the app during an emergency and wrong on a landing page.
 
