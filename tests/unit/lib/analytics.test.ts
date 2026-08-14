@@ -8,9 +8,12 @@ import {
   resetOutboundTracking,
   resetScrollDepthBinding,
   sanitizeEventData,
+  setupOutboundTracking,
   shouldTrackScrollDepth,
   trackEvent,
+  trackEventWithContext,
   trackScrollDepth,
+  trackSearch,
 } from '@/lib/analytics';
 
 describe('analytics helpers', () => {
@@ -120,6 +123,133 @@ describe('analytics helpers', () => {
       expect(track).toHaveBeenCalledWith(EVENTS.CONTACT_FORM_SUBMIT, {
         reason: 'general',
       });
+    });
+
+    it('sends no payload at all when every key was PII', () => {
+      // `{}` would still be a payload. Undefined is the honest shape.
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackEvent(EVENTS.CONTACT_FORM_SUBMIT, {
+        email: 'a@example.com',
+        fullName: 'Ada Lovelace',
+      });
+
+      expect(track).toHaveBeenCalledWith(EVENTS.CONTACT_FORM_SUBMIT, undefined);
+    });
+  });
+
+  describe('trackEventWithContext', () => {
+    it('merges lang and section into the payload', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackEventWithContext(
+        EVENTS.BLOG_CARD_CLICK,
+        { slug: 'how-to-donate-safely-in-colombia' },
+        { lang: 'es', section: 'blog' }
+      );
+
+      expect(track).toHaveBeenCalledWith(EVENTS.BLOG_CARD_CLICK, {
+        lang: 'es',
+        section: 'blog',
+        slug: 'how-to-donate-safely-in-colombia',
+      });
+    });
+
+    it('strips PII from the merged payload too', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackEventWithContext(
+        EVENTS.CONTACT_FORM_SUBMIT,
+        { email: 'a@example.com' },
+        { lang: 'en', section: 'contact' }
+      );
+
+      expect(track).toHaveBeenCalledWith(EVENTS.CONTACT_FORM_SUBMIT, {
+        lang: 'en',
+        section: 'contact',
+      });
+    });
+  });
+
+  describe('trackSearch', () => {
+    it('debounces and drops a query under two characters', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackSearch('d', 0);
+      vi.advanceTimersByTime(1200);
+      expect(track).not.toHaveBeenCalled();
+    });
+
+    it('fires once for the last query in a burst of keystrokes', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackSearch('do', 9);
+      trackSearch('don', 6);
+      trackSearch('donar', 3);
+      vi.advanceTimersByTime(1200);
+
+      expect(track).toHaveBeenCalledTimes(1);
+      expect(track).toHaveBeenCalledWith(EVENTS.BLOG_SEARCH, {
+        query: 'donar',
+        results: 3,
+      });
+    });
+
+    it('truncates a very long query before it leaves the browser', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+
+      trackSearch('x'.repeat(400), 0);
+      vi.advanceTimersByTime(1200);
+
+      const [, payload] = track.mock.calls[0] as [
+        string,
+        { query: string; results: number },
+      ];
+      expect(payload.query).toHaveLength(100);
+    });
+  });
+
+  describe('setupOutboundTracking', () => {
+    const clickOn = (html: string) => {
+      document.body.innerHTML = html;
+      const anchor = document.querySelector('a');
+      anchor?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    };
+
+    it('reports the host and path of an external link, never the query', () => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+      setupOutboundTracking();
+
+      clickOn('<a href="https://ayuda.corag.app/aportar?ref=secret">Go</a>');
+
+      expect(track).toHaveBeenCalledWith(EVENTS.OUTBOUND_CLICK, {
+        url: 'ayuda.corag.app/aportar',
+      });
+    });
+
+    it.each([
+      ['<a href="/blog">Internal</a>', 'a root-relative path'],
+      ['<a href="#top">Anchor</a>', 'a fragment'],
+      ['<a href="mailto:a@example.org">Mail</a>', 'a mailto'],
+      [
+        '<a href="https://example.org" data-umami-event="x">Tagged</a>',
+        'a link that tracks itself',
+      ],
+    ])('ignores %s (%s)', (html) => {
+      const track = vi.fn();
+      (window as { umami?: { track: typeof track } }).umami = { track };
+      setupOutboundTracking();
+
+      clickOn(html);
+
+      expect(track).not.toHaveBeenCalled();
     });
   });
 

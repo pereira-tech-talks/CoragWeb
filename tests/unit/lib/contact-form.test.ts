@@ -148,6 +148,62 @@ describe('contact-form', () => {
     expect(identifiedMissingEmail.errors.email).toBe('Required');
   });
 
+  it('rejects a conduct report too short to act on', () => {
+    // Twenty characters is the floor. "Something happened" gives the team
+    // nothing to review and nobody to follow up with.
+    const tooShort = validateConductReportForm(
+      { incidentDescription: 'Something happened', anonymous: true },
+      messages
+    );
+    expect(tooShort.valid).toBe(false);
+    expect(tooShort.errors.incidentDescription).toBe('Required');
+  });
+
+  it('still rejects a malformed email on an anonymous report', () => {
+    // Anonymity does not mean unvalidated: if the reporter typed an address
+    // wanting a reply, a silent drop is worse than an error.
+    const result = validateConductReportForm(
+      {
+        incidentDescription:
+          'Enough detail about a confidential incident for the team.',
+        anonymous: true,
+        email: 'not-an-email',
+      },
+      messages
+    );
+    expect(result.valid).toBe(false);
+    expect(result.errors.email).toBe('Invalid email');
+  });
+
+  it('accepts an anonymous report that supplies a valid contact address', () => {
+    const result = validateConductReportForm(
+      {
+        incidentDescription:
+          'Enough detail about a confidential incident for the team.',
+        anonymous: true,
+        email: 'reporter@example.com',
+      },
+      messages
+    );
+    expect(result.valid).toBe(true);
+  });
+
+  it('fails a conduct report whose honeypot is filled, without saying why', () => {
+    // A bot gets `valid: false` and no field error to iterate against.
+    const result = validateConductReportForm(
+      {
+        incidentDescription:
+          'Enough detail about a confidential incident for the team.',
+        anonymous: true,
+        website: 'http://spam.example',
+      },
+      messages
+    );
+    expect(result.valid).toBe(false);
+    expect(result.errors.incidentDescription).toBe('');
+    expect(result.errors.email).toBe('');
+  });
+
   it('picks localized ack copy and rate-limits', () => {
     const es = pickAckCopy('organization', 'es');
     expect(es.subject).toContain('Corag');
