@@ -11,8 +11,12 @@ Complete reference for all npm scripts and CLI commands available in Corag.
 | `pnpm run biome:check` | Check code quality |
 | `pnpm run biome:fix` | Auto-fix code issues |
 | `pnpm run astro:check` | TypeScript type checking |
-| `pnpm run md:check` | Verify every HTML page has a matching `.md` for agents |
-| `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
+| `pnpm run md:check` | Verify every HTML page has a **complete** `.md` twin |
+| `pnpm run md:check:strict` | Same; exits `1` on failure (CI gate) |
+| `pnpm run lang:check[:strict]` | Spanish renders at `/`, English at `/en` |
+| `pnpm run seo:check[:strict]` | Per-URL metadata and structured data |
+| `pnpm run parity:check[:strict]` | The two languages carry the **same** content |
+| `pnpm run redirects:check[:strict]` | Every redirect resolves; no live page shadowed |
 
 ## Development
 
@@ -105,8 +109,14 @@ pnpm run astro:check
 ### Markdown-for-Agents Parity Check
 
 ```bash
-pnpm run md:check          # Report missing .md files
-pnpm run md:check:strict   # Same, but exits 1 on missing (for CI)
+pnpm run md:check              # Report incomplete or missing .md twins
+pnpm run md:check:strict       # Same, exits 1 on failure (CI gate)
+pnpm run lang:check:strict     # Language integrity per URL
+pnpm run seo:check:strict      # Metadata and structured data per URL
+pnpm run parity:check:strict   # ES/EN carry the same content
+pnpm run redirects:check:strict # No redirect breaks a live page
+
+# The last four all read `dist/`, so they need a build first.
 ```
 
 - Scans `dist/` for every `index.html` and checks it has a matching `.md` counterpart

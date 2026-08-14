@@ -152,10 +152,14 @@ Three families:
 3. **Blog archive** — 52 rules mapping the Spanish source slugs from the
    previous site onto their English equivalents.
 
-Two invariants, both checkable against `dist/`:
+Two invariants, enforced by `pnpm run redirects:check:strict` against `dist/`:
 
 - Every destination must resolve to a page that exists.
-- No live page may appear as a redirect **source**, or the rule shadows the page.
+- No live page may appear as a redirect **source**, or the rule shadows the page
+  and 301s it away from itself into a 404.
+
+Both were broken in the imported file, and neither is visible in a diff or a
+build — which is why the check exists rather than living in a checklist.
 
 ## Content relationships
 

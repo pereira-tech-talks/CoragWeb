@@ -151,6 +151,7 @@ pnpm run md:check:strict     # complete .md twin per page
 pnpm run lang:check:strict   # ES at /, EN at /en
 pnpm run seo:check:strict    # metadata and structured data
 pnpm run parity:check:strict # both languages carry the same content
+pnpm run redirects:check:strict # no redirect breaks a live page
 ```
 
 Full reference in [Development Commands](DEVELOPMENT_COMMANDS.md).

@@ -35,12 +35,14 @@ pnpm run md:check:strict      # every page has a complete .md twin
 pnpm run lang:check:strict    # Spanish at /, English at /en
 pnpm run seo:check:strict     # metadata and structured data
 pnpm run parity:check:strict  # both languages carry the same content
+pnpm run redirects:check:strict # no redirect breaks a live page
 ```
 
-The last four are not decoration. `parity:check` exists because a Spanish body
+The last five are not decoration. `parity:check` exists because a Spanish body
 can gain a paragraph its English sibling never gets while every other check
 stays green — which is how a previous version of this site ended up with 88 of
-94 pairs drifted.
+94 pairs drifted. `redirects:check` exists because a rule can 301 a live page
+away from itself into a 404, and nothing else in the toolchain notices.
 
 ## Conventions that matter
 

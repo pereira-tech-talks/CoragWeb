@@ -122,6 +122,32 @@ refactor: {brief description}
 - Build starts failing and root cause is unclear
 - Data flow significantly affected
 
+### Traps in a large-scale rename
+
+A rename above this skill's scope belongs in a plan, not here — but when one
+runs, three failures recur and none of them break the build.
+
+**An alias layer must be deleted in the same pass that renames its keys.** A
+codemod that renames `--color-old-*` to `--color-new-*` and also emits a
+compatibility layer will rewrite that layer into
+`--color-new-primary: var(--color-new-primary)`. Self-referential CSS is valid,
+resolves to nothing, and blanks every token on the site. Nothing errors.
+
+**A generic rule needs its exceptions declared before it.** Three tokens in one
+rename had no 1:1 counterpart; the generic rule mapped 114 utility classes onto
+names that did not exist. Order the rules most-specific first and verify the
+count of each specific rule fired.
+
+**A rename can be textually correct and semantically wrong.** Fifty-five
+components paired a brand background with `text-white`, which was fine until the
+brand foreground began flipping in dark mode. The rename was clean; the pairing
+was the bug. After a token rename, grep for the *pairs*, not only the names.
+
+**Clear the build cache before counting anything.** A stale
+`node_modules/.astro/data-store.json` reported 93 pages including deleted
+content, and inflated an occurrence count from 35 files to 121. Run
+`rm -rf .astro node_modules/.astro dist` before trusting a number.
+
 ## Definition of Done
 
 - [ ] Refactor goal achieved within scope

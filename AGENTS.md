@@ -295,6 +295,8 @@ pnpm run seo:check          # Per-URL SEO + structured-data audit
 pnpm run seo:check:strict   # Same; exits 1 on failure (CI gate)
 pnpm run parity:check       # ES and EN carry the SAME content
 pnpm run parity:check:strict # Same; exits 1 on failure (CI gate)
+pnpm run redirects:check    # Every redirect resolves; no live page shadowed
+pnpm run redirects:check:strict # Same; exits 1 on failure (CI gate)
 pnpm run search:budgets     # Search payload budgets
 pnpm run lighthouse         # Lighthouse audit
 pnpm run release            # Bump version and release commit
@@ -446,6 +448,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] `pnpm run lang:check` reports 0 flagged pages
 - [ ] `pnpm run seo:check` reports 0 flagged URLs
 - [ ] `pnpm run parity:check` reports 0 content-loss and 0 structural findings
+- [ ] `pnpm run redirects:check` reports 0 dead destinations and 0 shadowed pages
 - [ ] Dark mode works in new components
 - [ ] Content in both languages
 - [ ] Translation strings in both locale files
