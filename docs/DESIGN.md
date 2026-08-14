@@ -333,6 +333,42 @@ The Corag wordmark is `342 × 100` (3.4156:1) — see `BRAND_GUIDE.md`.
 
 ---
 
+### Homepage act system
+
+The home (`src/components/pages/HomePage.astro`) is built as five **acts**,
+each a full-bleed section with contained content. The binding conventions
+(established by PLAN_world_class_homepage; keep new home sections inside
+them):
+
+- **Type scale:** hero `text-4xl → sm:text-5xl → lg:text-6xl → xl:text-7xl`
+  (`font-display`, `tracking-tight`, `leading-[1.02]`); act titles
+  `text-3xl → sm:text-4xl → lg:text-5xl` at `leading-[1.08]`.
+- **Rhythm:** acts use `py-20 sm:py-24 lg:py-32`; title→content gap
+  `mt-12 lg:mt-16`.
+- **Hero fills the viewport exactly** at every breakpoint:
+  `min-h-[calc(100dvh-var(--corag-chrome-height))]` — the layout keeps that
+  variable synced to the sticky chrome. Keep hero content lean enough to fit
+  a 360×640 fold; its `:root` default must match the measured header height
+  or the hero shifts (CLS).
+- **Copy contract:** every user-visible home string lives in `HomeCopy`
+  (`src/lib/translations/types.ts` → both locales → both
+  `src/content/pages/{es,en}/index.md` twins, same commit).
+  `tests/unit/lib/home-copy.test.ts` pins non-emptiness, locale parallelism
+  and the evidence-act **no-amounts rule** — the evidence copy must never
+  contain a digit or currency sign.
+- **Scroll reveals:** add `data-reveal` (optionally
+  `style="--reveal-delay: 80ms"`) to a block; the deferred module in
+  `HomePage.astro` and the CSS in `global.css` do the rest. Never hide
+  content by default — the hidden state only exists under
+  `html[data-reveal-ready]`, which only JS sets, inside
+  `prefers-reduced-motion: no-preference`.
+- **Screenshots** of the application come only from
+  `scripts/capture-app-screens.mjs` (responsive WebP sets +
+  `public/images/home/app/CAPTURES.json` provenance). Re-capturing requires
+  the human personal-data review the script header describes, then
+  `--attest`. Device frames are CSS (browser bar / phone bezel), never baked
+  into images.
+
 ## 7. Anti-patterns
 
 | ❌ Don't | ✅ Do |

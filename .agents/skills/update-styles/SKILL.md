@@ -338,8 +338,8 @@ $CHANGES: Add new utility class for cards
 
 **Input:**
 ```
-$TARGET: src/components/home/HeroSection.astro
-$CHANGES: Scale heading text responsively and ensure dark mode support
+$TARGET: src/components/pages/HomePage.astro
+$CHANGES: Scale the hero heading responsively; colours must come from Corag tokens
 ```
 
 **Before:**
@@ -349,10 +349,14 @@ $CHANGES: Scale heading text responsively and ensure dark mode support
 
 **After:**
 ```html
-<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-           font-bold
-           text-gray-900 dark:text-gray-100">
+<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl
+           font-bold tracking-tight
+           text-corag-on-fill">
 ```
+
+> Note: never `text-gray-*` for text — the Corag token layer
+> (`text-corag`, `text-corag-secondary`, on-dark `text-corag-on-fill` /
+> `text-corag-rosa`) handles dark mode by itself. See `docs/DESIGN.md`.
 
 ### Example 4: Responsive Grid Layout
 
