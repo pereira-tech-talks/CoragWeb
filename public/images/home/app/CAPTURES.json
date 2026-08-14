@@ -1,0 +1,171 @@
+{
+  "generatedBy": "scripts/capture-app-screens.mjs",
+  "note": "Screenshots of the live application; the data they show is live app data at capture time. Re-run the script and the personal-data review together.",
+  "assets": [
+    {
+      "key": "app-home-desktop",
+      "source": "https://ayuda.corag.app/",
+      "capturedAt": "2026-08-14T11:23:48.085Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "deviceScaleFactor": 2,
+      "crop": null,
+      "files": [
+        {
+          "file": "app-home-desktop-640.webp",
+          "width": 640,
+          "bytes": 13276
+        },
+        {
+          "file": "app-home-desktop-960.webp",
+          "width": 960,
+          "bytes": 23344
+        },
+        {
+          "file": "app-home-desktop-1280.webp",
+          "width": 1280,
+          "bytes": 34304
+        },
+        {
+          "file": "app-home-desktop-1920.webp",
+          "width": 1920,
+          "bytes": 57044
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-home-desktop.png",
+      "personalDataPolicy": "Home shows aggregate counts only (solicitudes/urgentes/ofrecimientos, totals). No names or contacts may be visible.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    },
+    {
+      "key": "app-home-mobile",
+      "source": "https://ayuda.corag.app/",
+      "capturedAt": "2026-08-14T11:23:53.105Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 2,
+      "crop": null,
+      "files": [
+        {
+          "file": "app-home-mobile-390.webp",
+          "width": 390,
+          "bytes": 26392
+        },
+        {
+          "file": "app-home-mobile-780.webp",
+          "width": 780,
+          "bytes": 61136
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-home-mobile.png",
+      "personalDataPolicy": "Same aggregate-only home at mobile viewport. Also serves the hero mini-card (top-anchored CSS crop).",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    },
+    {
+      "key": "app-aportar-mobile",
+      "source": "https://ayuda.corag.app/aportar",
+      "capturedAt": "2026-08-14T11:23:57.800Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 2,
+      "crop": null,
+      "files": [
+        {
+          "file": "app-aportar-mobile-390.webp",
+          "width": 390,
+          "bytes": 17314
+        },
+        {
+          "file": "app-aportar-mobile-780.webp",
+          "width": 780,
+          "bytes": 38218
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-aportar-mobile.png",
+      "personalDataPolicy": "Contribution wizard step 1 — generic option cards only. No user data may be visible.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    },
+    {
+      "key": "app-map-desktop",
+      "source": "https://ayuda.corag.app/emergencias/eje-cafetero/puntos-de-ayuda",
+      "capturedAt": "2026-08-14T11:24:03.046Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "deviceScaleFactor": 2,
+      "crop": {
+        "left": 600,
+        "top": 210,
+        "width": 840,
+        "height": 690
+      },
+      "files": [
+        {
+          "file": "app-map-desktop-640.webp",
+          "width": 640,
+          "bytes": 53852
+        },
+        {
+          "file": "app-map-desktop-1280.webp",
+          "width": 1280,
+          "bytes": 119608
+        }
+      ],
+      "rawFrame": "tmp/app-captures/app-map-desktop.png",
+      "personalDataPolicy": "Request-list panel BLOCKED (individual situations). Only the aggregate cluster-map region ships; verify no popup or tooltip with a request is open in the frame.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    },
+    {
+      "key": "hero-caritas-45",
+      "source": "public/images/home/entrega-caritas.webp",
+      "capturedAt": "2026-08-14T11:24:03.233Z",
+      "crop": {
+        "left": 216,
+        "top": 0,
+        "width": 648,
+        "height": 810
+      },
+      "files": [
+        {
+          "file": "hero-caritas-45-480.webp",
+          "width": 480,
+          "bytes": 48578
+        },
+        {
+          "file": "hero-caritas-45-648.webp",
+          "width": 648,
+          "bytes": 80756
+        }
+      ],
+      "personalDataPolicy": "Existing admitted field photo (delivery scene, faces masked by mascarillas); crop changes framing only.",
+      "personalDataCheck": {
+        "status": "passed",
+        "method": "Every raw frame opened at full size and reviewed by a human for real names, phone numbers, exact addresses and identifiable faces before shipping.",
+        "date": "2026-08-14"
+      }
+    }
+  ],
+  "attestedAt": "2026-08-14"
+}

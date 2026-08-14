@@ -259,6 +259,25 @@ async function main() {
     )
   );
 
+  // ---- 4b. Home heart motif ---------------------------------------------
+  /*
+   * Decorative outline of the brand heart (the counter of the wordmark's `o`)
+   * for the homepage act backgrounds. Like favicon.svg, this is redrawn — the
+   * supplied brand package has no vector master to trace — matching the
+   * manual's rounded heart, tilted as in the wordmark. It renders with
+   * `currentColor` so the page's token layer decides the colour, and it is
+   * always decorative (aria-hidden / CSS background), never content.
+   */
+  await emit(
+    'images/home/motif-heart-outline.svg',
+    Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <path d="M256 434 C 150 352, 84 290, 84 210 C 84 148, 132 106, 190 106 C 226 106, 246 124, 256 142 C 266 124, 286 106, 322 106 C 380 106, 428 148, 428 210 C 428 290, 362 352, 256 434 Z"
+        stroke="currentColor" stroke-width="22" stroke-linecap="round"
+        stroke-linejoin="round" transform="rotate(-18 256 256)"/>
+</svg>
+`)
+  );
+
   // ---- 5. Open Graph cards ---------------------------------------------
   await emit(
     'images/og-default.jpg',
