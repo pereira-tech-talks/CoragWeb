@@ -144,6 +144,15 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
         type="font/woff2"
         crossorigin
       />
+      {/* Poppins 600 renders above the fold everywhere (eyebrows, buttons,
+          chips); a late swap of it shifts the hero (measured CLS 0.111). */}
+      <link
+        rel="preload"
+        href="/fonts/poppins-600-latin.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
     </>
   )
 }

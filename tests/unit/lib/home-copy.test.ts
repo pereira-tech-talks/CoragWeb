@@ -47,3 +47,42 @@ describe('home copy — evidence act (beat 4)', () => {
     expect(locales.en.pillars[1]?.title).toBe('Used with evidence');
   });
 });
+
+describe('home copy — full contract', () => {
+  for (const [lang, home] of Object.entries(locales)) {
+    it(`${lang}: every field is non-empty, recursively`, () => {
+      const walk = (value: unknown, path: string): void => {
+        if (typeof value === 'string') {
+          expect(
+            value.trim().length,
+            `${path} must not be empty`
+          ).toBeGreaterThan(0);
+        } else if (Array.isArray(value)) {
+          expect(
+            value.length,
+            `${path} must not be an empty array`
+          ).toBeGreaterThan(0);
+          value.forEach((item, i) => {
+            walk(item, `${path}[${i}]`);
+          });
+        } else if (value && typeof value === 'object') {
+          for (const [k, v] of Object.entries(value)) walk(v, `${path}.${k}`);
+        }
+      };
+      walk(home, `home(${lang})`);
+    });
+  }
+
+  it('keeps array structure parallel across locales', () => {
+    expect(locales.es.heroChips.length).toBe(locales.en.heroChips.length);
+    expect(locales.es.problemFragments.length).toBe(
+      locales.en.problemFragments.length
+    );
+    expect(locales.es.howSteps.length).toBe(locales.en.howSteps.length);
+  });
+
+  it('carries three hero chips and the canonical five pipeline steps', () => {
+    expect(locales.es.heroChips).toHaveLength(3);
+    expect(locales.es.howSteps).toHaveLength(5);
+  });
+});
