@@ -97,6 +97,8 @@ export interface HomeCopy {
   howBody: string;
   howSteps: HomeStep[];
   howCta: string;
+  /** Accessible label for the five-step pipeline list. */
+  howStepsAria: string;
 
   // Beat 4 — evidence
   trustEyebrow: string;

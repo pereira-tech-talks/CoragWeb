@@ -14,7 +14,7 @@ export const es: SiteTranslations = {
     lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.',
     ctaPrimary: 'Quiero ayudar',
     ctaSecondary: 'Cómo funciona',
-    heroChips: ['Se publica', 'Se coordina', 'Queda la evidencia'],
+    heroChips: ['Se publica', 'Se entrega', 'Queda la evidencia'],
     heroAppCardAlt:
       'Pantalla de la aplicación Ayuda Directa en un teléfono, con la emergencia de mayor prioridad',
 
@@ -38,22 +38,27 @@ export const es: SiteTranslations = {
     howSteps: [
       {
         title: 'Se publica',
-        body: 'Una persona o comunidad describe qué necesita, dónde y con qué urgencia.',
+        body: 'Una persona o comunidad registra qué necesita, dónde y con qué urgencia. Queda visible para la red, no enterrada en un chat.',
       },
       {
-        title: 'Se encuentra',
-        body: 'Quien puede ayudar la ve en el mapa, filtrada por cercanía y por tipo de ayuda.',
+        title: 'Un responsable la toma',
+        body: 'Alguien con nombre, identidad validada y vínculo comprobado con la zona asume la entrega.',
       },
       {
-        title: 'Se coordina',
-        body: 'Un responsable con nombre organiza la entrega, muchas veces dentro de un frente de trabajo.',
+        title: 'Alguien aporta',
+        body: 'El aporte va por transferencia directa a la cuenta verificada del responsable, sin intermediarios.',
+      },
+      {
+        title: 'Se entrega',
+        body: 'El responsable compra, transporta y entrega, y registra qué se entregó, a cuántas personas y cuándo.',
       },
       {
         title: 'Queda la evidencia',
-        body: 'Se sube el soporte, se revisa, y solo entonces se publica.',
+        body: 'Fotos y soportes pasan revisión, y solo entonces se publican. Hasta ese momento el aporte cuenta como recibido, no como utilizado.',
       },
     ],
     howCta: 'Ver el recorrido completo',
+    howStepsAria: 'Los cinco pasos del recorrido de una ayuda',
 
     trustEyebrow: 'Transparencia',
     trustTitle:

@@ -161,37 +161,45 @@ const btnSecondary =
 
   {/* ── Beats 1 + 2 — the intent exists, the connection fails ─────────── */}
   <section class="bg-corag-bg">
-    <div class="main-container py-16 sm:py-24">
-      <div class="max-w-3xl">
-        <p
-          class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
+    <div class="main-container py-20 sm:py-24 lg:py-32">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-5">
+          <div class="lg:sticky lg:top-24">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
+            >
+              {h.problemEyebrow}
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-bold leading-[1.08] tracking-tight text-corag sm:text-4xl lg:text-5xl"
+            >
+              {h.problemTitle}
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-corag-secondary">
+              {h.problemBody}
+            </p>
+          </div>
+        </div>
+        {/* The fragmentation, shown: loose notes that never talk to each other */}
+        <ul
+          class="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:gap-5"
+          role="list"
         >
-          {h.problemEyebrow}
-        </p>
-        <h2
-          class="mt-3 font-display text-3xl font-semibold leading-tight text-corag sm:text-4xl"
-        >
-          {h.problemTitle}
-        </h2>
-        <p class="mt-5 text-lg leading-relaxed text-corag-secondary">
-          {h.problemBody}
-        </p>
+          {
+            h.problemFragments.map((fragment) => (
+              <li class="problem-note w-fit rounded-[18px] border border-dashed border-corag-border bg-corag-bg-elevated px-6 py-4 font-display text-xl font-semibold text-corag-text-muted lg:text-2xl">
+                {fragment}
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <ul class="mt-10 flex flex-wrap gap-3" role="list">
-        {
-          h.problemFragments.map((fragment) => (
-            <li class="rounded-full border border-corag-border bg-corag-bg-elevated px-4 py-2 text-sm text-corag-text-muted">
-              {fragment}
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
   {/* ── Beat 3 expanded — the bridge ──────────────────────────────────── */}
   <section class="bg-corag-bg-brand">
-    <div class="main-container py-16 sm:py-24">
+    <div class="main-container py-20 sm:py-24 lg:py-32">
       <div class="max-w-3xl">
         <p
           class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
@@ -199,7 +207,7 @@ const btnSecondary =
           {h.howEyebrow}
         </p>
         <h2
-          class="mt-3 font-display text-3xl font-semibold leading-tight text-corag sm:text-4xl"
+          class="mt-3 font-display text-3xl font-bold leading-[1.08] tracking-tight text-corag sm:text-4xl lg:text-5xl"
         >
           {h.howTitle}
         </h2>
@@ -207,25 +215,47 @@ const btnSecondary =
           {h.howBody}
         </p>
       </div>
-      <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      <ol
+        class="pipeline mt-12 grid gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-6"
+        role="list"
+        aria-label={h.howStepsAria}
+      >
         {
-          h.howSteps.map((step, index) => (
-            <li class="relative rounded-[18px] border border-corag-border bg-corag-bg-elevated p-6">
-              <span
-                class="font-display text-3xl font-bold text-corag-accent"
-                aria-hidden="true"
-              >
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 class="mt-3 font-display text-lg font-semibold text-corag">
-                {step.title}
-              </h3>
-              <p class="mt-2 text-corag-secondary">{step.body}</p>
-            </li>
-          ))
+          h.howSteps.map((step, index) => {
+            const isEvidence = index === h.howSteps.length - 1;
+            return (
+              <li class="pipeline-step relative rounded-[18px] border border-corag-border bg-corag-bg-elevated p-6 shadow-corag-sm transition-shadow hover:shadow-corag-lg">
+                {isEvidence ? (
+                  <span
+                    class="flex h-14 w-14 items-center justify-center rounded-full bg-corag-fill text-corag-on-fill"
+                    aria-hidden="true"
+                  >
+                    <svg class="h-7 w-7" viewBox="0 0 512 512">
+                      <path
+                        d="M256 434 C 150 352, 84 290, 84 210 C 84 148, 132 106, 190 106 C 226 106, 246 124, 256 142 C 266 124, 286 106, 322 106 C 380 106, 428 148, 428 210 C 428 290, 362 352, 256 434 Z"
+                        fill="currentColor"
+                        transform="rotate(-18 256 256)"
+                      />
+                    </svg>
+                  </span>
+                ) : (
+                  <span
+                    class="font-display text-6xl font-bold leading-none text-corag-primary opacity-15"
+                    aria-hidden="true"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                )}
+                <h3 class="mt-4 font-display text-lg font-semibold text-corag">
+                  {step.title}
+                </h3>
+                <p class="mt-2 text-corag-secondary">{step.body}</p>
+              </li>
+            );
+          })
         }
       </ol>
-      <div class="mt-10">
+      <div class="mt-10 lg:mt-14">
         <a href={routes.how} class={btnSecondary}>{h.howCta}</a>
       </div>
     </div>
@@ -394,6 +424,40 @@ const btnSecondary =
     }
     50% {
       transform: translate(-50%, 0.4rem);
+    }
+  }
+
+  /* Problem act — the fragments sit like loose notes at desktop widths. */
+  @media (min-width: 1024px) {
+    .problem-note:nth-child(odd) {
+      transform: rotate(-1.5deg);
+    }
+    .problem-note:nth-child(even) {
+      transform: rotate(1.25deg);
+      margin-left: 3.5rem;
+    }
+    .problem-note:nth-child(3n) {
+      margin-left: 7rem;
+    }
+  }
+
+  /* Pipeline act — connectors drawn in the grid gaps, token-coloured. */
+  .pipeline-step:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: -2.5rem; /* the vertical grid gap */
+    width: 2px;
+    height: 2.5rem;
+    background: var(--color-corag-primary);
+    opacity: 0.25;
+  }
+  @media (min-width: 1024px) {
+    .pipeline-step:not(:first-child)::before {
+      left: -1.5rem; /* the horizontal grid gap */
+      top: 3.25rem;
+      width: 1.5rem;
+      height: 2px;
     }
   }
 </style>

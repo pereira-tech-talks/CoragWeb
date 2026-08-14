@@ -14,7 +14,7 @@ export const en: SiteTranslations = {
     lead: 'We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind.',
     ctaPrimary: 'I want to help',
     ctaSecondary: 'How it works',
-    heroChips: ['It is published', 'It is coordinated', 'The evidence stays'],
+    heroChips: ['It is published', 'It is delivered', 'The evidence stays'],
     heroAppCardAlt:
       'Ayuda Directa application screen on a phone, showing the highest-priority emergency',
 
@@ -38,22 +38,27 @@ export const en: SiteTranslations = {
     howSteps: [
       {
         title: 'It is published',
-        body: 'A person or community describes what they need, where, and how urgently.',
+        body: 'A person or community records what they need, where, and how urgently. It stays visible to the network, not buried in a chat.',
       },
       {
-        title: 'It is found',
-        body: 'Someone who can help sees it on the map, filtered by proximity and by type of aid.',
+        title: 'A responsable takes it on',
+        body: 'Someone with a name, a validated identity and a verified connection to the area owns the delivery.',
       },
       {
-        title: 'It is coordinated',
-        body: 'A named person organizes the delivery, often inside an operational front.',
+        title: 'Someone contributes',
+        body: 'The contribution goes by direct transfer to the responsable’s verified account, with no intermediaries.',
+      },
+      {
+        title: 'It is delivered',
+        body: 'The responsable buys, transports and delivers — and records what was delivered, to how many people, and when.',
       },
       {
         title: 'The evidence stays',
-        body: 'Proof is uploaded, reviewed, and only then published.',
+        body: 'Photos and receipts go through review, and only then get published. Until then the contribution counts as received, not as used.',
       },
     ],
     howCta: 'See the whole path',
+    howStepsAria: 'The five steps of an aid’s journey',
 
     trustEyebrow: 'Transparency',
     trustTitle:

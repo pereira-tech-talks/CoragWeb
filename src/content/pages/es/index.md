@@ -26,14 +26,17 @@ formularios sueltos, hojas de cálculo, llamadas y listas que nadie actualiza.
 
 ## Un puente entre quien necesita y quien puede
 
-1. **Se publica** — una persona o comunidad describe qué necesita, dónde y con
-   qué urgencia.
-2. **Se encuentra** — quien puede ayudar la ve en el mapa, filtrada por cercanía
-   y por tipo de ayuda.
-3. **Se coordina** — un responsable con nombre organiza la entrega, muchas veces
-   dentro de un frente de trabajo.
-4. **Queda la evidencia** — se sube el soporte, se revisa, y solo entonces se
-   publica.
+1. **Se publica** — una persona o comunidad registra qué necesita, dónde y con
+   qué urgencia. Queda visible para la red, no enterrada en un chat.
+2. **Un responsable la toma** — alguien con nombre, identidad validada y vínculo
+   comprobado con la zona asume la entrega.
+3. **Alguien aporta** — el aporte va por transferencia directa a la cuenta
+   verificada del responsable, sin intermediarios.
+4. **Se entrega** — el responsable compra, transporta y entrega, y registra qué
+   se entregó, a cuántas personas y cuándo.
+5. **Queda la evidencia** — fotos y soportes pasan revisión, y solo entonces se
+   publican. Hasta ese momento el aporte cuenta como recibido, no como
+   utilizado.
 
 ---
 

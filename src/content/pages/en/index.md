@@ -26,13 +26,16 @@ forms, spreadsheets, phone calls and lists nobody updates.
 
 ## A bridge between the person who needs and the person who can
 
-1. **It is published** — a person or community describes what they need, where,
-   and how urgently.
-2. **It is found** — someone who can help sees it on the map, filtered by
-   proximity and type of aid.
-3. **It is coordinated** — a named person organizes the delivery, often inside an
-   operational front.
-4. **The evidence stays** — proof is uploaded, reviewed, and only then published.
+1. **It is published** — a person or community records what they need, where,
+   and how urgently. It stays visible to the network, not buried in a chat.
+2. **A responsable takes it on** — someone with a name, a validated identity and
+   a verified connection to the area owns the delivery.
+3. **Someone contributes** — the contribution goes by direct transfer to the
+   responsable's verified account, with no intermediaries.
+4. **It is delivered** — the responsable buys, transports and delivers, and
+   records what was delivered, to how many people, and when.
+5. **The evidence stays** — photos and receipts go through review, and only then
+   get published. Until then the contribution counts as received, not as used.
 
 ---
 
