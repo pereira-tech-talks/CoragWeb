@@ -1,420 +1,556 @@
 ---
 import ShowcaseLayout from '@/layouts/ShowcaseLayout.astro';
 
+/**
+ * Design System Showcase — Color.
+ *
+ * Complements the Brand Book (`/internal/brand/colors`), which documents the
+ * palette's *rules*. This page is the **live** view: every swatch renders with
+ * the real utility class, and the hex printed under it is read from
+ * `getComputedStyle` at runtime rather than hardcoded.
+ *
+ * That matters. The previous version of this page hardcoded hex strings, and
+ * they silently went stale the moment the palette changed — it was still
+ * printing the old teal/amber values while rendering the new ones. A page whose
+ * job is to verify colors must not be able to lie about them.
+ */
+
 interface Token {
   name: string;
   cssVar: string;
+  /** Utility that paints the swatch. */
   bgClass: string;
+  /** Utility that keeps the label readable on that swatch. */
   textOnClass: string;
-  lightHex: string;
-  darkHex: string;
   usage: string;
+  flag?: 'restricted' | 'no-flip' | 'interactive';
 }
 
-const ptTokens: Token[] = [
+interface Group {
+  title: string;
+  blurb: string;
+  tokens: Token[];
+}
+
+const groups: Group[] = [
   {
-    name: 'Primary',
-    cssVar: '--color-corag-primary',
-    bgClass: 'bg-corag-primary',
-    textOnClass: 'text-white',
-    lightHex: '#1F6F73',
-    darkHex: '#3FA8AD',
-    usage: 'CTAs, links, focus rings, brand color',
+    title: 'Brand — foreground',
+    blurb:
+      'Flips between themes: wine in light, rosa in dark. Text, icons, borders, focus rings.',
+    tokens: [
+      {
+        name: 'Primary',
+        cssVar: '--color-corag-primary',
+        bgClass: 'bg-corag-primary',
+        textOnClass: 'text-corag-on-fill dark:text-corag-bg-dark',
+        usage: 'The brand color in running context',
+      },
+      {
+        name: 'Primary strong',
+        cssVar: '--color-corag-primary-strong',
+        bgClass: 'bg-corag-primary-strong',
+        textOnClass: 'text-corag-on-fill dark:text-corag-bg-dark',
+        usage: 'Hover · active · pressed',
+      },
+      {
+        name: 'Primary soft',
+        cssVar: '--color-corag-primary-soft',
+        bgClass: 'bg-corag-primary-soft',
+        textOnClass: 'text-corag',
+        usage: 'Tinted surface behind primary content',
+      },
+      {
+        name: 'Primary light',
+        cssVar: '--color-corag-primary-light',
+        bgClass: 'bg-corag-primary-light',
+        textOnClass: 'text-corag-bg-dark',
+        usage: 'The dark-mode primary, available in both themes',
+        flag: 'no-flip',
+      },
+    ],
   },
   {
-    name: 'Primary strong',
-    cssVar: '--color-corag-primary-strong',
-    bgClass: 'bg-corag-primary-strong',
-    textOnClass: 'text-white',
-    lightHex: '#155054',
-    darkHex: '#5BBFC4',
-    usage: 'Hover, active, pressed states',
+    title: 'Brand — solid fill',
+    blurb:
+      'Never flips. This is the pair a filled button must use, so it stays readable when the theme changes.',
+    tokens: [
+      {
+        name: 'Fill',
+        cssVar: '--color-corag-fill',
+        bgClass: 'bg-corag-fill',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'Background of a filled brand surface',
+        flag: 'no-flip',
+      },
+      {
+        name: 'Fill strong',
+        cssVar: '--color-corag-fill-strong',
+        bgClass: 'bg-corag-fill-strong',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'Its hover state',
+        flag: 'no-flip',
+      },
+      {
+        name: 'On fill',
+        cssVar: '--color-corag-on-fill',
+        bgClass: 'bg-corag-on-fill',
+        textOnClass: 'text-corag-fill',
+        usage: 'The label on that surface — 9.54:1 in both themes',
+        flag: 'no-flip',
+      },
+    ],
   },
   {
-    name: 'Primary soft',
-    cssVar: '--color-corag-primary-soft',
-    bgClass: 'bg-corag-primary-soft',
-    textOnClass: 'text-corag-text',
-    lightHex: '#E1F2F1',
-    darkHex: '#0F2A2C',
-    usage: 'Tints, badges, subtle backgrounds',
+    title: 'Rosa & accent',
+    blurb:
+      'Rosa is an official brand color, not a tint of the wine. The accent is decorative only.',
+    tokens: [
+      {
+        name: 'Rosa',
+        cssVar: '--color-corag-rosa',
+        bgClass: 'bg-corag-rosa',
+        textOnClass: 'text-corag-fill',
+        usage: 'Warm brand surfaces and accents',
+        flag: 'no-flip',
+      },
+      {
+        name: 'Rosa soft',
+        cssVar: '--color-corag-rosa-soft',
+        bgClass: 'bg-corag-rosa-soft',
+        textOnClass: 'text-corag-fill',
+        usage: 'Lighter brand surface',
+        flag: 'no-flip',
+      },
+      {
+        name: 'Accent',
+        cssVar: '--color-corag-accent',
+        bgClass: 'bg-corag-accent',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'Hairlines, shapes, large display type — NEVER body text',
+        flag: 'restricted',
+      },
+      {
+        name: 'Accent strong',
+        cssVar: '--color-corag-accent-strong',
+        bgClass: 'bg-corag-accent-strong',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'The accent when it must carry readable text',
+      },
+    ],
   },
   {
-    name: 'Accent',
-    cssVar: '--color-corag-accent',
-    bgClass: 'bg-corag-accent',
-    textOnClass: 'text-corag-text',
-    lightHex: '#E8A33D',
-    darkHex: '#F4B95C',
-    usage: 'Warm complement, large text only — NOT body text',
+    title: 'Surfaces',
+    blurb: 'Page, elevated and brand-tinted grounds.',
+    tokens: [
+      {
+        name: 'Bg',
+        cssVar: '--color-corag-bg',
+        bgClass: 'bg-corag-bg',
+        textOnClass: 'text-corag',
+        usage: 'Page background',
+      },
+      {
+        name: 'Bg elevated',
+        cssVar: '--color-corag-bg-elevated',
+        bgClass: 'bg-corag-bg-elevated',
+        textOnClass: 'text-corag',
+        usage: 'Cards, panels, header',
+      },
+      {
+        name: 'Bg brand',
+        cssVar: '--color-corag-bg-brand',
+        bgClass: 'bg-corag-bg-brand',
+        textOnClass: 'text-corag',
+        usage: 'Brand-tinted section',
+      },
+      {
+        name: 'Bg brand strong',
+        cssVar: '--color-corag-bg-brand-strong',
+        bgClass: 'bg-corag-bg-brand-strong',
+        textOnClass: 'text-corag',
+        usage: 'Stronger brand section',
+      },
+      {
+        name: 'Bg dark',
+        cssVar: '--color-corag-bg-dark',
+        bgClass: 'bg-corag-bg-dark',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'Always-dark canvas — identical in both themes',
+        flag: 'no-flip',
+      },
+    ],
   },
   {
-    name: 'Accent strong',
-    cssVar: '--color-corag-accent-strong',
-    bgClass: 'bg-corag-accent-strong',
-    textOnClass: 'text-white',
-    lightHex: '#B87C1F',
-    darkHex: '#FFD27A',
-    usage: 'Pressed accent, high-contrast accent text',
+    title: 'Text',
+    blurb: 'Nothing lighter than “muted” is permitted for body copy.',
+    tokens: [
+      {
+        name: 'Text',
+        cssVar: '--color-corag-text',
+        bgClass: 'bg-corag-text',
+        textOnClass: 'text-corag-bg',
+        usage: 'Body copy',
+      },
+      {
+        name: 'Text secondary',
+        cssVar: '--color-corag-text-secondary',
+        bgClass: 'bg-corag-text-secondary',
+        textOnClass: 'text-corag-bg',
+        usage: 'Supporting copy',
+      },
+      {
+        name: 'Text muted',
+        cssVar: '--color-corag-text-muted',
+        bgClass: 'bg-corag-text-muted',
+        textOnClass: 'text-corag-bg',
+        usage: 'The lightest permitted body text',
+      },
+    ],
+  },
+  {
+    title: 'Borders',
+    blurb:
+      'Only “interactive” clears the 3:1 requirement for meaningful boundaries.',
+    tokens: [
+      {
+        name: 'Border',
+        cssVar: '--color-corag-border',
+        bgClass: 'bg-corag-border',
+        textOnClass: 'text-corag',
+        usage: 'Decorative hairlines, dividers',
+      },
+      {
+        name: 'Border strong',
+        cssVar: '--color-corag-border-strong',
+        bgClass: 'bg-corag-border-strong',
+        textOnClass: 'text-corag',
+        usage: 'Decorative emphasis',
+      },
+      {
+        name: 'Border interactive',
+        cssVar: '--color-corag-border-interactive',
+        bgClass: 'bg-corag-border-interactive',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'Inputs, selects, control edges',
+        flag: 'interactive',
+      },
+    ],
+  },
+  {
+    title: 'Status',
+    blurb:
+      'These sit on page or soft-chip grounds — never on the rosa brand surfaces.',
+    tokens: [
+      {
+        name: 'Success',
+        cssVar: '--color-corag-success',
+        bgClass: 'bg-corag-success',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'entregado · con evidencia · completado',
+      },
+      {
+        name: 'Success soft',
+        cssVar: '--color-corag-success-soft',
+        bgClass: 'bg-corag-success-soft',
+        textOnClass: 'text-corag-success',
+        usage: 'Its chip background',
+      },
+      {
+        name: 'Warning',
+        cssVar: '--color-corag-warning',
+        bgClass: 'bg-corag-warning',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'en organización · pendiente',
+      },
+      {
+        name: 'Warning soft',
+        cssVar: '--color-corag-warning-soft',
+        bgClass: 'bg-corag-warning-soft',
+        textOnClass: 'text-corag-warning',
+        usage: 'Its chip background',
+      },
+      {
+        name: 'Info',
+        cssVar: '--color-corag-info',
+        bgClass: 'bg-corag-info',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'informativo · neutral',
+      },
+      {
+        name: 'Info soft',
+        cssVar: '--color-corag-info-soft',
+        bgClass: 'bg-corag-info-soft',
+        textOnClass: 'text-corag-info',
+        usage: 'Its chip background',
+      },
+      {
+        name: 'Danger',
+        cssVar: '--color-corag-danger',
+        bgClass: 'bg-corag-danger',
+        textOnClass: 'text-corag-on-fill',
+        usage: 'urgente · error',
+      },
+      {
+        name: 'Danger soft',
+        cssVar: '--color-corag-danger-soft',
+        bgClass: 'bg-corag-danger-soft',
+        textOnClass: 'text-corag-danger',
+        usage: 'Its chip background',
+      },
+    ],
   },
 ];
 
-const surfaceTokens: Token[] = [
-  {
-    name: 'Background',
-    cssVar: '--color-corag-bg',
-    bgClass: 'bg-corag-bg',
-    textOnClass: 'text-corag-text',
-    lightHex: '#FAFBFB',
-    darkHex: '#08191A',
-    usage: 'Page background — deep green-teal in dark mode',
-  },
-  {
-    name: 'Bg elevated',
-    cssVar: '--color-corag-bg-elevated',
-    bgClass: 'bg-corag-bg-elevated',
-    textOnClass: 'text-corag-text',
-    lightHex: '#FFFFFF',
-    darkHex: '#0F2A2C',
-    usage: 'Cards, modals, elevated surfaces',
-  },
-  {
-    name: 'Border',
-    cssVar: '--color-corag-border',
-    bgClass: 'bg-corag-border',
-    textOnClass: 'text-corag-text',
-    lightHex: '#E2E8E8',
-    darkHex: '#1E3D40',
-    usage: 'Dividers, card outlines',
-  },
-  {
-    name: 'Border strong',
-    cssVar: '--color-corag-border-strong',
-    bgClass: 'bg-corag-border-strong',
-    textOnClass: 'text-corag-text',
-    lightHex: '#C9D4D5',
-    darkHex: '#2A5256',
-    usage: 'Emphasized dividers, focused outlines',
-  },
-];
+const flagLabel = {
+  restricted: 'decorative only',
+  'no-flip': 'no flip',
+  interactive: '3:1 boundary',
+} as const;
 
-const textTokens: Token[] = [
-  {
-    name: 'Text',
-    cssVar: '--color-corag-text',
-    bgClass: 'bg-corag-text',
-    textOnClass: 'text-corag-bg',
-    lightHex: '#0F2A2C',
-    darkHex: '#E8F0EF',
-    usage: 'Primary body, headings',
-  },
-  {
-    name: 'Text secondary',
-    cssVar: '--color-corag-text-secondary',
-    bgClass: 'bg-corag-text-secondary',
-    textOnClass: 'text-white',
-    lightHex: '#4A6164',
-    darkHex: '#B5C7C9',
-    usage: 'Secondary body, descriptions',
-  },
-  {
-    name: 'Text muted',
-    cssVar: '--color-corag-text-muted',
-    bgClass: 'bg-corag-text-muted',
-    textOnClass: 'text-white',
-    lightHex: '#6E8589',
-    darkHex: '#8FA3A6',
-    usage: 'Metadata, captions — large text only on bg',
-  },
-];
+const flagClass = {
+  restricted: 'bg-corag-danger-soft text-corag-danger',
+  'no-flip': 'bg-corag-info-soft text-corag-info',
+  interactive: 'bg-corag-success-soft text-corag-success',
+} as const;
 
-const stateTokens: Token[] = [
-  {
-    name: 'Success',
-    cssVar: '--color-corag-success',
-    bgClass: 'bg-corag-success',
-    textOnClass: 'text-white',
-    lightHex: '#2E8757',
-    darkHex: '#4FB07F',
-    usage: 'Confirmation, positive feedback',
-  },
-  {
-    name: 'Warning',
-    cssVar: '--color-corag-warning',
-    bgClass: 'bg-corag-warning',
-    textOnClass: 'text-white',
-    lightHex: '#C68417',
-    darkHex: '#E2A848',
-    usage: 'Caution, pending state',
-  },
-  {
-    name: 'Danger',
-    cssVar: '--color-corag-danger',
-    bgClass: 'bg-corag-danger',
-    textOnClass: 'text-white',
-    lightHex: '#B83A3A',
-    darkHex: '#E0635F',
-    usage: 'Errors, destructive actions',
-  },
-  {
-    name: 'Info',
-    cssVar: '--color-corag-info',
-    bgClass: 'bg-corag-info',
-    textOnClass: 'text-white',
-    lightHex: '#1F6F73',
-    darkHex: '#3FA8AD',
-    usage: 'Informational (alias of primary)',
-  },
-];
-
-const approvedPairings = [
-  {
-    context: 'Primary text on bg',
-    classes: 'text-corag-text bg-corag-bg',
-    ratio: 'Light ~16.5:1 · Dark ~14:1',
-    status: 'AAA',
-  },
-  {
-    context: 'Secondary text on bg',
-    classes: 'text-corag-text-secondary bg-corag-bg',
-    ratio: 'Light ~6.8:1 · Dark ~9:1',
-    status: 'AA',
-  },
-  {
-    context: 'Muted text on bg',
-    classes: 'text-corag-text-muted bg-corag-bg',
-    ratio: 'Light ~4.0:1 · Dark ~5.5:1',
-    status: 'AA Large only',
-  },
-  {
-    context: 'Primary on bg',
-    classes: 'text-corag-primary bg-corag-bg',
-    ratio: 'Light ~5.5:1 · Dark ~7.5:1',
-    status: 'AA',
-  },
-  {
-    context: 'White on primary',
-    classes: 'text-corag-on-fill bg-corag-fill',
-    ratio: 'Light ~5.0:1',
-    status: 'AA',
-  },
-];
-
-const forbiddenPairings = [
-  {
-    classes: 'text-corag-accent bg-corag-bg',
-    reason:
-      'Light ~2.4:1 — fails WCAG AA. Reserve accent for large text, icons, or pills with alternate background.',
-  },
-  {
-    classes: 'text-gray-400 / text-gray-500',
-    reason:
-      'Fails WCAG AA on white. Use text-corag-text-secondary or text-gray-600 instead.',
-  },
-  {
-    classes: 'dark:text-gray-400 / dark:text-gray-500',
-    reason:
-      'Fails WCAG AA on dark canvas. Use dark:text-corag-text-secondary or dark:text-gray-300 instead.',
-  },
-];
-
-const allGroups = [
-  { title: 'Brand', tokens: ptTokens },
-  { title: 'Surfaces', tokens: surfaceTokens },
-  { title: 'Text', tokens: textTokens },
-  { title: 'State', tokens: stateTokens },
-];
+const totalTokens = groups.reduce((n, g) => n + g.tokens.length, 0);
 ---
 
 <ShowcaseLayout
-  title="Colors"
-  description="Corag design tokens — live swatches reflect the active light/dark mode."
-  section="colors"
+  title="Color"
+  description="Every Corag design token, rendered live. Hex values are read from the computed styles, so they cannot go stale."
+  section="ui"
 >
-  <!-- Intro -->
-  <section class="mb-10" data-component="corag-colors-intro">
-    <div class="rounded-2xl border border-corag-border bg-corag-bg-elevated p-6">
-      <p class="text-sm text-corag-text-secondary">
-        Every public page uses the global Corag palette by default. Tokens are
-        registered in <code class="text-xs">src/styles/global.css</code> via
-        Tailwind 4 <code class="text-xs">@theme</code>; Tailwind generates the
-        matching utility classes (<code class="text-xs">bg-corag-primary</code>,
-        <code class="text-xs">text-corag-text</code>, <code class="text-xs">border-corag-border</code>, …).
+  <div class="space-y-12">
+    <header class="space-y-3">
+      <h1 class="text-3xl font-bold text-corag sm:text-4xl">Color</h1>
+      <p class="max-w-3xl text-corag-secondary">
+        {totalTokens} tokens, declared once in <code>src/styles/global.css</code>
+         via Tailwind 4's <code>@theme</code>. Every swatch below is painted by the
+        real utility class, and the value printed under it is read from
+        <code>getComputedStyle</code> when the page loads — so this page shows what
+        the CSS actually produces, not what someone typed here.
       </p>
-      <p class="mt-2 text-sm text-corag-text-secondary">
-        Tokens are declared in one place only. Never override a
-        <code class="text-xs">--color-corag-*</code> value outside
-        <code class="text-xs">src/styles/global.css</code>.
+      <p class="max-w-3xl text-sm text-corag-text-muted">
+        Rules and measured contrast ratios live in the Brand Book:
+        <a href="/internal/brand/colors" class="text-corag-primary underline"
+          >Brand → Colors</a
+        >. Implementation contract: <code>docs/DESIGN.md</code>.
       </p>
-      <p class="mt-2 text-xs text-corag-text-muted">
-        Source of truth: <a href="/internal/brand/colors" class="underline">Brand Book → Colors</a> ·
-        <code class="text-xs">docs/BRAND_GUIDE.md</code> ·
-        <code class="text-xs">docs/DESIGN.md</code>.
-      </p>
-    </div>
-  </section>
+    </header>
 
-  <!-- Token Groups -->
-  {allGroups.map((group) => (
-    <section class="mb-12" data-component={`tokens-${group.title.toLowerCase()}`}>
-      <h2 class="text-xl md:text-2xl font-bold mb-4 text-corag-text">{group.title}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {group.tokens.map((t) => (
-          <div class="rounded-2xl border border-corag-border overflow-hidden bg-corag-bg-elevated">
-            <div class:list={['h-24 flex items-end p-3', t.bgClass, t.textOnClass]}>
-              <code class="text-xs font-mono opacity-90">{t.bgClass}</code>
-            </div>
-            <div class="p-4">
-              <div class="font-semibold text-corag-text">{t.name}</div>
-              <code class="block text-xs text-corag-text-secondary mt-1">{t.cssVar}</code>
-              <div class="grid grid-cols-2 gap-2 mt-2 text-xs">
-                <div>
-                  <span class="block text-corag-text-muted">Light</span>
-                  <code class="text-corag-text">{t.lightHex}</code>
+    <section
+      class="rounded-[18px] border border-corag-border bg-corag-bg-brand p-6"
+    >
+      <h2 class="font-display text-lg font-semibold text-corag">
+        Toggle the theme while you read this page
+      </h2>
+      <p class="mt-2 text-sm text-corag-secondary">
+        In light mode the brand is <strong>wine</strong>; in dark mode it becomes
+        <strong>rosa</strong>, because wine on a dark ground measures 1.52:1 and is
+        unusable. Both are official colors. Every value below re-reads itself when
+        the theme changes, so you can watch the whole system flip and confirm
+        nothing breaks.
+      </p>
+    </section>
+
+    {
+      groups.map((group) => (
+        <section class="space-y-4">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-corag">
+              {group.title}
+            </h2>
+            <p class="mt-1 text-sm text-corag-secondary">{group.blurb}</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {group.tokens.map((token) => (
+              <div class="overflow-hidden rounded-[18px] border border-corag-border bg-corag-bg-elevated shadow-corag-sm">
+                <div
+                  class={`flex h-24 items-end justify-between p-4 ${token.bgClass} ${token.textOnClass}`}
+                >
+                  <span class="font-display text-base font-semibold">
+                    {token.name}
+                  </span>
+                  <code
+                    class="text-xs font-semibold tabular-nums"
+                    data-swatch-value={token.cssVar}
+                  >
+                    …
+                  </code>
                 </div>
-                <div>
-                  <span class="block text-corag-text-muted">Dark</span>
-                  <code class="text-corag-text">{t.darkHex}</code>
+                <div class="space-y-2 p-4">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <code class="text-xs text-corag-text-muted">
+                      {token.cssVar}
+                    </code>
+                    {token.flag && (
+                      <span
+                        class={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${flagClass[token.flag]}`}
+                      >
+                        {flagLabel[token.flag]}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-sm text-corag-secondary">{token.usage}</p>
                 </div>
               </div>
-              <p class="text-xs text-corag-text-secondary mt-3">{t.usage}</p>
-            </div>
+            ))}
           </div>
-        ))}
+        </section>
+      ))
+    }
+
+    <section class="space-y-4">
+      <h2 class="font-display text-2xl font-bold text-corag">Short aliases</h2>
+      <p class="max-w-3xl text-sm text-corag-secondary">
+        Two tokens are aliases rather than distinct colors. They exist because
+        these two are used constantly, and they re-export via <code>var()</code>
+         so they inherit the light/dark flip with no extra rule.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[34rem] text-left text-sm">
+          <thead class="border-b border-corag-border">
+            <tr class="text-xs uppercase tracking-wide text-corag-text-muted">
+              <th class="py-2 pr-4">Alias</th>
+              <th class="py-2 pr-4">Resolves to</th>
+              <th class="py-2">Computed value</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-corag-border">
+            <tr>
+              <td class="py-3 pr-4"><code>--color-corag</code> · <code>text-corag</code></td>
+              <td class="py-3 pr-4"><code>--color-corag-text</code></td>
+              <td class="py-3">
+                <code class="text-xs tabular-nums" data-swatch-value="--color-corag">…</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4"><code>--color-corag-secondary</code> · <code>text-corag-secondary</code></td>
+              <td class="py-3 pr-4"><code>--color-corag-text-secondary</code></td>
+              <td class="py-3">
+                <code class="text-xs tabular-nums" data-swatch-value="--color-corag-secondary">…</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
-  ))}
 
-  <!-- Live Light/Dark Comparison -->
-  <section class="mb-12" data-component="light-dark-comparison">
-    <h2 class="text-xl md:text-2xl font-bold mb-4 text-corag-text">Light vs Dark</h2>
-    <p class="text-sm text-corag-text-secondary mb-4">
-      Both modes side by side. The <strong>Live</strong> column reflects the
-      mode you have active in the toggle above; the snapshot columns are
-      always visible regardless.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="rounded-2xl overflow-hidden border border-corag-border" data-mode="light-snapshot" style="background-color:#FAFBFB;color:#0F2A2C;">
-        <div class="px-4 py-2 border-b text-xs font-semibold uppercase tracking-wider" style="border-color:#E2E8E8;color:#4A6164;">Light snapshot</div>
-        <div class="p-5">
-          <div class="text-xl font-bold mb-2">Corag</div>
-          <p class="text-sm" style="color:#4A6164;">El ecosistema de impacto social.</p>
-          <button type="button" class="mt-4 inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background-color:#1F6F73;">Inscríbete al meetup</button>
+    <section class="space-y-4">
+      <h2 class="font-display text-2xl font-bold text-corag">
+        The two rules that get broken
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div
+          class="rounded-[18px] border border-corag-danger/30 bg-corag-danger-soft p-5"
+        >
+          <p class="font-display font-semibold text-corag-danger">
+            ❌ <code>bg-corag-primary</code> + <code>text-white</code>
+          </p>
+          <p class="mt-2 text-sm text-corag-secondary">
+            Fine in light mode, ~1.5:1 in dark — because primary becomes rosa and
+            white sits on top of it. Toggle the theme and watch it fail.
+          </p>
+          <span
+            class="mt-3 inline-flex rounded-full bg-corag-primary px-4 py-2 text-sm font-semibold text-white"
+          >
+            Quiero ayudar
+          </span>
+        </div>
+        <div
+          class="rounded-[18px] border border-corag-success/30 bg-corag-success-soft p-5"
+        >
+          <p class="font-display font-semibold text-corag-success">
+            ✅ <code>bg-corag-fill</code> + <code>text-corag-on-fill</code>
+          </p>
+          <p class="mt-2 text-sm text-corag-secondary">
+            9.54:1 in both themes. A primary button needs no dark variant at all.
+          </p>
+          <span
+            class="mt-3 inline-flex rounded-full bg-corag-fill px-4 py-2 text-sm font-semibold text-corag-on-fill"
+          >
+            Quiero ayudar
+          </span>
         </div>
       </div>
-      <div class="rounded-2xl overflow-hidden border border-corag-border bg-corag-bg" data-mode="live">
-        <div class="px-4 py-2 border-b border-corag-border text-xs font-semibold uppercase tracking-wider text-corag-text-secondary">Live (matches your toggle)</div>
-        <div class="p-5 text-corag-text">
-          <div class="text-xl font-bold mb-2">Corag</div>
-          <p class="text-sm text-corag-text-secondary">El ecosistema de impacto social.</p>
-          <button type="button" class="mt-4 inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-corag-on-fill bg-corag-fill hover:bg-corag-fill-strong transition-colors">Inscríbete al meetup</button>
-        </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden border" data-mode="dark-snapshot" style="background-color:#08191A;color:#E8F0EF;border-color:#1E3D40;">
-        <div class="px-4 py-2 border-b text-xs font-semibold uppercase tracking-wider" style="border-color:#1E3D40;color:#B5C7C9;">Dark snapshot</div>
-        <div class="p-5">
-          <div class="text-xl font-bold mb-2">Corag</div>
-          <p class="text-sm" style="color:#B5C7C9;">El ecosistema de impacto social.</p>
-          <button type="button" class="mt-4 inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold" style="background-color:#3FA8AD;color:#08191A;">Inscríbete al meetup</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Approved Pairings -->
-  <section class="mb-12" data-component="approved-pairings">
-    <h2 class="text-xl md:text-2xl font-bold mb-4 text-corag-text">Approved text pairings (WCAG AA+)</h2>
-    <div class="space-y-3">
-      {approvedPairings.map((p) => (
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 rounded-lg border border-corag-border p-4 bg-corag-bg-elevated">
-          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold uppercase bg-corag-success text-white shrink-0">{p.status}</span>
-          <div class="flex-1">
-            <div class="font-medium text-sm text-corag-text">{p.context}</div>
-            <code class="block text-xs text-corag-text-secondary mt-1">{p.classes}</code>
-          </div>
-          <code class="text-xs text-corag-text-muted">{p.ratio}</code>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Forbidden Pairings -->
-  <section class="mb-12" data-component="forbidden-pairings">
-    <h2 class="text-xl md:text-2xl font-bold mb-4 text-corag-text">Forbidden combinations</h2>
-    <div class="space-y-3">
-      {forbiddenPairings.map((p) => (
-        <div class="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6 rounded-lg border border-corag-border p-4 bg-corag-bg-elevated">
-          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold uppercase bg-corag-danger text-white shrink-0">FAIL</span>
-          <div class="flex-1">
-            <code class="text-xs font-medium text-corag-text">{p.classes}</code>
-            <p class="text-xs text-corag-text-secondary mt-1">{p.reason}</p>
+    <section class="space-y-4">
+      <h2 class="font-display text-2xl font-bold text-corag">In context</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <div
+          class="space-y-3 rounded-[18px] border border-corag-border bg-corag-bg-elevated p-6 shadow-corag-sm"
+        >
+          <p class="font-display text-xl font-semibold text-corag">
+            Card on an elevated surface
+          </p>
+          <p class="text-corag-secondary">Supporting copy in the secondary token.</p>
+          <p class="text-sm text-corag-text-muted">
+            Muted copy — the lightest permitted body text.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="rounded-full bg-corag-success-soft px-3 py-1 text-sm font-medium text-corag-success">
+              Con evidencia
+            </span>
+            <span class="rounded-full bg-corag-warning-soft px-3 py-1 text-sm font-medium text-corag-warning">
+              En organización
+            </span>
+            <span class="rounded-full bg-corag-danger-soft px-3 py-1 text-sm font-medium text-corag-danger">
+              Urgente
+            </span>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Usage example -->
-  <section class="mb-12" data-component="usage-examples">
-    <h2 class="text-xl md:text-2xl font-bold mb-4 text-corag-text">Usage</h2>
-    <details class="rounded-lg border border-corag-border bg-corag-bg-elevated">
-      <summary class="px-4 py-3 cursor-pointer text-sm font-medium text-corag-text hover:bg-corag-primary-soft">
-        Show code
-      </summary>
-      <pre class="p-4 text-xs overflow-x-auto bg-corag-bg text-corag-text"><code>{`<!-- Page background + body text -->
-<body class="bg-corag-bg text-corag-text">
-
-<!-- Card on elevated surface -->
-<div class="bg-corag-bg-elevated border border-corag-border rounded-lg p-4">
-  <h3 class="text-corag-text">Title</h3>
-  <p class="text-corag-text-secondary">Body copy</p>
-</div>
-
-<!-- Primary CTA -->
-<button class="bg-corag-fill hover:bg-corag-fill-strong text-corag-on-fill px-4 py-2 rounded-md">
-  Inscríbete
-</button>
-
-<!-- Accent badge (large text only) -->
-<span class="bg-corag-primary-soft text-corag-primary px-2 py-0.5 rounded text-xs font-semibold">
-  Speaker School
-</span>
-
-<!-- State -->
-<div class="bg-corag-success text-white">Confirmed</div>
-<div class="bg-corag-danger text-white">Cancelled</div>`}</code></pre>
-    </details>
-  </section>
-
-  <!-- Agent Reference -->
-  <section class="mt-16 border-t border-corag-border pt-8" data-agent-reference="true">
-    <h2 class="text-lg font-bold mb-4 text-corag-text">Agent reference</h2>
-    <p class="text-sm text-corag-text-secondary mb-4">
-      Full machine-readable contract: <code class="text-xs">docs/DESIGN.md</code>.
-      The Brand Book version of this page is the source of truth for design
-      decisions: <a href="/internal/brand/colors" class="text-corag-primary underline">Brand Book → Colors</a>.
-    </p>
-    <div class="overflow-x-auto rounded-lg border border-corag-border">
-      <table class="min-w-full text-sm">
-        <thead class="bg-corag-primary-soft">
-          <tr class="text-left text-corag-text">
-            <th class="py-2 px-4 font-semibold">Token</th>
-            <th class="py-2 px-4 font-semibold">CSS variable</th>
-            <th class="py-2 px-4 font-semibold">Tailwind class</th>
-            <th class="py-2 px-4 font-semibold">Light · Dark</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-corag-border">
-          {allGroups.flatMap((g) => g.tokens).map((t) => (
-            <tr>
-              <td class="py-2 px-4 font-medium text-corag-text">{t.name}</td>
-              <td class="py-2 px-4"><code class="text-xs text-corag-text-secondary">{t.cssVar}</code></td>
-              <td class="py-2 px-4"><code class="text-xs text-corag-text-secondary">{t.bgClass}</code></td>
-              <td class="py-2 px-4 text-xs text-corag-text-muted">{t.lightHex} · {t.darkHex}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </section>
+        <div class="space-y-3 rounded-[18px] bg-corag-bg-dark p-6">
+          <p class="font-display text-xl font-semibold text-corag-on-fill">
+            Always-dark canvas
+          </p>
+          <p class="text-corag-rosa">
+            Identical in both themes, so a hero can keep the wine-black identity
+            regardless of the reader's preference.
+          </p>
+          <label class="block text-sm font-medium text-corag-on-fill" for="demo-input">
+            An input, with the interactive border
+          </label>
+          <input
+            id="demo-input"
+            class="w-full rounded-[12px] border border-corag-border-interactive bg-corag-bg-elevated px-4 py-2.5 text-corag placeholder:text-corag-text-muted"
+            placeholder="border-corag-border-interactive"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
 </ShowcaseLayout>
+
+<script>
+  /*
+   * Print each token's *computed* value, so this page can never disagree with
+   * the stylesheet. Re-runs whenever the theme class changes, which is what
+   * makes the light/dark flip inspectable rather than something you have to
+   * take on faith.
+   */
+  const toHex = (value: string): string => {
+    const m = value.match(/rgba?\(([^)]+)\)/);
+    if (!m) return value.trim().toUpperCase();
+    const [r, g, b] = m[1].split(',').map((n) => Number.parseFloat(n));
+    return `#${[r, g, b].map((n) => Math.round(n).toString(16).padStart(2, '0')).join('').toUpperCase()}`;
+  };
+
+  const paint = () => {
+    const style = getComputedStyle(document.documentElement);
+    for (const el of document.querySelectorAll<HTMLElement>('[data-swatch-value]')) {
+      const name = el.dataset.swatchValue;
+      if (!name) continue;
+      const raw = style.getPropertyValue(name);
+      el.textContent = raw ? toHex(raw) : 'undefined';
+      if (!raw) el.classList.add('underline', 'decoration-wavy');
+    }
+  };
+
+  paint();
+  new MutationObserver(paint).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+</script>
