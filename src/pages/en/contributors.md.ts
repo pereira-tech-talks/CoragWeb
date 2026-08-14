@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
 
+import { getAlliesByKind } from '@/lib/ally';
 import { SITE_URL } from '@/lib/constances';
 import {
   filterCurrentTeamOrganizers,
-  filterPastTeamMembers,
   getContributors,
 } from '@/lib/contributor';
 import {
@@ -16,10 +16,9 @@ export const GET: APIRoute = async () => {
   const lang = 'en';
   const contributors = await getContributors();
   const current = filterCurrentTeamOrganizers(contributors);
-  const past = filterPastTeamMembers(contributors);
+  const communities = await getAlliesByKind('community');
+  const companies = await getAlliesByKind('company');
 
-  // The HTML renders each person's bio, not just their role. A name-and-role
-  // list read as a summary of the directory rather than its twin.
   const toLines = (list: typeof contributors): string[] =>
     list.flatMap((c) => {
       const bio = resolveI18n(c.data.bio, lang);
@@ -31,30 +30,48 @@ export const GET: APIRoute = async () => {
       return bio ? [row, `  ${bio}`] : [row];
     });
 
-  // The HTML shows an empty state rather than hiding the section, so the twin
-  // must say the same thing. Dropping the heading would report the directory as
-  // absent when the page reports it as not yet published.
+  const allyLines = (
+    list: Awaited<ReturnType<typeof getAlliesByKind>>
+  ): string[] =>
+    list.flatMap((a) => {
+      const bio = resolveI18n(a.data.bio, lang);
+      const row = entityLine(
+        a.data.name,
+        a.data.url ?? `/en/contributors`,
+        resolveI18n(a.data.role, lang)
+      );
+      return bio ? [row, `  ${bio}`] : [row];
+    });
+
   const orEmpty = (lines: string[]): string[] =>
     lines.length > 0
       ? lines
       : ['No contributors published in this section yet.'];
 
+  const sections = [
+    { heading: 'Active team', lines: orEmpty(toLines(current)) },
+    ...(communities.length > 0
+      ? [{ heading: 'Allied communities', lines: allyLines(communities) }]
+      : []),
+    ...(companies.length > 0
+      ? [{ heading: 'Allied companies', lines: allyLines(companies) }]
+      : []),
+  ];
+
   const markdown = serializeGenericToMarkdown({
-    title: 'Contributors — Corag',
+    title: 'Team & contributors — Corag',
     description:
-      'The people building Corag, by area, plus those who contributed before. Directory at /en/contributors.',
+      'The people building Corag, by area, allied communities and allied companies. Directory at /en/contributors.',
     lang,
     canonical: `${SITE_URL}/en/contributors`,
     metadata: [
       ['Active contributors', String(current.length)],
-      ['Past contributors', String(past.length)],
+      ['Allied communities', String(communities.length)],
+      ['Allied companies', String(companies.length)],
       ['Total in directory', String(contributors.length)],
     ],
-    body: 'Corag is built by a team donating their time: engineering, design, content, field coordination and partnerships. Anyone who stops being active is not deleted: time someone donated does not stop counting.',
-    sections: [
-      { heading: 'Active team', lines: orEmpty(toLines(current)) },
-      { heading: 'Past contributors', lines: orEmpty(toLines(past)) },
-    ],
+    body: 'Corag is built by a team donating their time: engineering, design, content, field coordination and partnerships. Allied communities and companies add capacity to the network.',
+    sections,
   });
 
   return new Response(markdown, {

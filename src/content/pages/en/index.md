@@ -166,6 +166,6 @@ Official channels: [Ayuda Directa](https://ayuda.corag.app),
 
 - [How it works](/en/how-it-works)
 - [Transparency](/en/transparency)
-- [Contributors](/en/contributors)
+- [Team & contributors](/en/contributors)
 - [Blog](/en/blog)
 - [Contact](/en/contact)

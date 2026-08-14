@@ -188,6 +188,32 @@ const contributors = defineCollection({
 });
 
 /**
+ * Allied communities and companies shown on /contributors alongside people.
+ * Logos ship only with express authorization (see partners page copy).
+ */
+const allies = defineCollection({
+  loader: glob({ base: './src/content/allies', pattern: '**/*.yaml' }),
+  schema: z.object({
+    name: z.string(),
+    /** Horizontal wordmark for light backgrounds. */
+    logo: z.string(),
+    /** Optional horizontal wordmark for dark backgrounds. Falls back to `logo`. */
+    logoDark: z.string().optional(),
+    kind: z.enum(['community', 'company', 'organization']),
+    role: z.object({
+      en: z.string(),
+      es: z.string(),
+    }),
+    bio: z.object({
+      en: z.string(),
+      es: z.string(),
+    }),
+    url: z.url().optional(),
+    order: z.number().default(0),
+  }),
+});
+
+/**
  * Public Google Calendars for allied organizations.
  * IDs must be embeddable (public); no API keys.
  */
@@ -246,5 +272,6 @@ export const collections = {
   // v3.0.0 — community website model
   channels,
   contributors,
+  allies,
   notifications,
 };

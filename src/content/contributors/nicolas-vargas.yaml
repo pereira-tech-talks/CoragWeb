@@ -1,0 +1,13 @@
+name: Nicolás Vargas
+avatar: /images/contributors/nicolas-vargas.webp
+roles: [organizer]
+role:
+  en: Organizer · Data & evidence
+  es: Organizador · Datos y evidencia
+bio:
+  en: Placeholder profile for layout preview. Reviews delivery evidence and keeps published numbers attributable.
+  es: Perfil de ejemplo para previsualizar el layout. Revisa la evidencia de entregas y mantiene atribuibles los números publicados.
+social:
+  github: https://github.com/
+activeSince: 2024-08-01
+order: 8

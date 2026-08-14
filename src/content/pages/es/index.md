@@ -164,6 +164,6 @@ Canales oficiales: [Ayuda Directa](https://ayuda.corag.app),
 
 - [Cómo funciona](/how-it-works)
 - [Transparencia](/transparency)
-- [Colaboradores](/contributors)
+- [Equipo y colaboradores](/contributors)
 - [Blog](/blog)
 - [Contacto](/contact)

@@ -55,6 +55,9 @@ const MASTER = {
   wordmarkRosa: 'Rosa_2nuevo.png', //          526x154  rosa on transparent
   wordmarkRosaClaro: 'RosaNrosaN.png', //      775x226  rosa claro on transparent
   lockupWine: 'nuevorojo.png', //             1081x1081 rosa claro on wine (solid)
+  /** Curated bilingual Open Graph banners (source photography + UI mockups). */
+  ogDefaultEs: 'og-default-es.jpg',
+  ogDefaultEn: 'og-default-en.jpg',
 };
 
 /**
@@ -104,46 +107,21 @@ async function squareMark(pipeline, { size, background, marginRatio = 0.16 }) {
     .png();
 }
 
-/** Escape text for safe interpolation into SVG. */
-const xml = (s) =>
-  String(s).replace(
-    /[<>&'"]/g,
-    (c) =>
-      `&${{ '<': 'lt', '>': 'gt', '&': 'amp', "'": 'apos', '"': 'quot' }[c]};`
-  );
-
 /**
- * Open Graph card, 1200x630.
+ * Open Graph card, 1200×630 — resize a curated bilingual master.
  *
- * Composition follows the manual: wine ground, rosa-claro wordmark, Outfit for
- * the headline and Poppins for the supporting line, and a rosa accent rule. No
- * photography — the manual's reference images are licensed stock and must not
- * ship (see OFFICIAL_BRAND_REVIEW.md §10).
+ * Masters live in `assets/brand/og-default-{es,en}.jpg` (community + app
+ * mockups). Do not regenerate these from wordmark/SVG; replace the master
+ * files when the card art changes.
  */
-async function ogCard({ headline, sub, wordmark }) {
-  const W = 1200;
-  const H = 630;
-
-  const logo = await master(wordmark)
-    .resize({ width: 300, kernel: 'lanczos3' })
-    .png()
-    .toBuffer({ resolveWithObject: true });
-
-  const svg =
-    Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-  <rect width="${W}" height="${H}" fill="${BRAND.wine}"/>
-  <circle cx="${W - 90}" cy="${H + 40}" r="230" fill="${BRAND.rosa}" opacity="0.14"/>
-  <circle cx="${W - 150}" cy="-60" r="150" fill="${BRAND.rosaClaro}" opacity="0.10"/>
-  <rect x="80" y="266" width="72" height="6" rx="3" fill="${BRAND.rosa}"/>
-  <text x="80" y="360" font-family="Outfit" font-size="58" font-weight="700"
-        fill="${BRAND.rosaClaro}">${xml(headline)}</text>
-  <text x="80" y="424" font-family="Poppins" font-size="28" font-weight="400"
-        fill="${BRAND.rosa}">${xml(sub)}</text>
-</svg>`);
-
-  return sharp(svg)
-    .composite([{ input: logo.data, left: 80, top: 150 }])
-    .jpeg({ quality: 86, mozjpeg: true })
+async function ogFromMaster(key) {
+  return master(key)
+    .resize(1200, 630, {
+      fit: 'cover',
+      position: 'centre',
+      kernel: 'lanczos3',
+    })
+    .jpeg({ quality: 88, mozjpeg: true })
     .toBuffer();
 }
 
@@ -278,23 +256,9 @@ async function main() {
 `)
   );
 
-  // ---- 5. Open Graph cards ---------------------------------------------
-  await emit(
-    'images/og-default.jpg',
-    await ogCard({
-      headline: 'El ecosistema de impacto social',
-      sub: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan.',
-      wordmark: 'wordmarkRosaClaro',
-    })
-  );
-  await emit(
-    'images/og-default-en.jpg',
-    await ogCard({
-      headline: 'The social impact ecosystem',
-      sub: 'Connecting people who want to help with those who need it most.',
-      wordmark: 'wordmarkRosaClaro',
-    })
-  );
+  // ---- 5. Open Graph cards (curated bilingual masters) ------------------
+  await emit('images/og-default.jpg', await ogFromMaster('ogDefaultEs'));
+  await emit('images/og-default-en.jpg', await ogFromMaster('ogDefaultEn'));
 
   // ---- 6. Web app manifest ---------------------------------------------
   const manifest = {

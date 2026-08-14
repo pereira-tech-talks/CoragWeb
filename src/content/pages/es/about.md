@@ -81,6 +81,6 @@ representas una organización, escríbenos.
 
 - [Cómo funciona](/how-it-works)
 - [Transparencia](/transparency)
-- [Colaboradores](/contributors)
+- [Equipo y colaboradores](/contributors)
 - [Gobernanza](/governance)
 - [Contacto](/contact)

@@ -334,8 +334,10 @@ export interface SiteTranslations {
     intro: (count: number) => string;
     currentTitle: string;
     currentIntro: string;
-    pastTitle: string;
-    pastIntro: string;
+    communitiesTitle: string;
+    communitiesIntro: string;
+    companiesTitle: string;
+    companiesIntro: string;
     joinLabel: string;
     contributeLabel: string;
     emptyTitle: string;

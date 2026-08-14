@@ -128,7 +128,7 @@ export const en: SiteTranslations = {
     about: 'About Corag',
     contact: 'Contact',
     community: 'Community',
-    contributors: 'Contributors',
+    contributors: 'Team & contributors',
     channels: 'Channels',
     menu: 'Menu',
     closeMenu: 'Close menu',
@@ -333,18 +333,21 @@ export const en: SiteTranslations = {
   },
 
   contributorsPage: {
-    title: 'Contributors',
+    title: 'Team & contributors',
     description:
-      'The people building Corag: engineering, design, product, content and field coordination. Anyone who donated their time keeps their place here.',
-    eyebrow: 'The team',
+      'The people building Corag: engineering, design, product, content and field coordination. Allied communities and companies too.',
+    eyebrow: 'Who we are',
     intro: (count: number) =>
       `Corag is built by ${count} people donating their time. These are they.`,
     currentTitle: 'Building it today',
     currentIntro:
       'Everyone contributes from their own area. The work is voluntary and the credit is shared.',
-    pastTitle: 'Who built it before',
-    pastIntro:
-      'Time someone donated does not stop counting when they stop being active.',
+    communitiesTitle: 'Allied communities',
+    communitiesIntro:
+      'Communities that add capacity, reach or infrastructure to the network.',
+    companiesTitle: 'Allied companies',
+    companiesIntro:
+      'Companies that contribute tools, operations or support to Corag.',
     joinLabel: 'I want to contribute',
     contributeLabel: 'How to contribute',
     emptyTitle: 'No contributors published yet',

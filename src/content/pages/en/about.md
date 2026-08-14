@@ -82,6 +82,6 @@ If you represent an organization, write to us.
 
 - [How it works](/en/how-it-works)
 - [Transparency](/en/transparency)
-- [Contributors](/en/contributors)
+- [Team & contributors](/en/contributors)
 - [Governance](/en/governance)
 - [Contact](/en/contact)

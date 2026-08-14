@@ -42,9 +42,13 @@ Corag is built by a team donating their time.
 
 - [Juan Pérez](/en/contributors) — Engineering
 
-## Past contributors
+## Allied communities
 
-No contributors published in this section yet.
+- [Pereira Tech Talks](https://pertechtalks.com) — Allied community
+
+## Allied companies
+
+- [DailyBot](https://www.dailybot.com) — Allied company
 
 ---
 
@@ -202,8 +206,10 @@ describe('evaluatePage', () => {
      <p>Corag is built by a team donating their time.</p>
      <h2>Active team</h2>
      <p>Juan Pérez Engineering</p>
-     <h2>Past contributors</h2>
-     <p>No contributors published in this section yet.</p>`
+     <h2>Allied communities</h2>
+     <p>Pereira Tech Talks Allied community</p>
+     <h2>Allied companies</h2>
+     <p>DailyBot Allied company</p>`
   );
 
   it('passes a complete twin', () => {

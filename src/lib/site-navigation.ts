@@ -86,7 +86,7 @@ export const SITE_NAVIGATION: NavGroup[] = [
     title: { en: 'Community', es: 'Comunidad' },
     entries: [
       {
-        label: { en: 'Contributors', es: 'Colaboradores' },
+        label: { en: 'Team & contributors', es: 'Equipo y colaboradores' },
         path: '/contributors',
         inChrome: true,
       },
@@ -110,11 +110,8 @@ export const SITE_NAVIGATION: NavGroup[] = [
   {
     title: { en: 'Content', es: 'Contenido' },
     entries: [
+      // Series listing omitted until series are published again.
       { label: { en: 'Blog', es: 'Blog' }, path: '/blog', inChrome: true },
-      {
-        label: { en: 'Blog series', es: 'Series del blog' },
-        path: '/blog/series',
-      },
     ],
   },
   {

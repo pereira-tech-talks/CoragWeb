@@ -1,18 +1,17 @@
 ---
 /**
- * Corag v3.0.0 Equipo / Team directory — flat current organizers + unified past.
+ * Corag v3.0.0 Equipo / Team directory — organizers, communities, companies.
  */
 
+import AllyCard from '@/components/cards/AllyCard.astro';
 import ContributorCard from '@/components/cards/ContributorCard.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import Section from '@/components/ui/Section.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import {
-  getCurrentTeamOrganizers,
-  getPastTeamMembers,
-} from '@/lib/contributor';
+import { getAlliesByKind } from '@/lib/ally';
+import { getCurrentTeamOrganizers } from '@/lib/contributor';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -26,7 +25,8 @@ const cp = t.contributorsPage;
 const prefix = getUrlPrefix(lang);
 
 const currentOrganizers = await getCurrentTeamOrganizers();
-const pastMembers = await getPastTeamMembers();
+const communities = await getAlliesByKind('community');
+const companies = await getAlliesByKind('company');
 
 const breadcrumbs = [
   { label: lang === 'es' ? 'Inicio' : 'Home', href: `${prefix}/` },
@@ -93,16 +93,35 @@ const breadcrumbs = [
   }
 
   {
-    pastMembers.length > 0 && (
-      <Section spacing="lg" title={cp.pastTitle}>
-        <p class="mb-10 max-w-3xl text-corag-secondary">{cp.pastIntro}</p>
-        <ul class="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {pastMembers.map((contributor) => (
-            <li class="opacity-90 transition-opacity motion-reduce:transition-none hover:opacity-100">
-              <ContributorCard
-                contributor={contributor}
+    communities.length > 0 && (
+      <Section spacing="lg" title={cp.communitiesTitle}>
+        <p class="mb-10 max-w-2xl text-corag-secondary">{cp.communitiesIntro}</p>
+        <ul class="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {communities.map((ally, index) => (
+            <li>
+              <AllyCard
+                ally={ally}
                 lang={lang}
-                muted
+                loading={index < 4 ? 'eager' : 'lazy'}
+              />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    )
+  }
+
+  {
+    companies.length > 0 && (
+      <Section surface="alt" spacing="lg" title={cp.companiesTitle}>
+        <p class="mb-10 max-w-2xl text-corag-secondary">{cp.companiesIntro}</p>
+        <ul class="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {companies.map((ally, index) => (
+            <li>
+              <AllyCard
+                ally={ally}
+                lang={lang}
+                loading={index < 4 ? 'eager' : 'lazy'}
               />
             </li>
           ))}

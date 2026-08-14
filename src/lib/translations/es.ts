@@ -128,7 +128,7 @@ export const es: SiteTranslations = {
     about: 'Sobre Corag',
     contact: 'Contacto',
     community: 'Comunidad',
-    contributors: 'Colaboradores',
+    contributors: 'Equipo y colaboradores',
     channels: 'Canales',
     menu: 'Menú',
     closeMenu: 'Cerrar menú',
@@ -333,18 +333,21 @@ export const es: SiteTranslations = {
   },
 
   contributorsPage: {
-    title: 'Colaboradores',
+    title: 'Equipo y colaboradores',
     description:
-      'Las personas que construyen Corag: desarrollo, diseño, producto, contenido y coordinación en terreno. Quien donó su tiempo no deja de aparecer aquí.',
-    eyebrow: 'El equipo',
+      'Las personas que construyen Corag: desarrollo, diseño, producto, contenido y coordinación en terreno. También las comunidades y empresas aliadas.',
+    eyebrow: 'Quiénes somos',
     intro: (count: number) =>
       `Corag lo construyen ${count} personas que donan su tiempo. Estas son.`,
     currentTitle: 'Quienes están construyendo hoy',
     currentIntro:
       'Cada quien aporta desde su área. El trabajo es voluntario y el crédito es de todas y todos.',
-    pastTitle: 'Quienes construyeron antes',
-    pastIntro:
-      'El tiempo que alguien donó no deja de contar cuando deja de estar activa o activo.',
+    communitiesTitle: 'Comunidades aliadas',
+    communitiesIntro:
+      'Comunidades que suman capacidad, difusión o infraestructura a la red.',
+    companiesTitle: 'Empresas aliadas',
+    companiesIntro:
+      'Empresas que aportan herramientas, operación o apoyo a Corag.',
     joinLabel: 'Quiero colaborar',
     contributeLabel: 'Cómo contribuir',
     emptyTitle: 'Aún no hay colaboradores publicados',

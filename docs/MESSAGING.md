@@ -186,12 +186,13 @@ Beyond the blocklist in [`BRAND_GUIDE.md`](./BRAND_GUIDE.md) §5:
 
 ## 7. Meta descriptions and OG
 
-The Open Graph cards (`public/images/og-default{,-en}.jpg`, built by
+The Open Graph cards (`public/images/og-default{,-en}.jpg`, derived from
+curated masters in `assets/brand/og-default-{es,en}.jpg` via
 `scripts/build-brand-assets.mjs`) already carry:
 
-- **ES** — *El ecosistema de impacto social* / *Conectamos a quienes quieren
+- **ES** — *La comunidad también salva vidas.* / *Conectamos a quienes quieren
   ayudar con quienes más lo necesitan.*
-- **EN** — *The social impact ecosystem* / *Connecting people who want to help
+- **EN** — *Community also saves lives.* / *We connect people who want to help
   with those who need it most.*
 
 Meta descriptions must be **130–160 characters** (enforced by

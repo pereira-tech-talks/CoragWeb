@@ -255,11 +255,6 @@ export function serializeBlogIndexToMarkdown(
     );
   }
   lines.push('');
-  lines.push(
-    lang === 'es'
-      ? `[Explorar series](${prefix}/blog/series)`
-      : `[Explore series](${prefix}/blog/series)`
-  );
 
   lines.push(generateSiteNavigation(lang));
 

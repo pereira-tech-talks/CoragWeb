@@ -111,7 +111,17 @@ export function pageTypeOf(pagePath) {
  * not "the section is absent from both".
  */
 export const REQUIRED_SECTIONS = {
-  contributors: [{ names: ['Active team', 'Equipo activo'] }],
+  contributors: [
+    { names: ['Active team', 'Equipo activo'] },
+    {
+      names: ['Allied communities', 'Comunidades aliadas'],
+      whenHtmlHas: /Allied communities|Comunidades aliadas/,
+    },
+    {
+      names: ['Allied companies', 'Empresas aliadas'],
+      whenHtmlHas: /Allied companies|Empresas aliadas/,
+    },
+  ],
   channels: [
     { names: ['Where it all happens', 'Donde ocurre todo'] },
     { names: ['Network channels', 'Canales de la red'] },

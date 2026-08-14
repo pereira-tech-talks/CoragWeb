@@ -1,6 +1,6 @@
 # Contributors (Equipo) — Feature Guide
 
-The `/contributors` page is the public **Team** directory for Corag (nav label: Equipo / Team).
+The `/contributors` page is the public **Team & contributors** directory for Corag (nav label: Equipo y colaboradores / Team & contributors).
 
 ## Routes
 
@@ -10,10 +10,12 @@ The `/contributors` page is the public **Team** directory for Corag (nav label: 
 | EN | `/en/contributors` |
 
 Page component: `src/components/pages/ContributorsPage.astro`  
-Card: `src/components/cards/ContributorCard.astro`  
-Helpers: `src/lib/contributor.ts`
+Cards: `src/components/cards/ContributorCard.astro`, `src/components/cards/AllyCard.astro`  
+Helpers: `src/lib/contributor.ts`, `src/lib/ally.ts`
 
 ## Content
+
+### People
 
 YAML entries in `src/content/contributors/{slug}.yaml` (schema in `src/content.config.ts`).
 
@@ -24,22 +26,41 @@ YAML entries in `src/content/contributors/{slug}.yaml` (schema in `src/content.c
 | `role` / `bio` | Localized `{ en, es }` display strings |
 | `order` | Sort key within a section |
 
-**UI IA (v3 Equipo redesign):**
+### Allies (communities & companies)
 
-1. **Equipo organizador** — active people with `organizer` (or legacy `founding-organizer`) — **one flat grid** (no founder/mentor/contributor subsections).
-2. **Alumni y organizadores anteriores** — everyone with `inactiveSince` — **one flat grid**.
+YAML entries in `src/content/allies/{slug}.yaml`. Logos under `public/images/allies/`.
 
-The Zod enum may still allow `mentor` / `founding-organizer`, but the page does **not** segment those roles into separate sections.
+| Field | Notes |
+|-------|--------|
+| `logo` | Horizontal wordmark for light backgrounds |
+| `logoDark` | Optional wordmark for dark backgrounds (falls back to `logo`) |
+| `kind` | `community` · `company` · `organization` |
+| `role` / `bio` | Localized `{ en, es }` |
+| `url` | Optional external site |
+
+**UI IA:**
+
+1. **Equipo activo** — active people with `organizer` (or legacy `founding-organizer`) — one flat grid.
+2. **Comunidades aliadas** — `kind: community` — one flat grid (hidden when empty).
+3. **Empresas aliadas** — `kind: company` — one flat grid (hidden when empty).
+
+Past / alumni profiles are not shown on this page for now (`inactiveSince` still works in the schema for later use).
 
 ## Adding someone
 
 1. Add `src/content/contributors/{english-slug}.yaml` + avatar under `public/images/contributors/`.
 2. For current organizers: `roles: [organizer]`, omit `inactiveSince`.
-3. For past / alumni: set `inactiveSince` and usually include `alumni`.
-4. Keep **slugs stable** — other surfaces reference them via `getContributorsBySlugs`.
+3. Keep **slugs stable** — other surfaces reference them via `getContributorsBySlugs`.
+
+## Adding an ally
+
+1. Add `src/content/allies/{english-slug}.yaml` + authorized logo under `public/images/allies/`.
+2. Set `kind` to `community`, `company`, or `organization`.
+3. Do **not** publish a logo without express authorization (see `/partners`).
 
 ## Related
 
 - Team grids reuse `getContributorsBySlugs`
 - Authors collection is separate (`docs/features/AUTHORS.md`)
 - Agent markdown: `/contributors/index.md` (and `/en/...`)
+- Institutional alliances explainer: `/partners`
