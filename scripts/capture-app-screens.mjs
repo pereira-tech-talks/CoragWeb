@@ -31,6 +31,8 @@ const ROOT = resolve(import.meta.dirname, '..');
 const RAW_DIR = resolve(ROOT, 'tmp/app-captures');
 const OUT_DIR = resolve(ROOT, 'public/images/home/app');
 const HOME_DIR = resolve(ROOT, 'public/images/home');
+/** Institutional-page screenshots live beside the home's, one level over. */
+const PAGES_DIR = resolve(ROOT, 'public/images/pages/app');
 const PROVENANCE = resolve(OUT_DIR, 'CAPTURES.json');
 
 const APP_BASE = 'https://ayuda.corag.app';
@@ -82,6 +84,69 @@ const CAPTURES = [
     personalDataPolicy:
       'Request-list panel BLOCKED (individual situations). Only the aggregate cluster-map region ships; verify no popup or tooltip with a request is open in the frame.',
   },
+
+  // ---- Institutional pages (INSTITUTIONAL_BLUEPRINT.md §6) ---------------
+  {
+    key: 'app-avances-desktop',
+    url: '/#avances',
+    viewport: { width: 1440, height: 900 },
+    // The stats row plus the "Recibido -> Donado con evidencia" band: the
+    // application's own rendering of the two-numbers argument.
+    crop: { left: 100, top: 90, width: 1240, height: 345 },
+    widths: [640, 960, 1240],
+    outDir: PAGES_DIR,
+    personalDataPolicy:
+      'Aggregate totals only (personas aportantes, recibido, ayudas ofrecidas, donado con evidencia). No names, no contacts. The figures are live application data and must be captioned as such wherever they ship.',
+  },
+  {
+    key: 'app-solicitar-mobile',
+    url: '/emergencias/eje-cafetero/puntos-de-ayuda?accion=solicitar',
+    viewport: { width: 390, height: 844 },
+    widths: [390, 780],
+    outDir: PAGES_DIR,
+    personalDataPolicy:
+      'Empty "solicitar ayuda" form — placeholders only. Verify no autofilled value and no map pin resolving to a real address.',
+  },
+  {
+    key: 'app-registro-lider-desktop',
+    url: '/registro/lider',
+    viewport: { width: 1440, height: 900 },
+    widths: [640, 1280],
+    outDir: PAGES_DIR,
+    personalDataPolicy:
+      'Empty leader application form — placeholders only. Verify no autofilled identity, phone or document value.',
+  },
+  {
+    key: 'app-seguimiento-mobile',
+    url: '/seguimiento',
+    viewport: { width: 390, height: 844 },
+    widths: [390, 780],
+    outDir: PAGES_DIR,
+    personalDataPolicy:
+      'Empty private-search screen plus its privacy promise. Verify the search field is empty and no result list is rendered.',
+  },
+  /*
+   * DELIBERATELY ABSENT: the published-evidence view
+   * (`/emergencias/{slug}#evidencias`).
+   *
+   * Reviewed 2026-08-14 at both 1440x900 and 390x844 and dropped, for two
+   * independent reasons:
+   *
+   * 1. Its right sidebar ("Responsables del dinero") renders real full names
+   *    and bank-account fragments. A crop can exclude it today, but the card
+   *    column sits ~50 CSS px from it: any app layout change would pull it
+   *    into frame on the next re-capture, and this script would ship it
+   *    without anyone looking. A crop that is one CSS change away from
+   *    publishing someone's bank details is not a safe asset.
+   * 2. The evidence photos are real purchase receipts, legible enough to read
+   *    the cashier id, the transaction number and the barcode — a real
+   *    financial document, and more than a marketing page needs.
+   *
+   * The institutional blueprint's fallback (a designed, non-photographic
+   * treatment) covers the layout wherever this asset was planned. Re-open this
+   * decision only if the application gains a view that publishes evidence
+   * without the responsables sidebar.
+   */
 ];
 
 /**
@@ -164,6 +229,7 @@ async function attest() {
 async function capture() {
   await mkdir(RAW_DIR, { recursive: true });
   await mkdir(OUT_DIR, { recursive: true });
+  await mkdir(PAGES_DIR, { recursive: true });
 
   const assets = [];
   const browser = await chromium.launch();
@@ -177,6 +243,14 @@ async function capture() {
       console.log(`capturing ${spec.key} <- ${url}`);
       await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
       await page.waitForTimeout(2500); // settle lazy content (map tiles, stats)
+      // Hash URLs need an explicit scroll: the anchor may not exist at load.
+      if (spec.url.includes('#')) {
+        await page.evaluate(() => {
+          const target = document.getElementById(location.hash.slice(1));
+          if (target) target.scrollIntoView();
+        });
+        await page.waitForTimeout(1200);
+      }
       const rawPath = resolve(RAW_DIR, `${spec.key}.png`);
       const rawBuffer = await page.screenshot({ path: rawPath });
       await page.close();
@@ -186,6 +260,7 @@ async function capture() {
         rawBuffer,
         crop: scaled(spec.crop),
         widths: spec.widths,
+        outDir: spec.outDir ?? OUT_DIR,
       });
       assets.push({
         key: spec.key,
