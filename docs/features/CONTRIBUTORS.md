@@ -40,17 +40,19 @@ YAML entries in `src/content/allies/{slug}.yaml`. Logos under `public/images/all
 
 **UI IA:**
 
-1. **Equipo activo** — active people with `organizer` (or legacy `founding-organizer`) — one flat grid.
-2. **Comunidades aliadas** — `kind: community` — one flat grid (hidden when empty).
-3. **Empresas aliadas** — `kind: company` — one flat grid (hidden when empty).
+1. **Equipo interno** — active people with `organizer` or `founding-organizer`.
+2. **Colaboradores** — other active people (e.g. `contributor`, `mentor`) who are not organizers — hidden when empty.
+3. **Comunidades aliadas** — `kind: community` — hidden when empty.
+4. **Empresas aliadas** — `kind: company` — hidden when empty.
 
 Past / alumni profiles are not shown on this page for now (`inactiveSince` still works in the schema for later use).
 
 ## Adding someone
 
 1. Add `src/content/contributors/{english-slug}.yaml` + avatar under `public/images/contributors/`.
-2. For current organizers: `roles: [organizer]`, omit `inactiveSince`.
-3. Keep **slugs stable** — other surfaces reference them via `getContributorsBySlugs`.
+2. For the internal team: `roles: [organizer]` (or `founding-organizer`), omit `inactiveSince`.
+3. For collaborators: use roles such as `contributor` or `mentor`, and do **not** include `organizer` / `founding-organizer`.
+4. Keep **slugs stable** — other surfaces reference them via `getContributorsBySlugs`.
 
 ## Adding an ally
 

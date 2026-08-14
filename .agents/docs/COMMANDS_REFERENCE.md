@@ -81,6 +81,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
 | `/add-component` | `.agents/skills/add-component/SKILL.md` | Create new Astro or Svelte component with correct patterns |
+| `/add-institutional-block` | `.agents/skills/add-institutional-block/SKILL.md` | Add a block kind to the institutional-page renderer (union + renderer + twin serializer + tests) |
 | `/add-page` | `.agents/skills/add-page/SKILL.md` | Create new page with routing and MainLayout |
 | `/update-styles` | `.agents/skills/update-styles/SKILL.md` | Update Tailwind styles with dark mode support |
 | `/refactor-safe` | `.agents/skills/refactor-safe/SKILL.md` | Safe refactor in bounded scope (1-10 files, no behavior change) |

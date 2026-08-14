@@ -369,6 +369,42 @@ them):
   `--attest`. Device frames are CSS (browser bar / phone bezel), never baked
   into images.
 
+### Institutional page system
+
+Seven pages — how-it-works, transparency, emergencies, leaders, partners,
+developers, privacy — render from one component
+(`src/components/pages/InstitutionalPage.astro`) and one copy object
+(`InstitutionalPageCopy`). Fix the renderer once and all seven improve; style
+one page by hand and you have started the drift the shared renderer exists to
+prevent.
+
+**Treatment tiers.** What a page *is* decides what it gets:
+
+| Tier | Pages | Treatment |
+|---|---|---|
+| Product | how-it-works, transparency, emergencies, developers, leaders | Real app screens in CSS device frames. The product is the imagery. |
+| Narrative | about, partners, channels, contact | Designed non-photographic treatments; an illustration only where one is commissioned. |
+| Policy | privacy, governance, conduct, contributing | Typographic structure — section index, anchors, designed callouts. **No decorative imagery**: it trivializes the content. |
+
+**Block kinds** (`InstitutionalBlock`): `prose`, `steps`, `cards`, `list`,
+`callout`, `figure`, `split`, `statPair`. Adding one is a four-part change —
+union, renderer, twin serializer, tests — with a silent failure mode if you
+skip the serializer. Use the `add-institutional-block` skill.
+
+**The hero is never empty.** Its second column renders `heroFigure` when the
+page has one and the brand heart motif when it does not. A page whose hero
+leaves half the viewport blank is a bug, not a style choice.
+
+**Figures.** `InstitutionalFigure` takes `srcBase` + `widths` and derives
+`src`/`srcset`, so pages never hand-write responsive sets. Frames (`browser`,
+`phone`) are CSS: a re-captured screenshot drops straight in and the chrome
+themes with the token layer. An app screenshot **must** carry a `caption`
+declaring the data is live application data — this site never states a figure
+of its own (rule 0).
+
+**Long, imagery-free pages** may set `sectionIndexLabel` to get an in-page
+index of their section headings. Navigability, not decoration.
+
 ## 7. Anti-patterns
 
 | ❌ Don't | ✅ Do |
