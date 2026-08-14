@@ -146,30 +146,33 @@ const btnSecondary =
       </div>
     </div>
     <div
-      class="main-container relative flex min-h-[calc(100dvh-var(--corag-chrome-height))] items-center py-8 sm:py-12 lg:py-10"
+      class="hero-shell main-container relative flex min-h-[calc(100dvh-var(--corag-chrome-height))] items-center py-8 sm:py-12 lg:py-10"
     >
       <div class="grid w-full items-center gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-6">
           <p
-            class="text-xs font-semibold uppercase tracking-[0.2em] text-corag-rosa sm:text-sm"
+            class="hero-eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-corag-rosa sm:text-sm"
           >
             {h.eyebrow}
           </p>
           <h1
-            class="mt-3 font-display text-4xl font-bold leading-[1.02] tracking-tight text-corag-on-fill sm:mt-4 sm:text-5xl lg:text-6xl xl:text-7xl"
+            class="hero-title mt-3 font-display text-4xl font-bold leading-[1.02] tracking-tight text-corag-on-fill sm:mt-4 sm:text-5xl lg:text-6xl xl:text-7xl"
           >
             {h.title}
           </h1>
           <p
-            class="mt-4 max-w-xl text-base leading-relaxed text-corag-rosa sm:mt-5 sm:text-lg lg:text-xl"
+            class="hero-lead mt-4 max-w-xl text-base leading-relaxed text-corag-rosa sm:mt-5 sm:text-lg lg:text-xl"
           >
             {h.lead}
           </p>
-          <div class="mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
+          <div class="hero-ctas mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <a href={appUrl('/aportar')} class={btnOnDark}>{h.ctaPrimary}</a>
             <a href={routes.how} class={btnGhostOnDark}>{h.ctaSecondary}</a>
           </div>
-          <ul class="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3" role="list">
+          <ul
+            class="hero-chips mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3"
+            role="list"
+          >
             {
               h.heroChips.map((chip) => (
                 <li class="rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-corag-rosa sm:px-4 sm:py-1.5 sm:text-sm">
@@ -179,42 +182,46 @@ const btnSecondary =
             }
           </ul>
         </div>
-        <div class="relative hidden lg:col-span-6 lg:block">
-          <img
-            src="/images/home/hero-caritas-45-648.webp"
-            srcset="/images/home/hero-caritas-45-480.webp 480w, /images/home/hero-caritas-45-648.webp 648w"
-            sizes="40vw"
-            alt={h.productPhotoAlt}
-            width={648}
-            height={810}
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            class="hero-photo mx-auto w-full max-w-md rounded-[28px] object-cover shadow-corag-lg xl:max-w-lg"
-          />
-          {/* Mini app card — the product, present from the first viewport */}
-          <div
-            class="absolute -bottom-8 left-0 w-56 overflow-hidden rounded-[18px] border border-white/10 bg-corag-bg-dark shadow-corag-lg xl:-left-4 xl:w-64"
-          >
-            <div class="aspect-[3/4]">
-              <img
-                src="/images/home/app/app-home-mobile-390.webp"
-                srcset="/images/home/app/app-home-mobile-390.webp 390w, /images/home/app/app-home-mobile-780.webp 780w"
-                sizes="16rem"
-                alt={h.heroAppCardAlt}
-                width={390}
-                height={844}
-                loading="lazy"
-                decoding="async"
-                class="h-full w-full object-cover object-top"
-              />
+        <div class="hidden lg:col-span-6 lg:block">
+          {/* w-fit wrapper anchors the mini card to the photo, whatever
+              size the height cap resolves the photo to */}
+          <div class="relative mx-auto w-fit">
+            <img
+              src="/images/home/hero-caritas-45-648.webp"
+              srcset="/images/home/hero-caritas-45-480.webp 480w, /images/home/hero-caritas-45-648.webp 648w"
+              sizes="40vw"
+              alt={h.productPhotoAlt}
+              width={648}
+              height={810}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="hero-photo h-auto max-h-[calc(100dvh-var(--corag-chrome-height)-11rem)] max-w-md rounded-[28px] object-cover shadow-corag-lg xl:max-w-lg"
+            />
+            {/* Mini app card — the product, present from the first viewport */}
+            <div
+              class="absolute -bottom-8 -left-6 w-56 overflow-hidden rounded-[18px] border border-white/10 bg-corag-bg-dark shadow-corag-lg xl:w-64"
+            >
+              <div class="aspect-[3/4]">
+                <img
+                  src="/images/home/app/app-home-mobile-390.webp"
+                  srcset="/images/home/app/app-home-mobile-390.webp 390w, /images/home/app/app-home-mobile-780.webp 780w"
+                  sizes="16rem"
+                  alt={h.heroAppCardAlt}
+                  width={390}
+                  height={844}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover object-top"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="hero-scroll-cue pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-corag-rosa"
+      class="hero-scroll-cue pointer-events-none absolute bottom-4 left-1/2 hidden -translate-x-1/2 text-corag-rosa sm:block"
       aria-hidden="true"
     >
       <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
@@ -623,6 +630,49 @@ const btnSecondary =
     );
     opacity: 0.1;
     filter: blur(48px);
+  }
+
+  /*
+   * Height-aware hero compaction. Tailwind sizes the hero by width; these
+   * rules size it by the dimension that actually constrains a full-viewport
+   * banner — the height. Doubled class selectors out-rank the utilities.
+   */
+  /* Short laptops (1280x720, 1366x768): shrink the display type a step. */
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .hero-title.hero-title {
+      font-size: 3rem;
+    }
+    .hero-lead.hero-lead {
+      font-size: 1rem;
+      margin-top: 0.75rem;
+    }
+    .hero-ctas.hero-ctas,
+    .hero-chips.hero-chips {
+      margin-top: 1.25rem;
+    }
+  }
+  /* Very short viewports (landscape phones, tiny screens): compact hard. */
+  @media (max-height: 620px) {
+    .hero-shell.hero-shell {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .hero-eyebrow.hero-eyebrow {
+      font-size: 0.65rem;
+    }
+    .hero-title.hero-title {
+      font-size: 1.875rem;
+      margin-top: 0.5rem;
+    }
+    .hero-lead.hero-lead {
+      font-size: 0.875rem;
+      line-height: 1.45;
+      margin-top: 0.5rem;
+    }
+    .hero-ctas.hero-ctas,
+    .hero-chips.hero-chips {
+      margin-top: 0.875rem;
+    }
   }
 
   /* Motion is a whisper, and only for those who did not opt out. */
