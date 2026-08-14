@@ -43,8 +43,19 @@ integration can retry safely. The endpoint is rate limited (HTTP 429).
 ## Markdown for agents
 
 Every public page has a complete Markdown twin at the same path plus `.md`
-(for example `/como-funciona.md`). Content is served from the original source
-Markdown, not converted from rendered HTML.
+(for example `/how-it-works.md`). Content comes from the same source the HTML
+renders, not converted from rendered output, and a build gate measures word
+coverage so a twin cannot silently become a summary.
+
+Key paths:
+
+- `/about.md` — what Corag is
+- `/how-it-works.md` — the five-step path of one delivery
+- `/transparency.md` — what is published, and what each number means
+- `/emergencies.md` · `/leaders.md` · `/partners.md` · `/developers.md` · `/privacy.md`
+- `/blog.md` — every post with its description, date and tags
+- `/blog/{slug}.md` — each post in full
+- `/conduct.md` · `/governance.md` · `/contributing.md`
 
 ## Languages
 

@@ -117,10 +117,13 @@ Corag rather than starting another source of truth.
 - Spanish is the primary language, served at the root (`/`).
 - English is served under `/en`.
 - Both languages carry the same content.
+- Route slugs are English in both languages, so the pair is `/how-it-works` and
+  `/en/how-it-works`.
 - Every public page has a complete Markdown twin at its path plus `.md` — for
-  example `/como-funciona.md` and `/en/how-it-works.md`. Content is served from
-  the original source Markdown, not converted from rendered HTML, so code blocks,
-  links and formatting keep full fidelity.
+  example `/how-it-works.md` and `/en/how-it-works.md`. Content comes from the
+  same source the HTML renders, not converted from rendered output, so code
+  blocks, links and formatting keep full fidelity. A build gate measures word
+  coverage against the page, so a twin cannot silently degrade into a summary.
 
 ### Technology
 
@@ -134,7 +137,7 @@ Corag rather than starting another source of truth.
 ### What this site collects
 
 Only what a contact form submission carries, and only when someone submits one.
-No accounts, no personal records, no aid data. See `/privacidad`.
+No accounts, no personal records, no aid data. See `/privacy`.
 
 ---
 
