@@ -333,37 +333,65 @@ The secret is used at build time but not included in output.
 
 ## Headers and CSP
 
-Cloudflare Pages allows custom headers. For enhanced security, consider:
+**Shipped**, in `public/_headers`, applied to every route:
 
-### Meta Tags
+| Header | Value | Why |
+|--------|-------|-----|
+| `Content-Security-Policy` | see below | Limits where scripts, styles, fonts, images and connections may come from |
+| `X-Content-Type-Options` | `nosniff` | Stops a browser guessing a type the server did not declare |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | A path here can reveal what somebody was reading |
+| `Permissions-Policy` | camera, microphone, geolocation, payment, usb all `()` | This site needs none of them |
+| `Cross-Origin-Opener-Policy` | `same-origin` | Isolates the browsing context |
+| `Strict-Transport-Security` | `max-age=63072000; includeSubDomains; preload` | No plaintext downgrade |
 
-```astro
-<!-- src/components/BaseHead.astro -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+### The CSP, and why each source is there
+
+```
+default-src 'self'; base-uri 'self'; object-src 'none';
+frame-ancestors 'none'; form-action 'self';
+img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline';
+script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://cloud.umami.is;
+connect-src 'self' https://cloud.umami.is https://ayuda.corag.app;
+upgrade-insecure-requests
 ```
 
-### Future Consideration
+- **`frame-ancestors 'none'`** — nothing should embed this site. This replaces
+  `X-Frame-Options`, which the meta-tag form never actually enforced.
+- **`form-action 'self'`** — the intake forms POST to a Pages Function on this
+  origin and nowhere else.
+- **`script-src 'unsafe-inline'`** — required, not aspirational: Astro emits
+  inline module scripts for every island, and the theme and notification
+  bootstraps must run before paint to avoid a flash. Removing it means moving
+  to hashes or a nonce, which a fully static build cannot generate per request.
+- **`static.cloudflareinsights.com`** — injected by the platform.
+- **`cloud.umami.is`** — only reached when the first-party proxy is disabled via
+  `PUBLIC_UMAMI_USE_PROXY=false`.
+- **`connect-src` includes `ayuda.corag.app`** — so a page may reach the
+  application's public API metadata without the browser blocking it.
+- **No `frame-src`, no `media-src`** — nothing on the site uses either, so
+  `default-src 'self'` covers them.
 
-If moving to a host with header control (Vercel, Netlify):
+### Verifying after a deploy
 
+```bash
+curl -sI https://corag.app/ | grep -iE 'content-security|x-content-type|referrer|permissions|strict-transport'
 ```
-# Example _headers file
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline';
-```
+
+Then open the console on a page with an island and confirm no CSP violations.
+A new third-party script means the policy changes with it — never the other way
+round.
 
 ## Security Checklist
 
 ### Before Committing
 
-- [ ] No secrets in code
+- [ ] No secrets in code, and no form or question id hardcoded where the
+      environment should supply it
 - [ ] No `.env` files committed
 - [ ] External links have `rel="noopener noreferrer"`
 - [ ] No unnecessary data exposed
+- [ ] No new page collects information about a real person's situation — that
+      belongs in the application
 
 ### Before Deployment
 
