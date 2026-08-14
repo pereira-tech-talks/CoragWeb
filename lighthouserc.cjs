@@ -2,12 +2,13 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: './dist',
-      // Keep CI lean: home + flagship conference listing only.
+      // Keep CI lean: the home page plus the institutional renderer that seven
+      // pages share, so a regression in either is caught on every run.
       // Full surface lives in lighthouserc.full.cjs (`pnpm run lighthouse:full`).
       //
       // `?lang=es` still pins Spanish explicitly (optional now that there is
       // no browser-language auto-redirect). Kept for stable LHCI baselines.
-      url: ['/?lang=es', '/como-funciona/'],
+      url: ['/?lang=es', '/how-it-works/'],
       // Median of 3 reduces LHCI noise around the 0.99↔1.00 boundary.
       numberOfRuns: 3,
       settings: {

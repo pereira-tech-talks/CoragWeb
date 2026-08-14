@@ -13,19 +13,20 @@ module.exports = {
         // Series pages
         '/blog/series/',
         // Blog tag listing
-        '/blog/tag/community/',
+        '/blog/tag/donations/',
+        // A blog post — the heaviest page type, with a responsive hero
+        '/blog/how-to-tell-if-a-foundation-is-trustworthy/',
         // Form page
         '/contact/',
-        // Pereira Tech Days catalog
-        '/como-funciona/',
-        // Meetups catalog
-        '/meetups/',
-        // Slides catalog
-        '/slides/',
-        // Speakers catalog
-        '/speakers/',
-        // Sponsors catalog
-        '/sponsors/',
+        // The institutional pages: one renderer, so one is representative,
+        // but /emergencies carries the callout and /developers the code blocks.
+        '/how-it-works/',
+        '/transparency/',
+        '/emergencies/',
+        '/developers/',
+        // Directory pages
+        '/contributors/',
+        '/channels/',
       ],
       numberOfRuns: 3,
       settings: {
