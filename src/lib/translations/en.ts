@@ -335,7 +335,7 @@ export const en: SiteTranslations = {
   contributorsPage: {
     title: 'Team & contributors',
     description:
-      'The people building Corag: engineering, design, product, content and field coordination. Allied communities and companies too.',
+      'The people building Corag: engineering, design, product, content and field coordination — plus the allied communities and companies.',
     eyebrow: 'Who we are',
     intro: (count: number) =>
       `Corag is built by ${count} people donating their time. These are they.`,

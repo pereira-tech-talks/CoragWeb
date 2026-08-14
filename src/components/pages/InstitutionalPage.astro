@@ -277,8 +277,10 @@ const slugify = (heading: string): string =>
                   ]}
                 >
                   {block.items.map((item) => (
+                    {/* min-w-0: a grid item defaults to min-width:auto, which
+                        lets an unbreakable inline URL widen the whole page. */}
                     <li
-                      class="flex gap-4 rounded-[18px] border border-corag-border bg-corag-bg-elevated p-5 leading-relaxed text-corag-secondary"
+                      class="flex min-w-0 gap-4 rounded-[18px] border border-corag-border bg-corag-bg-elevated p-5 leading-relaxed text-corag-secondary"
                       data-reveal
                     >
                       <span

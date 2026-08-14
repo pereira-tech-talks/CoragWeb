@@ -49,13 +49,23 @@ export const GET: APIRoute = async () => {
       : ['No contributors published in this section yet.'];
 
   const sections = [
-    { heading: 'Active team', lines: orEmpty(toLines(current)) },
+    {
+      heading: 'Active team',
+      lines: ['Building it today.', ...orEmpty(toLines(current))],
+    },
     ...(communities.length > 0
       ? [{ heading: 'Allied communities', lines: allyLines(communities) }]
       : []),
     ...(companies.length > 0
       ? [{ heading: 'Allied companies', lines: allyLines(companies) }]
       : []),
+    {
+      heading: 'How to join',
+      lines: [
+        'I want to contribute: write through the contact form.',
+        'How to contribute: open guide at /en/contributing.',
+      ],
+    },
   ];
 
   const markdown = serializeGenericToMarkdown({
@@ -70,7 +80,12 @@ export const GET: APIRoute = async () => {
       ['Allied companies', String(companies.length)],
       ['Total in directory', String(contributors.length)],
     ],
-    body: 'Corag is built by a team donating their time: engineering, design, content, field coordination and partnerships. Allied communities and companies add capacity to the network.',
+    body: [
+      'Who we are.',
+      `Corag is built by ${current.length} people donating their time. These are they.`,
+      'Everyone contributes from their own area. The work is voluntary and the credit is shared.',
+      'Allied communities and companies also add capacity, reach or infrastructure to the network.',
+    ].join(' '),
     sections,
   });
 
