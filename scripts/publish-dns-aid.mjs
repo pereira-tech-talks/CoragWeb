@@ -23,6 +23,15 @@ const ZONE_NAME = process.env.CF_ZONE_NAME || 'corag.app';
 const API = 'https://api.cloudflare.com/client/v4';
 const DRY_RUN = process.env.DNS_AID_DRY_RUN === '1';
 
+/**
+ * Where the MCP server actually runs.
+ *
+ * Not this site: corag.app explains Corag, the application serves it. Verified
+ * with a `tools/list` call — it returns listar_emergencias and friends. If that
+ * ever stops being true, drop the _mcp record rather than pointing it at a 404.
+ */
+const MCP_HOST = process.env.DNS_AID_MCP_HOST || 'ayuda.corag.app';
+
 /** Hostnames that agents / scanners resolve (FQDN without trailing dot). */
 const TARGET_HOSTS = (process.env.DNS_AID_HOSTS || 'corag.app')
   .split(',')
@@ -204,8 +213,10 @@ async function main() {
   console.log(`Targets: ${TARGET_HOSTS.join(', ')}`);
 
   for (const host of TARGET_HOSTS) {
+    // _index points at this site, which serves llms.txt and the .md twins.
     await upsertHttps(zoneId, token, indexRecordName(host, ZONE_NAME), host);
-    await upsertHttps(zoneId, token, mcpRecordName(host, ZONE_NAME), host);
+    // _mcp points at the application — that is where the MCP server is.
+    await upsertHttps(zoneId, token, mcpRecordName(host, ZONE_NAME), MCP_HOST);
   }
 
   if (token) {
