@@ -107,10 +107,12 @@ const scale: Row[] = [
       </p>
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100">Typography</h1>
       <p class="text-base text-gray-600 dark:text-gray-300 max-w-3xl">
-        Pereira Tech Talks v3.0.0 standardizes on <strong>Inter Variable</strong>
-        for headings and body. The variable family lets us collapse 4–5 static
-        weight files into one network-friendly resource without sacrificing
-        editorial flexibility.
+        Corag uses the two families named in the
+        <strong>Manual de Identidad Visual</strong> (p. 17): <strong>Outfit</strong>
+        for the logo and display headings, <strong>Poppins</strong> for body copy.
+        Both are SIL OFL and self-hosted from <code>/public/fonts</code> — there is
+        no external font request. Outfit ships as a single variable file covering
+        weights 400–800, so the display family costs one request rather than five.
       </p>
     </header>
 
@@ -148,7 +150,7 @@ const scale: Row[] = [
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Live preview</h2>
       <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-6 space-y-4 bg-white dark:bg-gray-900">
         <p style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -0.02em; line-height: 1.1; font-weight: 700;" class="text-gray-900 dark:text-gray-100">
-          Display — Pereira Tech Talks
+          Display — Corag
         </p>
         <p style="font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.01em; line-height: 1.15; font-weight: 700;" class="text-gray-900 dark:text-gray-100">
           H1 — Una comunidad técnica
@@ -169,7 +171,7 @@ const scale: Row[] = [
           Caption · eyebrow · category
         </p>
         <pre class="rounded-md bg-gray-50 dark:bg-gray-800 p-3 text-xs text-gray-800 dark:text-gray-100 overflow-x-auto"><code>// Mono — code, frontmatter snippets.
-const community = "Pereira Tech Talks";</code></pre>
+const organization = "Corag";</code></pre>
       </div>
     </section>
 
@@ -184,16 +186,6 @@ const community = "Pereira Tech Talks";</code></pre>
       </ul>
     </section>
 
-    <section class="space-y-3">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Per-edition typography overrides</h2>
-      <p class="text-sm text-gray-600 dark:text-gray-300">
-        A Pereira Tech Day edition can opt into a custom heading family — for
-        example PTD 2024 uses <strong>Bebas Neue uppercase</strong>. The override
-        is scoped via <code>[data-edition-theme]</code> and never leaks to
-        non-edition pages. See
-        <a href="/internal/brand/per-edition-kits" class="underline">Per-edition kits</a>.
-      </p>
-    </section>
 
     <section class="space-y-3">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Hard rules</h2>

@@ -1,163 +1,284 @@
 ---
 import InternalLayout from '@/layouts/InternalLayout.astro';
+
+/**
+ * Brand book — Voice & Tone.
+ *
+ * The five principles come verbatim from the official Manual de Identidad
+ * Visual (p. 8). The good/bad pairs are ours, written to make each principle
+ * checkable rather than aspirational.
+ */
+
+interface Principle {
+  name: string;
+  definition: string;
+  meaning: string;
+}
+
+const principles: Principle[] = [
+  {
+    name: 'Cálido y humano',
+    definition: 'como un amigo que inspira a ayudar',
+    meaning:
+      'Write to one person, not to an audience. Second person, active voice, no institutional distance.',
+  },
+  {
+    name: 'Inspirador y movilizador',
+    definition: 'invita a la acción y al cambio',
+    meaning:
+      'Every section earns its place by making the next step obvious. A paragraph that inspires nothing to do is decoration.',
+  },
+  {
+    name: 'Claro y sencillo',
+    definition: 'sin tecnicismos, directo al corazón',
+    meaning:
+      'Short sentences. Concrete nouns. If a term needs explaining, explain it inline or drop it.',
+  },
+  {
+    name: 'Juvenil y fresco',
+    definition: 'cercano a la gente, con energía positiva',
+    meaning:
+      'Contemporary, unstuffy Spanish. Never slang for its own sake, never corporate register.',
+  },
+  {
+    name: 'Esperanzador',
+    definition: 'siempre transmitiendo que sí se puede transformar vidas',
+    meaning:
+      'The frame is what people can do together, not how bad things are. Never leverage despair.',
+  },
+];
+
+interface Pair {
+  bad: string;
+  good: string;
+  why: string;
+}
+
+const pairsEn: Pair[] = [
+  {
+    bad: 'We revolutionize humanitarian aid with cutting-edge technology.',
+    good: 'We connect people who want to help with those who need it most.',
+    why: 'Says what we do instead of how important we think it is.',
+  },
+  {
+    bad: 'Our platform guarantees your donation arrives.',
+    good: 'You can see what your contribution was used for, and the evidence behind it.',
+    why: 'Claims only what the product actually delivers.',
+  },
+  {
+    bad: 'Empowering vulnerable communities.',
+    good: 'Communities organize their own aid. We make it visible.',
+    why: 'No savior framing. People receiving aid are neighbours, not beneficiaries of our virtue.',
+  },
+];
+
+const pairsEs: Pair[] = [
+  {
+    bad: 'Únete a la revolución solidaria.',
+    good: 'Ayuda donde más se necesita.',
+    why: 'Una acción concreta en lugar de un eslogan.',
+  },
+  {
+    bad: 'Millones de vidas impactadas.',
+    good: 'Cada aporte queda registrado, con su destino y su evidencia.',
+    why: 'Una cifra que podemos sostener en vez de una que suena bien.',
+  },
+  {
+    bad: 'Nuestra plataforma garantiza transparencia total.',
+    good: 'Publicamos cuánto se recibió y cuánto se usó con evidencia verificada.',
+    why: '“Transparencia total” no significa nada. Los dos números sí.',
+  },
+];
+
+const blocklist = [
+  'revolucionario',
+  'disruptivo',
+  'la mejor plataforma',
+  'líder indiscutible',
+  'cambiamos el mundo',
+  'salvamos vidas',
+  'empoderar',
+  'sinergia',
+  'solución integral',
+  'game changer',
+  'simplemente',
+  'obviamente',
+  'sumérgete',
+  'desbloquea',
+];
+
+const slop = [
+  'En un mundo donde…',
+  'No es solo X, es Y',
+  'Ya sea que… o…',
+  'la clave está en',
+  'en resumen',
+];
 ---
 
 <InternalLayout
-  title="Brand Book — Voice & Tone"
-  description="Corag v3.0.0 voice in English (international) and Spanish (Colombian/LATAM)."
+  title="Voice & Tone — Brand Book"
+  description="How Corag writes: the five official principles, with checkable examples."
   section="brand"
   subsection="voice-and-tone"
 >
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12">
+  <div class="space-y-10">
     <header class="space-y-3">
       <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
         <a href="/internal/brand" class="hover:underline">Brand</a> / Voice &amp; Tone
       </p>
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100">Voice &amp; Tone</h1>
-      <p class="text-base text-gray-600 dark:text-gray-300 max-w-3xl">
-        Pereira Tech Talks writes the way a good mentor speaks: warm, direct,
-        specific, and never patronizing. We ship in English (international) and
-        Spanish (Colombian, accessible to all of LATAM). Both languages share
-        the same principles, but each has its own mechanics.
+      <p class="max-w-3xl text-base text-gray-600 dark:text-gray-300">
+        Corag writes the way a friend who has been through it writes: warm, plain,
+        hopeful, and specific. The five principles below are quoted from the
+        official <strong>Manual de Identidad Visual</strong> (p. 8). They are not
+        suggestions — copy that fails them is off-brand.
       </p>
     </header>
 
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Pillars</h2>
-      <div class="grid sm:grid-cols-2 gap-4 text-sm">
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 space-y-2">
-          <h3 class="font-semibold text-gray-900 dark:text-gray-100">Specific over generic</h3>
-          <p class="text-gray-600 dark:text-gray-300">Real numbers, real names, real outcomes. Replace adjectives with evidence.</p>
-        </div>
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 space-y-2">
-          <h3 class="font-semibold text-gray-900 dark:text-gray-100">Plural &amp; inclusive</h3>
-          <p class="text-gray-600 dark:text-gray-300">"We" / "the community". Avoid framing the site as one person's project.</p>
-        </div>
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 space-y-2">
-          <h3 class="font-semibold text-gray-900 dark:text-gray-100">Plain language</h3>
-          <p class="text-gray-600 dark:text-gray-300">Define jargon on first use. Prefer short sentences. Cut filler words.</p>
-        </div>
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 space-y-2">
-          <h3 class="font-semibold text-gray-900 dark:text-gray-100">Action &amp; invitation</h3>
-          <p class="text-gray-600 dark:text-gray-300">Every page should leave the reader with one obvious next step.</p>
-        </div>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">The five principles</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {principles.map((p) => (
+          <div class="rounded-xl border border-gray-200 p-5 dark:border-gray-700">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{p.name}</h3>
+            <p class="mt-1 text-sm italic text-corag-primary">{p.definition}</p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{p.meaning}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">English (international)</h2>
-      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-        <li>International English — avoid US-only idioms ("home run", "ballpark").</li>
-        <li>Active voice. Direct addresses ("we" / "you").</li>
-        <li>One exclamation mark per page max. Period.</li>
-        <li>No marketing buzzwords (synergy, leverage, revolutionize, ecosystem-as-a-service).</li>
-        <li>Numbers: spell out one through nine; use digits for 10+. Always digits for stats and dates.</li>
-        <li>Capitalize event names ("Pereira Tech Day 2024") and proper nouns; everything else sentence-case.</li>
+    <section class="space-y-3 rounded-2xl border border-corag-border bg-corag-bg-brand p-6">
+      <h2 class="text-xl font-bold text-corag">Two registers, one brand</h2>
+      <p class="text-sm text-corag-secondary">
+        <strong class="text-corag">corag.org</strong> — this site — is warm, human and
+        hopeful. It is where someone decides whether to trust Corag.
+      </p>
+      <p class="text-sm text-corag-secondary">
+        <strong class="text-corag">app.corag.org</strong> during a live emergency is
+        operationally direct. When someone needs help right now, clarity beats warmth:
+        <em>“Necesito ayuda”</em>, <em>“Quiero ayudar”</em>, <em>“Seguir mi aporte”</em> —
+        three words, no adjectives.
+      </p>
+      <p class="text-sm text-corag-secondary">
+        Both are Corag. Do not import the app's clipped register into marketing copy,
+        and do not import marketing warmth into an emergency flow.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Spanish is the source language</h2>
+      <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-gray-300">
+        <li>Write Spanish first. English is a real translation of it, never the reverse.</li>
+        <li>
+          <strong>Diacritics are mandatory</strong> — ñ, á/é/í/ó/ú, ¿…?, ¡…!, and
+          interrogative accents (<code>cómo</code>, <code>qué</code>, <code>cuál</code>,
+          <code>dónde</code>, <code>cuándo</code>).
+        </li>
+        <li>Sentence case for headings and UI labels; title case only for proper nouns.</li>
+        <li>Colombian Spanish, but avoid regionalisms a reader outside Colombia would miss.</li>
       </ul>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Examples — English</h2>
       <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
         <table class="min-w-full text-sm">
           <thead class="bg-gray-50 dark:bg-gray-800">
             <tr class="text-left">
-              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Do</th>
               <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Don't</th>
+              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Do</th>
+              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Why</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Pereira Tech Talks runs monthly meetups in Pereira since 2017."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"We're a leading-edge synergistic ecosystem revolutionizing tech in the Pereira region."</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Become a speaker — share what you've learned."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Apply now — limited spots!!!"</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Sponsors get logo placement, a lightning-talk slot, and a one-year partnership track."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Premium tier sponsors enjoy unparalleled benefits at the best value."</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"We met every Friday during quarantine — 130+ talks since."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Join the journey of innovation that keeps redefining the limits."</td>
-            </tr>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {pairsEn.map((p) => (
+              <tr>
+                <td class="px-4 py-3 text-gray-500 line-through dark:text-gray-400">{p.bad}</td>
+                <td class="px-4 py-3 font-medium text-gray-800 dark:text-gray-100">{p.good}</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{p.why}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Español (regional Colombiano, accesible a LATAM)</h2>
-      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-        <li>Tono cercano, profesional, comunitario. Plural inclusivo ("nosotros", "la comunidad").</li>
-        <li>Voz activa. Tutea o usa "ustedes" según la audiencia, pero sé consistente dentro de cada página.</li>
-        <li>Evita anglicismos cuando exista un equivalente claro ("ponente" en lugar de "speaker" si se entiende mejor); úsalos cuando son convención técnica ("front-end", "DevOps").</li>
-        <li>Un signo de admiración por página máximo. Punto.</li>
-        <li>Números: del uno al nueve en letra; del 10 en adelante en dígitos. Siempre dígitos para fechas y métricas.</li>
-        <li>Comillas latinas en prosa larga; comillas dobles rectas en código y UI técnica.</li>
-      </ul>
+    <section class="space-y-3">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Ejemplos — Español</h2>
       <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
         <table class="min-w-full text-sm">
           <thead class="bg-gray-50 dark:bg-gray-800">
             <tr class="text-left">
-              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Sí</th>
-              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">No</th>
+              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Evita</th>
+              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Escribe</th>
+              <th class="px-4 py-2 font-semibold text-gray-700 dark:text-gray-200">Por qué</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Pereira Tech Talks organiza meetups mensuales en Pereira desde 2017."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Somos el ecosistema de innovación más vanguardista de la región."</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Postula como ponente y comparte lo que aprendiste."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"¡Postula ya — cupos limitados!"</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Los patrocinadores reciben logo, lightning talk y un año de alianza."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Beneficios premium incomparables al mejor valor."</td>
-            </tr>
-            <tr>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Nos reunimos cada viernes durante la cuarentena — 130+ charlas."</td>
-              <td class="px-4 py-3 text-gray-700 dark:text-gray-200">"Una travesía de innovación que redefine los límites."</td>
-            </tr>
+          <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {pairsEs.map((p) => (
+              <tr>
+                <td class="px-4 py-3 text-gray-500 line-through dark:text-gray-400">{p.bad}</td>
+                <td class="px-4 py-3 font-medium text-gray-800 dark:text-gray-100">{p.good}</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{p.why}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="space-y-3">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Hard rule — orthography</h2>
-      <p class="text-sm text-gray-600 dark:text-gray-300">
-        Spanish content always uses ñ (<code>pequeño</code>, <code>diseño</code>,
-        <code>español</code>), accented vowels (<code>análisis</code>, <code>código</code>,
-        <code>página</code>, <code>versión</code>), and interrogative accents
-        (<code>cómo</code>, <code>qué</code>, <code>cuál</code>). The greps in
-        <code>AGENTS.md</code> §2 must return zero matches before commit.
+    <section class="space-y-3 rounded-2xl border border-corag-danger/30 bg-corag-danger-soft p-6">
+      <h2 class="text-xl font-bold text-corag-danger">What warmth does not license</h2>
+      <p class="text-sm text-gray-700 dark:text-gray-200">
+        Corag handles real aid, real money and real people in bad situations.
+        <strong>Confianza</strong> and <strong>Transparencia</strong> are official values.
       </p>
-    </section>
-
-    <section class="space-y-3">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Forbidden vocabulary</h2>
-      <p class="text-sm text-gray-600 dark:text-gray-300">
-        Replace these on sight. Full list in
-        <code>docs/WRITING_VOICE_GUIDE.md</code>:
-      </p>
-      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-        <li>"leverage", "synergy", "ecosystem-as-a-service", "revolutionary", "best-in-class"</li>
-        <li>"vanguardista", "disruptivo", "ecosistema de innovación", "líder del mercado"</li>
-        <li>Stacked exclamation marks, ALL-CAPS sentences, emojis in chrome</li>
-        <li>"Don't miss out", "Hurry", "Limited time" — we don't sell scarcity</li>
+      <ul class="list-inside list-disc space-y-1 text-sm text-gray-700 dark:text-gray-200">
+        <li>Never promise what the platform does not guarantee. “Verificado” and “con evidencia” mean specific things — do not blur them.</li>
+        <li>Never sensationalize suffering. No disaster imagery, no misery as leverage, no urgency theatre.</li>
+        <li>Never publish a live figure this static site cannot verify — link to the app instead.</li>
+        <li>Never write savior framing.</li>
       </ul>
     </section>
 
+    <section class="grid gap-6 sm:grid-cols-2">
+      <div class="space-y-2">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Word blocklist</h2>
+        <div class="flex flex-wrap gap-2">
+          {blocklist.map((w) => (
+            <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600 line-through dark:bg-gray-800 dark:text-gray-300">
+              {w}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-2">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">AI-slop scaffolding</h2>
+        <div class="flex flex-wrap gap-2">
+          {slop.map((w) => (
+            <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600 line-through dark:bg-gray-800 dark:text-gray-300">
+              {w}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section class="space-y-3">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Names &amp; conventions</h2>
-      <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
-        <li><strong>Pereira Tech Talks</strong> — full name, title case. <strong>Corag</strong> in compact UI / chrome.</li>
-        <li><strong>Pereira Tech Day {`{year}`}</strong> — full name, title case. <strong>PTD {`{year}`}</strong> in compact UI.</li>
-        <li><strong>La Biblioteca del Mañana</strong> — proper noun in both languages; never translate.</li>
-        <li><strong>Speaker School</strong> — proper noun; in Spanish use "Speaker School" too (consolidated brand).</li>
-        <li>Locations: "Pereira, Risaralda, Colombia" — full string only on first mention or in metadata.</li>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Naming</h2>
+      <ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-gray-300">
+        <li><strong>Corag</strong> — always capitalized, never “CORAG” in running text. The wordmark itself is lowercase.</li>
+        <li><strong>Ayuda Directa</strong> — the flagship product, title case. It lives at <code>app.corag.org</code>.</li>
+        <li>Corag is <em>el ecosistema de impacto social</em>; Ayuda Directa is one product inside it. Do not use them interchangeably.</li>
+        <li>Refer to people who contribute as <strong>colaboradores</strong>, to those coordinating as <strong>líderes</strong>, and to organizations as <strong>aliados</strong>.</li>
       </ul>
     </section>
-  </main>
+
+    <footer class="border-t border-gray-200 pt-6 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300">
+      Full guidance in <code>docs/BRAND_GUIDE.md</code> §5 and
+      <code>docs/WRITING_VOICE_GUIDE.md</code>.
+    </footer>
+  </div>
 </InternalLayout>
