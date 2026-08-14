@@ -590,6 +590,16 @@ export const en: SiteTranslations = {
       'The full path of one delivery in Corag: who publishes the need, who takes it on, how the money moves, and how what was delivered gets proven.',
     eyebrow: 'The model',
     lead: 'Corag holds nobody’s money. It connects the person who needs with the person who can, puts a named responsable in between, and publishes the account afterwards. Here is the path, step by step.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-home-desktop',
+      widths: [640, 960, 1280, 1920],
+      alt: 'Ayuda Directa home screen on desktop, with the priority emergency and the global progress',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'A real view of the application. The data shown is live application data at capture time.',
+    },
     sections: [
       {
         heading: 'The path of one delivery',
@@ -602,14 +612,38 @@ export const en: SiteTranslations = {
               {
                 title: 'Someone publishes a need',
                 body: 'A family, a community leader or an organization records what is missing and where. The request becomes visible to the network instead of being buried in a chat thread.',
+                figure: {
+                  srcBase: '/images/pages/app/app-solicitar-mobile',
+                  widths: [390, 780],
+                  alt: 'Ayuda Directa "request help" form on a phone, with empty fields',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
               {
                 title: 'A responsable takes it on',
                 body: 'Whoever coordinates in that territory owns the delivery. They have a name, a validated identity, and a verified connection to the area or the organization.',
+                figure: {
+                  srcBase: '/images/pages/app/app-registro-lider-desktop',
+                  widths: [640, 1280],
+                  alt: 'Ayuda Directa leader application screen, with the form empty',
+                  width: 1280,
+                  height: 800,
+                  frame: 'browser',
+                },
               },
               {
                 title: 'Someone contributes',
                 body: 'The contribution goes by direct transfer to the responsable’s verified account. Corag is not an intermediary for the money and takes no cut for moving it.',
+                figure: {
+                  srcBase: '/images/home/app/app-aportar-mobile',
+                  widths: [390, 780],
+                  alt: 'Ayuda Directa "how do you want to help?" flow on a phone, with the contribution options',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
               {
                 title: 'The delivery happens',
@@ -618,6 +652,14 @@ export const en: SiteTranslations = {
               {
                 title: 'The evidence gets published',
                 body: 'Photos, receipts and figures are uploaded within the window, go through administrative review, and only then get published. Until that moment the contribution counts as received, not as used.',
+                figure: {
+                  srcBase: '/images/pages/app/app-seguimiento-mobile',
+                  widths: [390, 780],
+                  alt: 'Ayuda Directa private contribution follow-up screen, with the search empty',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
             ],
           },

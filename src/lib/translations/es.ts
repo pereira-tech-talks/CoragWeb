@@ -592,6 +592,16 @@ export const es: SiteTranslations = {
       'El recorrido completo de una ayuda en Corag: quién publica la necesidad, quién responde, cómo se mueve el dinero y cómo se comprueba lo que se entregó.',
     eyebrow: 'El modelo',
     lead: 'Corag no guarda el dinero de nadie. Conecta a quien necesita con quien puede, pone un nombre responsable en el medio y publica la cuenta después. Esto es el recorrido, paso por paso.',
+    heroFigure: {
+      srcBase: '/images/home/app/app-home-desktop',
+      widths: [640, 960, 1280, 1920],
+      alt: 'Pantalla principal de Ayuda Directa en escritorio, con la emergencia prioritaria y el avance global',
+      width: 1280,
+      height: 800,
+      frame: 'browser',
+      caption:
+        'Vista real de la aplicación. Los datos que se ven son datos vivos de la aplicación en el momento de la captura.',
+    },
     sections: [
       {
         heading: 'El recorrido de una ayuda',
@@ -604,14 +614,38 @@ export const es: SiteTranslations = {
               {
                 title: 'Alguien publica una necesidad',
                 body: 'Una familia, un líder comunitario o una organización registra qué hace falta y dónde. La solicitud queda visible para la red, no enterrada en un chat.',
+                figure: {
+                  srcBase: '/images/pages/app/app-solicitar-mobile',
+                  widths: [390, 780],
+                  alt: 'Formulario «Solicitar ayuda» de Ayuda Directa en un teléfono, con los campos vacíos',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
               {
                 title: 'Un responsable la toma',
                 body: 'Quien coordina en ese territorio asume la entrega. Tiene nombre, identidad validada y vínculo comprobado con la zona o la organización.',
+                figure: {
+                  srcBase: '/images/pages/app/app-registro-lider-desktop',
+                  widths: [640, 1280],
+                  alt: 'Pantalla de postulación para líder en Ayuda Directa, con el formulario vacío',
+                  width: 1280,
+                  height: 800,
+                  frame: 'browser',
+                },
               },
               {
                 title: 'Alguien aporta',
                 body: 'El aporte va por transferencia directa a la cuenta verificada del responsable. Corag no es intermediario del dinero ni cobra comisión por moverlo.',
+                figure: {
+                  srcBase: '/images/home/app/app-aportar-mobile',
+                  widths: [390, 780],
+                  alt: 'Flujo «¿Cómo quieres ayudar?» de Ayuda Directa en un teléfono, con las opciones de aporte',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
               {
                 title: 'Se ejecuta la entrega',
@@ -620,6 +654,14 @@ export const es: SiteTranslations = {
               {
                 title: 'Se publica la evidencia',
                 body: 'Fotos, soportes y cifras se cargan dentro del plazo, pasan revisión administrativa y solo entonces se publican. Hasta ese momento el aporte cuenta como recibido, no como utilizado.',
+                figure: {
+                  srcBase: '/images/pages/app/app-seguimiento-mobile',
+                  widths: [390, 780],
+                  alt: 'Pantalla privada de seguimiento de un aporte en Ayuda Directa, con la búsqueda vacía',
+                  width: 390,
+                  height: 844,
+                  frame: 'phone',
+                },
               },
             ],
           },

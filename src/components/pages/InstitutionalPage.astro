@@ -218,13 +218,16 @@ const slugify = (heading: string): string =>
                             stepIndex % 2 === 1 ? 'lg:order-1' : '',
                           ]}
                         >
+                          {/* Phone frames are portrait and would otherwise
+                              set the row height; cap them so a step stays a
+                              step rather than a full screen. */}
                           <InstitutionalFigure
                             figure={step.figure}
-                            sizes="(min-width: 1024px) 42vw, 100vw"
+                            sizes="(min-width: 1024px) 20rem, 60vw"
                             class={
                               step.figure.frame === 'phone'
-                                ? 'mx-auto max-w-[16rem]'
-                                : ''
+                                ? 'mx-auto max-w-[13rem]'
+                                : 'mx-auto max-w-xl'
                             }
                           />
                         </div>

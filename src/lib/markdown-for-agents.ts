@@ -753,12 +753,21 @@ export function serializeInstitutionalPageToMarkdown(
   }
   sections.push({ heading: copy.cta.title, lines: ctaLines });
 
+  /*
+   * The hero figure belongs in the twin too: when it is an app screenshot it
+   * carries the live-data declaration, and an agent reading the twin has to
+   * learn that as surely as a person reading the page does.
+   */
+  const body = copy.heroFigure
+    ? `${copy.lead}\n\n${figureToMarkdown(copy.heroFigure)}`
+    : copy.lead;
+
   return serializeGenericToMarkdown({
     title: copy.title,
     description: copy.description,
     lang: options.lang,
     canonical: options.canonical,
-    body: copy.lead,
+    body,
     sections,
   });
 }
