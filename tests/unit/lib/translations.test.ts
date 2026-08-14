@@ -46,11 +46,12 @@ describe('getTranslations', () => {
     const t = getTranslations('en');
     expect(t).toHaveProperty('nav');
     expect(t).toHaveProperty('footer');
-    expect(t).toHaveProperty('hero');
+    expect(t).toHaveProperty('home');
     expect(t).toHaveProperty('siteTitle');
     expect(t).toHaveProperty('siteDescription');
     expect(t).toHaveProperty('contact');
     expect(t).toHaveProperty('aboutPage');
+    expect(t).toHaveProperty('contributorsPage');
   });
 
   it('returns different string values for different languages', () => {

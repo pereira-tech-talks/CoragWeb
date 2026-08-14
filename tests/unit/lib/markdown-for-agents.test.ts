@@ -225,9 +225,7 @@ describe('serializePageToAgentMarkdown', () => {
     });
 
     expect(result).toContain('# About — Pereira Tech Talks');
-    expect(result).toContain(
-      '> El ecosistema de impacto social.'
-    );
+    expect(result).toContain('> El ecosistema de impacto social.');
     expect(result).toContain('Language: en');
     expect(result).toContain('Canonical: https://corag.app/en/about');
     expect(result).toContain('Last Updated: 2026-03-09');

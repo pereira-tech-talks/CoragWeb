@@ -1,6 +1,7 @@
 ---
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import { APP_URL } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -19,13 +20,8 @@ const ctas = [
     variant: 'primary' as const,
   },
   {
-    href: `${prefix}/meetups`,
-    label: t.notFoundPage.meetupsCta,
-    variant: 'secondary' as const,
-  },
-  {
-    href: `${prefix}/pereira-tech-day`,
-    label: t.notFoundPage.ptdCta,
+    href: APP_URL,
+    label: t.notFoundPage.appCta,
     variant: 'secondary' as const,
   },
   {

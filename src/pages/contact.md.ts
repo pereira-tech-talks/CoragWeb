@@ -4,7 +4,6 @@ import type { APIRoute } from 'astro';
 import { SITE_URL } from '@/lib/constances';
 import {
   entityLine,
-  linkLine,
   serializeGenericToMarkdown,
 } from '@/lib/markdown-for-agents';
 import { getTranslations } from '@/lib/translations';
@@ -43,33 +42,6 @@ export const GET: APIRoute = async () => {
         lines: t.quickLinks.map((link) =>
           entityLine(link.label, link.href, link.description)
         ),
-      },
-      {
-        heading: t.meetInPersonTitle,
-        lines: [t.meetInPersonText],
-      },
-      {
-        heading: t.locationTitle,
-        lines: [t.locationText],
-      },
-      {
-        heading: 'Rutas dedicadas',
-        lines: [
-          linkLine('Call for Speakers', `${SITE_URL}/call-for-speakers`),
-          linkLine('Quiero patrocinar', `${SITE_URL}/sponsor-us`),
-          linkLine(
-            'Postulación a la Escuela de Speakers',
-            `${SITE_URL}/verticals/speaker-school/#speaker-school-form`
-          ),
-          linkLine(
-            'Propuesta de calendario comunitario',
-            `${SITE_URL}/calendar/#calendar-intake`
-          ),
-          linkLine(
-            'Reporte de Código de Conducta',
-            `${SITE_URL}/conduct/#conduct-report-form`
-          ),
-        ],
       },
     ],
   });

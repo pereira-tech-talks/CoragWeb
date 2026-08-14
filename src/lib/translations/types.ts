@@ -52,19 +52,8 @@ export interface SiteTranslations {
     blog: string;
     about: string;
     contact: string;
-    slides: string;
-    meetups: string;
-    pereiraTechDays: string;
-    speakers: string;
-    talks: string;
-    calendar: string;
-    communities: string;
-    sponsors: string;
     contributors: string;
-    verticals: string;
     channels: string;
-    press: string;
-    community: string;
     menu: string;
     closeMenu: string;
     openMenu: string;
@@ -74,74 +63,13 @@ export interface SiteTranslations {
   footer: {
     copyright: string;
     allRightsReserved: string;
-  };
-
-  // Homepage hero
-  hero: {
     tagline: string;
-    description: string;
-    typewriterWords: string[];
-    ctaMeetups: string;
-    ctaPtd: string;
-    ctaContact: string;
-    scrollLabel: string;
+    /** Reminder that transactional actions live in the application. */
+    appNote: string;
   };
 
   // Homepage sections
   homeSections: {
-    about: {
-      title: string;
-      description: string;
-      cta: string;
-      cta2: string;
-    };
-    community: {
-      title: string;
-      subtitle: string;
-      description: string;
-      cta: string;
-    };
-    meetups: {
-      eyebrow: string;
-      upcomingTitle: string;
-      latestTitle: string;
-      cta: string;
-    };
-    verticals: {
-      eyebrow: string;
-      title: string;
-      subtitle: string;
-      cta: string;
-    };
-    ptd: {
-      eyebrow: string;
-      title: string;
-      subtitle: string;
-      cta: string;
-    };
-    ptdStrip: {
-      eyebrow: string;
-      title: string;
-      subtitle: string;
-      cta: string;
-      date: string;
-      venue: string;
-      attendance: string;
-      /**
-       * Used instead of `eyebrow` / `cta` while the edition is postponed; the
-       * headline and body copy come from the edition's `postponement` block,
-       * not from here. Unused in every other status.
-       */
-      postponedEyebrow: string;
-      postponedCta: string;
-    };
-    sponsors: {
-      eyebrow: string;
-      title: string;
-      subtitle: string;
-      cta: string;
-      ctaJoin: string;
-    };
     latestArticles: string;
     viewAllPosts: string;
   };
@@ -158,66 +86,6 @@ export interface SiteTranslations {
     sendButton: string;
   };
 
-  // Meetups listing page
-  meetupsPage: {
-    title: string;
-    /** SEO description — placeholders: {meetups}, {talks}, {speakers}, {sinceYear} */
-    description: string;
-    intro: string;
-    upcoming: string;
-    past: string;
-    /** Unified timeline heading — upcoming + archive in one list. */
-    allMeetups: string;
-    emptyUpcomingTitle: string;
-    emptyUpcomingDescription: string;
-    ctaLuma: string;
-    /** Hero eyebrow above the H1 (not the numeric stats). */
-    eyebrow: string;
-    statMeetups: string;
-    statTalks: string;
-    statSpeakers: string;
-    statSince: string;
-    /** Bridge label above the upcoming strip (PTD / next gathering). */
-    nextUpLabel: string;
-    nextUpCta: string;
-    yearLabel: string; // use {year} placeholder
-    yearNav: string;
-    calendarEyebrow: string;
-    archiveEyebrow: string;
-    breadcrumbHome: string;
-  };
-
-  meetupDetail: {
-    talks: string;
-    /** Shown above a Spanish body on an English page that has no translation yet. */
-    untranslatedBody: string;
-    speakers: string;
-    sponsors: string;
-    sponsorsSubtitle: string;
-    venue: string;
-    originalEvent: string;
-    recording: string;
-    watchRecording: string;
-    photosExternal: string;
-    galleryMemories: string;
-    statusAnnounced: string;
-    statusRsvpOpen: string;
-    statusCompleted: string;
-    statusCancelled: string;
-    breadcrumbHome: string;
-    breadcrumbMeetups: string;
-  };
-
-  speakerDetail: {
-    talkHistory: string;
-    talkHistorySubtitle: string;
-    relatedEvents: string;
-    relatedEventsSubtitle: string;
-    breadcrumbHome: string;
-    breadcrumbSpeakers: string;
-    website: string;
-  };
-
   // About page
   aboutPage: {
     title: string;
@@ -232,7 +100,7 @@ export interface SiteTranslations {
     quickFacts: string[];
     ctaTitle: string;
     ctaDescription: string;
-    ctaCv: string;
+    ctaApp: string;
     ctaContact: string;
   };
 
@@ -242,6 +110,14 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
+    /**
+     * The panel shown ABOVE the form. Requesting or offering aid happens in the
+     * application; a form here that quietly swallowed an emergency need would be
+     * a real harm, not a UX flaw.
+     */
+    appNoticeTitle: string;
+    appNoticeBody: string;
+    appNoticeCta: string;
     formTitle: string;
     nameLabel: string;
     namePlaceholder: string;
@@ -263,162 +139,9 @@ export interface SiteTranslations {
     invalidEmail: string;
     submitError: string;
     fallbackMessage: string;
-    fallbackEmailText: string;
     formNote: string;
-    socialTitle: string;
-    locationTitle: string;
-    locationText: string;
     quickLinksTitle: string;
     quickLinks: { label: string; href: string; description: string }[];
-    meetInPersonTitle: string;
-    meetInPersonText: string;
-    prefillSubjects: {
-      generalInquiry: string;
-      collaboration: string;
-      projectInquiry: string;
-      projectCollaboration: string;
-      startupCollaboration: string;
-      techTalkInvitation: string;
-    };
-  };
-
-  cfsForm: {
-    formTitle: string;
-    talkTitleLabel: string;
-    talkTitlePlaceholder: string;
-    formatLabel: string;
-    formatOptions: { value: string; label: string }[];
-    abstractLabel: string;
-    abstractPlaceholder: string;
-    takeawaysLabel: string;
-    takeawaysPlaceholder: string;
-    socialLabel: string;
-    socialPlaceholder: string;
-    firstTimeLabel: string;
-    speakerSchoolLabel: string;
-    notesLabel: string;
-    notesPlaceholder: string;
-    submitButton: string;
-    successTitle: string;
-    successMessage: string;
-    defaultSubject: string;
-  };
-
-  sponsorForm: {
-    formTitle: string;
-    companyLabel: string;
-    companyPlaceholder: string;
-    roleLabel: string;
-    rolePlaceholder: string;
-    tierLabel: string;
-    tierOptions: { value: string; label: string }[];
-    contributionLabel: string;
-    contributionOptions: { value: string; label: string }[];
-    messageLabel: string;
-    messagePlaceholder: string;
-    submitButton: string;
-    successTitle: string;
-    successMessage: string;
-    defaultSubject: string;
-  };
-
-  speakerSchoolForm: {
-    formTitle: string;
-    formEyebrow: string;
-    formSectionTitle: string;
-    experienceLabel: string;
-    experienceOptions: { value: string; label: string }[];
-    goalsLabel: string;
-    goalsPlaceholder: string;
-    topicsLabel: string;
-    topicsPlaceholder: string;
-    availabilityLabel: string;
-    availabilityPlaceholder: string;
-    priorSpeakingLabel: string;
-    priorSpeakingPlaceholder: string;
-    socialLabel: string;
-    socialPlaceholder: string;
-    messageLabel: string;
-    messagePlaceholder: string;
-    submitButton: string;
-    successTitle: string;
-    successMessage: string;
-    applyCta: string;
-  };
-
-  cfsPage: {
-    title: string;
-    description: string;
-    intro: string;
-    eyebrow: string;
-    whatWeLookForTitle: string;
-    whatWeLookFor: string[];
-    formatsTitle: string;
-    formats: { name: string; description: string }[];
-    processTitle: string;
-    process: string[];
-    criteriaEyebrow: string;
-    formatsEyebrow: string;
-    processEyebrow: string;
-    formEyebrow: string;
-  };
-
-  sponsorUsPage: {
-    title: string;
-    description: string;
-    intro: string;
-    formEyebrow: string;
-    formSectionTitle: string;
-  };
-
-  calendarPage: {
-    title: string;
-    subtitle: string;
-    description: string;
-    heroDescription: string;
-    eyebrow: string;
-    hubEyebrow: string;
-    filterLabel: string;
-    filterAll: string;
-    viewMonth: string;
-    viewAgenda: string;
-    legendLabel: string;
-    embedTitle: string;
-    embedFallback: string;
-    openExternal: string;
-    subscribeIcs: string;
-    lumaRsvp: string;
-    websiteLink: string;
-    noActiveCalendars: string;
-    comingSoon: string;
-    inactiveNote: string;
-    quickLinksEyebrow: string;
-    quickLinksTitle: string;
-    meetupsLink: string;
-    lumaLink: string;
-    contributeEyebrow: string;
-    contributeTitle: string;
-    contributeDescription: string;
-    contributeCta: string;
-    breadcrumbHome: string;
-  };
-
-  calendarForm: {
-    formTitle: string;
-    communityLabel: string;
-    communityPlaceholder: string;
-    calendarIdLabel: string;
-    calendarIdPlaceholder: string;
-    calendarIdHint: string;
-    publicUrlLabel: string;
-    publicUrlPlaceholder: string;
-    websiteLabel: string;
-    websitePlaceholder: string;
-    descriptionLabel: string;
-    descriptionPlaceholder: string;
-    submitButton: string;
-    successTitle: string;
-    successMessage: string;
   };
 
   conductForm: {
@@ -440,94 +163,6 @@ export interface SiteTranslations {
     submitButton: string;
     successTitle: string;
     successMessage: string;
-  };
-
-  communitiesPage: {
-    title: string;
-    description: string;
-    eyebrow: string;
-    heroLead: string;
-    narrativeTitle: string;
-    narrativeText: string;
-    alliesTitle: string;
-    allianceTitle: string;
-    allianceSteps: string[];
-    ctaTitle: string;
-    ctaDescription: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-    visitLabel: string;
-  };
-
-  sponsorsPage: {
-    title: string;
-    description: string;
-    eyebrow: string;
-    intro: (count: number) => string;
-    currentTitle: string;
-    currentIntro: string;
-    pastTitle: string;
-    pastIntro: string;
-    sponsorUsLabel: string;
-    contactLabel: string;
-    emptyTitle: string;
-    emptyDesc: string;
-    breadcrumbHome: string;
-    why: {
-      title: string;
-      intro: string;
-      items: {
-        meetups: { title: string; body: string };
-        ptd: { title: string; body: string };
-        talent: { title: string; body: string };
-      };
-    };
-    /** Kept for PTD / legacy copy; community `/sponsors` page does not render these. */
-    tiers: {
-      diamond: string;
-      gold: string;
-      silver: string;
-      bronze: string;
-      community: string;
-    };
-    /** Sponsor card affordances. */
-    card: {
-      /** Also used as the per-year counter on the sponsor profile timeline. */
-      meetupsCount: (count: number) => string;
-      viewSponsoredMeetups: string;
-      website: string;
-    };
-  };
-
-  // Sponsor detail page (/sponsors/{slug})
-  sponsorDetail: {
-    breadcrumbHome: string;
-    breadcrumbSponsors: string;
-    metaDescription: (name: string, meetups: number) => string;
-    statusActive: string;
-    statusPast: string;
-    sinceLabel: (year: number) => string;
-    websiteLabel: string;
-    allSponsorsLabel: string;
-    sponsorUsLabel: string;
-    stats: {
-      meetups: string;
-      editions: string;
-      talks: string;
-      speakers: string;
-    };
-    upcomingTitle: string;
-    upcomingSubtitle: string;
-    meetupsTitle: string;
-    meetupsSubtitle: (name: string) => string;
-    editionsTitle: string;
-    editionsSubtitle: string;
-    editionUpcomingLabel: string;
-    editionTierLabel: (tier: string) => string;
-    emptyTitle: string;
-    emptyDesc: string;
-    ctaTitle: string;
-    ctaBody: string;
   };
 
   contributorsPage: {
@@ -594,18 +229,6 @@ export interface SiteTranslations {
   seriesToC: string;
   seriesChapterOf: (current: number, total: number) => string;
 
-  // Cross-content floating indicators (blog ↔ slide)
-  slideIndicator: {
-    label: string;
-    subtitle: string;
-    ariaLabel: string;
-  };
-  postIndicator: {
-    label: string;
-    subtitle: string;
-    ariaLabel: string;
-  };
-
   // Series pages
   seriesPage: {
     title: string;
@@ -668,122 +291,8 @@ export interface SiteTranslations {
     eyebrow: string;
     backHome: string;
     searchBlog: string;
-    meetupsCta: string;
-    ptdCta: string;
-  };
-
-  // Verticals / programs pages
-  verticalsPage: {
-    title: string;
-    description: string;
-    intro: string;
-    eyebrow: string;
-    sectionEyebrow: string;
-    sectionTitle: string;
-    programLabel: string;
-    learnMore: string;
-    relatedMeetups: string;
-    contactCta: string;
-    joinCta: string;
-    /** Speaker School vertical — scroll to dedicated application form */
-    applyCta: string;
-    emptyTitle: string;
-    emptyDesc: string;
-    statusActive: string;
-    statusPaused: string;
-    statusArchived: string;
-  };
-
-  // Pereira Tech Day edition pages
-  ptdPage: {
-    recordingCta: string;
-    schedule: string;
-    talks: string;
-    speakers: string;
-    gallery: string;
-    galleryMemories: string;
-    sponsors: string;
-    sponsorsSubtitle: string;
-    sponsorsFooter: string;
-    communities: string;
-    communitiesOrganizes: string;
-    communitiesOrganizesSubtitle: string;
-    communitiesOrganizesFooter: string;
-    organizers: string;
-    organizersSubtitle: string;
-    collaborators: string;
-    collaboratorsSubtitle: string;
-    about: string;
-    pricing: string;
-    faq: string;
-    faqSubtitle: string;
-    joinTitle: string;
-    joinSubtitle: string;
-    joinCta: string;
-    lightningTitle: string;
-    lightningTagline: string;
-    /** Agenda timeline (upcoming editions) — see `PtdScheduleSection.svelte`. */
-    scheduleEyebrow: string;
-    scheduleTentativeBadge: string;
-    scheduleTentativeNote: string;
-    scheduleToBeRevealed: string;
-    scheduleViewDetail: string;
-    scheduleModalClose: string;
-    scheduleModalAbout: string;
-    scheduleModalSession: string;
-    scheduleModalProfile: string;
-    scheduleAbstractPending: string;
-    /** `{n}` is replaced with the session number, e.g. `Ponente 3`. */
-    schedulePendingSpeaker: string;
-    scheduleAnchor: string;
-    scheduleAnchorCta: string;
-    languageSwitcher: string;
-    speakersEyebrow: string;
-    speakersUpcomingSubtitle: string;
-    speakersRevealSoon: string;
-    lightningPendingMessage: string;
-    lightningPendingCard: string;
-    lightningPendingCta: string;
-    /** Primary hero CTA when registration is open (e.g. Luma). */
-    registerCta: string;
-    /** Shown wherever an edition carries `status: postponed`. */
-    postponedBadge: string;
-    /** Hero pill replacing the countdown while postponed. */
-    postponedHeroBadge: string;
-    /** Notice byline. Contains a `{date}` placeholder. */
-    postponedSince: string;
-    /** CTA pointing at the postponement notice on the edition landing. */
-    postponedReadCta: string;
-    subscribe: {
-      copy: string;
-      emailLabel: string;
-      emailPlaceholder: string;
-      button: string;
-      submitting: string;
-      success: string;
-      error: string;
-    };
-    indexFeatured: string;
-    indexUpcoming: string;
-    indexPast: string;
-    indexIntro: string;
-    indexEyebrow: string;
-    indexCfsCta: string;
-    indexSponsorCta: string;
-    indexStatEditions: string;
-    indexStatYears: string;
-    indexStatSince: string;
-    indexCalendarEyebrow: string;
-    indexHistoryEyebrow: string;
-    indexPastSubtitle: string;
-    editionNavLabel: string;
-    previousEditions: string;
-    allEditions: string;
-    indexStagePrimaryCta: string;
-    indexPastRowEyebrow: string;
-    indexPastRowCta: string;
-    indexNoUpcomingTitle: string;
-    indexNoUpcomingIntro: string;
+    /** Into the application — the most useful place to send someone who is lost. */
+    appCta: string;
   };
 
   // Blog post engagement
@@ -815,17 +324,6 @@ export interface SiteTranslations {
     ctaDescription: string;
   };
 
-  // Slides listing page
-  slidesPage: {
-    title: string;
-    subtitle: string;
-    description: string;
-    heroDescription: string;
-    timelineTitle: string;
-    emptyState: string;
-    viewAll: string;
-  };
-
   // Slides / deck pages
   slides: {
     exitToCatalog: string;
@@ -854,64 +352,6 @@ export interface SiteTranslations {
   blogEngagement: {
     aboutAuthor: string;
     writtenBy: string;
-  };
-
-  // Certificates / diplomas
-  certificates: {
-    pageTitle: string;
-    pageDescription: string;
-    diplomaTitle: string;
-    preamble: string;
-    attendedPrefix: string;
-    sealLabel: string;
-    issuedBy: string;
-    verifyLabel: string;
-    qrAlt: string;
-    demoBanner: string;
-    backToEvent: string;
-    watermarkRevoked: string;
-    roles: {
-      attendee: string;
-      speaker: string;
-      volunteer: string;
-    };
-    actions: {
-      print: string;
-      downloadJson: string;
-      copyLink: string;
-      share: string;
-      copied: string;
-      shared: string;
-      shareFailed: string;
-    };
-    verify: {
-      title: string;
-      description: string;
-      intro: string;
-      idLabel: string;
-      idPlaceholder: string;
-      submit: string;
-      statusLabel: string;
-      subject: string;
-      event: string;
-      certId: string;
-      viewDiploma: string;
-      emptyHint: string;
-      cryptoLabel: string;
-      cryptoSigned: string;
-      cryptoDemo: string;
-      cryptoUnsigned: string;
-      cryptoFailed: string;
-      cryptoRevokedSigned: string;
-      statuses: {
-        valid: string;
-        revoked: string;
-        replaced: string;
-        expired: string;
-        unknown: string;
-      };
-      reasons: Record<string, string>;
-    };
   };
 
   // Errors
