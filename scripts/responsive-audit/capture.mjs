@@ -22,12 +22,8 @@ const ROOT = resolve(__dirname, '..', '..');
 const OUT_DIR = join(ROOT, 'tmp', 'responsive-audit', 'baseline');
 const SUMMARY_OUT = join(
   ROOT,
-  '.agent_commands',
-  'agent_deep_work_plans',
-  'results',
-  'plans',
-  'PLAN_full_responsive_audit',
-  'analysis_results',
+  'tmp',
+  'responsive-audit',
   '00_baseline',
   'capture_summary.csv'
 );

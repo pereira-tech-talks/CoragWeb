@@ -12,16 +12,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..', '..');
 const DIST = join(ROOT, 'dist');
-const OUT_DIR = join(
-  ROOT,
-  '.agent_commands',
-  'agent_deep_work_plans',
-  'results',
-  'plans',
-  'PLAN_full_responsive_audit',
-  'analysis_results',
-  '00_baseline'
-);
+const OUT_DIR = join(ROOT, 'tmp', 'responsive-audit', '00_baseline');
 
 function walk(dir, base = '') {
   const out = [];
@@ -72,42 +63,19 @@ function classify(route) {
     return { path, lang, template: 'blog-series' };
   if (p.startsWith('/blog/')) return { path, lang, template: 'blog-post' };
 
-  // Meetups
-  if (p === '/meetups') return { path, lang, template: 'meetups-list' };
-  if (p.startsWith('/meetups/'))
-    return { path, lang, template: 'meetups-detail' };
-
-  // Events
-  if (p === '/events') return { path, lang, template: 'events-list' };
-  if (p.startsWith('/events/'))
-    return { path, lang, template: 'events-detail' };
-
-  // PTD
-  if (p === '/pereira-tech-day') return { path, lang, template: 'ptd-landing' };
-  if (p === '/pereira-tech-days')
-    return { path, lang, template: 'ptd-landing-redirect' };
-  if (p.match(/^\/pereira-tech-days\/\d+$/))
-    return { path, lang, template: 'ptd-edition' };
-  if (p.startsWith('/pereira-tech-days/'))
-    return { path, lang, template: 'ptd-edition-sub' };
-
-  // Verticals
-  if (p === '/verticals') return { path, lang, template: 'verticals-list' };
-  if (p.startsWith('/verticals/'))
-    return { path, lang, template: 'verticals-detail' };
-
-  // Speakers
-  if (p === '/speakers') return { path, lang, template: 'speakers-list' };
-  if (p.startsWith('/speakers/'))
-    return { path, lang, template: 'speakers-detail' };
-
-  // Talks
-  if (p === '/talks') return { path, lang, template: 'talks-list' };
-  if (p.startsWith('/talks/')) return { path, lang, template: 'talks-detail' };
-
-  // Slides
-  if (p === '/slides') return { path, lang, template: 'slides-catalog' };
-  if (p.startsWith('/slides/')) return { path, lang, template: 'slides-deck' };
+  // Institutional pages
+  if (
+    [
+      '/how-it-works',
+      '/transparency',
+      '/emergencies',
+      '/leaders',
+      '/partners',
+      '/developers',
+      '/privacy',
+    ].includes(p)
+  )
+    return { path, lang, template: `institutional${p.replace(/\//g, '-')}` };
 
   // Authors
   if (p === '/authors' || p.startsWith('/authors/'))
@@ -117,26 +85,17 @@ function classify(route) {
   if (p === '/contributors' || p.startsWith('/contributors/'))
     return { path, lang, template: 'contributors' };
 
-  // Sponsors / channels / press
-  if (p === '/sponsors') return { path, lang, template: 'sponsors' };
+  // Channels
   if (p === '/channels') return { path, lang, template: 'channels' };
-  if (p === '/press') return { path, lang, template: 'press' };
 
   // Narrative + forms
-  if (p === '/about-us' || p === '/about' || p === '/sobre-nosotros')
-    return { path, lang, template: 'narrative-about' };
-  if (p === '/community' || p === '/comunidad')
-    return { path, lang, template: 'narrative-community' };
+  if (p === '/about') return { path, lang, template: 'narrative-about' };
   if (p === '/conduct') return { path, lang, template: 'narrative-conduct' };
   if (p === '/contributing')
     return { path, lang, template: 'narrative-contributing' };
   if (p === '/governance')
     return { path, lang, template: 'narrative-governance' };
-  if (p === '/contact' || p === '/contacto')
-    return { path, lang, template: 'form-contact' };
-  if (p === '/call-for-speakers')
-    return { path, lang, template: 'form-call-for-speakers' };
-  if (p === '/sponsor-us') return { path, lang, template: 'form-sponsor-us' };
+  if (p === '/contact') return { path, lang, template: 'form-contact' };
   if (p === '/404') return { path, lang, template: '404' };
 
   return { path, lang, template: 'unclassified' };

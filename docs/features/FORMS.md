@@ -1,13 +1,13 @@
 # Community intake forms (Dailybot)
 
-Every public Pereira Tech Talks intake form posts to the Cloudflare Pages
+Every public Corag intake form posts to the Cloudflare Pages
 Function `POST /api/contact` (`functions/api/contact.ts`), which forwards
 structured responses to the **Dailybot Forms** public API. Dailybot is the
 **system of record**. Optional **Resend** auto-ack may run after a successful
 Dailybot `201` and must never block success.
 
 There is no local Dailybot mock — exercising Forms against a real
-`DAILYBOT_API_KEY` hits the live Pereira Tech Talks org. Prefer unit tests for
+`DAILYBOT_API_KEY` hits the live Corag org. Prefer unit tests for
 mapping; when you must smoke, prefix subjects/messages with `[TEST]` and delete
 junk responses afterward.
 
@@ -85,7 +85,7 @@ Booleans send JSON `true` / `false` (Dailybot `boolean` question type).
 | Corag Community Calendar | `22f3540c-669d-42b8-8365-abed7bb07cda` |
 | Corag Code of Conduct | `ce944b4b-bd99-4836-a14e-c583773952a4` |
 
-Public intakes report to Slack `#all-pereira-tech-talks` (`C0BNTQVCGJ2`).
+Public intakes report to Slack `#all-corag` (`C0BNTQVCGJ2`).
 **Code of Conduct** is `owner_and_admins` only, `--no-public`, **no** Slack
 report channel.
 

@@ -1,6 +1,6 @@
 # Contributors (Equipo) — Feature Guide
 
-The `/contributors` page is the public **Team** directory for Pereira Tech Talks (nav label: Equipo / Team).
+The `/contributors` page is the public **Team** directory for Corag (nav label: Equipo / Team).
 
 ## Routes
 

@@ -1,6 +1,6 @@
 # SEO Guide
 
-This guide documents the SEO architecture, patterns, and best practices for Pereira Tech Talks v3.0.0. It serves as the single reference for all SEO-related work.
+This guide documents the SEO architecture, patterns, and best practices for Corag. It serves as the single reference for all SEO-related work.
 
 ## Overview
 
@@ -71,7 +71,7 @@ Every page automatically gets these tags through `MainLayout` → `BaseHead`:
 Blog posts can provide per-post keywords via the `keywords` frontmatter field. These are specific search phrases (distinct from categorical tags) that match how users search for the content.
 
 - **Blog posts with `keywords`:** Rendered as `<meta name="keywords" content="phrase 1, phrase 2, ...">`
-- **Pages without `keywords`:** Falls back to global site keywords (Pereira Tech Talks, Pereira tech community, bilingual tech events Colombia, La Biblioteca del Mañana, Pereira Tech Day, etc.)
+- **Pages without `keywords`:** Falls back to global site keywords (Corag, Pereira tech community, bilingual tech events Colombia, La Biblioteca del Mañana, Pereira Tech Day, etc.)
 - **JSON-LD:** BlogPosting `keywords` field uses the `keywords` array when present, tags as fallback
 
 **Tags vs Keywords:**
@@ -209,8 +209,8 @@ All content MUST exist in both languages:
 
 > **Host must match the URL you share.** Absolute OG URLs are built from
 > `astro.config.mjs` → `site` (override with `PUBLIC_SITE_URL` / `SITE`).
-> While sharing `https://pereiratechtalks.org/`, `site` must be that
-> origin. Pointing `og:image` at apex `pereiratechtalks.org` today follows
+> While sharing `https://corag.app/`, `site` must be that
+> origin. Pointing `og:image` at apex `corag.app` today follows
 > redirects into the legacy stack and 404s — Facebook then shows the favicon.
 
 ### Twitter Card Tags

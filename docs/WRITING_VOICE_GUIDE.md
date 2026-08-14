@@ -1,10 +1,10 @@
 # Writing Voice Guide
 
-> **Companion doc:** [Writing Craft Guide](./WRITING_CRAFT_GUIDE.md) — narrative structure, fact verification, quote handling, figure markup, refinement patterns. This guide focuses on **voice** (vocabulary, tone, register, anti-AI-slop). Both are mandatory reading for anyone publishing on Pereira Tech Talks (Corag).
+> **Companion doc:** [Writing Craft Guide](./WRITING_CRAFT_GUIDE.md) — narrative structure, fact verification, quote handling, figure markup, refinement patterns. This guide focuses on **voice** (vocabulary, tone, register, anti-AI-slop). Both are mandatory reading for anyone publishing on Corag (Corag).
 
 ## 1. Purpose
 
-Pereira Tech Talks publishes content from **multiple authors** — community organizers, vertical leads, speakers, mentors, and guest contributors. The voice must feel consistent across authors and across languages (Spanish primary, English first-class international) without flattening individual personality.
+Corag publishes content from **multiple authors** — community organizers, vertical leads, speakers, mentors, and guest contributors. The voice must feel consistent across authors and across languages (Spanish primary, English first-class international) without flattening individual personality.
 
 This guide captures three things:
 
@@ -62,7 +62,7 @@ Multiple authors publish on Corag. The voice anchors stay constant, but the regi
 | **Personal essay** | A community member sharing a hard-won lesson | First-person singular, opinionated, can be raw | "I gave my first talk at Corag in 2018. It was bad. Here is what I would tell my 24-year-old self before walking on stage." |
 | **Series chapter** | Long-form serial like *La Biblioteca del Mañana* | Owned by one author, plural where the community is involved | (See WRITING_CRAFT_GUIDE §4 for series structure.) |
 
-When the **byline** is a single author, first-person singular is fine. When the byline is *Pereira Tech Talks* (organizational voice), default to plural and avoid sentences that require an embodied "I."
+When the **byline** is a single author, first-person singular is fine. When the byline is *Corag* (organizational voice), default to plural and avoid sentences that require an embodied "I."
 
 ### 2.5 Spanish is the primary language
 
@@ -135,7 +135,7 @@ Expected: zero matches. If any match is found, fix before committing.
 [ ] Does every section have at least some sentence length variety?
 [ ] Is there at least 1 sentence that starts with "Honestly" / "Honestamente" or "I think" / "Creo que"?
 [ ] Spanish content uses tuteo (tú), not voseo (vos)?
-[ ] If byline is "Pereira Tech Talks" (org voice), does the post avoid first-person-singular sentences that require an embodied "I"?
+[ ] If byline is "Corag" (org voice), does the post avoid first-person-singular sentences that require an embodied "I"?
 [ ] If byline is a single author, are community-attributed claims clearly marked as theirs?
 [ ] Meetup collection pages: body is not only an import stub; no invented attendance/talks/people; sponsors vs allies wording correct?
 ```
@@ -265,7 +265,7 @@ Meetup **collection pages** are the canonical public record of each monthly even
 
 #### Voice
 
-- Default to **plural organization voice**: "we" / "nos" / "la comunidad." The byline is Pereira Tech Talks.
+- Default to **plural organization voice**: "we" / "nos" / "la comunidad." The byline is Corag.
 - Use first-person singular **only** when quoting or attributing a **named organizer** (or speaker) who owns that sentence — e.g. a short attributed line from Sergio Flórez, not an embodied "I" in the org narrative.
 - Warm, specific, professional. No press-release hype, no corporate community-speak.
 
@@ -302,7 +302,7 @@ Flyer labels decide the collection — never guess:
 |------------------|----------|---------|
 | **Sponsored by** / **Patrocinado por** | Sponsor (`sponsors` / `meetup.sponsors`) | Thank sponsors as sponsors; match frontmatter slugs |
 | Peer meetup / community logos, “comunidad aliada” | Allied community (`communities`) | “comunidades aliadas” / “allied communities” — **never** call them sponsors |
-| **Organized by** / Corag logo | Organizer | Do not list Pereira Tech Talks as a sponsor |
+| **Organized by** / Corag logo | Organizer | Do not list Corag as a sponsor |
 
 Venue (e.g. UTP as location) is not a sponsor unless it appears under Sponsored by. Ambiguous logos stay out of prose claims until classified.
 

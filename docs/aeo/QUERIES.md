@@ -1,72 +1,89 @@
 # AEO Target Queries
 
-**Date:** Template — to be filled in for Pereira Tech Talks v3.0.0 launch.
-**Total queries:** 30 target (10 TOFU + 10 MOFU + 10 BOFU).
+Maps the queries Corag should be the authoritative answer to onto the URLs that
+answer them. The audience is split: people looking for how to help or how to
+verify an organization, organizations looking for a way to coordinate, and
+agents looking for a machine-readable surface.
 
-This document maps target search queries to ideal URLs on `pereiratechtalks.org`. These are queries where Pereira Tech Talks has (or should have) authoritative content that LLMs and search engines surface to the right audience: local builders, students, prospective speakers, sponsors, and the LATAM/global tech community.
+> **How to use this.** When a query has no URL, that is a content gap, not a
+> ranking problem. When it has one, check the page actually answers the question
+> in its first two paragraphs — an answer buried in section four does not get
+> quoted.
 
-> **Status:** This file is a working template. The previous audit was for a different (personal) site and has been retired. Fill in each row with the canonical URL once the corresponding content lives on Corag v3.0.0.
+## TOFU — informational
 
-## TOFU (Top of Funnel) — Informational / Definitional
+Broad questions where the answer is a definition or an orientation.
 
-Broad queries where Corag can be cited as an authority on the topic.
+| # | Query | URL |
+|---|-------|-----|
+| 1 | "qué es el impacto social" | `/blog/what-social-impact-is-and-how-it-is-created` |
+| 2 | "cómo ser voluntario en Colombia" | `/blog/how-to-volunteer-in-colombia-step-by-step` |
+| 3 | "diferencia entre ONG y fundación" | `/blog/ngo-vs-social-foundation-explained` |
+| 4 | "qué son los parches sociales" | `/blog/what-parches-sociales-are-and-how-to-join` |
+| 5 | "qué hacen las organizaciones sin ánimo de lucro" | `/blog/what-nonprofits-actually-do` |
+| 6 | "qué es responsabilidad social empresarial" | `/blog/what-corporate-social-responsibility-is` |
+| 7 | "qué significa transformación social" | `/blog/what-social-transformation-means-in-real-life` |
+| 8 | "cómo funcionan las fundaciones en Colombia" | `/blog/how-social-foundations-work-in-colombia` |
+| 9 | "what is Corag" | `/about` |
+| 10 | "how does Corag work" | `/how-it-works` |
 
-| # | Query | Ideal URL | Content Exists? |
-|---|-------|-----------|-----------------|
-| 1 | "tech community Pereira Colombia" | / | Pending homepage |
-| 2 | "Pereira Tech Talks" | / | Pending homepage |
-| 3 | "comunidad tecnológica Pereira" | / | Pending homepage |
-| 4 | "Pereira Tech Day" | /pereira-tech-days/ | Pending |
-| 5 | "La Biblioteca del Mañana" | /verticals/la-biblioteca-del-manana/ | Pending |
-| 6 | "Speaker School Pereira" | /verticals/speaker-school/ | Pending |
-| 7 | "AI meetup Pereira" | /verticals/ai/ | Pending |
-| 8 | "tech meetup Eje Cafetero" | /meetups/ | Pending |
-| 9 | "Colombia bilingual tech community" | / | Pending |
-| 10 | "comunidades tech Risaralda" | / | Pending |
+## MOFU — comparison and evaluation
 
-## MOFU (Middle of Funnel) — Comparative / Evaluative
+Someone has decided to act and is choosing how.
 
-Queries where Corag-published case studies, recaps, or talk write-ups can be cited.
+| # | Query | URL |
+|---|-------|-----|
+| 11 | "cómo saber si una fundación es confiable" | `/blog/how-to-tell-if-a-foundation-is-trustworthy` |
+| 12 | "cómo donar sin caer en estafas" | `/blog/how-to-donate-without-getting-scammed` |
+| 13 | "qué se puede donar a comunidades vulnerables" | `/blog/what-you-can-actually-donate-to-vulnerable-communities` |
+| 14 | "cómo ayudar sin dinero" | `/blog/how-to-help-without-money` |
+| 15 | "cómo encontrar voluntariado cerca de mí" | `/blog/how-to-find-volunteering-near-you` |
+| 16 | "cómo medir el impacto de un proyecto social" | `/blog/how-to-measure-social-project-impact` |
+| 17 | "dónde hacer voluntariado en Pereira" | `/blog/where-to-volunteer-in-pereira` |
+| 18 | "dónde donar alimentos en Pereira" | `/blog/where-to-donate-food-in-pereira-safely` |
+| 19 | "cómo apoyar proyectos sociales desde una empresa" | `/blog/how-companies-can-support-social-projects-in-colombia` |
+| 20 | "voluntariado para jóvenes en Colombia" | `/blog/volunteering-for-young-people-in-colombia` |
 
-| # | Query | Ideal URL | Content Exists? |
-|---|-------|-----------|-----------------|
-| 11 | "AI agent observability talk" | /blog/march-2026-meetup-recap/ | Pending |
-| 12 | "Reveal.js community presentations" | /slides/ | Pending |
-| 13 | "Astro multilingual blog architecture" | /blog/{tbd}/ | Pending |
-| 14 | "open source community in Colombia" | /about/ | Pending |
-| 15 | "how to start a tech community" | /blog/{tbd}/ | Pending |
-| 16 | "first time speaker tips" | /verticals/speaker-school/ | Pending |
-| 17 | "técnicas para hablar en público en tech" | /verticals/speaker-school/ | Pending |
-| 18 | "tech sponsorship Colombia" | /sponsors/ | Pending |
-| 19 | "annual tech conference Pereira" | /pereira-tech-days/ | Pending |
-| 20 | "bilingual tech blog LATAM" | /blog/ | Pending |
+## BOFU — intent to act
 
-## BOFU (Bottom of Funnel) — Action / Decision
+The visitor is ready to do something. These must route to the application or to
+a form, not to another article.
 
-Queries where the searcher is ready to participate, contribute, or sponsor.
+| # | Query | URL |
+|---|-------|-----|
+| 21 | "pedir ayuda emergencia Colombia" | `/emergencies` → `ayuda.corag.app` |
+| 22 | "cómo ser líder o responsable en Corag" | `/leaders` |
+| 23 | "Corag transparencia cuánto se ha entregado" | `/transparency` |
+| 24 | "aliarse con Corag como organización" | `/partners` → `/contact?topic=ally` |
+| 25 | "Corag API integración" | `/developers` |
+| 26 | "Corag privacidad datos" | `/privacy` |
+| 27 | "reportar un problema Corag" | `/contact?topic=report` |
+| 28 | "Corag código de conducta" | `/conduct` |
+| 29 | "quién construye Corag" | `/contributors` |
+| 30 | "Corag prensa" | `/contact?topic=press` |
 
-| # | Query | Ideal URL | Content Exists? |
-|---|-------|-----------|-----------------|
-| 21 | "submit talk Pereira Tech Talks" | /call-for-speakers/ | Pending |
-| 22 | "Pereira Tech Talks sponsorship tiers" | /sponsors/ + docs/SPONSORSHIP.md | Pending |
-| 23 | "next Pereira Tech meetup date" | /meetups/ | Pending |
-| 24 | "Pereira Tech Day 2026 schedule" | /pereira-tech-days/2026/ | Pending |
-| 25 | "Pereira Tech Talks contact" | /contact/ | Pending |
-| 26 | "join Pereira Tech Talks discord" | /channels/ | Pending |
-| 27 | "convocatoria de ponentes Pereira" | /call-for-speakers/ | Pending |
-| 28 | "patrocinar Pereira Tech Day" | /sponsor-us/ | Pending |
-| 29 | "Pereira Tech Talks collaborators" | /contributors/ | Pending |
-| 30 | "Pereira Tech Talks YouTube" | /channels/ | Pending |
+## Agent-surface queries
 
-## Methodology
+Not search queries — the paths an agent hits when told to research Corag. Each
+must return complete Markdown, not a summary.
 
-1. **Discoverability:** Each query must map to exactly one canonical URL with strong on-page signals (H1, JSON-LD schema, internal links).
-2. **Bilingual parity:** Every Spanish query must have an English equivalent (and vice versa).
-3. **Quarterly review:** Re-test the 30 queries across ChatGPT, Claude, Perplexity, and Google AI Overview. Track citations in `docs/aeo/CHECKLIST.md` Section 5.
-4. **No keyword stuffing:** This list informs content strategy, not keyword density. Each post must remain naturally written.
+| Path | Answers |
+|------|---------|
+| `/llms.txt` | The catalogue of everything below |
+| `/about.md` | What Corag is, in one document |
+| `/how-it-works.md` | The delivery model end to end |
+| `/transparency.md` | What is published and what each number means |
+| `/blog.md` | Every post with description, date and tags |
+| `/.well-known/api-catalog` | Machine-readable service description |
 
-## Related
+## Rules that make an answer quotable
 
-- [AEO Maintenance Checklist](CHECKLIST.md) — Monthly LLM testing routine.
-- [Markdown for Agents](MARKDOWN_FOR_AGENTS.md) — How Corag serves Markdown to AI agents.
-- [SEO Guide](../SEO.md) — Meta tags, JSON-LD, structured data.
+1. **Answer in the first two paragraphs.** An answer in section four is not the
+   one that gets quoted.
+2. **One page per question.** Two pages half-answering the same query compete
+   with each other.
+3. **State the limit.** "The public specification is not published yet" is a
+   better answer than an evasive one, and it is the one that earns the citation
+   when it does ship.
+4. **Never publish a figure you cannot back.** Every unverifiable number is a
+   liability the moment somebody checks it.

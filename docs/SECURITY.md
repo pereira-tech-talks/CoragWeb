@@ -1,10 +1,10 @@
 # Security Guide
 
-Security best practices for Pereira Tech Talks v3.0.0, a static site built with Astro.
+Security best practices for Corag, a static site built with Astro.
 
 ## Overview
 
-As a static site, Pereira Tech Talks has a different security profile than dynamic web applications. The main concerns are:
+As a static site, Corag has a different security profile than dynamic web applications. The main concerns are:
 
 1. **Build-time secrets** - Protecting sensitive data during build
 2. **Client-side exposure** - What data reaches the browser
@@ -59,7 +59,7 @@ PUBLIC_SITE_URL=http://localhost:9999
 PRIVATE_API_KEY=sk_xxxxx
 
 # .env.production
-PUBLIC_SITE_URL=https://pereiratechtalks.org
+PUBLIC_SITE_URL=https://corag.app
 ```
 
 ### Naming Convention
@@ -84,7 +84,7 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 
 ## Analytics Privacy
 
-Umami analytics on pereiratechtalks.org is **cookieless** and **PII-free** by policy:
+Umami analytics on corag.app is **cookieless** and **PII-free** by policy:
 
 - **No GA4** — Umami Cloud only, with optional first-party proxy at `/api/umami/*`
 - **No consent banner** — no cookies set by the analytics stack

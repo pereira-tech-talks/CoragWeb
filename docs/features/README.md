@@ -1,6 +1,6 @@
 # Features Documentation
 
-This directory contains detailed documentation for specific features implemented in the Pereira Tech Talks v3.0.0 website.
+This directory contains detailed documentation for specific features implemented in the Corag website.
 
 ## Available Feature Docs
 

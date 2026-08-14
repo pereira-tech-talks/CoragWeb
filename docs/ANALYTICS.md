@@ -1,6 +1,6 @@
 # Analytics Guide
 
-This guide documents the analytics stack, monitoring strategy, and best practices for Pereira Tech Talks v3.0.0.
+This guide documents the analytics stack, monitoring strategy, and best practices for Corag.
 
 ## Overview
 
@@ -213,7 +213,7 @@ Bots in the watchlist are currently ignored but should be reviewed periodically 
   "payload": {
     "website": "<UMAMI_WEBSITE_ID>",
     "url": "/blog/post-slug",
-    "hostname": "pereiratechtalks.org",
+    "hostname": "corag.app",
     "language": "en-US",
     "name": "ai_bot_visit",
     "data": {
@@ -254,7 +254,7 @@ Both flows attempt to identify the requester using the same bot detection logic 
   "payload": {
     "website": "<UMAMI_WEBSITE_ID>",
     "url": "/about",
-    "hostname": "pereiratechtalks.org",
+    "hostname": "corag.app",
     "language": "en-US",
     "name": "markdown_request",
     "data": {

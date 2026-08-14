@@ -1,12 +1,12 @@
 # Architecture Guide
 
-This document describes the technical architecture of Pereira Tech Talks v3.0.0, a bilingual community website built with Astro.
+This document describes the technical architecture of Corag, a bilingual community website built with Astro.
 
 ## High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                  Pereira Tech Talks v3.0.0                      │
+│                  Corag                      │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │

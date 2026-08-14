@@ -1,27 +1,27 @@
 # AEO Monthly Maintenance Checklist
 
-**Purpose:** Repeatable checklist to maintain and improve Pereira Tech Talks v3.0.0 AEO (Answer Engine Optimization) health over time.
+**Purpose:** Repeatable checklist to maintain and improve Corag AEO (Answer Engine Optimization) health over time.
 
 ## 1. Content Freshness
 
-- [ ] Check if `public/llms.txt` includes all recent blog posts, meetups, and Pereira Tech Day editions
+- [ ] Check if `public/llms.txt` includes every recent blog post and institutional page
 - [ ] Check if `public/llms-full.txt` has accurate descriptions and URLs
 - [ ] Verify blog post count in llms files matches actual content (`ls src/content/blog/en/ | grep -v _demo | wc -l`)
-- [ ] Verify meetup count (`ls src/content/meetups/*.md | wc -l`) and event count match the public catalogs
+- [ ] Verify the post count (`ls src/content/blog/es/*.md | wc -l`) matches the public catalogue and equals the English count
 - [ ] If new blog posts were added, verify they have complete frontmatter (`title`, `description`, `pubDate`, `tags`, `heroImage`, `author`)
-- [ ] If a new Pereira Tech Day edition was published, verify its `brandKit` is complete and the `[data-edition-theme="{year}"]` scope renders correctly
+- [ ] If a new institutional page landed, verify it is in `src/middleware.ts` — otherwise it 404s in production only
 
 ## 2. Indexation Health
 
 - [ ] Check Google Search Console for crawl errors: https://search.google.com/search-console
 - [ ] Check Bing Webmaster Tools: https://www.bing.com/webmasters
-- [ ] Verify indexed page count matches expected (pages + blog posts + meetups + slides + Tech Day editions in both languages)
+- [ ] Verify indexed page count matches expected (institutional pages + blog posts + tag pages, in both languages)
 - [ ] Check for any pages showing "Excluded" or "Not indexed" status
 
 ## 3. Sitemap & Robots
 
-- [ ] Verify sitemap is accessible: `curl -s https://pereiratechtalks.org/sitemap-index.xml | head -5`
-- [ ] Verify robots.txt is accessible: `curl -s https://pereiratechtalks.org/robots.txt | head -10`
+- [ ] Verify sitemap is accessible: `curl -s https://corag.app/sitemap-index.xml | head -5`
+- [ ] Verify robots.txt is accessible: `curl -s https://corag.app/robots.txt | head -10`
 - [ ] Confirm no accidental blocks in robots.txt for content pages
 - [ ] Verify sitemap includes `<lastmod>` entries (automatically set at build time)
 - [ ] Verify `/internal/*` pages are excluded from the sitemap
@@ -29,19 +29,17 @@
 ## 4. Schema Validation
 
 - [ ] Run Rich Results Test on 2-3 pages:
-  - Homepage: https://search.google.com/test/rich-results?url=https://pereiratechtalks.org/
-  - A blog post: https://search.google.com/test/rich-results?url=https://pereiratechtalks.org/blog/march-2026-meetup-recap/
-  - A Pereira Tech Day edition: https://search.google.com/test/rich-results?url=https://pereiratechtalks.org/pereira-tech-days/2026/
-  - About page: https://search.google.com/test/rich-results?url=https://pereiratechtalks.org/about/
+  - Homepage: https://search.google.com/test/rich-results?url=https://corag.app/
+  - A blog post: https://search.google.com/test/rich-results?url=https://corag.app/blog/how-to-tell-if-a-foundation-is-trustworthy/
+  - About page: https://search.google.com/test/rich-results?url=https://corag.app/about/
 - [ ] Verify JSON-LD is valid (no warnings or errors)
 - [ ] Check that BlogPosting schema has: headline, description, datePublished, dateModified, author (with image), publisher
-- [ ] Check that Event schema is present on Pereira Tech Day pages
 
 ## 5. LLM Testing
 
 Test 5 target queries from `docs/aeo/QUERIES.md` across AI engines:
 
-- [ ] **ChatGPT**: Ask 5 queries. Note: Does it mention pereiratechtalks.org? Does it cite a specific URL?
+- [ ] **ChatGPT**: Ask 5 queries. Note: Does it mention corag.app? Does it cite a specific URL?
 - [ ] **Claude**: Same 5 queries. Note results.
 - [ ] **Perplexity**: Same 5 queries. Note results (Perplexity shows sources explicitly).
 - [ ] **Google AI Overview**: Search 3 queries on Google. Check if AI Overview cites the site.
@@ -61,14 +59,14 @@ Record results:
 
 ## 7. RSS & Feeds
 
-- [ ] Verify Spanish RSS: `curl -s https://pereiratechtalks.org/rss.xml | head -20`
-- [ ] Verify English RSS: `curl -s https://pereiratechtalks.org/en/rss.xml | head -20`
+- [ ] Verify Spanish RSS: `curl -s https://corag.app/rss.xml | head -20`
+- [ ] Verify English RSS: `curl -s https://corag.app/en/rss.xml | head -20`
 - [ ] Confirm latest posts appear in feeds
 
 ## 8. Markdown for Agents
 
 - [ ] Verify `.md` endpoints are generated: `find dist -name "*.md" | wc -l` (should be 100+)
-- [ ] Spot-check a blog post `.md` endpoint: `cat dist/blog/march-2026-meetup-recap.md | head -15`
+- [ ] Spot-check a blog post `.md` endpoint: `cat dist/blog/how-to-tell-if-a-foundation-is-trustworthy.md | head -15`
 - [ ] Verify content-type is set in endpoint source: `grep "text/markdown" src/pages/blog/\[slug\].md.ts`
 - [ ] Check page endpoints exist: `ls dist/about.md dist/contact.md dist/en/about.md`
 - [ ] Verify blog index: `cat dist/blog/index.md | head -20`
@@ -87,7 +85,7 @@ Record results:
 - [ ] `/.well-known/oauth-authorization-server` includes `agent_auth` with `register_uri` + anonymous method
 - [ ] WebMCP tools register on page load via `navigator.modelContext.registerTool()` (`WebMCPBridge` uses `client:load`)
 - [ ] DNS-AID: HTTPS records for `_index._agents` and `_index._agents.v3` — see [DNS_AID.md](DNS_AID.md)
-- [ ] Re-scan: `curl -s https://isitagentready.com/api/scan -H 'content-type: application/json' -d '{"url":"https://pereiratechtalks.org"}'`
+- [ ] Re-scan: `curl -s https://isitagentready.com/api/scan -H 'content-type: application/json' -d '{"url":"https://corag.app"}'`
 
 ## 9. Quick Local Validation
 
@@ -104,7 +102,7 @@ ls -la dist/llms.txt dist/llms-full.txt
 grep "lastmod" dist/sitemap-0.xml | head -3
 
 # Check schema in a built blog post
-grep "BlogPosting" dist/blog/march-2026-meetup-recap/index.html | head -1
+grep "BlogPosting" dist/blog/how-to-tell-if-a-foundation-is-trustworthy/index.html | head -1
 
 # Verify Markdown endpoints generated
 find dist -name "*.md" | wc -l

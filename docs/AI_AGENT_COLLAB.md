@@ -1,6 +1,6 @@
 # AI Agent Collaboration Guide
 
-Guidelines for coordinating multiple AI coding assistants working on Pereira Tech Talks v3.0.0.
+Guidelines for coordinating multiple AI coding assistants working on Corag.
 
 ## Overview
 

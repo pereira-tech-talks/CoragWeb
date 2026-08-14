@@ -21,16 +21,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..', '..');
 const DIST = join(ROOT, 'dist');
-const OUT_DIR = join(
-  ROOT,
-  '.agent_commands',
-  'agent_deep_work_plans',
-  'results',
-  'plans',
-  'PLAN_full_responsive_audit',
-  'analysis_results',
-  '18_performance'
-);
+const OUT_DIR = join(ROOT, 'tmp', 'responsive-audit', '18_performance');
 
 function walk(dir, base = '') {
   const out = [];

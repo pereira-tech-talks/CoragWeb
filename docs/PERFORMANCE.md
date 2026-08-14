@@ -1,6 +1,6 @@
 # Performance Guide
 
-Performance optimization strategies for Pereira Tech Talks v3.0.0, an Astro static site.
+Performance optimization strategies for Corag, an Astro static site.
 
 ## Performance-First Philosophy
 
@@ -286,7 +286,7 @@ Run regular Lighthouse audits:
 # 3. Run audit for Performance
 
 # Or use CLI
-pnpm exec lighthouse https://pereiratechtalks.org --view
+pnpm exec lighthouse https://corag.app --view
 ```
 
 ### Key Metrics to Track

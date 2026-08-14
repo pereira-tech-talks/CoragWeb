@@ -3,68 +3,15 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 /**
- * Reusable Zod helpers for v3.0.0 collections.
+ * Reusable Zod helpers shared across collections.
  */
 
-// String value or an {en, es} object. New collections (meetups, events,
-// PTDs, verticals, etc.) accept either form. The string form is treated as
-// language-neutral and is rendered as-is for both languages.
+// String value or an {en, es} object. Collections accept either form. The
+// string form is treated as language-neutral and rendered as-is in both
+// languages.
 const i18nString = z.union([
   z.string(),
   z.object({ en: z.string(), es: z.string() }),
-]);
-
-const i18nStringOptional = z
-  .union([
-    z.string(),
-    z.object({ en: z.string().optional(), es: z.string().optional() }),
-  ])
-  .optional();
-
-const heroLayout = z
-  .enum(['banner', 'side-by-side', 'minimal', 'none'])
-  .default('banner');
-
-const venue = z.object({
-  name: z.string(),
-  addressLine: z.string().optional(),
-  city: z.string(),
-  country: z.string(),
-  mapUrl: z.string().optional(),
-});
-
-const eventLocation = venue.extend({
-  online: z.boolean().default(false),
-  streamUrl: z.string().optional(),
-});
-
-const sponsorTier = z.enum([
-  'diamond',
-  'gold',
-  'silver',
-  'bronze',
-  'community',
-]);
-
-const sponsorRef = z.object({
-  slug: z.string(),
-  tier: sponsorTier,
-});
-
-/**
- * `postponed` is a *reversible* state: the event is not happening on the
- * announced date, but it is not cancelled either and will be rescheduled.
- * All registration CTAs, countdowns, and commercial sections are suppressed at
- * the render layer while it is set — the underlying data (dates, Luma link,
- * sponsorship plans) stays untouched so restoring the edition is a one-line
- * status change. See docs/features/PEREIRA_TECH_DAYS.md#postponing-an-edition.
- */
-const eventStatus = z.enum([
-  'announced',
-  'rsvp-open',
-  'postponed',
-  'completed',
-  'cancelled',
 ]);
 
 const blog = defineCollection({
@@ -159,93 +106,6 @@ const authors = defineCollection({
 /**
  * NEW v3.0.0 COLLECTIONS
  */
-
-/**
- * English bodies for meetups, as `{slug}.en.md` siblings.
- *
- * A meetup keeps ONE source of truth for its structured data (date, venue,
- * speakers, talks, sponsors); only the prose needs a language dimension. Both
- * bodies stay real Markdown files so they render through the same Sätteri
- * pipeline.
- *
- * `generateId` strips `.en`, so an entry's id equals its meetup's id and the
- * join needs no mapping table.
- */
-
-const events = defineCollection({
-  loader: glob({
-    base: './src/content/events',
-    pattern: '**/*.{md,mdx,yaml}',
-    generateId: ({ entry }) => entry.replace(/\.(md|mdx|yaml)$/i, ''),
-  }),
-  schema: z.object({
-    title: i18nString,
-    description: i18nString,
-    type: z.enum([
-      'meetup',
-      'workshop',
-      'hackathon',
-      'conference',
-      'webinar',
-      'pereira-tech-day',
-    ]),
-    date: z.coerce.date(),
-    endDate: z.coerce.date().optional(),
-    location: eventLocation,
-    hero: z
-      .object({
-        src: z.string(),
-        alt: i18nStringOptional,
-        layout: heroLayout,
-      })
-      .optional(),
-    sponsors: z.array(sponsorRef).default([]),
-    verticals: z.array(z.string()).default([]),
-    related: z
-      .array(
-        z.object({
-          collection: z.enum(['meetups', 'pereiraTechDays', 'talks']),
-          slug: z.string(),
-        })
-      )
-      .default([]),
-    status: eventStatus.default('announced'),
-    draft: z.boolean().default(false),
-  }),
-});
-
-/**
- * English bodies for verticals, as `{slug}.en.md` siblings.
- *
- * Same mechanism as `meetupBodiesEn`: the vertical keeps ONE source of truth
- * for its structured data (title, mission, leaders, schedule) and only the
- * prose gets a language dimension.
- */
-
-const sponsors = defineCollection({
-  loader: glob({ base: './src/content/sponsors', pattern: '**/*.yaml' }),
-  schema: z.object({
-    name: z.string(),
-    logo: z.object({
-      light: z.string(),
-      dark: z.string(),
-      alt: z.string(),
-    }),
-    url: z.url(),
-    description: i18nString,
-    tier: sponsorTier,
-    sponsoredEditions: z
-      .array(
-        z.object({
-          year: z.number().int(),
-          tier: sponsorTier,
-        })
-      )
-      .default([]),
-    status: z.enum(['active', 'past']).default('active'),
-    order: z.number().default(0),
-  }),
-});
 
 const channels = defineCollection({
   loader: glob({ base: './src/content/channels', pattern: '**/*.yaml' }),
@@ -384,8 +244,6 @@ export const collections = {
   pages,
   authors,
   // v3.0.0 — community website model
-  events,
-  sponsors,
   channels,
   contributors,
   notifications,

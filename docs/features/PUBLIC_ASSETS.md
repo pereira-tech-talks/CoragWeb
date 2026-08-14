@@ -102,7 +102,7 @@ Site images for branding, sections, and profile. Located directly in `public/ima
 | `bicycle.png` | 184 KB | Hobbies section | HomePage |
 | `ia.png` | 120 KB | AI/ML section | HomePage |
 
-Brand logos live under `images/pereira-tech-talks/` and `images/brand/`. App icons live under `icons/` (`apple-touch-icon.png`, `icon-192x192.png`, `icon-512x512.png`).
+Brand logos live under `images/corag/` and `images/brand/`. App icons live under `icons/` (`apple-touch-icon.png`, `icon-192x192.png`, `icon-512x512.png`).
 
 See **[Brand Guide](../BRAND_GUIDE.md)** for logo usage rules and color pairing guidelines.
 

@@ -39,7 +39,7 @@ is the separate question of whether the two versions say the **same thing**.
 
 ## Voice & completeness
 
-- [ ] No placeholders: `[TODO]`, `[TBD]`, `[AUTHOR]`, “Historical Pereira Tech Talks meetup” boilerplate
+- [ ] No placeholders: `[TODO]`, `[TBD]`, `[AUTHOR]`, “Historical Corag meetup” boilerplate
 - [ ] Follow [Writing Voice Guide](../WRITING_VOICE_GUIDE.md)
 - [ ] Meetup EN summaries are real English (or an honest archive note), not Spanish paste
 

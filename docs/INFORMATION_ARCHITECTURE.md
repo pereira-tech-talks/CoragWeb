@@ -1,8 +1,8 @@
-# Information Architecture — Pereira Tech Talks v3.0.0
+# Information Architecture — Corag
 
 This is the **single source of truth** for the URL surface, navigation,
 canonical relationships between content collections, and routing decisions
-for `pereiratechtalks.org` v3.0.0.
+for `corag.app` v3.0.0.
 
 Downstream tasks (page implementations, i18n, SEO, sitemap, search,
 middleware) consume this document verbatim. If you ship a page that does not
@@ -321,7 +321,7 @@ The component is `Breadcrumbs.svelte`/`.astro` (Task 7).
   is primary).
 - **Canonical** points to the same-language version of the route.
 - **Organization JSON-LD** ships globally (Task 18) describing
-  Pereira Tech Talks. **Event JSON-LD** ships per meetup, event, and
+  Corag. **Event JSON-LD** ships per meetup, event, and
   PTD edition. **Person JSON-LD** ships per speaker and contributor.
 
 ## 9. AEO (Markdown for Agents)

@@ -1,10 +1,10 @@
 # API Reference
 
-API endpoints and data formats for Pereira Tech Talks v3.0.0.
+API endpoints and data formats for Corag.
 
 ## Overview
 
-Pereira Tech Talks is primarily a static site, but includes a few API endpoints and data feeds:
+Corag is primarily a static site, but includes a few API endpoints and data feeds:
 
 | Endpoint | Type | Purpose |
 |----------|------|---------|
@@ -125,12 +125,12 @@ Standard RSS 2.0 feed for blog subscriptions.
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Pereira Tech Talks Blog</title>
-    <link>https://pereiratechtalks.org</link>
-    <description>Bilingual articles from the Pereira Tech Talks community</description>
+    <title>Corag Blog</title>
+    <link>https://corag.app</link>
+    <description>Bilingual articles from the Corag community</description>
     <item>
       <title>Post Title</title>
-      <link>https://pereiratechtalks.org/blog/post-slug/</link>
+      <link>https://corag.app/blog/post-slug/</link>
       <description>Post description</description>
       <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
     </item>
@@ -144,7 +144,7 @@ Standard RSS 2.0 feed for blog subscriptions.
 Subscribe with any RSS reader using:
 
 ```
-https://pereiratechtalks.org/rss.xml
+https://corag.app/rss.xml
 ```
 
 ### Sitemap
@@ -160,7 +160,7 @@ XML sitemap for search engine indexing.
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: process.env.PUBLIC_SITE_URL || 'https://pereiratechtalks.org',
+  site: process.env.PUBLIC_SITE_URL || 'https://corag.app',
   integrations: [sitemap()],
 });
 ```

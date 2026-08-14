@@ -1,6 +1,6 @@
 # Documentation Guide
 
-Standards and best practices for writing and maintaining documentation for Pereira Tech Talks v3.0.0.
+Standards and best practices for writing and maintaining documentation for Corag.
 
 ## Documentation Philosophy
 

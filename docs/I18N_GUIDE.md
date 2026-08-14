@@ -1,10 +1,10 @@
 # Internationalization (i18n) Guide
 
-Guide for implementing and maintaining multilingual support in Pereira Tech Talks v3.0.0.
+Guide for implementing and maintaining multilingual support in Corag.
 
 ## Overview
 
-Pereira Tech Talks is a fully bilingual site supporting English and Spanish. The i18n system is built on three pillars:
+Corag is a fully bilingual site supporting English and Spanish. The i18n system is built on three pillars:
 
 1. **Centralized translations** via `src/lib/translations.ts`
 2. **Route-based language routing** (Spanish at `/`, English at `/en/`)

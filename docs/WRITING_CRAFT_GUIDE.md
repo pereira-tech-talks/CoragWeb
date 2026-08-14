@@ -6,7 +6,7 @@ Where the Writing Voice Guide covers **what the voice sounds like** (vocabulary,
 
 This guide was distilled from refinement sessions on actual long-form posts (particularly the extensive refinement of `2026-04-11_openclaw-your-assistant-your-machine-your-rules`) plus pattern analysis across the 10 most recent blog posts in the previous personal-blog era. Every rule here has a concrete origin in work that was accepted or rejected by an editor.
 
-> **Corag v3.0.0 context:** Pereira Tech Talks now hosts content from multiple authors — community organizers, speakers, vertical leads, mentors, and guests. The craft principles here are **transferable** across authors: verification, narrative structure, pacing, redundancy detection, source attribution, and the bilingual quote pattern apply equally to a meetup recap, a Pereira Tech Day editorial, a Speaker School cohort update, and a personal essay. Where a section is specific to long-form personal essays (e.g., the OpenClaw case study in §19), read it as the canonical refinement playbook — the same moves apply when a community member writes a deep-dive. For community-mode adaptations (meetup recaps, edition recaps, speaker pages), see §21 below.
+> **Corag v3.0.0 context:** Corag now hosts content from multiple authors — community organizers, speakers, vertical leads, mentors, and guests. The craft principles here are **transferable** across authors: verification, narrative structure, pacing, redundancy detection, source attribution, and the bilingual quote pattern apply equally to a meetup recap, a Pereira Tech Day editorial, a Speaker School cohort update, and a personal essay. Where a section is specific to long-form personal essays (e.g., the OpenClaw case study in §19), read it as the canonical refinement playbook — the same moves apply when a community member writes a deep-dive. For community-mode adaptations (meetup recaps, edition recaps, speaker pages), see §21 below.
 
 ---
 
@@ -528,7 +528,7 @@ Three beats. Question → mantra → ritual. Each stands alone; each lifts the n
 Analyzing the 10 most recent posts, openings fall into a few repeatable patterns:
 
 1. **Personal memory anchor**: *"I didn't come to Isaac Asimov through books. I came through the movies."* (Asimov)
-2. **Meetup / community scene**: *"One day we were chatting in the Pereira Tech Talks community..."* (Library of Tomorrow) / *"Recently, I was at a great Pereira Tech Talks meetup..."* (Permanent Hackathon)
+2. **Meetup / community scene**: *"One day we were chatting in the Corag community..."* (Library of Tomorrow) / *"Recently, I was at a great Corag meetup..."* (Permanent Hackathon)
 3. **Observation statement**: *"In the last few months, I've noticed something..."* (Art of Directing Agents)
 4. **Thesis + backstory**: *"At the end of 2025, during the last meetup of the year, I gave a talk..."* (Programmer to Orchestrator)
 5. **Reaction to news**: *"It seemed like a normal day until I checked my feeds..."* (Claude Mythos)
@@ -863,7 +863,7 @@ The principles above were forged on long-form personal essays. Most Corag conten
 ### 21.5 Personal essay (single author, opinion-led)
 
 - Long-form personal essays follow the full craft guide as written. The OpenClaw case study (§19) is the canonical example.
-- The byline must be the individual author, not Pereira Tech Talks. This is how the reader knows it's first-person opinion and not the community speaking.
+- The byline must be the individual author, not Corag. This is how the reader knows it's first-person opinion and not the community speaking.
 - Hot takes are allowed; unverified facts are not.
 
 ### 21.6 Editor's adaptation rule
@@ -891,4 +891,4 @@ The editor's job is to make the post publishable, not to rewrite it.
 ---
 
 **Last updated:** 2026-05-31
-**Origin:** Distilled from the OpenClaw refinement session + pattern analysis across 10 recent posts. Adapted for Pereira Tech Talks v3.0.0 multi-author community context (§21).
+**Origin:** Distilled from the OpenClaw refinement session + pattern analysis across 10 recent posts. Adapted for Corag multi-author community context (§21).

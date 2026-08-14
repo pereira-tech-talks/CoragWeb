@@ -1,6 +1,6 @@
 # Development Commands
 
-Complete reference for all npm scripts and CLI commands available in Pereira Tech Talks v3.0.0.
+Complete reference for all npm scripts and CLI commands available in Corag.
 
 ## Quick Reference
 
@@ -166,7 +166,7 @@ pnpm run release
 
 - Bumps patch version
 - Creates commit with release message
-- Format: `[🤖 Pereira Tech Talks] New release to v{version} launched 🚀`
+- Format: `[🤖 Corag] New release to v{version} launched 🚀`
 
 ## Astro CLI
 
@@ -244,11 +244,11 @@ PUBLIC_SITE_URL=http://localhost:9999
 
 # Cloudflare Pages / production build (must match the hostname you share)
 # While the public preview is v3, keep this as the v3 host — apex
-# pereiratechtalks.org currently redirects OG assets to the legacy stack (404).
-PUBLIC_SITE_URL=https://pereiratechtalks.org
+# corag.app currently redirects OG assets to the legacy stack (404).
+PUBLIC_SITE_URL=https://corag.app
 
 # After DNS cutover to apex (when apex serves this build):
-# PUBLIC_SITE_URL=https://pereiratechtalks.org
+# PUBLIC_SITE_URL=https://corag.app
 ```
 
 **Access in code:**

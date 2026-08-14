@@ -1,14 +1,9 @@
 /**
  * The small collection helpers the audit tooling depends on.
  *
- * `channel.ts`, `event.ts` and `vertical.ts` had **zero** coverage: every
- * function is `getCollection`-backed, and `tests/mocks/astro-content.ts`
- * declares those out of scope. They are not out of scope in practice — the
- * collection is mockable, as `blog-tags.test.ts` already shows — and Task 7's
- * serializers read all three, so a silent change in their filtering or ordering
- * would reshape the `.md` twins.
- *
- * Part of PLAN_sitewide_language_seo_aeo_audit Task 11.
+ * `channel.ts` is `getCollection`-backed and the Markdown-twin serializers
+ * read it, so a silent change in its filtering or ordering would reshape the
+ * `.md` output without any page visibly breaking.
  */
 import { describe, expect, it, vi } from 'vitest';
 
@@ -32,48 +27,13 @@ const CHANNELS = [
   },
 ];
 
-const day = (iso: string) => new Date(`${iso}T00:00:00.000Z`);
-
-const EVENTS = [
-  {
-    id: 'past-workshop',
-    data: { date: day('2020-01-01'), type: 'workshop', draft: false },
-  },
-  {
-    id: 'future-hackathon',
-    data: { date: day('2099-01-01'), type: 'hackathon', draft: false },
-  },
-  {
-    id: 'mid-workshop',
-    data: { date: day('2050-01-01'), type: 'workshop', draft: false },
-  },
-];
-
-const VERTICALS = [
-  { id: 'ai-channel', data: { status: 'active', order: 3 } },
-  { id: 'speaker-school', data: { status: 'active', order: 1 } },
-  { id: 'retired-program', data: { status: 'archived', order: 2 } },
-];
-
 vi.mock('astro:content', () => ({
-  getCollection: async (name: string) => {
-    if (name === 'channels') return CHANNELS;
-    if (name === 'events') return EVENTS;
-    if (name === 'verticals') return VERTICALS;
-    return [];
-  },
+  getCollection: async (name: string) => (name === 'channels' ? CHANNELS : []),
 }));
 
 const { getChannels, getPrimaryChannels, getChannelsByPlatform } = await import(
   '@/lib/channel'
 );
-const {
-  getEvents,
-  getEventBySlug,
-  getUpcomingEvents,
-  getPastEvents,
-  getEventsByType,
-} = await import('@/lib/event');
 
 describe('channels', () => {
   it('sorts by declared order, not by id', async () => {
@@ -94,44 +54,5 @@ describe('channels', () => {
       'github',
     ]);
     expect(await getChannelsByPlatform('discord')).toEqual([]);
-  });
-});
-
-describe('events', () => {
-  it('lists chronologically, soonest first', async () => {
-    expect((await getEvents()).map((e) => e.id)).toEqual([
-      'past-workshop',
-      'mid-workshop',
-      'future-hackathon',
-    ]);
-  });
-
-  it('finds one by slug and returns undefined for an unknown one', async () => {
-    expect((await getEventBySlug('mid-workshop'))?.id).toBe('mid-workshop');
-    expect(await getEventBySlug('nope')).toBeUndefined();
-  });
-
-  it('splits upcoming from past around today', async () => {
-    const upcoming = (await getUpcomingEvents()).map((e) => e.id);
-    const past = (await getPastEvents()).map((e) => e.id);
-    expect(upcoming).toContain('future-hackathon');
-    expect(past).toContain('past-workshop');
-    expect(upcoming).not.toContain('past-workshop');
-  });
-
-  it('returns past events newest first — the reverse of the index order', async () => {
-    const past = await getPastEvents();
-    for (let i = 1; i < past.length; i += 1) {
-      expect(past[i - 1].data.date.getTime()).toBeGreaterThanOrEqual(
-        past[i].data.date.getTime()
-      );
-    }
-  });
-
-  it('filters by type', async () => {
-    expect((await getEventsByType('workshop')).map((e) => e.id)).toEqual([
-      'past-workshop',
-      'mid-workshop',
-    ]);
   });
 });

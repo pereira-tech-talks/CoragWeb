@@ -1,36 +1,40 @@
 # AI Agent Onboarding
 
-Quick start guide for AI coding assistants (Cursor AI, Claude Code, ChatGPT, Gemini, etc.) working on Pereira Tech Talks v3.0.0.
+Quick start guide for AI coding assistants (Cursor AI, Claude Code, ChatGPT, Gemini, etc.) working on Corag.
 
 ## Tech Stack Overview
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Astro** | 5.16.15 | Static site generator (islands architecture) |
-| **Svelte** | 5.48.0 | Interactive components |
-| **TypeScript** | 5.9.3 | Type-safe development |
-| **Tailwind CSS** | 4.1.18 | Utility-first CSS framework |
-| **Biome** | 2.3.11 | Linter and formatter |
-| **MDX** | 4.3.13 | Enhanced Markdown for blog |
+| **Astro** | 7.x | Static site generator (islands architecture) |
+| **Svelte** | 5.x | Interactive components |
+| **TypeScript** | 6.x | Pinned on purpose — see `AGENTS.md` |
+| **Tailwind CSS** | 4.x | Utility styling over the `@theme` token layer |
+| **Biome** | 2.x | Linter and formatter |
+| **MDX** | 7.x | Enhanced Markdown for the blog |
 
 ## Project Type
 
-- **Pereira Tech Talks v3.0.0** — bilingual website and content platform for the technology community of Pereira, Colombia
+- **corag.app** — the site that explains Corag: what it is, how the model works,
+  and how to integrate with it. The application lives at `ayuda.corag.app` and is
+  a separate codebase.
 - **Static Site Generation (SSG)** — builds to static HTML
-- **Multilingual** — English (default) and Spanish, with all slugs in English
-- **Per-edition branding** — each Pereira Tech Day edition ships its own scoped brand kit
-- **Deployed to** Cloudflare Pages
+- **Two languages** — Spanish at `/` (primary), English under `/en`. All slugs
+  are English in both.
+- **No personal data here.** If something holds information about a real
+  person's need, it belongs in the application, not in this repository.
+- **Deployed to** Cloudflare Pages, with Pages Functions for the intake forms
 
 ## Repository Structure
 
 ```
-pereiratechtalks.org/
+corag.app/
 ├── src/
 │   ├── components/      # UI components (.astro, .svelte)
-│   ├── content/         # Content Collections (blog, slides, meetups, events, pereira-tech-days, verticals, speakers, talks, contributors, sponsors, channels, tags, series, authors)
-│   ├── layouts/         # Page layouts (MainLayout, InternalLayout, ShowcaseLayout, SlideLayout)
-│   ├── lib/             # Utilities and types (one helper module per collection)
-│   ├── pages/           # File-based routing (EN root, ES /es/, /internal/ dev-only)
+│   ├── content/         # Content Collections (blog, pages, authors, channels, contributors, tags, series, notifications)
+│   ├── layouts/         # Page layouts (MainLayout, InternalLayout, ShowcaseLayout)
+│   ├── lib/             # Utilities and types
+│   ├── pages/           # File-based routing (ES at root, EN under /en, /internal dev-only)
 │   └── styles/          # Tailwind 4 theme tokens (--color-corag-*)
 ├── public/              # Static assets (.well-known/, openapi.json, robots.txt)
 ├── docs/                # Documentation
@@ -83,7 +87,8 @@ import type { CollectionEntry } from 'astro:content';
 - **Svelte** (`.svelte`) - Interactive components
 
 ```astro
-<!-- Hydrate Svelte for interactivity -->
+<!-- Hydrate Svelte for interactivity. Prefer client:visible or client:idle;
+     client:load only when the component is above the fold. -->
 <Header client:load lang={lang} />
 ```
 
@@ -91,9 +96,15 @@ import type { CollectionEntry } from 'astro:content';
 
 Always support dark mode:
 
+Use the design tokens, not raw greys:
+
 ```html
-<div class="bg-white dark:bg-gray-900 text-black dark:text-white">
+<div class="bg-corag-bg text-corag">
 ```
+
+The token layer already resolves light and dark. Reaching for `bg-white
+dark:bg-gray-900` bypasses it and produces a surface that does not match the
+rest of the page. See [Design System](DESIGN.md).
 
 ### 7. Blog Post Creation Workflow
 
@@ -104,7 +115,13 @@ New blog posts MUST be created with the `/add-blog-post` skill (not manual file 
 - Keep frontmatter synchronized across languages (`pubDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`)
 - Validate with `pnpm run build`
 
-### 8. Blog Search Performance Guardrails
+### 8. New top-level routes need a middleware entry
+
+`src/middleware.ts` holds a hardcoded allowlist. A route missing from it works
+in dev and returns 404 in production — add the path to `KNOWN_ROOT_PATHS` and,
+if it has an English version, to `KNOWN_EN_PATHS`.
+
+### 9. Blog Search Performance Guardrails
 
 - Keep search static-only and language-sharded (`/api/posts-en.json`, `/api/posts-es.json`)
 - Do **not** inline full search index data into blog listing/tag page HTML
@@ -116,7 +133,7 @@ pnpm run build
 pnpm run search:budgets
 ```
 
-### 9. Analytics Verification Policy
+### 10. Analytics Verification Policy
 
 - Google Search Console verification is DNS-based (Domain property TXT), not meta-tag based.
 - Do not add `PUBLIC_GOOGLE_SITE_VERIFICATION` or `google-site-verification` meta tags.
@@ -219,29 +236,40 @@ export const GET: APIRoute = async () => {
 
 ## What NOT to Do
 
-❌ Write code in Spanish
-❌ Use ESLint or Prettier
-❌ Skip `pnpm run biome:check`
-❌ Forget dark mode support
-❌ Skip `client:load` on interactive Svelte
-❌ Expect `pnpm run test` to work (not configured)
+❌ Write code, comments or commits in Spanish
+❌ Use ESLint or Prettier — this repo uses Biome exclusively
+❌ Reach for raw greys instead of the `--color-corag-*` tokens
+❌ Ship a Svelte island with no `client:*` directive
+❌ Add a top-level route without its `src/middleware.ts` entry
+❌ Change page copy without updating its `.md` twin
+❌ Add content in one language only
+❌ Publish a figure you cannot back — on this site especially
 
 ## Documents to Read
 
-1. **[AGENTS.md](../AGENTS.md)** - Main guidance (read first!)
-2. **[STANDARDS.md](STANDARDS.md)** - Coding conventions
-3. **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical details
-4. **[DEVELOPMENT_COMMANDS.md](DEVELOPMENT_COMMANDS.md)** - Full command reference
+1. **[AGENTS.md](../AGENTS.md)** — binding rules (read first)
+2. **[STANDARDS.md](STANDARDS.md)** — coding conventions
+3. **[ARCHITECTURE.md](ARCHITECTURE.md)** — technical details
+4. **[DESIGN.md](DESIGN.md)** — the token contract
+5. **[MESSAGING.md](MESSAGING.md)** — before writing any user-facing copy
 
 ## Quick Validation
 
 Before any commit:
 
 ```bash
-pnpm run biome:check && pnpm run astro:check && pnpm run build
+pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build
 ```
 
-All three must pass.
+And, if you touched content or copy:
+
+```bash
+pnpm run md:check:strict && pnpm run lang:check:strict && \
+pnpm run seo:check:strict && pnpm run parity:check:strict
+```
+
+All of them must pass. The content gates are not advisory: a failing
+`parity:check` means one language is reading a different site.
 
 ## Getting Help
 

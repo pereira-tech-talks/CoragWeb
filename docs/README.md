@@ -1,180 +1,164 @@
 # Documentation Index
 
-Welcome to the **Pereira Tech Talks** documentation. This guide helps developers and AI agents understand, maintain, and extend the v3.0.0 platform.
+Documentation for **corag.app** — the site that explains Corag, and the surface
+agents read to understand it. The application itself (`ayuda.corag.app`) is a
+separate codebase; this repository never holds a real person's need.
 
-## Quick Navigation
+## Quick navigation
 
-### Getting Started
-
-| Document | Description |
-|----------|-------------|
-| [AI Agent Onboarding](AI_AGENT_ONBOARDING.md) | Quick start guide for AI coding assistants |
-| [Development Commands](DEVELOPMENT_COMMANDS.md) | npm scripts and CLI reference |
-| [Standards](STANDARDS.md) | Coding conventions and best practices |
-
-### Architecture & Design
+### Getting started
 
 | Document | Description |
 |----------|-------------|
-| [Product Spec](PRODUCT_SPEC.md) | Vision, features, and goals for Pereira Tech Talks |
+| [AI Agent Onboarding](AI_AGENT_ONBOARDING.md) | Quick start for AI coding assistants |
+| [Development Commands](DEVELOPMENT_COMMANDS.md) | Scripts and CLI reference |
+| [Standards](STANDARDS.md) | Coding conventions, orthography, import order |
+| [Environment Setup](ENVIRONMENT_SETUP.md) | Local environment and required variables |
+
+### Product and design
+
+| Document | Description |
+|----------|-------------|
+| [Product Spec](PRODUCT_SPEC.md) | What Corag is, who it serves, how the model works |
+| [Messaging](MESSAGING.md) | The coraje narrative and where each beat belongs |
+| [Brand Guide](BRAND_GUIDE.md) | Palette, typography, logo, voice, and the rules that bind them |
+| [Design System](DESIGN.md) | The `--color-corag-*` token contract and component patterns |
 | [Information Architecture](INFORMATION_ARCHITECTURE.md) | URL surface, navigation, content relationships |
-| [Brand Guide](BRAND_GUIDE.md) | Corag palette, typography, logo, voice & per-edition kits |
-| [Design System](DESIGN.md) | Agent-facing UI contract — tokens, scales, component patterns, integrity rules |
-| [Architecture](ARCHITECTURE.md) | Technical architecture, patterns, and decisions |
-| [Performance](PERFORMANCE.md) | SSG optimization, images, caching strategies |
 
-### Community & Governance
+### Engineering
 
 | Document | Description |
 |----------|-------------|
-| [Code of Conduct](CODE_OF_CONDUCT.md) | Behavior expectations across Corag spaces |
-| [Contributing](CONTRIBUTING.md) | Ways to contribute and code workflow |
-| [Governance](GOVERNANCE.md) | Roles, decisions, financial transparency |
-| [Community Guidelines](COMMUNITY_GUIDELINES.md) | Day-to-day behavior in Corag spaces |
-| [Communication Channels](COMMUNICATION_CHANNELS.md) | Inventory of official Corag channels |
-| [Call for Speakers](CALL_FOR_SPEAKERS.md) | Always-open speaker submission process |
-| [Sponsorship](SPONSORSHIP.md) | Sponsorship tiers and benefits |
+| [Architecture](ARCHITECTURE.md) | Components, collections, routing, layout patterns |
+| [Testing Guide](TESTING_GUIDE.md) | Vitest setup and conventions |
+| [I18N Guide](I18N_GUIDE.md) | Spanish at `/`, English at `/en`, and the parity contract |
+| [Performance](PERFORMANCE.md) | SSG optimisation, images, hydration budget |
+| [Accessibility](ACCESSIBILITY.md) | WCAG AA, measured contrast, ARIA patterns |
+| [Security](SECURITY.md) | Threat model for a static site with public intake forms |
+| [SEO](SEO.md) | Metadata, structured data, hreflang |
+| [Analytics](ANALYTICS.md) | Cookieless tracking and verification |
 
-### Development Guides
-
-| Document | Description |
-|----------|-------------|
-| [Testing Guide](TESTING_GUIDE.md) | Test setup and conventions |
-| [I18N Guide](I18N_GUIDE.md) | Internationalization and language support |
-| [Security](SECURITY.md) | Static site security best practices |
-| [Accessibility](ACCESSIBILITY.md) | WCAG AA compliance, contrast, ARIA patterns |
-| [SEO](SEO.md) | Meta tags, structured data, multilingual SEO, AEO |
-| [Analytics](ANALYTICS.md) | Tracking, GSC, verification |
-
-### AI & Collaboration
+### Content
 
 | Document | Description |
 |----------|-------------|
-| [AI Agent Collaboration](AI_AGENT_COLLAB.md) | Multi-agent coordination guidelines |
-| [Documentation Guide](DOCUMENTATION_GUIDE.md) | How to write and maintain docs |
-| [Documentation Inventory](DOCUMENTATION_INVENTORY.md) | Coverage tracking |
-| [Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md) | AEO Markdown endpoints contract |
-| [DNS-AID](aeo/DNS_AID.md) | DNS for AI Discovery records (isitagentready) |
+| [Blog Posts](features/BLOG_POSTS.md) | Tags, series, hero layouts, lifecycle |
+| [Blog Content Lifecycle](features/BLOG_CONTENT_LIFECYCLE.md) | End-to-end publishing workflow |
+| [Content QA Checklist](features/CONTENT_QA_CHECKLIST.md) | Parity, orthography, SEO gates |
+| [Writing Voice Guide](WRITING_VOICE_GUIDE.md) | Voice, anti-slop checklist, vocabulary blocklist |
+| [Writing Craft Guide](WRITING_CRAFT_GUIDE.md) | Structure, fact verification, quote handling |
+| [Authors](features/AUTHORS.md) | Author YAML, `AuthorCard`, JSON-LD |
+| [Contributors](features/CONTRIBUTORS.md) | The team directory |
+| [Forms](features/FORMS.md) | Contact and conduct intake through DailyBot |
 
-## Technology Stack
+### Policies
+
+| Document | Description |
+|----------|-------------|
+| [Code of Conduct](CODE_OF_CONDUCT.md) | Pointer to the live page, plus what applies to this repo |
+| [Governance](GOVERNANCE.md) | The three levels, the evidence pipeline, what is unsettled |
+| [Contributing](CONTRIBUTING.md) | How to open a pull request that passes the gates |
+
+### Agents
+
+| Document | Description |
+|----------|-------------|
+| [AI Agent Collaboration](AI_AGENT_COLLAB.md) | Multi-agent coordination |
+| [Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md) | The `.md` twin contract |
+| [AEO Queries](aeo/QUERIES.md) | Target queries mapped to answering URLs |
+| [AEO Checklist](aeo/CHECKLIST.md) | Recurring verification pass |
+| [DNS-AID](aeo/DNS_AID.md) | DNS records for agent discovery |
+| [Documentation Guide](DOCUMENTATION_GUIDE.md) | When and how to update docs |
+
+## Stack
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Astro** | 5.16.15 | Static site generator |
-| **Svelte** | 5.48.0 | Interactive components |
-| **TypeScript** | 5.9.3 | Type-safe development |
-| **Tailwind CSS** | 4.1.18 | Utility-first styling with Corag design tokens |
-| **Biome** | 2.3.11 | Linting and formatting |
-| **MDX** | 4.3.13 | Enhanced Markdown |
+| **Astro** | 7.x | Static site generator, islands architecture |
+| **Svelte** | 5.x | Interactive components |
+| **TypeScript** | 6.x | Pinned deliberately — see `AGENTS.md` |
+| **Tailwind CSS** | 4.x | Utility styling over the `@theme` token layer |
+| **Biome** | 2.x | Lint and format. Never ESLint or Prettier |
+| **MDX** | 7.x | Enhanced Markdown, sharing the Sätteri pipeline |
 
-## Project Structure Overview
+## Project structure
 
 ```
-pereiratechtalks.org/
+corag.app/
 ├── src/
-│   ├── components/      # Reusable UI components (.astro, .svelte)
-│   ├── content/         # Content Collections
-│   │   ├── blog/{en,es}/         # Blog posts (date-prefixed slugs)
-│   │   ├── slides/{en,es}/       # Reveal.js / external decks
-│   │   ├── meetups/              # Monthly meetup recaps (bilingual files)
-│   │   ├── events/{en,es}/       # One-off events
-│   │   ├── pereira-tech-days/    # Pereira Tech Day editions (per-edition brand)
-│   │   ├── verticals/            # La Biblioteca del Mañana, AI, Speaker School, etc.
-│   │   ├── speakers/             # Speaker bios
-│   │   ├── talks/                # Individual talks
-│   │   ├── sponsors/             # Sponsor entries
-│   │   ├── channels/             # Communication channel inventory
-│   │   ├── contributors/         # Community contributors
-│   │   ├── tags/                 # Tag taxonomy
-│   │   ├── series/               # Multi-part content series
-│   │   └── authors/              # Author YAML files
-│   ├── layouts/         # MainLayout, InternalLayout, ShowcaseLayout, SlideLayout
-│   ├── lib/             # Utility functions and types (per collection)
-│   ├── pages/           # File-based routing (EN root, ES /es/, /internal/ dev-only)
-│   └── styles/          # Tailwind 4 theme tokens (--color-corag-*)
-├── public/              # Static assets (images, fonts, icons, .well-known/)
-├── docs/                # This documentation folder
-├── .agents/             # Cross-agent skills (incl. the deepworkplan skill), commands, agent definitions
-└── .dwp/                # Deep Work Plan outputs — plans/ + drafts/ (git-ignored)
+│   ├── components/
+│   │   ├── pages/          # One *Page.astro per route, incl. InstitutionalPage
+│   │   ├── blog/           # Cards, grid, search, series navigation
+│   │   ├── layout/         # Header, MobileMenu, ThemeToggle (Svelte)
+│   │   ├── contact/        # ContactForm, ConductReportForm
+│   │   └── ui/             # Section, Eyebrow, Breadcrumbs, Badge, Pill
+│   ├── content/
+│   │   ├── blog/{es,en}/   # Posts, date-prefixed, English slugs in both
+│   │   ├── pages/{es,en}/  # Markdown twins; conduct/governance/contributing
+│   │   │                   # are ALSO the live page bodies
+│   │   ├── authors/        # Author YAML
+│   │   ├── channels/       # Official channel inventory
+│   │   ├── tags/           # Three-tier taxonomy
+│   │   └── series/         # Multi-part collections
+│   ├── layouts/            # MainLayout, InternalLayout, ShowcaseLayout
+│   ├── lib/                # blog, i18n, translations, markdown-for-agents, …
+│   ├── pages/              # 3-line wrappers; /en mirror; /internal dev-only
+│   └── styles/             # global.css — the --color-corag-* @theme layer
+├── functions/              # Cloudflare Pages Functions (contact intake, agent)
+├── public/                 # Static assets, _redirects, llms.txt, .well-known
+├── scripts/                # Gate scripts and build utilities
+├── docs/                   # This folder
+├── .agents/                # Skills, commands, agent definitions (.claude symlinks here)
+└── .dwp/                   # Deep Work Plan outputs (git-ignored)
 ```
 
-## Quick Commands
+## Content collections
+
+Defined in `src/content.config.ts`:
+
+- **blog** — posts with `title`, `description`, `pubDate`, `heroImage`, `tags`,
+  `series`, `author`. One file per language, sharing an English slug.
+- **pages** — the Markdown twin of every page. Three of them (`conduct`,
+  `governance`, `contributing`) are also rendered as the live page bodies, so
+  editing them changes the site, not only the agent surface.
+- **tags** — three tiers (primary / secondary / subtopic), resolved at build.
+- **series** — multi-part collections.
+- **authors** — YAML with localized `role` and `bio`.
+- **channels** — the official channel inventory.
+- **contributors** — the team directory.
+- **notifications** — the top banner, with a start and end date.
+
+## Non-obvious things that will catch you
+
+- **New top-level routes must be added to `src/middleware.ts`.** A route missing
+  from the allowlist works in dev and 404s in production.
+- **The `.md` twin gate measures completeness, not existence.** A summary fails.
+- **`parity:check` compares the two languages against each other**, not each
+  against correctness. A paragraph added to one side and not the other fails.
+- **Route slugs are English in both languages.** Spanish is served unprefixed.
+- **The DailyBot form ids come from the environment.** Without them the intake
+  endpoint returns 503 and sends nothing, by design.
+
+## Commands
 
 ```bash
-# Development
-pnpm run dev              # Start dev server (http://localhost:9999)
-pnpm run build            # Production build
-pnpm run astro:preview    # Preview build
-
-# Code Quality
-pnpm run biome:check      # Check linting/formatting
-pnpm run biome:fix        # Auto-fix issues
-pnpm run astro:check      # TypeScript checking
-pnpm run test             # Run unit tests
-
-# Content
-pnpm run images:optimize  # Process staged images
-pnpm run md:check         # Verify HTML→Markdown parity for agents
-
-# Deployment
-pnpm run build            # Production build (Cloudflare Pages)
+pnpm run dev                 # http://localhost:9999
+pnpm run build               # astro check && astro build
+pnpm run biome:check         # lint + format
+pnpm run astro:check         # types
+pnpm run test                # unit tests
+pnpm run md:check:strict     # complete .md twin per page
+pnpm run lang:check:strict   # ES at /, EN at /en
+pnpm run seo:check:strict    # metadata and structured data
+pnpm run parity:check:strict # both languages carry the same content
 ```
 
-## Key Concepts
+Full reference in [Development Commands](DEVELOPMENT_COMMANDS.md).
 
-### Content Collections
+## For AI agents
 
-Pereira Tech Talks v3.0.0 uses a rich content model with multiple collections (see schemas in `src/content.config.ts`):
-
-- **blog** — articles with `title`, `description`, `pubDate`, `heroImage`, `tags`, `series`, `author`
-- **slides** — discriminated union (`internal` Reveal.js / `external-embed` / `external-link`)
-- **meetups** — monthly community gatherings (separate from one-off events and from the blog)
-- **events** — special one-off events
-- **pereiraTechDays** — annual flagship events with per-edition `brandKit` (palette, typography, hero assets) scoped via `[data-edition-theme="{year}"]`
-- **verticals** — community programs (La Biblioteca del Mañana, AI channel, Speaker School, etc.)
-- **speakers / talks / contributors / sponsors / channels** — supporting collections
-
-### Component Types
-
-1. **Astro Components** (`.astro`) — Static, build-time rendered (default for non-interactive content)
-2. **Svelte Components** (`.svelte`) — Interactive, client-side hydrated
-
-Use `client:visible` or `client:idle` directives by default; reserve `client:load` for above-the-fold interactivity. Reveal.js decks use `client:only="svelte"` (documented exception).
-
-### Internationalization
-
-- English: `/` (default)
-- Spanish: `/es/`
-
-Components receive a `lang` prop for language-specific content. UI strings live in `src/lib/translations/{en,es}.ts`. All slugs (blog, slides, series) MUST be in English even for Spanish posts.
-
-### Per-Edition Branding
-
-Pereira Tech Days editions ship a `brandKit` field that overrides Corag design tokens within their route subtree only. See [Brand Guide → Per-Edition Kits](BRAND_GUIDE.md) and the live preview at `/internal/brand/per-edition-kits`.
-
-## For AI Agents
-
-If you're an AI coding assistant, start here:
-
-1. **Read [AGENTS.md](../AGENTS.md)** — Main guidance document
-2. **Read [AI Agent Onboarding](AI_AGENT_ONBOARDING.md)** — Quick checklist
-3. **Follow [Standards](STANDARDS.md)** — Coding conventions
-4. **Browse the Internal Hub** — Live `/internal/brand` and `/internal/ui` document the running system; the Brand Book is canonical
-
-## Contributing
-
-1. Follow the coding standards in [STANDARDS.md](STANDARDS.md)
-2. Update relevant documentation after changes
-3. Run `pnpm run biome:check` before committing
-4. Use conventional commit messages
-5. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow
-
-## Documentation Maintenance
-
-When updating documentation:
-
-- Keep language consistent (English only — Spanish content lives in `src/content/{blog,pages,...}/es/`)
-- Update cross-references when renaming/moving docs
-- Add new documents to this index
-- Track coverage in [DOCUMENTATION_INVENTORY.md](DOCUMENTATION_INVENTORY.md)
-
+1. Read [AGENTS.md](../AGENTS.md) — the binding rules.
+2. Read [AI Agent Onboarding](AI_AGENT_ONBOARDING.md) — the short checklist.
+3. Follow [Standards](STANDARDS.md).
+4. Browse `/internal/brand` and `/internal/ui` in dev — the running system is
+   the canonical reference for tokens and components, not this folder.

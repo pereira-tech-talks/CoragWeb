@@ -27,8 +27,8 @@ Cloudflare offers [Markdown for Agents](https://blog.cloudflare.com/markdown-for
 
 | Pattern | Example |
 |---------|---------|
-| `/blog/{slug}.md` (ES) | `/blog/meetup-recap-march.md` |
-| `/en/blog/{slug}.md` (EN) | `/en/blog/meetup-recap-march.md` |
+| `/blog/{slug}.md` (ES) | `/blog/how-to-donate-safely-in-colombia.md` |
+| `/en/blog/{slug}.md` (EN) | `/en/blog/how-to-donate-safely-in-colombia.md` |
 
 Source: `post.body` from Astro content collection (raw Markdown without frontmatter). Collection folders remain `src/content/blog/{en,es}/` — only public URLs differ (Spanish at site root, English under `/en/`).
 
@@ -165,7 +165,7 @@ pnpm run seo:check:strict     # per-URL SEO and structured data — 0 flagged UR
 Published: 2026-03-09
 Updated: 2026-03-10
 Language: en
-Canonical: https://pereiratechtalks.org/blog/post-slug
+Canonical: https://corag.app/blog/post-slug
 Tags: tag1, tag2
 
 ---
@@ -260,13 +260,13 @@ The Cloudflare Pages middleware (`functions/_middleware.ts`) supports automatic 
 **Testing with curl:**
 ```bash
 # Get Markdown
-curl -H "Accept: text/markdown" https://pereiratechtalks.org/about
+curl -H "Accept: text/markdown" https://corag.app/about
 
 # Get HTML (default)
-curl https://pereiratechtalks.org/about
+curl https://corag.app/about
 
 # Direct .md URL also works
-curl https://pereiratechtalks.org/about.md
+curl https://corag.app/about.md
 ```
 
 **Response headers for content-negotiated Markdown:**

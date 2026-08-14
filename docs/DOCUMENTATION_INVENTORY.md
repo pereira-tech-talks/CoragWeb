@@ -1,6 +1,6 @@
 # Documentation Inventory
 
-Tracking documentation coverage for Pereira Tech Talks v3.0.0.
+Tracking documentation coverage for Corag.
 
 ## Documentation Files
 

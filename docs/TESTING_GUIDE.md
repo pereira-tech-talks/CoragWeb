@@ -1,6 +1,6 @@
 # Testing Guide
 
-Guide for testing in Pereira Tech Talks v3.0.0.
+Guide for testing in Corag.
 
 ## Overview
 

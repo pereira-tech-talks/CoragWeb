@@ -85,17 +85,17 @@ name: Sergio Alexander Florez Galeano
 slug: sergio-florez
 avatar: /images/authors/sergio-florez.webp
 role:
-  en: Community lead at Pereira Tech Talks
-  es: L\u00EDder comunitario en Pereira Tech Talks
+  en: Community lead at Corag
+  es: L\u00EDder comunitario en Corag
 bio:
-  en: Co-founder of Pereira Tech Talks. I write about building products, AI agents, and the craft of software engineering.
-  es: Cofundador de Pereira Tech Talks. Escribo sobre construcci\u00F3n de productos, agentes de IA y el oficio de la ingenier\u00EDa de software.
+  en: Co-founder of Corag. I write about building products, AI agents, and the craft of software engineering.
+  es: Cofundador de Corag. Escribo sobre construcci\u00F3n de productos, agentes de IA y el oficio de la ingenier\u00EDa de software.
 social:
   x: https://x.com/pertechtalks
-  linkedin: https://www.linkedin.com/company/pereira-tech-talks/
-  github: https://github.com/pereira-tech-talks
+  linkedin: https://www.linkedin.com/company/corag/
+  github: https://github.com/corag
   instagram: https://www.instagram.com/pertechtalks
-  website: https://pereiratechtalks.org/
+  website: https://corag.app/
 ```
 
 ## Blog Post Integration
@@ -137,8 +137,8 @@ The `author` value must match an existing author slug. Astro's content schema va
   "author": {
     "@type": "Person",
     "name": "Sergio Alexander Florez Galeano",
-    "url": "https://pereiratechtalks.org/about/",
-    "image": "https://pereiratechtalks.org/images/authors/sergio-florez.webp"
+    "url": "https://corag.app/about/",
+    "image": "https://corag.app/images/authors/sergio-florez.webp"
   }
 }
 ```

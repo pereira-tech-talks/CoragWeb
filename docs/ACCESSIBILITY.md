@@ -1,6 +1,6 @@
 # Accessibility Guide
 
-Accessibility standards and conventions for Pereira Tech Talks v3.0.0. This site targets **WCAG 2.1 AA compliance** and **Lighthouse Accessibility score of 100**.
+Accessibility standards and conventions for Corag. This site targets **WCAG 2.1 AA compliance** and **Lighthouse Accessibility score of 100**.
 
 ## Accessibility-First Philosophy
 
@@ -162,7 +162,7 @@ CSS classes still control the visual size. The `width`/`height` attributes tell 
 
 | Image Type | Alt Text | Example |
 |-----------|---------|---------|
-| **Informative** | Descriptive text | `alt="Pereira Tech Talks Logo"` |
+| **Informative** | Descriptive text | `alt="Corag Logo"` |
 | **Decorative** | Empty string | `alt=""` |
 | **Icon in labeled link** | Empty string | `alt=""` (parent `<a>` has `aria-label`) |
 | **Blog hero** | Post title | `alt={post.data.title}` |

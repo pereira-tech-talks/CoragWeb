@@ -1,6 +1,6 @@
 # Repository Standards
 
-This document defines the **canonical coding rules** for all contributors and AI agents working on Pereira Tech Talks v3.0.0.
+This document defines the **canonical coding rules** for all contributors and AI agents working on Corag.
 
 ## Language Standards
 
@@ -536,7 +536,7 @@ All documentation must be in **English**.
 
 ## Dates and Timezones
 
-Pereira Tech Talks uses **America/Bogota** (`SITE_TIMEZONE`, UTC−5, no DST) as the site clock. Helpers live in `src/lib/dates.ts`.
+Corag uses **America/Bogota** (`SITE_TIMEZONE`, UTC−5, no DST) as the site clock. Helpers live in `src/lib/dates.ts`.
 
 | Kind of date | Storage | Display / logic |
 |--------------|---------|-----------------|
