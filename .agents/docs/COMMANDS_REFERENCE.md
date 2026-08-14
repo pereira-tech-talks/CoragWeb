@@ -27,6 +27,14 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 ---
 
+## Getting Started
+
+| Command | Procedure File | Description |
+|---------|---------------|-------------|
+| `/setup` | `.agents/commands/setup.md` | Doctor-style local setup — scaffolds `.env`, `.dev.vars` and `.devcontainer`, verifies the toolchain, and confirms the project runs. Idempotent; re-run any time. |
+
+---
+
 ## Deep Work Plans
 
 > Thin delegators to the installed [`deepworkplan` skill](../skills/deepworkplan/SKILL.md) (currently **v2.17.0**, from [`DailybotHQ/deepworkplan-skill`](https://github.com/DailybotHQ/deepworkplan-skill)). Plans live in `.dwp/plans/`; drafts in `.dwp/drafts/`. Opt-in addons installed: `ai-diff-reviewer` (Flow A local-only review), `dependency-upgrade` (`/lib-upgrade`), `design-system` (`/design-system`).

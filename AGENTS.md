@@ -481,6 +481,11 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 
 ## Slash Commands (All Agents)
 
+> **New here?** Run **`/setup`** first (`#setup` outside Claude Code). It is a
+> doctor: it scaffolds the git-ignored local config (`.env`, `.dev.vars`,
+> `.devcontainer/`), checks the toolchain, and tells you whether the project
+> actually runs. Idempotent — safe to re-run any time.
+
 **This section applies to ALL agents** — Claude Code, OpenAI Codex, Cursor AI, Gemini, and any other assistant.
 
 ### How to Invoke Commands
