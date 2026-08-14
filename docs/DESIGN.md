@@ -1,320 +1,368 @@
-# DESIGN.md — Pereira Tech Talks design system
+# Corag — Design System
 
-> Interface-design context for AI coding agents. When generating or editing any
-> user-facing UI in this repo, follow this file. Prefer the named `--corag-*`
-> tokens below over ad-hoc values.
+> **The agent-facing UI contract.** Read this before creating or modifying any
+> component. Everything here is verifiable against `src/styles/global.css` — if
+> this file and that file disagree, **this file is wrong** and must be fixed.
 >
-> **Profile:** `visual-ui` only. This repo has no styled-CLI surface (no
-> chalk/ora/picocolors; `scripts/*.mjs` use plain `console.log`) and no
-> conversational surface (no chat/email SDK — `functions/api/contact.ts` is a
-> plain form handler), so those profiles are not applied.
+> - **[`BRAND_GUIDE.md`](./BRAND_GUIDE.md)** owns identity: what the mark means,
+>   what the voice is, which colors are official.
+> - **This file** owns implementation: exact token names, the utility classes
+>   Tailwind generates from them, and the component patterns.
+> - **[`ACCESSIBILITY.md`](./ACCESSIBILITY.md)** owns WCAG procedure.
 >
-> **Sources of truth:** [`../src/styles/global.css`](../src/styles/global.css)
-> (Tailwind 4 `@theme` block) and [`BRAND_GUIDE.md`](BRAND_GUIDE.md). This file is
-> the *operational contract* for agents; `BRAND_GUIDE.md` carries the wider brand
-> rationale, logo rules, and per-edition kits. Refresh with `/design-system`.
-
-## Overview
-
-Pereira Tech Talks is a warm, community-first developer community in Pereira,
-Colombia, with international reach. The visual identity is a **deep petroleum
-teal** primary (calm, modern, technical) paired with a **warm amber** accent
-(community, warmth), over a **near-white canvas** in light mode and a **deep
-green-teal canvas** in dark mode — never pure black. The design is content-first
-and generous with whitespace: static-rendered pages, hairline borders, restrained
-elevation, and motion used only as punctuation. Every surface must work in light
-**and** dark mode, and every string must exist in Spanish (primary) and English.
-
-## Colors
-
-Declared as `--color-corag-*` in the `@theme` block of `src/styles/global.css`;
-Tailwind 4 generates `bg-corag-*` / `text-corag-*` / `border-corag-*` utilities. Dark
-mode is class-based (`darkMode: ['class']`) and swaps the same token names under
-`.dark`, so **components never need `dark:` variants for palette tokens** — use
-`bg-corag-bg` and it re-skins automatically.
-
-| Token | Light | Dark | Role / usage |
-|---|---|---|---|
-| `corag-primary` | `#1F6F73` | `#3FA8AD` | Brand color — CTAs, links, focus rings |
-| `corag-primary-strong` | `#155054` | `#5BBFC4` | Hover · active · pressed |
-| `corag-primary-soft` | `#E1F2F1` | `#0F2A2C` | Tints · badges · subtle surfaces |
-| `corag-accent` | `#E8A33D` | `#F4B95C` | Warm highlights — icons, pills, large text **only** |
-| `corag-bg` | `#FAFBFB` | `#08191A` | Page background |
-| `corag-bg-elevated` | `#FFFFFF` | `#0F2A2C` | Cards · modals |
-| `corag-bg-dark` | `#08191A` | `#08191A` | Always-dark hero canvas (identical in both modes) |
-| `corag-border` | `#E2E8E8` | `#1E3D40` | Dividers · card hairlines |
-| `corag-border-strong` | `#C9D4D5` | `#2A5256` | Emphasized dividers |
-| `corag-text` | `#0F2A2C` | `#E8F0EF` | Primary body text · headings |
-| `corag-text-secondary` | `#4A6164` | `#B5C7C9` | Secondary text — meets AA |
-| `corag-text-muted` | `#6E8589` | `#8FA3A6` | Metadata · **large text only** |
-| `corag-success` | `#2E8757` | `#4FB07F` | Success states |
-| `corag-warning` | `#C68417` | `#E2A848` | Warnings |
-| `corag-danger` | `#B83A3A` | `#E0635F` | Errors · destructive actions |
-| `corag-info` | `#1F6F73` | `#3FA8AD` | Informational (aliases primary) |
-
-**Contrast contract.** `corag-text` and `corag-text-secondary` on `corag-bg` /
-`corag-bg-elevated` meet WCAG AA (≥ 4.5:1). `corag-accent` on `corag-bg` is **~2.4:1
-and fails AA** — never body text. `corag-text-muted` is for large or decorative
-text only.
-
-**Two extras exist for edge cases:** `corag-primary-light` (`#3FA8AD`) and
-`corag-accent` (`#F4B95C`) are fixed utilities that don't flip with the mode —
-use them when a component sits on a dark canvas (e.g. `bg-corag-bg-dark` hero)
-while the page is in light mode.
-
-**Legacy aliases** `--color-main` / `--color-secondary` / `--color-gray-50` are
-transitional remaps to the Corag brand. **Never use them in new components.**
-
-## Typography
-
-Public pages use **Atkinson Hyperlegible** (`--font-sans` in `global.css`),
-loaded from `public/fonts/atkinson-{regular,bold}.woff` with `font-display: swap`.
-Fallbacks: system UI sans. Do **not** introduce Inter or another display family
-on public chrome without updating this contract and the Brand Guide together.
-
-| Level | Size / weight / tracking | Used for |
-|---|---|---|
-| Display / H1 | `text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight` | Hero, page title |
-| Section H2 | `text-3xl sm:text-4xl font-bold tracking-tight` | `Section.astro` titles |
-| H3 | `text-xl font-semibold` | Sub-sections, card titles (large) |
-| H4 | `text-lg font-semibold` | Card titles |
-| Body | `text-base leading-relaxed` | Paragraphs, featured descriptions |
-| Lead | `text-lg text-corag-secondary` | Section subtitles, intros |
-| Small | `text-sm` | Meta, captions, secondary card body |
-| Eyebrow | `text-sm font-semibold uppercase tracking-widest` | Kickers (`Eyebrow` / Section) |
-| Caption | `text-xs font-semibold uppercase tracking-widest` | Dense meta only (year pills, badges) — **never** primary readable body |
-| Mono | `font-mono text-sm` | Code |
-
-**Hard rules**
-
-- Never use arbitrary sizes below `text-xs` for UI copy (`text-[11px]`, `text-[10px]`).
-- Primary paragraphs use **Body** (`text-base`), not `text-sm`.
-- Eyebrows stay `text-sm` for WCAG readability on colored/dark heroes.
-- Long-form content uses `@tailwindcss/typography` (`.prose`).
-
-> Historical note: Brand Guide once listed Inter Variable; Atkinson was declared
-> but unused. As of this plan, Atkinson is wired via `--font-sans` and is the
-> single shipped family for public UI.
-
-## Layout & spacing
-
-- **Spacing scale — 4px base:** `1 (4px) · 2 (8px) · 3 (12px) · 4 (16px) ·
-  6 (24px) · 8 (32px) · 12 (48px) · 16 (64px) · 20 (80px) · 24 (96px)`.
-- **Dominant rhythm in practice:** `py-16` for major sections (`py-12` / `py-20`
-  as the tighter/looser variants), `gap-6` for card grids, `gap-4` for inline
-  clusters.
-- **Containers:** `.main-container` (`max-w-7xl mx-auto py-4 px-4 md:px-6`, defined
-  in `global.css`) is the page shell (1280px). Content widths: `max-w-3xl` for prose/reading,
-  `max-w-5xl`–`max-w-6xl` for grids and directories; keep reading columns narrow on long-form pages.
-- **Whitespace principle:** let sections breathe vertically; the canvas is the
-  separator. Reach for spacing before adding a border or a shadow.
-
-## Elevation & depth
-
-Depth is **restrained and mostly hairline-based**. The canvas/elevated pair
-(`corag-bg` → `corag-bg-elevated`) plus a `border-corag-border` hairline does most of
-the work; shadows are an accent, not the structure.
-
-- `shadow-sm` — the default for cards, buttons, and resting surfaces (most common).
-- `shadow-md` → `shadow-lg` — hover lift on interactive cards, dropdowns, popovers.
-- `shadow-xl` / `shadow-2xl` — reserved for modals and overlays only.
-
-In dark mode shadows read weakly against `#08191A`; prefer raising
-`bg-corag-bg-elevated` and a `border-corag-border` hairline over deepening a shadow.
-
-## Shapes
-
-Radius scale: `sm (4px) · md (8px) · lg (12px) · xl (16px) · 2xl (24px) · full`.
-
-The corner language is **soft**: `rounded-full` for pills, badges, avatars, and
-buttons (by far the most used); `rounded-xl` / `rounded-2xl` for cards and
-panels; `rounded-lg` for inputs and smaller surfaces; `rounded-md` sparingly.
-Borders are single-pixel hairlines in `corag-border` — no heavy strokes.
-
-## Components
-
-Described in terms of the tokens above. Reuse these patterns rather than
-re-deriving them; canonical live examples are the `src/components/ui/` primitives
-and `src/components/pages/*Page.astro`.
-
-- **Button (primary)** — `inline-flex items-center gap-2 rounded-full
-  bg-corag-fill px-5 py-2.5 text-sm font-semibold text-corag-on-fill shadow-sm
-  transition-colors hover:bg-corag-primary/90 focus-visible:outline-2
-  focus-visible:outline-offset-2 focus-visible:outline-corag-primary`, plus
-  `dark:bg-corag-primary-light dark:text-gray-950 dark:hover:bg-corag-primary-light/90`
-  so the label stays legible on the lighter dark-mode teal. See
-  `src/components/ui/EmptyState.astro:55`.
-- **Pill / badge** — `rounded-full px-3 py-1 text-xs font-semibold uppercase
-  tracking-wider`; primary variant `bg-corag-fill text-corag-on-fill`, soft variant
-  `bg-corag-primary-soft text-corag`. Amber is allowed here (pill on
-  `corag-bg-elevated`), never as loose body text. See `src/components/ui/Pill.astro`.
-- **Card / surface** — `bg-corag-bg-elevated border border-corag-border rounded-xl`
-  (or `rounded-2xl`) `shadow-sm`, with `hover:shadow-md transition-shadow` when
-  the whole card is a link. Card titles `text-lg font-semibold text-corag`, body
-  `text-sm text-corag-secondary`.
-- **Input** — `rounded-lg border border-corag-border bg-corag-bg-elevated px-4 py-2.5
-  text-base text-corag`; always pair with a real `<label>` and an `autocomplete`
-  attribute. Error state uses `corag-danger` for both the border and the message.
-- **Focus ring (global)** — `global.css` applies
-  `focus-visible:ring-2 focus-visible:ring-corag-primary focus-visible:ring-offset-2`
-  to `a, button, input, select, textarea, [role="button"]`. **Don't remove it**;
-  components that need a different treatment use `focus-visible:outline-*` in the
-  brand color (as the primary button does).
-- **Nav / header** — `Header.svelte` + `MobileMenu.svelte`. Dropdowns use the
-  **disclosure pattern** (`aria-expanded` + `aria-controls`), never `role="menu"`.
-  Header, footer, language switcher, and theme toggle always keep the **global**
-  Corag palette — including on Pereira Tech Day edition pages.
-
-### Chrome personality
-
-Site chrome (header, footer, language switcher, theme toggle) reads the user
-theme and stays on the **global Corag palette** — never an edition kit.
-
-- **Header** — `Header.svelte`. Light: `bg-corag-bg-elevated/95` with
-  `logo-color.png` / `logo-vertical-color.webp` (`dark:hidden`). Dark: `bg-corag-bg-dark/95` with
-  `logo-white.png` / `logo-vertical-white.webp` (`dark:block`). Nav links inherit via `.nav-link` in
-  `global.css` (`text-corag-secondary` → `dark:text-white/85`).
-  Vertical marks: regenerate with `node scripts/generate-corag-logo-variants.mjs`.
-  Light chrome wordmarks (`topbar-logo-primary`, `logo-horizontal-primary`):
-  `node scripts/generate-corag-light-logos.mjs` (from archived `*-black.webp`).
-- **Hero CTAs on dark canvases** — white pill buttons use
-  `text-corag-bg-dark`, **not** `text-corag` — `text-corag` auto-flips light in
-  dark mode and becomes illegible on white. Accent pills pair
-  `bg-corag-accent text-corag-bg-dark`. See `HeroSection.astro`.
-- **Dark heroes** — body copy on photo/dark overlays uses `text-white/85` or
-  `text-white/90`, not `text-gray-200` / `dark:text-gray-300` (fails the
-  no-gray-muted rule on tinted backgrounds).
-- **Theme toggle** — `ThemeToggle.astro` FAB: morphing SVG sun/moon icons only
-  (no emoji), `bg-corag-bg-elevated` + token borders. Icon/fab transitions are
-  disabled under `prefers-reduced-motion: reduce` (see `global.css`).
-- **PTD edition pages** — `EditionScope` skins only the edition body. Edition
-  detail routes use `chrome="ptd-edition"` (`PtdEditionHeader`: `PTD {year}` +
-  in-page anchors + previous editions + language switcher) instead of the
-  global Meetups/Blog nav; footer stays
-  global but the theme is locked (no ThemeToggle; 2024 dark / 2026 light).
-  See Per-edition theming below.
-
-### Per-edition theming
-
-Pereira Tech Day editions ship their own `brandKit` in
-`src/content/pereiraTechDays/{year}.{json,yaml}`. `EditionScope` writes the
-overrides under `[data-edition-theme="{year}"]`, so the edition palette applies
-**only inside the edition body**. Chrome renders as a sibling of that wrapper.
-Edition detail pages swap the global header for `PtdEditionHeader` via
-`MainLayout` `chrome="ptd-edition"`; footer and theme toggle stay global.
-Editions may also override the heading family
-(2024 uses `'Bebas Neue'`, uppercase, `tracking 0.18em`) — scoped the same way.
-Every edition kit must clear WCAG AA before publishing.
-
-## Responsive behavior
-
-Default Tailwind breakpoints; the codebase is effectively **mobile-first with
-three active steps** (`sm` 240 uses, `lg` 125, `md` 115, `xl` 7).
-
-| Breakpoint | Min width | Notes |
-|---|---|---|
-| `sm` | 640px | Most-used step — stacked → inline, type bumps |
-| `md` | 768px | `.main-container` padding `px-4` → `px-8`; prose figure constraints (`.fig-narrow-70/60`); table horizontal scroll disengages |
-| `lg` | 1024px | Multi-column grids, desktop nav replaces mobile menu |
-| `xl` | 1280px | Rare — wide-canvas refinements only |
-
-Touch targets are ≥ 44×44px. Wide content must scroll inside its own container
-(`.table-responsive`), never the page body — verified by the Playwright
-overflow suite down to 280px (Galaxy Z Fold folded, iPhone SE).
-
-### Homepage hero viewport contract
-
-The home hero fills the **remaining viewport below sticky chrome**, not a fixed
-`100vh` that ignores the header.
-
-`--corag-chrome-height` is set on `:root` by an inline script in `MainLayout`
-that measures `[data-corag-chrome]` (notification bar + header) via
-`ResizeObserver`. When the top notification bar collapses on scroll (or is
-absent), the measured height updates and the hero grows/shrinks by the same
-amount — chrome shrink and hero grow cancel, so content below the hero does
-not jump. The same variable drives `html { scroll-padding-top }` (and
-`scroll-mt-*` on `#main-after-hero`) so in-page anchors clear the sticky
-chrome instead of landing underneath it.
-
-| Chrome state | SSR fallback | Live value |
-|---|---|---|
-| Header only (no notification) | `4.25rem` | Measured header height |
-| Header + top notification bar | `6.3rem` (`body.has-top-notification`) | Measured sticky chrome height |
-| Bar collapsed after scroll | (same class; live measure) | Header height only |
-
-Height uses `min-height: calc(100dvh − var(--corag-chrome-height))` (`svh` as
-cascade fallback before `dvh`). From `lg` upward the hero also locks exact
-`height` so the first paint is one cinematic frame. Short viewports
-(`max-height: 720px` / `560px`) hide the scroll cue / social row and clamp
-description so CTAs stay in view. Narrow phones (`max-width: 379px`) stack
-CTAs full-width.
-
-**Motion:** `duration-fast 120ms` (hover, pill toggles), `duration-base 200ms`
-(default transitions), `duration-slow 320ms` (modals, drawers). All non-essential
-animation is gated by the global `prefers-reduced-motion: reduce` block in
-`global.css`, which also disables `.animate-chevron-bounce`. Hero ken-burns and
-scroll-chevron animations respect the same preference inside `HeroSection`.
-
-## Do's and Don'ts
-
-**Do**
-
-- Use `--corag-*` tokens and their `bg-corag-*` / `text-corag-*` / `border-corag-*`
-  utilities — they auto-flip for dark mode.
-- Keep body text at WCAG AA (≥ 4.5:1): `text-corag` and `text-corag-secondary`.
-- Give every `<img>` explicit `width` and `height`; add `decoding="async"` and
-  `loading="lazy"` below the fold.
-- Keep heading hierarchy strict (h1 → h2 → h3, no skipping) and use semantic
-  landmarks.
-- Prefer CSS over JS, and `.astro` over Svelte unless the component is genuinely
-  interactive; when it is, use the laziest directive that works (`client:visible`
-  / `client:idle`).
-- Wrap Pereira Tech Day edition content in `<EditionScope>`, chrome outside it.
-
-**Don't**
-
-- **Don't** use `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, or
-  `dark:text-gray-500` for body text — fails AA and is forbidden by `AGENTS.md`.
-- **Don't** use `corag-accent` (amber) for body text — ~2.4:1 on `corag-bg`.
-- **Don't** set `--corag-*` variables outside `src/styles/global.css` or a
-  `[data-edition-theme]` scope — no inline `style="--corag-primary: …"`.
-- **Don't** let an edition palette reach the header, footer, language switcher,
-  or theme toggle.
-- **Don't** use the legacy `--color-main` / `--color-secondary` aliases, or raw
-  hex values, in new components.
-- **Don't** use pure black (`#000`) as a dark background — the Corag dark identity
-  is `#08191A`.
-- **Don't** use `role="menu"` for nav dropdowns — use the disclosure pattern.
-- **Don't** remove the global `focus-visible` ring.
-- **Don't** import Reveal.js CSS outside `SlideLayout.astro`.
-
-## Agent prompt guide
-
-**For coding agents working in this repo:** this `DESIGN.md` is the source of
-truth for the visual UI. Before generating or editing any user-facing markup:
-
-1. **Use the named tokens** — `corag-primary`, `corag-bg-elevated`, `corag-text-secondary`,
-   the 4px spacing steps, the radius scale. Don't introduce values outside this file.
-2. **Pick by role, not by eye** — `corag-primary` for actions and links,
-   `corag-danger` for destructive states, `corag-accent` for warmth in icons/pills only.
-3. **Keep integrity** — body text ≥ 4.5:1; both light and dark verified; images
-   dimensioned; motion gated by `prefers-reduced-motion`.
-4. **Match the documented patterns** — reuse the Button, Pill, Card, Input, and
-   nav patterns above with their hover/focus/disabled states, and the
-   `src/components/ui/` primitives that implement them.
-5. **When something isn't covered**, choose the option most consistent with these
-   conventions and note the gap rather than inventing an unrelated style.
-
-Suggested instruction to paste into an agent prompt:
-
-> "Follow `docs/DESIGN.md` strictly. Build the UI using its `--corag-*` tokens,
->  roles, and documented component patterns; keep the integrity rules (WCAG AA
->  contrast, light + dark, reduced motion, edition-scoped palettes) intact."
-
-Run `/design-system` to refresh this file after design changes.
+> Measured ratios behind every rule here:
+> [`CONTRAST_AUDIT.md`](../.dwp/plans/PLAN_corag_org_migration/analysis_results/CONTRAST_AUDIT.md).
 
 ---
 
-**Related:** [`BRAND_GUIDE.md`](BRAND_GUIDE.md) ·
-[`ACCESSIBILITY.md`](ACCESSIBILITY.md) · [`PERFORMANCE.md`](PERFORMANCE.md) ·
-[`ARCHITECTURE.md`](ARCHITECTURE.md)
+## 1. How tokens become classes
+
+Tokens are declared in a Tailwind 4 `@theme` block in `src/styles/global.css`.
+Tailwind generates a utility for every `--color-*` token automatically:
+
+```
+--color-corag-primary   →   bg-corag-primary   text-corag-primary
+                            border-corag-primary   ring-corag-primary
+                            outline-corag-primary  shadow-corag-primary/20
+```
+
+You never write a hex value in a component. If you need a color that is not a
+token, the answer is almost always that you need a different token — or that the
+design is wrong.
+
+**Never** override a `--color-corag-*` value outside `src/styles/global.css`. No
+inline `style="--color-corag-primary: …"`, no scoped redefinition.
+
+---
+
+## 2. Color tokens
+
+### 2.1 Brand — foreground
+
+These **flip between themes**. Use them for text, icons, borders and focus rings.
+
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `corag-primary` | `#78020e` | `#ffc7d5` | The brand color in running context |
+| `corag-primary-strong` | `#5a0109` | `#ffe2e9` | Hover / pressed |
+| `corag-primary-soft` | `#ffe2e9` | `#3a1a20` | Tinted surface behind primary content |
+| `corag-primary-light` | `#ffc7d5` | `#ffc7d5` | The dark-mode primary, available in **both** themes — for content sitting on an intentionally dark canvas in light mode |
+
+> **The inversion.** In light mode the brand is **wine**; in dark mode it is
+> **rosa**. Wine on a dark ground measures **1.52:1** and is unusable. Both are
+> official colors, so nothing is invented. Do not "fix" this.
+
+### 2.2 Brand — solid fill (does **not** flip)
+
+| Token | Both themes | Use |
+|---|---|---|
+| `corag-fill` | `#78020e` | Background of a filled brand surface |
+| `corag-fill-strong` | `#5a0109` | Its hover state |
+| `corag-on-fill` | `#ffe2e9` | The label **on** that surface — 9.54:1 |
+
+```astro
+<!-- ✅ correct — works identically in both themes -->
+<a class="bg-corag-fill text-corag-on-fill hover:bg-corag-fill-strong">Quiero ayudar</a>
+
+<!-- ❌ wrong — becomes white-on-rosa (~1.5:1) in dark mode -->
+<a class="bg-corag-primary text-white">Quiero ayudar</a>
+```
+
+This is the single most common way to get the design system wrong. A primary
+button needs **no dark variant**.
+
+### 2.3 Rosa
+
+| Token | Light | Dark |
+|---|---|---|
+| `corag-rosa` | `#ffc7d5` | `#ffc7d5` |
+| `corag-rosa-soft` | `#ffe2e9` | `#ffe2e9` |
+
+Rosa is an **official brand color**, not a tint of the wine. It is what makes
+Corag feel warm rather than severe. Use it.
+
+### 2.4 Accent — ⚠️ restricted
+
+| Token | Light | Dark |
+|---|---|---|
+| `corag-accent` | `#bc727c` | `#bc727c` |
+| `corag-accent-strong` | `#a34f5a` | `#d8a3aa` |
+
+**`corag-accent` is never body text.** It fails AA on every light ground
+(2.46–3.60). Permitted: large text ≥24px or ≥19px bold, hairlines, decorative
+shapes, icon fills paired with an accessible label.
+
+When the rose accent must carry readable text, use **`corag-accent-strong`**
+(5.19:1 on the page ground).
+
+### 2.5 Surfaces
+
+| Token | Light | Dark |
+|---|---|---|
+| `corag-bg` | `#fbf8f5` | `#231518` |
+| `corag-bg-elevated` | `#ffffff` | `#2e1b1f` |
+| `corag-bg-brand` | `#ffe2e9` | `#3a1a20` |
+| `corag-bg-brand-strong` | `#ffc7d5` | `#4a2128` |
+| `corag-bg-dark` | `#231518` | `#231518` |
+
+`corag-bg-dark` is identical in both themes — for sections that intentionally
+keep the wine-black identity regardless of theme.
+
+### 2.6 Text
+
+| Token | Light | Dark | Min ratio |
+|---|---|---|---|
+| `corag-text` | `#251f20` | `#f0e3e4` | 11.10 / 12.47 |
+| `corag-text-secondary` | `#574f51` | `#d6c4c7` | 5.44 / 9.33 |
+| `corag-text-muted` | `#635b5d` | `#92888a` | 4.52 / 4.53 |
+
+Short aliases, because they are used constantly:
+
+```
+text-corag             ==  text-corag-text
+text-corag-secondary   ==  text-corag-text-secondary
+```
+
+**`corag-text-muted` is the lightest permitted body text.** There is nothing
+lighter that passes.
+
+**Banned, always:** `text-gray-400` · `text-gray-500` · `dark:text-gray-400` ·
+`dark:text-gray-500`.
+
+### 2.7 Borders
+
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `corag-border` | `#e8e0dc` | `#3e2a2e` | Decorative hairlines, dividers |
+| `corag-border-strong` | `#c9b9b5` | `#5c4247` | Decorative emphasis |
+| `corag-border-interactive` | `#968f8d` | `#7f6c6f` | **Inputs, selects, control edges** |
+
+> WCAG 1.4.11 requires 3:1 for boundaries that convey meaning. `corag-border`
+> sits at 1.23 — fine for a divider, **not** for an input outline. Any control
+> edge uses `corag-border-interactive`.
+
+### 2.8 Status
+
+| Token | Light | Dark | Meaning in Corag |
+|---|---|---|---|
+| `corag-success` / `-soft` | `#24735d` / `#e7f3ee` | `#559381` / `#16302a` | entregado · **con evidencia** · completado |
+| `corag-warning` / `-soft` | `#995d30` / `#f6ecdf` | `#b37b4f` / `#33240f` | en organización · pendiente |
+| `corag-info` / `-soft` | `#3c6176` / `#eaf1f4` | `#6e8b9b` / `#17262e` | informativo · neutral |
+| `corag-danger` / `-soft` | `#a43536` / `#fdecec` | `#c37073` / `#331416` | **urgente** · error |
+
+> **Status colors sit on page or `-soft` chip grounds — never on the rosa brand
+> surfaces.** They were verified against the former, not the latter.
+
+---
+
+## 3. Typography
+
+| Token | Value |
+|---|---|
+| `--font-sans` | **Poppins**, then system fallbacks |
+| `--font-display` | **Outfit**, then Poppins, then system fallbacks |
+
+Both self-hosted from `/public/fonts`. Outfit is a variable font (400–800).
+**Never add an external font request.**
+
+```astro
+<h1 class="font-display text-4xl font-bold">…</h1>   <!-- Outfit -->
+<p class="text-base">…</p>                            <!-- Poppins, inherited -->
+```
+
+### Scale
+
+| Role | Classes |
+|---|---|
+| Page title (h1) | `font-display text-4xl md:text-5xl font-bold tracking-tight` |
+| Section (h2) | `font-display text-2xl md:text-3xl font-semibold` |
+| Subsection (h3) | `font-display text-xl font-semibold` |
+| Body | `text-base leading-relaxed` |
+| Lead paragraph | `text-lg leading-relaxed text-corag-secondary` |
+| Small print | `text-sm text-corag-secondary` |
+
+**Never** set body copy below `text-base` (16px). This is a site people read
+while worried — give the text room: `leading-relaxed` or looser on long-form.
+
+**Never** skip a heading level. `h1` → `h3` is a defect, not a style choice.
+
+---
+
+## 4. Spacing, radius, elevation, motion
+
+### Container
+
+```astro
+<div class="main-container">…</div>
+```
+`max-w-7xl`, centered, `px-4 md:px-6`. Defined in `@layer components`.
+
+### Radius
+
+| Token | Value | Use |
+|---|---|---|
+| `--radius-corag-sm` | `12px` | Chips, inputs, small controls |
+| `--radius-corag-md` | `18px` | Cards, panels |
+| `--radius-corag-lg` | `28px` | Hero panels, large feature surfaces |
+
+Buttons use `rounded-full` — the brand reads friendlier that way.
+
+### Elevation
+
+| Token | Light | Dark |
+|---|---|---|
+| `--shadow-corag-sm` | `0 8px 24px rgb(60 2 12 / 0.08)` | `0 8px 24px rgb(0 0 0 / 0.35)` |
+| `--shadow-corag-lg` | `0 28px 70px rgb(60 2 12 / 0.14)` | `0 28px 70px rgb(0 0 0 / 0.5)` |
+
+> The light-mode shadows are **wine-tinted on purpose**. Do not "normalize" them
+> to neutral grey — it desaturates the whole page.
+
+### Motion
+
+Transitions: `transition-colors duration-200` for state changes. Every
+non-essential animation must be disabled under reduced motion — `global.css`
+already applies a global guard, but component-level animations must not fight it:
+
+```css
+@media (prefers-reduced-motion: reduce) { .my-animation { animation: none; } }
+```
+
+---
+
+## 5. Dark mode
+
+```css
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+Most components need **no** `dark:` classes at all — the tokens flip themselves.
+Reach for `dark:` only when the *structure* changes, not the palette.
+
+```astro
+<!-- ✅ flips automatically -->
+<div class="bg-corag-bg-elevated text-corag border border-corag-border">…</div>
+
+<!-- ⚠️ only when the design genuinely differs between themes -->
+<div class="shadow-corag-sm dark:shadow-none">…</div>
+```
+
+---
+
+## 6. Component patterns
+
+### Buttons
+
+```astro
+<!-- Primary — theme-invariant -->
+<a class="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-fill
+          px-6 py-3 font-semibold text-corag-on-fill transition-colors
+          hover:bg-corag-fill-strong focus-visible:outline-2
+          focus-visible:outline-offset-2 focus-visible:outline-corag-primary">
+  Quiero ayudar
+</a>
+
+<!-- Secondary -->
+<a class="inline-flex min-h-[44px] items-center gap-2 rounded-full border
+          border-corag-primary px-6 py-3 font-semibold text-corag-primary
+          transition-colors hover:bg-corag-primary-soft">
+  Cómo funciona
+</a>
+
+<!-- Ghost -->
+<a class="inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 py-2
+          font-medium text-corag-secondary transition-colors
+          hover:text-corag-primary">
+  Ver más
+</a>
+```
+
+Minimum touch target **44×44px**.
+
+### Card
+
+```astro
+<article class="rounded-[18px] border border-corag-border bg-corag-bg-elevated
+                p-6 shadow-corag-sm transition-shadow hover:shadow-corag-lg">
+  <h3 class="font-display text-xl font-semibold text-corag">…</h3>
+  <p class="mt-2 text-corag-secondary">…</p>
+</article>
+```
+
+### Status pill
+
+```astro
+<span class="inline-flex items-center gap-1.5 rounded-full bg-corag-success-soft
+             px-3 py-1 text-sm font-medium text-corag-success">
+  Con evidencia
+</span>
+```
+
+Swap `success` → `warning` / `info` / `danger` per §2.8. **Never rely on color
+alone** to convey status — always pair it with a word or an icon plus a label.
+
+### Form field
+
+```astro
+<label for="nombre" class="block text-sm font-medium text-corag">Nombre</label>
+<input id="nombre" name="nombre"
+       class="mt-1 block w-full rounded-[12px] border border-corag-border-interactive
+              bg-corag-bg-elevated px-4 py-2.5 text-corag
+              placeholder:text-corag-text-muted
+              focus-visible:outline-2 focus-visible:outline-offset-2
+              focus-visible:outline-corag-primary" />
+```
+
+`border-corag-border-interactive`, not `border-corag-border`. Every input has a
+bound `<label>` — a placeholder is not a label.
+
+### Navigation dropdown
+
+Use the **disclosure pattern**: a `<button aria-expanded aria-controls>` plus a
+panel. **Never `role="menu"`** — that ARIA role implies application-menu keyboard
+semantics this site does not implement.
+
+### Images
+
+```astro
+<img src="/images/…" alt="Descripción significativa"
+     width={800} height={450} loading="lazy" decoding="async" />
+```
+
+`width` and `height` on **every** image. `alt=""` for purely decorative images.
+The Corag wordmark is `342 × 100` (3.4156:1) — see `BRAND_GUIDE.md`.
+
+---
+
+## 7. Anti-patterns
+
+| ❌ Don't | ✅ Do |
+|---|---|
+| `bg-corag-primary text-white` | `bg-corag-fill text-corag-on-fill` |
+| `text-gray-500`, `dark:text-gray-400` | `text-corag-secondary` / `text-corag-text-muted` |
+| `corag-accent` on body text | `corag-accent-strong`, or `corag-primary` |
+| `style="--color-corag-primary: …"` | Change it in `global.css` or use a different token |
+| A hex literal in a component | A token |
+| `border-corag-border` on an input | `border-corag-border-interactive` |
+| `role="menu"` on a nav dropdown | The disclosure pattern |
+| `client:load` | `client:visible` / `client:idle` |
+| A hardcoded user-visible string | `getTranslations(lang)` |
+| A hardcoded `/en` prefix | `getUrlPrefix(lang)` |
+| A `<img>` with no dimensions | Always `width` + `height` |
+| Color alone to signal status | Color **plus** a word or labelled icon |
+| An external font or CDN request | Self-hosted from `/public/fonts` |
+
+---
+
+## 8. Checklist before shipping a component
+
+- [ ] Zero hex literals; every color is a token.
+- [ ] Solid brand surfaces use `fill` / `on-fill`, not `primary` + `text-white`.
+- [ ] Renders correctly in **both** themes — checked, not assumed.
+- [ ] Heading hierarchy unbroken.
+- [ ] Every image has `width` + `height` and meaningful `alt` (or `alt=""`).
+- [ ] Keyboard reachable, with a visible focus state.
+- [ ] Touch targets ≥ 44×44px.
+- [ ] Reduced motion honored.
+- [ ] Zero hardcoded user-visible strings.
+- [ ] `.astro` unless it genuinely needs interactivity; then the laziest
+      `client:*` directive that works.
