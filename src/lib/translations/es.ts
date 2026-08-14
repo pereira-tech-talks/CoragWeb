@@ -993,7 +993,7 @@ export const es: SiteTranslations = {
   developersPage: {
     title: 'Desarrolladores',
     description:
-      'Por qué Corag publica su red en lugar de guardarla, qué se puede construir encima y cómo pedir acceso para integrar tu propio sistema.',
+      'La API pública de Corag: sin autenticación, idempotente por diseño, con servidor MCP. Qué se puede construir encima y cómo publicar tu primera solicitud.',
     eyebrow: 'Integraciones',
     lead: 'Muchas interfaces, una sola red de datos. El camino con más impacto no es construir otra aplicación de ayuda: es que la que construyas hable con la que ya existe.',
     sections: [
@@ -1005,6 +1005,62 @@ export const es: SiteTranslations = {
             paragraphs: [
               'En una emergencia aparecen varios equipos construyendo al tiempo, cada uno con su propia base de datos de necesidades. El resultado es más fragmentación, no menos: cinco listas incompatibles de lo mismo, ninguna completa.',
               'Por eso la red se publica. Una aplicación nueva no tiene que empezar de cero ni pedirle a la gente que se registre otra vez: se vuelve un cliente más de la misma red de datos.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'La API en tres hechos',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Sin autenticación',
+                body: 'No hay llaves ni registro. Publicar una solicitud o un ofrecimiento es un POST directo, porque en una emergencia el trámite es el enemigo.',
+              },
+              {
+                title: 'Idempotente por diseño',
+                body: 'El par source + externalId identifica cada registro. Reintentar la misma publicación no crea un duplicado, así que una integración con red inestable es segura.',
+              },
+              {
+                title: 'El contacto exige consentimiento',
+                body: 'El teléfono se publica, y por eso publishContact debe ser explícito. No hay forma de subir un contacto sin declarar que esa persona aceptó que se muestre.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Los tres endpoints',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              '`GET https://ayuda.corag.app/api/public/v1/help` — descubre la API y devuelve las emergencias activas con su `slug`. Empieza aquí.',
+              '`POST https://ayuda.corag.app/api/public/v1/help` — publica una solicitud (`type: "request"`) o un ofrecimiento (`type: "offer"`).',
+              '`POST https://ayuda.corag.app/mcp` — servidor MCP remoto, con las herramientas `listar_emergencias`, `publicar_solicitud` y `publicar_ofrecimiento`.',
+            ],
+          },
+          {
+            kind: 'prose',
+            paragraphs: [
+              'La especificación completa, OpenAPI 3.1, está en `https://ayuda.corag.app/api/public/openapi.json`.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué lleva una publicación',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              '**Obligatorio en ambos casos:** `source`, `externalId`, `title`, `category`, `contactName`, `contactWhatsapp` y `publishContact`.',
+              '**`category`** es una de: `alimentos`, `salud`, `refugio`, `transporte`, `acopio`, `rescate`, `otro`.',
+              '**Una solicitud** añade `address`, `latitude` y `longitude` obligatorios, más `urgency` (`urgent` · `needed` · `stable`) y `neededPeople`.',
+              '**Un ofrecimiento** solo exige `type`; la ubicación es opcional y puede declarar `collectionCenterStatus` (`full` · `needs_volunteers` · `needs_resources`).',
+              '**`emergencySlug`** se vuelve obligatorio cuando hay más de una emergencia activa. Por eso conviene hacer el `GET` primero.',
             ],
           },
         ],
@@ -1026,17 +1082,6 @@ export const es: SiteTranslations = {
         ],
       },
       {
-        heading: 'Estado del acceso público',
-        blocks: [
-          {
-            kind: 'callout',
-            tone: 'info',
-            title: 'La documentación pública está en preparación',
-            body: 'La aplicación expone un endpoint MCP, pero todavía no publicamos una especificación estable ni credenciales de acceso abierto. Preferimos decirlo a publicar una referencia que cambie la semana siguiente. Escríbenos y coordinamos el acceso mientras tanto.',
-          },
-        ],
-      },
-      {
         heading: 'Este sitio también es abierto',
         blocks: [
           {
@@ -1049,13 +1094,16 @@ export const es: SiteTranslations = {
       },
     ],
     cta: {
-      title: '¿Quieres integrarte?',
-      body: 'Cuéntanos qué estás construyendo y qué datos necesitas. Respondemos con el acceso y el contexto que haga falta.',
-      primary: { label: 'Solicitar acceso', href: '/contact?topic=general' },
-      secondary: { label: 'Cómo contribuir', href: '/contributing' },
+      title: '¿Estás construyendo algo?',
+      body: 'La API no necesita permiso para empezar. Escríbenos si quieres contarnos qué estás haciendo o necesitas contexto sobre el modelo.',
+      primary: {
+        label: 'Ver la especificación',
+        href: 'https://ayuda.corag.app/api/public/openapi.json',
+        external: true,
+      },
+      secondary: { label: 'Escríbenos', href: '/contact?topic=general' },
     },
   },
-
   privacyPage: {
     title: 'Privacidad',
     description:

@@ -82,8 +82,7 @@ must return complete Markdown, not a summary.
    one that gets quoted.
 2. **One page per question.** Two pages half-answering the same query compete
    with each other.
-3. **State the limit.** "The public specification is not published yet" is a
-   better answer than an evasive one, and it is the one that earns the citation
-   when it does ship.
+3. **State the limit.** Naming what is not settled is a better answer than an
+   evasive one, and it is what makes the rest of the page citable.
 4. **Never publish a figure you cannot back.** Every unverifiable number is a
    liability the moment somebody checks it.

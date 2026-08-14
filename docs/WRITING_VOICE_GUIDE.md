@@ -32,7 +32,7 @@ The brand voice in [Brand Guide § Brand voice](./BRAND_GUIDE.md#brand-voice) is
 - **Authority comes from the mechanism**, not from adjectives. "The evidence is reviewed before it is published" beats "we are deeply committed to transparency."
 - **Sentence rhythm is varied.** Short openers next to longer explanatory sentences. Avoid uniform length.
 - **Strategic em-dash asides** for mid-thought corrections — "Not a promise. A receipt." — and parenthetical thoughts.
-- **Limits get stated.** "The public specification is not published yet" is better copy than an evasion, and it is what earns trust when it does ship.
+- **Limits get stated.** Naming what is not settled yet is better copy than an evasion, and it is what makes the settled parts believable.
 - **Specificity over abstraction.** A named responsable, a dated delivery, a figure with a source.
 - **Dry, self-aware humour**, used sparingly and never near somebody's hardship.
 
@@ -58,7 +58,7 @@ The voice anchors stay constant; the register flexes by content type:
 | **Practical guide (blog)** | How to verify, how to donate, how to start | Second person; concrete steps; the friction named honestly | "Recibes una solicitud de donación por redes. La causa parece urgente. Antes de transferir, una alarma pregunta: ¿esto es real?" |
 | **Explainer (blog)** | A definition or a distinction people get wrong | Declarative; one idea per section; the uncomfortable version first | "Impacto social es el cambio sostenible, medible y directo. Si falta cualquiera de los tres, lo que tienes es actividad social." |
 | **Field report** | What a delivery actually involved | Plural; dated; evidence-linked; no adjectives doing the work of facts | "El frente del Eje Cafetero cerró la semana con 40 mercados entregados. La evidencia está publicada por entrega." |
-| **Technical note** | Integration, the API, how the site is built | Direct, developer-to-developer; states what is not ready | "Many interfaces, one network of data. The public specification is not published yet, and here is why." |
+| **Technical note** | Integration, the API, how the site is built | Direct, developer-to-developer; states what is not ready | "Many interfaces, one network of data. No keys, no registration — in an emergency the paperwork is the enemy." |
 | **Policy** | Conduct, governance, privacy | Plain, enforceable sentences; no legalese padding | "No presentar evidencia es la falta más grave, porque rompe exactamente aquello que hace verificable a Corag." |
 
 When the **byline** is a single author, first-person singular is fine. When it is
@@ -270,8 +270,8 @@ quoted, so:
   administrative review before publication" beats "we take transparency very
   seriously."
 - **State the limits in their own section.** `/transparency` has "what is not
-  settled yet". `/developers` says the public specification is not published.
-  Both are load-bearing, not disclaimers.
+  settled yet", stating the windows and the appeals process that are still
+  being defined. That section is load-bearing, not a disclaimer.
 - **Open a page about danger with the warning.** `/emergencies` leads with
   "Corag is not an emergency service" before anything else, because someone
   arriving in a crisis reads the first block and nothing more.
