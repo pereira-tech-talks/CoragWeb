@@ -1,5 +1,6 @@
 ---
 import BlogContainer from '@/components/blog/BlogContainer.astro';
+import AppInvite from '@/components/cta/AppInvite.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
@@ -40,4 +41,5 @@ const collectionPageData = {
     <JsonLd data={collectionPageData} />
   </Fragment>
   <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+  <AppInvite lang={lang} surface="blog-listing-end" />
 </MainLayout>

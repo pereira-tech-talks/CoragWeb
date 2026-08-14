@@ -7,7 +7,7 @@
 import { onDestroy, onMount, tick } from 'svelte';
 import { fade } from 'svelte/transition';
 import { EVENTS, trackEvent } from '@/lib/analytics';
-import { APP_URL } from '@/lib/constances';
+import { APP_PATHS, appUrl } from '@/lib/constances';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -214,6 +214,24 @@ function navClick(item: string) {
       class="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto overscroll-contain px-4 py-4"
       aria-label={t.nav.menu}
     >
+      <!--
+        First in the sheet, not last. It used to sit below every nav group, at
+        Y=1005 in an 844px viewport — past the fold, so opening the menu still
+        showed no way into the application.
+      -->
+      <a
+        href={appUrl(APP_PATHS.home)}
+        class="mb-2 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-corag-fill px-5 py-3 text-lg font-semibold text-corag-on-fill focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        data-umami-event="app_cta_click"
+        data-umami-event-surface="mobile-menu"
+        on:click={toggleMenu}
+      >
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9A5.6 5.6 0 0 1 12 6.2 5.6 5.6 0 0 1 21.6 12c-2.1 4.4-9.6 9-9.6 9z" />
+        </svg>
+        {t.nav.app}
+      </a>
+
       <a
         href={prefix || '/'}
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
@@ -307,12 +325,17 @@ function navClick(item: string) {
         on:click={() => navClick('contact')}
       >{t.nav.contact}</a>
 
-      <!-- The application — the primary action, so it reads as a button. -->
+      <!--
+        A quieter second route, for anyone who scrolled the whole sheet: the
+        evidence, which is what the primary CTA is asking them to trust.
+      -->
       <a
-        href={APP_URL}
-        class="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-full bg-corag-fill px-5 py-3 text-lg font-semibold text-corag-on-fill focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('app')}
-      >{t.nav.app}</a>
+        href={appUrl(APP_PATHS.evidence)}
+        class="mt-3 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-corag-border px-5 py-3 text-base font-semibold text-corag-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary dark:border-white/20 dark:text-white/80"
+        data-umami-event="app_cta_click"
+        data-umami-event-surface="mobile-menu-evidence"
+        on:click={toggleMenu}
+      >{t.appCta.invite.tertiary}</a>
     </nav>
 
     <!-- Utilities footer -->

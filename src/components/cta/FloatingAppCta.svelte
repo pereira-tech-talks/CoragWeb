@@ -1,0 +1,316 @@
+<script lang="ts">
+/**
+ * A persistent, dismissible route into the application.
+ *
+ * Corag's argument is that saying you are transparent is easy and publishing
+ * the receipt is not. A CTA that follows you, blinks, blocks the text or
+ * cannot be closed would contradict that in the one place a visitor is most
+ * likely to be weighing whether to believe us. So this element is deliberately
+ * constrained, and each rule below exists to keep it on the right side of that
+ * line:
+ *
+ *   1. It waits until 35% of the page has been read — attention is earned.
+ *   2. It never renders on the home page, whose hero already fills the
+ *      viewport with the same ask.
+ *   3. It can be dismissed, and the dismissal is remembered for the session.
+ *   4. It hides while a real in-content invitation is on screen, so the
+ *      visitor is never asked for the same thing twice at once.
+ *   5. It hides over the footer rather than cover those links.
+ *   6. It does not animate under `prefers-reduced-motion`.
+ */
+import { onDestroy, onMount } from 'svelte';
+import { APP_PATHS, appUrl } from '@/lib/constances';
+import { getTranslations } from '@/lib/translations';
+
+export let lang: string = 'es';
+
+/** Session-scoped, so a dismissal does not silence the site forever. */
+const DISMISS_KEY = 'corag:app-cta-dismissed';
+/** How much of the page must be behind the reader before we ask. */
+const REVEAL_RATIO = 0.35;
+
+let visible = false;
+let dismissed = false;
+/** True while an `AppInvite` block or the footer occupies the viewport. */
+let suppressed = false;
+let reduceMotion = false;
+
+let observer: IntersectionObserver | undefined;
+let ticking = false;
+
+$: t = getTranslations(lang);
+
+function readDismissal(): boolean {
+  try {
+    return window.sessionStorage.getItem(DISMISS_KEY) === '1';
+  } catch {
+    // Storage disabled (private mode) — the CTA simply stays dismissible
+    // for as long as the page is open.
+    return false;
+  }
+}
+
+function dismiss() {
+  dismissed = true;
+  visible = false;
+  try {
+    window.sessionStorage.setItem(DISMISS_KEY, '1');
+  } catch {
+    // Nothing to persist to; the in-memory flag still holds for this page.
+  }
+}
+
+function evaluateScroll() {
+  ticking = false;
+  if (dismissed) return;
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  // A page shorter than its own viewport has no "further down" to reward.
+  if (scrollable < 400) {
+    visible = false;
+    return;
+  }
+  visible = window.scrollY / scrollable >= REVEAL_RATIO;
+}
+
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(evaluateScroll);
+}
+
+onMount(() => {
+  dismissed = readDismissal();
+  reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Rule 4 and 5: anything that already offers the same route wins over this.
+  const competing = [
+    ...document.querySelectorAll('[data-app-invite]'),
+    ...document.querySelectorAll('footer'),
+  ];
+  if (competing.length > 0) {
+    const onScreen = new Set<Element>();
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) onScreen.add(entry.target);
+          else onScreen.delete(entry.target);
+        }
+        suppressed = onScreen.size > 0;
+      },
+      { rootMargin: '0px 0px -10% 0px' }
+    );
+    for (const node of competing) observer.observe(node);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  evaluateScroll();
+});
+
+onDestroy(() => {
+  if (typeof window === 'undefined') return;
+  window.removeEventListener('scroll', onScroll);
+  window.removeEventListener('resize', onScroll);
+  observer?.disconnect();
+});
+
+$: shown = visible && !dismissed && !suppressed;
+</script>
+
+<div
+  class="floating-cta {shown ? 'is-shown' : ''} {reduceMotion ? 'is-static' : ''}"
+  aria-hidden={!shown}
+>
+  <div class="floating-cta__inner">
+    <p class="floating-cta__lead">{t.appCta.floating.lead}</p>
+
+    <a
+      href={appUrl(APP_PATHS.home)}
+      class="floating-cta__action"
+      tabindex={shown ? 0 : -1}
+      data-umami-event="app_cta_click"
+      data-umami-event-surface="floating"
+    >
+      <svg class="floating-cta__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 21s-7.5-4.6-9.6-9A5.6 5.6 0 0 1 12 6.2 5.6 5.6 0 0 1 21.6 12c-2.1 4.4-9.6 9-9.6 9z" />
+      </svg>
+      {t.appCta.floating.action}
+    </a>
+
+    <button
+      type="button"
+      class="floating-cta__dismiss"
+      aria-label={t.appCta.floating.dismiss}
+      tabindex={shown ? 0 : -1}
+      on:click={dismiss}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+
+  .floating-cta.is-shown {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .floating-cta.is-static {
+    transition: none;
+  }
+
+  .floating-cta__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-corag-bg-elevated);
+    border: 1px solid var(--color-corag-border);
+    box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.35);
+  }
+
+  .floating-cta__lead {
+    color: var(--color-corag-secondary);
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+
+  .floating-cta__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    background: var(--color-corag-fill);
+    color: var(--color-corag-on-fill);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 150ms ease;
+  }
+
+  .floating-cta__action:hover {
+    background: var(--color-corag-fill-strong);
+  }
+
+  .floating-cta__action:focus-visible,
+  .floating-cta__dismiss:focus-visible {
+    outline: 2px solid var(--color-corag-primary);
+    outline-offset: 2px;
+  }
+
+  .floating-cta__heart {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+  }
+
+  .floating-cta__dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    color: var(--color-corag-secondary);
+    cursor: pointer;
+  }
+
+  .floating-cta__dismiss:hover {
+    background: var(--color-corag-primary-soft);
+  }
+
+  .floating-cta__dismiss svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /*
+    Mobile: a bar anchored to the bottom edge, where the thumb already lives.
+    It spans the width because at 390px a floating pill either truncates the
+    line or crowds the content it sits over.
+  */
+  @media (max-width: 767px) {
+    .floating-cta {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateY(0.5rem);
+      padding-bottom: env(safe-area-inset-bottom);
+      background: var(--color-corag-bg-elevated);
+      border-top: 1px solid var(--color-corag-border);
+    }
+
+    .floating-cta.is-shown {
+      transform: translateY(0);
+    }
+
+    .floating-cta__inner {
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+      padding: 0.625rem 0.75rem;
+    }
+
+    /*
+      No room for the argument at 390px: it left ~125px for the text, which
+      truncated to "Ofrece ayuda o pide la que…". A cut-off argument is worse
+      than none, so mobile keeps only the door, and the button label carries
+      both intents on its own.
+    */
+    .floating-cta__lead {
+      display: none;
+    }
+
+    .floating-cta__action {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  /* Desktop: a small pill out of the reading column, bottom-right. */
+  @media (min-width: 768px) {
+    .floating-cta {
+      right: 1.5rem;
+      bottom: 1.5rem;
+      /* Wide enough that the lead wraps to two lines rather than four: the
+         action label and the close button claim ~330px of it. */
+      max-width: min(32rem, calc(100vw - 3rem));
+      transform: translateY(0.75rem);
+    }
+
+    .floating-cta.is-shown {
+      transform: translateY(0);
+    }
+
+    .floating-cta__lead {
+      flex: 1 1 auto;
+      min-width: 9rem;
+    }
+
+    .floating-cta__inner {
+      border-radius: 9999px;
+      padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-cta {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

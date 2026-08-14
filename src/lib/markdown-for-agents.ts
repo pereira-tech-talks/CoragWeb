@@ -1,7 +1,13 @@
 import type { CollectionEntry } from 'astro:content';
-import { SITE_URL } from '@/lib/constances';
-import { DEFAULT_LANGUAGE, getUrlPrefix, isValidLanguage } from '@/lib/i18n';
+import { APP_PATHS, appUrl, SITE_URL } from '@/lib/constances';
+import {
+  DEFAULT_LANGUAGE,
+  getUrlPrefix,
+  isValidLanguage,
+  type Language,
+} from '@/lib/i18n';
 import { navHref, navLabel, SITE_NAVIGATION } from '@/lib/site-navigation';
+import { getTranslations } from '@/lib/translations';
 import type {
   InstitutionalFigure,
   InstitutionalPageCopy,
@@ -454,6 +460,33 @@ export function serializeGenericToMarkdown(
 }
 
 /**
+ * The `AppInvite` block, in Markdown.
+ *
+ * Pages that render that block must say the same thing in their twin, or the
+ * completeness gate reads the extra HTML as content the `.md` lost. It is also
+ * the honest thing to serve an agent: this site explains the model, and the
+ * only place any of it can be acted on is the application.
+ */
+export function appInviteSection(lang: string): {
+  heading: string;
+  lines: string[];
+} {
+  const language: Language = isValidLanguage(lang) ? lang : DEFAULT_LANGUAGE;
+  const t = getTranslations(language);
+  const copy = t.appCta.invite;
+  return {
+    heading: copy.title,
+    lines: [
+      copy.body,
+      '',
+      linkLine(copy.primary, appUrl(APP_PATHS.contribute)),
+      linkLine(copy.secondary, appUrl(APP_PATHS.home)),
+      linkLine(copy.tertiary, appUrl(APP_PATHS.evidence)),
+    ],
+  };
+}
+
+/**
  * Entity-reference helpers.
  *
  * The completeness contract (docs/aeo/MARKDOWN_FOR_AGENTS.md) forbids bare
@@ -747,6 +780,7 @@ export function serializeInstitutionalPageToMarkdown(
     if (link) ctaLines.push(`- [${link.label}](${link.href})`);
   }
   sections.push({ heading: copy.cta.title, lines: ctaLines });
+  sections.push(appInviteSection(options.lang));
 
   /*
    * The hero figure belongs in the twin too: when it is an app screenshot it

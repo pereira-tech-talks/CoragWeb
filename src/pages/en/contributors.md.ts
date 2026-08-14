@@ -8,6 +8,7 @@ import {
   getContributors,
 } from '@/lib/contributor';
 import {
+  appInviteSection,
   entityLine,
   resolveI18n,
   serializeGenericToMarkdown,
@@ -95,7 +96,7 @@ export const GET: APIRoute = async () => {
       'First the internal team; then people who contribute without being the operating core.',
       'Allied communities and companies also add capacity, reach or infrastructure to the network.',
     ].join(' '),
-    sections,
+    sections: [...sections, appInviteSection(lang)],
   });
 
   return new Response(markdown, {

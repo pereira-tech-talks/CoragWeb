@@ -7,6 +7,7 @@ import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
+import AppInvite from '@/components/cta/AppInvite.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
@@ -211,10 +212,16 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
             Re-enable: NewsletterForm + NEWSLETTER from @/lib/constances */}
       </div>
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
+      {/* Someone who finished a 5,400px article is the most convinced reader
+          the site gets, and until now they were offered nothing. */}
+      <AppInvite lang={lang} variant="card" surface="blog-post-end" class="mx-auto mt-12 max-w-4xl" />
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
+    {/* Left side, and clear of the mobile bar: the floating app CTA owns the
+        bottom-right corner and the bottom edge. Chapter position is useful,
+        but it is not what the visit is for. */}
     {seriesInfo && (
-      <div class="fixed bottom-4 right-18 sm:right-20 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
+      <div class="fixed bottom-[4.75rem] left-4 sm:left-6 md:bottom-4 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
         <div class="pointer-events-auto contents">
           {seriesInfo && (
             <SeriesIndicator

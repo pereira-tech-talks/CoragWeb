@@ -1,5 +1,6 @@
 ---
 import ContactForm from '@/components/contact/ContactForm.svelte';
+import AppInvite from '@/components/cta/AppInvite.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
@@ -136,4 +137,5 @@ const quickLinks = t.contactPage.quickLinks.map((link) => ({
     </div>
   </Section>
 
+  <AppInvite lang={lang} variant="band" surface="contact-end" />
 </MainLayout>

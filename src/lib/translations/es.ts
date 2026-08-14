@@ -120,7 +120,7 @@ export const es: SiteTranslations = {
 
   // Navigation
   nav: {
-    app: 'Ir a la aplicación',
+    app: 'Ayudar o pedir ayuda',
     home: 'Inicio',
     howCoragWorks: 'Cómo funciona',
     howItWorks: 'Cómo funciona',
@@ -142,6 +142,24 @@ export const es: SiteTranslations = {
     menu: 'Menú',
     closeMenu: 'Cerrar menú',
     openMenu: 'Abrir menú',
+  },
+
+  appCta: {
+    short: 'Ayuda',
+    shortAria: 'Ir a la aplicación: ofrecer ayuda o pedir la que necesitas',
+    floating: {
+      lead: 'Cada entrega deja evidencia pública',
+      action: 'Ayudar o pedir ayuda',
+      dismiss: 'Ocultar esta invitación',
+    },
+    invite: {
+      eyebrow: 'La aplicación',
+      title: '¿Necesitas ayuda o quieres darla?',
+      body: 'Publicar una necesidad, ofrecer ayuda, aportar y seguir a dónde llegó cada entrega ocurre en la aplicación. Aquí se explica el modelo; allí se actúa.',
+      primary: 'Quiero ayudar',
+      secondary: 'Necesito ayuda',
+      tertiary: 'Ver la evidencia publicada',
+    },
   },
 
   // Footer

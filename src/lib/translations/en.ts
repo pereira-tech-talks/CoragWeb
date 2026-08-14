@@ -120,7 +120,7 @@ export const en: SiteTranslations = {
 
   // Navigation
   nav: {
-    app: 'Go to the app',
+    app: 'Give or get help',
     home: 'Home',
     howCoragWorks: 'How it works',
     howItWorks: 'How it works',
@@ -142,6 +142,24 @@ export const en: SiteTranslations = {
     menu: 'Menu',
     closeMenu: 'Close menu',
     openMenu: 'Open menu',
+  },
+
+  appCta: {
+    short: 'Help',
+    shortAria: 'Go to the application: offer help or ask for the help you need',
+    floating: {
+      lead: 'Every delivery leaves public evidence',
+      action: 'Give or get help',
+      dismiss: 'Hide this invitation',
+    },
+    invite: {
+      eyebrow: 'The application',
+      title: 'Do you need help, or want to give it?',
+      body: 'Publishing a need, offering help, contributing and following where each delivery landed all happen in the application. The model is explained here; it is acted on there.',
+      primary: 'I want to help',
+      secondary: 'I need help',
+      tertiary: 'See the published evidence',
+    },
   },
 
   // Footer
