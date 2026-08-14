@@ -1,0 +1,34 @@
+{
+  "note": "Contributor portraits carried over from pereiratechtalks.org, the community these organizers run. Cropped square and re-encoded; no other edit.",
+  "fetchedAt": "2026-08-14",
+  "portraits": [
+    {
+      "slug": "sergio-florez",
+      "source": "https://pereiratechtalks.org/images/contributors/sergio-florez.png",
+      "original": "500x500",
+      "shipped": "256x256",
+      "bytes": 16488
+    },
+    {
+      "slug": "melisa-escobar",
+      "source": "https://pereiratechtalks.org/images/contributors/melisa-escobar.webp",
+      "original": "400x400",
+      "shipped": "256x256",
+      "bytes": 9328
+    },
+    {
+      "slug": "sebastian-agudelo",
+      "source": "https://pereiratechtalks.org/images/contributors/sebastian-agudelo.png",
+      "original": "800x800",
+      "shipped": "256x256",
+      "bytes": 12210
+    },
+    {
+      "slug": "sergio-estrella",
+      "source": "https://pereiratechtalks.org/images/contributors/sergio-estrella.png",
+      "original": "832x806",
+      "shipped": "256x256",
+      "bytes": 6374
+    }
+  ]
+}
