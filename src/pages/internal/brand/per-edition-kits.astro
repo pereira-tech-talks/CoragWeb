@@ -40,7 +40,7 @@ const ptd2024Typography: KitToken[] = [
       <p class="text-base text-gray-600 dark:text-gray-300 max-w-3xl">
         Each Pereira Tech Day edition has its own visual identity, scoped only
         to <code>/pereira-tech-days/&#123;year&#125;/*</code>. The header,
-        footer, language switcher, and theme toggle keep the global PTT brand
+        footer, language switcher, and theme toggle keep the global Corag brand
         even on edition pages.
       </p>
     </header>
@@ -49,8 +49,8 @@ const ptd2024Typography: KitToken[] = [
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Why per-edition?</h2>
       <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
         <li>Each edition is a distinct yearly story; visual differentiation reinforces the narrative.</li>
-        <li>Pre-existing convention: PTT's previous site already shipped the 2024 kit (<code>#1F3F59</code> deep blue + <code>#F06D6D</code> coral + Bebas Neue uppercase).</li>
-        <li>The umbrella PTT brand stays cohesive — only the edition body re-skins via scoped CSS variables.</li>
+        <li>Pre-existing convention: Corag's previous site already shipped the 2024 kit (<code>#1F3F59</code> deep blue + <code>#F06D6D</code> coral + Bebas Neue uppercase).</li>
+        <li>The umbrella Corag brand stays cohesive — only the edition body re-skins via scoped CSS variables.</li>
       </ul>
     </section>
 
@@ -70,7 +70,7 @@ const ptd2024Typography: KitToken[] = [
     textMuted: string;     // HEX
     border?: string;       // HEX (optional)
   };
-  paletteDark?: { /* same shape, optional fallback to global PTT dark */ };
+  paletteDark?: { /* same shape, optional fallback to global Corag dark */ };
   typography?: {
     headingFamily?: string;
     bodyFamily?: string;
@@ -100,13 +100,13 @@ const ptd2024Typography: KitToken[] = [
         switcher, toggle) is rendered as a sibling and keeps the global brand.
       </p>
       <pre class="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 overflow-x-auto text-xs text-gray-800 dark:text-gray-100"><code>{`[data-edition-theme="2024"] {
-  --ptt-primary:        #1F3F59;
-  --ptt-accent:         #F06D6D;
-  --ptt-bg:             #FEF7F3;
-  --ptt-bg-elevated:    #FFFFFF;
-  --ptt-text:           #1F3F59;
-  --ptt-text-muted:     #B66844;
-  --ptt-border:         #E8E2D9;
+  --corag-primary:        #1F3F59;
+  --corag-accent:         #F06D6D;
+  --corag-bg:             #FEF7F3;
+  --corag-bg-elevated:    #FFFFFF;
+  --corag-text:           #1F3F59;
+  --corag-text-muted:     #B66844;
+  --corag-border:         #E8E2D9;
 }
 
 [data-edition-theme="2024"] :is(h1, h2, h3, h4, h5, h6) {
@@ -157,14 +157,14 @@ const ptd2024Typography: KitToken[] = [
         <li>Set <code>brandKit.typography.fontSources</code> if a custom heading font is needed.</li>
         <li>Add hero / poster art under <code>public/images/pereira-tech-days/&#123;year&#125;/</code>.</li>
         <li>Visit <code>/pereira-tech-days/&#123;year&#125;</code> in dev. Confirm the kit applies.</li>
-        <li>Verify isolation: visit <code>/</code>, <code>/blog</code>, <code>/about-us</code> — header/footer/non-edition content keeps the global PTT brand.</li>
+        <li>Verify isolation: visit <code>/</code>, <code>/blog</code>, <code>/about-us</code> — header/footer/non-edition content keeps the global Corag brand.</li>
       </ol>
     </section>
 
     <section class="space-y-3">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Slides palette opt-in</h2>
       <p class="text-sm text-gray-600 dark:text-gray-300">
-        The slides system (Reveal.js) honors the global PTT palette by default.
+        The slides system (Reveal.js) honors the global Corag palette by default.
         An edition can opt-in by also setting <code>--slide-accent</code> inside
         <code>[data-edition-theme]</code> when a deck is embedded inside an
         edition page. See Task 5 step 9 + Task 13 <code>SlideEmbed</code>.

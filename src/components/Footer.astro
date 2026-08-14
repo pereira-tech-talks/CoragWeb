@@ -9,7 +9,7 @@ interface Props {
   lang?: string;
   /**
    * `ptd-dark` — matches navy PTD edition pages (2024): solid page bg, hairline
-   * border, white copy. `default` keeps the global PTT footer.
+   * border, white copy. `default` keeps the global Corag footer.
    */
   variant?: 'default' | 'ptd-dark';
 }
@@ -74,14 +74,14 @@ const tagline =
     'relative border-t',
     isPtdDark
       ? 'border-white/10 bg-[#030620] text-white'
-      : 'border-ptt-border bg-ptt-bg text-ptt-secondary',
+      : 'border-corag-border bg-corag-bg text-corag-secondary',
   ]}
   style="padding-bottom: max(2rem, env(safe-area-inset-bottom)); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);"
 >
   {
     !isPtdDark && (
       <div
-        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-ptt-primary via-ptt-accent to-ptt-primary"
+        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-corag-primary via-corag-accent to-corag-primary"
         aria-hidden="true"
       />
     )
@@ -133,7 +133,7 @@ const tagline =
         <p
           class:list={[
             'mt-4 max-w-sm text-sm leading-relaxed',
-            isPtdDark ? 'text-white/85' : 'text-ptt-secondary',
+            isPtdDark ? 'text-white/85' : 'text-corag-secondary',
           ]}
         >
           {tagline}
@@ -147,7 +147,7 @@ const tagline =
               'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors',
               isPtdDark
                 ? 'border-white/20 text-white hover:border-white/50 hover:text-white'
-                : 'border-ptt-border text-ptt-secondary hover:border-ptt-primary hover:text-ptt',
+                : 'border-corag-border text-corag-secondary hover:border-corag-primary hover:text-corag',
             ]}
             aria-label="GitHub"
             data-umami-event="social_click"
@@ -167,7 +167,7 @@ const tagline =
               'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors',
               isPtdDark
                 ? 'border-white/20 text-white hover:border-white/50 hover:text-white'
-                : 'border-ptt-border text-ptt-secondary hover:border-ptt-primary hover:text-ptt',
+                : 'border-corag-border text-corag-secondary hover:border-corag-primary hover:text-corag',
             ]}
             aria-label="LinkedIn"
             data-umami-event="social_click"
@@ -187,7 +187,7 @@ const tagline =
               'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors',
               isPtdDark
                 ? 'border-white/20 text-white hover:border-white/50 hover:text-white'
-                : 'border-ptt-border text-ptt-secondary hover:border-ptt-primary hover:text-ptt',
+                : 'border-corag-border text-corag-secondary hover:border-corag-primary hover:text-corag',
             ]}
             aria-label="X (Twitter)"
             data-umami-event="social_click"
@@ -207,7 +207,7 @@ const tagline =
               'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors',
               isPtdDark
                 ? 'border-white/20 text-white hover:border-white/50 hover:text-white'
-                : 'border-ptt-border text-ptt-secondary hover:border-ptt-primary hover:text-ptt',
+                : 'border-corag-border text-corag-secondary hover:border-corag-primary hover:text-corag',
             ]}
             aria-label="Instagram"
             data-umami-event="social_click"
@@ -227,7 +227,7 @@ const tagline =
               'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors',
               isPtdDark
                 ? 'border-white/20 text-white hover:border-white/50 hover:text-white'
-                : 'border-ptt-border text-ptt-secondary hover:border-ptt-primary hover:text-ptt',
+                : 'border-corag-border text-corag-secondary hover:border-corag-primary hover:text-corag',
             ]}
             aria-label="WhatsApp"
             data-umami-event="social_click"
@@ -249,7 +249,7 @@ const tagline =
         <p
           class:list={[
             'text-xs uppercase tracking-widest',
-            isPtdDark ? 'font-bold text-white' : 'font-semibold text-ptt-primary',
+            isPtdDark ? 'font-bold text-white' : 'font-semibold text-corag-primary',
           ]}
         >
           {lang === 'es' ? 'Explorar' : 'Explore'}
@@ -264,7 +264,7 @@ const tagline =
                     'inline-flex min-h-[44px] items-center text-sm transition-colors',
                     isPtdDark
                       ? 'text-white/85 hover:text-white'
-                      : 'text-ptt-secondary hover:text-ptt-primary',
+                      : 'text-corag-secondary hover:text-corag-primary',
                   ]}
                   data-umami-event="nav_click"
                   data-umami-event-item={link.href.split('/').filter(Boolean).pop() ?? 'home'}
@@ -285,7 +285,7 @@ const tagline =
         <p
           class:list={[
             'text-xs uppercase tracking-widest',
-            isPtdDark ? 'font-bold text-white' : 'font-semibold text-ptt-primary',
+            isPtdDark ? 'font-bold text-white' : 'font-semibold text-corag-primary',
           ]}
         >
           {lang === 'es' ? 'Comunidad' : 'Community'}
@@ -300,7 +300,7 @@ const tagline =
                     'inline-flex min-h-[44px] items-center text-sm transition-colors',
                     isPtdDark
                       ? 'text-white/85 hover:text-white'
-                      : 'text-ptt-secondary hover:text-ptt-primary',
+                      : 'text-corag-secondary hover:text-corag-primary',
                   ]}
                   data-umami-event="nav_click"
                   data-umami-event-item={link.href.split('/').filter(Boolean).pop() ?? 'home'}
@@ -318,13 +318,13 @@ const tagline =
     <div
       class:list={[
         'mt-12 flex flex-col gap-5 border-t pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8',
-        isPtdDark ? 'border-white/10' : 'border-ptt-border',
+        isPtdDark ? 'border-white/10' : 'border-corag-border',
       ]}
     >
       <p
         class:list={[
           'text-sm leading-relaxed',
-          isPtdDark ? 'text-white/70' : 'text-ptt-secondary',
+          isPtdDark ? 'text-white/70' : 'text-corag-secondary',
         ]}
       >
         &copy; {year}{' '}
@@ -340,7 +340,7 @@ const tagline =
               href={link.href}
               class:list={[
                 'inline-flex min-h-[44px] items-center text-sm font-bold tracking-wide hover:underline',
-                isPtdDark ? 'text-white' : 'text-ptt-primary',
+                isPtdDark ? 'text-white' : 'text-corag-primary',
               ]}
               data-umami-event="nav_click"
               data-umami-event-item={link.item}

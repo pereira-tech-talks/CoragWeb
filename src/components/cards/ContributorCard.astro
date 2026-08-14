@@ -52,12 +52,12 @@ const portraitAlt =
   class:list={[
     'group flex h-full flex-col items-center rounded-2xl p-6 text-center transition motion-reduce:transition-none',
     muted
-      ? 'bg-ptt-bg-elevated/80 shadow-none ring-1 ring-ptt-border/70 hover:ring-ptt-border dark:bg-ptt-bg-dark/40'
-      : 'bg-ptt-bg-elevated shadow-sm ring-1 ring-ptt-border hover:shadow-lg hover:ring-ptt-primary/30',
+      ? 'bg-corag-bg-elevated/80 shadow-none ring-1 ring-corag-border/70 hover:ring-corag-border dark:bg-corag-bg-dark/40'
+      : 'bg-corag-bg-elevated shadow-sm ring-1 ring-corag-border hover:shadow-lg hover:ring-corag-primary/30',
   ]}
 >
   <div
-    class="relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-ptt-primary/20 to-ptt-bg-dark/20 ring-2 ring-ptt-bg-elevated shadow-sm"
+    class="relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-corag-primary/20 to-corag-bg-dark/20 ring-2 ring-corag-bg-elevated shadow-sm"
   >
     <img
       decoding="async"
@@ -69,20 +69,20 @@ const portraitAlt =
       class="h-full w-full object-cover"
     />
   </div>
-  <h3 class="mt-4 text-base font-semibold text-ptt">
+  <h3 class="mt-4 text-base font-semibold text-corag">
     {contributor.data.name}
   </h3>
-  <p class="mt-1 text-sm font-medium text-ptt-primary dark:text-ptt-primary-dark">
+  <p class="mt-1 text-sm font-medium text-corag-primary dark:text-corag-primary-light">
     {role}
   </p>
-  <p class="mt-2 text-xs text-ptt-secondary line-clamp-3">
+  <p class="mt-2 text-xs text-corag-secondary line-clamp-3">
     {bio}
   </p>
   {
     displayRoles.length > 1 && (
       <ul class="mt-3 flex flex-wrap justify-center gap-1.5">
         {displayRoles.map((r) => (
-          <li class="inline-flex items-center rounded-full bg-ptt-primary-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ptt-secondary">
+          <li class="inline-flex items-center rounded-full bg-corag-primary-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-corag-secondary">
             {roleLabels[r]?.[lang] ?? r}
           </li>
         ))}
@@ -91,14 +91,14 @@ const portraitAlt =
   }
   {
     Object.keys(social).length > 0 && (
-      <ul class="mt-4 flex gap-3 text-ptt-secondary">
+      <ul class="mt-4 flex gap-3 text-corag-secondary">
         {social.github && (
           <li>
             <a
               href={social.github}
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+              class="hover:text-corag-primary dark:hover:text-corag-primary-light"
               aria-label={`${contributor.data.name} · GitHub`}
             >
               <svg aria-hidden="true" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ const portraitAlt =
               href={social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+              class="hover:text-corag-primary dark:hover:text-corag-primary-light"
               aria-label={`${contributor.data.name} · LinkedIn`}
             >
               <svg aria-hidden="true" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ const portraitAlt =
               href={social.x}
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+              class="hover:text-corag-primary dark:hover:text-corag-primary-light"
               aria-label={`${contributor.data.name} · X`}
             >
               <svg aria-hidden="true" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@ const portraitAlt =
               href={social.website}
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+              class="hover:text-corag-primary dark:hover:text-corag-primary-light"
               aria-label={
                 lang === 'es'
                   ? `Sitio web de ${contributor.data.name}`

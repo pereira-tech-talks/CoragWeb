@@ -125,7 +125,7 @@ Examples:
 - All public content (UI strings, blog posts, meetup descriptions) in **Spanish + English**, Spanish primary.
 - Use **Biome** for lint/format. Do not use ESLint or Prettier.
 - Follow the **Page Wrapper Pattern** (see [`AGENTS.md`](../AGENTS.md) §4 of Architecture Patterns).
-- Use **PTT design tokens** (`--ptt-primary`, `text-ptt`, `bg-ptt-bg`, etc.). Never hardcode HEX values outside `src/styles/global.css`.
+- Use **Corag design tokens** (`--corag-primary`, `text-corag`, `bg-corag-bg`, etc.). Never hardcode HEX values outside `src/styles/global.css`.
 - Use the **`@`** path alias for internal imports.
 
 ## Recognizing Contributors

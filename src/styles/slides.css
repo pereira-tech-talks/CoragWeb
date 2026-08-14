@@ -3,11 +3,11 @@
  *
  * Loaded ONLY by src/layouts/SlideLayout.astro to keep Reveal.js styles isolated
  * from the rest of the site. Drives both the deck chrome (toolbar, back link)
- * and Reveal.js theme variables in light + dark mode using PTT brand tokens.
+ * and Reveal.js theme variables in light + dark mode using Corag brand tokens.
  *
- * Brand mapping: every chrome-and-deck color derives from the PTT global
- * @theme tokens declared in src/styles/global.css (--color-ptt-*). Per-edition
- * Pereira Tech Day kits override --color-ptt-primary/-accent inside
+ * Brand mapping: every chrome-and-deck color derives from the Corag global
+ * @theme tokens declared in src/styles/global.css (--color-corag-*). Per-edition
+ * Pereira Tech Day kits override --color-corag-primary/-accent inside
  * [data-edition-theme="{year}"] and the slides system inherits those overrides
  * automatically through the var() chain — no hard-coded brand HEX should ever
  * appear in this file.
@@ -16,20 +16,20 @@
 /* ---------- 1. Token system ---------- */
 
 :root {
-  /* Chrome — derived from PTT @theme (light defaults) */
-  --slide-bg: var(--color-ptt-bg-elevated, #ffffff);
-  --slide-surface: var(--color-ptt-primary-soft, #e1f2f1);
-  --slide-text: var(--color-ptt-text, #0f2a2c);
-  --slide-text-muted: var(--color-ptt-text-muted, #6e8589);
-  --slide-accent: var(--color-ptt-primary, #1f6f73);
-  --slide-accent-strong: var(--color-ptt-primary-strong, #155054);
-  --slide-border: var(--color-ptt-border, #e2e8e8);
+  /* Chrome — derived from Corag @theme (light defaults) */
+  --slide-bg: var(--color-corag-bg-elevated, #ffffff);
+  --slide-surface: var(--color-corag-primary-soft, #e1f2f1);
+  --slide-text: var(--color-corag-text, #0f2a2c);
+  --slide-text-muted: var(--color-corag-text-muted, #6e8589);
+  --slide-accent: var(--color-corag-primary, #1f6f73);
+  --slide-accent-strong: var(--color-corag-primary-strong, #155054);
+  --slide-border: var(--color-corag-border, #e2e8e8);
   --slide-toolbar-bg: rgba(255, 255, 255, 0.78);
   --slide-toolbar-fg: rgba(0, 0, 0, 0.55);
   --slide-toolbar-fg-hover: rgba(0, 0, 0, 0.9);
   --slide-toolbar-border: rgba(0, 0, 0, 0.1);
   /* Back-link is fixed-dark across both modes (it sits over arbitrary slide
-     backgrounds). Uses PTT dark canvas #08191a + a slightly lighter hover. */
+     backgrounds). Uses Corag dark canvas #08191a + a slightly lighter hover. */
   --slide-backlink-bg: #08191a;
   --slide-backlink-bg-hover: #0f2a2c;
 
@@ -69,14 +69,14 @@
 }
 
 .dark {
-  /* Chrome — dark mode brand palette (derived from PTT @theme dark) */
-  --slide-bg: var(--color-ptt-bg, #08191a);
-  --slide-surface: var(--color-ptt-bg-elevated, #0f2a2c);
-  --slide-text: var(--color-ptt-text, #e8f0ef);
-  --slide-text-muted: var(--color-ptt-text-muted, #8fa3a6);
+  /* Chrome — dark mode brand palette (derived from Corag @theme dark) */
+  --slide-bg: var(--color-corag-bg, #08191a);
+  --slide-surface: var(--color-corag-bg-elevated, #0f2a2c);
+  --slide-text: var(--color-corag-text, #e8f0ef);
+  --slide-text-muted: var(--color-corag-text-muted, #8fa3a6);
   /* --slide-accent and --slide-accent-strong inherit from :root and
-     auto-flip because --color-ptt-primary flips in .dark in global.css */
-  --slide-border: var(--color-ptt-border, #1e3d40);
+     auto-flip because --color-corag-primary flips in .dark in global.css */
+  --slide-border: var(--color-corag-border, #1e3d40);
   --slide-toolbar-bg: rgba(0, 0, 0, 0.65);
   --slide-toolbar-fg: rgba(255, 255, 255, 0.65);
   --slide-toolbar-fg-hover: rgba(255, 255, 255, 0.95);

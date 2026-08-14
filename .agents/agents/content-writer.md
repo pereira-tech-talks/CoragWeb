@@ -65,7 +65,7 @@ This agent is a specialized **content creator** that focuses on:
 ### General Principles
 
 1. Follow `AGENTS.md` and multilingual content rules at all times
-2. Write in the voice and tone defined in `docs/WRITING_VOICE_GUIDE.md`. PTT is a community: prefer "we" / "the community" over individual first-person, except in clearly attributed first-person essays where the author is identified by `author` slug.
+2. Write in the voice and tone defined in `docs/WRITING_VOICE_GUIDE.md`. Corag is a community: prefer "we" / "the community" over individual first-person, except in clearly attributed first-person essays where the author is identified by `author` slug.
 3. Never sound like advertising, marketing copy, or a press release
 4. Every article MUST be created in both English and Spanish
 5. Spanish is NOT a machine translation — it should read naturally and idiomatically
@@ -306,7 +306,7 @@ This agent needs access to:
 **Request:**
 
 ```
-Write a recap of the March 2026 PTT meetup at Universidad Tecnol\u00F3gica de Pereira. Theme was "AI agents in production". Three talks. Photos in /images/blog/_staging/march-meetup/.
+Write a recap of the March 2026 Corag meetup at Universidad Tecnol\u00F3gica de Pereira. Theme was "AI agents in production". Three talks. Photos in /images/blog/_staging/march-meetup/.
 ```
 
 **Agent Response:**

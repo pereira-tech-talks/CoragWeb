@@ -64,7 +64,7 @@ export const en: SiteTranslations = {
   homeSections: {
     about: {
       title:
-        "We are <span class='text-ptt-primary dark:text-ptt-primary-dark'>Pereira Tech Talks</span>",
+        "We are <span class='text-corag-primary dark:text-corag-primary-light'>Pereira Tech Talks</span>",
       description: `We are an interdisciplinary community that connects local and regional talent — people who code, design, build companies, study, or are simply curious — around the technology we are building together.<br /><br />
 We gather to share what we learn, open stages to new voices, and weave networks across Pereira, Risaralda, and the rest of LATAM. Meetups, <strong>Pereira Tech Day</strong>, the <strong>Speaker School</strong>, and more: volunteer-run, open spaces anyone can join.<br /><br />
 If you are looking for people to grow with, a stage for your first talk, or a community that actually welcomes you — there is a place for you here. Explore, come to the next meetup, or write to us.`,
@@ -203,7 +203,7 @@ If you are looking for people to grow with, a stage for your first talk, or a co
       'The technology community of Pereira (Risaralda, Colombia). Founded 2014. Monthly meetups, Pereira Tech Day, an active Speaker School and a content library in Spanish and English. Volunteer-run. Open to everyone.',
     bioTitle: 'Who we are',
     bioText:
-      'Pereira Tech Talks (PTT) is the technology community of Pereira, Risaralda, Colombia. The story starts in February 2014: eight developers in a UTP classroom for the first PereiraJS meetup. Twelve years on, that small circle is a four-program community — monthly meetups (84 and counting), the annual <strong>Pereira Tech Day</strong> conference (2024 archive, 2026 upcoming), the <strong>Speaker School</strong>, and the <strong>La Biblioteca del Mañana</strong> reading club. All volunteer-built. All open.<br /><br />The work is sponsor-supported (DailyBot, GitHub, ASE-UTP, Gorilla Logic, Made for Germany, Source Meridian, and more) and open by default. The site you are reading is a catalog of meetups, talks, slides, speakers, contributors, and sponsors — available in Spanish and English — structured to be just as useful to AI agents as it is to humans.<br /><br />We believe technology grows faster when we share what we learn — that is why every meetup recap is published the same week. We believe Pereira has world-class talent that deserves world-class stages — that is why the Speaker School exists and why community alumni now keynote in Bogotá, Medellín, Mexico City, and at YC-backed startups. And we believe a tech community should look like the city it lives in — open, warm, mixed, and unpretentious. That is why our events are free, our channels are public, and our content is published in Spanish and English.',
+      'Pereira Tech Talks (Corag) is the technology community of Pereira, Risaralda, Colombia. The story starts in February 2014: eight developers in a UTP classroom for the first PereiraJS meetup. Twelve years on, that small circle is a four-program community — monthly meetups (84 and counting), the annual <strong>Pereira Tech Day</strong> conference (2024 archive, 2026 upcoming), the <strong>Speaker School</strong>, and the <strong>La Biblioteca del Mañana</strong> reading club. All volunteer-built. All open.<br /><br />The work is sponsor-supported (DailyBot, GitHub, ASE-UTP, Gorilla Logic, Made for Germany, Source Meridian, and more) and open by default. The site you are reading is a catalog of meetups, talks, slides, speakers, contributors, and sponsors — available in Spanish and English — structured to be just as useful to AI agents as it is to humans.<br /><br />We believe technology grows faster when we share what we learn — that is why every meetup recap is published the same week. We believe Pereira has world-class talent that deserves world-class stages — that is why the Speaker School exists and why community alumni now keynote in Bogotá, Medellín, Mexico City, and at YC-backed startups. And we believe a tech community should look like the city it lives in — open, warm, mixed, and unpretentious. That is why our events are free, our channels are public, and our content is published in Spanish and English.',
     passionsTitle: 'What we do',
     passions: [
       {
@@ -717,7 +717,7 @@ If you are looking for people to grow with, a stage for your first talk, or a co
     quickLinksEyebrow: 'Quick links',
     quickLinksTitle: 'RSVP and archives',
     meetupsLink: 'Meetup archive',
-    lumaLink: 'PTT events on Luma',
+    lumaLink: 'Corag events on Luma',
     contributeEyebrow: 'Contribute',
     contributeTitle: 'List your community calendar',
     contributeDescription:

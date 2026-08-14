@@ -17,12 +17,12 @@ Canonical UUIDs and choice lookups live in `functions/api/_dailybot.ts`.
 
 | Form | UI | Route | `_form` | Dailybot form |
 |------|----|-------|---------|---------------|
-| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` | PTT Contact |
-| Call for Speakers | `SpeakersApplicationForm.svelte` | `/call-for-speakers` | `cfs` | PTT Call for Speakers |
-| Speaker School | `SpeakerSchoolForm.svelte` | `/verticals/speaker-school` | `speaker-school` | PTT Speaker School |
-| Sponsors | `SponsorInquiryForm.svelte` | `/sponsor-us` | `sponsor` | PTT Sponsors |
-| Community calendar | `CalendarIntakeForm.svelte` | `/calendar#calendar-intake` | `calendar` | PTT Community Calendar |
-| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` | PTT Code of Conduct |
+| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` | Corag Contact |
+| Call for Speakers | `SpeakersApplicationForm.svelte` | `/call-for-speakers` | `cfs` | Corag Call for Speakers |
+| Speaker School | `SpeakerSchoolForm.svelte` | `/verticals/speaker-school` | `speaker-school` | Corag Speaker School |
+| Sponsors | `SponsorInquiryForm.svelte` | `/sponsor-us` | `sponsor` | Corag Sponsors |
+| Community calendar | `CalendarIntakeForm.svelte` | `/calendar#calendar-intake` | `calendar` | Corag Community Calendar |
+| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` | Corag Code of Conduct |
 
 Newsletter signup is disabled in the UI and has **no** Google Forms (or other)
 backend until a Dailybot form is added for it.
@@ -78,12 +78,12 @@ Booleans send JSON `true` / `false` (Dailybot `boolean` question type).
 
 | Form | UUID |
 |------|------|
-| PTT Contact | `cd036d4a-2bde-48ef-83da-3fa69d91d971` |
-| PTT Call for Speakers | `2a3b568c-9255-4d5a-a29c-8f220ae427ce` |
-| PTT Speaker School | `a7bb66f2-082c-4d36-b687-13d4d1c5ed80` |
-| PTT Sponsors | `f3469d2d-df7b-4007-8ff8-e8c61de7b80d` |
-| PTT Community Calendar | `22f3540c-669d-42b8-8365-abed7bb07cda` |
-| PTT Code of Conduct | `ce944b4b-bd99-4836-a14e-c583773952a4` |
+| Corag Contact | `cd036d4a-2bde-48ef-83da-3fa69d91d971` |
+| Corag Call for Speakers | `2a3b568c-9255-4d5a-a29c-8f220ae427ce` |
+| Corag Speaker School | `a7bb66f2-082c-4d36-b687-13d4d1c5ed80` |
+| Corag Sponsors | `f3469d2d-df7b-4007-8ff8-e8c61de7b80d` |
+| Corag Community Calendar | `22f3540c-669d-42b8-8365-abed7bb07cda` |
+| Corag Code of Conduct | `ce944b4b-bd99-4836-a14e-c583773952a4` |
 
 Public intakes report to Slack `#all-pereira-tech-talks` (`C0BNTQVCGJ2`).
 **Code of Conduct** is `owner_and_admins` only, `--no-public`, **no** Slack

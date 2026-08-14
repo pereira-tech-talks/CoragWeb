@@ -107,6 +107,6 @@ For answers to common questions about this code of conduct, see the FAQ at <http
 ---
 
 **Last reviewed:** 2026 — Pereira Tech Talks v3.0.0 launch.
-**Owner:** PTT Conduct Team (<conduct@pereiratechtalks.org>).
+**Owner:** Corag Conduct Team (<conduct@pereiratechtalks.org>).
 
 A user-facing public version of this document lives at `/code-of-conduct` (English) and `/es/codigo-de-conducta` (Spanish), generated from this Markdown by the Page Wrapper Pattern.

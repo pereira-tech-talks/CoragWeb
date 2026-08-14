@@ -7,8 +7,8 @@
  * quiet: the announcement image carries the message, the copy states the
  * facts, and there is no CTA. Nothing here promises a new date.
  *
- * Uses the edition palette via `--ptt-*` (it lives inside `EditionScope`),
- * with the notice ground lifted to `--ptt-bg-elevated` so it reads as an
+ * Uses the edition palette via `--corag-*` (it lives inside `EditionScope`),
+ * with the notice ground lifted to `--corag-bg-elevated` so it reads as an
  * interruption of the page rather than another section of it.
  */
 
@@ -35,12 +35,12 @@ const sinceLabel = formatCalendarDate(postponement.since, lang);
 
 <section
   id="postponed"
-  class="bg-[var(--ptt-bg)] py-10 sm:py-14"
+  class="bg-[var(--corag-bg)] py-10 sm:py-14"
   aria-labelledby="ptd-postponed-title"
 >
   <div class="main-container">
     <div
-      class="mx-auto flex max-w-4xl flex-col gap-7 rounded-[var(--ptd-card-radius,1rem)] border-2 border-[var(--ptt-accent)] bg-[var(--ptt-bg-elevated)] p-6 shadow-sm sm:p-9 md:flex-row md:items-center md:gap-9"
+      class="mx-auto flex max-w-4xl flex-col gap-7 rounded-[var(--ptd-card-radius,1rem)] border-2 border-[var(--corag-accent)] bg-[var(--corag-bg-elevated)] p-6 shadow-sm sm:p-9 md:flex-row md:items-center md:gap-9"
     >
       {
         image && (
@@ -58,31 +58,31 @@ const sinceLabel = formatCalendarDate(postponement.since, lang);
 
       <div class="min-w-0 flex-1">
         <p
-          class="m-0 mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--ptt-accent)] sm:text-sm"
+          class="m-0 mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--corag-accent)] sm:text-sm"
         >
           {t.postponedBadge}
         </p>
 
         <h2
           id="ptd-postponed-title"
-          class="m-0 text-2xl font-bold leading-tight text-[var(--ptt-text)] sm:text-3xl"
+          class="m-0 text-2xl font-bold leading-tight text-[var(--corag-text)] sm:text-3xl"
         >
           {headline}
         </h2>
 
-        <p class="mt-4 text-base leading-relaxed text-[var(--ptt-text)] sm:text-lg">
+        <p class="mt-4 text-base leading-relaxed text-[var(--corag-text)] sm:text-lg">
           {body}
         </p>
 
         {
           closing && (
-            <p class="mt-4 text-lg font-bold text-[var(--ptt-accent)] sm:text-xl">
+            <p class="mt-4 text-lg font-bold text-[var(--corag-accent)] sm:text-xl">
               {closing}
             </p>
           )
         }
 
-        <p class="mt-5 text-sm text-[var(--ptt-text-muted)]">
+        <p class="mt-5 text-sm text-[var(--corag-text-muted)]">
           {t.postponedSince.replace('{date}', sinceLabel)}
         </p>
       </div>

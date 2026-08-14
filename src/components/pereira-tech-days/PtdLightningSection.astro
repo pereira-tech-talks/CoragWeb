@@ -76,27 +76,27 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
 
 <section
   id="lightning"
-  class="scroll-mt-[4.5rem] bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]"
+  class="scroll-mt-[4.5rem] bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]"
   aria-labelledby="ptd-lightning-title"
 >
   <div class="main-container">
     <header class="mx-auto mb-8 max-w-3xl text-center md:mb-12">
       {
         tagline && (
-          <p class="text-base font-bold uppercase tracking-wide text-[var(--ptt-text-muted)]">
+          <p class="text-base font-bold uppercase tracking-wide text-[var(--corag-text-muted)]">
             {tagline}
           </p>
         )
       }
       <h2
         id="ptd-lightning-title"
-        class="ptd-lightning-title mt-1 text-3xl font-bold uppercase leading-none text-[var(--ptt-text)] md:text-4xl"
+        class="ptd-lightning-title mt-1 text-3xl font-bold uppercase leading-none text-[var(--corag-text)] md:text-4xl"
       >
         {title}
       </h2>
       {
         showPending && pending && (
-          <p class="mt-4 text-base leading-relaxed text-[var(--ptt-text)]">
+          <p class="mt-4 text-base leading-relaxed text-[var(--corag-text)]">
             {pending.message}
           </p>
         )
@@ -109,19 +109,19 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
           <ul class="grid gap-4 sm:grid-cols-2 sm:gap-y-8 md:gap-6 lg:grid-cols-3">
             {ghostSlots.map((index) => (
               <li class="min-w-0">
-                <article class="flex h-full flex-col items-center rounded-lg border border-dashed border-[color-mix(in_srgb,var(--ptt-text)_26%,transparent)] bg-[color-mix(in_srgb,var(--ptt-bg-elevated)_55%,transparent)] p-6 text-center">
+                <article class="flex h-full flex-col items-center rounded-lg border border-dashed border-[color-mix(in_srgb,var(--corag-text)_26%,transparent)] bg-[color-mix(in_srgb,var(--corag-bg-elevated)_55%,transparent)] p-6 text-center">
                   <span
-                    class="grid h-16 w-16 place-items-center rounded-full border border-dashed border-[color-mix(in_srgb,var(--ptt-text)_26%,transparent)] bg-[color-mix(in_srgb,var(--ptt-text)_7%,transparent)] text-[color-mix(in_srgb,var(--ptt-text)_40%,transparent)]"
+                    class="grid h-16 w-16 place-items-center rounded-full border border-dashed border-[color-mix(in_srgb,var(--corag-text)_26%,transparent)] bg-[color-mix(in_srgb,var(--corag-text)_7%,transparent)] text-[color-mix(in_srgb,var(--corag-text)_40%,transparent)]"
                     aria-hidden="true"
                   >
                     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
                     </svg>
                   </span>
-                  <p class="mt-4 text-lg font-bold leading-snug text-[var(--ptt-text)]">
+                  <p class="mt-4 text-lg font-bold leading-snug text-[var(--corag-text)]">
                     {`${pending.cardLabel} ${index + 1}`}
                   </p>
-                  <p class="mt-1 text-sm italic text-[var(--ptt-text-muted)]">
+                  <p class="mt-1 text-sm italic text-[var(--corag-text-muted)]">
                     {pending.message}
                   </p>
                 </article>
@@ -132,7 +132,7 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
             <p class="mt-8 text-center">
               <a
                 href={pending.ctaHref}
-                class="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--ptt-text)_22%,transparent)] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-[var(--ptt-text)] transition hover:border-[var(--ptt-primary)] hover:bg-[var(--ptt-primary)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+                class="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--corag-text)_22%,transparent)] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-[var(--corag-text)] transition hover:border-[var(--corag-primary)] hover:bg-[var(--corag-primary)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
               >
                 {pending.ctaLabel}
               </a>
@@ -158,8 +158,8 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
           const links = socialLinksFor(speaker);
           return (
             <li class="min-w-0">
-              <article class="relative flex h-full flex-col rounded-lg border border-[#ffffff29] bg-[var(--ptt-bg-elevated)] p-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur">
-                <p class="flex-1 text-xl font-bold leading-snug text-[var(--ptt-text)]">
+              <article class="relative flex h-full flex-col rounded-lg border border-[#ffffff29] bg-[var(--corag-bg-elevated)] p-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur">
+                <p class="flex-1 text-xl font-bold leading-snug text-[var(--corag-text)]">
                   {talkTitle || speaker.data.name}
                 </p>
                 <div class="mt-4 flex items-center gap-2">
@@ -173,10 +173,10 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
                     class="h-20 w-20 shrink-0 rounded-full border border-slate-600 object-cover"
                   />
                   <div class="ml-3 min-w-0 grow">
-                    <p class="text-base font-semibold text-[var(--ptt-text)]">
+                    <p class="text-base font-semibold text-[var(--corag-text)]">
                       {speaker.data.name}
                     </p>
-                    <p class="text-xs text-[var(--ptt-text-muted)]">{role}</p>
+                    <p class="text-xs text-[var(--corag-text-muted)]">{role}</p>
                     {
                       links.length > 0 && (
                         <ul class="inline-flex flex-wrap gap-1 pt-1">
@@ -186,7 +186,7 @@ function socialLinksFor(speaker: CollectionEntry<'speakers'>) {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-flex text-[var(--ptt-text-muted)] transition hover:text-[var(--ptt-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+                                class="inline-flex text-[var(--corag-text-muted)] transition hover:text-[var(--corag-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
                                 aria-label={link.label}
                               >
                                 {link.path ? (

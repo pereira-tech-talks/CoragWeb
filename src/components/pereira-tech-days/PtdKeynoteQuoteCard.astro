@@ -53,7 +53,7 @@ const socialLinks = (
 <figure
   class="flex h-full flex-col rounded-xl border border-white/25 bg-transparent p-5 sm:p-6"
 >
-  <blockquote class="flex-1 text-sm leading-relaxed text-[var(--ptt-text-muted)] sm:text-[0.95rem] sm:leading-relaxed">
+  <blockquote class="flex-1 text-sm leading-relaxed text-[var(--corag-text-muted)] sm:text-[0.95rem] sm:leading-relaxed">
     <p>&ldquo;{bio}&rdquo;</p>
   </blockquote>
   <hr class="my-5 border-0 border-t border-white/20" />
@@ -68,10 +68,10 @@ const socialLinks = (
       class="h-20 w-20 shrink-0 rounded-full object-cover sm:h-24 sm:w-24"
     />
     <div class="min-w-0 flex-1">
-      <p class="text-base font-semibold text-[var(--ptt-text)] sm:text-lg">
+      <p class="text-base font-semibold text-[var(--corag-text)] sm:text-lg">
         {speaker.data.name}
       </p>
-      <p class="mt-0.5 text-sm text-[var(--ptt-text-muted)]">{role}</p>
+      <p class="mt-0.5 text-sm text-[var(--corag-text-muted)]">{role}</p>
       {
         socialLinks.length > 0 && (
           <ul class="mt-2.5 flex flex-wrap gap-2.5">
@@ -81,7 +81,7 @@ const socialLinks = (
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex text-[var(--ptt-text-muted)] transition hover:text-[var(--ptt-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+                  class="inline-flex text-[var(--corag-text-muted)] transition hover:text-[var(--corag-text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
                   aria-label={link.label}
                 >
                   {link.path ? (

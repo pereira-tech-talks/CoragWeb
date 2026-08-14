@@ -1,11 +1,11 @@
 /** Issuer DID for Pereira Tech Talks certificate signing. */
-export const PTT_ISSUER_DID = 'did:web:pereiratechtalks.org';
+export const CORAG_ISSUER_DID = 'did:web:pereiratechtalks.org';
 
 /** Verification method fragment on the DID document. */
-export const PTT_VERIFICATION_METHOD_ID = `${PTT_ISSUER_DID}#key-1`;
+export const CORAG_VERIFICATION_METHOD_ID = `${CORAG_ISSUER_DID}#key-1`;
 
 /** Default path to the public DID document (served statically). */
-export const PTT_DID_DOCUMENT_PATH = '/.well-known/did.json';
+export const CORAG_DID_DOCUMENT_PATH = '/.well-known/did.json';
 
 /** JSON-LD context for event attendance credentials. */
 export const EVENT_ATTENDANCE_CONTEXT =

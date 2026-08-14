@@ -187,7 +187,7 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
 3. **Multilingual hero:** If the hero image contains text that needs localization, ask the user for a language-specific variant. Save as `hero-es.{ext}` in the same folder, generate WebP, and use the variant path in the ES frontmatter
 
 **Topic mode — voice rules:**
-- Use the voice defined in `docs/WRITING_VOICE_GUIDE.md`. PTT is a community: default to "we" / "the community", and only use first person ("I", "my") in clearly attributed essays where the `author` slug identifies the writer.
+- Use the voice defined in `docs/WRITING_VOICE_GUIDE.md`. Corag is a community: default to "we" / "the community", and only use first person ("I", "my") in clearly attributed essays where the `author` slug identifies the writer.
 - Conversational and human — like talking to a peer in the meetup
 - No marketing language, no empty superlatives
 - Specific details over vague claims
@@ -400,7 +400,7 @@ content: add blog post "{title}" (en + es)
 
 **Input:**
 ```
-$TOPIC: Recap of the March 2026 PTT meetup at UTP. Theme: AI agents in production. Three talks (Speaker 1 — agent observability, Speaker 2 — RAG patterns, Speaker 3 — agent guardrails).
+$TOPIC: Recap of the March 2026 Corag meetup at UTP. Theme: AI agents in production. Three talks (Speaker 1 — agent observability, Speaker 2 — RAG patterns, Speaker 3 — agent guardrails).
 $TAG: ai-agents
 $PUB_DATE: 2026-03-22
 $HERO_IMAGE: /images/blog/posts/march-2026-meetup-recap/hero.jpg

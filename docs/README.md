@@ -18,7 +18,7 @@ Welcome to the **Pereira Tech Talks** documentation. This guide helps developers
 |----------|-------------|
 | [Product Spec](PRODUCT_SPEC.md) | Vision, features, and goals for Pereira Tech Talks |
 | [Information Architecture](INFORMATION_ARCHITECTURE.md) | URL surface, navigation, content relationships |
-| [Brand Guide](BRAND_GUIDE.md) | PTT palette, typography, logo, voice & per-edition kits |
+| [Brand Guide](BRAND_GUIDE.md) | Corag palette, typography, logo, voice & per-edition kits |
 | [Design System](DESIGN.md) | Agent-facing UI contract — tokens, scales, component patterns, integrity rules |
 | [Architecture](ARCHITECTURE.md) | Technical architecture, patterns, and decisions |
 | [Performance](PERFORMANCE.md) | SSG optimization, images, caching strategies |
@@ -27,11 +27,11 @@ Welcome to the **Pereira Tech Talks** documentation. This guide helps developers
 
 | Document | Description |
 |----------|-------------|
-| [Code of Conduct](CODE_OF_CONDUCT.md) | Behavior expectations across PTT spaces |
+| [Code of Conduct](CODE_OF_CONDUCT.md) | Behavior expectations across Corag spaces |
 | [Contributing](CONTRIBUTING.md) | Ways to contribute and code workflow |
 | [Governance](GOVERNANCE.md) | Roles, decisions, financial transparency |
-| [Community Guidelines](COMMUNITY_GUIDELINES.md) | Day-to-day behavior in PTT spaces |
-| [Communication Channels](COMMUNICATION_CHANNELS.md) | Inventory of official PTT channels |
+| [Community Guidelines](COMMUNITY_GUIDELINES.md) | Day-to-day behavior in Corag spaces |
+| [Communication Channels](COMMUNICATION_CHANNELS.md) | Inventory of official Corag channels |
 | [Call for Speakers](CALL_FOR_SPEAKERS.md) | Always-open speaker submission process |
 | [Sponsorship](SPONSORSHIP.md) | Sponsorship tiers and benefits |
 
@@ -63,7 +63,7 @@ Welcome to the **Pereira Tech Talks** documentation. This guide helps developers
 | **Astro** | 5.16.15 | Static site generator |
 | **Svelte** | 5.48.0 | Interactive components |
 | **TypeScript** | 5.9.3 | Type-safe development |
-| **Tailwind CSS** | 4.1.18 | Utility-first styling with PTT design tokens |
+| **Tailwind CSS** | 4.1.18 | Utility-first styling with Corag design tokens |
 | **Biome** | 2.3.11 | Linting and formatting |
 | **MDX** | 4.3.13 | Enhanced Markdown |
 
@@ -91,7 +91,7 @@ pereiratechtalks.org/
 │   ├── layouts/         # MainLayout, InternalLayout, ShowcaseLayout, SlideLayout
 │   ├── lib/             # Utility functions and types (per collection)
 │   ├── pages/           # File-based routing (EN root, ES /es/, /internal/ dev-only)
-│   └── styles/          # Tailwind 4 theme tokens (--color-ptt-*)
+│   └── styles/          # Tailwind 4 theme tokens (--color-corag-*)
 ├── public/              # Static assets (images, fonts, icons, .well-known/)
 ├── docs/                # This documentation folder
 ├── .agents/             # Cross-agent skills (incl. the deepworkplan skill), commands, agent definitions
@@ -150,7 +150,7 @@ Components receive a `lang` prop for language-specific content. UI strings live 
 
 ### Per-Edition Branding
 
-Pereira Tech Days editions ship a `brandKit` field that overrides PTT design tokens within their route subtree only. See [Brand Guide → Per-Edition Kits](BRAND_GUIDE.md) and the live preview at `/internal/brand/per-edition-kits`.
+Pereira Tech Days editions ship a `brandKit` field that overrides Corag design tokens within their route subtree only. See [Brand Guide → Per-Edition Kits](BRAND_GUIDE.md) and the live preview at `/internal/brand/per-edition-kits`.
 
 ## For AI Agents
 

@@ -1,6 +1,6 @@
 ---
 /**
- * PTT press / media page — editorial hero + media kit layout.
+ * Corag press / media page — editorial hero + media kit layout.
  */
 
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
@@ -142,7 +142,7 @@ const breadcrumbs = [
 
 <MainLayout lang={lang} title={t.title} description={t.description}>
   <!-- Editorial hero -->
-  <section class="relative overflow-hidden bg-ptt-bg-dark text-white">
+  <section class="relative overflow-hidden bg-corag-bg-dark text-white">
     <div aria-hidden="true" class="absolute inset-0">
       <img
         src="/images/home/hero-dark.webp"
@@ -154,14 +154,14 @@ const breadcrumbs = [
         fetchpriority="high"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-r from-ptt-bg-dark via-ptt-bg-dark/90 to-ptt-bg-dark/55"
+        class="absolute inset-0 bg-gradient-to-r from-corag-bg-dark via-corag-bg-dark/90 to-corag-bg-dark/55"
       >
       </div>
     </div>
     <div class="relative z-10 main-container pt-10 pb-16 sm:pb-20">
       <Breadcrumbs items={breadcrumbs} onDark />
       <p
-        class="mt-8 text-sm font-semibold uppercase tracking-widest text-ptt-accent"
+        class="mt-8 text-sm font-semibold uppercase tracking-widest text-corag-accent"
       >
         {t.eyebrow}
       </p>
@@ -176,7 +176,7 @@ const breadcrumbs = [
       <div class="mt-8 flex flex-wrap gap-3">
         <a
           href={contactHref}
-          class="inline-flex min-h-[44px] items-center rounded-full bg-ptt-accent px-6 py-2.5 text-sm font-semibold text-ptt-bg-dark hover:bg-ptt-accent-dark transition-colors"
+          class="inline-flex min-h-[44px] items-center rounded-full bg-corag-accent px-6 py-2.5 text-sm font-semibold text-corag-bg-dark hover:bg-corag-accent transition-colors"
         >
           {t.contactCta}
         </a>
@@ -190,19 +190,19 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <section class="bg-ptt-bg py-16">
+  <section class="bg-corag-bg py-16">
     <div class="main-container">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ptt">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-corag">
         {t.factsTitle}
       </h2>
       <dl class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
         {
           t.facts.map(([key, value]) => (
-            <div class="rounded-2xl border border-ptt-border bg-ptt-bg-elevated p-5">
-              <dt class="text-sm font-semibold uppercase tracking-widest text-ptt-primary">
+            <div class="rounded-2xl border border-corag-border bg-corag-bg-elevated p-5">
+              <dt class="text-sm font-semibold uppercase tracking-widest text-corag-primary">
                 {key}
               </dt>
-              <dd class="mt-2 text-base text-ptt-secondary leading-relaxed">
+              <dd class="mt-2 text-base text-corag-secondary leading-relaxed">
                 {value}
               </dd>
             </div>
@@ -212,34 +212,34 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <section class="bg-ptt-primary-soft/40 dark:bg-ptt-bg-elevated py-16">
+  <section class="bg-corag-primary-soft/40 dark:bg-corag-bg-elevated py-16">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ptt">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-corag">
         {t.boilerplateTitle}
       </h2>
       <blockquote
-        class="mt-6 border-l-4 border-ptt-accent pl-6 text-lg leading-relaxed text-ptt italic"
+        class="mt-6 border-l-4 border-corag-accent pl-6 text-lg leading-relaxed text-corag italic"
       >
         {t.boilerplate}
       </blockquote>
     </div>
   </section>
 
-  <section id="brand-kit" class="bg-ptt-bg py-16">
+  <section id="brand-kit" class="bg-corag-bg py-16">
     <div class="main-container">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ptt">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-corag">
         {t.brandTitle}
       </h2>
       <ul class="mt-8 grid gap-4 sm:grid-cols-3 list-none">
         {
           t.brand.map((asset) => (
-            <li class="flex h-full flex-col rounded-2xl border border-ptt-border bg-ptt-bg-elevated p-5 transition-shadow hover:shadow-md">
-              <p class="text-sm font-semibold text-ptt">{asset.label}</p>
-              <p class="mt-1 text-xs text-ptt-secondary">{asset.note}</p>
+            <li class="flex h-full flex-col rounded-2xl border border-corag-border bg-corag-bg-elevated p-5 transition-shadow hover:shadow-md">
+              <p class="text-sm font-semibold text-corag">{asset.label}</p>
+              <p class="mt-1 text-xs text-corag-secondary">{asset.note}</p>
               <a
                 href={asset.href}
                 download
-                class="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ptt-primary hover:underline"
+                class="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-corag-primary hover:underline"
               >
                 {t.download}
                 <span aria-hidden="true">↓</span>
@@ -248,11 +248,11 @@ const breadcrumbs = [
           ))
         }
       </ul>
-      <p class="mt-4 text-sm italic text-ptt-secondary">{t.brandFootnote}</p>
+      <p class="mt-4 text-sm italic text-corag-secondary">{t.brandFootnote}</p>
     </div>
   </section>
 
-  <section class="bg-ptt-bg-dark text-white py-16">
+  <section class="bg-corag-bg-dark text-white py-16">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
         {t.contactTitle}
@@ -261,7 +261,7 @@ const breadcrumbs = [
       <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
         <a
           href={contactHref}
-          class="inline-flex items-center gap-2 rounded-full bg-ptt-accent px-6 py-3 text-base font-semibold text-ptt-bg-dark shadow-sm transition-colors hover:bg-ptt-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+          class="inline-flex items-center gap-2 rounded-full bg-corag-accent px-6 py-3 text-base font-semibold text-corag-bg-dark shadow-sm transition-colors hover:bg-corag-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
         >
           {t.contactCta}
         </a>
@@ -275,9 +275,9 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <section class="bg-ptt-bg py-16">
+  <section class="bg-corag-bg py-16">
     <div class="main-container">
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ptt">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-corag">
         {t.linksTitle}
       </h2>
       <ul class="mt-8 grid gap-3 sm:grid-cols-2 list-none">
@@ -286,9 +286,9 @@ const breadcrumbs = [
             <li>
               <a
                 href={link.href}
-                class="block rounded-xl border border-ptt-border bg-ptt-bg-elevated p-4 text-sm font-semibold text-ptt hover:border-ptt-primary/50 transition-colors"
+                class="block rounded-xl border border-corag-border bg-corag-bg-elevated p-4 text-sm font-semibold text-corag hover:border-corag-primary/50 transition-colors"
               >
-                <span class="text-ptt-primary">→</span>
+                <span class="text-corag-primary">→</span>
                 {' '}
                 {link.label}
               </a>

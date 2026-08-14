@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 speakers directory page (shared between EN and ES).
+ * Corag v3.0.0 speakers directory page (shared between EN and ES).
  * Sorted by most recent talk date (descending).
  */
 
@@ -60,24 +60,24 @@ const breadcrumbs = [
 ---
 
 <MainLayout lang={lang} title={t.title} description={t.description}>
-  <div class="bg-ptt-bg">
+  <div class="bg-corag-bg">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} />
     </div>
     <div class="main-container pt-6 pb-12">
       <Eyebrow>{lang === 'es' ? 'Comunidad' : 'Community'}</Eyebrow>
-      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-ptt">
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-corag">
         {t.title}
       </h1>
-      <p class="mt-4 max-w-3xl text-lg text-ptt-secondary">
+      <p class="mt-4 max-w-3xl text-lg text-corag-secondary">
         {t.intro}
       </p>
-      <p class="mt-2 text-sm font-medium text-ptt-primary dark:text-ptt-primary-dark">
+      <p class="mt-2 text-sm font-medium text-corag-primary dark:text-corag-primary-light">
         {t.sortHint}
       </p>
       <a
         href={t.cfsHref}
-        class="mt-6 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ptt-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ptt-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary dark:bg-ptt-primary-dark dark:text-ptt-bg dark:hover:bg-ptt-primary-dark/90"
+        class="mt-6 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-fill px-5 py-2.5 text-sm font-semibold text-corag-on-fill shadow-sm transition-colors hover:bg-corag-fill/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary dark:bg-corag-primary-light dark:text-corag-bg dark:hover:bg-corag-primary-light/90"
       >
         {t.cfsLabel}
       </a>

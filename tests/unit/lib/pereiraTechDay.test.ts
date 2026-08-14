@@ -147,7 +147,7 @@ describe('pereiraTechDay helpers', () => {
   it('buildEditionThemeCss scopes variables under edition year', () => {
     const css = buildEditionThemeCss(mockEdition());
     expect(css).toContain('[data-edition-theme="2026"]');
-    expect(css).toContain('--ptt-primary: #1f6f73');
+    expect(css).toContain('--corag-primary: #1f6f73');
     expect(css).not.toContain('body {');
   });
 
@@ -175,8 +175,8 @@ describe('pereiraTechDay helpers', () => {
       },
     });
     const css = buildEditionThemeCss(edition);
-    expect(css).toContain('--ptt-border: #d8e4e4;');
-    expect(css).toContain('--ptt-border: #2a4548;');
+    expect(css).toContain('--corag-border: #d8e4e4;');
+    expect(css).toContain('--corag-border: #2a4548;');
   });
 
   it('buildEditionThemeCss emits heading transform and tracking when declared', () => {
@@ -212,7 +212,7 @@ describe('pereiraTechDay helpers', () => {
     } as Partial<PereiraTechDay['data']>);
     const css = buildEditionThemeCss(edition);
     expect(css).toContain('[data-edition-theme="2026"]');
-    expect(css).toContain('--ptt-primary: #1f6f73');
+    expect(css).toContain('--corag-primary: #1f6f73');
     expect(css).not.toContain('sectionBackgrounds');
     expect(css).not.toContain('about-bg.webp');
   });

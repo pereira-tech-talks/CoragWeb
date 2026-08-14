@@ -58,10 +58,10 @@ Mentores pasados incluyen a Sergio Estrella, Eliana Osorio, Mayra Velásquez y p
 
 La pregunta más frecuente sobre la Escuela de Speakers es "¿qué pasa después?" Esto es lo que hemos visto:
 
-- **La mayoría da su primera charla en un meetup de PTT dentro de los 6 meses siguientes a terminar el programa.** Es la meta explícita y la cohorte está estructurada alrededor de eso.
+- **La mayoría da su primera charla en un meetup de Corag dentro de los 6 meses siguientes a terminar el programa.** Es la meta explícita y la cohorte está estructurada alrededor de eso.
 - **Una fracción significativa termina dando charlas en conferencias regionales en Bogotá, Medellín, Cali y Ciudad de México.** Las habilidades transfieren.
 - **Algunas y algunos llegan a trabajo de nivel keynote en JSConf y otras conferencias internacionales.** Un resultado menor pero real.
-- **Unas pocas personas terminan corriendo su propia serie de meetups o una vertical dentro de PTT.** Quienes desarrollan instintos pedagógicos suelen convertirse en líderes de programa.
+- **Unas pocas personas terminan corriendo su propia serie de meetups o una vertical dentro de Corag.** Quienes desarrollan instintos pedagógicos suelen convertirse en líderes de programa.
 - **Todas y todos se vuelven mejores en la comunicación interna de su trabajo diario.** Este es el resultado subvalorado. Las habilidades se componen en el trabajo incluso para quienes nunca vuelven a dar una charla en un meetup.
 
 No prometemos avance de carrera. Sí prometemos que vas a salir del programa siendo capaz de pararte y entregar una charla técnica de 25 minutos que sostiene una sala.

@@ -1,9 +1,9 @@
 import {
+  CORAG_ISSUER_DID,
+  CORAG_VERIFICATION_METHOD_ID,
   CRYPTO_SUITE,
   EVENT_ATTENDANCE_CONTEXT,
   PROOF_TYPE,
-  PTT_ISSUER_DID,
-  PTT_VERIFICATION_METHOD_ID,
   VC_CONTEXT,
 } from '@/lib/certificates/crypto/constants';
 import type {
@@ -86,7 +86,7 @@ export function buildUnsignedCredential(
     '@context': [VC_CONTEXT, EVENT_ATTENDANCE_CONTEXT],
     id: artifactUrl,
     type: ['VerifiableCredential', 'EventAttendanceCredential'],
-    issuer: PTT_ISSUER_DID,
+    issuer: CORAG_ISSUER_DID,
     validFrom: record.issuedAt,
     credentialSubject: {
       id: credentialSubjectId(event.id, record.id),
@@ -109,12 +109,12 @@ export function buildUnsignedCredential(
 export function buildDidDocument(publicKeyJwkX: string): DidWebDocument {
   return {
     '@context': 'https://www.w3.org/ns/did/v1',
-    id: PTT_ISSUER_DID,
+    id: CORAG_ISSUER_DID,
     verificationMethod: [
       {
-        id: PTT_VERIFICATION_METHOD_ID,
+        id: CORAG_VERIFICATION_METHOD_ID,
         type: 'Ed25519VerificationKey2020',
-        controller: PTT_ISSUER_DID,
+        controller: CORAG_ISSUER_DID,
         publicKeyJwk: {
           kty: 'OKP',
           crv: 'Ed25519',
@@ -122,7 +122,7 @@ export function buildDidDocument(publicKeyJwkX: string): DidWebDocument {
         },
       },
     ],
-    authentication: [PTT_VERIFICATION_METHOD_ID],
-    assertionMethod: [PTT_VERIFICATION_METHOD_ID],
+    authentication: [CORAG_VERIFICATION_METHOD_ID],
+    assertionMethod: [CORAG_VERIFICATION_METHOD_ID],
   };
 }

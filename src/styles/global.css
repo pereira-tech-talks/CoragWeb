@@ -180,6 +180,12 @@
    * NEVER body text. See CONTRAST_AUDIT.md §3.
    */
   --color-corag-accent: #bc727c;
+  /*
+   * The accessible sibling of `accent` — 5.19:1 on the page ground, 4.53:1 on
+   * rosa claro. Use this when the rose accent must carry readable text; use
+   * `accent` only for decoration and large display type.
+   */
+  --color-corag-accent-strong: #a34f5a;
 
   /* ── Surfaces ──────────────────────────────────────────────────────── */
   --color-corag-bg: #fbf8f5;
@@ -235,40 +241,6 @@
    * rename. Task 5 decides whether those usages move to corag neutrals.
    */
   --color-gray-50: #f1f5f9;
-
-  /*
-   * ⚠️ TEMPORARY COMPATIBILITY LAYER — DELETED BY TASK 5.
-   *
-   * 2,289 `ptt-*` references across 137 files still point at the old token
-   * names. These aliases keep every one of them rendering in Corag colors
-   * while the codemod runs, so the tree never enters a broken state and the
-   * rename stays reviewable.
-   *
-   * If you are reading this after Task 5 completed, it is a bug: remove it.
-   */
-  --color-ptt-primary: var(--color-corag-primary);
-  --color-ptt-primary-strong: var(--color-corag-primary-strong);
-  --color-ptt-primary-soft: var(--color-corag-primary-soft);
-  --color-ptt-primary-dark: var(--color-corag-primary-light);
-  --color-ptt-accent: var(--color-corag-accent);
-  --color-ptt-accent-strong: var(--color-corag-primary-strong);
-  --color-ptt-accent-dark: var(--color-corag-rosa);
-  --color-ptt-bg: var(--color-corag-bg);
-  --color-ptt-bg-elevated: var(--color-corag-bg-elevated);
-  --color-ptt-bg-dark: var(--color-corag-bg-dark);
-  --color-ptt-border: var(--color-corag-border);
-  --color-ptt-border-strong: var(--color-corag-border-strong);
-  --color-ptt-text: var(--color-corag-text);
-  --color-ptt-text-secondary: var(--color-corag-text-secondary);
-  --color-ptt-text-muted: var(--color-corag-text-muted);
-  --color-ptt: var(--color-corag-text);
-  --color-ptt-secondary: var(--color-corag-text-secondary);
-  --color-ptt-success: var(--color-corag-success);
-  --color-ptt-warning: var(--color-corag-warning);
-  --color-ptt-danger: var(--color-corag-danger);
-  --color-ptt-info: var(--color-corag-info);
-  --color-main: var(--color-corag-bg-dark);
-  --color-secondary: var(--color-corag-primary);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -292,6 +264,11 @@
   --color-corag-border: #3e2a2e;
   --color-corag-border-strong: #5c4247;
   --color-corag-border-interactive: #7f6c6f;
+
+  /* In dark mode `accent` clears AA (4.51), unlike in light — but it stays
+   * documented as decorative so a component does not silently become
+   * inaccessible when the theme flips back. */
+  --color-corag-accent-strong: #d8a3aa;
 
   --color-corag-text: #f0e3e4;
   --color-corag-text-secondary: #d6c4c7;
@@ -318,7 +295,7 @@
 
   /* Theme-aware nav links (header + mobile). Inherit header canvas. */
   .nav-link {
-    @apply text-ptt-secondary hover:text-ptt-primary transition-colors duration-200;
+    @apply text-corag-secondary hover:text-corag-primary transition-colors duration-200;
   }
   .dark .nav-link {
     @apply text-white/85 hover:text-white;
@@ -369,18 +346,18 @@
  * scroll-padding-top / scroll-margin-top that reference the custom property.
  */
 :root {
-  --ptt-chrome-height: 4.25rem;
+  --corag-chrome-height: 4.25rem;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     /*
-     * Sticky chrome ([data-ptt-chrome]) covers the top of the viewport.
+     * Sticky chrome ([data-corag-chrome]) covers the top of the viewport.
      * Offset in-page anchors (#main-after-hero, year jumps, etc.) so the
      * target sits just below the measured header (± notification bar).
      */
-    scroll-padding-top: var(--ptt-chrome-height);
+    scroll-padding-top: var(--corag-chrome-height);
   }
 
   body {
@@ -423,7 +400,7 @@
   select,
   textarea,
   [role="button"] {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ptt-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corag-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900;
   }
 }
 

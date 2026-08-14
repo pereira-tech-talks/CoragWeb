@@ -101,7 +101,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
-| `/design-system` | `.agents/commands/design-system.md` | Create or refresh [`docs/DESIGN.md`](../../docs/DESIGN.md) — the agent-facing UI contract (`--ptt-*` tokens, type/spacing/radius scales, component patterns, WCAG AA rules) — via the DeepWorkPlan [`design-system` addon](../skills/deepworkplan/addons/design-system/SKILL.md). `visual-ui` profile only |
+| `/design-system` | `.agents/commands/design-system.md` | Create or refresh [`docs/DESIGN.md`](../../docs/DESIGN.md) — the agent-facing UI contract (`--corag-*` tokens, type/spacing/radius scales, component patterns, WCAG AA rules) — via the DeepWorkPlan [`design-system` addon](../skills/deepworkplan/addons/design-system/SKILL.md). `visual-ui` profile only |
 
 ## Dependency Management
 

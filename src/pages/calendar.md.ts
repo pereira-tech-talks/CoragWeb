@@ -64,7 +64,7 @@ export const GET: APIRoute = async () => {
     heading: 'Enlaces rápidos',
     lines: [
       linkLine('Archivo de meetups', mdHref(lang, 'meetups')),
-      linkLine('Eventos PTT en Luma', 'https://luma.com/pertechtalks'),
+      linkLine('Eventos Corag en Luma', 'https://luma.com/pertechtalks'),
       linkLine(
         'Publica el calendario de tu comunidad',
         `${SITE_URL}/calendar/#calendar-intake`

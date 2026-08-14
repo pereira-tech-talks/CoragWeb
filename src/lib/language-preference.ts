@@ -1,7 +1,7 @@
 /**
  * Language preference helpers.
  *
- * PTT follows the same model as xergioalex.com: the URL is the source of
+ * Corag follows the same model as xergioalex.com: the URL is the source of
  * truth for language. There is **no** automatic client-side redirect based
  * on `navigator.languages` or a stored preference — that caused PageSpeed's
  * "Clientside Redirect!" modal and hijacked first visits away from Spanish
@@ -9,7 +9,7 @@
  *
  * The only navigation this module may request is an explicit `?lang=es|en`
  * override (used by LHCI / shared links that want to pin a language). The
- * header language switcher still writes `localStorage['ptt:lang']` for soft
+ * header language switcher still writes `localStorage['corag:lang']` for soft
  * preference tracking, but that value never forces a redirect.
  */
 
@@ -22,7 +22,7 @@ import {
 } from '@/lib/i18n';
 
 /** localStorage key holding the visitor's last explicit language switch. */
-export const LANGUAGE_STORAGE_KEY = 'ptt:lang';
+export const LANGUAGE_STORAGE_KEY = 'corag:lang';
 
 /** Query parameter that forces a language and persists it (e.g. `?lang=en`). */
 export const LANGUAGE_QUERY_PARAM = 'lang';

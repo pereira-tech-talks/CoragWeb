@@ -39,8 +39,8 @@ let submitError = '';
 let successRef;
 
 const inputClass =
-  'w-full min-h-[44px] text-base p-3 rounded-lg border border-ptt-border bg-ptt-bg-elevated text-ptt focus:outline-none focus:ring-2 focus:ring-ptt-primary/30 focus:border-ptt-primary transition-colors';
-const labelClass = 'block text-sm font-medium text-ptt-secondary mb-2';
+  'w-full min-h-[44px] text-base p-3 rounded-lg border border-corag-border bg-corag-bg-elevated text-corag focus:outline-none focus:ring-2 focus:ring-corag-primary/30 focus:border-corag-primary transition-colors';
+const labelClass = 'block text-sm font-medium text-corag-secondary mb-2';
 const errorClass = 'mt-1 text-sm text-red-600 dark:text-red-400';
 
 async function handleSubmit() {
@@ -168,12 +168,12 @@ function resetForm() {
     aria-live="polite"
   >
     <div class="mb-4 text-5xl" aria-hidden="true">✓</div>
-    <h3 class="text-2xl font-bold text-ptt mb-3">{f.successTitle}</h3>
-    <p class="text-ptt-secondary mb-6">{f.successMessage}</p>
+    <h3 class="text-2xl font-bold text-corag mb-3">{f.successTitle}</h3>
+    <p class="text-corag-secondary mb-6">{f.successMessage}</p>
     <button
       type="button"
       on:click={resetForm}
-      class="inline-flex min-h-[44px] items-center px-6 py-2 rounded-full border border-ptt-primary text-ptt-primary font-semibold hover:bg-ptt-primary hover:text-white transition-colors"
+      class="inline-flex min-h-[44px] items-center px-6 py-2 rounded-full border border-corag-primary text-corag-primary font-semibold hover:bg-corag-fill hover:text-corag-on-fill transition-colors"
     >
       {cp.sendAnotherButton}
     </button>
@@ -320,20 +320,20 @@ function resetForm() {
       <label class="flex items-start gap-3 min-h-[44px] cursor-pointer">
         <input
           type="checkbox"
-          class="mt-1 h-5 w-5 rounded border-ptt-border"
+          class="mt-1 h-5 w-5 rounded border-corag-border"
           bind:checked={firstTime}
           disabled={formState === 'submitting'}
         />
-        <span class="text-sm text-ptt">{f.firstTimeLabel}</span>
+        <span class="text-sm text-corag">{f.firstTimeLabel}</span>
       </label>
       <label class="flex items-start gap-3 min-h-[44px] cursor-pointer">
         <input
           type="checkbox"
-          class="mt-1 h-5 w-5 rounded border-ptt-border"
+          class="mt-1 h-5 w-5 rounded border-corag-border"
           bind:checked={speakerSchool}
           disabled={formState === 'submitting'}
         />
-        <span class="text-sm text-ptt">{f.speakerSchoolLabel}</span>
+        <span class="text-sm text-corag">{f.speakerSchoolLabel}</span>
       </label>
     </div>
 
@@ -353,7 +353,7 @@ function resetForm() {
       <button
         type="submit"
         disabled={formState === 'submitting'}
-        class="inline-flex min-h-[44px] items-center px-8 py-3 bg-ptt-primary text-white font-semibold rounded-full hover:bg-ptt-primary-strong transition-colors disabled:opacity-60"
+        class="inline-flex min-h-[44px] items-center px-8 py-3 bg-corag-fill text-corag-on-fill font-semibold rounded-full hover:bg-corag-fill-strong transition-colors disabled:opacity-60"
       >
         {formState === 'submitting' ? cp.sendingButton : f.submitButton}
       </button>

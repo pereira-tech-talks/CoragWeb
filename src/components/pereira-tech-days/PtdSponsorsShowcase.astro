@@ -85,7 +85,7 @@ const treeSponsors = sponsors;
             'ptd-sponsors-title m-0 font-bold uppercase leading-[1.05]',
             isTree
               ? 'mb-2.5 text-[clamp(2rem,5.5vw,3.15rem)] tracking-[0.01em] text-[#3a7f7c]'
-              : 'text-3xl text-[var(--ptt-text)] md:text-4xl',
+              : 'text-3xl text-[var(--corag-text)] md:text-4xl',
           ]}
         >
           {title}
@@ -95,13 +95,13 @@ const treeSponsors = sponsors;
             class:list={[
               'm-0',
               isTree
-                ? 'max-w-[36rem] text-[clamp(0.95rem,2.2vw,1.1rem)] leading-[1.55] text-[color-mix(in_srgb,var(--ptt-text)_82%,transparent)]'
-                : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--ptt-text-muted)] md:text-base',
+                ? 'max-w-[36rem] text-[clamp(0.95rem,2.2vw,1.1rem)] leading-[1.55] text-[color-mix(in_srgb,var(--corag-text)_82%,transparent)]'
+                : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--corag-text-muted)] md:text-base',
             ]}
           >
             {subtitleParts.map((part) =>
               part.type === 'em' ? (
-                <strong class="font-bold text-[var(--ptt-accent)]">{part.value}</strong>
+                <strong class="font-bold text-[var(--corag-accent)]">{part.value}</strong>
               ) : (
                 part.value
               )
@@ -143,7 +143,7 @@ const treeSponsors = sponsors;
                   aria-label={label}
                   title={sponsor.data.name}
                   class:list={[
-                    'group flex aspect-square items-center justify-center bg-transparent p-[clamp(1.15rem,3vw,1.65rem)] shadow-none transition-transform hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ptt-primary)]',
+                    'group flex aspect-square items-center justify-center bg-transparent p-[clamp(1.15rem,3vw,1.65rem)] shadow-none transition-transform hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--corag-primary)]',
                     isGold
                       ? 'w-[min(100%,16.5rem)]'
                       : 'w-[min(100%,14.5rem)]',
@@ -225,7 +225,7 @@ const treeSponsors = sponsors;
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    class="flex h-full w-full items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ptt-primary)]"
+                    class="flex h-full w-full items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--corag-primary)]"
                   >
                     <img
                       src={sponsor.data.logo.light}
@@ -249,9 +249,9 @@ const treeSponsors = sponsors;
     isTree && footerNote && (
       <p class="ptd-sponsors-showcase__footer mx-auto flex w-[min(100%,40rem)] items-center justify-center gap-[0.85rem] rounded-full border border-[color-mix(in_srgb,#3a7f7c_35%,transparent)] bg-[color-mix(in_srgb,white_72%,transparent)] px-5 py-[0.85rem] text-center">
         <span class="inline-flex shrink-0 items-center gap-[0.35rem]" aria-hidden="true">
-          <span class="h-[0.45rem] w-[0.45rem] rounded-full bg-[var(--ptt-accent)]" />
+          <span class="h-[0.45rem] w-[0.45rem] rounded-full bg-[var(--corag-accent)]" />
           <span class="h-[0.45rem] w-[0.45rem] rounded-full bg-[#3a7f7c]" />
-          <span class="h-[0.45rem] w-[0.45rem] rounded-full bg-[var(--ptt-text)]" />
+          <span class="h-[0.45rem] w-[0.45rem] rounded-full bg-[var(--corag-text)]" />
         </span>
         <span class="text-[clamp(0.82rem,2vw,0.95rem)] font-medium italic leading-snug text-[#3a7f7c]">
           {footerNote}
@@ -278,11 +278,11 @@ const treeSponsors = sponsors;
     overflow: hidden;
     min-height: var(--ptd-sponsors-bg-height);
     padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(2rem, 5vw, 3rem);
-    background: var(--ptt-bg, #fef7f3);
+    background: var(--corag-bg, #fef7f3);
   }
 
   :global(.ptd-sponsors-section__bg) {
-    background-color: var(--ptt-bg, #fef7f3);
+    background-color: var(--corag-bg, #fef7f3);
     background-image: var(--ptd-sponsors-bg);
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -294,17 +294,17 @@ const treeSponsors = sponsors;
     background:
       linear-gradient(
         to bottom,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 94%, transparent) 6%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 72%, transparent) 12%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 94%, transparent) 6%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 72%, transparent) 12%,
         transparent 20%
       ),
       linear-gradient(
         to top,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 94%, transparent) 5%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 72%, transparent) 10%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 15%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 94%, transparent) 5%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 72%, transparent) 10%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 15%,
         transparent 22%
       );
   }

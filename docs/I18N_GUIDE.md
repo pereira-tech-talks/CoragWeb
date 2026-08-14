@@ -528,7 +528,7 @@ only handles `?lang=` (used by LHCI: `/?lang=es`). Pure helpers live in
 - Spanish is the community primary — first paint on `/` should stay Spanish.
 
 **Optional persistence.** `Header.svelte` and `MobileMenu.svelte` still call
-`rememberLanguage()` into `localStorage['ptt:lang']` when the visitor uses
+`rememberLanguage()` into `localStorage['corag:lang']` when the visitor uses
 the switcher. That value is soft preference only; it does **not** force a
 redirect on later visits.
 

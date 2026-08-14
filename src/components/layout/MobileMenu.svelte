@@ -168,14 +168,14 @@ function navClick(item: string) {
     role="dialog"
     aria-modal="true"
     aria-label={t.nav.menu}
-    class="fixed inset-0 z-[100] flex h-[100dvh] max-h-[100dvh] flex-col bg-ptt-bg text-ptt dark:bg-ptt-bg-dark dark:text-white lg:hidden"
+    class="fixed inset-0 z-[100] flex h-[100dvh] max-h-[100dvh] flex-col bg-corag-bg text-corag dark:bg-corag-bg-dark dark:text-white lg:hidden"
     style="padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);"
   >
     <!-- Top bar: brand + close (single visible X — header burger is covered by this sheet) -->
-    <div class="flex shrink-0 items-center justify-between gap-3 border-b border-ptt-border px-4 py-3 dark:border-white/10">
+    <div class="flex shrink-0 items-center justify-between gap-3 border-b border-corag-border px-4 py-3 dark:border-white/10">
       <a
         href={prefix || '/'}
-        class="flex min-w-0 items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="flex min-w-0 items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         aria-label="Pereira Tech Talks"
         on:click={() => navClick('home')}
       >
@@ -196,7 +196,7 @@ function navClick(item: string) {
       </a>
       <button
         bind:this={closeButtonRef}
-        class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-lg p-2 text-ptt hover:bg-ptt-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary dark:text-white dark:hover:bg-white/10"
+        class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-lg p-2 text-corag hover:bg-corag-primary-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary dark:text-white dark:hover:bg-white/10"
         aria-label={t.nav.closeMenu}
         on:click={toggleMenu}
         type="button"
@@ -214,29 +214,29 @@ function navClick(item: string) {
     >
       <a
         href={prefix || '/'}
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('home')}
       >{t.nav.home}</a>
       <a
         href="{prefix}/meetups"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('meetups')}
       >{t.nav.meetups}</a>
       <a
         href="{prefix}/pereira-tech-day"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('pereira_tech_day')}
       >{t.nav.pereiraTechDays}</a>
       <!-- Calendar nav link hidden temporarily — page still at /calendar -->
       <a
         href="{prefix}/blog"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('blog')}
       >{t.nav.blog}</a>
 
-      <div class="mt-2 border-t border-ptt-border pt-2 dark:border-white/10">
+      <div class="mt-2 border-t border-corag-border pt-2 dark:border-white/10">
         <button
-          class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+          class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
           on:click={() => (communityOpen = !communityOpen)}
           aria-expanded={communityOpen}
           aria-controls="mobile-community-links"
@@ -258,36 +258,36 @@ function navClick(item: string) {
         {#if communityOpen}
           <div
             id="mobile-community-links"
-            class="mb-1 flex flex-col gap-0.5 border-l-2 border-ptt-primary/30 pl-3 ml-3"
+            class="mb-1 flex flex-col gap-0.5 border-l-2 border-corag-primary/30 pl-3 ml-3"
             transition:fade={{ duration: 120 }}
           >
-            <a href="{prefix}/about" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('about')}>{t.nav.about}</a>
-            <a href="{prefix}/speakers" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('speakers')}>{t.nav.speakers}</a>
-            <a href="{prefix}/communities" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('communities')}>{t.nav.communities}</a>
-            <a href="{prefix}/contributors" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('contributors')}>{t.nav.contributors}</a>
-            <a href="{prefix}/sponsors" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('sponsors')}>{t.nav.sponsors}</a>
-            <a href="{prefix}/verticals" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('verticals')}>{t.nav.verticals}</a>
-            <a href="{prefix}/channels" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('channels')}>{t.nav.channels}</a>
-            <a href="{prefix}/press" class="nav-link rounded-lg px-3 py-2.5 text-base text-ptt-secondary dark:text-white/80" on:click={() => navClick('press')}>{t.nav.press}</a>
+            <a href="{prefix}/about" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('about')}>{t.nav.about}</a>
+            <a href="{prefix}/speakers" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('speakers')}>{t.nav.speakers}</a>
+            <a href="{prefix}/communities" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('communities')}>{t.nav.communities}</a>
+            <a href="{prefix}/contributors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributors')}>{t.nav.contributors}</a>
+            <a href="{prefix}/sponsors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('sponsors')}>{t.nav.sponsors}</a>
+            <a href="{prefix}/verticals" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('verticals')}>{t.nav.verticals}</a>
+            <a href="{prefix}/channels" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('channels')}>{t.nav.channels}</a>
+            <a href="{prefix}/press" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('press')}>{t.nav.press}</a>
           </div>
         {/if}
       </div>
 
       <a
         href="{prefix}/contact"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('contact')}
       >{t.nav.contact}</a>
     </nav>
 
     <!-- Utilities footer -->
-    <div class="shrink-0 space-y-3 border-t border-ptt-border px-4 py-4 dark:border-white/10">
+    <div class="shrink-0 space-y-3 border-t border-corag-border px-4 py-4 dark:border-white/10">
       <div class="flex items-center justify-end">
         <ThemeToggle {lang} placement="menu" />
       </div>
 
       <button
-        class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-base font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-base font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => (languageOpen = !languageOpen)}
         aria-expanded={languageOpen}
         aria-controls="mobile-language-links"

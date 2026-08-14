@@ -2,7 +2,7 @@
 import type { CertificatePayload } from '@/lib/certificates/types';
 /**
  * Print-grade diploma document (elevated from PR #297 / feature/cert).
- * Uses PTT / edition tokens; no Roboto or emoji.
+ * Uses Corag / edition tokens; no Roboto or emoji.
  */
 import { formatCalendarDate, formatInstantInSiteTimezone } from '@/lib/dates';
 import type { Language } from '@/lib/i18n';
@@ -44,65 +44,65 @@ const watermark = isRevoked ? t.certificates.watermarkRevoked : undefined;
 ---
 
 <div
-  class:list={['ptt-cert', isRevoked && 'ptt-cert--revoked']}
+  class:list={['corag-cert', isRevoked && 'corag-cert--revoked']}
   data-testid="diploma-document"
   data-cert-id={certificate.id}
   data-watermark={watermark}
 >
-  <div class="ptt-cert__motif" aria-hidden="true"></div>
-  <div class="ptt-cert__border-top" aria-hidden="true"></div>
-  <div class="ptt-cert__body">
-    <header class="ptt-cert__header">
+  <div class="corag-cert__motif" aria-hidden="true"></div>
+  <div class="corag-cert__border-top" aria-hidden="true"></div>
+  <div class="corag-cert__body">
+    <header class="corag-cert__header">
       <img
         src={logoSrc}
         alt=""
         width="120"
         height="80"
-        class="ptt-cert__logo"
+        class="corag-cert__logo"
         loading="eager"
         decoding="async"
       />
-      <h1 class="ptt-cert__title">{t.certificates.diplomaTitle}</h1>
+      <h1 class="corag-cert__title">{t.certificates.diplomaTitle}</h1>
     </header>
 
-    <hr class="ptt-cert__divider" />
+    <hr class="corag-cert__divider" />
 
-    <div class="ptt-cert__content">
-      <p class="ptt-cert__preamble">{t.certificates.preamble}</p>
-      <p class="ptt-cert__subject-name">{certificate.subject.name}</p>
-      <p class="ptt-cert__event-line">
+    <div class="corag-cert__content">
+      <p class="corag-cert__preamble">{t.certificates.preamble}</p>
+      <p class="corag-cert__subject-name">{certificate.subject.name}</p>
+      <p class="corag-cert__event-line">
         {t.certificates.attendedPrefix}
         {' '}
-        <span class="ptt-cert__event-name">{certificate.event.name}</span>
+        <span class="corag-cert__event-name">{certificate.event.name}</span>
       </p>
-      <p class="ptt-cert__event-line">
+      <p class="corag-cert__event-line">
         {formattedDate}{certificate.event.location ? ` · ${certificate.event.location}` : ''}
       </p>
-      <span class="ptt-cert__role">{roleLabel}</span>
+      <span class="corag-cert__role">{roleLabel}</span>
     </div>
 
-    <footer class="ptt-cert__footer">
-      <div class="ptt-cert__footer-left">
-        <div class="ptt-cert__seal" aria-hidden="true">
-          <span class="ptt-cert__seal-label">{t.certificates.sealLabel}</span>
+    <footer class="corag-cert__footer">
+      <div class="corag-cert__footer-left">
+        <div class="corag-cert__seal" aria-hidden="true">
+          <span class="corag-cert__seal-label">{t.certificates.sealLabel}</span>
         </div>
-        <span class="ptt-cert__issuer">
+        <span class="corag-cert__issuer">
           {t.certificates.issuedBy} {certificate.issuer.name}
         </span>
-        <span class="ptt-cert__issued-date">{formattedIssued}</span>
+        <span class="corag-cert__issued-date">{formattedIssued}</span>
       </div>
-      <div class="ptt-cert__footer-right">
-        <a href={verificationUrl} class="ptt-cert__qr-link">
+      <div class="corag-cert__footer-right">
+        <a href={verificationUrl} class="corag-cert__qr-link">
           <img
             src={qrDataUrl}
             alt={t.certificates.qrAlt}
             width="72"
             height="72"
-            class="ptt-cert__qr"
+            class="corag-cert__qr"
           />
         </a>
-        <span class="ptt-cert__verify-label">{t.certificates.verifyLabel}</span>
-        <span class="ptt-cert__cert-id" title={certificate.id}>{certificate.id}</span>
+        <span class="corag-cert__verify-label">{t.certificates.verifyLabel}</span>
+        <span class="corag-cert__cert-id" title={certificate.id}>{certificate.id}</span>
       </div>
     </footer>
   </div>

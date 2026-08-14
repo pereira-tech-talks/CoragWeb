@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 single meetup detail page.
+ * Corag v3.0.0 single meetup detail page.
  *
  * Renders the meetup body (markdown), talks list (with speakers), venue,
  * sponsors, and source links.
@@ -185,9 +185,9 @@ const metaDescription = buildMetaDescription({
   image={heroSrc}
 >
   <JsonLd data={eventJsonLd} />
-  <article class="bg-ptt-bg">
+  <article class="bg-corag-bg">
     {/* Hero */}
-    <header class="relative overflow-hidden bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/90">
+    <header class="relative overflow-hidden bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/90">
       {
         heroSrc && !bannerHeroSrc && (
           <div class="absolute inset-0 opacity-30">
@@ -207,7 +207,7 @@ const metaDescription = buildMetaDescription({
           <Badge variant={statusVariant}>{statusLabels[status]}</Badge>
           <time
             datetime={getCalendarDateString(date)}
-            class="text-sm font-semibold uppercase tracking-widest text-ptt-accent dark:text-ptt-accent-dark"
+            class="text-sm font-semibold uppercase tracking-widest text-corag-accent dark:text-corag-accent"
           >
             {dateLabel}
           </time>
@@ -254,7 +254,7 @@ const metaDescription = buildMetaDescription({
     {
       bannerHeroSrc && (
         <div class="main-container py-8 sm:py-10">
-          <div class="overflow-hidden rounded-2xl ring-1 ring-ptt-border">
+          <div class="overflow-hidden rounded-2xl ring-1 ring-corag-border">
             <BlogHeroImage
               src={bannerHeroSrc}
               alt={heroAlt}
@@ -270,15 +270,15 @@ const metaDescription = buildMetaDescription({
 
     <div class="main-container py-12 sm:py-16 grid gap-12 lg:grid-cols-[1fr_280px]">
       {/* Body */}
-      <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:tracking-tight prose-a:text-ptt-primary dark:prose-a:text-ptt-primary-dark prose-img:rounded-xl">
+      <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:tracking-tight prose-a:text-corag-primary dark:prose-a:text-corag-primary-light prose-img:rounded-xl">
         {
           untranslated && (
             <p
-              class="not-prose mb-8 flex items-start gap-2.5 rounded-xl border border-ptt-border bg-ptt-bg-elevated px-4 py-3 text-sm text-ptt-secondary"
+              class="not-prose mb-8 flex items-start gap-2.5 rounded-xl border border-corag-border bg-corag-bg-elevated px-4 py-3 text-sm text-corag-secondary"
               lang="en"
             >
               <svg
-                class="mt-0.5 h-4 w-4 shrink-0 text-ptt-primary dark:text-ptt-primary-dark"
+                class="mt-0.5 h-4 w-4 shrink-0 text-corag-primary dark:text-corag-primary-light"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -304,14 +304,14 @@ const metaDescription = buildMetaDescription({
         {
           meetupComLink && (
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark mb-2">
+              <h3 class="text-sm font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light mb-2">
                 {md.originalEvent}
               </h3>
               <a
                 href={meetupComLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-ptt hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+                class="inline-flex items-center gap-2 text-sm font-medium text-corag hover:text-corag-primary dark:hover:text-corag-primary-light"
               >
                 {eventPlatformLabel}
                 <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -324,13 +324,13 @@ const metaDescription = buildMetaDescription({
         {
           venue && (
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark mb-2">
+              <h3 class="text-sm font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light mb-2">
                 {md.venue}
               </h3>
-              <p class="text-sm text-ptt-secondary font-medium">
+              <p class="text-sm text-corag-secondary font-medium">
                 {venue.name}
               </p>
-              <p class="text-sm text-ptt-secondary">
+              <p class="text-sm text-corag-secondary">
                 {venue.city}, {venue.country}
               </p>
             </div>
@@ -339,14 +339,14 @@ const metaDescription = buildMetaDescription({
         {
           recordingUrl && !recordingYoutubeId && (
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark mb-2">
+              <h3 class="text-sm font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light mb-2">
                 {md.recording}
               </h3>
               <a
                 href={recordingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-ptt hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+                class="inline-flex items-center gap-2 text-sm font-medium text-corag hover:text-corag-primary dark:hover:text-corag-primary-light"
               >
                 {md.watchRecording}
               </a>
@@ -356,14 +356,14 @@ const metaDescription = buildMetaDescription({
         {
           linkPhotos && (
             <div>
-              <h3 class="text-sm font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark mb-2">
+              <h3 class="text-sm font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light mb-2">
                 {md.photosExternal}
               </h3>
               <a
                 href={linkPhotos}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-sm font-medium text-ptt hover:text-ptt-primary dark:hover:text-ptt-primary-dark"
+                class="inline-flex items-center gap-2 text-sm font-medium text-corag hover:text-corag-primary dark:hover:text-corag-primary-light"
               >
                 {md.photosExternal}
               </a>
@@ -377,15 +377,15 @@ const metaDescription = buildMetaDescription({
       recordingYoutubeId && (
         <section class="main-container pb-12 sm:pb-16">
           <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
-            <h2 class="text-2xl font-bold tracking-tight text-ptt">
+            <h2 class="text-2xl font-bold tracking-tight text-corag">
               {md.recording}
             </h2>
-            <p class="text-sm font-medium text-ptt-secondary">
+            <p class="text-sm font-medium text-corag-secondary">
               {md.watchRecording}
             </p>
           </div>
           <div
-            class="youtube-facade group relative aspect-video w-full overflow-hidden rounded-2xl bg-ptt-bg-dark ring-1 ring-ptt-border shadow-sm"
+            class="youtube-facade group relative aspect-video w-full overflow-hidden rounded-2xl bg-corag-bg-dark ring-1 ring-corag-border shadow-sm"
             data-youtube-id={recordingYoutubeId}
             data-title={title}
           >
@@ -431,9 +431,9 @@ const metaDescription = buildMetaDescription({
 
     {
       talks.length > 0 && (
-        <section class="bg-ptt-primary-soft/40 dark:bg-ptt-bg-elevated py-16 sm:py-20">
+        <section class="bg-corag-primary-soft/40 dark:bg-corag-bg-elevated py-16 sm:py-20">
           <div class="main-container">
-            <h2 class="text-3xl font-bold tracking-tight text-ptt">
+            <h2 class="text-3xl font-bold tracking-tight text-corag">
               {md.talks}
             </h2>
             <ul class="mt-8 grid gap-6 sm:grid-cols-2">
@@ -458,7 +458,7 @@ const metaDescription = buildMetaDescription({
       speakers.length > 0 && (
         <section class="py-16 sm:py-20">
           <div class="main-container">
-            <h2 class="text-3xl font-bold tracking-tight text-ptt">
+            <h2 class="text-3xl font-bold tracking-tight text-corag">
               {md.speakers}
             </h2>
             <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -475,12 +475,12 @@ const metaDescription = buildMetaDescription({
 
     {
       editionSponsors.length > 0 && (
-        <section class="bg-ptt-primary-soft/40 dark:bg-ptt-bg-elevated py-16 sm:py-20">
+        <section class="bg-corag-primary-soft/40 dark:bg-corag-bg-elevated py-16 sm:py-20">
           <div class="main-container">
-            <h2 class="text-3xl font-bold tracking-tight text-ptt">
+            <h2 class="text-3xl font-bold tracking-tight text-corag">
               {md.sponsors}
             </h2>
-            <p class="mt-2 text-ptt-secondary">{md.sponsorsSubtitle}</p>
+            <p class="mt-2 text-corag-secondary">{md.sponsorsSubtitle}</p>
             <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {editionSponsors.map(({ sponsor, tier }) => (
                 <li>

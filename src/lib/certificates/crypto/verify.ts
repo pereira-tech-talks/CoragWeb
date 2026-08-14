@@ -1,7 +1,7 @@
 import * as ed from '@noble/ed25519';
 
 import { canonicalizeForSigning } from '@/lib/certificates/crypto/canonicalize';
-import { PTT_VERIFICATION_METHOD_ID } from '@/lib/certificates/crypto/constants';
+import { CORAG_VERIFICATION_METHOD_ID } from '@/lib/certificates/crypto/constants';
 import { decodeBase64Url } from '@/lib/certificates/crypto/encoding';
 import type {
   DidWebDocument,
@@ -20,7 +20,7 @@ export type CryptoVerificationResult = {
 
 function resolvePublicKeyFromDid(did: DidWebDocument): Uint8Array {
   const method = did.verificationMethod.find(
-    (entry) => entry.id === PTT_VERIFICATION_METHOD_ID
+    (entry) => entry.id === CORAG_VERIFICATION_METHOD_ID
   );
   if (!method?.publicKeyJwk?.x) {
     throw new Error('DID document missing Ed25519 public key');
@@ -36,7 +36,7 @@ export async function verifyCredentialSignature(
   if (!credential.proof?.proofValue) {
     return { valid: false, reasons: ['missing_proof'] };
   }
-  if (credential.proof.verificationMethod !== PTT_VERIFICATION_METHOD_ID) {
+  if (credential.proof.verificationMethod !== CORAG_VERIFICATION_METHOD_ID) {
     reasons.push('wrong_verification_method');
   }
 

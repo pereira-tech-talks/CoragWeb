@@ -18,8 +18,8 @@ const sectionSpacing = grouped
   : 'py-16';
 const sectionSurface =
   surface === 'alt'
-    ? 'bg-ptt-primary-soft/40 dark:bg-ptt-bg-elevated'
-    : 'bg-ptt-bg';
+    ? 'bg-corag-primary-soft/40 dark:bg-corag-bg-elevated'
+    : 'bg-corag-bg';
 
 const prefix = getUrlPrefix(lang as Language);
 const viewAllText = t.homeSections.viewAllPosts;
@@ -42,7 +42,7 @@ const subtopicAccentByName = await getSubtopicAccentMap();
 <section class={`${sectionSpacing} ${sectionSurface} transition-colors duration-300`}>
   <div class="main-container">
     <h2
-      class="text-2xl sm:text-3xl md:text-4xl font-bold text-ptt mb-8"
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-corag mb-8"
     >
       {t.homeSections.latestArticles}
     </h2>
@@ -63,7 +63,7 @@ const subtopicAccentByName = await getSubtopicAccentMap();
     <div class="mt-8 text-center">
       <a
         href={`${prefix}/blog`}
-        class="inline-block border-b-2 border-ptt-primary text-ptt font-bold text-base sm:text-lg hover:text-ptt-primary transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="inline-block border-b-2 border-corag-primary text-corag font-bold text-base sm:text-lg hover:text-corag-primary transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
       >
         {viewAllText} &rarr;
       </a>

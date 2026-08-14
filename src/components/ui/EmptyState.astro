@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 empty-state component — used when a collection-driven listing
+ * Corag v3.0.0 empty-state component — used when a collection-driven listing
  * has no entries (e.g., upcoming events, talks for a speaker without any).
  */
 
@@ -22,11 +22,11 @@ const {
 ---
 
 <div
-  class={`flex flex-col items-center justify-center rounded-2xl border border-dashed border-ptt-border bg-ptt-bg-elevated/60 px-6 py-12 text-center ${className}`}
+  class={`flex flex-col items-center justify-center rounded-2xl border border-dashed border-corag-border bg-corag-bg-elevated/60 px-6 py-12 text-center ${className}`}
 >
   <svg
     aria-hidden="true"
-    class="h-12 w-12 text-ptt-primary dark:text-ptt-primary-dark mb-4"
+    class="h-12 w-12 text-corag-primary dark:text-corag-primary-light mb-4"
     fill="none"
     viewBox="0 0 24 24"
     stroke-width="1.5"
@@ -38,12 +38,12 @@ const {
       d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75z"
     ></path>
   </svg>
-  <h3 class="text-lg font-semibold text-ptt">
+  <h3 class="text-lg font-semibold text-corag">
     {title}
   </h3>
   {
     description && (
-      <p class="mt-2 max-w-md text-ptt-secondary">
+      <p class="mt-2 max-w-md text-corag-secondary">
         {description}
       </p>
     )
@@ -52,7 +52,7 @@ const {
     ctaLabel && ctaHref && (
       <a
         href={ctaHref}
-        class="mt-6 inline-flex items-center gap-2 rounded-full bg-ptt-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ptt-primary-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-corag-fill px-5 py-2.5 text-sm font-semibold text-corag-on-fill shadow-sm transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
       >
         {ctaLabel}
       </a>

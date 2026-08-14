@@ -2,16 +2,16 @@
 
 > Layered on top of the shipped default review prompt. Anchors severity to this
 > repo's real conventions (Astro 7 SSG + Svelte 5 islands + TS 6 + Tailwind 4
-> `@theme` PTT tokens + Biome 2, pnpm, bilingual ES-primary/EN static site on
+> `@theme` Corag tokens + Biome 2, pnpm, bilingual ES-primary/EN static site on
 > Cloudflare Pages). Adapt as conventions evolve — see `AGENTS.md`.
 
 ## Severity overrides for this codebase
 
 - **Always `critical`:**
-  - **Per-edition palette leak.** Setting `--ptt-*` tokens outside `src/styles/global.css`
+  - **Per-edition palette leak.** Setting `--corag-*` tokens outside `src/styles/global.css`
     or a `[data-edition-theme="{year}"]` scope — including inline
-    `style="--ptt-primary: …"` on a component. Chrome (Header/footer/lang switch/theme
-    toggle) must keep the global PTT brand on every PTD edition page.
+    `style="--corag-primary: …"` on a component. Chrome (Header/footer/lang switch/theme
+    toggle) must keep the global Corag brand on every PTD edition page.
   - **New top-level route not in the middleware allowlist.** A new page under
     `src/pages/` (or `src/pages/en/`) without a matching entry in
     `src/middleware.ts` (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`) — the route 404s in
@@ -36,9 +36,9 @@
 
 - **Escalate to `warning`:**
   - **Failing WCAG AA text color** for body/secondary text: `text-gray-400`,
-    `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`, or `--ptt-accent`
+    `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`, or `--corag-accent`
     (`#E8A33D`) used for body text. Approved secondary text is
-    `text-gray-600 dark:text-gray-300` / `text-ptt-secondary`.
+    `text-gray-600 dark:text-gray-300` / `text-corag-secondary`.
   - **`<img>` without `width` and `height`** (causes layout shift; also an a11y rule here).
   - **Hardcoded user-visible string** in a template/component instead of
     `getTranslations(lang)` — or a hardcoded URL instead of `getUrlPrefix(lang)`.
@@ -75,8 +75,8 @@
   `src/content.config.ts`; new fields must be added to the schema.
 - **Markdown-for-Agents twins:** when page/translation content changes, the matching
   `src/content/pages/{en,es}/*.md` must be updated in the same change (`pnpm run md:check`).
-- **PTT tokens** (`text-ptt`, `bg-ptt-bg`, `border-ptt-border`, `text-ptt-secondary`)
-  on new components — not raw non-PTT design tokens.
+- **Corag tokens** (`text-corag`, `bg-corag-bg`, `border-corag-border`, `text-corag-secondary`)
+  on new components — not raw non-Corag design tokens.
 - **Real validation gate** the diff should pass:
   `pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build`
   (plus `pnpm run md:check`). Cite it when a change plausibly breaks it.

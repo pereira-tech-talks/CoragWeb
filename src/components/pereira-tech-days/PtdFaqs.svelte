@@ -43,7 +43,7 @@ function toggle(index: number) {
   class:ptd-faq--brochure={isOpenGrid && !!sectionBg}
   class:py-[var(--ptd-section-pad)]={!isOpenGrid || !sectionBg}
   style={isOpenGrid && sectionBg
-    ? `--ptd-faq-bg: url('${sectionBg}'); background: var(--ptt-bg, #fef7f3);`
+    ? `--ptd-faq-bg: url('${sectionBg}'); background: var(--corag-bg, #fef7f3);`
     : sectionBg
       ? `background-image: url('${sectionBg}'); background-size: cover; background-position: center;`
       : undefined}
@@ -53,7 +53,7 @@ function toggle(index: number) {
     <div class="ptd-faq__bg pointer-events-none absolute inset-0 z-0" aria-hidden="true"></div>
     <div class="ptd-faq__fade pointer-events-none absolute inset-0 z-0" aria-hidden="true"></div>
   {:else if sectionBg}
-    <div class="absolute inset-0 bg-[var(--ptt-bg)]/55" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-[var(--corag-bg)]/55" aria-hidden="true"></div>
   {/if}
 
   <div
@@ -75,7 +75,7 @@ function toggle(index: number) {
         class:text-[#3a7f7c]={isOpenGrid}
         class:text-3xl={!isOpenGrid}
         class:tracking-tight={!isOpenGrid}
-        class:text-[var(--ptt-text)]={!isOpenGrid}
+        class:text-[var(--corag-text)]={!isOpenGrid}
       >
         {title}
       </h2>
@@ -86,12 +86,12 @@ function toggle(index: number) {
           class:max-w-[44rem]={isOpenGrid}
           class:text-[clamp(0.95rem,2.2vw,1.1rem)]={isOpenGrid}
           class:leading-[1.55]={isOpenGrid}
-          class:text-[color-mix(in_srgb,var(--ptt-text)_82%,transparent)]={isOpenGrid}
+          class:text-[color-mix(in_srgb,var(--corag-text)_82%,transparent)]={isOpenGrid}
           class:mx-auto={!isOpenGrid}
           class:mt-3={!isOpenGrid}
           class:max-w-2xl={!isOpenGrid}
           class:text-sm={!isOpenGrid}
-          class:text-[var(--ptt-text-muted)]={!isOpenGrid}
+          class:text-[var(--corag-text-muted)]={!isOpenGrid}
           class:md:text-base={!isOpenGrid}
         >
           {subtitle}
@@ -103,11 +103,11 @@ function toggle(index: number) {
       <ul class="ptd-faq__grid m-0 grid list-none grid-cols-1 gap-[clamp(0.9rem,2.8vw,1.25rem)] p-0 md:grid-cols-2">
         {#each items as item}
           <li
-            class="ptd-faq__item min-w-0 break-words rounded-2xl border border-[color-mix(in_srgb,var(--ptt-text)_10%,white_90%)] bg-white/95 shadow-[0_10px_24px_rgba(31,63,89,0.08)]"
+            class="ptd-faq__item min-w-0 break-words rounded-2xl border border-[color-mix(in_srgb,var(--corag-text)_10%,white_90%)] bg-white/95 shadow-[0_10px_24px_rgba(31,63,89,0.08)]"
           >
             <div class="flex items-start gap-2.5 p-[clamp(1.05rem,2.4vw,1.35rem)]">
               <span
-                class="mt-[0.15rem] shrink-0 text-[1.15rem] leading-none text-[var(--ptt-accent,#f06d6d)]"
+                class="mt-[0.15rem] shrink-0 text-[1.15rem] leading-none text-[var(--corag-accent,#f06d6d)]"
                 aria-hidden="true"
               >›</span>
               <div class="min-w-0">
@@ -117,14 +117,14 @@ function toggle(index: number) {
                   {tr(item.question, lang)}
                 </h3>
                 <div
-                  class="mt-[0.55rem] text-[clamp(0.92rem,1.9vw,0.98rem)] font-normal leading-[1.55] tracking-normal text-[color-mix(in_srgb,var(--ptt-text)_86%,transparent)] normal-case"
+                  class="mt-[0.55rem] text-[clamp(0.92rem,1.9vw,0.98rem)] font-normal leading-[1.55] tracking-normal text-[color-mix(in_srgb,var(--corag-text)_86%,transparent)] normal-case"
                   style="font-family: Roboto, system-ui, sans-serif;"
                 >
                   <p class="m-0">{tr(item.answer, lang)}</p>
                   {#if item.linkUrl && item.linkLabel}
                     <a
                       href={item.linkUrl}
-                      class="mt-2 inline-block font-semibold text-[var(--ptt-primary,#3a7f7c)] underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+                      class="mt-2 inline-block font-semibold text-[var(--corag-primary,#3a7f7c)] underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
                     >
                       {tr(item.linkLabel, lang)}
                     </a>
@@ -137,19 +137,19 @@ function toggle(index: number) {
       </ul>
     {:else}
       <ul
-        class="mt-8 divide-y divide-[var(--ptt-border)] rounded-2xl bg-[var(--ptt-bg-elevated)] shadow-sm ring-1 ring-[var(--ptt-border)]"
+        class="mt-8 divide-y divide-[var(--corag-border)] rounded-2xl bg-[var(--corag-bg-elevated)] shadow-sm ring-1 ring-[var(--corag-border)]"
       >
         {#each items as item, i}
           <li>
             <button
               type="button"
-              class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-[var(--ptt-text)] transition-colors hover:bg-[var(--ptt-bg)]/50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--ptt-primary)]"
+              class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-[var(--corag-text)] transition-colors hover:bg-[var(--corag-bg)]/50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--corag-primary)]"
               aria-expanded={openIndex === i}
               onclick={() => toggle(i)}
             >
               <span>{tr(item.question, lang)}</span>
               <span
-                class="text-lg text-[var(--ptt-accent)] transition-transform duration-200"
+                class="text-lg text-[var(--corag-accent)] transition-transform duration-200"
                 class:rotate-45={openIndex === i}
                 aria-hidden="true"
               >
@@ -157,12 +157,12 @@ function toggle(index: number) {
               </span>
             </button>
             {#if openIndex === i}
-              <div class="px-5 pb-4 text-sm leading-relaxed text-[var(--ptt-text-muted)]">
+              <div class="px-5 pb-4 text-sm leading-relaxed text-[var(--corag-text-muted)]">
                 <p>{tr(item.answer, lang)}</p>
                 {#if item.linkUrl && item.linkLabel}
                   <a
                     href={item.linkUrl}
-                    class="mt-2 inline-block font-semibold text-[var(--ptt-primary)] underline underline-offset-2"
+                    class="mt-2 inline-block font-semibold text-[var(--corag-primary)] underline underline-offset-2"
                   >
                     {tr(item.linkLabel, lang)}
                   </a>
@@ -192,7 +192,7 @@ function toggle(index: number) {
   }
 
   .ptd-faq__bg {
-    background-color: var(--ptt-bg, #fef7f3);
+    background-color: var(--corag-bg, #fef7f3);
     background-image: var(--ptd-faq-bg);
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -203,18 +203,18 @@ function toggle(index: number) {
     background:
       linear-gradient(
         to bottom,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 9%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 9%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 35%
       ),
       linear-gradient(
         to top,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 9%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 9%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 35%
       );
   }

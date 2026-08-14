@@ -40,7 +40,7 @@ interface Props {
   lcpImageHref?: string;
   lcpImageMedia?: string;
   /**
-   * Site chrome variant. `ptd-edition` swaps the global PTT header for the
+   * Site chrome variant. `ptd-edition` swaps the global Corag header for the
    * minimal Pereira Tech Day nav (current edition + previous editions).
    */
   chrome?: 'default' | 'ptd-edition';
@@ -154,16 +154,16 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
   </head>
   <body
     class:list={[
-      'flex flex-col min-h-screen text-ptt',
+      'flex flex-col min-h-screen text-corag',
       isPtdEditionChrome && ptdChromeVariant === 'dark'
         ? 'bg-[#030620]'
         : isPtdEditionChrome && ptdChromeVariant === 'light'
           ? 'bg-[#fef7f3]'
-          : 'bg-ptt-bg',
+          : 'bg-corag-bg',
       activeNotifications.length > 0 && 'has-top-notification',
     ]}
   >
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-ptt-bg-elevated focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:text-ptt-primary">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-corag-bg-elevated focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:text-corag-primary">
       Skip to content
     </a>
     {/*
@@ -173,7 +173,7 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
       PTD edition pages use a dedicated minimal header (legacy photocopy).
     */}
     <div
-      data-ptt-chrome
+      data-corag-chrome
       class:list={[
         'sticky top-0 z-50',
         /* Light PTD: keep chrome transparent so the hero illustration
@@ -207,7 +207,7 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
       }
     </div>
     {/*
-      Keep --ptt-chrome-height in sync with sticky chrome (header ±
+      Keep --corag-chrome-height in sync with sticky chrome (header ±
       notification bar). Hero uses it for 100dvh fill; ResizeObserver
       covers bar collapse/expand and header reflow without layout jump
       below the hero (chrome shrink and hero grow cancel).
@@ -216,13 +216,13 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
     */}
     <script is:inline>
       (function () {
-        var el = document.querySelector('[data-ptt-chrome]');
+        var el = document.querySelector('[data-corag-chrome]');
         if (!el) return;
         var root = document.documentElement;
         var raf = 0;
         var sync = function () {
           root.style.setProperty(
-            '--ptt-chrome-height',
+            '--corag-chrome-height',
             el.getBoundingClientRect().height + 'px'
           );
         };
@@ -257,7 +257,7 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
           var target = document.getElementById('main-after-hero');
           if (!target) return;
           event.preventDefault();
-          var chrome = document.querySelector('[data-ptt-chrome]');
+          var chrome = document.querySelector('[data-corag-chrome]');
           var offset = chrome ? chrome.getBoundingClientRect().height : 68;
           var top =
             target.getBoundingClientRect().top + window.scrollY - offset;
@@ -282,7 +282,7 @@ const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
           ? 'bg-[#030620]'
           : isPtdEditionChrome && ptdChromeVariant === 'light'
             ? 'bg-[#fef7f3]'
-            : 'bg-ptt-bg',
+            : 'bg-corag-bg',
       ]}
     >
       <slot />

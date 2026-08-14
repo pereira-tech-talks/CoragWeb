@@ -1,7 +1,7 @@
 /**
  * Shared helpers for POSTing form responses to the DailyBot Forms public API.
  *
- * Six PTT public intakes map to one DailyBot form each. Form and question UUIDs
+ * Six Corag public intakes map to one DailyBot form each. Form and question UUIDs
  * are stable identifiers baked in here (see
  * `.dwp/plans/PLAN_dailybot_forms_integration/analysis_results/DAILYBOT_UUIDS.json`
  * and `docs/features/FORMS.md` once Task 13 lands).
@@ -117,7 +117,7 @@ export function normalizePagePath(input: unknown): string {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Slugify (kept for tests / cross-org docs; PTT MC POSTs use labels)
+// Slugify (kept for tests / cross-org docs; Corag MC POSTs use labels)
 // ────────────────────────────────────────────────────────────────────────────
 
 export function slugify(label: string): string {
@@ -223,7 +223,7 @@ export const CONTRIBUTION_TYPE_VALUES = buildChoiceLookup([
 
 /**
  * Boolean Dailybot questions require JSON `true` / `false` (not "Yes"/"No").
- * Verified against PTT CFS + CoC forms (2026-08 audit).
+ * Verified against Corag CFS + CoC forms (2026-08 audit).
  */
 export function booleanToDailyBot(
   value: boolean | string | undefined

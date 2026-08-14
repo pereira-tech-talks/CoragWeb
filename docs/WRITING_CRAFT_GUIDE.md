@@ -6,7 +6,7 @@ Where the Writing Voice Guide covers **what the voice sounds like** (vocabulary,
 
 This guide was distilled from refinement sessions on actual long-form posts (particularly the extensive refinement of `2026-04-11_openclaw-your-assistant-your-machine-your-rules`) plus pattern analysis across the 10 most recent blog posts in the previous personal-blog era. Every rule here has a concrete origin in work that was accepted or rejected by an editor.
 
-> **PTT v3.0.0 context:** Pereira Tech Talks now hosts content from multiple authors — community organizers, speakers, vertical leads, mentors, and guests. The craft principles here are **transferable** across authors: verification, narrative structure, pacing, redundancy detection, source attribution, and the bilingual quote pattern apply equally to a meetup recap, a Pereira Tech Day editorial, a Speaker School cohort update, and a personal essay. Where a section is specific to long-form personal essays (e.g., the OpenClaw case study in §19), read it as the canonical refinement playbook — the same moves apply when a community member writes a deep-dive. For community-mode adaptations (meetup recaps, edition recaps, speaker pages), see §21 below.
+> **Corag v3.0.0 context:** Pereira Tech Talks now hosts content from multiple authors — community organizers, speakers, vertical leads, mentors, and guests. The craft principles here are **transferable** across authors: verification, narrative structure, pacing, redundancy detection, source attribution, and the bilingual quote pattern apply equally to a meetup recap, a Pereira Tech Day editorial, a Speaker School cohort update, and a personal essay. Where a section is specific to long-form personal essays (e.g., the OpenClaw case study in §19), read it as the canonical refinement playbook — the same moves apply when a community member writes a deep-dive. For community-mode adaptations (meetup recaps, edition recaps, speaker pages), see §21 below.
 
 ---
 
@@ -827,9 +827,9 @@ The rules exist because they come from concrete mistakes that had to be fixed. B
 
 ---
 
-## 21. Community-Content Adaptations (PTT v3.0.0)
+## 21. Community-Content Adaptations (Corag v3.0.0)
 
-The principles above were forged on long-form personal essays. Most PTT content is shorter, faster, and community-attributed. Here is how the same craft applies, adapted.
+The principles above were forged on long-form personal essays. Most Corag content is shorter, faster, and community-attributed. Here is how the same craft applies, adapted.
 
 ### 21.1 Meetup recap (600–1,200 words)
 
@@ -845,7 +845,7 @@ The principles above were forged on long-form personal essays. Most PTT content 
 - The edition page (`/pereira-tech-days/{year}`) is the **journalistic record**: timestamps, talks, attendance, sponsors. Not a narrative.
 - The blog recap that follows is **reflective**: what worked, what broke, what we learned. Three-act structure (§4) applies cleanly.
 - The bookend pattern (§4) works well: open with the moment that captured the day; close on the same moment one year later when announcing the next edition.
-- Use the per-edition brand kit only **inside** the edition route. Recaps that live on the blog use the global PTT voice and brand.
+- Use the per-edition brand kit only **inside** the edition route. Recaps that live on the blog use the global Corag voice and brand.
 
 ### 21.3 Speaker deep-dive (long-form, single author)
 

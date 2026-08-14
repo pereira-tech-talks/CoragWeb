@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 vertical card — preview for a `verticals` collection entry.
+ * Corag v3.0.0 vertical card — preview for a `verticals` collection entry.
  */
 
 import type { CollectionEntry } from 'astro:content';
@@ -32,25 +32,25 @@ const statusLabel =
 
 <a
   href={url}
-  class="group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl p-6 ring-1 ring-ptt-border transition hover:ring-ptt-primary/40 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+  class="group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl p-6 ring-1 ring-corag-border transition hover:ring-corag-primary/40 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
 >
   <div
-    class="absolute inset-0 -z-10 bg-gradient-to-br from-ptt-primary/10 via-ptt-bg-elevated to-ptt-accent/10 dark:from-ptt-primary-dark/15 dark:via-ptt-bg dark:to-ptt-accent-dark/15"
+    class="absolute inset-0 -z-10 bg-gradient-to-br from-corag-primary/10 via-corag-bg-elevated to-corag-accent/10 dark:from-corag-primary-light/15 dark:via-corag-bg dark:to-corag-accent/15"
   >
   </div>
   <div class="flex items-center justify-between">
-    <span class="text-xs font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark">
+    <span class="text-xs font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light">
       {t.verticalsPage.programLabel}
     </span>
     <Badge variant={statusVariant}>{statusLabel}</Badge>
   </div>
-  <h3 class="text-2xl font-bold text-ptt group-hover:text-ptt-primary dark:group-hover:text-ptt-primary-dark">
+  <h3 class="text-2xl font-bold text-corag group-hover:text-corag-primary dark:group-hover:text-corag-primary-light">
     {title}
   </h3>
-  <p class="text-ptt-secondary">
+  <p class="text-corag-secondary">
     {mission}
   </p>
-  <span class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-ptt-primary dark:text-ptt-primary-dark">
+  <span class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-corag-primary dark:text-corag-primary-light">
     {t.verticalsPage.learnMore}
     <svg
       aria-hidden="true"

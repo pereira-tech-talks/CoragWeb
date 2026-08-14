@@ -2,15 +2,15 @@
 
 ## Overview
 
-**Pereira Tech Talks** (PTT) is the bilingual technology community of Pereira, Risaralda, Colombia. The website at `pereiratechtalks.org` is the public face and operational backbone of the community — a platform for monthly meetups, the flagship Pereira Tech Day annual conference, the Speaker School, the verticals (La Biblioteca del Mañana, AI channel, and others), and the bilingual blog and slide deck library that comes out of all of it.
+**Pereira Tech Talks** (Corag) is the bilingual technology community of Pereira, Risaralda, Colombia. The website at `pereiratechtalks.org` is the public face and operational backbone of the community — a platform for monthly meetups, the flagship Pereira Tech Day annual conference, the Speaker School, the verticals (La Biblioteca del Mañana, AI channel, and others), and the bilingual blog and slide deck library that comes out of all of it.
 
-This document covers v3.0.0 — a full rewrite that replaced the previous PTT site (xergioalex.com-based clone) with a community-first, AI-agent-friendly, bilingual platform built on the Astro 7 / Svelte 5 / Tailwind 4 stack.
+This document covers v3.0.0 — a full rewrite that replaced the previous Corag site (xergioalex.com-based clone) with a community-first, AI-agent-friendly, bilingual platform built on the Astro 7 / Svelte 5 / Tailwind 4 stack.
 
 ## Brand Positioning
 
 **Primary identity:** Bilingual technology community of Pereira, Risaralda, Colombia — with international presence.
 
-PTT is positioned as the **community of builders** for the Eje Cafetero region: a place where developers, designers, founders, students, and curious people meet to learn together, present what they're working on, and ship things in public. It is intentionally bilingual (Spanish and English) so that the work that happens in Pereira is legible to the rest of the world from day one.
+Corag is positioned as the **community of builders** for the Eje Cafetero region: a place where developers, designers, founders, students, and curious people meet to learn together, present what they're working on, and ship things in public. It is intentionally bilingual (Spanish and English) so that the work that happens in Pereira is legible to the rest of the world from day one.
 
 **Value propositions (one per audience):**
 
@@ -26,7 +26,7 @@ Make Pereira a recognized hub of the global technology conversation — a place 
 
 The website must:
 
-- Communicate, in 3 seconds, that PTT is a real, active, professional bilingual technology community of Pereira, Risaralda, Colombia.
+- Communicate, in 3 seconds, that Corag is a real, active, professional bilingual technology community of Pereira, Risaralda, Colombia.
 - Make every public-facing piece of community content (events, talks, slides, blog posts, channels, sponsors) discoverable, citable, and accessible to AI agents.
 - Render correctly under per-edition branding for Pereira Tech Day editions (each year ships its own brand kit).
 - Maintain Lighthouse 100 across Performance / Accessibility / Best Practices / SEO.
@@ -45,13 +45,13 @@ The website must:
 
 See [INFORMATION_ARCHITECTURE.md](INFORMATION_ARCHITECTURE.md) for the canonical URL surface, navigation, and content relationships. Top-level sections:
 
-- **Home** (`/`, `/es/`) — value proposition, what PTT is, verticals, upcoming events, recent meetups, blog preview, sponsors strip, contact.
+- **Home** (`/`, `/es/`) — value proposition, what Corag is, verticals, upcoming events, recent meetups, blog preview, sponsors strip, contact.
 - **About** (`/about`, `/es/sobre-nosotros`) — who we are, mission, history, team.
 - **Pereira Tech Days** (`/pereira-tech-days`, `/pereira-tech-days/{year}`) — flagship annual conference; per-edition brand kit.
 - **Meetups** (`/meetups`, `/en/meetups`) — monthly community gatherings; recap, photos, slides, talks.
 - **Events** (`/events`, `/es/eventos`) — special one-off events that aren't Tech Days or meetups.
 - **Verticals** (`/verticals/...`) — La Biblioteca del Mañana, AI channel, Speaker School, etc.
-- **Speaker School** (`/speaker-school`, `/es/escuela-de-ponentes`) — first-class section: how to become a PTT speaker.
+- **Speaker School** (`/speaker-school`, `/es/escuela-de-ponentes`) — first-class section: how to become a Corag speaker.
 - **Blog** (`/blog`, `/es/blog`) — bilingual articles, series, tags, search.
 - **Slides** (`/slides`, `/es/slides`) — Reveal.js decks, external embeds, external links.
 - **Speakers** (`/speakers`) — bios + talks index.
@@ -83,7 +83,7 @@ See [INFORMATION_ARCHITECTURE.md](INFORMATION_ARCHITECTURE.md) for the canonical
 
 **Purpose:** Showcase the flagship annual conference and preserve the history of past editions.
 
-**Per-edition pages:** `/pereira-tech-days/{year}` — each edition can ship its own `brandKit` (palette, typography, hero assets) that overrides PTT defaults via `[data-edition-theme="{year}"]`. Speaker grid, schedule, sponsors of that edition, recap, and embedded slide decks.
+**Per-edition pages:** `/pereira-tech-days/{year}` — each edition can ship its own `brandKit` (palette, typography, hero assets) that overrides Corag defaults via `[data-edition-theme="{year}"]`. Speaker grid, schedule, sponsors of that edition, recap, and embedded slide decks.
 
 ### 3. Meetups
 
@@ -99,7 +99,7 @@ A first-class vertical with curriculum, mentor list, application form, and a pub
 
 ### 5. La Biblioteca del Mañana
 
-**Purpose:** PTT's flagship learning vertical — the community's reading and study group around emerging technology.
+**Purpose:** Corag's flagship learning vertical — the community's reading and study group around emerging technology.
 
 ### 6. AI Channel
 
@@ -117,9 +117,9 @@ A first-class vertical with curriculum, mentor list, application form, and a pub
 
 ### 8. Slides
 
-**Purpose:** Library of every deck presented at PTT events.
+**Purpose:** Library of every deck presented at Corag events.
 
-Three deck types in one collection (`internal` Reveal.js, `external-embed`, `external-link`). Decks are linked from talk and meetup pages. The Reveal.js theme inherits PTT brand tokens.
+Three deck types in one collection (`internal` Reveal.js, `external-embed`, `external-link`). Decks are linked from talk and meetup pages. The Reveal.js theme inherits Corag brand tokens.
 
 ### 9. Call for Speakers
 
@@ -135,7 +135,7 @@ Tier model documented in `docs/SPONSORSHIP.md`. Public list of current and histo
 
 ### 11. Contributors
 
-**Purpose:** Recognize the people who make PTT happen.
+**Purpose:** Recognize the people who make Corag happen.
 
 Public list of organizers, mentors, speakers, and recurring contributors.
 
@@ -143,7 +143,7 @@ Public list of organizers, mentors, speakers, and recurring contributors.
 
 **Purpose:** Make it obvious where the community talks.
 
-Inventory of official PTT channels (Discord, X, Instagram, LinkedIn, GitHub, YouTube, etc.) with a description of what flows through each.
+Inventory of official Corag channels (Discord, X, Instagram, LinkedIn, GitHub, YouTube, etc.) with a description of what flows through each.
 
 ### 13. Agent-Friendly Markdown Endpoints
 
@@ -156,7 +156,7 @@ Inventory of official PTT channels (Discord, X, Instagram, LinkedIn, GitHub, You
 
 ### 14. Multilingual Support
 
-**Purpose:** PTT is bilingual by default.
+**Purpose:** Corag is bilingual by default.
 
 - Spanish at `/` (primary), English at `/en/`.
 - All slugs in English (filenames, series IDs, image directories) — even for Spanish content.
@@ -167,7 +167,7 @@ Inventory of official PTT channels (Discord, X, Instagram, LinkedIn, GitHub, You
 
 ### Visual Design
 
-1. **Brand-led, not personal-led** — the brand is PTT, not any individual.
+1. **Brand-led, not personal-led** — the brand is Corag, not any individual.
 2. **Per-edition flexibility** — each Pereira Tech Day edition can ship its own design without breaking the global system.
 3. **Dark mode parity** — every page must work equally well in light and dark.
 4. **Mobile-first responsive** — most local visitors arrive on mobile.
@@ -175,28 +175,28 @@ Inventory of official PTT channels (Discord, X, Instagram, LinkedIn, GitHub, You
 
 ### Messaging Principles
 
-1. **Plural voice** — "we", not "I". PTT speaks for the community.
+1. **Plural voice** — "we", not "I". Corag speaks for the community.
 2. **Local pride, global posture** — proudly Pereira, professionally international.
 3. **Specific over abstract** — exact dates, exact venues, exact talk titles.
 4. **Anti-AI-slop** — see `docs/WRITING_VOICE_GUIDE.md` for the vocabulary blocklist and voice rules.
 
 ### Color Palette & Typography
 
-See **[Brand Guide](BRAND_GUIDE.md)** for the complete PTT v3.0.0 palette (deep teal/petroleum primary, amber accent, deep green-teal dark backgrounds, full state colors), typography (Atkinson Hyperlegible), and the per-edition brand kit contract.
+See **[Brand Guide](BRAND_GUIDE.md)** for the complete Corag v3.0.0 palette (deep teal/petroleum primary, amber accent, deep green-teal dark backgrounds, full state colors), typography (Atkinson Hyperlegible), and the per-edition brand kit contract.
 
 **Quick reference:**
 
 ```css
 /* Light mode */
---color-ptt-primary: #1F6F73;        /* Deep teal — CTAs, links, focus */
---color-ptt-accent: #E8A33D;          /* Amber — large text, pills */
---color-ptt-bg: #FAFBFB;
---color-ptt-text: #0F2A2C;
+--color-corag-primary: #1F6F73;        /* Deep teal — CTAs, links, focus */
+--color-corag-accent: #E8A33D;          /* Amber — large text, pills */
+--color-corag-bg: #FAFBFB;
+--color-corag-text: #0F2A2C;
 
 /* Dark mode */
---color-ptt-primary: #3FA8AD;
---color-ptt-bg: #08191A;              /* Deep green-teal */
---color-ptt-text: #E8F0EF;
+--color-corag-primary: #3FA8AD;
+--color-corag-bg: #08191A;              /* Deep green-teal */
+--color-corag-text: #E8F0EF;
 ```
 
 ## Technical Requirements
@@ -218,8 +218,8 @@ See **[Brand Guide](BRAND_GUIDE.md)** for the complete PTT v3.0.0 palette (deep 
 
 ### Accessibility
 
-- **WCAG 2.1 AA** baseline; AAA where possible (text on `--ptt-bg`).
-- Approved text colors only (`text-gray-600 dark:text-gray-300` or `text-ptt-text-secondary`); no `text-gray-400/500`.
+- **WCAG 2.1 AA** baseline; AAA where possible (text on `--corag-bg`).
+- Approved text colors only (`text-gray-600 dark:text-gray-300` or `text-corag-text-secondary`); no `text-gray-400/500`.
 - Image dimensions on every `<img>`.
 - Disclosure pattern for nav dropdowns (not `role="menu"`).
 
@@ -305,7 +305,7 @@ Three-tier taxonomy (primary / secondary / subtopic) defined in `src/content/tag
 
 ### Brand Effectiveness
 
-- **3-second test:** Visitors immediately understand "PTT is a real, professional bilingual technology community of Pereira, Colombia, and there is something happening soon."
+- **3-second test:** Visitors immediately understand "Corag is a real, professional bilingual technology community of Pereira, Colombia, and there is something happening soon."
 - **Internal hub completeness:** every page renders correctly in light and dark; every brand decision has a Brand Book entry.
 
 ### Community Engagement
@@ -358,7 +358,7 @@ Three-tier taxonomy (primary / secondary / subtopic) defined in `src/content/tag
 ## Related Documentation
 
 - [Information Architecture](INFORMATION_ARCHITECTURE.md) — Canonical URL surface and routing.
-- [Brand Guide](BRAND_GUIDE.md) — PTT brand contract.
+- [Brand Guide](BRAND_GUIDE.md) — Corag brand contract.
 - [Architecture](ARCHITECTURE.md) — Technical implementation.
 - [Development Commands](DEVELOPMENT_COMMANDS.md) — Build scripts.
 - [Standards](STANDARDS.md) — Coding conventions.

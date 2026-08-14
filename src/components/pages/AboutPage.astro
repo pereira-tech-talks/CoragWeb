@@ -29,7 +29,7 @@ const organizationData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Pereira Tech Talks',
-  alternateName: 'PTT',
+  alternateName: 'Corag',
   url: Astro.site?.href,
   logo: new URL('/images/brand/corag-wordmark.png', Astro.site).href,
   description:
@@ -119,8 +119,8 @@ const breadcrumbs = [
   title={t.aboutPage.title}
   description={t.aboutPage.description}
   keywords={lang === 'en'
-    ? ['about Pereira Tech Talks', 'PTT community', 'tech community Pereira', 'Risaralda tech ecosystem', 'tech community Colombia', 'Pereira Tech Day organizers']
-    : ['sobre Pereira Tech Talks', 'comunidad PTT', 'comunidad tecnología Pereira', 'ecosistema tecnología Risaralda', 'comunidad tecnología Colombia', 'organizadores Pereira Tech Day']}
+    ? ['about Pereira Tech Talks', 'Corag community', 'tech community Pereira', 'Risaralda tech ecosystem', 'tech community Colombia', 'Pereira Tech Day organizers']
+    : ['sobre Pereira Tech Talks', 'comunidad Corag', 'comunidad tecnología Pereira', 'ecosistema tecnología Risaralda', 'comunidad tecnología Colombia', 'organizadores Pereira Tech Day']}
 >
   <Fragment slot="head">
     <JsonLd data={organizationData} />
@@ -128,7 +128,7 @@ const breadcrumbs = [
     <JsonLd data={breadcrumbSchema} />
   </Fragment>
 
-  <div class="bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/90 text-white">
+  <div class="bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/90 text-white">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} onDark />
     </div>
@@ -157,13 +157,13 @@ const breadcrumbs = [
     </div>
   </div>
 
-  <div class="bg-ptt-bg-dark text-white border-t border-white/10">
+  <div class="bg-corag-bg-dark text-white border-t border-white/10">
     <div class="main-container py-10 sm:py-12">
       <ul class="grid grid-cols-2 sm:grid-cols-4 gap-4 list-none">
         {
           stats.map((stat) => (
             <li class="rounded-xl bg-white/10 px-4 py-5 text-center ring-1 ring-white/20">
-              <p class="text-3xl sm:text-4xl font-bold text-ptt-accent">{stat.value}</p>
+              <p class="text-3xl sm:text-4xl font-bold text-corag-accent">{stat.value}</p>
               <p class="mt-1 text-sm text-white/85">{stat.label}</p>
             </li>
           ))
@@ -173,7 +173,7 @@ const breadcrumbs = [
   </div>
 
   <Section title={t.aboutPage.bioTitle}>
-    <div class="prose prose-lg dark:prose-invert max-w-3xl prose-p:text-ptt-secondary" set:html={t.aboutPage.bioText} />
+    <div class="prose prose-lg dark:prose-invert max-w-3xl prose-p:text-corag-secondary" set:html={t.aboutPage.bioText} />
   </Section>
 
   <Section title={t.aboutPage.passionsTitle} surface="alt">
@@ -192,15 +192,15 @@ const breadcrumbs = [
   <Section title={t.aboutPage.quickFactsTitle}>
     <ul class="space-y-3 max-w-2xl list-none">
       {t.aboutPage.quickFacts.map((fact) => (
-        <li class="flex items-start gap-3 text-ptt-secondary">
-          <span class="text-ptt-primary dark:text-ptt-primary-dark mt-0.5 shrink-0" aria-hidden="true">✓</span>
+        <li class="flex items-start gap-3 text-corag-secondary">
+          <span class="text-corag-primary dark:text-corag-primary-light mt-0.5 shrink-0" aria-hidden="true">✓</span>
           <span>{fact}</span>
         </li>
       ))}
     </ul>
   </Section>
 
-  <div class="bg-ptt-bg-dark text-white py-16">
+  <div class="bg-corag-bg-dark text-white py-16">
     <div class="main-container text-center">
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
         {t.aboutPage.ctaTitle}
@@ -209,7 +209,7 @@ const breadcrumbs = [
       <div class="mt-6 flex flex-wrap justify-center gap-4">
         <a
           href={`${prefix}/blog`}
-          class="inline-flex items-center px-6 py-3 rounded-full bg-ptt-accent text-ptt-bg-dark font-semibold hover:bg-ptt-accent/90 transition-colors"
+          class="inline-flex items-center px-6 py-3 rounded-full bg-corag-accent text-corag-bg-dark font-semibold hover:bg-corag-accent/90 transition-colors"
         >
           {t.aboutPage.ctaCv}
         </a>

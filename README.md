@@ -27,7 +27,7 @@ This repository hosts the v3.0.0 community website: a fully bilingual (Spanish p
 | :------ | :---------- |
 | **Bilingual** | Full Spanish & English with route parity (Spanish primary; English international) |
 | **Verticals** | Speaker School · La Biblioteca del Mañana · AI Channel · Monthly Meetups |
-| **Pereira Tech Day** | Per-edition pages with their own brand kit (palette + typography), scoped so the umbrella PTT brand stays in chrome |
+| **Pereira Tech Day** | Per-edition pages with their own brand kit (palette + typography), scoped so the umbrella Corag brand stays in chrome |
 | **Slides system** | Reveal.js decks for talks, embeddable in talk detail pages |
 | **Community-driven** | Contributors, organizers, mentors, sponsors — all first-class content collections |
 | **AEO-ready** | Markdown-for-Agents endpoints for every public page |
@@ -112,11 +112,11 @@ Full tree with all files: [Architecture Guide](./docs/ARCHITECTURE.md#project-st
 
 Pereira Tech Talks v3.0.0 is built on a deliberate visual identity:
 
-- **Global PTT primary** — Petroleum Teal `#1F6F73` (light) / `#3FA8AD` (dark)
+- **Global Corag primary** — Petroleum Teal `#1F6F73` (light) / `#3FA8AD` (dark)
 - **Dark canvas** — Deep green-teal `#08191A`
 - **Accent** — Warm amber `#E8A33D` (icons, pills, large text only)
 - **Typography** — Inter Variable (display, headings, body, mono via system stack)
-- **Per-edition kits** — Each Pereira Tech Day edition (e.g. PTD 2024 with `Bebas Neue` uppercase + coral `#F06D6D`) overrides the palette inside `[data-edition-theme]` only — the umbrella PTT brand stays visible in header, footer, language switcher, and theme toggle on every edition page.
+- **Per-edition kits** — Each Pereira Tech Day edition (e.g. PTD 2024 with `Bebas Neue` uppercase + coral `#F06D6D`) overrides the palette inside `[data-edition-theme]` only — the umbrella Corag brand stays visible in header, footer, language switcher, and theme toggle on every edition page.
 
 Full guide: [Brand Book](./docs/BRAND_GUIDE.md). Live in dev: [`/internal/brand`](http://localhost:9999/internal/brand).
 

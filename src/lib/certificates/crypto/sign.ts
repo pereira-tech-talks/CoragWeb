@@ -2,9 +2,9 @@ import * as ed from '@noble/ed25519';
 
 import { canonicalizeForSigning } from '@/lib/certificates/crypto/canonicalize';
 import {
+  CORAG_VERIFICATION_METHOD_ID,
   CRYPTO_SUITE,
   PROOF_TYPE,
-  PTT_VERIFICATION_METHOD_ID,
 } from '@/lib/certificates/crypto/constants';
 import {
   decodePrivateKeyBase64,
@@ -39,7 +39,7 @@ export async function signCredential(
     type: PROOF_TYPE,
     cryptosuite: CRYPTO_SUITE,
     created,
-    verificationMethod: PTT_VERIFICATION_METHOD_ID,
+    verificationMethod: CORAG_VERIFICATION_METHOD_ID,
     proofPurpose: 'assertionMethod',
     proofValue: encodeBase64Url(signature),
   };

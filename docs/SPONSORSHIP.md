@@ -1,6 +1,6 @@
 # Sponsorship
 
-Pereira Tech Talks (PTT) is a **community-funded operation**. We have no equity, no employees, and no products to sell. Sponsors fund operations: venue rental, AV equipment, snacks, swag, recording gear, speaker travel, and the website infrastructure.
+Pereira Tech Talks (Corag) is a **community-funded operation**. We have no equity, no employees, and no products to sell. Sponsors fund operations: venue rental, AV equipment, snacks, swag, recording gear, speaker travel, and the website infrastructure.
 
 In exchange, sponsors get visibility to a hyper-engaged, technically savvy audience in Pereira (and via livestream, across LATAM and beyond), plus the satisfaction of investing in a public good. We treat sponsor relationships as **long-term partnerships**, not single-event placements.
 
@@ -106,8 +106,8 @@ We publish full quarterly summaries at `/sponsors#budget` (linking out from the 
 
 ## What sponsorship money does **not** fund
 
-- Salaries (PTT has no employees)
-- Equity buy-outs (PTT has no equity)
+- Salaries (Corag has no employees)
+- Equity buy-outs (Corag has no equity)
 - Paid promotions disguised as community content
 - Anything that conflicts with the [Code of Conduct](./CODE_OF_CONDUCT.md) or the [Community Guidelines](./COMMUNITY_GUIDELINES.md)
 
@@ -116,7 +116,7 @@ We publish full quarterly summaries at `/sponsors#budget` (linking out from the 
 - The right to dictate talk topics for community-curated meetups (sponsored meetups still feature community-curated content)
 - The right to access attendee personal data (we never share lists)
 - Sublicensing rights to our recordings or photographs
-- Naming rights to PTT, Pereira Tech Day, or any vertical
+- Naming rights to Corag, Pereira Tech Day, or any vertical
 - Direct recruiting outside the `#jobs` Discord channel
 
 ## Process
@@ -130,7 +130,7 @@ We publish full quarterly summaries at `/sponsors#budget` (linking out from the 
 
 ## Tax and legal
 
-PTT is currently structured as a community organization without a separate legal entity in Colombia (as of v3.0.0 launch). Sponsorship invoices are issued by a designated organizer's small business tax registration (RUT) and filed accordingly under Colombian tax law. We provide:
+Corag is currently structured as a community organization without a separate legal entity in Colombia (as of v3.0.0 launch). Sponsorship invoices are issued by a designated organizer's small business tax registration (RUT) and filed accordingly under Colombian tax law. We provide:
 
 - A formal invoice (factura electrónica) for Colombian sponsors
 - A bilingual receipt (English + Spanish) for international sponsors
@@ -162,4 +162,4 @@ We'll respond within 5 working days.
 **Last reviewed:** 2026.
 **Owner:** Sponsorship lead.
 
-A user-facing public version lives at `/sponsor-us` (Spanish primary) and `/en/sponsor-us` (English). The structured form posts to `/api/contact` with `_form: "sponsor"` (Dailybot **PTT Sponsors**; optional Resend ack). See [FORMS.md](./features/FORMS.md). You can still email <sponsors@pereiratechtalks.org> directly.
+A user-facing public version lives at `/sponsor-us` (Spanish primary) and `/en/sponsor-us` (English). The structured form posts to `/api/contact` with `_form: "sponsor"` (Dailybot **Corag Sponsors**; optional Resend ack). See [FORMS.md](./features/FORMS.md). You can still email <sponsors@pereiratechtalks.org> directly.

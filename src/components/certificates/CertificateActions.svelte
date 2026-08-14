@@ -76,10 +76,10 @@ async function shareLink(): Promise<void> {
 }
 </script>
 
-<div class="ptt-cert-actions" data-testid="certificate-actions">
+<div class="corag-cert-actions" data-testid="certificate-actions">
   <button
     type="button"
-    class="ptt-cert-actions__btn"
+    class="corag-cert-actions__btn"
     data-testid="cert-action-print"
     onclick={printCertificate}
   >
@@ -87,7 +87,7 @@ async function shareLink(): Promise<void> {
   </button>
   <button
     type="button"
-    class="ptt-cert-actions__btn ptt-cert-actions__btn--secondary"
+    class="corag-cert-actions__btn corag-cert-actions__btn--secondary"
     data-testid="cert-action-json"
     onclick={downloadJson}
   >
@@ -95,7 +95,7 @@ async function shareLink(): Promise<void> {
   </button>
   <button
     type="button"
-    class="ptt-cert-actions__btn ptt-cert-actions__btn--secondary"
+    class="corag-cert-actions__btn corag-cert-actions__btn--secondary"
     data-testid="cert-action-copy"
     onclick={copyLink}
   >
@@ -103,13 +103,13 @@ async function shareLink(): Promise<void> {
   </button>
   <button
     type="button"
-    class="ptt-cert-actions__btn ptt-cert-actions__btn--secondary"
+    class="corag-cert-actions__btn corag-cert-actions__btn--secondary"
     data-testid="cert-action-share"
     onclick={shareLink}
   >
     {labels.share}
   </button>
-  <p class="ptt-cert-actions__status" role="status" aria-live="polite">
+  <p class="corag-cert-actions__status" role="status" aria-live="polite">
     {status}
   </p>
 </div>

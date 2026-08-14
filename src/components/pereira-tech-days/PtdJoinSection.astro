@@ -63,7 +63,7 @@ const subAfter =
         <div class="ptd-join__bg pointer-events-none absolute inset-0 z-0" aria-hidden="true" />
         {/* Soft right cream — dissolve into copy; art spans most of the band. */}
         <div
-          class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent from-[42%] via-[color-mix(in_srgb,var(--ptt-bg,#fef7f3)_28%,transparent)] via-[68%] to-[var(--ptt-bg,#fef7f3)] to-[88%]"
+          class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-r from-transparent from-[42%] via-[color-mix(in_srgb,var(--corag-bg,#fef7f3)_28%,transparent)] via-[68%] to-[var(--corag-bg,#fef7f3)] to-[88%]"
           aria-hidden="true"
         />
       </>
@@ -84,19 +84,19 @@ const subAfter =
         class:list={[
           'm-0 font-bold uppercase leading-[1.05]',
           brochure
-            ? 'text-[clamp(2.1rem,5.2vw,3.35rem)] tracking-[0.04em] text-[var(--ptt-text)]'
-            : 'text-3xl tracking-tight text-[var(--ptt-text)] sm:text-4xl md:text-5xl',
+            ? 'text-[clamp(2.1rem,5.2vw,3.35rem)] tracking-[0.04em] text-[var(--corag-text)]'
+            : 'text-3xl tracking-tight text-[var(--corag-text)] sm:text-4xl md:text-5xl',
         ]}
         style="font-family: Bebas Neue, 'Arial Black', sans-serif;"
       >
         {titleLead ? <span class="block">{titleLead}</span> : null}
-        <span class="block text-[var(--ptt-accent)]">{titleAccent || title}</span>
+        <span class="block text-[var(--corag-accent)]">{titleAccent || title}</span>
       </h2>
       <p
         class:list={[
           brochure
-            ? 'mt-3 text-[clamp(1rem,2.1vw,1.2rem)] leading-snug text-[var(--ptt-text)]'
-            : 'mt-4 text-lg text-[var(--ptt-text)]',
+            ? 'mt-3 text-[clamp(1rem,2.1vw,1.2rem)] leading-snug text-[var(--corag-text)]'
+            : 'mt-4 text-lg text-[var(--corag-text)]',
         ]}
       >
         {subBefore}
@@ -104,7 +104,7 @@ const subAfter =
           subEmphasis && (
             <>
               {' '}
-              <strong class="font-semibold text-[var(--ptt-accent)]">{subEmphasis}</strong>
+              <strong class="font-semibold text-[var(--corag-accent)]">{subEmphasis}</strong>
               {subAfter ? ` ${subAfter}` : ''}
             </>
           )
@@ -114,7 +114,7 @@ const subAfter =
         hasCta && (
           <a
             href={ctaUrl}
-            class="mt-8 inline-flex rounded-full bg-[var(--ptt-primary)] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+            class="mt-8 inline-flex rounded-full bg-[var(--corag-primary)] px-8 py-3 text-sm font-semibold text-white transition hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
           >
             {ctaLabel}
           </a>
@@ -133,11 +133,11 @@ const subAfter =
      */
     min-height: max(18rem, 48vw);
     padding: clamp(1.1rem, 2.4vw, 1.6rem) 0 clamp(1.1rem, 2.4vw, 1.6rem);
-    background: var(--ptt-bg, #fef7f3);
+    background: var(--corag-bg, #fef7f3);
   }
 
   .ptd-join__bg {
-    background-color: var(--ptt-bg, #fef7f3);
+    background-color: var(--corag-bg, #fef7f3);
     background-image: var(--ptd-join-bg);
     background-repeat: no-repeat;
     /*

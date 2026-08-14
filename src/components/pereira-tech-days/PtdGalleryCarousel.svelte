@@ -49,11 +49,11 @@ function altFor(img: GalleryImage): string {
 }
 </script>
 
-<section class="bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]" aria-labelledby="ptd-gallery-title">
+<section class="bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]" aria-labelledby="ptd-gallery-title">
   <div class="main-container">
     <h2
       id="ptd-gallery-title"
-      class="ptd-gallery-title text-center text-3xl font-bold tracking-tight text-[var(--ptt-text)] md:text-4xl"
+      class="ptd-gallery-title text-center text-3xl font-bold tracking-tight text-[var(--corag-text)] md:text-4xl"
     >
       {title}
     </h2>
@@ -65,7 +65,7 @@ function altFor(img: GalleryImage): string {
             <li>
               <button
                 type="button"
-                class="block w-full overflow-hidden rounded-lg shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+                class="block w-full overflow-hidden rounded-lg shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
                 onclick={() => openLightbox(i)}
                 aria-label={altFor(img)}
               >
@@ -99,7 +99,7 @@ function altFor(img: GalleryImage): string {
               {@const isDuplicate = i >= images.length}
               <button
                 type="button"
-                class="ptd-marquee__slide shrink-0 px-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)] sm:px-2.5 lg:px-3"
+                class="ptd-marquee__slide shrink-0 px-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)] sm:px-2.5 lg:px-3"
                 onclick={() => openLightbox(i % images.length)}
                 aria-label={altFor(img)}
                 tabindex={isDuplicate ? -1 : 0}
@@ -120,10 +120,10 @@ function altFor(img: GalleryImage): string {
         </div>
       {/if}
     {:else}
-      <div class="mt-8 overflow-hidden rounded-2xl ring-1 ring-[var(--ptt-border)]">
+      <div class="mt-8 overflow-hidden rounded-2xl ring-1 ring-[var(--corag-border)]">
         <button
           type="button"
-          class="block w-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)]"
+          class="block w-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)]"
           onclick={() => openLightbox(activeIndex)}
           aria-label={lang === 'es' ? 'Abrir imagen ampliada' : 'Open enlarged image'}
         >
@@ -137,11 +137,11 @@ function altFor(img: GalleryImage): string {
             decoding="async"
           />
         </button>
-        <div class="flex gap-2 overflow-x-auto p-3 bg-[var(--ptt-bg-elevated)]">
+        <div class="flex gap-2 overflow-x-auto p-3 bg-[var(--corag-bg-elevated)]">
           {#each images as img, i}
             <button
               type="button"
-              class="shrink-0 overflow-hidden rounded-lg ring-2 transition {i === activeIndex ? 'ring-[var(--ptt-primary)]' : 'ring-transparent opacity-70 hover:opacity-100'}"
+              class="shrink-0 overflow-hidden rounded-lg ring-2 transition {i === activeIndex ? 'ring-[var(--corag-primary)]' : 'ring-transparent opacity-70 hover:opacity-100'}"
               onclick={() => { activeIndex = i; }}
               aria-label={altFor(img)}
               aria-current={i === activeIndex ? 'true' : undefined}
@@ -268,11 +268,11 @@ function altFor(img: GalleryImage): string {
     left: 0;
     background: linear-gradient(
       to right,
-      var(--ptt-bg) 0%,
-      color-mix(in srgb, var(--ptt-bg) 98%, transparent) 8%,
-      color-mix(in srgb, var(--ptt-bg) 82%, transparent) 30%,
-      color-mix(in srgb, var(--ptt-bg) 45%, transparent) 55%,
-      color-mix(in srgb, var(--ptt-bg) 10%, transparent) 90%,
+      var(--corag-bg) 0%,
+      color-mix(in srgb, var(--corag-bg) 98%, transparent) 8%,
+      color-mix(in srgb, var(--corag-bg) 82%, transparent) 30%,
+      color-mix(in srgb, var(--corag-bg) 45%, transparent) 55%,
+      color-mix(in srgb, var(--corag-bg) 10%, transparent) 90%,
       transparent 100%
     );
   }
@@ -281,11 +281,11 @@ function altFor(img: GalleryImage): string {
     right: 0;
     background: linear-gradient(
       to left,
-      var(--ptt-bg) 0%,
-      color-mix(in srgb, var(--ptt-bg) 98%, transparent) 8%,
-      color-mix(in srgb, var(--ptt-bg) 82%, transparent) 30%,
-      color-mix(in srgb, var(--ptt-bg) 45%, transparent) 55%,
-      color-mix(in srgb, var(--ptt-bg) 10%, transparent) 90%,
+      var(--corag-bg) 0%,
+      color-mix(in srgb, var(--corag-bg) 98%, transparent) 8%,
+      color-mix(in srgb, var(--corag-bg) 82%, transparent) 30%,
+      color-mix(in srgb, var(--corag-bg) 45%, transparent) 55%,
+      color-mix(in srgb, var(--corag-bg) 10%, transparent) 90%,
       transparent 100%
     );
   }

@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 meetup card — preview card for a single meetup entry from the
+ * Corag v3.0.0 meetup card — preview card for a single meetup entry from the
  * `meetups` collection.
  */
 
@@ -72,9 +72,9 @@ const talksLabel =
   data-umami-event="meetup_card_click"
   data-umami-event-slug={slug}
   data-umami-event-status={status}
-  class="group flex h-full min-w-0 w-full flex-col overflow-hidden rounded-2xl bg-ptt-bg-elevated shadow-sm ring-1 ring-ptt-border transition hover:shadow-lg hover:ring-ptt-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+  class="group flex h-full min-w-0 w-full flex-col overflow-hidden rounded-2xl bg-corag-bg-elevated shadow-sm ring-1 ring-corag-border transition hover:shadow-lg hover:ring-corag-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
 >
-  <div class="relative aspect-[16/9] overflow-hidden bg-ptt-primary-soft">
+  <div class="relative aspect-[16/9] overflow-hidden bg-corag-primary-soft">
     <img decoding="async"
       src={heroSrc}
       alt={heroAlt}
@@ -93,21 +93,21 @@ const talksLabel =
     }
   </div>
   <div class="flex min-w-0 flex-1 flex-col gap-3 p-5">
-    <div class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold uppercase tracking-wider text-ptt-primary dark:text-ptt-primary-dark">
+    <div class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold uppercase tracking-wider text-corag-primary dark:text-corag-primary-light">
       <time class="min-w-0 break-words" datetime={getCalendarDateString(date)}>{dateLabel}</time>
       {talksCount > 0 && <span aria-hidden="true">·</span>}
       {talksCount > 0 && <span class="shrink-0">{talksLabel}</span>}
     </div>
-    <h3 class="text-lg font-semibold text-ptt group-hover:text-ptt-primary line-clamp-2 break-words">
+    <h3 class="text-lg font-semibold text-corag group-hover:text-corag-primary line-clamp-2 break-words">
       {title}
     </h3>
     {description && (
-      <p class="text-sm text-ptt-secondary line-clamp-3 break-words">
+      <p class="text-sm text-corag-secondary line-clamp-3 break-words">
         {description}
       </p>
     )}
     {venueLine && (
-      <p class="mt-auto pt-2 text-xs text-ptt-secondary">
+      <p class="mt-auto pt-2 text-xs text-corag-secondary">
         {venueLine}
       </p>
     )}

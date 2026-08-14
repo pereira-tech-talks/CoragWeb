@@ -1,7 +1,7 @@
 # DESIGN.md — Pereira Tech Talks design system
 
 > Interface-design context for AI coding agents. When generating or editing any
-> user-facing UI in this repo, follow this file. Prefer the named `--ptt-*`
+> user-facing UI in this repo, follow this file. Prefer the named `--corag-*`
 > tokens below over ad-hoc values.
 >
 > **Profile:** `visual-ui` only. This repo has no styled-CLI surface (no
@@ -27,43 +27,43 @@ elevation, and motion used only as punctuation. Every surface must work in light
 
 ## Colors
 
-Declared as `--color-ptt-*` in the `@theme` block of `src/styles/global.css`;
-Tailwind 4 generates `bg-ptt-*` / `text-ptt-*` / `border-ptt-*` utilities. Dark
+Declared as `--color-corag-*` in the `@theme` block of `src/styles/global.css`;
+Tailwind 4 generates `bg-corag-*` / `text-corag-*` / `border-corag-*` utilities. Dark
 mode is class-based (`darkMode: ['class']`) and swaps the same token names under
 `.dark`, so **components never need `dark:` variants for palette tokens** — use
-`bg-ptt-bg` and it re-skins automatically.
+`bg-corag-bg` and it re-skins automatically.
 
 | Token | Light | Dark | Role / usage |
 |---|---|---|---|
-| `ptt-primary` | `#1F6F73` | `#3FA8AD` | Brand color — CTAs, links, focus rings |
-| `ptt-primary-strong` | `#155054` | `#5BBFC4` | Hover · active · pressed |
-| `ptt-primary-soft` | `#E1F2F1` | `#0F2A2C` | Tints · badges · subtle surfaces |
-| `ptt-accent` | `#E8A33D` | `#F4B95C` | Warm highlights — icons, pills, large text **only** |
-| `ptt-bg` | `#FAFBFB` | `#08191A` | Page background |
-| `ptt-bg-elevated` | `#FFFFFF` | `#0F2A2C` | Cards · modals |
-| `ptt-bg-dark` | `#08191A` | `#08191A` | Always-dark hero canvas (identical in both modes) |
-| `ptt-border` | `#E2E8E8` | `#1E3D40` | Dividers · card hairlines |
-| `ptt-border-strong` | `#C9D4D5` | `#2A5256` | Emphasized dividers |
-| `ptt-text` | `#0F2A2C` | `#E8F0EF` | Primary body text · headings |
-| `ptt-text-secondary` | `#4A6164` | `#B5C7C9` | Secondary text — meets AA |
-| `ptt-text-muted` | `#6E8589` | `#8FA3A6` | Metadata · **large text only** |
-| `ptt-success` | `#2E8757` | `#4FB07F` | Success states |
-| `ptt-warning` | `#C68417` | `#E2A848` | Warnings |
-| `ptt-danger` | `#B83A3A` | `#E0635F` | Errors · destructive actions |
-| `ptt-info` | `#1F6F73` | `#3FA8AD` | Informational (aliases primary) |
+| `corag-primary` | `#1F6F73` | `#3FA8AD` | Brand color — CTAs, links, focus rings |
+| `corag-primary-strong` | `#155054` | `#5BBFC4` | Hover · active · pressed |
+| `corag-primary-soft` | `#E1F2F1` | `#0F2A2C` | Tints · badges · subtle surfaces |
+| `corag-accent` | `#E8A33D` | `#F4B95C` | Warm highlights — icons, pills, large text **only** |
+| `corag-bg` | `#FAFBFB` | `#08191A` | Page background |
+| `corag-bg-elevated` | `#FFFFFF` | `#0F2A2C` | Cards · modals |
+| `corag-bg-dark` | `#08191A` | `#08191A` | Always-dark hero canvas (identical in both modes) |
+| `corag-border` | `#E2E8E8` | `#1E3D40` | Dividers · card hairlines |
+| `corag-border-strong` | `#C9D4D5` | `#2A5256` | Emphasized dividers |
+| `corag-text` | `#0F2A2C` | `#E8F0EF` | Primary body text · headings |
+| `corag-text-secondary` | `#4A6164` | `#B5C7C9` | Secondary text — meets AA |
+| `corag-text-muted` | `#6E8589` | `#8FA3A6` | Metadata · **large text only** |
+| `corag-success` | `#2E8757` | `#4FB07F` | Success states |
+| `corag-warning` | `#C68417` | `#E2A848` | Warnings |
+| `corag-danger` | `#B83A3A` | `#E0635F` | Errors · destructive actions |
+| `corag-info` | `#1F6F73` | `#3FA8AD` | Informational (aliases primary) |
 
-**Contrast contract.** `ptt-text` and `ptt-text-secondary` on `ptt-bg` /
-`ptt-bg-elevated` meet WCAG AA (≥ 4.5:1). `ptt-accent` on `ptt-bg` is **~2.4:1
-and fails AA** — never body text. `ptt-text-muted` is for large or decorative
+**Contrast contract.** `corag-text` and `corag-text-secondary` on `corag-bg` /
+`corag-bg-elevated` meet WCAG AA (≥ 4.5:1). `corag-accent` on `corag-bg` is **~2.4:1
+and fails AA** — never body text. `corag-text-muted` is for large or decorative
 text only.
 
-**Two extras exist for edge cases:** `ptt-primary-dark` (`#3FA8AD`) and
-`ptt-accent-dark` (`#F4B95C`) are fixed utilities that don't flip with the mode —
-use them when a component sits on a dark canvas (e.g. `bg-ptt-bg-dark` hero)
+**Two extras exist for edge cases:** `corag-primary-light` (`#3FA8AD`) and
+`corag-accent` (`#F4B95C`) are fixed utilities that don't flip with the mode —
+use them when a component sits on a dark canvas (e.g. `bg-corag-bg-dark` hero)
 while the page is in light mode.
 
 **Legacy aliases** `--color-main` / `--color-secondary` / `--color-gray-50` are
-transitional remaps to the PTT brand. **Never use them in new components.**
+transitional remaps to the Corag brand. **Never use them in new components.**
 
 ## Typography
 
@@ -79,7 +79,7 @@ on public chrome without updating this contract and the Brand Guide together.
 | H3 | `text-xl font-semibold` | Sub-sections, card titles (large) |
 | H4 | `text-lg font-semibold` | Card titles |
 | Body | `text-base leading-relaxed` | Paragraphs, featured descriptions |
-| Lead | `text-lg text-ptt-secondary` | Section subtitles, intros |
+| Lead | `text-lg text-corag-secondary` | Section subtitles, intros |
 | Small | `text-sm` | Meta, captions, secondary card body |
 | Eyebrow | `text-sm font-semibold uppercase tracking-widest` | Kickers (`Eyebrow` / Section) |
 | Caption | `text-xs font-semibold uppercase tracking-widest` | Dense meta only (year pills, badges) — **never** primary readable body |
@@ -112,7 +112,7 @@ on public chrome without updating this contract and the Brand Guide together.
 ## Elevation & depth
 
 Depth is **restrained and mostly hairline-based**. The canvas/elevated pair
-(`ptt-bg` → `ptt-bg-elevated`) plus a `border-ptt-border` hairline does most of
+(`corag-bg` → `corag-bg-elevated`) plus a `border-corag-border` hairline does most of
 the work; shadows are an accent, not the structure.
 
 - `shadow-sm` — the default for cards, buttons, and resting surfaces (most common).
@@ -120,7 +120,7 @@ the work; shadows are an accent, not the structure.
 - `shadow-xl` / `shadow-2xl` — reserved for modals and overlays only.
 
 In dark mode shadows read weakly against `#08191A`; prefer raising
-`bg-ptt-bg-elevated` and a `border-ptt-border` hairline over deepening a shadow.
+`bg-corag-bg-elevated` and a `border-corag-border` hairline over deepening a shadow.
 
 ## Shapes
 
@@ -129,7 +129,7 @@ Radius scale: `sm (4px) · md (8px) · lg (12px) · xl (16px) · 2xl (24px) · f
 The corner language is **soft**: `rounded-full` for pills, badges, avatars, and
 buttons (by far the most used); `rounded-xl` / `rounded-2xl` for cards and
 panels; `rounded-lg` for inputs and smaller surfaces; `rounded-md` sparingly.
-Borders are single-pixel hairlines in `ptt-border` — no heavy strokes.
+Borders are single-pixel hairlines in `corag-border` — no heavy strokes.
 
 ## Components
 
@@ -138,54 +138,54 @@ re-deriving them; canonical live examples are the `src/components/ui/` primitive
 and `src/components/pages/*Page.astro`.
 
 - **Button (primary)** — `inline-flex items-center gap-2 rounded-full
-  bg-ptt-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm
-  transition-colors hover:bg-ptt-primary/90 focus-visible:outline-2
-  focus-visible:outline-offset-2 focus-visible:outline-ptt-primary`, plus
-  `dark:bg-ptt-primary-dark dark:text-gray-950 dark:hover:bg-ptt-primary-dark/90`
+  bg-corag-fill px-5 py-2.5 text-sm font-semibold text-corag-on-fill shadow-sm
+  transition-colors hover:bg-corag-primary/90 focus-visible:outline-2
+  focus-visible:outline-offset-2 focus-visible:outline-corag-primary`, plus
+  `dark:bg-corag-primary-light dark:text-gray-950 dark:hover:bg-corag-primary-light/90`
   so the label stays legible on the lighter dark-mode teal. See
   `src/components/ui/EmptyState.astro:55`.
 - **Pill / badge** — `rounded-full px-3 py-1 text-xs font-semibold uppercase
-  tracking-wider`; primary variant `bg-ptt-primary text-white`, soft variant
-  `bg-ptt-primary-soft text-ptt`. Amber is allowed here (pill on
-  `ptt-bg-elevated`), never as loose body text. See `src/components/ui/Pill.astro`.
-- **Card / surface** — `bg-ptt-bg-elevated border border-ptt-border rounded-xl`
+  tracking-wider`; primary variant `bg-corag-fill text-corag-on-fill`, soft variant
+  `bg-corag-primary-soft text-corag`. Amber is allowed here (pill on
+  `corag-bg-elevated`), never as loose body text. See `src/components/ui/Pill.astro`.
+- **Card / surface** — `bg-corag-bg-elevated border border-corag-border rounded-xl`
   (or `rounded-2xl`) `shadow-sm`, with `hover:shadow-md transition-shadow` when
-  the whole card is a link. Card titles `text-lg font-semibold text-ptt`, body
-  `text-sm text-ptt-secondary`.
-- **Input** — `rounded-lg border border-ptt-border bg-ptt-bg-elevated px-4 py-2.5
-  text-base text-ptt`; always pair with a real `<label>` and an `autocomplete`
-  attribute. Error state uses `ptt-danger` for both the border and the message.
+  the whole card is a link. Card titles `text-lg font-semibold text-corag`, body
+  `text-sm text-corag-secondary`.
+- **Input** — `rounded-lg border border-corag-border bg-corag-bg-elevated px-4 py-2.5
+  text-base text-corag`; always pair with a real `<label>` and an `autocomplete`
+  attribute. Error state uses `corag-danger` for both the border and the message.
 - **Focus ring (global)** — `global.css` applies
-  `focus-visible:ring-2 focus-visible:ring-ptt-primary focus-visible:ring-offset-2`
+  `focus-visible:ring-2 focus-visible:ring-corag-primary focus-visible:ring-offset-2`
   to `a, button, input, select, textarea, [role="button"]`. **Don't remove it**;
   components that need a different treatment use `focus-visible:outline-*` in the
   brand color (as the primary button does).
 - **Nav / header** — `Header.svelte` + `MobileMenu.svelte`. Dropdowns use the
   **disclosure pattern** (`aria-expanded` + `aria-controls`), never `role="menu"`.
   Header, footer, language switcher, and theme toggle always keep the **global**
-  PTT palette — including on Pereira Tech Day edition pages.
+  Corag palette — including on Pereira Tech Day edition pages.
 
 ### Chrome personality
 
 Site chrome (header, footer, language switcher, theme toggle) reads the user
-theme and stays on the **global PTT palette** — never an edition kit.
+theme and stays on the **global Corag palette** — never an edition kit.
 
-- **Header** — `Header.svelte`. Light: `bg-ptt-bg-elevated/95` with
-  `logo-color.png` / `logo-vertical-color.webp` (`dark:hidden`). Dark: `bg-ptt-bg-dark/95` with
+- **Header** — `Header.svelte`. Light: `bg-corag-bg-elevated/95` with
+  `logo-color.png` / `logo-vertical-color.webp` (`dark:hidden`). Dark: `bg-corag-bg-dark/95` with
   `logo-white.png` / `logo-vertical-white.webp` (`dark:block`). Nav links inherit via `.nav-link` in
-  `global.css` (`text-ptt-secondary` → `dark:text-white/85`).
-  Vertical marks: regenerate with `node scripts/generate-ptt-logo-variants.mjs`.
+  `global.css` (`text-corag-secondary` → `dark:text-white/85`).
+  Vertical marks: regenerate with `node scripts/generate-corag-logo-variants.mjs`.
   Light chrome wordmarks (`topbar-logo-primary`, `logo-horizontal-primary`):
-  `node scripts/generate-ptt-light-logos.mjs` (from archived `*-black.webp`).
+  `node scripts/generate-corag-light-logos.mjs` (from archived `*-black.webp`).
 - **Hero CTAs on dark canvases** — white pill buttons use
-  `text-ptt-bg-dark`, **not** `text-ptt` — `text-ptt` auto-flips light in
+  `text-corag-bg-dark`, **not** `text-corag` — `text-corag` auto-flips light in
   dark mode and becomes illegible on white. Accent pills pair
-  `bg-ptt-accent text-ptt-bg-dark`. See `HeroSection.astro`.
+  `bg-corag-accent text-corag-bg-dark`. See `HeroSection.astro`.
 - **Dark heroes** — body copy on photo/dark overlays uses `text-white/85` or
   `text-white/90`, not `text-gray-200` / `dark:text-gray-300` (fails the
   no-gray-muted rule on tinted backgrounds).
 - **Theme toggle** — `ThemeToggle.astro` FAB: morphing SVG sun/moon icons only
-  (no emoji), `bg-ptt-bg-elevated` + token borders. Icon/fab transitions are
+  (no emoji), `bg-corag-bg-elevated` + token borders. Icon/fab transitions are
   disabled under `prefers-reduced-motion: reduce` (see `global.css`).
 - **PTD edition pages** — `EditionScope` skins only the edition body. Edition
   detail routes use `chrome="ptd-edition"` (`PtdEditionHeader`: `PTD {year}` +
@@ -227,8 +227,8 @@ overflow suite down to 280px (Galaxy Z Fold folded, iPhone SE).
 The home hero fills the **remaining viewport below sticky chrome**, not a fixed
 `100vh` that ignores the header.
 
-`--ptt-chrome-height` is set on `:root` by an inline script in `MainLayout`
-that measures `[data-ptt-chrome]` (notification bar + header) via
+`--corag-chrome-height` is set on `:root` by an inline script in `MainLayout`
+that measures `[data-corag-chrome]` (notification bar + header) via
 `ResizeObserver`. When the top notification bar collapses on scroll (or is
 absent), the measured height updates and the hero grows/shrinks by the same
 amount — chrome shrink and hero grow cancel, so content below the hero does
@@ -242,7 +242,7 @@ chrome instead of landing underneath it.
 | Header + top notification bar | `6.3rem` (`body.has-top-notification`) | Measured sticky chrome height |
 | Bar collapsed after scroll | (same class; live measure) | Header height only |
 
-Height uses `min-height: calc(100dvh − var(--ptt-chrome-height))` (`svh` as
+Height uses `min-height: calc(100dvh − var(--corag-chrome-height))` (`svh` as
 cascade fallback before `dvh`). From `lg` upward the hero also locks exact
 `height` so the first paint is one cinematic frame. Short viewports
 (`max-height: 720px` / `560px`) hide the scroll cue / social row and clamp
@@ -259,9 +259,9 @@ scroll-chevron animations respect the same preference inside `HeroSection`.
 
 **Do**
 
-- Use `--ptt-*` tokens and their `bg-ptt-*` / `text-ptt-*` / `border-ptt-*`
+- Use `--corag-*` tokens and their `bg-corag-*` / `text-corag-*` / `border-corag-*`
   utilities — they auto-flip for dark mode.
-- Keep body text at WCAG AA (≥ 4.5:1): `text-ptt` and `text-ptt-secondary`.
+- Keep body text at WCAG AA (≥ 4.5:1): `text-corag` and `text-corag-secondary`.
 - Give every `<img>` explicit `width` and `height`; add `decoding="async"` and
   `loading="lazy"` below the fold.
 - Keep heading hierarchy strict (h1 → h2 → h3, no skipping) and use semantic
@@ -275,14 +275,14 @@ scroll-chevron animations respect the same preference inside `HeroSection`.
 
 - **Don't** use `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, or
   `dark:text-gray-500` for body text — fails AA and is forbidden by `AGENTS.md`.
-- **Don't** use `ptt-accent` (amber) for body text — ~2.4:1 on `ptt-bg`.
-- **Don't** set `--ptt-*` variables outside `src/styles/global.css` or a
-  `[data-edition-theme]` scope — no inline `style="--ptt-primary: …"`.
+- **Don't** use `corag-accent` (amber) for body text — ~2.4:1 on `corag-bg`.
+- **Don't** set `--corag-*` variables outside `src/styles/global.css` or a
+  `[data-edition-theme]` scope — no inline `style="--corag-primary: …"`.
 - **Don't** let an edition palette reach the header, footer, language switcher,
   or theme toggle.
 - **Don't** use the legacy `--color-main` / `--color-secondary` aliases, or raw
   hex values, in new components.
-- **Don't** use pure black (`#000`) as a dark background — the PTT dark identity
+- **Don't** use pure black (`#000`) as a dark background — the Corag dark identity
   is `#08191A`.
 - **Don't** use `role="menu"` for nav dropdowns — use the disclosure pattern.
 - **Don't** remove the global `focus-visible` ring.
@@ -293,10 +293,10 @@ scroll-chevron animations respect the same preference inside `HeroSection`.
 **For coding agents working in this repo:** this `DESIGN.md` is the source of
 truth for the visual UI. Before generating or editing any user-facing markup:
 
-1. **Use the named tokens** — `ptt-primary`, `ptt-bg-elevated`, `ptt-text-secondary`,
+1. **Use the named tokens** — `corag-primary`, `corag-bg-elevated`, `corag-text-secondary`,
    the 4px spacing steps, the radius scale. Don't introduce values outside this file.
-2. **Pick by role, not by eye** — `ptt-primary` for actions and links,
-   `ptt-danger` for destructive states, `ptt-accent` for warmth in icons/pills only.
+2. **Pick by role, not by eye** — `corag-primary` for actions and links,
+   `corag-danger` for destructive states, `corag-accent` for warmth in icons/pills only.
 3. **Keep integrity** — body text ≥ 4.5:1; both light and dark verified; images
    dimensioned; motion gated by `prefers-reduced-motion`.
 4. **Match the documented patterns** — reuse the Button, Pill, Card, Input, and
@@ -307,7 +307,7 @@ truth for the visual UI. Before generating or editing any user-facing markup:
 
 Suggested instruction to paste into an agent prompt:
 
-> "Follow `docs/DESIGN.md` strictly. Build the UI using its `--ptt-*` tokens,
+> "Follow `docs/DESIGN.md` strictly. Build the UI using its `--corag-*` tokens,
 >  roles, and documented component patterns; keep the integrity rules (WCAG AA
 >  contrast, light + dark, reduced motion, edition-scoped palettes) intact."
 

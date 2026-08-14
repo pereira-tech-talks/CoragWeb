@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 Sponsor Us landing page.
+ * Corag v3.0.0 Sponsor Us landing page.
  *
  * Informational page for prospective sponsors. Explains tiers, value, current
  * sponsors, and links to the contact form with a sponsorship-prefilled
@@ -41,7 +41,7 @@ const ctaHref = '#sponsor-form';
 ---
 
 <MainLayout lang={lang} title={t.title} description={t.description}>
-  <div class="bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/85 text-white">
+  <div class="bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/85 text-white">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} onDark />
     </div>
@@ -55,7 +55,7 @@ const ctaHref = '#sponsor-form';
       <p class="mt-4 max-w-3xl text-lg text-white/85">{t.intro}</p>
       <a
         href={ctaHref}
-        class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ptt-accent px-6 py-3 text-base font-semibold text-ptt-bg-dark shadow-sm transition-colors hover:bg-ptt-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+        class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-accent px-6 py-3 text-base font-semibold text-corag-bg-dark shadow-sm transition-colors hover:bg-corag-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
       >
         {t.ctaButton}
       </a>
@@ -66,11 +66,11 @@ const ctaHref = '#sponsor-form';
     <ul class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 list-none">
       {
         t.reachStats.map((stat) => (
-          <li class="min-w-0 rounded-2xl bg-ptt-bg-elevated ring-1 ring-ptt-border p-4 sm:p-6 text-center">
-            <p class="text-4xl sm:text-5xl font-bold text-ptt-primary dark:text-ptt-primary-dark">
+          <li class="min-w-0 rounded-2xl bg-corag-bg-elevated ring-1 ring-corag-border p-4 sm:p-6 text-center">
+            <p class="text-4xl sm:text-5xl font-bold text-corag-primary dark:text-corag-primary-light">
               {stat.value}
             </p>
-            <p class="mt-2 text-sm font-medium text-ptt-secondary">
+            <p class="mt-2 text-sm font-medium text-corag-secondary">
               {stat.label}
             </p>
           </li>
@@ -87,22 +87,22 @@ const ctaHref = '#sponsor-form';
     <ul class="grid gap-6 sm:grid-cols-2 list-none">
       {
         t.tiers.map((tier) => (
-          <li class="flex h-full min-w-0 flex-col rounded-2xl bg-ptt-bg-elevated ring-1 ring-ptt-border p-4 sm:p-6">
+          <li class="flex h-full min-w-0 flex-col rounded-2xl bg-corag-bg-elevated ring-1 ring-corag-border p-4 sm:p-6">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <h3 class="text-2xl font-bold tracking-tight text-ptt">
+              <h3 class="text-2xl font-bold tracking-tight text-corag">
                 {tier.name}
               </h3>
               <Badge variant={tier.tier} size="md">
                 {tier.name}
               </Badge>
             </div>
-            <p class="mt-2 text-sm font-medium text-ptt-primary dark:text-ptt-primary-dark">
+            <p class="mt-2 text-sm font-medium text-corag-primary dark:text-corag-primary-light">
               {tier.headline}
             </p>
-            <ul class="mt-4 space-y-2 text-sm text-ptt-secondary">
+            <ul class="mt-4 space-y-2 text-sm text-corag-secondary">
               {tier.perks.map((perk) => (
                 <li class="flex items-start gap-2">
-                  <svg aria-hidden="true" class="h-4 w-4 shrink-0 text-ptt-primary dark:text-ptt-primary-dark mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg aria-hidden="true" class="h-4 w-4 shrink-0 text-corag-primary dark:text-corag-primary-light mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                   </svg>
                   <span>{perk}</span>
@@ -123,12 +123,12 @@ const ctaHref = '#sponsor-form';
       >
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 list-none">
           {sponsors.slice(0, 12).map((sponsor) => (
-            <li class="flex h-24 items-center justify-center rounded-xl bg-ptt-bg-elevated ring-1 ring-ptt-border p-4">
+            <li class="flex h-24 items-center justify-center rounded-xl bg-corag-bg-elevated ring-1 ring-corag-border p-4">
               <a
                 href={sponsor.data.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+                class="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
                 aria-label={sponsor.data.name}
               >
                 <img

@@ -8,7 +8,7 @@ Downstream tasks (page implementations, i18n, SEO, sitemap, search,
 middleware) consume this document verbatim. If you ship a page that does not
 match this IA, you are creating drift.
 
-> Last reviewed: 2026 — PTT v3.0.0 launch.
+> Last reviewed: 2026 — Corag v3.0.0 launch.
 
 ## 1. Languages & Routing
 
@@ -42,8 +42,8 @@ match this IA, you are creating drift.
 | Meetup detail | `/meetups/{slug}` | `/en/meetups/{slug}` | `meetups` | `meetups/[slug].astro` | `MeetupDetailPage.astro` | per-slug `.md` |
 | Events calendar | `/events` | `/es/events` | `events` + `meetups` | `events/index.astro` | `EventsCalendarPage.astro` | yes |
 | Event detail | `/events/{slug}` | `/es/events/{slug}` | `events` | `events/[slug].astro` | `EventDetailPage.astro` | per-slug `.md` |
-| PTT Days umbrella | `/pereira-tech-days` | `/en/pereira-tech-days` | `pereiraTechDays` | `pereira-tech-days/index.astro` | `PereiraTechDaysPage.astro` | yes |
-| PTT Day edition | `/pereira-tech-days/{year}` | `/es/pereira-tech-days/{year}` | `pereiraTechDays` | `pereira-tech-days/[year].astro` | `PereiraTechDayEditionPage.astro` (wraps in `EditionScope`) | per-year `.md` |
+| Corag Days umbrella | `/pereira-tech-days` | `/en/pereira-tech-days` | `pereiraTechDays` | `pereira-tech-days/index.astro` | `PereiraTechDaysPage.astro` | yes |
+| Corag Day edition | `/pereira-tech-days/{year}` | `/es/pereira-tech-days/{year}` | `pereiraTechDays` | `pereira-tech-days/[year].astro` | `PereiraTechDayEditionPage.astro` (wraps in `EditionScope`) | per-year `.md` |
 | Speakers catalog | `/speakers` | `/es/speakers` | `speakers` | `speakers/index.astro` | `SpeakersCatalogPage.astro` | yes |
 | Speaker profile | `/speakers/{slug}` | `/es/speakers/{slug}` | `speakers` | `speakers/[slug].astro` | `SpeakerProfilePage.astro` | per-slug `.md` |
 | ~~Talks catalog~~ | `/talks` → 301 `/meetups` | `/en/talks` → 301 `/en/meetups` | `talks` | `talks/index.astro` (redirect stub) | removed (Task 22) | n/a |
@@ -77,7 +77,7 @@ match this IA, you are creating drift.
 | Route | Purpose |
 |---|---|
 | `/internal/` | Index of internal sub-sections |
-| `/internal/brand/*` | PTT Brand Book (8 sub-pages — Task 1) |
+| `/internal/brand/*` | Corag Brand Book (8 sub-pages — Task 1) |
 | `/internal/ui/*` | Component showcase (Task 7) |
 | `/internal/admin/meetups` | List + JSON inspector for `meetups` collection |
 | `/internal/admin/events` | Same for `events` |
@@ -335,7 +335,7 @@ fetch `<page-url>.md` to read content directly.
 
 - **Newsletter platform** (Task 15) — Resend contact list / Buttondown / Mailchimp.
 - **Forms backend** — Cloudflare Pages Functions + **Dailybot Forms** (system of record); optional Resend ack. See [FORMS.md](./features/FORMS.md).
-- **PTD 2026 brand kit** (Task 17 step 6) — placeholder uses global PTT
+- **PTD 2026 brand kit** (Task 17 step 6) — placeholder uses global Corag
   brand until the design lands.
 - **Press kit downloads** — final asset list pending brand source files.
 

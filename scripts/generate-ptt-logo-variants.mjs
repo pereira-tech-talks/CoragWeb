@@ -12,9 +12,9 @@ import { fileURLToPath } from 'node:url';
  *   - logo-color.{png,webp} / logo-white.{png,webp} — legacy aliases
  *
  * Usage:
- *   node scripts/generate-ptt-logo-variants.mjs
- *   node scripts/generate-ptt-logo-variants.mjs --src path/in.png --outdir public/images/pereira-tech-talks
- *   node scripts/generate-ptt-logo-variants.mjs --scale 2
+ *   node scripts/generate-corag-logo-variants.mjs
+ *   node scripts/generate-corag-logo-variants.mjs --src path/in.png --outdir public/images/pereira-tech-talks
+ *   node scripts/generate-corag-logo-variants.mjs --scale 2
  */
 import { parseArgs } from 'node:util';
 
@@ -130,7 +130,7 @@ async function main() {
   written.push(await writePngAndWebp(legacyWhite, whiteImage));
 
   console.log(
-    `Generated PTT vertical logos @ ${info.width}×${info.height} (scale=${SCALE})`
+    `Generated Corag vertical logos @ ${info.width}×${info.height} (scale=${SCALE})`
   );
   console.log(`  white pixels converted: ${converted.toLocaleString()}`);
   for (const { pngPath, webpPath } of written) {

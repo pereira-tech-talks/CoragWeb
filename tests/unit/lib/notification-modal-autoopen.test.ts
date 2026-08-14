@@ -116,7 +116,7 @@ describe('consumeNotificationAutoOpen', () => {
       storage: { session, local },
     });
     expect(open).toBe(true);
-    expect(session.getItem('ptt:notify-auto:ptd-2026:en')).toBeNull();
+    expect(session.getItem('corag:notify-auto:ptd-2026:en')).toBeNull();
   });
 
   it('stays quiet on the next navigate after the session is marked', () => {
@@ -134,7 +134,7 @@ describe('consumeNotificationAutoOpen', () => {
   });
 
   it('still auto-opens EN after ES was already shown in the same tab', () => {
-    const session = memoryStorage({ 'ptt:notify-auto:ptd-2026:es': '1' });
+    const session = memoryStorage({ 'corag:notify-auto:ptd-2026:es': '1' });
     const local = memoryStorage();
     expect(
       consumeNotificationAutoOpen({
@@ -147,8 +147,8 @@ describe('consumeNotificationAutoOpen', () => {
   });
 
   it('opens on the 5th reload and persists the counter', () => {
-    const session = memoryStorage({ 'ptt:notify-auto:ptd-2026:en': '1' });
-    const local = memoryStorage({ 'ptt:notify-reloads:ptd-2026:en': '4' });
+    const session = memoryStorage({ 'corag:notify-auto:ptd-2026:en': '1' });
+    const local = memoryStorage({ 'corag:notify-reloads:ptd-2026:en': '4' });
     expect(
       consumeNotificationAutoOpen({
         id: 'ptd-2026',
@@ -157,7 +157,7 @@ describe('consumeNotificationAutoOpen', () => {
         storage: { session, local },
       })
     ).toBe(true);
-    expect(local.getItem('ptt:notify-reloads:ptd-2026:en')).toBe('5');
+    expect(local.getItem('corag:notify-reloads:ptd-2026:en')).toBe('5');
   });
 });
 

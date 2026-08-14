@@ -29,7 +29,7 @@ We give priority to:
 | Regular talk | 20–30 min + Q&A | A spec sheet sent 7 days prior | Default format. Most monthly meetups have 1–2 of these. |
 | Workshop | 60–90 min | Hands-on prerequisites communicated 7 days prior | Limited seats. Higher coordination cost — we plan workshops 6+ weeks in advance. |
 | Panel | 45 min | Internal prep call | We curate 3–4 panelists. Submit yourself or nominate someone. |
-| Pereira Tech Day keynote | 30–40 min | Multi-week prep with PTT speakers vertical | Annual flagship. We open a separate explicit CFS for this. |
+| Pereira Tech Day keynote | 30–40 min | Multi-week prep with Corag speakers vertical | Annual flagship. We open a separate explicit CFS for this. |
 
 ## Timeline
 
@@ -59,7 +59,7 @@ As a confirmed speaker:
 - Hero image, abstract, and speaker bio professionally produced for the website
 - A recording uploaded to YouTube (if you consent)
 - A speaker spotlight post on the blog, with social amplification
-- A free physical copy of any PTT swag of the year
+- A free physical copy of any Corag swag of the year
 - An entry in the public [Speakers directory](https://pereiratechtalks.org/speakers)
 - An entry in the [Contributors directory](https://pereiratechtalks.org/contributors)
 
@@ -72,9 +72,9 @@ For Pereira Tech Day specifically, we cover:
 
 ## Recording rights
 
-You retain full rights to your talk. By accepting our recording offer, you grant PTT a non-exclusive license to:
+You retain full rights to your talk. By accepting our recording offer, you grant Corag a non-exclusive license to:
 
-- Publish the recording on the official PTT YouTube channel
+- Publish the recording on the official Corag YouTube channel
 - Embed the recording on `pereiratechtalks.org`
 - Use short clips (under 30 seconds) for social amplification, with attribution
 - Provide it to event sponsors as part of the post-event deliverables, **without** sublicensing rights to those sponsors
@@ -115,4 +115,4 @@ If your proposal is declined for a given month, we keep it on file and re-evalua
 **Owner:** Speakers vertical lead.
 **Contact:** <speakers@pereiratechtalks.org>.
 
-A user-facing public form lives at `/call-for-speakers` (Spanish primary) and `/en/call-for-speakers`. Backend: Cloudflare Pages Function → Dailybot **PTT Call for Speakers** (optional Resend ack). You can still email <speakers@pereiratechtalks.org> directly.
+A user-facing public form lives at `/call-for-speakers` (Spanish primary) and `/en/call-for-speakers`. Backend: Cloudflare Pages Function → Dailybot **Corag Call for Speakers** (optional Resend ack). You can still email <speakers@pereiratechtalks.org> directly.

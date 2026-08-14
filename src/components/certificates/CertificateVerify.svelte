@@ -166,11 +166,11 @@ function cryptoMessage(crypto: NonNullable<VerifyResult['crypto']>): string {
     autocomplete="off"
     spellcheck="false"
     placeholder={labels.idPlaceholder}
-    class="flex-1 min-h-11 rounded-lg border border-ptt-border bg-ptt-bg-elevated px-3 text-ptt"
+    class="flex-1 min-h-11 rounded-lg border border-corag-border bg-corag-bg-elevated px-3 text-corag"
   />
   <button
     type="submit"
-    class="min-h-11 px-5 rounded-lg bg-ptt-primary text-ptt-bg font-semibold"
+    class="min-h-11 px-5 rounded-lg bg-corag-primary text-corag-bg font-semibold"
   >
     {labels.submit}
   </button>
@@ -186,7 +186,7 @@ function cryptoMessage(crypto: NonNullable<VerifyResult['crypto']>): string {
     : null}
   {@const cryptoText = result.crypto ? cryptoMessage(result.crypto) : ''}
   <div
-    class="rounded-2xl border border-ptt-border bg-ptt-bg-elevated p-6"
+    class="rounded-2xl border border-corag-border bg-corag-bg-elevated p-6"
     data-testid="verify-result"
     data-status={result.status}
     data-valid={result.valid ? 'true' : 'false'}
@@ -197,7 +197,7 @@ function cryptoMessage(crypto: NonNullable<VerifyResult['crypto']>): string {
     >
       {labels.statusLabel}
     </p>
-    <p class="text-2xl font-bold text-ptt mb-3">{statusLabel}</p>
+    <p class="text-2xl font-bold text-corag mb-3">{statusLabel}</p>
     {#if reasonText}
       <p class="text-gray-600 dark:text-gray-300 mb-4">{reasonText}</p>
     {/if}
@@ -210,26 +210,26 @@ function cryptoMessage(crypto: NonNullable<VerifyResult['crypto']>): string {
         class="text-sm text-gray-600 dark:text-gray-300 mb-4"
         data-testid="crypto-status"
       >
-        <span class="font-semibold text-ptt">{labels.cryptoLabel}:</span>
+        <span class="font-semibold text-corag">{labels.cryptoLabel}:</span>
         {cryptoText}
       </p>
     {/if}
     {#if result.payload}
       <dl class="grid gap-2 text-sm mb-6">
         <div>
-          <dt class="font-semibold text-ptt">{labels.subject}</dt>
+          <dt class="font-semibold text-corag">{labels.subject}</dt>
           <dd class="text-gray-600 dark:text-gray-300">
             {result.payload.subject.name}
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-ptt">{labels.event}</dt>
+          <dt class="font-semibold text-corag">{labels.event}</dt>
           <dd class="text-gray-600 dark:text-gray-300">
             {result.payload.event.name}
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-ptt">{labels.certId}</dt>
+          <dt class="font-semibold text-corag">{labels.certId}</dt>
           <dd class="font-mono text-gray-600 dark:text-gray-300">
             {result.payload.id}
           </dd>
@@ -239,7 +239,7 @@ function cryptoMessage(crypto: NonNullable<VerifyResult['crypto']>): string {
     {#if diplomaHref && result.status !== 'unknown'}
       <a
         href={diplomaHref}
-        class="inline-flex min-h-11 items-center text-ptt-primary underline underline-offset-2"
+        class="inline-flex min-h-11 items-center text-corag-primary underline underline-offset-2"
       >
         {labels.viewDiploma}
       </a>

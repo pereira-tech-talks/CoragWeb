@@ -224,11 +224,11 @@ function severityClass(severity: LocalizedNotification['severity']): string {
       // and rosa cannot carry white text.
       return 'bg-[#78020e] text-white';
     case 'warning':
-      return 'bg-ptt-bg-elevated text-ptt border-b border-ptt-border';
+      return 'bg-corag-bg-elevated text-corag border-b border-corag-border';
     case 'success':
-      return 'bg-ptt-bg-elevated text-ptt border-b border-ptt-border';
+      return 'bg-corag-bg-elevated text-corag border-b border-corag-border';
     default:
-      return 'bg-ptt-bg-elevated text-ptt border-b border-ptt-border';
+      return 'bg-corag-bg-elevated text-corag border-b border-corag-border';
   }
 }
 </script>
@@ -279,7 +279,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
             >
               {#if n.severity === 'important'}
                 <span
-                  class="hidden min-[360px]:inline shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide leading-none bg-white text-ptt-bg-dark"
+                  class="hidden min-[360px]:inline shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide leading-none bg-white text-corag-bg-dark"
                 >
                   {importantLabel}
                 </span>
@@ -351,7 +351,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
       aria-labelledby={`notify-title-${openEntry.id}`}
       aria-describedby={`notify-desc-${openEntry.id}`}
       tabindex="-1"
-      class="relative flex w-full max-w-md max-h-[calc(100dvh-1.5rem)] flex-col overflow-hidden rounded-t-2xl rounded-b-2xl bg-ptt-bg-elevated text-ptt shadow-2xl ring-1 ring-ptt-border focus:outline-none sm:max-h-[calc(100dvh-2rem)]"
+      class="relative flex w-full max-w-md max-h-[calc(100dvh-1.5rem)] flex-col overflow-hidden rounded-t-2xl rounded-b-2xl bg-corag-bg-elevated text-corag shadow-2xl ring-1 ring-corag-border focus:outline-none sm:max-h-[calc(100dvh-2rem)]"
     >
       <button
         type="button"
@@ -396,7 +396,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
       >
         {#if openEntry.severity === 'important'}
           <p
-            class="text-[11px] font-bold uppercase tracking-[0.16em] text-ptt-primary dark:text-ptt-primary-dark"
+            class="text-[11px] font-bold uppercase tracking-[0.16em] text-corag-primary dark:text-corag-primary-light"
           >
             {importantLabel}
           </p>
@@ -409,13 +409,13 @@ function severityClass(severity: LocalizedNotification['severity']): string {
         </h2>
         <p
           id={`notify-desc-${openEntry.id}`}
-          class="mt-2 text-sm font-medium leading-snug text-ptt-secondary sm:text-base"
+          class="mt-2 text-sm font-medium leading-snug text-corag-secondary sm:text-base"
         >
           {openEntry.summary}
         </p>
         {#if openEntry.body}
           <p
-            class="mt-2.5 text-sm leading-relaxed text-ptt-secondary whitespace-pre-line sm:mt-3"
+            class="mt-2.5 text-sm leading-relaxed text-corag-secondary whitespace-pre-line sm:mt-3"
           >
             {openEntry.body}
           </p>
@@ -423,13 +423,13 @@ function severityClass(severity: LocalizedNotification['severity']): string {
       </div>
 
       <div
-        class="shrink-0 border-t border-ptt-border/70 bg-ptt-bg-elevated px-4 py-3 sm:px-6 sm:py-4"
+        class="shrink-0 border-t border-corag-border/70 bg-corag-bg-elevated px-4 py-3 sm:px-6 sm:py-4"
       >
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
           {#if openEntry.ctaHref && openEntry.ctaLabel}
             <a
               href={openEntry.ctaHref}
-              class="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center rounded-full bg-ptt-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ptt-primary-strong sm:flex-1 dark:bg-ptt-primary-dark dark:text-ptt-bg dark:hover:opacity-90"
+              class="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center rounded-full bg-corag-fill px-5 py-2.5 text-sm font-semibold text-corag-on-fill transition hover:bg-corag-fill-strong sm:flex-1 dark:bg-corag-primary-light dark:text-corag-bg dark:hover:opacity-90"
               onclick={() =>
                 trackEvent(EVENTS.NOTIFICATION_CTA, { id: openEntry.id })}
             >
@@ -438,7 +438,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
           {/if}
           <button
             type="button"
-            class="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center rounded-full border border-ptt-border px-5 py-2.5 text-sm font-semibold text-ptt-secondary transition hover:border-ptt-primary hover:text-ptt sm:w-auto"
+            class="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center rounded-full border border-corag-border px-5 py-2.5 text-sm font-semibold text-corag-secondary transition hover:border-corag-primary hover:text-corag sm:w-auto"
             onclick={closeModal}
           >
             {closeLabel}

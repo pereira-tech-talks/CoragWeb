@@ -71,7 +71,7 @@ This skill is the mandatory workflow for creating new entries in `src/content/pe
 ## Reference Documentation
 
 - **[Content Collections schema](../../../src/content.config.ts)** — `pereiraTechDays` collection (lines 352-423) and `editionBrandKit` definition above.
-- **[Brand Guide](../../../docs/BRAND_GUIDE.md)** — Global PTT palette and per-edition override rules.
+- **[Brand Guide](../../../docs/BRAND_GUIDE.md)** — Global Corag palette and per-edition override rules.
 - **[Architecture Guide](../../../docs/ARCHITECTURE.md)**.
 
 ## Quick Reference
@@ -84,7 +84,7 @@ This skill is the mandatory workflow for creating new entries in `src/content/pe
 
 **Images:** `public/images/pereiraTechDays/<year>/`. Hero: `hero.{ext}`. Gallery: any naming convention you like.
 
-**Brand kit:** Each PTD has its own palette that overrides the global PTT colors **only within that edition's page**. Never modify `src/styles/global.css` from this skill.
+**Brand kit:** Each PTD has its own palette that overrides the global Corag colors **only within that edition's page**. Never modify `src/styles/global.css` from this skill.
 
 ### Brand Kit Template
 

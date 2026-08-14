@@ -70,7 +70,7 @@ const {
     </div>
     <!-- Amber accent hairline -->
     <div
-      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-ptt-primary via-ptt-accent to-transparent opacity-90"
+      class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-corag-primary via-corag-accent to-transparent opacity-90"
     >
     </div>
   </div>
@@ -104,13 +104,13 @@ const {
         <div class="hero-ctas mt-6 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
           <a
             href={meetupsHref}
-            class="inline-flex min-h-[44px] items-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ptt-bg-dark hover:bg-white/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            class="inline-flex min-h-[44px] items-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-corag-bg-dark hover:bg-white/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {meetupsLabel}
           </a>
           <a
             href={ptdHref}
-            class="inline-flex min-h-[44px] items-center rounded-full bg-ptt-accent px-5 py-2.5 text-sm font-semibold text-ptt-bg-dark hover:bg-ptt-accent-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+            class="inline-flex min-h-[44px] items-center rounded-full bg-corag-accent px-5 py-2.5 text-sm font-semibold text-corag-bg-dark hover:bg-corag-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
           >
             {ptdLabel}
           </a>
@@ -242,32 +242,32 @@ const {
 <style>
   /*
    * Fill remaining viewport below sticky chrome.
-   * --ptt-chrome-height is measured live in MainLayout (ResizeObserver on
-   * [data-ptt-chrome]). SSR fallbacks: header-only ~4.25rem; with an active
+   * --corag-chrome-height is measured live in MainLayout (ResizeObserver on
+   * [data-corag-chrome]). SSR fallbacks: header-only ~4.25rem; with an active
    * notification bar ~6.3rem (body.has-top-notification). Avoid :has().
    * Prefer 100dvh last so the hero tracks the dynamic viewport.
    */
   .hero-viewport {
-    min-height: calc(100svh - var(--ptt-chrome-height, 4.25rem));
-    min-height: calc(100dvh - var(--ptt-chrome-height, 4.25rem));
+    min-height: calc(100svh - var(--corag-chrome-height, 4.25rem));
+    min-height: calc(100dvh - var(--corag-chrome-height, 4.25rem));
   }
 
   :global(body.has-top-notification) .hero-viewport {
-    min-height: calc(100svh - var(--ptt-chrome-height, 6.3rem));
-    min-height: calc(100dvh - var(--ptt-chrome-height, 6.3rem));
+    min-height: calc(100svh - var(--corag-chrome-height, 6.3rem));
+    min-height: calc(100dvh - var(--corag-chrome-height, 6.3rem));
   }
 
   @media (min-width: 1024px) {
     .hero-viewport {
-      height: calc(100svh - var(--ptt-chrome-height, 4.25rem));
-      height: calc(100dvh - var(--ptt-chrome-height, 4.25rem));
-      min-height: calc(100dvh - var(--ptt-chrome-height, 4.25rem));
+      height: calc(100svh - var(--corag-chrome-height, 4.25rem));
+      height: calc(100dvh - var(--corag-chrome-height, 4.25rem));
+      min-height: calc(100dvh - var(--corag-chrome-height, 4.25rem));
     }
 
     :global(body.has-top-notification) .hero-viewport {
-      height: calc(100svh - var(--ptt-chrome-height, 6.3rem));
-      height: calc(100dvh - var(--ptt-chrome-height, 6.3rem));
-      min-height: calc(100dvh - var(--ptt-chrome-height, 6.3rem));
+      height: calc(100svh - var(--corag-chrome-height, 6.3rem));
+      height: calc(100dvh - var(--corag-chrome-height, 6.3rem));
+      min-height: calc(100dvh - var(--corag-chrome-height, 6.3rem));
     }
   }
 

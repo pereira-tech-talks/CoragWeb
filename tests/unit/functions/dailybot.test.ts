@@ -41,7 +41,7 @@ describe('slugify', () => {
   });
 });
 
-describe('lookupChoice (label values for PTT org)', () => {
+describe('lookupChoice (label values for Corag org)', () => {
   it('maps internal slugs and labels to canonical DailyBot labels', () => {
     expect(lookupChoice('general', CONTACT_TOPIC_VALUES)).toBe('General');
     expect(lookupChoice('General', CONTACT_TOPIC_VALUES)).toBe('General');

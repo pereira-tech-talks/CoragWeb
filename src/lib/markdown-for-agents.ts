@@ -345,7 +345,7 @@ export function serializeSeriesListingToMarkdown(
 }
 
 /**
- * Generic serializer used by every PTT v3 collection markdown endpoint
+ * Generic serializer used by every Corag v3 collection markdown endpoint
  * (meetups, speakers, talks, sponsors, contributors, verticals, PTDs).
  *
  * Produces a stable shape:

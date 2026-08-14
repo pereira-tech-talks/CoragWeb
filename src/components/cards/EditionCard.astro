@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 edition card — preview for a single Pereira Tech Day edition
+ * Corag v3.0.0 edition card — preview for a single Pereira Tech Day edition
  * (year-keyed). Uses brandKit accent for visual differentiation.
  */
 
@@ -44,7 +44,7 @@ const heroAlt = postponedArt
   : tr(edition.data.hero.alt, lang) || title;
 const url = getEditionHref(edition, lang);
 const accent =
-  edition.data.brandKit?.paletteLight?.accent || 'var(--color-ptt-accent)';
+  edition.data.brandKit?.paletteLight?.accent || 'var(--color-corag-accent)';
 const status = resolveEditionStatus(edition);
 
 const date =
@@ -74,10 +74,10 @@ const statusLabel = statusLabels[status]?.[lang] ?? status;
 
 <a
   href={url}
-  class="group flex h-full flex-col overflow-hidden rounded-2xl bg-ptt-bg-elevated shadow-sm ring-1 ring-ptt-border transition hover:shadow-lg hover:ring-ptt-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+  class="group flex h-full flex-col overflow-hidden rounded-2xl bg-corag-bg-elevated shadow-sm ring-1 ring-corag-border transition hover:shadow-lg hover:ring-corag-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
 >
   <div
-    class={`relative aspect-[16/9] overflow-hidden ${year === 2026 ? 'bg-[#F6EFE4]' : 'bg-ptt-bg'}`}
+    class={`relative aspect-[16/9] overflow-hidden ${year === 2026 ? 'bg-[#F6EFE4]' : 'bg-corag-bg'}`}
   >
     <img decoding="async"
       src={heroSrc}
@@ -98,18 +98,18 @@ const statusLabel = statusLabels[status]?.[lang] ?? status;
     </div>
   </div>
   <div class="flex flex-1 flex-col gap-3 p-5">
-    <div class="flex items-baseline gap-2 text-xs font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark">
+    <div class="flex items-baseline gap-2 text-xs font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light">
       <span>{year}</span>
       <span aria-hidden="true">·</span>
       <span>Pereira Tech Day</span>
     </div>
-    <h3 class="text-xl font-bold text-ptt group-hover:text-ptt-primary line-clamp-2">
+    <h3 class="text-xl font-bold text-corag group-hover:text-corag-primary line-clamp-2">
       {title}
     </h3>
-    <p class="text-sm text-ptt-secondary line-clamp-2">
+    <p class="text-sm text-corag-secondary line-clamp-2">
       {tagline}
     </p>
-    <p class="mt-auto pt-2 text-xs text-ptt-secondary">
+    <p class="mt-auto pt-2 text-xs text-corag-secondary">
       <time datetime={getCalendarDateString(new Date(date))}>{dateLabel}</time>
     </p>
   </div>

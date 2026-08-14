@@ -22,10 +22,10 @@ export type NavigationType =
 export const NOTIFY_AUTO_RELOAD_EVERY = 5;
 
 export const notifyAutoSessionKey = (id: string, lang = 'es'): string =>
-  `ptt:notify-auto:${id}:${lang}`;
+  `corag:notify-auto:${id}:${lang}`;
 
 export const notifyAutoReloadKey = (id: string, lang = 'es'): string =>
-  `ptt:notify-reloads:${id}:${lang}`;
+  `corag:notify-reloads:${id}:${lang}`;
 
 export type AutoOpenPlan = {
   shouldOpen: boolean;

@@ -4,7 +4,7 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
 
 <InternalLayout
   title="Brand Book — Iconography"
-  description="PTT v3.0.0 icon pack, sizes, stroke widths, and accessibility rules."
+  description="Corag v3.0.0 icon pack, sizes, stroke widths, and accessibility rules."
   section="brand"
   subsection="iconography"
 >
@@ -56,8 +56,8 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Color</h2>
       <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
         <li>Use <code>currentColor</code> by default — inherits the surrounding text token.</li>
-        <li>Decorative-only icons can use <code>--ptt-accent</code> if accompanied by visible text.</li>
-        <li>Never use <code>--ptt-accent</code> as the only visual signal of meaning (color alone fails accessibility).</li>
+        <li>Decorative-only icons can use <code>--corag-accent</code> if accompanied by visible text.</li>
+        <li>Never use <code>--corag-accent</code> as the only visual signal of meaning (color alone fails accessibility).</li>
       </ul>
     </section>
 
@@ -78,12 +78,12 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
 import { Calendar, Mic, Users } from 'lucide-astro';
 ---
 
-<button class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-ptt-primary text-white">
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-corag-fill text-corag-on-fill">
   <Calendar size={20} aria-hidden="true" stroke-width={1.5} />
   <span>Next meetup</span>
 </button>
 
-<a href="/cfs" aria-label="Apply as a speaker" class="p-2 rounded-md hover:bg-ptt-primary-soft">
+<a href="/cfs" aria-label="Apply as a speaker" class="p-2 rounded-md hover:bg-corag-primary-soft">
   <Mic size={20} aria-hidden="true" stroke-width={1.5} />
 </a>`}</code></pre>
     </section>

@@ -7,7 +7,7 @@ The **Pereira Tech Day** (PTD) collection powers the annual flagship conference'
 - **Collection:** `pereiraTechDays` — one file per edition in `src/content/pereiraTechDays/{year}.{yaml,json,md,mdx}`.
 - **Orchestrator:** `src/components/pages/PereiraTechDayDetailPage.astro` — resolves the edition, decides upcoming vs. past, and composes every section.
 - **Theming:** `EditionScope` (`src/components/pereira-tech-days/EditionScope.astro`) scopes the edition's `brandKit` under `[data-edition-theme="{year}"]`. Edition pages use a **dedicated PTD chrome** (`chrome="ptd-edition"` on `MainLayout`): `PtdEditionHeader` shows `PTD {year}`, optional in-page anchors (e.g. Cronograma), a “Previous editions” dropdown, and a language switcher instead of the global Meetups/Blog nav. **No theme toggle** on edition pages — the surface is locked (`ptdChromeVariant`: 2024 dark / 2026 light), including the footer via a forced `html.dark` (or light) class. See [Brand Guide § Per-edition brand kits](../BRAND_GUIDE.md#per-edition-brand-kits-pereira-tech-days).
-- **Legacy visual parity:** the **2026 upcoming** landing is an audited cream/coral/navy photocopy of legacy [`/pereira-tech-day/`](https://pereiratechtalks.org/pereira-tech-day/) (discrete countdown cards, tree-circle sponsors, always-open FAQ grid, illustration-forward Join). The **2024 past** landing remains the dark photocopy of `/pereira-tech-day/2024/`. Both keep v3 architecture (`EditionScope`, status-based branching via `getUpcomingLandingChrome()`, subscribe API, diploma FAQ links). Chrome (header/footer) stays global PTT.
+- **Legacy visual parity:** the **2026 upcoming** landing is an audited cream/coral/navy photocopy of legacy [`/pereira-tech-day/`](https://pereiratechtalks.org/pereira-tech-day/) (discrete countdown cards, tree-circle sponsors, always-open FAQ grid, illustration-forward Join). The **2024 past** landing remains the dark photocopy of `/pereira-tech-day/2024/`. Both keep v3 architecture (`EditionScope`, status-based branching via `getUpcomingLandingChrome()`, subscribe API, diploma FAQ links). Chrome (header/footer) stays global Corag.
 
 ## Routes
 
@@ -205,7 +205,7 @@ The former hub used `PtdHubFeaturedStage` + `PtdHubPastRow`; those components we
 
 ### Hub chrome rule
 
-**No `EditionScope` on non-edition chrome.** The singular landing and year detail pages use `EditionScope` + `PtdEditionHeader` as before. Global PTT header/footer stay outside the edition scope.
+**No `EditionScope` on non-edition chrome.** The singular landing and year detail pages use `EditionScope` + `PtdEditionHeader` as before. Global Corag header/footer stay outside the edition scope.
 
 ### Hub countdown variant
 
@@ -379,7 +379,7 @@ plans, the promo art, the original FAQ answers, the `EventScheduled` JSON-LD,
 and the promotional strip. `postponement`, `whilePostponed`, and the notice
 images can stay in place — they go inert.
 
-## `EditionScope` + PTT chrome rule
+## `EditionScope` + Corag chrome rule
 
 ```astro
 <EditionScope year={year}>
@@ -387,9 +387,9 @@ images can stay in place — they go inert.
 </EditionScope>
 ```
 
-`EditionScope.astro` wraps its slot in `<div data-edition-theme={year} class="ptd-edition-scope bg-ptt-bg text-ptt">`. `buildEditionThemeCss(edition)` generates a scoped CSS block (`[data-edition-theme="{year}"] { --ptt-primary: ...; }`, plus a `.dark [data-edition-theme="{year}"] { ... }` block when `paletteDark` is set) that `PereiraTechDayDetailPage.astro` inlines via `<style is:inline set:html={themeCss}>` **before** `<EditionScope>`, so the palette is present at first paint (no FOUC).
+`EditionScope.astro` wraps its slot in `<div data-edition-theme={year} class="ptd-edition-scope bg-corag-bg text-corag">`. `buildEditionThemeCss(edition)` generates a scoped CSS block (`[data-edition-theme="{year}"] { --corag-primary: ...; }`, plus a `.dark [data-edition-theme="{year}"] { ... }` block when `paletteDark` is set) that `PereiraTechDayDetailPage.astro` inlines via `<style is:inline set:html={themeCss}>` **before** `<EditionScope>`, so the palette is present at first paint (no FOUC).
 
-**Chrome rule:** `MainLayout` chrome renders **outside** `EditionScope` (siblings, not descendants). On edition detail routes, pass `chrome="ptd-edition"` so the global PTT header is replaced by `PtdEditionHeader` (site logo + `PTD {year}` + optional in-page anchors + previous-editions disclosure + language switcher). Pass in-page anchors via `MainLayout`'s `ptdAnchors` prop — the detail page uses it for `#schedule`, and only when the edition actually has an agenda. Footer stays global but follows the edition's locked theme (`ptdChromeVariant` forces `html.dark` for dark editions / removes it for light). Theme toggle is **omitted** on these routes. Never move chrome inside `EditionScope`, and never set `--ptt-*` tokens outside `global.css` or an `[data-edition-theme]` scope (no inline `style="--ptt-primary: ..."` on individual components).
+**Chrome rule:** `MainLayout` chrome renders **outside** `EditionScope` (siblings, not descendants). On edition detail routes, pass `chrome="ptd-edition"` so the global Corag header is replaced by `PtdEditionHeader` (site logo + `PTD {year}` + optional in-page anchors + previous-editions disclosure + language switcher). Pass in-page anchors via `MainLayout`'s `ptdAnchors` prop — the detail page uses it for `#schedule`, and only when the edition actually has an agenda. Footer stays global but follows the edition's locked theme (`ptdChromeVariant` forces `html.dark` for dark editions / removes it for light). Theme toggle is **omitted** on these routes. Never move chrome inside `EditionScope`, and never set `--corag-*` tokens outside `global.css` or an `[data-edition-theme]` scope (no inline `style="--corag-primary: ..."` on individual components).
 
 ## Component map
 
@@ -460,7 +460,7 @@ Use the `/add-ptd-edition` skill (mandatory — do not hand-roll a new edition e
 ## Related documentation
 
 - [Brand Guide § Per-edition brand kits](../BRAND_GUIDE.md#per-edition-brand-kits-pereira-tech-days) — scoping mechanism, reference kit values, checklist
-- [Design System](../DESIGN.md) — `--ptt-*` tokens, per-edition theming summary
+- [Design System](../DESIGN.md) — `--corag-*` tokens, per-edition theming summary
 - [Certificates](CERTIFICATES.md) — individual diploma pages issued per edition
 - [Architecture Guide](../ARCHITECTURE.md) — Content Collections overview, project structure
 - [Accessibility Guide](../ACCESSIBILITY.md) — WCAG AA contrast rules, per-edition palette verification

@@ -110,17 +110,17 @@ const hubCopy = {
     <JsonLd data={breadcrumbSchema} />
   </Fragment>
 
-  <div class="bg-gradient-to-b from-ptt-primary-soft/50 to-ptt-bg dark:from-ptt-bg-elevated dark:to-ptt-bg">
+  <div class="bg-gradient-to-b from-corag-primary-soft/50 to-corag-bg dark:from-corag-bg-elevated dark:to-corag-bg">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} />
     </div>
     <div class="main-container pt-6 pb-12">
       <Eyebrow>{t.calendarPage.eyebrow}</Eyebrow>
-      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-ptt">
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-corag">
         {t.calendarPage.title}
       </h1>
-      <p class="mt-2 text-xl text-ptt-secondary">{t.calendarPage.subtitle}</p>
-      <p class="mt-4 max-w-3xl text-lg text-ptt-secondary">
+      <p class="mt-2 text-xl text-corag-secondary">{t.calendarPage.subtitle}</p>
+      <p class="mt-4 max-w-3xl text-lg text-corag-secondary">
         {t.calendarPage.heroDescription}
       </p>
     </div>
@@ -144,7 +144,7 @@ const hubCopy = {
     <div class="flex flex-col sm:flex-row flex-wrap gap-3">
       <a
         href={`${prefix}/meetups/`}
-        class="inline-flex items-center justify-center rounded-full border border-ptt-border bg-ptt-bg-elevated px-5 py-2.5 text-sm font-semibold text-ptt hover:border-ptt-primary transition-colors"
+        class="inline-flex items-center justify-center rounded-full border border-corag-border bg-corag-bg-elevated px-5 py-2.5 text-sm font-semibold text-corag hover:border-corag-primary transition-colors"
       >
         {t.calendarPage.meetupsLink}
       </a>
@@ -152,7 +152,7 @@ const hubCopy = {
         href="https://luma.com/pertechtalks"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-full border border-ptt-border bg-ptt-bg-elevated px-5 py-2.5 text-sm font-semibold text-ptt hover:border-ptt-primary transition-colors"
+        class="inline-flex items-center justify-center rounded-full border border-corag-border bg-corag-bg-elevated px-5 py-2.5 text-sm font-semibold text-corag hover:border-corag-primary transition-colors"
       >
         {t.calendarPage.lumaLink}
       </a>
@@ -164,7 +164,7 @@ const hubCopy = {
     eyebrow={t.calendarPage.contributeEyebrow}
     title={t.calendarPage.contributeTitle}
   >
-    <p class="text-ptt-secondary max-w-2xl">{t.calendarPage.contributeDescription}</p>
+    <p class="text-corag-secondary max-w-2xl">{t.calendarPage.contributeDescription}</p>
     <div class="mt-8 max-w-2xl mx-auto">
       <CalendarIntakeForm
         client:visible

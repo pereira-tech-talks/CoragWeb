@@ -1,6 +1,6 @@
 # Community Guidelines
 
-These guidelines describe **how we behave in PTT spaces**. They complement the formal [Code of Conduct](./CODE_OF_CONDUCT.md) (which is the enforceable contract) by adding cultural expectations specific to a learning community.
+These guidelines describe **how we behave in Corag spaces**. They complement the formal [Code of Conduct](./CODE_OF_CONDUCT.md) (which is the enforceable contract) by adding cultural expectations specific to a learning community.
 
 > **TL;DR** — Be the community member you'd want a first-time attendee to meet on day one.
 
@@ -33,7 +33,7 @@ These guidelines describe **how we behave in PTT spaces**. They complement the f
 
 ## On social media (X, LinkedIn, Instagram, YouTube)
 
-- **Tag generously.** When you talk about PTT, tag `@pertechtalks` so others can find us.
+- **Tag generously.** When you talk about Corag, tag `@pertechtalks` so others can find us.
 - **Quote responsibly.** When quoting a speaker, attribute clearly and link to the original recording or slides.
 - **Disagree well.** Public disagreement with a speaker or organizer is welcome — do it on the substance, not the person.
 

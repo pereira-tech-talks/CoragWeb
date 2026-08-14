@@ -112,10 +112,10 @@ const paths: Partial<Record<SocialKey, string>> = {
             data-umami-event-platform={entry.key}
             data-umami-event-slug={speaker.id}
             class:list={[
-              'inline-flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary',
+              'inline-flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary',
               variant === 'icons'
-                ? 'rounded-full text-ptt-secondary hover:bg-ptt-primary-soft hover:text-ptt-primary dark:hover:bg-ptt-bg dark:hover:text-ptt-primary-dark'
-                : 'gap-1.5 rounded-full bg-ptt-primary-soft px-3 py-2 text-sm text-ptt-secondary hover:bg-ptt-primary hover:text-white dark:bg-ptt-bg-elevated dark:hover:bg-ptt-primary-dark dark:hover:text-gray-950',
+                ? 'rounded-full text-corag-secondary hover:bg-corag-primary-soft hover:text-corag-primary dark:hover:bg-corag-bg dark:hover:text-corag-primary-light'
+                : 'gap-1.5 rounded-full bg-corag-primary-soft px-3 py-2 text-sm text-corag-secondary hover:bg-corag-fill hover:text-corag-on-fill dark:bg-corag-bg-elevated dark:hover:bg-corag-primary-light dark:hover:text-gray-950',
             ]}
           >
             {paths[entry.key] ? (

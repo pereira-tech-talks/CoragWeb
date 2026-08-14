@@ -61,16 +61,16 @@ const isDraft = isDraftDeck(deck);
       </div>
     )}
 
-    <h1 class="text-3xl sm:text-4xl font-bold text-ptt mb-4">
+    <h1 class="text-3xl sm:text-4xl font-bold text-corag mb-4">
       {data.title}
     </h1>
 
-    <p class="text-lg text-ptt-secondary mb-6">
+    <p class="text-lg text-corag-secondary mb-6">
       {data.description}
     </p>
 
     {data.eventName && (
-      <div class="flex items-center gap-2 text-sm text-ptt-secondary mb-8">
+      <div class="flex items-center gap-2 text-sm text-corag-secondary mb-8">
         <span>{data.eventName}</span>
         {data.eventDate && (
           <>
@@ -87,7 +87,7 @@ const isDraft = isDraftDeck(deck);
               href={data.eventUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-ptt-primary hover:underline"
+              class="text-corag-primary hover:underline"
             >
               Event page ↗
             </a>
@@ -107,13 +107,13 @@ const isDraft = isDraftDeck(deck);
         href={data.externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-ptt-primary text-white font-medium hover:opacity-90 transition-opacity"
+        class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-corag-fill text-corag-on-fill font-medium hover:opacity-90 transition-opacity"
       >
         {ctaText} →
       </a>
       <a
         href={`${prefix}/slides`}
-        class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-ptt-border text-ptt-secondary font-medium hover:bg-ptt-bg-elevated transition-colors"
+        class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-corag-border text-corag-secondary font-medium hover:bg-corag-bg-elevated transition-colors"
       >
         {t.slides.external.backToCatalog}
       </a>

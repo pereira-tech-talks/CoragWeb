@@ -41,7 +41,7 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
   class:list={[
     'ptd-team-grid',
     framed &&
-      'rounded-[1.25rem] border border-[color-mix(in_srgb,var(--ptt-text)_10%,white_90%)] bg-[color-mix(in_srgb,white_88%,transparent)] p-[clamp(1.15rem,3.2vw,1.8rem)] shadow-[0_12px_28px_color-mix(in_srgb,var(--ptt-text)_8%,transparent)]',
+      'rounded-[1.25rem] border border-[color-mix(in_srgb,var(--corag-text)_10%,white_90%)] bg-[color-mix(in_srgb,white_88%,transparent)] p-[clamp(1.15rem,3.2vw,1.8rem)] shadow-[0_12px_28px_color-mix(in_srgb,var(--corag-text)_8%,transparent)]',
   ]}
   data-layout={brochure ? 'brochure' : 'tiles'}
 >
@@ -59,7 +59,7 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
             'ptd-team-title m-0 font-bold uppercase leading-[1.05]',
             brochure
               ? 'text-[clamp(1.8rem,5vw,2.6rem)] tracking-[0.01em] text-[#3a7f7c]'
-              : 'text-3xl text-[var(--ptt-text)] md:text-4xl',
+              : 'text-3xl text-[var(--corag-text)] md:text-4xl',
           ]}
         >
           {title}
@@ -69,8 +69,8 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
             class:list={[
               'm-0',
               brochure
-                ? 'mt-2 max-w-[36rem] text-[clamp(0.9rem,2vw,1rem)] leading-normal text-[color-mix(in_srgb,var(--ptt-text)_80%,transparent)]'
-                : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--ptt-text-muted)] md:text-base',
+                ? 'mt-2 max-w-[36rem] text-[clamp(0.9rem,2vw,1rem)] leading-normal text-[color-mix(in_srgb,var(--corag-text)_80%,transparent)]'
+                : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--corag-text-muted)] md:text-base',
             ]}
           >
             {subtitle}
@@ -94,13 +94,13 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
         const linkedin = contributor.data.social?.linkedin;
         const imgClass = useCircle
           ? brochure
-            ? 'ptd-team-photo !h-[clamp(6.25rem,14vw,8.5rem)] !w-[clamp(6.25rem,14vw,8.5rem)] !rounded-full !object-cover aspect-square border-2 border-[color-mix(in_srgb,var(--ptt-text)_18%,white_82%)]'
+            ? 'ptd-team-photo !h-[clamp(6.25rem,14vw,8.5rem)] !w-[clamp(6.25rem,14vw,8.5rem)] !rounded-full !object-cover aspect-square border-2 border-[color-mix(in_srgb,var(--corag-text)_18%,white_82%)]'
             : 'mb-3 h-28 w-28 rounded-full object-cover sm:mb-3.5 sm:h-32 sm:w-32 md:h-36 md:w-36'
-          : 'mb-3 h-28 w-28 rounded-xl object-cover shadow-sm ring-1 ring-[var(--ptt-border)] sm:mb-3.5 sm:h-32 sm:w-32 md:h-36 md:w-36';
+          : 'mb-3 h-28 w-28 rounded-xl object-cover shadow-sm ring-1 ring-[var(--corag-border)] sm:mb-3.5 sm:h-32 sm:w-32 md:h-36 md:w-36';
 
         const nameClass = brochure
-          ? 'ptd-team-name mt-3 max-w-[11rem] text-center text-[clamp(0.88rem,1.9vw,1.05rem)] font-semibold leading-snug text-[var(--ptt-text)]'
-          : 'max-w-[10rem] text-sm font-medium leading-snug text-[var(--ptt-text)] sm:text-base';
+          ? 'ptd-team-name mt-3 max-w-[11rem] text-center text-[clamp(0.88rem,1.9vw,1.05rem)] font-semibold leading-snug text-[var(--corag-text)]'
+          : 'max-w-[10rem] text-sm font-medium leading-snug text-[var(--corag-text)] sm:text-base';
 
         const itemClass = brochure
           ? 'ptd-team-item flex w-[calc((100%-clamp(0.9rem,2.8vw,1.25rem))/2)] max-w-full basis-[calc((100%-clamp(0.9rem,2.8vw,1.25rem))/2)] justify-center sm:w-[calc((100%-clamp(0.9rem,2.8vw,1.25rem)*2)/3)] sm:basis-[calc((100%-clamp(0.9rem,2.8vw,1.25rem)*2)/3)] lg:w-[calc((100%-clamp(0.9rem,2.8vw,1.25rem)*4)/5)] lg:basis-[calc((100%-clamp(0.9rem,2.8vw,1.25rem)*4)/5)]'
@@ -131,8 +131,8 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
                 title={`${profileLabel} ${contributor.data.name}`}
                 class:list={[
                   brochure
-                    ? 'ptd-team-card flex w-[min(100%,12rem)] flex-col items-center text-inherit no-underline transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ptt-primary)]'
-                    : 'rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ptt-primary)]',
+                    ? 'ptd-team-card flex w-[min(100%,12rem)] flex-col items-center text-inherit no-underline transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--corag-primary)]'
+                    : 'rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--corag-primary)]',
                 ]}
               >
                 {body}
@@ -163,10 +163,10 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
 
   .ptd-team-grid--framed {
     border-radius: 1.25rem;
-    border: 1px solid color-mix(in srgb, var(--ptt-text) 10%, #ffffff 90%);
+    border: 1px solid color-mix(in srgb, var(--corag-text) 10%, #ffffff 90%);
     background: color-mix(in srgb, #ffffff 88%, transparent);
     box-shadow:
-      0 12px 28px color-mix(in srgb, var(--ptt-text) 8%, transparent),
+      0 12px 28px color-mix(in srgb, var(--corag-text) 8%, transparent),
       0 1px 0 color-mix(in srgb, #ffffff 78%, transparent) inset;
     padding: clamp(1.15rem, 3.2vw, 1.8rem);
   }
@@ -194,10 +194,10 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
     aspect-ratio: 1 / 1;
     border-radius: 50% !important;
     object-fit: cover !important;
-    border: 2px solid color-mix(in srgb, var(--ptt-text) 18%, #ffffff 82%);
+    border: 2px solid color-mix(in srgb, var(--corag-text) 18%, #ffffff 82%);
     box-shadow:
       0 0 28px color-mix(in srgb, #ffffff 95%, transparent),
-      0 10px 20px color-mix(in srgb, var(--ptt-text) 12%, transparent);
+      0 10px 20px color-mix(in srgb, var(--corag-text) 12%, transparent);
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
@@ -223,8 +223,8 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
       ellipse 80% 78% at 50% 50%,
       #ffffff 0%,
       #fffefb 22%,
-      color-mix(in srgb, var(--ptt-bg, #fef7f3) 88%, transparent) 48%,
-      color-mix(in srgb, var(--ptt-bg, #fef7f3) 40%, transparent) 70%,
+      color-mix(in srgb, var(--corag-bg, #fef7f3) 88%, transparent) 48%,
+      color-mix(in srgb, var(--corag-bg, #fef7f3) 40%, transparent) 70%,
       transparent 100%
     );
     filter: blur(4px);
@@ -235,7 +235,7 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
     transform: translateY(-2px);
     box-shadow:
       0 0 34px color-mix(in srgb, #ffffff 100%, transparent),
-      0 14px 24px color-mix(in srgb, var(--ptt-text) 14%, transparent);
+      0 14px 24px color-mix(in srgb, var(--corag-text) 14%, transparent);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -252,11 +252,11 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
     overflow: hidden;
     min-height: var(--ptd-team-bg-height);
     padding: clamp(2.25rem, 7vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
-    background: var(--ptt-bg, #fef7f3);
+    background: var(--corag-bg, #fef7f3);
   }
 
   .ptd-team-section__bg {
-    background-color: var(--ptt-bg, #fef7f3);
+    background-color: var(--corag-bg, #fef7f3);
     background-image: var(--ptd-team-bg);
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -267,18 +267,18 @@ const profileLabel = lang === 'es' ? 'Visitar perfil de' : 'Visit profile of';
     background:
       linear-gradient(
         to bottom,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 9%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 9%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 35%
       ),
       linear-gradient(
         to top,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 9%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 9%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 35%
       );
   }

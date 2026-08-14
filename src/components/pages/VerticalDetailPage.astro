@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 single vertical (program) detail page. Renders mission, full
+ * Corag v3.0.0 single vertical (program) detail page. Renders mission, full
  * description, leaders, related meetups, channels, and the markdown body.
  */
 
@@ -64,8 +64,8 @@ const breadcrumbs = [
 ---
 
 <MainLayout lang={lang} title={title} description={metaDescription} image={heroSrc}>
-  <article class="bg-ptt-bg">
-    <header class="relative overflow-hidden bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/90 text-white">
+  <article class="bg-corag-bg">
+    <header class="relative overflow-hidden bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/90 text-white">
       {
         heroSrc && (
           <div class="absolute inset-0 opacity-25">
@@ -90,7 +90,7 @@ const breadcrumbs = [
         <p class="mt-4 max-w-3xl text-xl leading-relaxed text-white/85">{mission}</p>
         {
           schedule && (
-            <p class="mt-6 text-sm font-medium text-ptt-accent">
+            <p class="mt-6 text-sm font-medium text-corag-accent">
               {schedule}
             </p>
           )
@@ -100,14 +100,14 @@ const breadcrumbs = [
             isSpeakerSchool ? (
               <a
                 href="#speaker-school-form"
-                class="inline-flex min-h-[44px] items-center rounded-full bg-ptt-accent px-6 py-2.5 text-sm font-semibold text-ptt-bg-dark transition hover:bg-ptt-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+                class="inline-flex min-h-[44px] items-center rounded-full bg-corag-accent px-6 py-2.5 text-sm font-semibold text-corag-bg-dark transition hover:bg-corag-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
               >
                 {t.verticalsPage.applyCta}
               </a>
             ) : (
               <a
                 href={`${prefix}/contact/`}
-                class="inline-flex min-h-[44px] items-center rounded-full bg-ptt-accent px-6 py-2.5 text-sm font-semibold text-ptt-bg-dark transition hover:bg-ptt-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+                class="inline-flex min-h-[44px] items-center rounded-full bg-corag-accent px-6 py-2.5 text-sm font-semibold text-corag-bg-dark transition hover:bg-corag-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
               >
                 {t.verticalsPage.contactCta}
               </a>
@@ -125,23 +125,23 @@ const breadcrumbs = [
 
     <section class="py-12 sm:py-16">
       <div class="main-container">
-        <p class="text-lg text-ptt-secondary leading-relaxed">
+        <p class="text-lg text-corag-secondary leading-relaxed">
           {description}
         </p>
       </div>
     </section>
 
-    <section class="py-12 sm:py-16 bg-ptt-bg-elevated">
+    <section class="py-12 sm:py-16 bg-corag-bg-elevated">
       <div class="main-container">
-        <div class="prose prose-lg dark:prose-invert max-w-3xl prose-a:text-ptt-primary dark:prose-a:text-ptt-primary-dark">
+        <div class="prose prose-lg dark:prose-invert max-w-3xl prose-a:text-corag-primary dark:prose-a:text-corag-primary-light">
           {
             untranslated && (
               <p
-                class="not-prose mb-8 flex items-start gap-2.5 rounded-xl border border-ptt-border bg-ptt-bg px-4 py-3 text-sm text-ptt-secondary"
+                class="not-prose mb-8 flex items-start gap-2.5 rounded-xl border border-corag-border bg-corag-bg px-4 py-3 text-sm text-corag-secondary"
                 lang="en"
               >
                 <svg
-                  class="mt-0.5 h-4 w-4 shrink-0 text-ptt-primary dark:text-ptt-primary-dark"
+                  class="mt-0.5 h-4 w-4 shrink-0 text-corag-primary dark:text-corag-primary-light"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -168,7 +168,7 @@ const breadcrumbs = [
       meetups.length > 0 && (
         <section class="py-16 sm:py-20">
           <div class="main-container">
-            <h2 class="text-3xl font-bold tracking-tight text-ptt">
+            <h2 class="text-3xl font-bold tracking-tight text-corag">
               {t.verticalsPage.relatedMeetups}
             </h2>
             <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -187,14 +187,14 @@ const breadcrumbs = [
       isSpeakerSchool && (
         <section
           id="speaker-school-form"
-          class="py-16 sm:py-20 bg-ptt-bg-elevated"
+          class="py-16 sm:py-20 bg-corag-bg-elevated"
           aria-labelledby="speaker-school-form-title"
         >
           <div class="main-container">
             <Eyebrow class="mb-3">{t.speakerSchoolForm.formEyebrow}</Eyebrow>
             <h2
               id="speaker-school-form-title"
-              class="text-3xl font-bold tracking-tight text-ptt"
+              class="text-3xl font-bold tracking-tight text-corag"
             >
               {t.speakerSchoolForm.formSectionTitle}
             </h2>

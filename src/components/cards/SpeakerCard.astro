@@ -1,6 +1,6 @@
 ---
 /**
- * PTT v3.0.0 speaker card — preview card for a `speakers` collection entry.
+ * Corag v3.0.0 speaker card — preview card for a `speakers` collection entry.
  * Article + inner profile link so social anchors are not nested.
  */
 
@@ -68,7 +68,7 @@ const latestYear = latestTalkDate ? getCalendarYear(latestTalkDate) : null;
 ---
 
 <article
-  class="group flex h-full flex-col items-center overflow-hidden rounded-2xl bg-ptt-bg-elevated p-6 text-center shadow-sm ring-1 ring-ptt-border transition hover:shadow-lg hover:ring-ptt-primary/30 dark:hover:ring-ptt-primary-dark/40"
+  class="group flex h-full flex-col items-center overflow-hidden rounded-2xl bg-corag-bg-elevated p-6 text-center shadow-sm ring-1 ring-corag-border transition hover:shadow-lg hover:ring-corag-primary/30 dark:hover:ring-corag-primary-light/40"
   data-umami-event="speaker_card_view"
   data-umami-event-slug={speaker.id}
 >
@@ -76,10 +76,10 @@ const latestYear = latestTalkDate ? getCalendarYear(latestTalkDate) : null;
     href={url}
     data-umami-event="speaker_card_click"
     data-umami-event-slug={speaker.id}
-    class="flex flex-col items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+    class="flex flex-col items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
   >
     <div
-      class="relative h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-ptt-primary/20 to-ptt-bg-dark/20 shadow-sm ring-2 ring-ptt-bg-elevated"
+      class="relative h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-corag-primary/20 to-corag-bg-dark/20 shadow-sm ring-2 ring-corag-bg-elevated"
     >
       <img
         decoding="async"
@@ -92,11 +92,11 @@ const latestYear = latestTalkDate ? getCalendarYear(latestTalkDate) : null;
       />
     </div>
     <h3
-      class="mt-4 text-lg font-semibold text-ptt group-hover:text-ptt-primary dark:group-hover:text-ptt-primary-dark"
+      class="mt-4 text-lg font-semibold text-corag group-hover:text-corag-primary dark:group-hover:text-corag-primary-light"
     >
       {speaker.data.name}
     </h3>
-    <p class="mt-1 text-sm text-ptt-secondary">
+    <p class="mt-1 text-sm text-corag-secondary">
       {role}
     </p>
   </a>
@@ -106,14 +106,14 @@ const latestYear = latestTalkDate ? getCalendarYear(latestTalkDate) : null;
       <div class="mt-4 flex flex-col items-center gap-2">
         {talkCountNoun && (
           <p
-            class="text-xs font-semibold uppercase tracking-[0.14em] text-ptt-primary dark:text-ptt-primary-dark"
+            class="text-xs font-semibold uppercase tracking-[0.14em] text-corag-primary dark:text-corag-primary-light"
           >
             {talkCount} {talkCountNoun}
             {latestYear && !lastTalkLabel ? ` · ${latestYear}` : ''}
           </p>
         )}
         {lastTalkLabel && (
-          <p class="text-xs text-ptt-secondary">{lastTalkLabel}</p>
+          <p class="text-xs text-corag-secondary">{lastTalkLabel}</p>
         )}
       </div>
     )

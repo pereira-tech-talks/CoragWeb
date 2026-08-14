@@ -26,7 +26,7 @@ const n = Math.max(words?.length ?? 1, 1);
 /** Seconds each word gets in the cycle (type + hold + erase + gap). */
 const secondsPerWord = 4.5;
 const cycleDuration = n * secondsPerWord;
-const cursorColor = 'var(--color-ptt-accent-dark)';
+const cursorColor = 'var(--color-corag-accent)';
 
 function fmt(num: number): string {
   // Clamp float noise so 100% slots don't emit "100.00" twice awkwardly.

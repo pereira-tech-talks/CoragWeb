@@ -17,7 +17,7 @@ function trackClick() {
 <a
   href={href}
   on:click={trackClick}
-  class="post-indicator flex items-center gap-3 rounded-full bg-ptt-bg-elevated/95 pl-1.5 pr-4 py-1.5 text-sm font-medium shadow-lg ring-1 ring-ptt-accent/40 backdrop-blur-sm hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+  class="post-indicator flex items-center gap-3 rounded-full bg-corag-bg-elevated/95 pl-1.5 pr-4 py-1.5 text-sm font-medium shadow-lg ring-1 ring-corag-accent/40 backdrop-blur-sm hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
   aria-label="{t.postIndicator.ariaLabel} — {postTitle}"
   title="{t.postIndicator.ariaLabel}: {postTitle}"
 >
@@ -43,8 +43,8 @@ function trackClick() {
     </svg>
   </span>
   <span class="flex flex-col items-start leading-tight">
-    <span class="text-xs text-ptt">{t.postIndicator.label}</span>
-    <span class="text-[10px] text-ptt-secondary">{t.postIndicator.subtitle}</span>
+    <span class="text-xs text-corag">{t.postIndicator.label}</span>
+    <span class="text-[10px] text-corag-secondary">{t.postIndicator.subtitle}</span>
   </span>
 </a>
 

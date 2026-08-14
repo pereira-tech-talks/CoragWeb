@@ -8,8 +8,8 @@
 |----------|-------|---------|
 | Architecture | [Architecture](docs/ARCHITECTURE.md) | Components, Content Collections, Svelte integration, project structure, per-edition theming runtime |
 | Standards | [Standards](docs/STANDARDS.md) | Canonical coding rules, orthography, import order |
-| Brand | [Brand Guide](docs/BRAND_GUIDE.md) | PTT global identity, per-edition kits, voice & tone |
-| Design | [Design System](docs/DESIGN.md) | Agent-facing UI contract — `--ptt-*` tokens, type/spacing/radius scales, component patterns |
+| Brand | [Brand Guide](docs/BRAND_GUIDE.md) | Corag global identity, per-edition kits, voice & tone |
+| Design | [Design System](docs/DESIGN.md) | Agent-facing UI contract — `--corag-*` tokens, type/spacing/radius scales, component patterns |
 | Product | [Product Spec](docs/PRODUCT_SPEC.md) | Vision, audiences, verticals, success metrics |
 | Blog | [Blog Posts](docs/features/BLOG_POSTS.md) | Tags, series, hero layouts, images, content lifecycle |
 | Blog Lifecycle | [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md) | End-to-end blog workflow |
@@ -21,7 +21,7 @@
 | Sponsors | [Sponsors](docs/features/SPONSORS.md) | Community partners — current/past (tiers on PTD only) |
 | Community stats | [Community Stats](docs/features/COMMUNITY_STATS.md) | Derived About counters via `getCommunityStats()` |
 | Talks | [Talks](docs/features/TALKS.md) | Talk entries, speaker history, meetup/PTD linkage |
-| Writing Voice | [Writing Voice Guide](docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop checklist, PTT voice, vocabulary blocklist |
+| Writing Voice | [Writing Voice Guide](docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop checklist, Corag voice, vocabulary blocklist |
 | Content QA | [Content QA Checklist](docs/features/CONTENT_QA_CHECKLIST.md) | Bilingual parity, orthography, SEO/AEO, automated gates |
 | Writing Craft | [Writing Craft Guide](docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, fact verification, quote handling, refinement |
 | Testing | [Testing](docs/TESTING_GUIDE.md) | Vitest setup, conventions, writing tests |
@@ -51,7 +51,7 @@ This is **v3.0.0** — the third major iteration of the website, rebuilt on the 
 - **Sätteri** — the Rust Markdown/MDX compiler, configured via `markdown.processor: satteri({ hastPlugins: [...] })` from `@astrojs/markdown-satteri`. It does **not** run remark/rehype plugins: markdown transforms live in `src/lib/satteri-plugins.ts` as HAST plugins. `@astrojs/mdx` inherits the processor, so `.md` and `.mdx` share one pipeline. **Never** add `markdown.remarkPlugins`/`rehypePlugins` (deprecated) or a `rehype-*` dependency — port the transform to a Sätteri HAST plugin instead
 - **Svelte 5.x** — Interactive components (with `client:visible`/`client:idle`/`client:only` hydration directives)
 - **TypeScript 6.x** — Type-safe development. **Pinned to 6.x on purpose:** TypeScript 7's native compiler does not yet expose the programmatic API `astro check` relies on, so upgrading breaks the type-check gate. Do not bump until [withastro/roadmap#1321](https://github.com/withastro/roadmap/discussions/1321) ships
-- **Tailwind CSS 4.x** — Utility-first styling with the PTT `@theme` token system
+- **Tailwind CSS 4.x** — Utility-first styling with the Corag `@theme` token system
 - **Biome 2.x** — Linter and formatter (replaces ESLint + Prettier)
 - **MDX** — Enhanced Markdown for blog posts
 - **Reveal.js 6.x** — Slide system for talks
@@ -97,7 +97,7 @@ src/
 │   ├── en/                    # Mirror in English (Spanish is the primary language, served at /)
 │   ├── internal/              # Dev-only hub (brand book, design system, admin views)
 │   └── api/                   # JSON endpoints (search index, sitemap helpers)
-└── styles/                    # global.css (Tailwind 4 @theme PTT tokens), slides.css
+└── styles/                    # global.css (Tailwind 4 @theme Corag tokens), slides.css
 
 public/images/                  # Brand · blog · meetups · events · pereira-tech-days · speakers · sponsors
 scripts/                        # Build utilities (image optimization, agent skills index)
@@ -228,14 +228,14 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 
 ### 8. Brand & Per-Edition Theming (MANDATORY)
 
-Pereira Tech Talks v3.0.0 uses a global PTT brand **plus** per-edition brand kits for each Pereira Tech Day.
+Pereira Tech Talks v3.0.0 uses a global Corag brand **plus** per-edition brand kits for each Pereira Tech Day.
 
 **Hard rules:**
 
-1. The global PTT palette (`--ptt-primary`, `--ptt-bg`, `--ptt-text`, etc., declared in `src/styles/global.css` via Tailwind 4 `@theme`) is the **default identity** of `pereiratechtalks.org`. Use it on every public page that is NOT a Pereira Tech Day edition route.
-2. Per-edition kits override the palette **only inside `[data-edition-theme="{year}"]`** wrappers (the `EditionScope` component). Header, footer, language switcher, and theme toggle render as siblings (not descendants) of the wrapper, so the umbrella PTT brand stays visible on every PTD page.
-3. **Never set `--ptt-*` variables outside global stylesheets or `[data-edition-theme]` scopes.** No inline `style="--ptt-primary: ..."` on individual components.
-4. The accent color (`--ptt-accent`, `#E8A33D` light) **fails WCAG AA on `--ptt-bg`** — reserve it for icons, pills with `--ptt-bg-elevated`, large text, or decorative motifs. **Never** use it for body text.
+1. The global Corag palette (`--corag-primary`, `--corag-bg`, `--corag-text`, etc., declared in `src/styles/global.css` via Tailwind 4 `@theme`) is the **default identity** of `pereiratechtalks.org`. Use it on every public page that is NOT a Pereira Tech Day edition route.
+2. Per-edition kits override the palette **only inside `[data-edition-theme="{year}"]`** wrappers (the `EditionScope` component). Header, footer, language switcher, and theme toggle render as siblings (not descendants) of the wrapper, so the umbrella Corag brand stays visible on every PTD page.
+3. **Never set `--corag-*` variables outside global stylesheets or `[data-edition-theme]` scopes.** No inline `style="--corag-primary: ..."` on individual components.
+4. The accent color (`--corag-accent`, `#E8A33D` light) **fails WCAG AA on `--corag-bg`** — reserve it for icons, pills with `--corag-bg-elevated`, large text, or decorative motifs. **Never** use it for body text.
 5. Each per-edition kit MUST include estimated WCAG ratios in its definition (validated by Task 1's contrast script).
 
 Full reference: **[Brand Guide](docs/BRAND_GUIDE.md)** + dev-only **[`/internal/brand`](http://localhost:9999/internal/brand)** Brand Book.
@@ -257,7 +257,7 @@ See **[Performance Guide](docs/PERFORMANCE.md)**.
 ### 10. Accessibility Standards (MANDATORY)
 
 1. **WCAG AA contrast** — 4.5:1 normal text, 3:1 large text
-2. **Approved text colors** — `text-gray-600 dark:text-gray-300` (or PTT tokens `text-ptt-secondary`) for secondary text. **NEVER** `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`
+2. **Approved text colors** — `text-gray-600 dark:text-gray-300` (or Corag tokens `text-corag-secondary`) for secondary text. **NEVER** `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`
 3. **Image dimensions** — every `<img>` must have `width` and `height`
 4. **Semantic HTML** — proper heading hierarchy, landmarks, button vs link
 5. **Text alternatives** — meaningful `alt` for informative images, `alt=""` for decorative
@@ -329,7 +329,7 @@ const { title, count = 5 } = Astro.props;
 ---
 
 <section class="py-12">
-  <h2 class="text-2xl font-bold text-ptt dark:text-ptt">{title}</h2>
+  <h2 class="text-2xl font-bold text-corag dark:text-corag">{title}</h2>
 </section>
 ```
 
@@ -382,7 +382,7 @@ import AboutUsPage from '@/components/pages/AboutUsPage.astro';
 
 ### 5. i18n Routing
 
-Spanish pages at root (`src/pages/` → `/`), English in `src/pages/en/` (→ `/en`). Language is **URL-first**: there is no automatic redirect from browser language or `localStorage` — see [I18N Guide → Language selection](docs/I18N_GUIDE.md#language-selection-url-first). The switcher may still write `localStorage['ptt:lang']` as a soft preference; only `?lang=` may pin/redirect. Page components in `src/components/pages/` receive `lang` and handle translations internally. Spanish is the **primary language** of the community and therefore the unprefixed default; English is first-class international. Never hardcode a `/en` or `/es` prefix — derive it from `getUrlPrefix(lang)`.
+Spanish pages at root (`src/pages/` → `/`), English in `src/pages/en/` (→ `/en`). Language is **URL-first**: there is no automatic redirect from browser language or `localStorage` — see [I18N Guide → Language selection](docs/I18N_GUIDE.md#language-selection-url-first). The switcher may still write `localStorage['corag:lang']` as a soft preference; only `?lang=` may pin/redirect. Page components in `src/components/pages/` receive `lang` and handle translations internally. Spanish is the **primary language** of the community and therefore the unprefixed default; English is first-class international. Never hardcode a `/en` or `/es` prefix — derive it from `getUrlPrefix(lang)`.
 
 ### 6. Per-Edition Theming Runtime
 
@@ -404,7 +404,7 @@ The blog hosts **community blog posts** (recaps, deep-dives, vertical announceme
 
 **Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}`. Series defined in `src/content/series/`. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
 
-**Authors:** Posts reference `author: "{slug}"`. Authors are PTT contributors (organizers, speakers, community writers) defined as YAML in `src/content/authors/{slug}.yaml` with localized `role`/`bio` (`en`/`es`) and avatar at `public/images/authors/{slug}.webp`. Both EN and ES versions of a post must use the same `author` slug. Internal directory: `/internal/authors`.
+**Authors:** Posts reference `author: "{slug}"`. Authors are Corag contributors (organizers, speakers, community writers) defined as YAML in `src/content/authors/{slug}.yaml` with localized `role`/`bio` (`en`/`es`) and avatar at `public/images/authors/{slug}.webp`. Both EN and ES versions of a post must use the same `author` slug. Internal directory: `/internal/authors`.
 
 **Resources section:** Include external links (docs, repos, tools). Do NOT list related articles or previous chapters — they appear in the series navigation below.
 
@@ -467,9 +467,9 @@ visible notice. Same mechanism for `verticals` (`verticalBodiesEn`). See
 
 **URL surface:** `/slides/<slug>` (and `/es/slides/<slug>`). Catalog at `/slides` and `/es/slides`.
 
-**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector. Palette derives from PTT global brand by default; per-edition decks may opt-in by setting `--slide-accent` inside `[data-edition-theme]`.
+**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector. Palette derives from Corag global brand by default; per-edition decks may opt-in by setting `--slide-accent` inside `[data-edition-theme]`.
 
-**Chrome UI:** Back-link (top-left) uses site logo on PTT dark background; toolbar (top-right) with language toggle, theme toggle, fullscreen.
+**Chrome UI:** Back-link (top-left) uses site logo on Corag dark background; toolbar (top-right) with language toggle, theme toggle, fullscreen.
 
 **Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
 
@@ -508,29 +508,29 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 19. List related articles or previous chapters in the Resources section when the post belongs to a series
 20. **Leave placeholder content** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published content must be complete. Zero tolerance.
 21. **Use Spanish slugs for blog posts, meetups, series, or PTD editions** — all slugs MUST be in English
-22. **Override `--ptt-*` tokens outside `src/styles/global.css` or `[data-edition-theme]` scopes** — per-edition kits must be scoped; no inline `style="--ptt-primary: ..."`
-23. **Let per-edition palette leak outside `/pereira-tech-days/{year}/*`** — header/footer/lang switcher/theme toggle must keep the global PTT brand even on edition pages
+22. **Override `--corag-*` tokens outside `src/styles/global.css` or `[data-edition-theme]` scopes** — per-edition kits must be scoped; no inline `style="--corag-primary: ..."`
+23. **Let per-edition palette leak outside `/pereira-tech-days/{year}/*`** — header/footer/lang switcher/theme toggle must keep the global Corag brand even on edition pages
 24. **Import Reveal CSS outside `SlideLayout`** — Reveal styles must not leak to non-deck routes
 25. **Add a new top-level page without updating `src/middleware.ts`** — the middleware has a hardcoded allowlist (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`). New top-level routes return 404 until added to the allowlist. See [Architecture → Middleware Allowlist](docs/ARCHITECTURE.md#middleware-allowlist-critical).
-26. Use `--ptt-accent` for body text — it fails WCAG AA on `--ptt-bg`. Reserve for icons, large text, pills with `--ptt-bg-elevated`.
+26. Use `--corag-accent` for body text — it fails WCAG AA on `--corag-bg`. Reserve for icons, large text, pills with `--corag-bg-elevated`.
 
 ### DO:
 
 1. Use Biome for linting (`pnpm run biome:check` before commits)
 2. Use Svelte for interactive components with appropriate `client:*` directive
-3. Support dark mode with Tailwind's `dark:` variant and PTT tokens
+3. Support dark mode with Tailwind's `dark:` variant and Corag tokens
 4. Use `@` path alias for imports
 5. Use the Page wrapper pattern (thin wrappers + `*Page.astro`)
 6. Create/update content in both Spanish (primary) and English
-7. Use `text-gray-600 dark:text-gray-300` (or `text-ptt-secondary`) for secondary text (WCAG AA)
+7. Use `text-gray-600 dark:text-gray-300` (or `text-corag-secondary`) for secondary text (WCAG AA)
 8. Include `width` and `height` on all `<img>` elements
 9. Use date-prefix naming for blog posts, meetups, and slide decks (`YYYY-MM-DD_slug.md`)
 10. Verify Spanish diacritical marks before committing
 11. Ensure no placeholder content (`grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/` → zero matches)
 12. Use discriminated union narrowing for deck type checks (`if (deck.data.type === 'internal')`)
 13. Add both EN and ES versions for all blog posts, meetups, and slide decks
-14. Wrap PTD edition pages in `EditionScope` and verify chrome stays on global PTT brand
-15. Use `text-ptt`/`bg-ptt-bg`/`border-ptt-border` PTT tokens (Task 5) on new components
+14. Wrap PTD edition pages in `EditionScope` and verify chrome stays on global Corag brand
+15. Use `text-corag`/`bg-corag-bg`/`border-corag-border` Corag tokens (Task 5) on new components
 
 ## Pre-Commit Checklist
 
@@ -551,7 +551,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] Meta descriptions: 130-160 characters
 - [ ] Accessibility: approved text contrast, image dimensions, heading hierarchy
 - [ ] Performance: lightest hydration, minimal JS
-- [ ] PTT tokens used (no leftover non-PTT design tokens)
+- [ ] Corag tokens used (no leftover non-Corag design tokens)
 - [ ] Per-edition palettes scoped to `[data-edition-theme]` only
 - [ ] Commit message in English (conventional format)
 
@@ -608,7 +608,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 Examples:
 
-- `feat(brand): bootstrap PTT v3.0.0 brand & design system`
+- `feat(brand): bootstrap Corag v3.0.0 brand & design system`
 - `feat(meetups): add monthly meetup timeline + detail pages`
 - `feat(ptd): add Pereira Tech Day 2024 edition with brandKit`
 - `fix(a11y): resolve contrast on navigation dropdown`

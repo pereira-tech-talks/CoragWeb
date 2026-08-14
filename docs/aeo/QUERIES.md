@@ -5,11 +5,11 @@
 
 This document maps target search queries to ideal URLs on `pereiratechtalks.org`. These are queries where Pereira Tech Talks has (or should have) authoritative content that LLMs and search engines surface to the right audience: local builders, students, prospective speakers, sponsors, and the LATAM/global tech community.
 
-> **Status:** This file is a working template. The previous audit was for a different (personal) site and has been retired. Fill in each row with the canonical URL once the corresponding content lives on PTT v3.0.0.
+> **Status:** This file is a working template. The previous audit was for a different (personal) site and has been retired. Fill in each row with the canonical URL once the corresponding content lives on Corag v3.0.0.
 
 ## TOFU (Top of Funnel) — Informational / Definitional
 
-Broad queries where PTT can be cited as an authority on the topic.
+Broad queries where Corag can be cited as an authority on the topic.
 
 | # | Query | Ideal URL | Content Exists? |
 |---|-------|-----------|-----------------|
@@ -26,7 +26,7 @@ Broad queries where PTT can be cited as an authority on the topic.
 
 ## MOFU (Middle of Funnel) — Comparative / Evaluative
 
-Queries where PTT-published case studies, recaps, or talk write-ups can be cited.
+Queries where Corag-published case studies, recaps, or talk write-ups can be cited.
 
 | # | Query | Ideal URL | Content Exists? |
 |---|-------|-----------|-----------------|
@@ -68,5 +68,5 @@ Queries where the searcher is ready to participate, contribute, or sponsor.
 ## Related
 
 - [AEO Maintenance Checklist](CHECKLIST.md) — Monthly LLM testing routine.
-- [Markdown for Agents](MARKDOWN_FOR_AGENTS.md) — How PTT serves Markdown to AI agents.
+- [Markdown for Agents](MARKDOWN_FOR_AGENTS.md) — How Corag serves Markdown to AI agents.
 - [SEO Guide](../SEO.md) — Meta tags, JSON-LD, structured data.

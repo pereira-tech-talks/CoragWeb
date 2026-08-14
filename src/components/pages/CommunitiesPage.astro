@@ -37,7 +37,7 @@ const channelsHref = `${prefix}/channels/`;
 ---
 
 <MainLayout lang={lang} title={cp.title} description={cp.description}>
-  <div class="bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/90 text-white">
+  <div class="bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/90 text-white">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} onDark />
     </div>
@@ -51,7 +51,7 @@ const channelsHref = `${prefix}/channels/`;
   </div>
 
   <Section title={cp.narrativeTitle}>
-    <p class="max-w-3xl text-lg text-ptt-secondary">{cp.narrativeText}</p>
+    <p class="max-w-3xl text-lg text-corag-secondary">{cp.narrativeText}</p>
   </Section>
 
   <Section title={cp.alliesTitle} surface="alt">
@@ -74,10 +74,10 @@ const channelsHref = `${prefix}/channels/`;
     <ul class="grid gap-4 sm:grid-cols-2 list-none max-w-4xl">
       {
         cp.allianceSteps.map((step) => (
-          <li class="flex items-start gap-3 rounded-xl border border-ptt-border bg-ptt-bg-elevated p-5">
+          <li class="flex items-start gap-3 rounded-xl border border-corag-border bg-corag-bg-elevated p-5">
             <svg
               aria-hidden="true"
-              class="h-5 w-5 shrink-0 text-ptt-primary dark:text-ptt-primary-dark mt-0.5"
+              class="h-5 w-5 shrink-0 text-corag-primary dark:text-corag-primary-light mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -87,14 +87,14 @@ const channelsHref = `${prefix}/channels/`;
                 clip-rule="evenodd"
               />
             </svg>
-            <p class="text-ptt-secondary">{step}</p>
+            <p class="text-corag-secondary">{step}</p>
           </li>
         ))
       }
     </ul>
   </Section>
 
-  <div class="bg-ptt-bg-dark text-white py-16">
+  <div class="bg-corag-bg-dark text-white py-16">
     <div class="main-container text-center">
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
         {cp.ctaTitle}
@@ -103,7 +103,7 @@ const channelsHref = `${prefix}/channels/`;
       <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
         <a
           href={contactHref}
-          class="inline-flex items-center gap-2 rounded-full bg-ptt-accent px-6 py-3 text-base font-semibold text-ptt-bg-dark shadow-sm transition-colors hover:bg-ptt-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+          class="inline-flex items-center gap-2 rounded-full bg-corag-accent px-6 py-3 text-base font-semibold text-corag-bg-dark shadow-sm transition-colors hover:bg-corag-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
         >
           {cp.ctaPrimary}
         </a>

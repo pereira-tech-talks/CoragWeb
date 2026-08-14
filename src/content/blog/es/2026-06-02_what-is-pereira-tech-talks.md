@@ -74,7 +74,7 @@ Tres cosas pasaron en los últimos doce años que creo que vale la pena nombrar 
 
 **Dos.** Personas egresadas de esta comunidad terminaron en roles de ingeniería en startups YC, proyectos patrocinados por GitHub, conferencias técnicas en América Latina y equipos internacionales. La comunidad no las colocó ahí — se lo ganaron. Pero muchas de ellas encontraron su primer escenario aquí.
 
-**Tres.** Otras comunidades tech de la región — PereiraJS, JointDev, GDG Pereira, Python Pereira, QAConf — han trabajado con nosotros, co-organizado con nosotros o se han fusionado con nosotros. PereiraJS mismo se unió a PTT en 2024. Esto no es porque PTT sea dominante. Es porque una ciudad pequeña se beneficia de la concentración por encima de la fragmentación.
+**Tres.** Otras comunidades tech de la región — PereiraJS, JointDev, GDG Pereira, Python Pereira, QAConf — han trabajado con nosotros, co-organizado con nosotros o se han fusionado con nosotros. PereiraJS mismo se unió a Corag en 2024. Esto no es porque Corag sea dominante. Es porque una ciudad pequeña se beneficia de la concentración por encima de la fragmentación.
 
 Somos una de las comunidades tech más constantes de la región cafetera colombiana. No somos la más ruidosa. No somos la más grande. Somos la que ha aparecido cada mes, por doce años, con la misma creencia: **comparte lo que aprendes, levanta a la siguiente persona, hazlo en público**.
 

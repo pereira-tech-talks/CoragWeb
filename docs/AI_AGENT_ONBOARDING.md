@@ -31,7 +31,7 @@ pereiratechtalks.org/
 │   ├── layouts/         # Page layouts (MainLayout, InternalLayout, ShowcaseLayout, SlideLayout)
 │   ├── lib/             # Utilities and types (one helper module per collection)
 │   ├── pages/           # File-based routing (EN root, ES /es/, /internal/ dev-only)
-│   └── styles/          # Tailwind 4 theme tokens (--color-ptt-*)
+│   └── styles/          # Tailwind 4 theme tokens (--color-corag-*)
 ├── public/              # Static assets (.well-known/, openapi.json, robots.txt)
 ├── docs/                # Documentation
 ├── .agents/             # Skills (incl. the deepworkplan skill), commands, agent definitions

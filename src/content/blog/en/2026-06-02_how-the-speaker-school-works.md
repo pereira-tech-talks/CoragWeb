@@ -58,10 +58,10 @@ Past mentors include Sergio Estrella, Eliana Osorio, Mayra Velásquez, and rotat
 
 The most-asked question about the Speaker School is "what happens after?" Here is what we have seen:
 
-- **Most graduates give their first PTT meetup talk within 6 months of finishing the program.** This is the explicit goal of the program, and the cohort is structured around it.
+- **Most graduates give their first Corag meetup talk within 6 months of finishing the program.** This is the explicit goal of the program, and the cohort is structured around it.
 - **A meaningful fraction goes on to speak at regional conferences in Bogotá, Medellín, Cali, and Mexico City.** The skills transfer.
 - **Some go on to keynote-level work at JSConf and other international conferences.** A smaller but real outcome.
-- **A few end up running their own meetup series or vertical inside PTT.** Speakers who develop teaching instincts often become program leads.
+- **A few end up running their own meetup series or vertical inside Corag.** Speakers who develop teaching instincts often become program leads.
 - **All of them become better at internal communication in their day jobs.** This is the underrated outcome. The skills compound at work even for people who never speak at another meetup.
 
 We do not promise career advancement. We do promise that you will leave the program able to stand up and deliver a 25-minute technical talk that holds a room.

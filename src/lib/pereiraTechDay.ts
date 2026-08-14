@@ -78,17 +78,17 @@ export const buildEditionThemeCss = (edition: PereiraTechDay): string => {
   const buttonShape = brandKit.ui?.buttonShape ?? 'rounded';
   const cardShape = brandKit.ui?.cardShape ?? 'rounded';
   const lightLines: string[] = [
-    `--ptt-primary: ${brandKit.paletteLight.primary};`,
-    `--ptt-accent: ${brandKit.paletteLight.accent};`,
-    `--ptt-bg: ${brandKit.paletteLight.bg};`,
-    `--ptt-bg-elevated: ${brandKit.paletteLight.bgElevated};`,
-    `--ptt-text: ${brandKit.paletteLight.text};`,
-    `--ptt-text-muted: ${brandKit.paletteLight.textMuted};`,
+    `--corag-primary: ${brandKit.paletteLight.primary};`,
+    `--corag-accent: ${brandKit.paletteLight.accent};`,
+    `--corag-bg: ${brandKit.paletteLight.bg};`,
+    `--corag-bg-elevated: ${brandKit.paletteLight.bgElevated};`,
+    `--corag-text: ${brandKit.paletteLight.text};`,
+    `--corag-text-muted: ${brandKit.paletteLight.textMuted};`,
     `--ptd-button-radius: ${BUTTON_RADIUS_BY_SHAPE[buttonShape]};`,
     `--ptd-card-radius: ${CARD_RADIUS_BY_SHAPE[cardShape]};`,
   ];
   if (brandKit.paletteLight.border) {
-    lightLines.push(`--ptt-border: ${brandKit.paletteLight.border};`);
+    lightLines.push(`--corag-border: ${brandKit.paletteLight.border};`);
   }
   lines.push(`[data-edition-theme="${year}"] {`);
   lines.push(...lightLines.map((l) => `  ${l}`));
@@ -96,15 +96,15 @@ export const buildEditionThemeCss = (edition: PereiraTechDay): string => {
 
   if (brandKit.paletteDark) {
     const darkLines: string[] = [
-      `--ptt-primary: ${brandKit.paletteDark.primary};`,
-      `--ptt-accent: ${brandKit.paletteDark.accent};`,
-      `--ptt-bg: ${brandKit.paletteDark.bg};`,
-      `--ptt-bg-elevated: ${brandKit.paletteDark.bgElevated};`,
-      `--ptt-text: ${brandKit.paletteDark.text};`,
-      `--ptt-text-muted: ${brandKit.paletteDark.textMuted};`,
+      `--corag-primary: ${brandKit.paletteDark.primary};`,
+      `--corag-accent: ${brandKit.paletteDark.accent};`,
+      `--corag-bg: ${brandKit.paletteDark.bg};`,
+      `--corag-bg-elevated: ${brandKit.paletteDark.bgElevated};`,
+      `--corag-text: ${brandKit.paletteDark.text};`,
+      `--corag-text-muted: ${brandKit.paletteDark.textMuted};`,
     ];
     if (brandKit.paletteDark.border) {
-      darkLines.push(`--ptt-border: ${brandKit.paletteDark.border};`);
+      darkLines.push(`--corag-border: ${brandKit.paletteDark.border};`);
     }
     lines.push(`.dark [data-edition-theme="${year}"] {`);
     lines.push(...darkLines.map((l) => `  ${l}`));

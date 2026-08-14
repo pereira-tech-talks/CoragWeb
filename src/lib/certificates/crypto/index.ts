@@ -1,11 +1,11 @@
 export { canonicalizeForSigning } from '@/lib/certificates/crypto/canonicalize';
 export {
+  CORAG_DID_DOCUMENT_PATH,
+  CORAG_ISSUER_DID,
+  CORAG_VERIFICATION_METHOD_ID,
   CRYPTO_SUITE,
   EVENT_ATTENDANCE_CONTEXT,
   PROOF_TYPE,
-  PTT_DID_DOCUMENT_PATH,
-  PTT_ISSUER_DID,
-  PTT_VERIFICATION_METHOD_ID,
   VC_CONTEXT,
 } from '@/lib/certificates/crypto/constants';
 export {

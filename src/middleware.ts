@@ -30,7 +30,7 @@
  *   (`cv`, `dailybot`, `entrepreneur`, `foodie`, `hobbies`, `portfolio`,
  *   `tech-talks`, `trading`) have been deleted from `src/pages/` and their
  *   page components removed from `src/components/pages/` as part of Task 16
- *   (legacy content removal). New PTT top-level routes (`/meetups`,
+ *   (legacy content removal). New Corag top-level routes (`/meetups`,
  *   `/pereira-tech-days`, `/talks`, etc.) will be added back to the allowlist
  *   by Tasks 9–13 when their pages land.
  */

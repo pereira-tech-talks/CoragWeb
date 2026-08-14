@@ -23,7 +23,7 @@ const logoClass = 'max-h-16 max-w-full object-contain object-left';
   rel="noopener noreferrer"
   data-umami-event="community_click"
   data-umami-event-slug={community.id}
-  class="group flex h-full min-w-0 flex-col rounded-2xl border border-ptt-border bg-ptt-bg-elevated p-5 sm:p-6 shadow-sm transition hover:border-ptt-primary/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+  class="group flex h-full min-w-0 flex-col rounded-2xl border border-corag-border bg-corag-bg-elevated p-5 sm:p-6 shadow-sm transition hover:border-corag-primary/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
 >
   <div class="flex h-16 w-full min-w-0 items-center">
     {
@@ -59,21 +59,21 @@ const logoClass = 'max-h-16 max-w-full object-contain object-left';
     }
   </div>
   <div class="min-w-0">
-    <h3 class="mt-4 text-lg font-bold text-ptt group-hover:text-ptt-primary dark:group-hover:text-ptt-primary-dark">
+    <h3 class="mt-4 text-lg font-bold text-corag group-hover:text-corag-primary dark:group-hover:text-corag-primary-light">
       {name}
     </h3>
     {
       focusText && (
-        <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-ptt-primary dark:text-ptt-primary-dark">
+        <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-corag-primary dark:text-corag-primary-light">
           {focusText}
         </p>
       )
     }
   </div>
-  <p class="mt-4 flex-1 text-sm text-ptt-secondary line-clamp-4">
+  <p class="mt-4 flex-1 text-sm text-corag-secondary line-clamp-4">
     {descriptionText}
   </p>
-  <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ptt-primary dark:text-ptt-primary-dark">
+  <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-corag-primary dark:text-corag-primary-light">
     {visitLabel}
     <span aria-hidden="true">→</span>
   </span>

@@ -139,7 +139,7 @@ First, check if any series exist in `src/content/series/`. If series exist, ask:
 Does this post belong to a series?
 
 Available series:
-1. the-library-of-tomorrow - "The Library of Tomorrow" (PTT vertical, ongoing)
+1. the-library-of-tomorrow - "The Library of Tomorrow" (Corag vertical, ongoing)
 
 0. No, it's a standalone post
 

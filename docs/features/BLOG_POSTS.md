@@ -136,7 +136,7 @@ schema: z.object({
 ```markdown
 ---
 title: 'March 2026 Meetup — AI Agents in Production'
-description: 'Recap of the March PTT meetup at UTP. Three talks on agent observability, RAG, and guardrails.'
+description: 'Recap of the March Corag meetup at UTP. Three talks on agent observability, RAG, and guardrails.'
 pubDate: '2026-03-22'
 heroImage: '/images/blog/posts/march-2026-meetup-recap/hero.webp'
 heroLayout: 'banner'
@@ -533,7 +533,7 @@ Each series is a `.md` file in `src/content/series/`:
 ---
 name: "the-library-of-tomorrow"
 title: "The Library of Tomorrow"
-description: "PTT's flagship learning vertical — the community's reading and study group around emerging technology."
+description: "Corag's flagship learning vertical — the community's reading and study group around emerging technology."
 order: 1
 ---
 ```

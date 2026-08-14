@@ -167,34 +167,34 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
   <main class="main-container py-10 sm:py-12 lg:py-16">
     <article>
       <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-x-2 text-sm">
-        <a href={homeUrl} class="font-semibold text-ptt-secondary transition-colors hover:text-ptt-primary">{t.nav.home}</a>
-        <span class="font-semibold text-ptt-secondary select-none" aria-hidden="true">/</span>
-        <a href={blogUrl} class="font-semibold text-ptt-secondary transition-colors hover:text-ptt-primary">{t.nav.blog}</a>
-        <span class="font-semibold text-ptt-secondary select-none" aria-hidden="true">/</span>
-        <span class="truncate font-normal text-ptt-secondary" aria-current="page">{title}</span>
+        <a href={homeUrl} class="font-semibold text-corag-secondary transition-colors hover:text-corag-primary">{t.nav.home}</a>
+        <span class="font-semibold text-corag-secondary select-none" aria-hidden="true">/</span>
+        <a href={blogUrl} class="font-semibold text-corag-secondary transition-colors hover:text-corag-primary">{t.nav.blog}</a>
+        <span class="font-semibold text-corag-secondary select-none" aria-hidden="true">/</span>
+        <span class="truncate font-normal text-corag-secondary" aria-current="page">{title}</span>
       </nav>
       {isDraft && (
-        <div class="mb-6 rounded-lg border border-ptt-danger/40 bg-ptt-danger/10 px-4 py-3 text-sm text-ptt-danger">
+        <div class="mb-6 rounded-lg border border-corag-danger/40 bg-corag-danger/10 px-4 py-3 text-sm text-corag-danger">
           <strong>{t.draftBannerTitle}</strong> — {t.draftBannerMessage}
         </div>
       )}
       {isScheduled && (
-        <div class="mb-6 rounded-lg border border-ptt-warning/40 bg-ptt-warning/10 px-4 py-3 text-sm text-ptt-warning">
+        <div class="mb-6 rounded-lg border border-corag-warning/40 bg-corag-warning/10 px-4 py-3 text-sm text-corag-warning">
           <strong>{t.scheduledBannerTitle}</strong> — {t.scheduledBannerMessage(formatCalendarDate(pubDate, lang))}
         </div>
       )}
       {seriesInfo && (
         <a
           href={`${prefix}/blog/series/${seriesInfo.name}/`}
-          class="mb-4 flex items-center gap-3 rounded-lg border border-ptt-primary/25 bg-ptt-primary-soft px-4 py-2.5 text-sm transition-colors hover:bg-ptt-primary/15 hover:border-ptt-primary/40"
+          class="mb-4 flex items-center gap-3 rounded-lg border border-corag-primary/25 bg-corag-primary-soft px-4 py-2.5 text-sm transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/40"
         >
           <span
-            class="inline-flex shrink-0 items-center rounded-full border-2 border-ptt-primary/40 bg-ptt-bg-elevated px-2 py-0.5 text-xs font-semibold text-ptt-primary"
+            class="inline-flex shrink-0 items-center rounded-full border-2 border-corag-primary/40 bg-corag-bg-elevated px-2 py-0.5 text-xs font-semibold text-corag-primary"
           >
             {seriesInfo.currentIndex + 1}/{seriesInfo.posts.length}
           </span>
-          <span class="text-ptt-secondary">
-            <span class="font-medium text-ptt">{t.seriesPartOf}:</span>{' '}
+          <span class="text-corag-secondary">
+            <span class="font-medium text-corag">{t.seriesPartOf}:</span>{' '}
             {t.seriesNames[seriesInfo.name] || seriesInfo.title}
           </span>
         </a>
@@ -211,7 +211,7 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
         lang={lang}
         readingTimeMinutes={readingTimeMinutes}
       />
-      <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-ptt-primary prose-img:block prose-img:mx-auto">
+      <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-corag-primary prose-img:block prose-img:mx-auto">
         <Content components={{ TypewriterDemo }} />
       </div>
       <div class="mt-12 space-y-8">
@@ -332,8 +332,8 @@ const metaDescription = buildMetaDescription({ lead: description, lang });
     height: 3px;
     background: linear-gradient(
       to right,
-      var(--color-ptt-primary),
-      color-mix(in srgb, var(--color-ptt-primary) 70%, var(--color-ptt-accent))
+      var(--color-corag-primary),
+      color-mix(in srgb, var(--color-corag-primary) 70%, var(--color-corag-accent))
     );
     z-index: 60;
     pointer-events: none;

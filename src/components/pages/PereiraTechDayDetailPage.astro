@@ -1,8 +1,8 @@
 ---
 /**
- * PTT v3.0.0 single Pereira Tech Day edition detail page.
+ * Corag v3.0.0 single Pereira Tech Day edition detail page.
  * Per-edition theming via EditionScope; PTD pages use dedicated edition chrome
- * (minimal header: current edition + previous editions) instead of global PTT nav.
+ * (minimal header: current edition + previous editions) instead of global Corag nav.
  */
 
 import type { CollectionEntry } from 'astro:content';
@@ -404,13 +404,13 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
     {
       !upcomingTemplate && keynoteSpeakers.length > 0 && (
         <section
-          class="bg-[var(--ptt-bg)] pb-[var(--ptd-section-pad)] pt-4 sm:pt-6"
+          class="bg-[var(--corag-bg)] pb-[var(--ptd-section-pad)] pt-4 sm:pt-6"
           aria-labelledby="ptd-speakers-title"
         >
           <div class="main-container">
             <h2
               id="ptd-speakers-title"
-              class="text-center text-2xl font-bold tracking-tight text-[var(--ptt-text)] sm:text-3xl md:text-4xl"
+              class="text-center text-2xl font-bold tracking-tight text-[var(--corag-text)] sm:text-3xl md:text-4xl"
             >
               {t.speakers}
             </h2>
@@ -490,7 +490,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
             'relative',
             upcomingTemplate
               ? 'ptd-sponsors-section'
-              : 'overflow-hidden bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]',
+              : 'overflow-hidden bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]',
           ]}
           style={
             upcomingTemplate && sectionBgs.sponsors
@@ -535,7 +535,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
             'relative',
             upcomingTemplate
               ? 'ptd-community-section'
-              : 'overflow-hidden bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]',
+              : 'overflow-hidden bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]',
           ]}
           style={
             upcomingTemplate && sectionBgs.community
@@ -577,7 +577,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
         (upcomingTemplate ? (
           <section
             id="team"
-            class="relative isolate min-h-[calc(100vw*576/1024)] overflow-hidden bg-[var(--ptt-bg,#fef7f3)] py-[clamp(2.25rem,7vw,4rem)]"
+            class="relative isolate min-h-[calc(100vw*576/1024)] overflow-hidden bg-[var(--corag-bg,#fef7f3)] py-[clamp(2.25rem,7vw,4rem)]"
             style={
               sectionBgs.team
                 ? `--ptd-team-bg: url('${sectionBgs.team}')`
@@ -589,7 +589,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
               sectionBgs.team && (
                 <>
                   <div
-                    class="ptd-team-section__bg pointer-events-none absolute inset-0 z-0 bg-[var(--ptt-bg,#fef7f3)] bg-[length:100%_auto] bg-[position:center_top] bg-no-repeat"
+                    class="ptd-team-section__bg pointer-events-none absolute inset-0 z-0 bg-[var(--corag-bg,#fef7f3)] bg-[length:100%_auto] bg-[position:center_top] bg-no-repeat"
                     style="background-image: var(--ptd-team-bg)"
                     aria-hidden="true"
                   />
@@ -631,7 +631,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
             {
               organizers.length > 0 && (
                 <section
-                  class="relative overflow-hidden bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]"
+                  class="relative overflow-hidden bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]"
                   aria-label={t.organizers}
                 >
                   <div class="relative main-container">
@@ -648,7 +648,7 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
             {
               collaborators.length > 0 && (
                 <section
-                  class="relative overflow-hidden bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]"
+                  class="relative overflow-hidden bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]"
                   aria-label={t.collaborators}
                 >
                   <div class="relative main-container">
@@ -669,9 +669,9 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
 
     {
       talks.length > 0 && (
-        <section class="bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]">
+        <section class="bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]">
           <div class="main-container">
-            <h2 class="text-3xl font-bold tracking-tight text-[var(--ptt-text)]">{t.talks}</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-[var(--corag-text)]">{t.talks}</h2>
             <ul class="mt-8 grid gap-6 sm:grid-cols-2">
               {talks.map((talk) => (
                 <li>
@@ -718,9 +718,9 @@ const sectionBgs = edition.data.sectionBackgrounds ?? {};
 
     {
       description && !upcomingTemplate && (
-        <section class="bg-[var(--ptt-bg)] py-[var(--ptd-section-pad)]">
+        <section class="bg-[var(--corag-bg)] py-[var(--ptd-section-pad)]">
           <div class="main-container">
-            <div class="prose prose-lg max-w-3xl prose-headings:text-[var(--ptt-text)] prose-a:text-[var(--ptt-primary)]">
+            <div class="prose prose-lg max-w-3xl prose-headings:text-[var(--corag-text)] prose-a:text-[var(--corag-primary)]">
               <Content />
             </div>
           </div>

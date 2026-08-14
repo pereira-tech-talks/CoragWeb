@@ -123,10 +123,10 @@ onMount(() => {
           href={`#${yearId(year)}`}
           aria-current={activeYear === year ? 'true' : undefined}
           class={[
-            'inline-flex min-h-9 min-w-[3.75rem] items-center justify-center rounded-full border px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary sm:min-h-10 sm:min-w-16 sm:px-3 sm:text-sm',
+            'inline-flex min-h-9 min-w-[3.75rem] items-center justify-center rounded-full border px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary sm:min-h-10 sm:min-w-16 sm:px-3 sm:text-sm',
             activeYear === year
-              ? 'border-ptt-primary bg-ptt-primary text-white shadow-sm dark:border-ptt-primary-dark dark:bg-ptt-primary-dark dark:text-ptt-bg-dark'
-              : 'border-ptt-border bg-ptt-bg-elevated text-ptt-secondary hover:border-ptt-primary hover:text-ptt-primary dark:hover:border-ptt-primary-dark dark:hover:text-ptt-primary-dark',
+              ? 'border-corag-primary bg-corag-fill text-corag-on-fill shadow-sm dark:border-corag-primary-light dark:bg-corag-primary-light dark:text-corag-bg-dark'
+              : 'border-corag-border bg-corag-bg-elevated text-corag-secondary hover:border-corag-primary hover:text-corag-primary dark:hover:border-corag-primary-light dark:hover:text-corag-primary-light',
           ].join(' ')}
           onclick={(e) => handleClick(e, year)}
         >

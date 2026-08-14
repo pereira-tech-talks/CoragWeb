@@ -6,7 +6,7 @@ Navigation and chrome Svelte islands used across public pages.
 
 ```
 layout/
-├── Header.svelte              # Global PTT header (desktop + mobile trigger)
+├── Header.svelte              # Global Corag header (desktop + mobile trigger)
 ├── MobileMenu.svelte          # Full-viewport mobile nav (portaled to body)
 ├── ThemeToggle.svelte         # Light/dark toggle
 └── TopNotificationBar.svelte  # Sticky announcement strip

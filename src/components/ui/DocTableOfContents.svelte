@@ -40,17 +40,17 @@ onMount(() => {
 </script>
 
 <nav aria-label={label} class="sticky top-24">
-  <p class="text-xs font-semibold uppercase tracking-widest text-ptt-primary dark:text-ptt-primary-dark">
+  <p class="text-xs font-semibold uppercase tracking-widest text-corag-primary dark:text-corag-primary-light">
     {label}
   </p>
-  <ul class="mt-4 space-y-2 border-l border-ptt-border pl-4">
+  <ul class="mt-4 space-y-2 border-l border-corag-border pl-4">
     {#each headings as heading (heading.id)}
       <li>
         <a
           href={`#${heading.id}`}
           class="block text-sm leading-snug transition-colors {activeId === heading.id
-            ? 'font-semibold text-ptt-primary dark:text-ptt-primary-dark'
-            : 'text-ptt-secondary hover:text-ptt'}"
+            ? 'font-semibold text-corag-primary dark:text-corag-primary-light'
+            : 'text-corag-secondary hover:text-corag'}"
           on:click={(e) => handleClick(e, heading.id)}
         >
           {heading.text}

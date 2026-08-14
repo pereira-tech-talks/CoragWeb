@@ -22,7 +22,7 @@ Este artículo trata sobre por qué Pereira específicamente. Qué cosas de la c
 
 ### Una universidad pública seria
 
-La Universidad Tecnológica de Pereira (UTP) está en el centro del ecosistema local de ingeniería. Produce alrededor de 200 egresadas y egresados de ingeniería de sistemas y electrónica cada año. Tiene laboratorios de investigación en robótica, machine learning y procesamiento de señales. Su asociación de egresados ha reconocido formalmente a PTT.
+La Universidad Tecnológica de Pereira (UTP) está en el centro del ecosistema local de ingeniería. Produce alrededor de 200 egresadas y egresados de ingeniería de sistemas y electrónica cada año. Tiene laboratorios de investigación en robótica, machine learning y procesamiento de señales. Su asociación de egresados ha reconocido formalmente a Corag.
 
 La UTP no es solo una fuente de estudiantes para los meetups — es un venue, una aliada en Pereira Tech Day y una patrocinadora silenciosa de la infraestructura de la comunidad. Sin la UTP, esta comunidad no existiría en su forma actual.
 
@@ -30,7 +30,7 @@ La UTP no es solo una fuente de estudiantes para los meetups — es un venue, un
 
 Los ingenieros e ingenieras senior de Pereira tienden a irse. Van a Bogotá, Medellín, Ciudad de México, Berlín, San Francisco. Lo interesante es cuántos regresan — físicamente cuando se retiran de sus roles internacionales, virtualmente cuando patrocinan un evento desde lejos, o culturalmente cuando dictan una charla en Pereira Tech Day desde una conexión remota.
 
-Esa diáspora es uno de los activos más importantes de PTT. Conecta a la comunidad local con la economía global de tecnología sin exigirle a todo el mundo que se mude.
+Esa diáspora es uno de los activos más importantes de Corag. Conecta a la comunidad local con la economía global de tecnología sin exigirle a todo el mundo que se mude.
 
 ### Empresas que se quedaron
 
@@ -40,7 +40,7 @@ La presencia de estas compañías significa que hay trabajo real de ingeniería 
 
 ### Una cultura paisa que aparece
 
-Esto es más difícil de medir pero es real. El Eje Cafetero (Pereira, Manizales, Armenia) tiene en Colombia reputación de calidez, ética de trabajo y pragmatismo. Las comunidades aquí tienden a ser menos jerárquicas que en las ciudades grandes, menos performativas que en las capitales, más relacionales que transaccionales. Eso encaja con el modelo que PTT corre: liderado por voluntariado, eventos gratis, memoria larga, sin cultura de celebridades.
+Esto es más difícil de medir pero es real. El Eje Cafetero (Pereira, Manizales, Armenia) tiene en Colombia reputación de calidez, ética de trabajo y pragmatismo. Las comunidades aquí tienden a ser menos jerárquicas que en las ciudades grandes, menos performativas que en las capitales, más relacionales que transaccionales. Eso encaja con el modelo que Corag corre: liderado por voluntariado, eventos gratis, memoria larga, sin cultura de celebridades.
 
 ## Lo que es difícil
 
@@ -50,7 +50,7 @@ Una ciudad de 470.000 habitantes tiene quizás 3.000 ingenieras e ingenieros de 
 
 ### Retención de talento
 
-Los mejores y las mejores ingenieras tienden a irse a roles remotos mejor pagados en el exterior. Bien por ellas y ellos. Difícil para la economía local. La respuesta de PTT ha sido apoyarse en la diáspora más que pelear contra ella — hacer que la comunidad sea valiosa para quienes se fueron, para que sigan contribuyendo.
+Los mejores y las mejores ingenieras tienden a irse a roles remotos mejor pagados en el exterior. Bien por ellas y ellos. Difícil para la economía local. La respuesta de Corag ha sido apoyarse en la diáspora más que pelear contra ella — hacer que la comunidad sea valiosa para quienes se fueron, para que sigan contribuyendo.
 
 ### El patrocinio es competitivo
 
@@ -64,7 +64,7 @@ Cuando la prensa tech colombiana habla del "ecosistema tech colombiano", se refi
 
 Creo que tres cosas definirán los próximos 10 años del ecosistema tech de Pereira:
 
-**1. El trabajo remoto seguirá siendo un viento a favor.** Una ingeniera senior en Pereira puede hacer trabajo de talla mundial sin reubicarse. Eso amplía el pool local y aumenta la retención. El rol de PTT es ser el tejido conectivo — el lugar donde quienes trabajan remoto se encuentran entre sí y con el ecosistema local.
+**1. El trabajo remoto seguirá siendo un viento a favor.** Una ingeniera senior en Pereira puede hacer trabajo de talla mundial sin reubicarse. Eso amplía el pool local y aumenta la retención. El rol de Corag es ser el tejido conectivo — el lugar donde quienes trabajan remoto se encuentran entre sí y con el ecosistema local.
 
 **2. La IA acelerará el regreso de la diáspora.** Construir productos de IA requiere juicio de ingeniería que se compone con la experiencia. Quienes regresan de roles senior en el exterior cada vez más fundarán compañías en Pereira (DailyBot es un ejemplo), y esas compañías necesitarán a la comunidad como funnel de contratación e incubadora de cultura.
 

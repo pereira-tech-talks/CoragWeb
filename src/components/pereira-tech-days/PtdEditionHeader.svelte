@@ -118,7 +118,7 @@ function closeEditions() {
       href={homeHref}
       class="flex min-w-0 shrink items-center select-none focus-visible:outline-2 focus-visible:outline-offset-2 {isDark
         ? 'focus-visible:outline-white'
-        : 'focus-visible:outline-ptt-primary'}"
+        : 'focus-visible:outline-corag-primary'}"
       aria-label="Pereira Tech Talks"
     >
       {#if isDark}
@@ -231,7 +231,7 @@ function closeEditions() {
                 role="list"
                 class="rounded-lg border py-1 shadow-xl {isDark
                   ? 'border-white/10 bg-[#1a3355]'
-                  : 'border-ptt-border bg-ptt-bg-elevated'}"
+                  : 'border-corag-border bg-corag-bg-elevated'}"
                 aria-labelledby="ptd-editions-trigger"
               >
                 {#each otherEditions as edition}
@@ -240,7 +240,7 @@ function closeEditions() {
                       href={edition.href}
                       class="block px-4 py-2.5 text-sm focus-visible:outline-none {isDark
                         ? 'text-white/90 hover:bg-white/10 hover:text-white focus-visible:bg-white/10'
-                        : 'text-ptt hover:bg-ptt-bg focus-visible:bg-ptt-bg'}"
+                        : 'text-corag hover:bg-corag-bg focus-visible:bg-corag-bg'}"
                       on:click={closeEditions}
                     >
                       {edition.label}
@@ -307,7 +307,7 @@ function closeEditions() {
               role="list"
               class="overflow-hidden rounded-lg border py-1 shadow-xl {isDark
                 ? 'border-white/10 bg-[#1a3355]'
-                : 'border-ptt-border bg-ptt-bg-elevated'}"
+                : 'border-corag-border bg-corag-bg-elevated'}"
               aria-labelledby="ptd-language-trigger"
             >
               {#each alternateLanguageUrls as alt (alt.lang)}
@@ -316,7 +316,7 @@ function closeEditions() {
                     href={alt.url}
                     class="block px-4 py-2 text-center text-sm font-semibold focus-visible:outline-none {isDark
                       ? 'text-white/90 hover:bg-white/10 hover:text-white focus-visible:bg-white/10'
-                      : 'text-ptt hover:bg-ptt-bg focus-visible:bg-ptt-bg'}"
+                      : 'text-corag hover:bg-corag-bg focus-visible:bg-corag-bg'}"
                     on:click={() => {
                       rememberLanguage(alt.lang);
                       trackEvent(EVENTS.LANGUAGE_SWITCH, {

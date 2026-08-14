@@ -89,8 +89,8 @@ const CREAM = '#fef7f3';
 ---
 
 <section
-  class="ptd-hero-2026 relative isolate flex flex-col overflow-hidden text-[var(--ptt-text)] md:-mt-[4.75rem]"
-  style={`--ptd-year-cyan: ${YEAR_CYAN}; --ptd-hero-cream: ${CREAM}; background-color: var(--ptt-bg, ${CREAM});`}
+  class="ptd-hero-2026 relative isolate flex flex-col overflow-hidden text-[var(--corag-text)] md:-mt-[4.75rem]"
+  style={`--ptd-year-cyan: ${YEAR_CYAN}; --ptd-hero-cream: ${CREAM}; background-color: var(--corag-bg, ${CREAM});`}
 >
   {
     heroIllustration && (
@@ -110,7 +110,7 @@ const CREAM = '#fef7f3';
       class="flex w-full min-w-0 max-w-2xl flex-col items-start lg:max-w-[min(40rem,50%)]"
     >
       <p
-        class="m-0 mb-2.5 text-[clamp(0.78rem,1.35vw,0.9rem)] font-bold uppercase tracking-[0.14em] text-[var(--ptt-accent)] sm:mb-3"
+        class="m-0 mb-2.5 text-[clamp(0.78rem,1.35vw,0.9rem)] font-bold uppercase tracking-[0.14em] text-[var(--corag-accent)] sm:mb-3"
       >
         {postponed ? t.ptdPage.postponedBadge : eyebrow}
       </p>
@@ -133,11 +133,11 @@ const CREAM = '#fef7f3';
           class="m-0 min-w-0 text-[clamp(2.05rem,5.6vw,5.1rem)] font-normal uppercase leading-[0.92] tracking-[0.04em]"
           style='font-family: "Bebas Neue", "Arial Black", sans-serif;'
         >
-          <span class="block text-[var(--ptt-text)]">{titleLineTech}</span>
+          <span class="block text-[var(--corag-text)]">{titleLineTech}</span>
           {
             dayWord && (
               <span class="block">
-                <span class="text-[var(--ptt-accent)]">{dayWord}</span>
+                <span class="text-[var(--corag-accent)]">{dayWord}</span>
                 {yearWord ? (
                   <>
                     {' '}
@@ -151,10 +151,10 @@ const CREAM = '#fef7f3';
       </div>
 
       <p
-        class="mb-5 w-full text-[clamp(1.05rem,2.5vw,1.35rem)] leading-snug text-[var(--ptt-text)] sm:mb-6"
+        class="mb-5 w-full text-[clamp(1.05rem,2.5vw,1.35rem)] leading-snug text-[var(--corag-text)] sm:mb-6"
       >
         {taglineLead ? `${taglineLead} ` : ''}
-        <strong class="font-bold text-[var(--ptt-accent)]">{taglineEmphasis}</strong>
+        <strong class="font-bold text-[var(--corag-accent)]">{taglineEmphasis}</strong>
       </p>
 
       {
@@ -168,12 +168,12 @@ const CREAM = '#fef7f3';
       {
         !postponed && (
         <ul
-          class="mb-5 flex max-w-full flex-col gap-2.5 text-lg leading-snug text-[var(--ptt-text)] sm:mb-6 sm:gap-3 sm:text-xl"
+          class="mb-5 flex max-w-full flex-col gap-2.5 text-lg leading-snug text-[var(--corag-text)] sm:mb-6 sm:gap-3 sm:text-xl"
         >
           <li class="flex min-w-0 items-start gap-2.5">
             <svg
               aria-hidden="true"
-              class="mt-0.5 h-6 w-6 shrink-0 text-[var(--ptt-text-muted)] sm:h-7 sm:w-7"
+              class="mt-0.5 h-6 w-6 shrink-0 text-[var(--corag-text-muted)] sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -190,7 +190,7 @@ const CREAM = '#fef7f3';
           <li class="flex min-w-0 items-start gap-2.5">
             <svg
               aria-hidden="true"
-              class="mt-0.5 h-6 w-6 shrink-0 text-[var(--ptt-text-muted)] sm:h-7 sm:w-7"
+              class="mt-0.5 h-6 w-6 shrink-0 text-[var(--corag-text-muted)] sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -209,7 +209,7 @@ const CREAM = '#fef7f3';
                   href={venueMapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="min-w-0 break-words underline decoration-[var(--ptt-accent)] underline-offset-2 hover:text-[var(--ptt-primary)]"
+                  class="min-w-0 break-words underline decoration-[var(--corag-accent)] underline-offset-2 hover:text-[var(--corag-primary)]"
                 >
                   {venueName}
                 </a>
@@ -224,10 +224,10 @@ const CREAM = '#fef7f3';
 
       {
         !postponed && attendanceValue && (
-          <p class="mb-5 flex items-center gap-2.5 text-[var(--ptt-text)] sm:mb-6">
+          <p class="mb-5 flex items-center gap-2.5 text-[var(--corag-text)] sm:mb-6">
             <svg
               aria-hidden="true"
-              class="h-6 w-6 shrink-0 text-[var(--ptt-accent)] sm:h-7 sm:w-7"
+              class="h-6 w-6 shrink-0 text-[var(--corag-accent)] sm:h-7 sm:w-7"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -242,7 +242,7 @@ const CREAM = '#fef7f3';
             <span class="text-xl font-bold tabular-nums sm:text-2xl">{attendanceValue}</span>
             {
               attendanceLabel && (
-                <span class="text-lg text-[var(--ptt-text-muted)] sm:text-xl">
+                <span class="text-lg text-[var(--corag-text-muted)] sm:text-xl">
                   {attendanceLabel}
                 </span>
               )
@@ -259,7 +259,7 @@ const CREAM = '#fef7f3';
                 href={registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="ptd-hero-2026__cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--ptt-primary)] px-9 py-3.5 text-lg font-bold tracking-wide text-white transition-[transform,opacity,box-shadow] hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)] active:scale-[0.98] sm:w-auto sm:px-11 sm:py-4 sm:text-xl"
+                class="ptd-hero-2026__cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--corag-primary)] px-9 py-3.5 text-lg font-bold tracking-wide text-white transition-[transform,opacity,box-shadow] hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)] active:scale-[0.98] sm:w-auto sm:px-11 sm:py-4 sm:text-xl"
               >
                 {t.ptdPage.registerCta}
                 <svg
@@ -281,7 +281,7 @@ const CREAM = '#fef7f3';
             {scheduleAnchor && (
               <a
                 href={scheduleAnchor}
-                class="ptd-hero-2026__cta-secondary inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[var(--ptt-primary)] px-9 py-3.5 text-lg font-bold tracking-wide text-[color-mix(in_srgb,var(--ptt-primary)_85%,var(--ptt-text))] transition-[transform,background-color,color] hover:bg-[var(--ptt-primary)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)] active:scale-[0.98] sm:w-auto sm:px-9 sm:py-4 sm:text-xl"
+                class="ptd-hero-2026__cta-secondary inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[var(--corag-primary)] px-9 py-3.5 text-lg font-bold tracking-wide text-[color-mix(in_srgb,var(--corag-primary)_85%,var(--corag-text))] transition-[transform,background-color,color] hover:bg-[var(--corag-primary)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)] active:scale-[0.98] sm:w-auto sm:px-9 sm:py-4 sm:text-xl"
               >
                 <svg
                   aria-hidden="true"
@@ -312,7 +312,7 @@ const CREAM = '#fef7f3';
       {
         postponed ? (
           <p
-            class="m-0 inline-flex items-center gap-2.5 rounded-full border-2 border-[var(--ptt-accent)] bg-[var(--ptt-bg-elevated)] px-6 py-3 text-base font-bold uppercase tracking-[0.08em] text-[var(--ptt-accent)] sm:text-lg"
+            class="m-0 inline-flex items-center gap-2.5 rounded-full border-2 border-[var(--corag-accent)] bg-[var(--corag-bg-elevated)] px-6 py-3 text-base font-bold uppercase tracking-[0.08em] text-[var(--corag-accent)] sm:text-lg"
           >
             <svg
               aria-hidden="true"
@@ -381,25 +381,25 @@ const CREAM = '#fef7f3';
     background:
       linear-gradient(
         to right,
-        var(--ptt-bg, #fef7f3) 0%,
-        var(--ptt-bg, #fef7f3) 34%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 95%, transparent) 40%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 45%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 45%, transparent) 50%,
+        var(--corag-bg, #fef7f3) 0%,
+        var(--corag-bg, #fef7f3) 34%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 95%, transparent) 40%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 45%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 45%, transparent) 50%,
         transparent 56%
       ),
       /* Soft top wash under glass header — art still readable through chrome. */
       linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 55%, transparent) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 22%, transparent) 10%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 55%, transparent) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 22%, transparent) 10%,
         transparent 20%
       ),
       linear-gradient(
         to top,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 92%, transparent) 6%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 55%, transparent) 12%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 92%, transparent) 6%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 55%, transparent) 12%,
         transparent 18%
       );
   }
@@ -439,13 +439,13 @@ const CREAM = '#fef7f3';
   .ptd-hero-2026__cta {
     box-shadow:
       0 0 0 3px color-mix(in srgb, var(--ptd-year-cyan, #3ab9c9) 35%, transparent),
-      0 10px 28px -6px color-mix(in srgb, var(--ptt-primary) 55%, transparent);
+      0 10px 28px -6px color-mix(in srgb, var(--corag-primary) 55%, transparent);
   }
 
   .ptd-hero-2026__cta:hover {
     box-shadow:
       0 0 0 4px color-mix(in srgb, var(--ptd-year-cyan, #3ab9c9) 45%, transparent),
-      0 14px 32px -6px color-mix(in srgb, var(--ptt-primary) 65%, transparent);
+      0 14px 32px -6px color-mix(in srgb, var(--corag-primary) 65%, transparent);
   }
 
   @media (prefers-reduced-motion: reduce) {

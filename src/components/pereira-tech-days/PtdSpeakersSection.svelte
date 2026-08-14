@@ -151,7 +151,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
 <style>
   .ptd-speakers {
     padding-block: var(--ptd-section-pad, 3rem);
-    background: var(--ptt-bg);
+    background: var(--corag-bg);
     scroll-margin-top: 4.5rem;
   }
 
@@ -165,7 +165,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-speakers__title {
@@ -175,7 +175,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     line-height: 1.05;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--ptt-text);
+    color: var(--corag-text);
     font-family: 'Bebas Neue', 'Arial Black', sans-serif;
   }
 
@@ -185,7 +185,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     height: 3px;
     margin-top: 0.65rem;
     border-radius: 999px;
-    background: var(--ptt-accent);
+    background: var(--corag-accent);
   }
 
   .ptd-speakers__subtitle {
@@ -193,7 +193,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     max-width: 46rem;
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-speakers__note {
@@ -201,7 +201,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     max-width: 46rem;
     font-size: 0.9rem;
     font-style: italic;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-speakers__grid {
@@ -233,14 +233,14 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     padding: 1.75rem 1.35rem 1.5rem;
     border-radius: 1.35rem;
     text-align: center;
-    background: var(--ptt-bg-elevated);
-    border: 1px solid color-mix(in srgb, var(--ptt-text) 9%, transparent);
-    box-shadow: 0 14px 36px color-mix(in srgb, var(--ptt-text) 7%, transparent);
+    background: var(--corag-bg-elevated);
+    border: 1px solid color-mix(in srgb, var(--corag-text) 9%, transparent);
+    box-shadow: 0 14px 36px color-mix(in srgb, var(--corag-text) 7%, transparent);
   }
 
   .ptd-speaker-card--pending {
-    background: color-mix(in srgb, var(--ptt-bg-elevated) 55%, transparent);
-    border: 1px dashed color-mix(in srgb, var(--ptt-text) 26%, transparent);
+    background: color-mix(in srgb, var(--corag-bg-elevated) 55%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--corag-text) 26%, transparent);
     box-shadow: none;
   }
 
@@ -249,15 +249,15 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     height: 7.5rem;
     border-radius: 999px;
     object-fit: cover;
-    box-shadow: 0 0 0 3px var(--ptt-bg-elevated), 0 0 0 5px var(--ptt-accent);
+    box-shadow: 0 0 0 3px var(--corag-bg-elevated), 0 0 0 5px var(--corag-accent);
   }
 
   .ptd-speaker-card__photo--ghost {
     display: grid;
     place-items: center;
-    color: color-mix(in srgb, var(--ptt-text) 38%, transparent);
-    background: color-mix(in srgb, var(--ptt-text) 7%, transparent);
-    border: 1px dashed color-mix(in srgb, var(--ptt-text) 26%, transparent);
+    color: color-mix(in srgb, var(--corag-text) 38%, transparent);
+    background: color-mix(in srgb, var(--corag-text) 7%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--corag-text) 26%, transparent);
     box-shadow: none;
   }
 
@@ -266,14 +266,14 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     font-size: 1.2rem;
     font-weight: 800;
     line-height: 1.25;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-speaker-card__role {
     margin: 0.25rem 0 0;
     font-size: 0.85rem;
     line-height: 1.45;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-speaker-card__divider {
@@ -282,7 +282,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     height: 3px;
     margin: 1rem 0;
     border-radius: 999px;
-    background: var(--ptt-accent);
+    background: var(--corag-accent);
   }
 
   .ptd-speaker-card__talk {
@@ -291,7 +291,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.35;
-    color: var(--ptt-text);
+    color: var(--corag-text);
     text-wrap: balance;
   }
 
@@ -306,7 +306,7 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     font-size: 0.8rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: var(--ptt-primary);
+    color: var(--corag-primary);
   }
 
   .ptd-speaker-card__social {
@@ -319,16 +319,16 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
 
   .ptd-speaker-card__social a {
     display: inline-flex;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
     transition: color 0.15s ease;
   }
 
   .ptd-speaker-card__social a:hover {
-    color: var(--ptt-primary);
+    color: var(--corag-primary);
   }
 
   .ptd-speaker-card__social a:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -345,9 +345,9 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     cursor: pointer;
-    color: var(--ptt-text);
+    color: var(--corag-text);
     background: transparent;
-    border: 1px solid color-mix(in srgb, var(--ptt-text) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--corag-text) 22%, transparent);
     transition:
       color 0.15s ease,
       border-color 0.15s ease,
@@ -356,12 +356,12 @@ const revealedCount = $derived(slots.filter((slot) => !slot.pending).length);
 
   .ptd-speaker-card__cta:hover {
     color: #ffffff;
-    background: var(--ptt-primary);
-    border-color: var(--ptt-primary);
+    background: var(--corag-primary);
+    border-color: var(--corag-primary);
   }
 
   .ptd-speaker-card__cta:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 2px;
   }
 

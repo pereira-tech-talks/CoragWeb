@@ -37,17 +37,17 @@ function toggleTheme() {
 
 <button
   type="button"
-  class="theme-toggle group inline-flex cursor-pointer items-center justify-center transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary
+  class="theme-toggle group inline-flex cursor-pointer items-center justify-center transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary
     {placement === 'header'
-      ? 'h-5 w-5 shrink-0 p-0 text-ptt hover:text-ptt-primary dark:text-white dark:hover:text-white/85'
-      : 'min-h-[44px] gap-2.5 rounded-full border border-ptt-border px-4 py-2 text-base text-ptt hover:border-ptt-primary dark:border-white/20 dark:text-white'}"
+      ? 'h-5 w-5 shrink-0 p-0 text-corag hover:text-corag-primary dark:text-white dark:hover:text-white/85'
+      : 'min-h-[44px] gap-2.5 rounded-full border border-corag-border px-4 py-2 text-base text-corag hover:border-corag-primary dark:border-white/20 dark:text-white'}"
   aria-label={ariaLabel}
   aria-pressed={isDark}
   on:click={toggleTheme}
 >
   {#if isDark}
     <svg
-      class="theme-toggle-icon h-5 w-5 text-ptt-accent"
+      class="theme-toggle-icon h-5 w-5 text-corag-accent"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -62,7 +62,7 @@ function toggleTheme() {
     </svg>
   {:else}
     <svg
-      class="theme-toggle-icon h-5 w-5 text-ptt-primary"
+      class="theme-toggle-icon h-5 w-5 text-corag-primary"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"

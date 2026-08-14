@@ -70,11 +70,11 @@ We also publish [Markdown-for-Agents](https://pereiratechtalks.org/index.md) end
 
 Three things happened in the last twelve years that I think are worth naming honestly:
 
-**One.** PTT was named an outstanding community by the UTP Alumni Association in 2018. That mattered locally because it bridged the volunteer community and the academic establishment.
+**One.** Corag was named an outstanding community by the UTP Alumni Association in 2018. That mattered locally because it bridged the volunteer community and the academic establishment.
 
 **Two.** Alumni of this community have gone on to engineering roles at YC startups, GitHub-sponsored projects, Latin American technical conferences, and international engineering teams. The community did not place them there — they earned it. But many of them found their first stage here.
 
-**Three.** Other tech communities in the region — PereiraJS, JointDev, GDG Pereira, Python Pereira, QAConf — have worked with us, co-hosted with us, or merged into us. PereiraJS itself merged into PTT in 2024. This is not because PTT is dominant. It is because a small city benefits from concentration over fragmentation.
+**Three.** Other tech communities in the region — PereiraJS, JointDev, GDG Pereira, Python Pereira, QAConf — have worked with us, co-hosted with us, or merged into us. PereiraJS itself merged into Corag in 2024. This is not because Corag is dominant. It is because a small city benefits from concentration over fragmentation.
 
 We are one of the most consistent tech communities in the Colombian coffee region. We are not the loudest one. We are not the largest one. We are the one that has shown up monthly, for twelve years, with the same belief: **share what you learn, raise the next person up, do it in public**.
 

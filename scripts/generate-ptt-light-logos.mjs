@@ -3,10 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 /**
- * Generate light-mode PTT chrome logos in brand primary green.
+ * Generate light-mode Corag chrome logos in brand primary green.
  *
  * Sources are the archived black ink marks (`*-black.webp`). Non-transparent
- * pixels are recolored to `--color-ptt-primary-strong` (#155054) while alpha is
+ * pixels are recolored to `--color-corag-primary-strong` (#155054) while alpha is
  * preserved (anti-aliased edges stay soft). Black assets are never overwritten.
  *
  * Output (default):
@@ -14,10 +14,10 @@ import { fileURLToPath } from 'node:url';
  *   - logo-horizontal-primary.webp   — footer wordmark (light)
  *
  * Usage:
- *   node scripts/generate-ptt-light-logos.mjs
- *   node scripts/generate-ptt-light-logos.mjs --color 155054
- *   node scripts/generate-ptt-light-logos.mjs --only topbar
- *   node scripts/generate-ptt-light-logos.mjs --src path/in.webp --out path/out.webp
+ *   node scripts/generate-corag-light-logos.mjs
+ *   node scripts/generate-corag-light-logos.mjs --color 155054
+ *   node scripts/generate-corag-light-logos.mjs --only topbar
+ *   node scripts/generate-corag-light-logos.mjs --src path/in.webp --out path/out.webp
  */
 import { parseArgs } from 'node:util';
 
@@ -26,7 +26,7 @@ import sharp from 'sharp';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
-/** Light-mode primary-strong from `src/styles/global.css` (`--color-ptt-primary-strong`). */
+/** Light-mode primary-strong from `src/styles/global.css` (`--color-corag-primary-strong`). */
 const DEFAULT_PRIMARY = '155054';
 
 const DEFAULT_JOBS = [
@@ -158,7 +158,7 @@ async function main() {
     .join('')
     .toUpperCase();
   console.log(
-    `Generating light-mode PTT logos in #${hex} (ptt-primary-strong). Black sources kept as archives.`
+    `Generating light-mode Corag logos in #${hex} (corag-primary-strong). Black sources kept as archives.`
   );
 
   for (const job of jobs) {

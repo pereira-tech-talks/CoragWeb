@@ -64,7 +64,7 @@ export const es: SiteTranslations = {
   homeSections: {
     about: {
       title:
-        "Somos <span class='text-ptt-primary dark:text-ptt-primary-dark'>Pereira Tech Talks</span>",
+        "Somos <span class='text-corag-primary dark:text-corag-primary-light'>Pereira Tech Talks</span>",
       description: `Somos una comunidad interdisciplinar que conecta el talento local y regional — quienes programan, diseñan, emprenden, estudian o simplemente tienen curiosidad — alrededor de la tecnología que estamos construyendo juntos.<br /><br />
 Nos reunimos para compartir lo que aprendemos, abrir escenarios a nuevas voces y tejer redes que cruzan Pereira, Risaralda y el resto de LATAM. Meetups, <strong>Pereira Tech Day</strong>, la <strong>Escuela de Speakers</strong> y más: espacios voluntarios, abiertos y hechos para que cualquiera pueda sumarse.<br /><br />
 Si buscas gente con quien crecer, un escenario para tu primera charla o una comunidad que te reciba de verdad — aquí hay un lugar para ti. Explora, ven al próximo encuentro o escríbenos.`,
@@ -203,7 +203,7 @@ Si buscas gente con quien crecer, un escenario para tu primera charla o una comu
       'La comunidad tecnológica de Pereira (Risaralda, Colombia). Fundada en 2014. Meetups mensuales, Pereira Tech Day, una Escuela de Speakers activa y una biblioteca de contenido en español e inglés. Voluntaria. Abierta para todas y todos.',
     bioTitle: 'Quiénes somos',
     bioText:
-      'Pereira Tech Talks (PTT) es la comunidad tecnológica de Pereira, Risaralda, Colombia. La historia empieza en febrero de 2014: ocho desarrolladores en un salón de la UTP para el primer meetup de PereiraJS. Doce años después, ese círculo pequeño es una comunidad de cuatro programas — meetups mensuales (84 y contando), la conferencia anual <strong>Pereira Tech Day</strong> (archivo 2024, próxima 2026), la <strong>Escuela de Speakers</strong> y el club de lectura <strong>La Biblioteca del Mañana</strong>. Todo construido por voluntariado. Todo abierto.<br /><br />El trabajo se sostiene gracias a patrocinadores (DailyBot, GitHub, ASE-UTP, Gorilla Logic, Made for Germany, Source Meridian, y más) y es abierto por defecto. El sitio que estás leyendo es un catálogo de meetups, charlas, slides, ponentes, contribuyentes y patrocinadores — disponible en español e inglés — estructurado para ser tan útil a agentes de IA como a personas.<br /><br />Creemos que la tecnología crece más rápido cuando compartimos lo que aprendemos — por eso cada recapitulación de meetup se publica esa misma semana. Creemos que Pereira tiene talento de talla mundial que merece escenarios de talla mundial — por eso existe la Escuela de Speakers y por eso egresadas y egresados de la comunidad hoy dan keynotes en Bogotá, Medellín, Ciudad de México y en startups respaldadas por YC. Y creemos que una comunidad de tecnología debería parecerse a la ciudad en la que vive — abierta, cálida, mixta y sin pretensiones. Por eso nuestros eventos son gratuitos, nuestros canales son públicos y nuestro contenido se publica en español e inglés.',
+      'Pereira Tech Talks (Corag) es la comunidad tecnológica de Pereira, Risaralda, Colombia. La historia empieza en febrero de 2014: ocho desarrolladores en un salón de la UTP para el primer meetup de PereiraJS. Doce años después, ese círculo pequeño es una comunidad de cuatro programas — meetups mensuales (84 y contando), la conferencia anual <strong>Pereira Tech Day</strong> (archivo 2024, próxima 2026), la <strong>Escuela de Speakers</strong> y el club de lectura <strong>La Biblioteca del Mañana</strong>. Todo construido por voluntariado. Todo abierto.<br /><br />El trabajo se sostiene gracias a patrocinadores (DailyBot, GitHub, ASE-UTP, Gorilla Logic, Made for Germany, Source Meridian, y más) y es abierto por defecto. El sitio que estás leyendo es un catálogo de meetups, charlas, slides, ponentes, contribuyentes y patrocinadores — disponible en español e inglés — estructurado para ser tan útil a agentes de IA como a personas.<br /><br />Creemos que la tecnología crece más rápido cuando compartimos lo que aprendemos — por eso cada recapitulación de meetup se publica esa misma semana. Creemos que Pereira tiene talento de talla mundial que merece escenarios de talla mundial — por eso existe la Escuela de Speakers y por eso egresadas y egresados de la comunidad hoy dan keynotes en Bogotá, Medellín, Ciudad de México y en startups respaldadas por YC. Y creemos que una comunidad de tecnología debería parecerse a la ciudad en la que vive — abierta, cálida, mixta y sin pretensiones. Por eso nuestros eventos son gratuitos, nuestros canales son públicos y nuestro contenido se publica en español e inglés.',
     passionsTitle: 'Lo que hacemos',
     passions: [
       {
@@ -718,7 +718,7 @@ Si buscas gente con quien crecer, un escenario para tu primera charla o una comu
     quickLinksEyebrow: 'Enlaces rápidos',
     quickLinksTitle: 'RSVP y archivos',
     meetupsLink: 'Archivo de meetups',
-    lumaLink: 'Eventos PTT en Luma',
+    lumaLink: 'Eventos Corag en Luma',
     contributeEyebrow: 'Contribuir',
     contributeTitle: 'Publica el calendario de tu comunidad',
     contributeDescription:

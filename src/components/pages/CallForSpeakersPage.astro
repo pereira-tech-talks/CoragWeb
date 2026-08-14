@@ -31,7 +31,7 @@ const breadcrumbs = [
 ---
 
 <MainLayout lang={lang} title={t.title} description={t.description}>
-  <div class="bg-gradient-to-br from-ptt-bg-dark to-ptt-bg-dark/85 text-white">
+  <div class="bg-gradient-to-br from-corag-bg-dark to-corag-bg-dark/85 text-white">
     <div class="main-container pt-12 sm:pt-16 pb-4">
       <Breadcrumbs items={breadcrumbs} onDark />
     </div>
@@ -43,7 +43,7 @@ const breadcrumbs = [
       <p class="mt-4 max-w-3xl text-lg text-white/85">{t.intro}</p>
       <a
         href="#cfs-form"
-        class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ptt-accent px-6 py-3 text-base font-semibold text-ptt-bg-dark shadow-sm transition-colors hover:bg-ptt-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-accent"
+        class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-accent px-6 py-3 text-base font-semibold text-corag-bg-dark shadow-sm transition-colors hover:bg-corag-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-accent"
       >
         {tr.cfsForm.submitButton}
       </a>
@@ -54,10 +54,10 @@ const breadcrumbs = [
     <ul class="grid gap-4 sm:grid-cols-2 list-none">
       {
         t.whatWeLookFor.map((item) => (
-          <li class="flex items-start gap-3 rounded-xl bg-ptt-bg-elevated ring-1 ring-ptt-border p-5">
+          <li class="flex items-start gap-3 rounded-xl bg-corag-bg-elevated ring-1 ring-corag-border p-5">
             <svg
               aria-hidden="true"
-              class="h-5 w-5 shrink-0 text-ptt-primary dark:text-ptt-primary-dark mt-0.5"
+              class="h-5 w-5 shrink-0 text-corag-primary dark:text-corag-primary-light mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -67,7 +67,7 @@ const breadcrumbs = [
                 clip-rule="evenodd"
               />
             </svg>
-            <p class="text-ptt-secondary">{item}</p>
+            <p class="text-corag-secondary">{item}</p>
           </li>
         ))
       }
@@ -78,9 +78,9 @@ const breadcrumbs = [
     <ul class="grid gap-6 sm:grid-cols-2 list-none">
       {
         t.formats.map((format) => (
-          <li class="rounded-2xl bg-ptt-bg-elevated ring-1 ring-ptt-border p-6">
-            <h3 class="text-lg font-semibold text-ptt">{format.name}</h3>
-            <p class="mt-2 text-ptt-secondary">{format.description}</p>
+          <li class="rounded-2xl bg-corag-bg-elevated ring-1 ring-corag-border p-6">
+            <h3 class="text-lg font-semibold text-corag">{format.name}</h3>
+            <p class="mt-2 text-corag-secondary">{format.description}</p>
           </li>
         ))
       }
@@ -89,7 +89,7 @@ const breadcrumbs = [
 
   <Section eyebrow={t.processEyebrow} title={t.processTitle}>
     <ol
-      class="space-y-4 list-decimal list-inside text-ptt-secondary marker:text-ptt-primary dark:marker:text-ptt-primary-dark marker:font-semibold"
+      class="space-y-4 list-decimal list-inside text-corag-secondary marker:text-corag-primary dark:marker:text-corag-primary-light marker:font-semibold"
     >
       {t.process.map((step) => <li class="text-base leading-relaxed">{step}</li>)}
     </ol>

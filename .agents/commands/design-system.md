@@ -32,7 +32,7 @@ than generic defaults. This command is a **thin delegator** to the DeepWorkPlan
   plain form handler). Do **not** add the `cli-output` or `conversational`
   profiles unless one of those surfaces actually appears — and always ask first.
 - **Design source for this repo:**
-  - `src/styles/global.css` — the Tailwind 4 `@theme` block (`--color-ptt-*`
+  - `src/styles/global.css` — the Tailwind 4 `@theme` block (`--color-corag-*`
     tokens), the `.dark` override block, `@layer base` focus rings, and the
     `prefers-reduced-motion` block.
   - `tailwind.config.mjs` — `darkMode: ['class']`, typography plugin overrides.
@@ -41,10 +41,10 @@ than generic defaults. This command is a **thin delegator** to the DeepWorkPlan
   - `src/components/ui/` primitives (`Pill.astro`, `EmptyState.astro`) and
     `src/components/pages/*Page.astro` for real component patterns.
   - `src/content/pereiraTechDays/{year}.{json,yaml}` — per-edition `brandKit`s.
-- **Integrity rules to enforce:** body text ≥ WCAG AA 4.5:1 (`text-ptt`,
-  `text-ptt-secondary`); `text-gray-400/500` and their `dark:` variants are
-  **forbidden** for body text; `--ptt-accent` (~2.4:1 on `--ptt-bg`) is never body
-  text; `--ptt-*` is never set outside `global.css` or a `[data-edition-theme]`
+- **Integrity rules to enforce:** body text ≥ WCAG AA 4.5:1 (`text-corag`,
+  `text-corag-secondary`); `text-gray-400/500` and their `dark:` variants are
+  **forbidden** for body text; `--corag-accent` (~2.4:1 on `--corag-bg`) is never body
+  text; `--corag-*` is never set outside `global.css` or a `[data-edition-theme]`
   scope; light **and** dark verified; motion gated by `prefers-reduced-motion`.
 - Reason about the real tokens — never paste a third-party brand's `DESIGN.md`.
 - Keep `DESIGN.md` and `BRAND_GUIDE.md` consistent: `DESIGN.md` documents

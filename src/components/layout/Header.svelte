@@ -70,13 +70,13 @@ function closeAllDropdowns() {
 <svelte:window on:click={closeAllDropdowns} />
 
 <header
-  class="border-b transition-colors duration-300 bg-ptt-bg-elevated/95 text-ptt border-ptt-border shadow-sm shadow-ptt-primary/5 backdrop-blur-md dark:bg-ptt-bg-dark/95 dark:text-white dark:border-white/10 dark:shadow-black/30"
+  class="border-b transition-colors duration-300 bg-corag-bg-elevated/95 text-corag border-corag-border shadow-sm shadow-corag-primary/5 backdrop-blur-md dark:bg-corag-bg-dark/95 dark:text-white dark:border-white/10 dark:shadow-black/30"
   style="padding-top: env(safe-area-inset-top); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);"
 >
   <nav class="main-container flex items-center justify-between">
     <a
       href={prefix || '/'}
-      class="flex items-center select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ptt-primary"
+      class="flex items-center select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
       aria-label="Pereira Tech Talks"
     >
       <img
@@ -141,17 +141,17 @@ function closeAllDropdowns() {
           ></div>
           <div
             id="community-dropdown"
-            class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-ptt-bg-elevated text-ptt rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+            class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-corag-bg-elevated text-corag rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
             style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
           >
-            <a href="{prefix}/about" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about' })}>{t.nav.about}</a>
-            <a href="{prefix}/speakers" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'speakers' })}>{t.nav.speakers}</a>
-            <a href="{prefix}/communities" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'communities' })}>{t.nav.communities}</a>
-            <a href="{prefix}/contributors" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributors' })}>{t.nav.contributors}</a>
-            <a href="{prefix}/sponsors" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'sponsors' })}>{t.nav.sponsors}</a>
-            <a href="{prefix}/verticals" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'verticals' })}>{t.nav.verticals}</a>
-            <a href="{prefix}/channels" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'channels' })}>{t.nav.channels}</a>
-            <a href="{prefix}/press" class="block px-4 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'press' })}>{t.nav.press}</a>
+            <a href="{prefix}/about" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about' })}>{t.nav.about}</a>
+            <a href="{prefix}/speakers" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'speakers' })}>{t.nav.speakers}</a>
+            <a href="{prefix}/communities" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'communities' })}>{t.nav.communities}</a>
+            <a href="{prefix}/contributors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributors' })}>{t.nav.contributors}</a>
+            <a href="{prefix}/sponsors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'sponsors' })}>{t.nav.sponsors}</a>
+            <a href="{prefix}/verticals" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'verticals' })}>{t.nav.verticals}</a>
+            <a href="{prefix}/channels" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'channels' })}>{t.nav.channels}</a>
+            <a href="{prefix}/press" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'press' })}>{t.nav.press}</a>
           </div>
         {/if}
       </div>
@@ -197,11 +197,11 @@ function closeAllDropdowns() {
           ></div>
           <div
             id="language-dropdown"
-            class="absolute left-1/2 -translate-x-1/2 top-full w-20 bg-ptt-bg-elevated text-ptt rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+            class="absolute left-1/2 -translate-x-1/2 top-full w-20 bg-corag-bg-elevated text-corag rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
             style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
           >
             {#each alternateLanguageUrls as alt}
-              <a href={alt.url} class="block w-full text-center px-3 py-2 hover:bg-ptt-primary-soft text-ptt-secondary transition" on:click={() => {
+              <a href={alt.url} class="block w-full text-center px-3 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => {
                 rememberLanguage(alt.lang);
                 trackEvent(EVENTS.LANGUAGE_SWITCH, { from: lang, to: alt.lang });
               }}>

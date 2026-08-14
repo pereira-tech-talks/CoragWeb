@@ -413,8 +413,8 @@ const ASSET_COPIES = [
     'public/images/communities/perjs.jpeg',
   ],
   [
-    'tmp/pereiratechtalks.com/src/assets/images/pereira-tech-day/community/ptt.png',
-    'public/images/communities/ptt.png',
+    'tmp/pereiratechtalks.com/src/assets/images/pereira-tech-day/community/corag.png',
+    'public/images/communities/corag.png',
   ],
   // Sponsors
   [

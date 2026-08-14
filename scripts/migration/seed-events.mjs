@@ -129,7 +129,7 @@ export const PTD_2024 = {
     },
     {
       name: 'Pereira Tech Talks',
-      logo: '/images/communities/ptt.png',
+      logo: '/images/communities/corag.png',
       url: 'https://pereiratechtalks.org/',
     },
   ],
@@ -140,7 +140,7 @@ export const PTD_2024 = {
 };
 
 // Stub editions — minimal data; fill in when historical photos/programs surface.
-// We use placeholder hero images that point to a generic PTT brand cover.
+// We use placeholder hero images that point to a generic Corag brand cover.
 export const PTD_STUBS = [
   {
     year: 2017,

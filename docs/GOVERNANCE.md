@@ -1,6 +1,6 @@
 # Governance
 
-This document describes how Pereira Tech Talks (PTT) is governed: who makes decisions, how disagreements are resolved, how money flows, and how leadership rotates.
+This document describes how Pereira Tech Talks (Corag) is governed: who makes decisions, how disagreements are resolved, how money flows, and how leadership rotates.
 
 ## Mission & Scope
 
@@ -12,7 +12,7 @@ Pereira Tech Talks exists to:
 - Operate vertical programs: Speaker School, La Biblioteca del Mañana, AI / Agents Channel
 - Maintain `pereiratechtalks.org` as a public, bilingual community website
 
-PTT is **not** a for-profit company. We have no equity, no employees, no products to sell. We exist as a community; sponsors fund operations.
+Corag is **not** a for-profit company. We have no equity, no employees, no products to sell. We exist as a community; sponsors fund operations.
 
 ## Roles
 
@@ -105,7 +105,7 @@ Conflicts between organizers:
 
 ## Financial Transparency
 
-PTT operates on a **public ledger basis**:
+Corag operates on a **public ledger basis**:
 
 - Annual budget is published at <https://pereiratechtalks.org/sponsors#budget> at the start of each fiscal year (January).
 - A summary of inflows (sponsorships, donations) and outflows (venues, swag, food, recording, travel) is published quarterly.
@@ -113,7 +113,7 @@ PTT operates on a **public ledger basis**:
 - All bank accounts are jointly held by at least two organizers.
 - Any organizer can request a full ledger audit at any time; the request triggers a 14-day window to deliver receipts.
 
-PTT operates a small contingency fund (target: 6 months of operating costs) for emergencies (venue cancellation, equipment loss, etc.). Use of the contingency requires consensus.
+Corag operates a small contingency fund (target: 6 months of operating costs) for emergencies (venue cancellation, equipment loss, etc.). Use of the contingency requires consensus.
 
 ## Membership of Organizers — Onboarding & Offboarding
 
@@ -142,20 +142,20 @@ An organizer who does not attend any organizers' meeting for **3 consecutive mon
 
 ## Trademark & Brand
 
-The names "Pereira Tech Talks", "Pereira Tech Day", "PTT", "PTD", "La Biblioteca del Mañana", and "Speaker School" are reserved by the community. Use of these names by external parties (other meetups, conferences, podcasts) requires written permission from the organizers.
+The names "Pereira Tech Talks", "Pereira Tech Day", "Corag", "PTD", "La Biblioteca del Mañana", and "Speaker School" are reserved by the community. Use of these names by external parties (other meetups, conferences, podcasts) requires written permission from the organizers.
 
-The official PTT logo is the only authorized brand mark. Per-edition Pereira Tech Day kits are layered on top of the umbrella PTT brand. See [docs/BRAND_GUIDE.md](./BRAND_GUIDE.md) and the dev-only Brand Book at `/internal/brand`.
+The official Corag logo is the only authorized brand mark. Per-edition Pereira Tech Day kits are layered on top of the umbrella Corag brand. See [docs/BRAND_GUIDE.md](./BRAND_GUIDE.md) and the dev-only Brand Book at `/internal/brand`.
 
 ## Retirement Criteria
 
-If PTT ceases operations, the remaining organizers commit to:
+If Corag ceases operations, the remaining organizers commit to:
 
 1. Honor any active sponsorship commitments to the agreed-upon end date.
 2. Publish a final retrospective post on the blog.
 3. Archive the website in read-only mode (or hand over to a successor community).
 4. Distribute any remaining contingency funds to a Colombian tech-education non-profit, by consensus.
 
-PTT exists for the community, not for itself. If the community no longer needs PTT, PTT steps aside.
+Corag exists for the community, not for itself. If the community no longer needs Corag, Corag steps aside.
 
 ---
 

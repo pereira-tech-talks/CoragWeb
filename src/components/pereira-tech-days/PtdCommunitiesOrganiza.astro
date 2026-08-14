@@ -36,12 +36,12 @@ const Heading = headingLevel;
 
 const visitLabel = lang === 'es' ? 'Visitar' : 'Visit';
 
-/** Light-mode vertical PTT mark (transparent) for cream brochure discs. */
-const PTT_LIGHT_LOGO = '/images/pereira-tech-talks/logo-vertical-color.webp';
+/** Light-mode vertical Corag mark (transparent) for cream brochure discs. */
+const CORAG_LIGHT_LOGO = '/images/pereira-tech-talks/logo-vertical-color.webp';
 
 function resolveLogo(community: Community): string {
   if (/pereira tech talks/i.test(community.name)) {
-    return PTT_LIGHT_LOGO;
+    return CORAG_LIGHT_LOGO;
   }
   return community.logo;
 }
@@ -67,7 +67,7 @@ function isPtt(community: Community): boolean {
         'ptd-organiza-title m-0 font-bold uppercase leading-[1.05]',
         brochure
           ? 'text-[clamp(2rem,5.5vw,3.15rem)] tracking-[0.01em] text-[#3a7f7c]'
-          : 'text-3xl text-[var(--ptt-text)] md:text-4xl',
+          : 'text-3xl text-[var(--corag-text)] md:text-4xl',
       ]}
     >
       {title}
@@ -78,8 +78,8 @@ function isPtt(community: Community): boolean {
           class:list={[
             'm-0',
             brochure
-              ? 'mt-2 max-w-[36rem] text-[clamp(0.95rem,2.2vw,1.1rem)] leading-[1.55] text-[color-mix(in_srgb,var(--ptt-text)_82%,transparent)]'
-              : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--ptt-text-muted)] md:text-base',
+              ? 'mt-2 max-w-[36rem] text-[clamp(0.95rem,2.2vw,1.1rem)] leading-[1.55] text-[color-mix(in_srgb,var(--corag-text)_82%,transparent)]'
+              : 'mx-auto mt-3 max-w-2xl text-sm text-[var(--corag-text-muted)] md:text-base',
           ]}
         >
           {subtitle}
@@ -98,10 +98,10 @@ function isPtt(community: Community): boolean {
         {communities.map((community) => {
           const logo = resolveLogo(community);
           const label = `${visitLabel} ${community.name}`;
-          const ptt = isPtt(community);
+          const corag = isPtt(community);
           const cardClass =
-            'ptd-organiza-card flex h-[clamp(7.75rem,19vw,11rem)] w-[clamp(7.75rem,19vw,11rem)] items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--ptt-text)_9%,white_91%)] p-[clamp(0.65rem,2vw,1rem)] transition duration-200 hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ptt-primary)] motion-reduce:transition-none motion-reduce:hover:translate-y-0';
-          const imgClass = ptt
+            'ptd-organiza-card flex h-[clamp(7.75rem,19vw,11rem)] w-[clamp(7.75rem,19vw,11rem)] items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--corag-text)_9%,white_91%)] p-[clamp(0.65rem,2vw,1rem)] transition duration-200 hover:-translate-y-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--corag-primary)] motion-reduce:transition-none motion-reduce:hover:translate-y-0';
+          const imgClass = corag
             ? 'mx-auto block h-auto max-h-[clamp(5.25rem,12vw,7rem)] w-auto max-w-full object-contain'
             : 'mx-auto block h-auto max-h-[clamp(5.75rem,13vw,7.5rem)] w-auto max-w-full object-contain';
           return (
@@ -118,8 +118,8 @@ function isPtt(community: Community): boolean {
                   <img
                     src={logo}
                     alt={community.name}
-                    width={ptt ? 160 : 200}
-                    height={ptt ? 260 : 200}
+                    width={corag ? 160 : 200}
+                    height={corag ? 260 : 200}
                     loading="lazy"
                     decoding="async"
                     class={imgClass}
@@ -130,8 +130,8 @@ function isPtt(community: Community): boolean {
                   <img
                     src={logo}
                     alt={community.name}
-                    width={ptt ? 160 : 200}
-                    height={ptt ? 260 : 200}
+                    width={corag ? 160 : 200}
+                    height={corag ? 260 : 200}
                     loading="lazy"
                     decoding="async"
                     class={imgClass}
@@ -152,7 +152,7 @@ function isPtt(community: Community): boolean {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${visitLabel} ${community.name}`}
-                class="flex min-h-40 items-center justify-center rounded-2xl bg-[var(--ptt-bg-elevated)] px-4 py-5 shadow-sm ring-1 ring-[var(--ptt-border)] transition duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ptt-primary)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-44 sm:px-5 sm:py-6"
+                class="flex min-h-40 items-center justify-center rounded-2xl bg-[var(--corag-bg-elevated)] px-4 py-5 shadow-sm ring-1 ring-[var(--corag-border)] transition duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--corag-primary)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-44 sm:px-5 sm:py-6"
               >
                 <img
                   src={resolveLogo(community)}
@@ -165,7 +165,7 @@ function isPtt(community: Community): boolean {
                 />
               </a>
             ) : (
-              <div class="flex min-h-40 items-center justify-center rounded-2xl bg-[var(--ptt-bg-elevated)] px-4 py-5 shadow-sm ring-1 ring-[var(--ptt-border)] sm:min-h-44 sm:px-5 sm:py-6">
+              <div class="flex min-h-40 items-center justify-center rounded-2xl bg-[var(--corag-bg-elevated)] px-4 py-5 shadow-sm ring-1 ring-[var(--corag-border)] sm:min-h-44 sm:px-5 sm:py-6">
                 <img
                   src={resolveLogo(community)}
                   alt={community.name}
@@ -185,13 +185,13 @@ function isPtt(community: Community): boolean {
 
   {
     brochure && footerNote && (
-      <p class="mx-auto mt-[clamp(1.4rem,4vw,2rem)] flex w-[min(100%,36rem)] items-center justify-center gap-[0.45rem] rounded-full border border-[color-mix(in_srgb,var(--ptt-text)_24%,transparent)] bg-[color-mix(in_srgb,white_80%,transparent)] px-4 py-2.5 text-center">
+      <p class="mx-auto mt-[clamp(1.4rem,4vw,2rem)] flex w-[min(100%,36rem)] items-center justify-center gap-[0.45rem] rounded-full border border-[color-mix(in_srgb,var(--corag-text)_24%,transparent)] bg-[color-mix(in_srgb,white_80%,transparent)] px-4 py-2.5 text-center">
         <span class="inline-flex shrink-0 items-center gap-[0.35rem]" aria-hidden="true">
-          <span class="h-[0.52rem] w-[0.52rem] rounded-full bg-[var(--ptt-accent)]" />
+          <span class="h-[0.52rem] w-[0.52rem] rounded-full bg-[var(--corag-accent)]" />
           <span class="h-[0.52rem] w-[0.52rem] rounded-full bg-[#3ab9c9]" />
-          <span class="h-[0.52rem] w-[0.52rem] rounded-full bg-[var(--ptt-text)]" />
+          <span class="h-[0.52rem] w-[0.52rem] rounded-full bg-[var(--corag-text)]" />
         </span>
-        <span class="ml-1 text-[clamp(0.78rem,1.8vw,0.95rem)] font-medium italic leading-snug text-[color-mix(in_srgb,var(--ptt-text)_88%,transparent)]">
+        <span class="ml-1 text-[clamp(0.78rem,1.8vw,0.95rem)] font-medium italic leading-snug text-[color-mix(in_srgb,var(--corag-text)_88%,transparent)]">
           {footerNote}
         </span>
       </p>
@@ -201,10 +201,10 @@ function isPtt(community: Community): boolean {
   {
     !brochure && footerNote && (
       <p class="mt-10 flex justify-center">
-        <span class="inline-flex items-center gap-2 rounded-full bg-[var(--ptt-bg-elevated)] px-4 py-2 text-sm text-[var(--ptt-text-muted)] ring-1 ring-[var(--ptt-border)]">
-          <span class="h-2 w-2 rounded-full bg-[var(--ptt-accent)]" aria-hidden="true" />
-          <span class="h-2 w-2 rounded-full bg-[var(--ptt-primary)]" aria-hidden="true" />
-          <span class="h-2 w-2 rounded-full bg-[var(--ptt-text)]" aria-hidden="true" />
+        <span class="inline-flex items-center gap-2 rounded-full bg-[var(--corag-bg-elevated)] px-4 py-2 text-sm text-[var(--corag-text-muted)] ring-1 ring-[var(--corag-border)]">
+          <span class="h-2 w-2 rounded-full bg-[var(--corag-accent)]" aria-hidden="true" />
+          <span class="h-2 w-2 rounded-full bg-[var(--corag-primary)]" aria-hidden="true" />
+          <span class="h-2 w-2 rounded-full bg-[var(--corag-text)]" aria-hidden="true" />
           <span class="ml-1">{footerNote}</span>
         </span>
       </p>
@@ -232,13 +232,13 @@ function isPtt(community: Community): boolean {
     );
     box-shadow:
       0 0 36px color-mix(in srgb, #ffffff 95%, transparent),
-      0 14px 30px color-mix(in srgb, var(--ptt-text) 8%, transparent);
+      0 14px 30px color-mix(in srgb, var(--corag-text) 8%, transparent);
   }
 
   .ptd-organiza-card:hover {
     box-shadow:
       0 0 44px color-mix(in srgb, #ffffff 100%, transparent),
-      0 18px 34px color-mix(in srgb, var(--ptt-text) 11%, transparent);
+      0 18px 34px color-mix(in srgb, var(--corag-text) 11%, transparent);
   }
 
   .ptd-community-section {
@@ -247,11 +247,11 @@ function isPtt(community: Community): boolean {
     overflow: hidden;
     min-height: var(--ptd-community-bg-height);
     padding: clamp(2.25rem, 7vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
-    background: var(--ptt-bg, #fef7f3);
+    background: var(--corag-bg, #fef7f3);
   }
 
   .ptd-community-section__bg {
-    background-color: var(--ptt-bg, #fef7f3);
+    background-color: var(--corag-bg, #fef7f3);
     background-image: var(--ptd-community-bg);
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -262,18 +262,18 @@ function isPtt(community: Community): boolean {
     background:
       linear-gradient(
         to bottom,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 8%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 8%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 34%
       ),
       linear-gradient(
         to top,
-        var(--ptt-bg, #fef7f3) 0%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 98%, transparent) 8%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 78%, transparent) 16%,
-        color-mix(in srgb, var(--ptt-bg, #fef7f3) 42%, transparent) 24%,
+        var(--corag-bg, #fef7f3) 0%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 98%, transparent) 8%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 78%, transparent) 16%,
+        color-mix(in srgb, var(--corag-bg, #fef7f3) 42%, transparent) 24%,
         transparent 34%
       );
   }

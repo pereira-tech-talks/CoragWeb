@@ -184,7 +184,7 @@ const closeModal = () => {
     --ptd-agenda-rail: 1.75rem;
     position: relative;
     padding-block: var(--ptd-section-pad, 3rem);
-    background: var(--ptt-bg);
+    background: var(--corag-bg);
     scroll-margin-top: 4.5rem;
   }
 
@@ -198,7 +198,7 @@ const closeModal = () => {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-schedule__title {
@@ -208,7 +208,7 @@ const closeModal = () => {
     line-height: 1.05;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--ptt-text);
+    color: var(--corag-text);
     font-family: 'Bebas Neue', 'Arial Black', sans-serif;
   }
 
@@ -218,7 +218,7 @@ const closeModal = () => {
     height: 3px;
     margin-top: 0.65rem;
     border-radius: 999px;
-    background: var(--ptt-accent);
+    background: var(--corag-accent);
   }
 
   .ptd-schedule__notice {
@@ -229,7 +229,7 @@ const closeModal = () => {
     margin: 1.1rem 0 0;
     font-size: 0.92rem;
     line-height: 1.5;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-schedule__pill {
@@ -240,7 +240,7 @@ const closeModal = () => {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #ffffff;
-    background: var(--ptt-primary);
+    background: var(--corag-primary);
   }
 
   .ptd-agenda {
@@ -293,13 +293,13 @@ const closeModal = () => {
   .ptd-agenda__start {
     font-size: 0.95rem;
     font-weight: 800;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-agenda__end {
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-agenda__end::before {
@@ -335,7 +335,7 @@ const closeModal = () => {
     left: 50%;
     width: 2px;
     transform: translateX(-50%);
-    background: color-mix(in srgb, var(--ptt-text) 14%, transparent);
+    background: color-mix(in srgb, var(--corag-text) 14%, transparent);
   }
 
   .ptd-agenda__row:last-child .ptd-agenda__rail::before {
@@ -352,20 +352,20 @@ const closeModal = () => {
     height: 0.85rem;
     border-radius: 999px;
     color: #ffffff;
-    background: color-mix(in srgb, var(--ptt-text) 26%, transparent);
-    box-shadow: 0 0 0 4px var(--ptt-bg);
+    background: color-mix(in srgb, var(--corag-text) 26%, transparent);
+    box-shadow: 0 0 0 4px var(--corag-bg);
     transition: transform 0.18s ease;
   }
 
   .ptd-agenda__row--session .ptd-agenda__dot {
     width: 1.6rem;
     height: 1.6rem;
-    background: var(--ptt-primary);
+    background: var(--corag-primary);
   }
 
   .ptd-agenda__row--pending .ptd-agenda__dot {
-    background: var(--ptt-bg);
-    border: 2px dashed color-mix(in srgb, var(--ptt-text) 32%, transparent);
+    background: var(--corag-bg);
+    border: 2px dashed color-mix(in srgb, var(--corag-text) 32%, transparent);
   }
 
   /* Cards */
@@ -378,22 +378,22 @@ const closeModal = () => {
     padding: 0.85rem 1rem;
     border-radius: var(--ptd-card-radius, 1rem);
     text-align: left;
-    background: var(--ptt-bg-elevated);
-    border: 1px solid color-mix(in srgb, var(--ptt-text) 9%, transparent);
+    background: var(--corag-bg-elevated);
+    border: 1px solid color-mix(in srgb, var(--corag-text) 9%, transparent);
   }
 
   .ptd-agenda__card--logistics {
-    background: color-mix(in srgb, var(--ptt-bg-elevated) 62%, transparent);
+    background: color-mix(in srgb, var(--corag-bg-elevated) 62%, transparent);
     border-style: solid;
-    border-color: color-mix(in srgb, var(--ptt-text) 7%, transparent);
+    border-color: color-mix(in srgb, var(--corag-text) 7%, transparent);
     padding-block: 0.7rem;
   }
 
   .ptd-agenda__card--speaker {
     cursor: pointer;
     padding: 1rem;
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--ptt-text) 8%, transparent);
-    border-color: color-mix(in srgb, var(--ptt-primary) 22%, transparent);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--corag-text) 8%, transparent);
+    border-color: color-mix(in srgb, var(--corag-primary) 22%, transparent);
     transition:
       transform 0.18s ease,
       box-shadow 0.18s ease,
@@ -402,18 +402,18 @@ const closeModal = () => {
 
   .ptd-agenda__card--speaker:hover {
     transform: translateY(-2px);
-    border-color: var(--ptt-accent);
-    box-shadow: 0 16px 36px color-mix(in srgb, var(--ptt-text) 14%, transparent);
+    border-color: var(--corag-accent);
+    box-shadow: 0 16px 36px color-mix(in srgb, var(--corag-text) 14%, transparent);
   }
 
   .ptd-agenda__card--speaker:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 3px;
   }
 
   .ptd-agenda__card--pending {
-    background: color-mix(in srgb, var(--ptt-bg-elevated) 55%, transparent);
-    border: 1px dashed color-mix(in srgb, var(--ptt-text) 26%, transparent);
+    background: color-mix(in srgb, var(--corag-bg-elevated) 55%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--corag-text) 26%, transparent);
     padding: 1rem;
   }
 
@@ -423,7 +423,7 @@ const closeModal = () => {
     flex-shrink: 0;
     border-radius: 999px;
     object-fit: cover;
-    box-shadow: 0 0 0 2px var(--ptt-bg-elevated), 0 0 0 4px var(--ptt-accent);
+    box-shadow: 0 0 0 2px var(--corag-bg-elevated), 0 0 0 4px var(--corag-accent);
   }
 
   @media (min-width: 640px) {
@@ -436,10 +436,10 @@ const closeModal = () => {
   .ptd-agenda__photo--ghost {
     display: grid;
     place-items: center;
-    color: color-mix(in srgb, var(--ptt-text) 40%, transparent);
-    background: color-mix(in srgb, var(--ptt-text) 7%, transparent);
+    color: color-mix(in srgb, var(--corag-text) 40%, transparent);
+    background: color-mix(in srgb, var(--corag-text) 7%, transparent);
     box-shadow: none;
-    border: 1px dashed color-mix(in srgb, var(--ptt-text) 26%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--corag-text) 26%, transparent);
   }
 
   .ptd-agenda__icon {
@@ -449,8 +449,8 @@ const closeModal = () => {
     height: 2.25rem;
     flex-shrink: 0;
     border-radius: 999px;
-    color: var(--ptt-primary);
-    background: color-mix(in srgb, var(--ptt-primary) 12%, transparent);
+    color: var(--corag-primary);
+    background: color-mix(in srgb, var(--corag-primary) 12%, transparent);
   }
 
   .ptd-agenda__body {
@@ -476,19 +476,19 @@ const closeModal = () => {
     font-weight: 800;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: var(--ptt-text);
-    background: color-mix(in srgb, var(--ptt-accent) 20%, transparent);
+    color: var(--corag-text);
+    background: color-mix(in srgb, var(--corag-accent) 20%, transparent);
   }
 
   .ptd-agenda__badge--ghost {
-    color: var(--ptt-text-muted);
-    background: color-mix(in srgb, var(--ptt-text) 9%, transparent);
+    color: var(--corag-text-muted);
+    background: color-mix(in srgb, var(--corag-text) 9%, transparent);
   }
 
   .ptd-agenda__duration {
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-agenda__duration--end {
@@ -500,7 +500,7 @@ const closeModal = () => {
     font-size: clamp(1rem, 2.4vw, 1.2rem);
     font-weight: 800;
     line-height: 1.25;
-    color: var(--ptt-text);
+    color: var(--corag-text);
     text-wrap: balance;
   }
 
@@ -508,27 +508,27 @@ const closeModal = () => {
     font-size: 0.98rem;
     font-weight: 700;
     line-height: 1.3;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-agenda__speaker {
     margin-top: 0.2rem;
     font-size: 0.92rem;
     font-weight: 700;
-    color: var(--ptt-primary);
+    color: var(--corag-primary);
   }
 
   .ptd-agenda__role {
     font-size: 0.82rem;
     line-height: 1.4;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-agenda__reveal {
     margin-top: 0.15rem;
     font-size: 0.85rem;
     font-style: italic;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-agenda__more {
@@ -540,7 +540,7 @@ const closeModal = () => {
     font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--ptt-accent);
+    color: var(--corag-accent);
   }
 
   .ptd-agenda__card--speaker:hover .ptd-agenda__more svg {

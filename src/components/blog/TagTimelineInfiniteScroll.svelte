@@ -117,14 +117,14 @@ function buildSeriesBadgeLabel(
 
 {#if renderedPosts.length === 0 && !loading}
   <div class="text-center py-16">
-    <p class="text-ptt-secondary text-lg">
+    <p class="text-corag-secondary text-lg">
       {emptyStateMessage || (lang === 'es' ? 'Aún no hay posts disponibles.' : 'No posts available yet.')}
     </p>
   </div>
 {:else}
   <div class="relative py-8">
     <!-- Timeline line: left on mobile, centered on desktop -->
-    <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-ptt-border"></div>
+    <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-corag-border"></div>
 
     {#each renderedPosts as post, index}
       {@const isLeft = index % 2 === 0}
@@ -138,7 +138,7 @@ function buildSeriesBadgeLabel(
       {#if showYear}
         <div class="relative flex items-center h-8 mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
-            <span class="inline-block px-4 py-1.5 bg-ptt-primary text-white text-sm font-bold rounded-full shadow-md">
+            <span class="inline-block px-4 py-1.5 bg-corag-fill text-corag-on-fill text-sm font-bold rounded-full shadow-md">
               {year}
             </span>
           </div>
@@ -149,7 +149,7 @@ function buildSeriesBadgeLabel(
       {#if showMonth}
         <div class="relative flex items-center h-6 mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
-            <span class="inline-block px-3 py-1 bg-ptt-bg-elevated text-ptt-secondary text-xs font-medium rounded-full capitalize translate-y-1 border border-ptt-border">
+            <span class="inline-block px-3 py-1 bg-corag-bg-elevated text-corag-secondary text-xs font-medium rounded-full capitalize translate-y-1 border border-corag-border">
               {getMonthName(post.pubDate)}
             </span>
           </div>
@@ -160,12 +160,12 @@ function buildSeriesBadgeLabel(
       <div class="relative flex items-start mb-12 group">
         <!-- Dot on the line: left on mobile, centered on desktop -->
         <div class="absolute left-6 md:left-1/2 -translate-x-1/2 z-10 mt-6">
-          <div class="w-4 h-4 bg-ptt-primary rounded-full border-4 border-ptt-bg shadow-sm group-hover:scale-125 transition-transform duration-200"></div>
+          <div class="w-4 h-4 bg-corag-primary rounded-full border-4 border-corag-bg shadow-sm group-hover:scale-125 transition-transform duration-200"></div>
         </div>
 
         <!-- Card: always right of line on mobile (ml-14), alternating on desktop -->
         <div class={`ml-14 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12 md:ml-auto'}`}>
-          <article class="relative bg-ptt-bg-elevated rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-ptt-border hover:border-ptt-primary/30 hover:-translate-y-1">
+          <article class="relative bg-corag-bg-elevated rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-corag-border hover:border-corag-primary/30 hover:-translate-y-1">
             <!-- Full-card clickable link (background layer) -->
             <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
             <a
@@ -189,16 +189,16 @@ function buildSeriesBadgeLabel(
             {/if}
 
             <div class="p-5">
-              <h3 class="text-lg font-bold text-ptt mb-2 group-hover:text-ptt-primary transition-colors">
+              <h3 class="text-lg font-bold text-corag mb-2 group-hover:text-corag-primary transition-colors">
                 {post.title}
               </h3>
 
-              <p class="text-sm text-ptt-secondary mb-3 line-clamp-3">
+              <p class="text-sm text-corag-secondary mb-3 line-clamp-3">
                 {post.description}
               </p>
 
               <div class="relative z-10 flex flex-wrap items-center gap-2">
-                <time class="text-xs text-ptt-secondary">
+                <time class="text-xs text-corag-secondary">
                   {formatDate(post.pubDate)}
                 </time>
 
@@ -220,14 +220,14 @@ function buildSeriesBadgeLabel(
                   {#if post.seriesSlug}
                     <a
                       href={`${prefix}/blog/series/${post.seriesSlug}/`}
-                      class="inline-flex items-center rounded-full border-2 border-ptt-primary/40 bg-ptt-primary-soft px-2 py-0.5 text-[11px] font-medium text-ptt-primary transition-colors hover:bg-ptt-primary/15 hover:border-ptt-primary/60"
+                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-[11px] font-medium text-corag-primary transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/60"
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}
                     </a>
                   {:else}
                     <span
-                      class="inline-flex items-center rounded-full border-2 border-ptt-primary/40 bg-ptt-primary-soft px-2 py-0.5 text-[11px] font-medium text-ptt-primary"
+                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-[11px] font-medium text-corag-primary"
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}
@@ -239,7 +239,7 @@ function buildSeriesBadgeLabel(
                   {#each post.tags.filter((tag) => !topicTagNames.includes(tag)) as tag}
                     <a
                       href={`${prefix}/blog/tag/${tag}/`}
-                      class="text-xs px-2 py-0.5 rounded bg-ptt-primary-soft text-ptt-primary hover:bg-ptt-primary/15 transition-colors"
+                      class="text-xs px-2 py-0.5 rounded bg-corag-primary-soft text-corag-primary hover:bg-corag-primary/15 transition-colors"
                     >
                       #{t.tagNames[tag] || tag}
                     </a>
@@ -247,7 +247,7 @@ function buildSeriesBadgeLabel(
                   {#each post.tags.filter((tag) => topicTagNames.includes(tag) && !subtopicTagNames.includes(tag)) as topic}
                     <a
                       href={`${prefix}/blog/tag/${topic}/`}
-                      class="text-xs px-2 py-0.5 rounded border border-ptt-border bg-ptt-bg-elevated text-ptt-secondary hover:border-ptt-border-strong hover:text-ptt transition-colors"
+                      class="text-xs px-2 py-0.5 rounded border border-corag-border bg-corag-bg-elevated text-corag-secondary hover:border-corag-border-strong hover:text-corag transition-colors"
                     >
                       {t.tagNames[topic] || topic}
                     </a>
@@ -255,9 +255,9 @@ function buildSeriesBadgeLabel(
                   {#each post.tags.filter((tag) => subtopicTagNames.includes(tag)) as sub}
                     <a
                       href={`${prefix}/blog/tag/${sub}/`}
-                      class="inline-flex items-center text-xs px-2 py-1 rounded bg-ptt-bg-elevated text-ptt-secondary border border-dashed border-ptt-border hover:bg-ptt-primary-soft hover:border-ptt-border-strong hover:text-ptt transition-colors"
+                      class="inline-flex items-center text-xs px-2 py-1 rounded bg-corag-bg-elevated text-corag-secondary border border-dashed border-corag-border hover:bg-corag-primary-soft hover:border-corag-border-strong hover:text-corag transition-colors"
                     >
-                      <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-ptt-secondary'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
+                      <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-corag-secondary'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
                     </a>
                   {/each}
                 {/if}
@@ -281,7 +281,7 @@ function buildSeriesBadgeLabel(
         </span>
         <div
           aria-hidden="true"
-          class="w-8 h-8 border-4 border-ptt-primary border-t-transparent rounded-full animate-spin"
+          class="w-8 h-8 border-4 border-corag-primary border-t-transparent rounded-full animate-spin"
         ></div>
       </div>
     {/if}
@@ -289,12 +289,12 @@ function buildSeriesBadgeLabel(
     <!-- Error state -->
     {#if fetchError}
       <div role="alert" class="text-center py-8">
-        <p class="text-ptt-secondary mb-3">
+        <p class="text-corag-secondary mb-3">
           {lang === 'es' ? 'Error al cargar más posts.' : 'Failed to load more posts.'}
         </p>
         <button
           on:click={loadMore}
-          class="px-4 py-2 text-sm bg-ptt-primary text-white rounded-lg hover:bg-ptt-primary-strong transition-colors"
+          class="px-4 py-2 text-sm bg-corag-fill text-corag-on-fill rounded-lg hover:bg-corag-fill-strong transition-colors"
         >
           {lang === 'es' ? 'Reintentar' : 'Retry'}
         </button>
@@ -306,16 +306,16 @@ function buildSeriesBadgeLabel(
   <!-- Timeline end cap — outside the line container so the line terminates cleanly -->
   {#if allLoaded && renderedPosts.length > 0}
     <div class="flex flex-col items-center gap-4 pb-6">
-      <div class="w-12 h-12 rounded-full bg-ptt-primary shadow-lg shadow-ptt-primary/25 flex items-center justify-center ring-4 ring-ptt-primary/15">
+      <div class="w-12 h-12 rounded-full bg-corag-primary shadow-lg shadow-corag-primary/25 flex items-center justify-center ring-4 ring-corag-primary/15">
         <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
         </svg>
       </div>
-      <div class="bg-ptt-bg-elevated px-8 py-4 rounded-2xl shadow-md border border-ptt-border text-center">
-        <p class="text-sm font-semibold text-ptt-secondary">
+      <div class="bg-corag-bg-elevated px-8 py-4 rounded-2xl shadow-md border border-corag-border text-center">
+        <p class="text-sm font-semibold text-corag-secondary">
           {lang === 'es' ? 'Has llegado al inicio' : "You've reached the beginning"}
         </p>
-        <p class="text-sm text-ptt-secondary mt-1">
+        <p class="text-sm text-corag-secondary mt-1">
           {renderedPosts.length} {lang === 'es' ? 'posts en total' : 'total posts'}
         </p>
       </div>

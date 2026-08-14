@@ -175,8 +175,8 @@ function handleBackdrop(event: MouseEvent) {
     overflow-y: auto;
     padding: clamp(1.5rem, 4vw, 2.25rem);
     border-radius: 1.35rem;
-    background: var(--ptt-bg-elevated, #ffffff);
-    color: var(--ptt-text, #1f3f59);
+    background: var(--corag-bg-elevated, #ffffff);
+    color: var(--corag-text, #1f3f59);
     box-shadow: 0 24px 60px rgb(0 0 0 / 28%);
     overscroll-behavior: contain;
   }
@@ -190,18 +190,18 @@ function handleBackdrop(event: MouseEvent) {
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 999px;
-    color: var(--ptt-text);
-    background: color-mix(in srgb, var(--ptt-text) 8%, transparent);
+    color: var(--corag-text);
+    background: color-mix(in srgb, var(--corag-text) 8%, transparent);
     cursor: pointer;
     transition: background 0.15s ease;
   }
 
   .ptd-modal__close:hover {
-    background: color-mix(in srgb, var(--ptt-text) 16%, transparent);
+    background: color-mix(in srgb, var(--corag-text) 16%, transparent);
   }
 
   .ptd-modal__close:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 2px;
   }
 
@@ -217,7 +217,7 @@ function handleBackdrop(event: MouseEvent) {
   .ptd-modal__time {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--ptt-primary);
+    color: var(--corag-primary);
   }
 
   .ptd-modal__badge {
@@ -227,14 +227,14 @@ function handleBackdrop(event: MouseEvent) {
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ptt-text);
-    background: color-mix(in srgb, var(--ptt-accent) 18%, transparent);
+    color: var(--corag-text);
+    background: color-mix(in srgb, var(--corag-accent) 18%, transparent);
   }
 
   .ptd-modal__duration {
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-modal__speaker {
@@ -243,7 +243,7 @@ function handleBackdrop(event: MouseEvent) {
     gap: 1rem;
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--ptt-text) 10%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--corag-text) 10%, transparent);
   }
 
   .ptd-modal__photo {
@@ -252,7 +252,7 @@ function handleBackdrop(event: MouseEvent) {
     flex-shrink: 0;
     border-radius: 999px;
     object-fit: cover;
-    box-shadow: 0 0 0 3px var(--ptt-bg-elevated), 0 0 0 5px var(--ptt-accent);
+    box-shadow: 0 0 0 3px var(--corag-bg-elevated), 0 0 0 5px var(--corag-accent);
   }
 
   @media (min-width: 640px) {
@@ -272,7 +272,7 @@ function handleBackdrop(event: MouseEvent) {
   .ptd-modal__role {
     margin: 0.15rem 0 0;
     font-size: 0.92rem;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-modal__social {
@@ -285,16 +285,16 @@ function handleBackdrop(event: MouseEvent) {
 
   .ptd-modal__social a {
     display: inline-flex;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
     transition: color 0.15s ease;
   }
 
   .ptd-modal__social a:hover {
-    color: var(--ptt-primary);
+    color: var(--corag-primary);
   }
 
   .ptd-modal__social a:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -305,7 +305,7 @@ function handleBackdrop(event: MouseEvent) {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-modal__title {
@@ -324,7 +324,7 @@ function handleBackdrop(event: MouseEvent) {
     height: 3px;
     margin: 0.85rem 0 1rem;
     border-radius: 999px;
-    background: var(--ptt-accent);
+    background: var(--corag-accent);
   }
 
   .ptd-modal__subtitle {
@@ -333,14 +333,14 @@ function handleBackdrop(event: MouseEvent) {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ptt-text-muted);
+    color: var(--corag-text-muted);
   }
 
   .ptd-modal__body {
     margin: 0;
     font-size: 1rem;
     line-height: 1.65;
-    color: var(--ptt-text);
+    color: var(--corag-text);
   }
 
   .ptd-modal__cta {
@@ -353,7 +353,7 @@ function handleBackdrop(event: MouseEvent) {
     font-size: 0.92rem;
     font-weight: 700;
     color: #ffffff;
-    background: var(--ptt-primary);
+    background: var(--corag-primary);
     transition: opacity 0.15s ease;
   }
 
@@ -362,7 +362,7 @@ function handleBackdrop(event: MouseEvent) {
   }
 
   .ptd-modal__cta:focus-visible {
-    outline: 2px solid var(--ptt-primary);
+    outline: 2px solid var(--corag-primary);
     outline-offset: 2px;
   }
 

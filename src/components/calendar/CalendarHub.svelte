@@ -100,7 +100,7 @@ function setView(mode: CalendarViewMode): void {
 </script>
 
 {#if calendars.length === 0}
-  <p class="text-ptt-secondary max-w-2xl">{copy.noActiveCalendars}</p>
+  <p class="text-corag-secondary max-w-2xl">{copy.noActiveCalendars}</p>
 {:else}
   <div class="space-y-6">
     <div
@@ -109,7 +109,7 @@ function setView(mode: CalendarViewMode): void {
       <div>
         <p
           id="calendar-filter-label"
-          class="text-sm font-semibold text-ptt mb-2"
+          class="text-sm font-semibold text-corag mb-2"
         >
           {copy.filterLabel}
         </p>
@@ -120,15 +120,15 @@ function setView(mode: CalendarViewMode): void {
         >
           <button
             type="button"
-            class="rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ptt-primary focus-visible:ring-offset-2 focus-visible:ring-offset-ptt-bg"
-            class:border-ptt-primary={allSelected}
-            class:bg-ptt-primary={allSelected}
+            class="rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corag-primary focus-visible:ring-offset-2 focus-visible:ring-offset-corag-bg"
+            class:border-corag-primary={allSelected}
+            class:bg-corag-primary={allSelected}
             class:text-white={allSelected}
-            class:dark:bg-ptt-primary-dark={allSelected}
-            class:dark:text-ptt-bg={allSelected}
-            class:border-ptt-border={!allSelected}
-            class:bg-ptt-bg-elevated={!allSelected}
-            class:text-ptt={!allSelected}
+            class:dark:bg-corag-primary-light={allSelected}
+            class:dark:text-corag-bg={allSelected}
+            class:border-corag-border={!allSelected}
+            class:bg-corag-bg-elevated={!allSelected}
+            class:text-corag={!allSelected}
             aria-pressed={allSelected}
             onclick={selectAll}
           >
@@ -138,20 +138,20 @@ function setView(mode: CalendarViewMode): void {
             {@const pressed = selectedSlugs.includes(cal.slug)}
             <button
               type="button"
-              class="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ptt-primary focus-visible:ring-offset-2 focus-visible:ring-offset-ptt-bg"
-              class:border-ptt-primary={pressed}
-              class:bg-ptt-primary={pressed}
+              class="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corag-primary focus-visible:ring-offset-2 focus-visible:ring-offset-corag-bg"
+              class:border-corag-primary={pressed}
+              class:bg-corag-primary={pressed}
               class:text-white={pressed}
-              class:dark:bg-ptt-primary-dark={pressed}
-              class:dark:text-ptt-bg={pressed}
-              class:border-ptt-border={!pressed}
-              class:bg-ptt-bg-elevated={!pressed}
-              class:text-ptt={!pressed}
+              class:dark:bg-corag-primary-light={pressed}
+              class:dark:text-corag-bg={pressed}
+              class:border-corag-border={!pressed}
+              class:bg-corag-bg-elevated={!pressed}
+              class:text-corag={!pressed}
               aria-pressed={pressed}
               onclick={() => toggleSlug(cal.slug)}
             >
               <span
-                class="h-2.5 w-2.5 shrink-0 rounded-full border border-ptt-border"
+                class="h-2.5 w-2.5 shrink-0 rounded-full border border-corag-border"
                 style:background-color={cal.color}
                 aria-hidden="true"
               ></span>
@@ -164,16 +164,16 @@ function setView(mode: CalendarViewMode): void {
       <div
         role="group"
         aria-label={copy.viewMonth + ' / ' + copy.viewAgenda}
-        class="flex rounded-full border border-ptt-border bg-ptt-bg-elevated p-1"
+        class="flex rounded-full border border-corag-border bg-corag-bg-elevated p-1"
       >
         <button
           type="button"
-          class="rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ptt-primary"
-          class:bg-ptt-primary={viewMode === 'MONTH'}
+          class="rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corag-primary"
+          class:bg-corag-primary={viewMode === 'MONTH'}
           class:text-white={viewMode === 'MONTH'}
-          class:dark:bg-ptt-primary-dark={viewMode === 'MONTH'}
-          class:dark:text-ptt-bg={viewMode === 'MONTH'}
-          class:text-ptt={viewMode !== 'MONTH'}
+          class:dark:bg-corag-primary-light={viewMode === 'MONTH'}
+          class:dark:text-corag-bg={viewMode === 'MONTH'}
+          class:text-corag={viewMode !== 'MONTH'}
           aria-pressed={viewMode === 'MONTH'}
           onclick={() => setView('MONTH')}
         >
@@ -181,12 +181,12 @@ function setView(mode: CalendarViewMode): void {
         </button>
         <button
           type="button"
-          class="rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ptt-primary"
-          class:bg-ptt-primary={viewMode === 'AGENDA'}
+          class="rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-corag-primary"
+          class:bg-corag-primary={viewMode === 'AGENDA'}
           class:text-white={viewMode === 'AGENDA'}
-          class:dark:bg-ptt-primary-dark={viewMode === 'AGENDA'}
-          class:dark:text-ptt-bg={viewMode === 'AGENDA'}
-          class:text-ptt={viewMode !== 'AGENDA'}
+          class:dark:bg-corag-primary-light={viewMode === 'AGENDA'}
+          class:dark:text-corag-bg={viewMode === 'AGENDA'}
+          class:text-corag={viewMode !== 'AGENDA'}
           aria-pressed={viewMode === 'AGENDA'}
           onclick={() => setView('AGENDA')}
         >
@@ -198,12 +198,12 @@ function setView(mode: CalendarViewMode): void {
     <p id="calendar-legend-label" class="sr-only">{copy.legendLabel}</p>
     <ul
       aria-labelledby="calendar-legend-label"
-      class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-ptt-secondary"
+      class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-corag-secondary"
     >
       {#each selectedCalendars as cal (cal.slug)}
         <li class="inline-flex items-center gap-2">
           <span
-            class="h-2.5 w-2.5 rounded-full border border-ptt-border"
+            class="h-2.5 w-2.5 rounded-full border border-corag-border"
             style:background-color={cal.color}
             aria-hidden="true"
           ></span>
@@ -213,7 +213,7 @@ function setView(mode: CalendarViewMode): void {
     </ul>
 
     <div
-      class="overflow-hidden rounded-xl border border-ptt-border bg-ptt-bg-elevated"
+      class="overflow-hidden rounded-xl border border-corag-border bg-corag-bg-elevated"
     >
       <iframe
         title={embedTitle}
@@ -222,13 +222,13 @@ function setView(mode: CalendarViewMode): void {
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-      <p class="px-4 py-3 text-sm text-ptt-secondary border-t border-ptt-border">
+      <p class="px-4 py-3 text-sm text-corag-secondary border-t border-corag-border">
         {copy.embedFallback}
         <a
           href={embedUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="font-medium text-ptt-primary dark:text-ptt-primary-dark underline underline-offset-2"
+          class="font-medium text-corag-primary dark:text-corag-primary-light underline underline-offset-2"
         >
           {copy.openExternal}
         </a>
@@ -238,16 +238,16 @@ function setView(mode: CalendarViewMode): void {
     <ul class="grid gap-3 sm:grid-cols-2">
       {#each selectedCalendars as cal (cal.slug)}
         <li
-          class="rounded-xl border border-ptt-border bg-ptt-bg-elevated px-4 py-3"
+          class="rounded-xl border border-corag-border bg-corag-bg-elevated px-4 py-3"
         >
-          <h3 class="font-semibold text-ptt">{cal.name}</h3>
+          <h3 class="font-semibold text-corag">{cal.name}</h3>
           {#if cal.description}
-            <p class="mt-1 text-sm text-ptt-secondary">{cal.description}</p>
+            <p class="mt-1 text-sm text-corag-secondary">{cal.description}</p>
           {/if}
           <div class="mt-3 flex flex-wrap gap-3 text-sm">
             <a
               href={cal.icsUrl}
-              class="font-medium text-ptt-primary dark:text-ptt-primary-dark underline underline-offset-2"
+              class="font-medium text-corag-primary dark:text-corag-primary-light underline underline-offset-2"
               onclick={() =>
                 trackEvent(EVENTS.CALENDAR_SUBSCRIBE, { slug: cal.slug })}
             >
@@ -258,7 +258,7 @@ function setView(mode: CalendarViewMode): void {
                 href={cal.lumaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium text-ptt-primary dark:text-ptt-primary-dark underline underline-offset-2"
+                class="font-medium text-corag-primary dark:text-corag-primary-light underline underline-offset-2"
                 onclick={() =>
                   trackEvent(EVENTS.CALENDAR_LUMA, { slug: cal.slug })}
               >
@@ -270,7 +270,7 @@ function setView(mode: CalendarViewMode): void {
                 href={cal.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium text-ptt-primary dark:text-ptt-primary-dark underline underline-offset-2"
+                class="font-medium text-corag-primary dark:text-corag-primary-light underline underline-offset-2"
               >
                 {copy.websiteLink}
               </a>
@@ -284,23 +284,23 @@ function setView(mode: CalendarViewMode): void {
 
 {#if inactiveCalendars.length > 0}
   <div class="mt-10">
-    <h3 class="text-lg font-semibold text-ptt">{copy.comingSoon}</h3>
-    <p class="mt-2 text-sm text-ptt-secondary">{copy.inactiveNote}</p>
+    <h3 class="text-lg font-semibold text-corag">{copy.comingSoon}</h3>
+    <p class="mt-2 text-sm text-corag-secondary">{copy.inactiveNote}</p>
     <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {#each inactiveCalendars as cal (cal.slug)}
         <li
-          class="rounded-xl border border-dashed border-ptt-border px-4 py-3 opacity-90"
+          class="rounded-xl border border-dashed border-corag-border px-4 py-3 opacity-90"
         >
           <div class="flex items-center gap-2">
             <span
-              class="h-2.5 w-2.5 rounded-full border border-ptt-border"
+              class="h-2.5 w-2.5 rounded-full border border-corag-border"
               style:background-color={cal.color}
               aria-hidden="true"
             ></span>
-            <span class="font-medium text-ptt">{cal.name}</span>
+            <span class="font-medium text-corag">{cal.name}</span>
           </div>
           {#if cal.description}
-            <p class="mt-2 text-sm text-ptt-secondary">{cal.description}</p>
+            <p class="mt-2 text-sm text-corag-secondary">{cal.description}</p>
           {/if}
         </li>
       {/each}
