@@ -12,6 +12,50 @@ export interface PagePassion {
   link: string;
 }
 
+/**
+ * One block inside an institutional page. The shape is deliberately small:
+ * these pages explain a model, and a model is prose, an ordered sequence, a
+ * set of parallel facts, or a warning. Anything else belongs on its own page.
+ */
+export type InstitutionalBlock =
+  | { kind: 'prose'; paragraphs: string[] }
+  | { kind: 'steps'; steps: { title: string; body: string }[] }
+  | { kind: 'cards'; cards: { title: string; body: string }[] }
+  | { kind: 'list'; items: string[] }
+  | { kind: 'callout'; tone: 'info' | 'warning'; title: string; body: string };
+
+export interface InstitutionalSection {
+  heading: string;
+  intro?: string;
+  blocks: InstitutionalBlock[];
+}
+
+export interface InstitutionalLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+/**
+ * An institutional page: what Corag is, how it works, what it promises and
+ * where the limits are. One shape, rendered by `InstitutionalPage.astro`, so
+ * the seven of them cannot drift into seven layouts.
+ */
+export interface InstitutionalPageCopy {
+  title: string;
+  /** 130-160 characters — the SEO gate enforces the band. */
+  description: string;
+  eyebrow: string;
+  lead: string;
+  sections: InstitutionalSection[];
+  cta: {
+    title: string;
+    body: string;
+    primary: InstitutionalLink;
+    secondary?: InstitutionalLink;
+  };
+}
+
 export interface HomePillar {
   title: string;
   body: string;
@@ -89,6 +133,8 @@ export interface SiteTranslations {
     /** The Ayuda Directa application CTA in the chrome. */
     app: string;
     home: string;
+    howItWorks: string;
+    transparency: string;
     blog: string;
     about: string;
     contact: string;
@@ -394,6 +440,16 @@ export interface SiteTranslations {
     aboutAuthor: string;
     writtenBy: string;
   };
+
+  // Institutional pages (how it works, transparency, emergencies, leaders,
+  // partners, developers, privacy)
+  howItWorksPage: InstitutionalPageCopy;
+  transparencyPage: InstitutionalPageCopy;
+  emergenciesPage: InstitutionalPageCopy;
+  leadersPage: InstitutionalPageCopy;
+  partnersPage: InstitutionalPageCopy;
+  developersPage: InstitutionalPageCopy;
+  privacyPage: InstitutionalPageCopy;
 
   // Errors
   searchError: string;

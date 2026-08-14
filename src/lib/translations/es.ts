@@ -2,6 +2,8 @@
  * Spanish translations
  */
 
+import { APP_URL } from '@/lib/constances';
+
 import type { SiteTranslations } from './types';
 
 export const es: SiteTranslations = {
@@ -100,6 +102,8 @@ export const es: SiteTranslations = {
   nav: {
     app: 'Ir a la aplicación',
     home: 'Inicio',
+    howItWorks: 'Cómo funciona',
+    transparency: 'Transparencia',
     blog: 'Blog',
     about: 'Sobre Corag',
     contact: 'Contacto',
@@ -157,42 +161,42 @@ export const es: SiteTranslations = {
         description:
           'Unimos gobiernos, organizaciones, empresas y personas en una sola red, en lugar de multiplicar sistemas aislados.',
         icon: 'users',
-        link: '/como-funciona',
+        link: '/how-it-works',
       },
       {
         title: 'Empatía',
         description:
           'Quien recibe ayuda es un vecino, no el telón de fondo de la virtud de alguien más.',
         icon: 'heart',
-        link: '/como-funciona',
+        link: '/how-it-works',
       },
       {
         title: 'Confianza',
         description:
           'Cada aporte tiene un responsable con nombre y un destino que puedes revisar.',
         icon: 'shield',
-        link: '/transparencia',
+        link: '/transparency',
       },
       {
         title: 'Amor',
         description:
           'Está en el corazón del logo y en la razón por la que existe esto.',
         icon: 'heart',
-        link: '/sobre-corag',
+        link: '/about',
       },
       {
         title: 'Innovación social',
         description:
           'Una API pública, una especificación OpenAPI y un servidor MCP para que otros construyan sobre la misma red.',
         icon: 'sparkles',
-        link: '/desarrolladores',
+        link: '/developers',
       },
       {
         title: 'Transparencia',
         description:
           'Publicamos cuánto se recibió y cuánto se usó con evidencia. Son dos números distintos y los dos son públicos.',
         icon: 'eye',
-        link: '/transparencia',
+        link: '/transparency',
       },
     ],
     quickFactsTitle: 'En resumen',
@@ -292,17 +296,17 @@ export const es: SiteTranslations = {
     quickLinks: [
       {
         label: 'Cómo funciona',
-        href: '/como-funciona',
+        href: '/how-it-works',
         description: 'El recorrido completo, de la necesidad a la evidencia.',
       },
       {
         label: 'Transparencia',
-        href: '/transparencia',
+        href: '/transparency',
         description: 'Cuánto se recibió y cuánto se usó con evidencia.',
       },
       {
         label: 'Desarrolladores',
-        href: '/desarrolladores',
+        href: '/developers',
         description: 'API pública, OpenAPI y MCP para integrarte.',
       },
     ],
@@ -593,6 +597,594 @@ export const es: SiteTranslations = {
   blogEngagement: {
     aboutAuthor: 'Sobre el autor',
     writtenBy: 'Escrito por',
+  },
+
+  // Institutional pages
+  howItWorksPage: {
+    title: 'Cómo funciona',
+    description:
+      'El recorrido completo de una ayuda en Corag: quién publica la necesidad, quién responde, cómo se mueve el dinero y cómo se comprueba lo que se entregó.',
+    eyebrow: 'El modelo',
+    lead: 'Corag no guarda el dinero de nadie. Conecta a quien necesita con quien puede, pone un nombre responsable en el medio y publica la cuenta después. Esto es el recorrido, paso por paso.',
+    sections: [
+      {
+        heading: 'El recorrido de una ayuda',
+        intro:
+          'Cinco pasos. Ninguno ocurre en este sitio: todos ocurren en la aplicación.',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Alguien publica una necesidad',
+                body: 'Una familia, un líder comunitario o una organización registra qué hace falta y dónde. La solicitud queda visible para la red, no enterrada en un chat.',
+              },
+              {
+                title: 'Un responsable la toma',
+                body: 'Quien coordina en ese territorio asume la entrega. Tiene nombre, identidad validada y vínculo comprobado con la zona o la organización.',
+              },
+              {
+                title: 'Alguien aporta',
+                body: 'El aporte va por transferencia directa a la cuenta verificada del responsable. Corag no es intermediario del dinero ni cobra comisión por moverlo.',
+              },
+              {
+                title: 'Se ejecuta la entrega',
+                body: 'El responsable compra, transporta y entrega. Registra qué se entregó, a cuántas personas y cuándo.',
+              },
+              {
+                title: 'Se publica la evidencia',
+                body: 'Fotos, soportes y cifras se cargan dentro del plazo, pasan revisión administrativa y solo entonces se publican. Hasta ese momento el aporte cuenta como recibido, no como utilizado.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Por qué el dinero no pasa por nosotros',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Una plataforma que recauda y luego reparte se convierte en el cuello de botella y en el punto de fallo. Si se cae, se congela o se equivoca, la ayuda se detiene con ella.',
+              'La transferencia directa elimina ese riesgo, pero traslada la confianza a otro lugar: al responsable. Por eso el sistema de validación de responsables es la dependencia crítica de todo lo demás, y por eso la evidencia no es opcional.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Los tres roles',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Persona',
+                body: 'Publica una necesidad, ofrece ayuda o aporta. No necesita permiso de nadie para empezar.',
+              },
+              {
+                title: 'Responsable',
+                body: 'Coordina y ejecuta. Recibe aportes a su nombre y responde por ellos con evidencia dentro del plazo.',
+              },
+              {
+                title: 'Administración',
+                body: 'Valida identidades, modera la evidencia antes de publicarla y revisa los reportes sobre uso de recursos.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué pasa cuando algo sale mal',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'No presentar evidencia es la falta más grave, porque rompe exactamente aquello que hace verificable a Corag. La respuesta es escalonada: recordatorio, suspensión de la capacidad de recibir aportes y, si persiste, retiro del rol.',
+            ],
+          },
+          {
+            kind: 'callout',
+            tone: 'info',
+            title: '¿Viste algo que no cuadra?',
+            body: 'Un aporte sin evidencia, una entrega que no ocurrió, una cuenta sospechosa: repórtalo. Un reporte sobre recursos siempre se revisa, incluso si llega de forma anónima.',
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Todo esto ocurre en la aplicación',
+      body: 'Publicar una necesidad, ofrecer ayuda, aportar y revisar la evidencia son acciones de Ayuda Directa. Este sitio solo lo explica.',
+      primary: {
+        label: 'Ir a la aplicación',
+        href: APP_URL,
+        external: true,
+      },
+      secondary: { label: 'Ver la transparencia', href: '/transparency' },
+    },
+  },
+
+  transparencyPage: {
+    title: 'Transparencia',
+    description:
+      'Qué publicamos, qué significa cada número, cómo se revisa la evidencia antes de salir y qué cosas todavía no podemos comprobar. Sin adornos.',
+    eyebrow: 'Las cuentas',
+    lead: 'Decir que somos transparentes es fácil. Publicar el recibo requiere coraje. Esto es lo que publicamos, qué significa exactamente y dónde están los límites.',
+    sections: [
+      {
+        heading: 'Los dos números',
+        intro:
+          'No son el mismo número y la diferencia entre ellos es el punto entero.',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Recibido',
+                body: 'Lo que la red aportó. Se registra en el momento de la transferencia y no depende de nadie más.',
+              },
+              {
+                title: 'Utilizado con evidencia',
+                body: 'Lo que ya se entregó, se documentó y pasó revisión administrativa. Es el número que vale la pena mirar.',
+              },
+            ],
+          },
+          {
+            kind: 'prose',
+            paragraphs: [
+              'La distancia entre los dos es el trabajo pendiente. Una plataforma que solo publica cuánto recaudó está contando la parte fácil.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Cómo se revisa la evidencia',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Se carga',
+                body: 'El responsable sube fotos, soportes de compra y las cifras de la entrega, dentro del plazo definido.',
+              },
+              {
+                title: 'Se revisa',
+                body: 'La administración contrasta lo cargado contra lo prometido. Una carga incompleta se devuelve, no se publica.',
+              },
+              {
+                title: 'Se publica',
+                body: 'Solo después de aprobarse, el valor pasa a contarse como utilizado con evidencia y queda visible para quien aportó y para cualquiera.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué protegemos aunque cueste claridad',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'No publicamos la ubicación exacta de una persona en situación vulnerable más allá de lo que la coordinación necesita.',
+              'No publicamos datos de contacto sin autorización explícita de quien los entregó.',
+              'Quien aporta puede aparecer como “Persona solidaria” en lugar de con su nombre, sin dar explicaciones.',
+              'La evidencia con menores solo se publica con permiso y sin rasgos identificables.',
+            ],
+          },
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Estas reglas reducen el detalle público. Es una decisión deliberada: la dignidad de quien recibe ayuda no se negocia por una foto más convincente.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Lo que todavía no está resuelto',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Decirlo es parte de la transparencia. Los plazos formales de evidencia, el proceso de apelación cuando se retira un rol y los límites máximos de recursos que un responsable puede administrar sin revisión adicional se están definiendo. Cuando se cierren, se publican en Gobernanza.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Revisa las cifras tú mismo',
+      body: 'Los números y la evidencia aprobada están en la aplicación, por emergencia y por entrega.',
+      primary: {
+        label: 'Ver la aplicación',
+        href: APP_URL,
+        external: true,
+      },
+      secondary: { label: 'Cómo se gobierna', href: '/governance' },
+    },
+  },
+
+  emergenciesPage: {
+    title: 'Emergencias',
+    description:
+      'Qué hace Corag cuando ocurre una emergencia, cómo se abre un frente, cómo pedir ayuda y qué no somos: esto no es un servicio de urgencias.',
+    eyebrow: 'Respuesta',
+    lead: 'En una emergencia el problema rara vez es la falta de generosidad. Es que nadie sabe qué hace falta, dónde, ni quién ya lo está cubriendo.',
+    sections: [
+      {
+        heading: 'Antes que nada',
+        blocks: [
+          {
+            kind: 'callout',
+            tone: 'warning',
+            title: 'Corag no es un servicio de emergencia',
+            body: 'Si hay riesgo inmediato para la vida o la integridad de alguien, llama primero a las líneas de emergencia de tu país. Corag coordina ayuda material; no reemplaza a bomberos, ambulancias ni policía.',
+          },
+        ],
+      },
+      {
+        heading: 'Qué es un frente',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Cuando ocurre una emergencia se abre un frente: un espacio con su propio mapa de necesidades, sus responsables y sus cifras. Todo lo que pasa en esa emergencia queda dentro del frente, en lugar de dispersarse entre grupos de chat que nadie puede auditar después.',
+              'Dentro del frente conviven tres cosas: lo que se necesita, lo que se ofrece y lo que ya se entregó con evidencia. Esa tercera columna es la que evita que veinte personas lleven agua al mismo barrio mientras otro se queda sin nada.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Cómo participar',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Si necesitas ayuda',
+                body: 'Publica la necesidad en el frente correspondiente. Sé concreto: qué, cuánto, dónde y para cuántas personas. Una necesidad vaga tarda más en ser atendida.',
+              },
+              {
+                title: 'Si puedes ayudar',
+                body: 'Revisa las necesidades abiertas antes de decidir qué llevar. Ofrecer lo que ya sobra retrasa lo que falta.',
+              },
+              {
+                title: 'Si puedes coordinar',
+                body: 'Postúlate como responsable. Requiere validación de identidad y de vínculo con el territorio, y compromete a rendir cuentas con evidencia.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Cuando el frente se cierra',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Un frente no desaparece cuando pasa la urgencia. Queda como expediente: qué se necesitó, quién respondió, cuánto se movió y qué evidencia lo respalda. Esa memoria es lo que hace que la siguiente emergencia empiece con algo más que buena voluntad.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Los frentes activos están en la aplicación',
+      body: 'Ahí puedes ver qué se necesita ahora mismo, qué ya está cubierto y qué evidencia hay de lo entregado.',
+      primary: {
+        label: 'Ver frentes activos',
+        href: APP_URL,
+        external: true,
+      },
+      secondary: { label: 'Cómo funciona', href: '/how-it-works' },
+    },
+  },
+
+  leadersPage: {
+    title: 'Líderes',
+    description:
+      'Qué asume quien coordina ayuda en Corag, cómo se valida, qué obligaciones acepta con la evidencia y qué pasa cuando no las cumple.',
+    eyebrow: 'Responsables',
+    lead: 'El sistema de responsables es la dependencia crítica de toda la plataforma. Si esa validación falla, nada de lo demás importa.',
+    sections: [
+      {
+        heading: 'Qué hace un responsable',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Coordina la ayuda dentro de un frente o de una entrega concreta.',
+              'Recibe aportes en una cuenta verificada y a su nombre.',
+              'Compra, transporta y entrega lo que la necesidad pedía.',
+              'Registra lo entregado y sube la evidencia dentro del plazo.',
+              'Mantiene al día el estado de las solicitudes que asumió.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Cómo se llega',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Postulación',
+                body: 'Se hace desde la aplicación y es privada. No se publica quién se postuló ni quién fue rechazado.',
+              },
+              {
+                title: 'Validación',
+                body: 'Se comprueba la identidad y el vínculo real con el territorio o con la organización que dice representar.',
+              },
+              {
+                title: 'Aprobación',
+                body: 'Habilita el rol y con él la capacidad de recibir aportes directamente.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Las obligaciones que vienen con el rol',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Coordinar recursos es una responsabilidad, no un privilegio. Quien asume el rol acepta rendir cuentas con evidencia dentro del plazo, no dirigir recursos hacia intereses propios sin declararlos primero, y entregar la coordinación de forma limpia si se retira.',
+            ],
+          },
+          {
+            kind: 'callout',
+            tone: 'warning',
+            title: 'La evidencia no es un trámite',
+            body: 'No presentarla es la falta más grave: rompe exactamente aquello que hace verificable a Corag. La respuesta es escalonada — recordatorio, suspensión de la capacidad de recibir aportes y, si persiste, retiro del rol.',
+          },
+        ],
+      },
+      {
+        heading: 'Conflictos de interés',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Quien coordina no debe dirigir recursos hacia una organización, empresa o persona con la que tenga un interés económico o familiar sin declararlo primero. Declararlo no descalifica; ocultarlo sí.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: '¿Coordinas ayuda en tu territorio?',
+      body: 'La postulación se hace desde la aplicación. Es privada y toma unos minutos.',
+      primary: {
+        label: 'Postularme como responsable',
+        href: APP_URL,
+        external: true,
+      },
+      secondary: { label: 'Leer la gobernanza', href: '/governance' },
+    },
+  },
+
+  partnersPage: {
+    title: 'Aliados',
+    description:
+      'Cómo se suma una fundación, una empresa, una alcaldía o una organización comunitaria: aportar capacidad, integrar sistemas o respaldar la operación.',
+    eyebrow: 'Organizaciones',
+    lead: 'Una organización que ya trabaja en terreno no necesita otra plataforma. Necesita que la suya deje de estar aislada de las demás.',
+    sections: [
+      {
+        heading: 'Tres formas de sumarse',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Aportar capacidad',
+                body: 'Transporte, bodega, personal, insumos, cobertura en zonas donde nadie más llega. La capacidad instalada suele valer más que el dinero.',
+              },
+              {
+                title: 'Integrar sistemas',
+                body: 'Si ya llevas un registro de beneficiarios o de entregas, se conecta en lugar de duplicarse. Una necesidad registrada dos veces es una necesidad que se atiende mal.',
+              },
+              {
+                title: 'Respaldar la operación',
+                body: 'Con recursos o con difusión. Una convocatoria que llega a las juntas de acción comunal mueve más que un anuncio pagado.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué pedimos a cambio',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Las mismas reglas que a todos: nombre responsable en cada entrega, evidencia dentro del plazo y respeto por los datos de las personas que reciben ayuda. Una alianza no compra excepciones.',
+              'No publicamos el logo de ninguna organización sin autorización expresa, y no usamos una alianza como aval de nada que la organización no haya dicho.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Para alcaldías y entidades públicas',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'El valor de Corag para una entidad pública no es la donación: es el mapa. Saber en tiempo real qué se está pidiendo, quién ya lo está cubriendo y qué quedó documentado permite dirigir recursos propios donde de verdad falta, en lugar de duplicar lo que la comunidad ya resolvió.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Hablemos',
+      body: 'Cuéntanos qué puede aportar tu organización y coordinamos los siguientes pasos.',
+      primary: { label: 'Escríbenos', href: '/contact?topic=ally' },
+      secondary: { label: 'Ver la documentación técnica', href: '/developers' },
+    },
+  },
+
+  developersPage: {
+    title: 'Desarrolladores',
+    description:
+      'Por qué Corag publica su red en lugar de guardarla, qué se puede construir encima y cómo pedir acceso para integrar tu propio sistema.',
+    eyebrow: 'Integraciones',
+    lead: 'Muchas interfaces, una sola red de datos. El camino con más impacto no es construir otra aplicación de ayuda: es que la que construyas hable con la que ya existe.',
+    sections: [
+      {
+        heading: 'El problema que resuelve una API abierta',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'En una emergencia aparecen varios equipos construyendo al tiempo, cada uno con su propia base de datos de necesidades. El resultado es más fragmentación, no menos: cinco listas incompatibles de lo mismo, ninguna completa.',
+              'Por eso la red se publica. Una aplicación nueva no tiene que empezar de cero ni pedirle a la gente que se registre otra vez: se vuelve un cliente más de la misma red de datos.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué vale la pena construir encima',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Un bot de WhatsApp o Telegram que publique y consulte solicitudes.',
+              'Una PWA que funcione sin conexión, para zonas con mala señal.',
+              'Un importador desde hojas de cálculo, para organizaciones que ya trabajan así.',
+              'Un tablero para una alcaldía o una ONG sobre sus propios frentes.',
+              'Interfaces de accesibilidad: texto grande, lectura por voz, baja conectividad.',
+              'Detección de duplicados y verificación de calidad de los datos.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Estado del acceso público',
+        blocks: [
+          {
+            kind: 'callout',
+            tone: 'info',
+            title: 'La documentación pública está en preparación',
+            body: 'La aplicación expone un endpoint MCP, pero todavía no publicamos una especificación estable ni credenciales de acceso abierto. Preferimos decirlo a publicar una referencia que cambie la semana siguiente. Escríbenos y coordinamos el acceso mientras tanto.',
+          },
+        ],
+      },
+      {
+        heading: 'Este sitio también es abierto',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Cada página de corag.app tiene un gemelo en Markdown en la misma ruta con la extensión `.md`, pensado para agentes y para lectura automatizada. El catálogo completo está en `/llms.txt`.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: '¿Quieres integrarte?',
+      body: 'Cuéntanos qué estás construyendo y qué datos necesitas. Respondemos con el acceso y el contexto que haga falta.',
+      primary: { label: 'Solicitar acceso', href: '/contact?topic=general' },
+      secondary: { label: 'Cómo contribuir', href: '/contributing' },
+    },
+  },
+
+  privacyPage: {
+    title: 'Privacidad',
+    description:
+      'Qué datos maneja Corag, dónde se guardan, qué se publica y qué nunca, cómo pedir que se corrija algo y qué hacemos con la información de este sitio.',
+    eyebrow: 'Tus datos',
+    lead: 'Corag coordina ayuda entre personas que casi siempre están pasando un mal momento. Cómo tratamos sus datos es parte del servicio, no una nota al pie.',
+    sections: [
+      {
+        heading: 'Las dos superficies, dos tratamientos',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'corag.app — este sitio',
+                body: 'Es un sitio estático. No tiene cuentas, no guarda perfiles y no usa cookies de seguimiento. Solo recoge datos cuando escribes en un formulario.',
+              },
+              {
+                title: 'ayuda.corag.app — la aplicación',
+                body: 'Ahí viven las cuentas, las solicitudes y la evidencia. Es donde se trata información sobre necesidades de personas reales, con las reglas que siguen.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué recogemos en este sitio',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Lo que escribes en el formulario de contacto: nombre, correo, tema y mensaje. Se usa para responderte y nada más.',
+              'Lo que escribes en un reporte de conducta, que puede enviarse de forma anónima. Si eliges el anonimato, no guardamos ni tu nombre ni tu correo aunque el navegador los envíe.',
+              'Métricas de uso agregadas y sin cookies: qué páginas se visitan y desde qué país. No identifican a nadie ni siguen a una persona entre sitios.',
+              'Tu preferencia de idioma y de tema, guardadas en tu propio navegador. No salen de tu dispositivo.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Qué no hacemos, nunca',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Vender, alquilar o ceder datos personales a terceros.',
+              'Publicar teléfonos, direcciones o ubicaciones exactas sin autorización explícita de la persona.',
+              'Usar los datos de un formulario para enviarte publicidad que no pediste.',
+              'Publicar evidencia con rasgos identificables de menores de edad.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Cuánto tiempo se guarda',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Los mensajes de contacto se conservan mientras siga abierta la conversación y un periodo razonable después, para poder retomar el hilo. Los reportes de conducta se conservan el tiempo necesario para resolverlos y documentar la decisión.',
+              'La evidencia publicada de una entrega permanece: es el registro que hace verificable la ayuda. Lo que no permanece son los datos personales de quien recibió, que no forman parte de esa publicación.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Tus derechos',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Puedes pedir acceso a los datos que tenemos sobre ti, su corrección o su eliminación, y puedes retirar una autorización que hayas dado antes. Escríbenos desde el formulario de contacto indicando qué necesitas.',
+              'Si algo publicado te afecta y crees que no debería estar ahí, dilo. Se revisa siempre, y mientras se revisa se puede despublicar.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Servicios de terceros',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Este sitio se aloja en Cloudflare Pages, los formularios se procesan a través de Dailybot y las respuestas automáticas se envían con Resend. Cada uno recibe únicamente lo que necesita para cumplir su función, y ninguno recibe los datos para usarlos por su cuenta.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: '¿Algo que corregir o retirar?',
+      body: 'Escríbenos y lo revisamos. No hace falta que sepas si “aplica”: si algo te incomoda, es razón suficiente.',
+      primary: { label: 'Escríbenos', href: '/contact?topic=report' },
+      secondary: { label: 'Código de Conducta', href: '/conduct' },
+    },
   },
 
   // Errors

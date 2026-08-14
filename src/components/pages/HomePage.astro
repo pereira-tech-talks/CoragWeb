@@ -13,7 +13,7 @@
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { APP_URL, appUrl, getDefaultOgImage } from '@/lib/constances';
-import type { Language } from '@/lib/i18n';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -24,21 +24,17 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 const h = t.home;
 
-/** Localized route slugs. Spanish is served unprefixed; English lives under /en. */
-const routes =
-  lang === 'en'
-    ? {
-        how: '/en/how-it-works',
-        trust: '/en/transparency',
-        dev: '/en/developers',
-        team: '/en/contributors',
-      }
-    : {
-        how: '/como-funciona',
-        trust: '/transparencia',
-        dev: '/desarrolladores',
-        team: '/colaboradores',
-      };
+/*
+ * Route slugs are English in both languages (repo rule 21); Spanish is served
+ * unprefixed and English under `/en`.
+ */
+const prefix = getUrlPrefix(lang);
+const routes = {
+  how: `${prefix}/how-it-works`,
+  trust: `${prefix}/transparency`,
+  dev: `${prefix}/developers`,
+  team: `${prefix}/contributors`,
+};
 
 const btnPrimary =
   'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-corag-fill px-7 py-3 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary';

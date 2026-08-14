@@ -5,10 +5,12 @@
  * `MobileMenu.svelte`, `Footer.astro`, and a hand-maintained copy inside
  * `markdown-for-agents.ts` — and they had drifted apart. One source now.
  *
- * ⚠️ Every path here must resolve to a page that exists. The Corag routes
- * (`/como-funciona`, `/transparencia`, `/emergencias`, `/lideres`,
- * `/desarrolladores`, `/aliados`) are added as their pages land, together with
- * their `src/middleware.ts` allowlist entries.
+ * ⚠️ Every path here must resolve to a page that exists, and every new
+ * top-level route needs its `src/middleware.ts` allowlist entry too — without
+ * it the page works in dev and 404s in production.
+ *
+ * Paths are English in both languages, per the repo slug rule, and get their
+ * language prefix from `navHref`.
  *
  * The footer and the agent-Markdown Site Navigation block are both derived from
  * here. The Svelte chrome keeps its own markup (see the Task 8 log) but its
@@ -56,6 +58,31 @@ export const SITE_NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    title: { en: 'How Corag works', es: 'Cómo funciona Corag' },
+    entries: [
+      {
+        label: { en: 'How it works', es: 'Cómo funciona' },
+        path: '/how-it-works',
+        inChrome: true,
+      },
+      {
+        label: { en: 'Transparency', es: 'Transparencia' },
+        path: '/transparency',
+        inChrome: true,
+      },
+      {
+        label: { en: 'Emergencies', es: 'Emergencias' },
+        path: '/emergencies',
+      },
+      { label: { en: 'Leaders', es: 'Líderes' }, path: '/leaders' },
+      { label: { en: 'Partners', es: 'Aliados' }, path: '/partners' },
+      {
+        label: { en: 'Developers', es: 'Desarrolladores' },
+        path: '/developers',
+      },
+    ],
+  },
+  {
     title: { en: 'Community', es: 'Comunidad' },
     entries: [
       {
@@ -77,6 +104,7 @@ export const SITE_NAVIGATION: NavGroup[] = [
         label: { en: 'Code of Conduct', es: 'Código de Conducta' },
         path: '/conduct',
       },
+      { label: { en: 'Privacy', es: 'Privacidad' }, path: '/privacy' },
     ],
   },
   {

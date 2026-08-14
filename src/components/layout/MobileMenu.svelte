@@ -218,7 +218,16 @@ function navClick(item: string) {
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('home')}
       >{t.nav.home}</a>
-      <!-- Calendar nav link hidden temporarily — page still at /calendar -->
+      <a
+        href="{prefix}/how-it-works"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        on:click={() => navClick('how-it-works')}
+      >{t.nav.howItWorks}</a>
+      <a
+        href="{prefix}/transparency"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        on:click={() => navClick('transparency')}
+      >{t.nav.transparency}</a>
       <a
         href="{prefix}/blog"
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"

@@ -101,7 +101,8 @@ function closeAllDropdowns() {
     </a>
 
     <div class="hidden lg:flex items-center gap-6">
-      <!-- Calendar nav link hidden temporarily — page still at /calendar -->
+      <a href="{prefix}/how-it-works" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'how-it-works' })}>{t.nav.howItWorks}</a>
+      <a href="{prefix}/transparency" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'transparency' })}>{t.nav.transparency}</a>
       <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
 
       <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->

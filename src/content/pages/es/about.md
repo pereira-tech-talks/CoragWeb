@@ -79,8 +79,8 @@ representas una organización, escríbenos.
 
 ## Enlaces
 
-- [Cómo funciona](/como-funciona)
-- [Transparencia](/transparencia)
-- [Colaboradores](/colaboradores)
+- [Cómo funciona](/how-it-works)
+- [Transparencia](/transparency)
+- [Colaboradores](/contributors)
 - [Gobernanza](/governance)
 - [Contacto](/contact)

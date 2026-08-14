@@ -62,14 +62,14 @@ base de datos de necesidades. El resultado es más fragmentación, no menos. Por
 eso publicamos una API abierta: para que una aplicación nueva sea un cliente de
 la misma red, no otro silo.
 
-Ver [documentación para desarrolladores](/desarrolladores).
+Ver [documentación para desarrolladores](/developers).
 
 ---
 
 ## Enlaces
 
-- [Cómo funciona](/como-funciona)
-- [Transparencia](/transparencia)
-- [Colaboradores](/colaboradores)
+- [Cómo funciona](/how-it-works)
+- [Transparencia](/transparency)
+- [Colaboradores](/contributors)
 - [Blog](/blog)
 - [Contacto](/contact)

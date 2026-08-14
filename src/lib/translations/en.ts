@@ -2,6 +2,8 @@
  * English translations
  */
 
+import { APP_URL } from '@/lib/constances';
+
 import type { SiteTranslations } from './types';
 
 export const en: SiteTranslations = {
@@ -100,6 +102,8 @@ export const en: SiteTranslations = {
   nav: {
     app: 'Go to the app',
     home: 'Home',
+    howItWorks: 'How it works',
+    transparency: 'Transparency',
     blog: 'Blog',
     about: 'About Corag',
     contact: 'Contact',
@@ -590,6 +594,582 @@ export const en: SiteTranslations = {
   blogEngagement: {
     aboutAuthor: 'About the author',
     writtenBy: 'Written by',
+  },
+
+  // Institutional pages
+  howItWorksPage: {
+    title: 'How it works',
+    description:
+      'The full path of one delivery in Corag: who publishes the need, who takes it on, how the money moves, and how what was delivered gets proven.',
+    eyebrow: 'The model',
+    lead: 'Corag holds nobody’s money. It connects the person who needs with the person who can, puts a named responsable in between, and publishes the account afterwards. Here is the path, step by step.',
+    sections: [
+      {
+        heading: 'The path of one delivery',
+        intro:
+          'Five steps. None of them happens on this site: they all happen in the application.',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Someone publishes a need',
+                body: 'A family, a community leader or an organization records what is missing and where. The request becomes visible to the network instead of being buried in a chat thread.',
+              },
+              {
+                title: 'A responsable takes it on',
+                body: 'Whoever coordinates in that territory owns the delivery. They have a name, a validated identity, and a verified connection to the area or the organization.',
+              },
+              {
+                title: 'Someone contributes',
+                body: 'The contribution goes by direct transfer to the responsable’s verified account. Corag is not an intermediary for the money and takes no cut for moving it.',
+              },
+              {
+                title: 'The delivery happens',
+                body: 'The responsable buys, transports and delivers. They record what was delivered, to how many people, and when.',
+              },
+              {
+                title: 'The evidence gets published',
+                body: 'Photos, receipts and figures are uploaded within the window, go through administrative review, and only then get published. Until that moment the contribution counts as received, not as used.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Why the money does not pass through us',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'A platform that collects and then distributes becomes both the bottleneck and the single point of failure. If it goes down, freezes or gets something wrong, the aid stops with it.',
+              'Direct transfer removes that risk, but it moves the trust somewhere else: onto the responsable. That is why validating responsables is the critical dependency for everything else, and why evidence is not optional.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'The three roles',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Person',
+                body: 'Publishes a need, offers help, or contributes. Nobody’s permission is required to start.',
+              },
+              {
+                title: 'Responsable',
+                body: 'Coordinates and executes. Receives contributions in their own name and answers for them with evidence, within the window.',
+              },
+              {
+                title: 'Administration',
+                body: 'Validates identities, moderates evidence before it is published, and reviews reports about the use of resources.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What happens when something goes wrong',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Failing to provide evidence is the most serious lapse, because it breaks exactly what makes Corag verifiable. The response is staged: a reminder, then suspension of the ability to receive contributions, then removal from the role.',
+            ],
+          },
+          {
+            kind: 'callout',
+            tone: 'info',
+            title: 'Saw something that does not add up?',
+            body: 'A contribution with no evidence, a delivery that did not happen, a suspicious account: report it. A report about resources is always reviewed, even when it arrives anonymously.',
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'All of this happens in the application',
+      body: 'Publishing a need, offering help, contributing and checking the evidence are Ayuda Directa actions. This site only explains them.',
+      primary: { label: 'Go to the app', href: APP_URL, external: true },
+      secondary: { label: 'See the transparency', href: '/transparency' },
+    },
+  },
+
+  transparencyPage: {
+    title: 'Transparency',
+    description:
+      'What we publish, what each number means, how evidence is reviewed before it goes out, and which things we still cannot prove. No decoration.',
+    eyebrow: 'The accounts',
+    lead: 'Saying you are transparent is easy. Publishing the receipt takes courage. Here is what we publish, what it means exactly, and where the limits are.',
+    sections: [
+      {
+        heading: 'The two numbers',
+        intro:
+          'They are not the same number, and the gap between them is the entire point.',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Received',
+                body: 'What the network contributed. Recorded at the moment of transfer and dependent on nobody else.',
+              },
+              {
+                title: 'Used with evidence',
+                body: 'What has been delivered, documented, and passed administrative review. This is the number worth looking at.',
+              },
+            ],
+          },
+          {
+            kind: 'prose',
+            paragraphs: [
+              'The distance between the two is the outstanding work. A platform that only publishes how much it raised is reporting the easy half.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'How evidence gets reviewed',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'It is uploaded',
+                body: 'The responsable uploads photos, purchase receipts and the delivery figures, within the defined window.',
+              },
+              {
+                title: 'It is reviewed',
+                body: 'Administration checks what was uploaded against what was promised. An incomplete upload is sent back, not published.',
+              },
+              {
+                title: 'It is published',
+                body: 'Only after approval does the amount start counting as used with evidence, visible to whoever contributed and to anyone else.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What we protect even at the cost of clarity',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'We do not publish the exact location of someone in a vulnerable situation beyond what the coordination needs.',
+              'We do not publish contact details without the explicit authorization of the person who gave them.',
+              'Anyone contributing may appear as “Persona solidaria” rather than by name, with no explanation owed.',
+              'Evidence involving minors is published only with permission and without identifiable features.',
+            ],
+          },
+          {
+            kind: 'prose',
+            paragraphs: [
+              'These rules reduce the public detail. That is deliberate: the dignity of the person receiving aid is not traded for a more convincing photograph.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What is not settled yet',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Saying so is part of the transparency. The formal evidence windows, the appeals process when a role is removed, and the maximum resources a responsable may administer without an additional review are still being defined. Once settled, they are published in Governance.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Check the figures yourself',
+      body: 'The numbers and the approved evidence live in the application, by emergency and by delivery.',
+      primary: { label: 'Open the application', href: APP_URL, external: true },
+      secondary: { label: 'How it is governed', href: '/governance' },
+    },
+  },
+
+  emergenciesPage: {
+    title: 'Emergencies',
+    description:
+      'What Corag does when an emergency happens, how a front opens, how to ask for help, and what we are not: this is not an emergency service.',
+    eyebrow: 'Response',
+    lead: 'In an emergency the problem is rarely a shortage of generosity. It is that nobody knows what is needed, where, or who is already covering it.',
+    sections: [
+      {
+        heading: 'First of all',
+        blocks: [
+          {
+            kind: 'callout',
+            tone: 'warning',
+            title: 'Corag is not an emergency service',
+            body: 'If anyone’s life or safety is in immediate danger, call your country’s emergency lines first. Corag coordinates material aid; it does not replace fire, ambulance or police services.',
+          },
+        ],
+      },
+      {
+        heading: 'What a front is',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'When an emergency happens, a front opens: a space with its own map of needs, its own responsables and its own figures. Everything about that emergency stays inside the front instead of scattering across chat groups nobody can audit afterwards.',
+              'Three things live inside a front: what is needed, what is being offered, and what has already been delivered with evidence. That third column is what stops twenty people carrying water to the same block while another goes without.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'How to take part',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'If you need help',
+                body: 'Publish the need in the relevant front. Be concrete: what, how much, where, and for how many people. A vague need takes longer to reach.',
+              },
+              {
+                title: 'If you can help',
+                body: 'Check the open needs before deciding what to bring. Offering what is already abundant delays what is missing.',
+              },
+              {
+                title: 'If you can coordinate',
+                body: 'Apply as a responsable. It requires identity validation and a verified connection to the territory, and it commits you to accounting with evidence.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'When a front closes',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'A front does not vanish when the urgency passes. It stays as a record: what was needed, who responded, how much moved, and what evidence backs it. That memory is what lets the next emergency start with something more than goodwill.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Active fronts live in the application',
+      body: 'There you can see what is needed right now, what is already covered, and what evidence exists for what was delivered.',
+      primary: { label: 'See active fronts', href: APP_URL, external: true },
+      secondary: { label: 'How it works', href: '/how-it-works' },
+    },
+  },
+
+  leadersPage: {
+    title: 'Leaders',
+    description:
+      'What coordinating aid in Corag actually commits you to, how you get validated, what the evidence obligation is, and what happens if you miss it.',
+    eyebrow: 'Responsables',
+    lead: 'The responsable system is the critical trust dependency of the whole platform. If that validation fails, nothing else matters.',
+    sections: [
+      {
+        heading: 'What a responsable does',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Coordinates aid within a front or a specific delivery.',
+              'Receives contributions in a verified account in their own name.',
+              'Buys, transports and delivers what the need called for.',
+              'Records what was delivered and uploads the evidence within the window.',
+              'Keeps the status of the requests they took on current.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'How you become one',
+        blocks: [
+          {
+            kind: 'steps',
+            steps: [
+              {
+                title: 'Application',
+                body: 'Made from the application, and private. Neither who applied nor who was turned down is published.',
+              },
+              {
+                title: 'Validation',
+                body: 'Identity is checked, along with the real connection to the territory or to the organization being represented.',
+              },
+              {
+                title: 'Approval',
+                body: 'Enables the role, and with it the ability to receive contributions directly.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'The obligations that come with the role',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Coordinating resources is a responsibility, not a privilege. Taking the role means accounting with evidence within the window, never directing resources toward your own interests without declaring them first, and handing the coordination over cleanly if you step away.',
+            ],
+          },
+          {
+            kind: 'callout',
+            tone: 'warning',
+            title: 'Evidence is not paperwork',
+            body: 'Not providing it is the most serious lapse: it breaks exactly what makes Corag verifiable. The response is staged — a reminder, suspension of the ability to receive contributions, and if it persists, removal from the role.',
+          },
+        ],
+      },
+      {
+        heading: 'Conflicts of interest',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Someone coordinating must not direct resources toward an organization, company or person they have a financial or family interest in without declaring it first. Declaring it does not disqualify anyone; hiding it does.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Do you coordinate aid where you live?',
+      body: 'Applications are made from the application. They are private and take a few minutes.',
+      primary: {
+        label: 'Apply as a responsable',
+        href: APP_URL,
+        external: true,
+      },
+      secondary: { label: 'Read the governance', href: '/governance' },
+    },
+  },
+
+  partnersPage: {
+    title: 'Partners',
+    description:
+      'How a foundation, a company, a municipality or a community organization joins: contribute capacity, integrate systems, or back the operation.',
+    eyebrow: 'Organizations',
+    lead: 'An organization already working in the field does not need another platform. It needs its own to stop being isolated from everyone else’s.',
+    sections: [
+      {
+        heading: 'Three ways in',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'Contribute capacity',
+                body: 'Transport, storage, staff, supplies, coverage in areas nobody else reaches. Installed capacity is often worth more than money.',
+              },
+              {
+                title: 'Integrate systems',
+                body: 'If you already keep a record of beneficiaries or deliveries, it gets connected instead of duplicated. A need registered twice is a need served badly.',
+              },
+              {
+                title: 'Back the operation',
+                body: 'With resources or with reach. A call that lands with local community boards moves more than a paid ad.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What we ask in return',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'The same rules as everyone else: a named responsable on every delivery, evidence within the window, and respect for the data of the people receiving aid. A partnership does not buy exceptions.',
+              'We publish no organization’s logo without express authorization, and we never use a partnership as an endorsement of anything the organization has not said itself.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'For municipalities and public bodies',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'The value of Corag to a public body is not the donation: it is the map. Knowing in real time what is being asked for, who is already covering it, and what was documented lets you direct your own resources where the gap actually is, instead of duplicating what the community already solved.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Let us talk',
+      body: 'Tell us what your organization can contribute and we will coordinate the next steps.',
+      primary: { label: 'Write to us', href: '/contact?topic=ally' },
+      secondary: { label: 'See the technical docs', href: '/developers' },
+    },
+  },
+
+  developersPage: {
+    title: 'Developers',
+    description:
+      'Why Corag publishes its network instead of hoarding it, what is worth building on top, and how to request access to integrate your own system.',
+    eyebrow: 'Integrations',
+    lead: 'Many interfaces, one network of data. The highest-impact path is not building another aid application: it is making the one you build talk to the one that already exists.',
+    sections: [
+      {
+        heading: 'The problem an open API solves',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'During an emergency several teams start building at once, each with its own database of needs. The result is more fragmentation, not less: five incompatible lists of the same thing, none of them complete.',
+              'That is why the network is published. A new application does not have to start from zero or ask people to register all over again — it becomes one more client of the same network of data.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What is worth building on top',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'A WhatsApp or Telegram bot that publishes and queries requests.',
+              'An offline-capable PWA, for areas with poor signal.',
+              'A spreadsheet importer, for organizations that already work that way.',
+              'A dashboard for a municipality or an NGO over its own fronts.',
+              'Accessibility interfaces: large text, screen reading, low bandwidth.',
+              'Duplicate detection and data-quality checks.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'State of public access',
+        blocks: [
+          {
+            kind: 'callout',
+            tone: 'info',
+            title: 'The public documentation is being prepared',
+            body: 'The application exposes an MCP endpoint, but we do not yet publish a stable specification or open access credentials. We would rather say so than publish a reference that changes the following week. Write to us and we will arrange access in the meantime.',
+          },
+        ],
+      },
+      {
+        heading: 'This site is open too',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Every page on corag.app has a Markdown twin at the same path with a `.md` extension, meant for agents and automated reading. The full catalogue is at `/llms.txt`.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Want to integrate?',
+      body: 'Tell us what you are building and which data you need. We reply with the access and the context required.',
+      primary: { label: 'Request access', href: '/contact?topic=general' },
+      secondary: { label: 'How to contribute', href: '/contributing' },
+    },
+  },
+
+  privacyPage: {
+    title: 'Privacy',
+    description:
+      'What data Corag handles, where it lives, what gets published and what never does, how to ask for a correction, and what this site collects.',
+    eyebrow: 'Your data',
+    lead: 'Corag coordinates aid between people who are usually having a bad time. How we treat their data is part of the service, not a footnote.',
+    sections: [
+      {
+        heading: 'Two surfaces, two treatments',
+        blocks: [
+          {
+            kind: 'cards',
+            cards: [
+              {
+                title: 'corag.app — this site',
+                body: 'A static site. No accounts, no stored profiles, no tracking cookies. It collects data only when you type into a form.',
+              },
+              {
+                title: 'ayuda.corag.app — the application',
+                body: 'Accounts, requests and evidence live there. That is where information about real people’s needs is handled, under the rules below.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What this site collects',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'What you type into the contact form: name, email, topic and message. Used to reply to you and nothing else.',
+              'What you type into a conduct report, which may be sent anonymously. If you choose anonymity we store neither your name nor your email, even if the browser sends them.',
+              'Aggregate, cookieless usage metrics: which pages are visited and from which country. They identify nobody and follow nobody between sites.',
+              'Your language and theme preference, stored in your own browser. They never leave your device.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What we never do',
+        blocks: [
+          {
+            kind: 'list',
+            items: [
+              'Sell, rent or hand personal data to third parties.',
+              'Publish phone numbers, addresses or exact locations without the person’s explicit authorization.',
+              'Use form data to send you marketing you did not ask for.',
+              'Publish evidence showing identifiable features of minors.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'How long it is kept',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'Contact messages are kept while the conversation is open and for a reasonable period afterwards, so a thread can be picked up again. Conduct reports are kept as long as needed to resolve them and document the decision.',
+              'Published evidence of a delivery stays: it is the record that makes the aid verifiable. What does not stay is the personal data of whoever received it, which is not part of that publication.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Your rights',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'You can ask for access to the data we hold about you, for its correction or its deletion, and you can withdraw an authorization you gave earlier. Write to us through the contact form saying what you need.',
+              'If something published affects you and you believe it should not be there, say so. It is always reviewed, and it can be unpublished while the review happens.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Third-party services',
+        blocks: [
+          {
+            kind: 'prose',
+            paragraphs: [
+              'This site is hosted on Cloudflare Pages, forms are processed through Dailybot, and automatic replies are sent with Resend. Each receives only what it needs to do its job, and none of them receives the data to use on its own account.',
+            ],
+          },
+        ],
+      },
+    ],
+    cta: {
+      title: 'Something to correct or take down?',
+      body: 'Write to us and we will look at it. You do not have to know whether it “qualifies”: if something bothers you, that is reason enough.',
+      primary: { label: 'Write to us', href: '/contact?topic=report' },
+      secondary: { label: 'Code of Conduct', href: '/conduct' },
+    },
   },
 
   // Errors

@@ -31,10 +31,10 @@ Solo usamos estos datos para responderte. No los publicamos ni los compartimos.
 
 ## Quizá buscabas
 
-- [Cómo funciona](/como-funciona) — el recorrido completo, de la necesidad a la
+- [Cómo funciona](/how-it-works) — el recorrido completo, de la necesidad a la
   evidencia.
-- [Transparencia](/transparencia) — cuánto se recibió y cuánto se usó con
+- [Transparencia](/transparency) — cuánto se recibió y cuánto se usó con
   evidencia.
-- [Desarrolladores](/desarrolladores) — API pública, OpenAPI y MCP.
+- [Desarrolladores](/developers) — API pública, OpenAPI y MCP.
 - [Código de Conducta](/conduct) — para reportar un incidente de conducta,
   incluso de forma anónima.

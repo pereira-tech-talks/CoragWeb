@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import { SITE_URL } from '@/lib/constances';
 import { DEFAULT_LANGUAGE, getUrlPrefix, isValidLanguage } from '@/lib/i18n';
 import { navHref, navLabel, SITE_NAVIGATION } from '@/lib/site-navigation';
+import type { InstitutionalPageCopy } from '@/lib/translations/types';
 
 /**
  * The Site Navigation block every agent-Markdown output ends with.
@@ -624,4 +625,60 @@ export function serializePageToAgentMarkdown(
   lines.push(generateSiteNavigation(lang));
 
   return `${lines.join('\n')}\n`;
+}
+
+/**
+ * Serialize an institutional page from the same copy object the HTML renders.
+ *
+ * Both surfaces read one source, so the twin cannot fall behind the page —
+ * which is exactly how the previous site ended up with `.md` files that were
+ * summaries of pages rather than twins of them.
+ */
+export function serializeInstitutionalPageToMarkdown(
+  copy: InstitutionalPageCopy,
+  options: { lang: string; canonical: string }
+): string {
+  const sections: GenericMarkdownSection[] = copy.sections.map((section) => {
+    const lines: string[] = [];
+    if (section.intro) {
+      lines.push(section.intro, '');
+    }
+    for (const block of section.blocks) {
+      if (block.kind === 'prose') {
+        for (const paragraph of block.paragraphs) lines.push(paragraph, '');
+      } else if (block.kind === 'steps') {
+        block.steps.forEach((step, index) => {
+          lines.push(`${index + 1}. **${step.title}** — ${step.body}`);
+        });
+        lines.push('');
+      } else if (block.kind === 'cards') {
+        for (const card of block.cards) {
+          lines.push(`- **${card.title}** — ${card.body}`);
+        }
+        lines.push('');
+      } else if (block.kind === 'list') {
+        for (const item of block.items) lines.push(`- ${item}`);
+        lines.push('');
+      } else {
+        lines.push(`> **${block.title}** — ${block.body}`, '');
+      }
+    }
+    while (lines.length > 0 && lines[lines.length - 1] === '') lines.pop();
+    return { heading: section.heading, lines };
+  });
+
+  const ctaLines = [copy.cta.body, ''];
+  for (const link of [copy.cta.primary, copy.cta.secondary]) {
+    if (link) ctaLines.push(`- [${link.label}](${link.href})`);
+  }
+  sections.push({ heading: copy.cta.title, lines: ctaLines });
+
+  return serializeGenericToMarkdown({
+    title: copy.title,
+    description: copy.description,
+    lang: options.lang,
+    canonical: options.canonical,
+    body: copy.lead,
+    sections,
+  });
 }

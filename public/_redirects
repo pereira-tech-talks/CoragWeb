@@ -6,31 +6,6 @@
 # `/es/*` catch-all at the bottom AND point straight at its final URL.
 
 # ---------------------------------------------------------------------------
-# Legacy slug — AEO chapter 5
-# ---------------------------------------------------------------------------
-# The slug changed after publication to match the retitled post ("What It
-# Actually Takes to Score 100 on isitagentready.com"). Covers both languages
-# and the Markdown-for-Agents `.md` twins.
-
-# Spanish (now served at the root)
-/blog/aeo-from-33-to-100          /blog/aeo-score-100-on-isitagentready/          301
-/blog/aeo-from-33-to-100/         /blog/aeo-score-100-on-isitagentready/          301
-/blog/aeo-from-33-to-100.md       /blog/aeo-score-100-on-isitagentready.md        301
-
-# English (now served under /en)
-/en/blog/aeo-from-33-to-100       /en/blog/aeo-score-100-on-isitagentready/       301
-/en/blog/aeo-from-33-to-100/      /en/blog/aeo-score-100-on-isitagentready/       301
-/en/blog/aeo-from-33-to-100.md    /en/blog/aeo-score-100-on-isitagentready.md     301
-
-# Pre-swap Spanish URLs for the same post — straight to the final root URL,
-# because these must not fall through to the /es/* catch-all below.
-/es/blog/aeo-from-33-to-100       /blog/aeo-score-100-on-isitagentready/          301
-/es/blog/aeo-from-33-to-100/      /blog/aeo-score-100-on-isitagentready/          301
-/es/blog/aeo-from-33-to-100.md    /blog/aeo-score-100-on-isitagentready.md        301
-/es/blog/aeo-score-100-on-isitagentready     /blog/aeo-score-100-on-isitagentready/     301
-/es/blog/aeo-score-100-on-isitagentready/    /blog/aeo-score-100-on-isitagentready/     301
-
-# ---------------------------------------------------------------------------
 # Language swap: Spanish moved from /es to the site root
 # ---------------------------------------------------------------------------
 # Spanish is the community's primary language and is now served at `/`, with
@@ -47,38 +22,52 @@
 # to the closest surviving page rather than 404ing, because external links and
 # search indexes still point at them.
 #
+# Route slugs are English in both languages; Spanish is served unprefixed.
+# Only retired paths appear here — a live page must never be listed, or the
+# redirect shadows the page itself.
+#
 # Ordered most-specific first. These MUST appear before the `/es/*` catch-all.
 
 # Community programme -> how Corag works
-/verticals                    /como-funciona/                301
-/verticals/*                  /como-funciona/                301
+/verticals                    /how-it-works/                 301
+/verticals/*                  /how-it-works/                 301
 /en/verticals                 /en/how-it-works/              301
 /en/verticals/*               /en/how-it-works/              301
 
 # People directories -> the team
-/speakers                     /colaboradores/                301
-/speakers/*                   /colaboradores/                301
-/contributors                 /colaboradores/                301
-/contributors/*               /colaboradores/                301
+/speakers                     /contributors/                 301
+/speakers/*                   /contributors/                 301
 /en/speakers                  /en/contributors/              301
 /en/speakers/*                /en/contributors/              301
-/en/contributors              /en/contributors/              301
+
+# Localized slugs briefly used during the migration
+/colaboradores                /contributors/                 301
+/como-funciona                /how-it-works/                 301
+/transparencia                /transparency/                 301
+/desarrolladores              /developers/                   301
+/emergencias                  /emergencies/                  301
+/lideres                      /leaders/                      301
+/aliados                      /partners/                     301
+/privacidad                   /privacy/                      301
+/sobre-corag                  /about/                        301
+/contacto                     /contact/                      301
+/en/allies                    /en/partners/                  301
 
 # Partner organizations -> allies
-/communities                  /aliados/                      301
-/communities/*                /aliados/                      301
-/sponsors                     /aliados/                      301
-/sponsors/*                   /aliados/                      301
-/sponsor-us                   /aliados/                      301
-/en/communities               /en/allies/                    301
-/en/communities/*             /en/allies/                    301
-/en/sponsors                  /en/allies/                    301
-/en/sponsors/*                /en/allies/                    301
-/en/sponsor-us                /en/allies/                    301
+/communities                  /partners/                     301
+/communities/*                /partners/                     301
+/sponsors                     /partners/                     301
+/sponsors/*                   /partners/                     301
+/sponsor-us                   /partners/                     301
+/en/communities               /en/partners/                  301
+/en/communities/*             /en/partners/                  301
+/en/sponsors                  /en/partners/                  301
+/en/sponsors/*                /en/partners/                  301
+/en/sponsor-us                /en/partners/                  301
 
 # Press and speaker calls -> about / contact
-/press                        /sobre-corag/                  301
-/call-for-speakers            /contacto/                     301
+/press                        /about/                        301
+/call-for-speakers            /contact/                      301
 /en/press                     /en/about/                     301
 /en/call-for-speakers         /en/contact/                   301
 
@@ -96,6 +85,8 @@
 /pereira-tech-days/*          /                              301
 /certificates                 /                              301
 /certificates/*               /                              301
+/verify                       /                              301
+/verify/*                     /                              301
 /en/meetups                   /en/                           301
 /en/meetups/*                 /en/                           301
 /en/talks                     /en/                           301
@@ -109,13 +100,12 @@
 /en/pereira-tech-days/*       /en/                           301
 /en/certificates              /en/                           301
 /en/certificates/*            /en/                           301
+/en/verify                    /en/                           301
+/en/verify/*                  /en/                           301
 
-# Renamed institutional pages
-/about                        /sobre-corag/                  301
-/community                    /aliados/                      301
-/channels                     /contacto/                     301
-/en/community                 /en/allies/                    301
-/en/channels                  /en/contact/                   301
+# Retired sections -> their closest surviving page
+/community                    /partners/                     301
+/en/community                 /en/partners/                  301
 
 /es                               /                                               301
 /es/*                             /:splat                                         301

@@ -32,17 +32,23 @@
  *   were removed with their collections. Each has a 301 in
  *   `public/_redirects` pointing at its closest Corag equivalent.
  *
- *   The new Corag routes (`/como-funciona`, `/transparencia`, `/emergencias`,
- *   `/lideres`, `/desarrolladores`, `/aliados`, `/sobre-corag`,
- *   `/colaboradores`, `/privacidad`) must each be added here as their pages
- *   land — a route missing from this allowlist works in dev and 404s in
- *   production.
+ *   Route slugs are English in both languages (repo rule 21); Spanish is
+ *   served unprefixed and English under `/en`. Every new top-level route must
+ *   be added here as its page lands — a route missing from this allowlist
+ *   works in dev and 404s in production.
  */
 import { defineMiddleware } from 'astro:middleware';
 
 const KNOWN_ROOT_PATHS = new Set([
   '',
   'about',
+  'how-it-works',
+  'transparency',
+  'emergencies',
+  'leaders',
+  'partners',
+  'developers',
+  'privacy',
   'blog',
   'contact',
   'contributors',
@@ -62,6 +68,13 @@ const KNOWN_ROOT_PATHS = new Set([
 
 const KNOWN_EN_PATHS = new Set([
   'about',
+  'how-it-works',
+  'transparency',
+  'emergencies',
+  'leaders',
+  'partners',
+  'developers',
+  'privacy',
   'blog',
   'contact',
   'contributors',

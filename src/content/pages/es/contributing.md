@@ -34,7 +34,7 @@ un cliente de la misma red.
   conectividad.
 - Detección de duplicados y verificación de calidad de los datos.
 
-Empieza por [la documentación para desarrolladores](/desarrolladores).
+Empieza por [la documentación para desarrolladores](/developers).
 
 ### Este sitio
 
@@ -114,6 +114,6 @@ Escríbenos desde [contacto](/contact).
 
 ## Cómo se reconoce el trabajo
 
-Quien construye aparece en [colaboradores](/colaboradores), con su rol y su
+Quien construye aparece en [colaboradores](/contributors), con su rol y su
 área. Quien dejó de estar activo no se borra: el tiempo que alguien donó no deja
 de contar.
