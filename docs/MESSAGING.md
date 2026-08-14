@@ -103,7 +103,7 @@ everywhere so it becomes recognizable.
 ### Naming
 
 - **Corag** — the ecosystem. Capitalized in running text; the wordmark is lowercase.
-- **Ayuda Directa** — the flagship product, title case. It lives at `app.corag.org`.
+- **Ayuda Directa** — the flagship product, title case. It lives at `ayuda.corag.app`.
 - Never use them interchangeably. Corag ⊃ Ayuda Directa ⊃ a given emergencia.
 - People who build Corag: **colaboradores**. People who coordinate aid:
   **líderes**. Organizations: **aliados**. People who contribute: **aportantes**.

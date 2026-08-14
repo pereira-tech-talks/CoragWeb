@@ -41,9 +41,9 @@
 # `/en/...` — those paths now legitimately serve Spanish. English content is
 # re-announced through the updated sitemap and hreflang tags instead.
 # ---------------------------------------------------------------------------
-# corag.org migration — retired Pereira Tech Talks route families
+# corag.app migration — retired Pereira Tech Talks route families
 # ---------------------------------------------------------------------------
-# The site became corag.org. These route families no longer exist; each is sent
+# The site became corag.app. These route families no longer exist; each is sent
 # to the closest surviving page rather than 404ing, because external links and
 # search indexes still point at them.
 #

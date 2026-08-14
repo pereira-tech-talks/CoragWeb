@@ -8,7 +8,7 @@ export const SITE_TIMEZONE_OFFSET = '-05:00';
  * Must match `astro.config.mjs` → `site` / `PUBLIC_SITE_URL`.
  */
 export const SITE_URL: string = (
-  import.meta.env.SITE || 'https://corag.org'
+  import.meta.env.SITE || 'https://corag.app'
 ).replace(/\/$/, '');
 
 /**
@@ -17,7 +17,7 @@ export const SITE_URL: string = (
  * happens there, not here. Defined once so no component hardcodes the host.
  */
 export const APP_URL: string = (
-  import.meta.env.PUBLIC_APP_URL || 'https://app.corag.org'
+  import.meta.env.PUBLIC_APP_URL || 'https://ayuda.corag.app'
 ).replace(/\/$/, '');
 
 /** Build a link into the application. */

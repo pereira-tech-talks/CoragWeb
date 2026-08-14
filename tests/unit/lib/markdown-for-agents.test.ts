@@ -75,7 +75,7 @@ describe('serializePostToAgentMarkdown', () => {
     expect(result).toContain('Updated: 2024-04-01');
     expect(result).toContain('Language: en');
     expect(result).toContain(
-      'Canonical: https://corag.org/en/blog/my-awesome-post'
+      'Canonical: https://corag.app/en/blog/my-awesome-post'
     );
     expect(result).toContain('Tags: tech, astro');
     expect(result).toContain('---');
@@ -112,7 +112,7 @@ describe('serializePostToAgentMarkdown', () => {
     });
 
     expect(result).toContain('Language: es');
-    expect(result).toContain('Canonical: https://corag.org/blog/empty-body');
+    expect(result).toContain('Canonical: https://corag.app/blog/empty-body');
   });
 
   it('should handle empty/undefined body gracefully', () => {
@@ -175,7 +175,7 @@ describe('serializeBlogIndexToMarkdown', () => {
     expect(result).toContain('# Pereira Tech Talks Blog');
     expect(result).toContain('> A technical blog.');
     expect(result).toContain('Language: en');
-    expect(result).toContain('Canonical: https://corag.org/en/blog');
+    expect(result).toContain('Canonical: https://corag.app/en/blog');
     expect(result).toContain('Total posts: 2');
     expect(result).toContain('## Posts');
   });
@@ -199,7 +199,7 @@ describe('serializeBlogIndexToMarkdown', () => {
     });
 
     expect(result).toContain('Language: es');
-    expect(result).toContain('Canonical: https://corag.org/blog');
+    expect(result).toContain('Canonical: https://corag.app/blog');
     expect(result).toContain('/blog/first-post.md');
   });
 
@@ -229,7 +229,7 @@ describe('serializePageToAgentMarkdown', () => {
       '> The bilingual technology community of Pereira, Colombia.'
     );
     expect(result).toContain('Language: en');
-    expect(result).toContain('Canonical: https://corag.org/en/about');
+    expect(result).toContain('Canonical: https://corag.app/en/about');
     expect(result).toContain('Last Updated: 2026-03-09');
     expect(result).toContain('## Who We Are');
   });
@@ -245,8 +245,8 @@ describe('serializePageToAgentMarkdown', () => {
       lang: 'en',
     });
 
-    expect(result).toContain('Canonical: https://corag.org');
-    // Should not be https://corag.org/en/index
+    expect(result).toContain('Canonical: https://corag.app');
+    // Should not be https://corag.app/en/index
     expect(result).not.toContain('/index');
   });
 
@@ -257,7 +257,7 @@ describe('serializePageToAgentMarkdown', () => {
     });
 
     expect(result).toContain('Language: es');
-    expect(result).toContain('Canonical: https://corag.org/contact');
+    expect(result).toContain('Canonical: https://corag.app/contact');
     expect(result).not.toContain('Last Updated:');
   });
 

@@ -34,7 +34,7 @@ const GOOD_MEETUP_MD = `# QA: the pillar of software
 > Two talks on quality.
 
 Language: en
-Canonical: https://corag.org/en/meetups/qa-pilar-del-software
+Canonical: https://corag.app/en/meetups/qa-pilar-del-software
 Date: 2026-06-24
 
 ---
@@ -258,7 +258,7 @@ describe('evaluatePage', () => {
     const summary = `# QA: the pillar of software
 
 Language: en
-Canonical: https://corag.org/en/meetups/qa-pilar-del-software
+Canonical: https://corag.app/en/meetups/qa-pilar-del-software
 
 ---
 

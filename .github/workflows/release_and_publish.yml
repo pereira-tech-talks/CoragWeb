@@ -73,7 +73,7 @@ jobs:
       - name: Configure git identity
         env:
           RELEASE_BOT_NAME: Corag
-          RELEASE_BOT_EMAIL: bot@corag.org
+          RELEASE_BOT_EMAIL: bot@corag.app
         run: |
           git config user.name "${RELEASE_BOT_NAME}"
           git config user.email "${RELEASE_BOT_EMAIL}"

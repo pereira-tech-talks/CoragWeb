@@ -1,5 +1,5 @@
 # robots.txt for Corag — el ecosistema de impacto social
-# https://corag.org
+# https://corag.app
 
 # Default: allow all crawlers
 User-agent: *
@@ -8,11 +8,11 @@ Disallow: /api/
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Sitemap location
-Sitemap: https://corag.org/sitemap-index.xml
+Sitemap: https://corag.app/sitemap-index.xml
 
 # LLM guidance files
-# https://corag.org/llms.txt
-# https://corag.org/llms-full.txt
+# https://corag.app/llms.txt
+# https://corag.app/llms-full.txt
 
 # AI/LLM Crawlers - Explicitly allowed
 User-agent: GPTBot

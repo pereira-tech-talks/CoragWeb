@@ -26,13 +26,13 @@ const __dirname = dirname(__filename);
  * Must match the hostname people actually share. Defaults to the production
  * apex; override with PUBLIC_SITE_URL (or SITE) for preview deployments.
  *
- * Note the split: this site is `corag.org`. The Ayuda Directa application is a
- * separate deployment at `app.corag.org` — see `APP_URL` in `src/lib/constances.ts`.
+ * Note the split: this site is `corag.app`. The Ayuda Directa application is a
+ * separate deployment at `ayuda.corag.app` — see `APP_URL` in `src/lib/constances.ts`.
  */
 const site =
   process.env.PUBLIC_SITE_URL?.replace(/\/$/, '') ||
   process.env.SITE?.replace(/\/$/, '') ||
-  'https://corag.org';
+  'https://corag.app';
 
 // https://astro.build/config
 export default defineConfig({

@@ -10,29 +10,29 @@ describe('oauth metadata helpers', () => {
     it('strips path and query', () => {
       expect(
         getRequestOrigin(
-          'https://corag.org/.well-known/oauth-protected-resource'
+          'https://corag.app/.well-known/oauth-protected-resource'
         )
-      ).toBe('https://corag.org');
+      ).toBe('https://corag.app');
     });
   });
 
   describe('buildOAuthProtectedResourceMetadata', () => {
     it('matches request origin for apex and v3', () => {
-      const apex = buildOAuthProtectedResourceMetadata('https://corag.org');
-      expect(apex.resource).toBe('https://corag.org');
-      expect(apex.authorization_servers).toEqual(['https://corag.org']);
+      const apex = buildOAuthProtectedResourceMetadata('https://corag.app');
+      expect(apex.resource).toBe('https://corag.app');
+      expect(apex.authorization_servers).toEqual(['https://corag.app']);
       expect(apex.bearer_methods_supported).toContain('header');
       expect(apex.scopes_supported).toContain('public:read');
 
-      const v3 = buildOAuthProtectedResourceMetadata('https://corag.org');
-      expect(v3.resource).toBe('https://corag.org');
-      expect(v3.authorization_servers).toEqual(['https://corag.org']);
+      const v3 = buildOAuthProtectedResourceMetadata('https://corag.app');
+      expect(v3.resource).toBe('https://corag.app');
+      expect(v3.authorization_servers).toEqual(['https://corag.app']);
     });
   });
 
   describe('buildOAuthAuthorizationServerMetadata', () => {
     it('includes top-level claim_uri for anonymous authMd scanners', () => {
-      const origin = 'https://corag.org';
+      const origin = 'https://corag.app';
       const meta = buildOAuthAuthorizationServerMetadata(origin);
       expect(meta.issuer).toBe(origin);
       expect(meta.agent_auth.skill).toBe(`${origin}/auth.md`);

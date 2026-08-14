@@ -1,11 +1,11 @@
 {
   "@context": "https://www.w3.org/ns/did/v1",
-  "id": "did:web:corag.org",
+  "id": "did:web:corag.app",
   "verificationMethod": [
     {
-      "id": "did:web:corag.org#key-1",
+      "id": "did:web:corag.app#key-1",
       "type": "Ed25519VerificationKey2020",
-      "controller": "did:web:corag.org",
+      "controller": "did:web:corag.app",
       "publicKeyJwk": {
         "kty": "OKP",
         "crv": "Ed25519",
@@ -14,9 +14,9 @@
     }
   ],
   "authentication": [
-    "did:web:corag.org#key-1"
+    "did:web:corag.app#key-1"
   ],
   "assertionMethod": [
-    "did:web:corag.org#key-1"
+    "did:web:corag.app#key-1"
   ]
 }

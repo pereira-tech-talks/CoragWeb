@@ -33,7 +33,7 @@ jobs:
       - name: Step 1 - ⚙️ Setup GitHub Config
         run: |
           git config user.name "Corag"
-          git config user.email "bot@corag.org"
+          git config user.email "bot@corag.app"
           gh auth login --with-token <<< "${{ secrets.AUTOMATION_GITHUB_TOKEN }}"
 
       - name: Step 2 - 🧪 Check pr size label

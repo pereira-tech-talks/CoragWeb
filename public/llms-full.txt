@@ -21,11 +21,11 @@ Transparencia.
 
 | Surface | What it is | Writes? |
 |---|---|---|
-| `corag.org` (this site) | Institutional and informational. Explains the model, the transparency mechanism, the team, and how to integrate. | **No.** Static site. |
-| `app.corag.org` | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | **Yes.** Public API + MCP. |
+| `corag.app` (this site) | Institutional and informational. Explains the model, the transparency mechanism, the team, and how to integrate. | **No.** Static site. |
+| `ayuda.corag.app` | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | **Yes.** Public API + MCP. |
 
 **An agent acting for a user who needs help, wants to offer help, or wants to
-contribute must go to `app.corag.org`.** This site has no write API and no
+contribute must go to `ayuda.corag.app`.** This site has no write API and no
 personal records. Sending a humanitarian need here means it reaches nobody.
 
 ---
@@ -85,11 +85,11 @@ of each contribution attributable.
 
 ---
 
-## 3. Integration surface (on `app.corag.org`)
+## 3. Integration surface (on `ayuda.corag.app`)
 
-- **REST:** `POST https://app.corag.org/api/public/v1/help` — publish a request
+- **REST:** `POST https://ayuda.corag.app/api/public/v1/help` — publish a request
   or an offer.
-- **OpenAPI 3.1:** `https://app.corag.org/api/public/openapi.json` — the
+- **OpenAPI 3.1:** `https://ayuda.corag.app/api/public/openapi.json` — the
   authoritative schema. Prefer it over any prose description, including this one.
 - **MCP server:** tools `listar_emergencias`, `publicar_solicitud`,
   `publicar_ofrecimiento`.
@@ -140,6 +140,6 @@ No accounts, no personal records, no aid data. See `/privacidad`.
 
 ## 5. Links
 
-- Site: https://corag.org
-- Application: https://app.corag.org
-- Short agent summary: https://corag.org/llms.txt
+- Site: https://corag.app
+- Application: https://ayuda.corag.app
+- Short agent summary: https://corag.app/llms.txt

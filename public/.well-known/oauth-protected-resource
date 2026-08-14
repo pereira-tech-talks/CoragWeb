@@ -1,7 +1,7 @@
 {
-  "resource": "https://corag.org",
+  "resource": "https://corag.app",
   "resource_name": "Corag",
-  "authorization_servers": ["https://corag.org"],
+  "authorization_servers": ["https://corag.app"],
   "scopes_supported": ["public:read"],
   "bearer_methods_supported": ["header"]
 }

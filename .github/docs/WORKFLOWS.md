@@ -132,7 +132,7 @@ For L/XL/XXL PRs, a warning comment is automatically posted.
 | **Trigger** | `pull_request` to `main`, type: `closed` (only when merged) |
 | **Concurrency** | Single group `release-and-publish-main`, **never** cancels in-flight releases |
 | **Permissions** | `contents: write`, `pull-requests: read` |
-| **Git identity** | `Corag <bot@corag.org>` |
+| **Git identity** | `Corag <bot@corag.app>` |
 
 **Deployment:** Cloudflare Pages deploys automatically on push to `main`. This workflow does **not** deploy.
 

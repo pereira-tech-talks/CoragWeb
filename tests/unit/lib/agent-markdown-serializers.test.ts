@@ -27,7 +27,7 @@ describe('serializeGenericToMarkdown', () => {
     title: 'QA: the pillar of software',
     description: 'Two talks on quality.',
     lang: 'en',
-    canonical: 'https://corag.org/en/meetups/qa',
+    canonical: 'https://corag.app/en/meetups/qa',
   };
 
   it('emits the front block in the contract order', () => {

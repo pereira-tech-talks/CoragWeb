@@ -1,4 +1,4 @@
-# corag.org
+# corag.app
 
 **El ecosistema de impacto social.**
 
@@ -14,8 +14,8 @@ real opportunities to help, transparently and traceably.
 
 | Surface | What it is | Repository |
 |---|---|---|
-| **`corag.org`** | The institutional site: what Corag is, how the model works, why it can be trusted, how to integrate with it. Static, bilingual. | **this repo** |
-| **`app.corag.org`** | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | separate |
+| **`corag.app`** | The institutional site: what Corag is, how the model works, why it can be trusted, how to integrate with it. Static, bilingual. | **this repo** |
+| **`ayuda.corag.app`** | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | separate |
 
 Every *transactional* action — publishing a need, offering help, contributing,
 tracking a contribution, applying as a leader — happens in the **application**.
@@ -154,10 +154,10 @@ Wrappers never import `MainLayout`, and `lang` is always a string literal.
 
 Corag is built by volunteers. If you want to help:
 
-- **Developers** — see [`/desarrolladores`](https://corag.org/desarrolladores) for
+- **Developers** — see [`/desarrolladores`](https://corag.app/desarrolladores) for
   the integration surface, and `docs/CONTRIBUTING.md` for this repo.
 - **Everyone else** — the fastest way to help is through the application at
-  [app.corag.org](https://app.corag.org).
+  [ayuda.corag.app](https://ayuda.corag.app).
 
 Before opening a pull request, run the full gate:
 

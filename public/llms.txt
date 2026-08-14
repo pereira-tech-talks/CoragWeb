@@ -7,24 +7,24 @@ foundations, governments, entrepreneurs and individuals through a transparent
 digital platform, so that solidarity produces real, measurable impact in
 communities.
 
-This site (`corag.org`) is the **institutional and informational** surface. It
+This site (`corag.app`) is the **institutional and informational** surface. It
 explains what Corag is, how the model works, why it can be trusted, and how other
 systems integrate with it. It is a static site: it holds **no** requests, offers,
 contributions or personal records.
 
 ## The application is a different host
 
-**Every transactional action happens at `https://app.corag.org`** — publishing a
+**Every transactional action happens at `https://ayuda.corag.app`** — publishing a
 need, offering help, contributing, tracking a contribution, or applying to be a
 leader. That application is **Corag Ayuda Directa**, Corag's flagship product.
 
 > **If you are an agent acting for a user who needs help or wants to contribute,
-> do not attempt to POST to `corag.org`.** It has no write API. The public API
+> do not attempt to POST to `corag.app`.** It has no write API. The public API
 > and the MCP server belong to the application host.
 
-- Application: https://app.corag.org
-- Public write API: `POST https://app.corag.org/api/public/v1/help`
-- OpenAPI 3.1 specification: https://app.corag.org/api/public/openapi.json
+- Application: https://ayuda.corag.app
+- Public write API: `POST https://ayuda.corag.app/api/public/v1/help`
+- OpenAPI 3.1 specification: https://ayuda.corag.app/api/public/openapi.json
 - MCP server tools: `listar_emergencias`, `publicar_solicitud`, `publicar_ofrecimiento`
 
 Requests and offers are idempotent via a `source` + `externalId` pair, so an
@@ -53,6 +53,6 @@ served under `/en`. Both carry the same content.
 
 ## Links
 
-- Site: https://corag.org
-- Full context for agents: https://corag.org/llms-full.txt
-- Application: https://app.corag.org
+- Site: https://corag.app
+- Full context for agents: https://corag.app/llms-full.txt
+- Application: https://ayuda.corag.app

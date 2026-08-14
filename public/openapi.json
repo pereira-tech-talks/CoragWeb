@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "corag.org public API",
+    "title": "corag.app public API",
     "version": "1.0.0",
-    "description": "Read-only JSON endpoints exposed by corag.org for agent discovery. corag.org is the static institutional site for Corag \u2014 el ecosistema de impacto social. It holds no aid data and has no write API. The Ayuda Directa application, its public write API (POST /api/public/v1/help), its OpenAPI 3.1 specification and its MCP server live at https://app.corag.org."
+    "description": "Read-only JSON endpoints exposed by corag.app for agent discovery. corag.app is the static institutional site for Corag \u2014 el ecosistema de impacto social. It holds no aid data and has no write API. The Ayuda Directa application, its public write API (POST /api/public/v1/help), its OpenAPI 3.1 specification and its MCP server live at https://ayuda.corag.app."
   },
   "servers": [
     {
-      "url": "https://corag.org",
+      "url": "https://corag.app",
       "description": "Production"
     }
   ],

@@ -58,7 +58,7 @@ Write access (forms, sponsorship, speaking) stays human-mediated:
 - Contact: `/contact/`
 - Call for speakers: `/call-for-speakers/`
 - Sponsor us: `/sponsor-us/`
-- Contact form: `https://corag.org/contacto`
+- Contact form: `https://corag.app/contacto`
 
 Do not ask humans to paste API secrets into chat.
 

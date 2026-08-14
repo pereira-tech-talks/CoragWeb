@@ -1,16 +1,16 @@
 {
   "linkset": [
     {
-      "anchor": "https://corag.org/api/",
+      "anchor": "https://corag.app/api/",
       "links": [
         {
           "rel": "service-desc",
-          "href": "https://corag.org/openapi.json",
+          "href": "https://corag.app/openapi.json",
           "type": "application/json"
         },
         {
           "rel": "service-doc",
-          "href": "https://corag.org/llms.txt",
+          "href": "https://corag.app/llms.txt",
           "type": "text/plain"
         }
       ]

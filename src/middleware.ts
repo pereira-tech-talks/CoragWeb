@@ -25,7 +25,7 @@
  * Do NOT debug Astro routing, file-system caches, or `[...slug]` vs `[slug]`
  * before checking this allowlist first.
  *
- * corag.org migration note:
+ * corag.app migration note:
  *   The Pereira Tech Talks community routes (`/meetups`, `/talks`, `/speakers`,
  *   `/slides`, `/verticals`, `/pereira-tech-day(s)`, `/communities`,
  *   `/certificates`, `/press`, `/call-for-speakers`, `/calendar`, `/sponsors`)

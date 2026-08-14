@@ -47,7 +47,7 @@ describe('umami proxy helpers', () => {
 
   describe('buildUmamiProxyRequestHeaders', () => {
     it('forwards client IP and user agent', () => {
-      const request = new Request('https://corag.org/api/umami/api/send', {
+      const request = new Request('https://corag.app/api/umami/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

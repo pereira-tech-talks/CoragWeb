@@ -23,11 +23,11 @@ function createContext(
   body: unknown,
   env: { DAILYBOT_API_KEY?: string } = { DAILYBOT_API_KEY: 'test-key' }
 ) {
-  const request = new Request('https://corag.org/api/contact', {
+  const request = new Request('https://corag.app/api/contact', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Origin: 'https://corag.org',
+      Origin: 'https://corag.app',
     },
     body: JSON.stringify(body),
   });

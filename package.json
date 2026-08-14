@@ -1,9 +1,9 @@
 {
-  "name": "corag.org",
-  "description": "Corag \u2014 el ecosistema de impacto social. Institutional website for Corag, connecting foundations, governments, organizations and people with real opportunities to help, transparently and traceably. The Ayuda Directa application lives at app.corag.org.",
+  "name": "corag.app",
+  "description": "Corag \u2014 el ecosistema de impacto social. Institutional website for Corag, connecting foundations, governments, organizations and people with real opportunities to help, transparently and traceably. The Ayuda Directa application lives at ayuda.corag.app.",
   "author": "Corag",
   "license": "MIT",
-  "homepage": "https://corag.org",
+  "homepage": "https://corag.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/asauliainc/CoragWeb"

@@ -1,6 +1,6 @@
 # Corag — Brand Guide
 
-> **Canonical brand reference for `corag.org`.** Read this before touching
+> **Canonical brand reference for `corag.app`.** Read this before touching
 > anything that carries the identity: logo, color, type, voice, imagery.
 >
 > - **This file** owns *identity and brand rules*.
@@ -34,12 +34,12 @@ of generosity — a shortage of connection.
 ### The product hierarchy — get this right or the copy goes wrong
 
 ```
-Corag — el ecosistema de impacto social          ← this website, corag.org
-   └── Ayuda Directa — producto insignia         → app.corag.org
+Corag — el ecosistema de impacto social          ← this website, corag.app
+   └── Ayuda Directa — producto insignia         → ayuda.corag.app
           └── Emergencia activa: Eje Cafetero
 ```
 
-`corag.org` is the **front door**: what Corag is, how the model works, why it can
+`corag.app` is the **front door**: what Corag is, how the model works, why it can
 be trusted, how to integrate with it. Every transactional action — publishing a
 need, offering help, contributing, tracking a contribution, applying as a leader
 — happens in the **app**, and we hand people over to it.
@@ -210,10 +210,10 @@ The manual defines five principles (p. 8). They are not suggestions.
 
 ### Two registers, one brand
 
-`corag.org` — this site — is **warm, human, hopeful**. It is where people decide
+`corag.app` — this site — is **warm, human, hopeful**. It is where people decide
 whether to trust Corag.
 
-`app.corag.org` during a live emergency is **operationally direct**. When someone
+`ayuda.corag.app` during a live emergency is **operationally direct**. When someone
 needs help right now, clarity beats warmth. *"Necesito ayuda"*, *"Quiero
 ayudar"*, *"Seguir mi aporte"* — three words, no adjectives.
 
@@ -320,6 +320,6 @@ Body               Poppins   400/500/600/700, self-hosted
 
 Voice              cálido · inspirador · claro · juvenil · esperanzador
 Positioning        Corag = ecosistema de impacto social
-                   Ayuda Directa = producto insignia → app.corag.org
+                   Ayuda Directa = producto insignia → ayuda.corag.app
 Mark               "corag", the o is a heart — coraje + innovación + amor
 ```

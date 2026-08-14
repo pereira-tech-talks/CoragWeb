@@ -2,10 +2,10 @@
   "serverInfo": {
     "name": "corag-site",
     "version": "1.0.0",
-    "description": "corag.org — the institutional site for Corag, el ecosistema de impacto social. Read-only agent surface over public site content. This host has NO write API: publishing a need or an offer, contributing, and tracking a contribution all happen at https://app.corag.org, which exposes its own public REST API, OpenAPI 3.1 spec and MCP server. Exposed via WebMCP in the browser and documented via Agent Skills at /.well-known/agent-skills/index.json."
+    "description": "corag.app — the institutional site for Corag, el ecosistema de impacto social. Read-only agent surface over public site content. This host has NO write API: publishing a need or an offer, contributing, and tracking a contribution all happen at https://ayuda.corag.app, which exposes its own public REST API, OpenAPI 3.1 spec and MCP server. Exposed via WebMCP in the browser and documented via Agent Skills at /.well-known/agent-skills/index.json."
   },
   "transport": {
-    "endpoint": "https://corag.org/"
+    "endpoint": "https://corag.app/"
   },
   "capabilities": ["tools", "resources"]
 }
