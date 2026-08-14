@@ -1,6 +1,6 @@
 ---
 title: "How companies can support social projects in Colombia"
-description: "Five models beyond donating, five steps to implement them, and what it takes for the programme to survive a change of management."
+description: "Five models beyond donating money, five steps to implement them, and what it takes for the programme to survive a change of management."
 pubDate: 2026-07-21
 heroImage: "/images/blog/posts/how-companies-can-support-social-projects-in-colombia/hero.webp"
 heroLayout: banner
