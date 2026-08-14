@@ -275,7 +275,7 @@ const btnSecondary =
         </div>
         {/* The fragmentation, shown: loose notes that never talk to each other */}
         <ul
-          class="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:gap-5"
+          class="flex flex-col gap-4 lg:col-span-7 lg:col-start-6 lg:grid lg:grid-cols-2 lg:content-start lg:gap-5"
           role="list"
         >
           {
@@ -821,17 +821,22 @@ const btnSecondary =
     opacity: 0.7;
   }
 
-  /* Problem act — the fragments sit like loose notes at desktop widths. */
+  /* Problem act — the fragments sit like loose notes: a two-column scatter
+     at desktop widths (half the height of a single stack). */
   @media (min-width: 1024px) {
     .problem-note:nth-child(odd) {
       transform: rotate(-1.5deg);
+      justify-self: start;
     }
     .problem-note:nth-child(even) {
-      transform: rotate(1.25deg);
-      margin-left: 3.5rem;
+      transform: rotate(1.25deg) translateY(1.75rem);
+      justify-self: end;
     }
-    .problem-note:nth-child(3n) {
-      margin-left: 7rem;
+    .problem-note:nth-child(3) {
+      transform: rotate(1deg) translateX(1.5rem);
+    }
+    .problem-note:nth-child(5) {
+      transform: rotate(-2deg) translateX(-1rem);
     }
   }
 
