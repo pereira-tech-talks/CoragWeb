@@ -90,12 +90,20 @@ export const en: SiteTranslations = {
     productCta: 'Join the movement',
     productPhotoAlt:
       'Two volunteers hand a parcel of groceries to a man in a rural settlement',
+    productUiCaption:
+      'Real views of the application. What you see is live application data at capture time.',
+    productScreenshotDesktopAlt:
+      'Ayuda Directa home screen on desktop, with the priority emergency and the live global progress',
+    productScreenshotMobileAlt:
+      'Ayuda Directa "How do you want to help?" flow on a phone',
 
     devEyebrow: 'Interoperability',
     devTitle: 'Many interfaces, one network of data',
     devBody:
       'During an emergency several applications appear at once, each with its own database of needs. The result is more fragmentation, not less. That is why we publish an open API: so a new application becomes a client of the same network rather than another silo.',
     devCta: 'Developer documentation',
+    devCodeTitle: 'POST /api/public/v1/help',
+    devCategoriesLabel: 'Real API categories',
 
     closingTitle: 'Will you join?',
     closingBody:

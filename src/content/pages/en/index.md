@@ -58,6 +58,9 @@ attributable to a responsable and to its evidence.
 Corag's flagship product. The map, the operational fronts, the responsables and
 the evidence all live there: <https://ayuda.corag.app>
 
+Real views of the application. What you see is live application data at capture
+time.
+
 ---
 
 ## Many interfaces, one network of data
@@ -66,6 +69,9 @@ During an emergency several applications appear at once, each with its own
 database of needs. The result is more fragmentation, not less. That is why we
 publish an open API: so a new application becomes a client of the same network
 rather than another silo.
+
+Publishing is a `POST /api/public/v1/help`. Real API categories: `alimentos`,
+`salud`, `refugio`, `transporte`, `acopio`, `rescate`, `otro`.
 
 See the [developer documentation](/en/developers).
 

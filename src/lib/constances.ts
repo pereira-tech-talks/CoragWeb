@@ -25,6 +25,21 @@ export function appUrl(path = '/'): string {
   return `${APP_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }
 
+/**
+ * The `category` enum of the public Ayuda Directa API, verbatim from the
+ * OpenAPI 3.1 document (`/api/public/openapi.json`) and the `/developers`
+ * page. API values — never translated.
+ */
+export const HELP_CATEGORIES = [
+  'alimentos',
+  'salud',
+  'refugio',
+  'transporte',
+  'acopio',
+  'rescate',
+  'otro',
+] as const;
+
 export const SITE_TITLE: string = 'Corag — El ecosistema de impacto social';
 export const SITE_DESCRIPTION: string =
   'Conectamos a quienes quieren ayudar con quienes más lo necesitan. Corag une gobiernos, organizaciones y personas para que la ayuda sea transparente, medible y constante.';

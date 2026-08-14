@@ -13,7 +13,12 @@
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import EvidenceNumbers from '@/components/home/EvidenceNumbers.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { APP_URL, appUrl, getDefaultOgImage } from '@/lib/constances';
+import {
+  APP_URL,
+  appUrl,
+  getDefaultOgImage,
+  HELP_CATEGORIES,
+} from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -36,6 +41,29 @@ const routes = {
   dev: `${prefix}/developers`,
   team: `${prefix}/contributors`,
 };
+
+/*
+ * The developer code sample, hand-tinted with token colours. Every field and
+ * enum value is copied from the live contract documented on /developers
+ * (OpenAPI 3.1 at /api/public/openapi.json) — obviously-example values only,
+ * never plausible personal data or amounts (rule 0 in code form).
+ */
+const key = (name: string) => `<span class="text-corag-rosa">"${name}"</span>`;
+const str = (value: string) =>
+  `<span class="text-corag-on-fill">"${value}"</span>`;
+const devCodeSample = [
+  '{',
+  `  ${key('source')}: ${str('mi-app')},`,
+  `  ${key('externalId')}: ${str('ejemplo-001')},`,
+  `  ${key('type')}: ${str('offer')},`,
+  `  ${key('title')}: ${str('Ejemplo: mercados disponibles')},`,
+  `  ${key('category')}: ${str('alimentos')},`,
+  `  ${key('emergencySlug')}: ${str('eje-cafetero')},`,
+  `  ${key('contactName')}: ${str('Nombre de ejemplo')},`,
+  `  ${key('contactWhatsapp')}: ${str('+57 300 000 0000')},`,
+  `  ${key('publishContact')}: <span class="text-corag-on-fill">true</span>`,
+  '}',
+].join('\n');
 
 const btnPrimary =
   'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-corag-fill px-7 py-3 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary';
@@ -310,29 +338,18 @@ const btnSecondary =
     </div>
   </section>
 
-  {/* ── Beat 5 — Ayuda Directa ────────────────────────────────────────── */}
-  <section class="bg-corag-bg-brand-strong">
-    <div class="main-container py-16 sm:py-24">
-      <div class="grid items-center gap-10 lg:grid-cols-2">
-        <img
-          src="/images/home/entrega-mercados-1280.webp"
-          srcset="/images/home/entrega-mercados-480.webp 480w, /images/home/entrega-mercados-768.webp 768w, /images/home/entrega-mercados-1280.webp 1280w"
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          alt=""
-          width={1280}
-          height={856}
-          loading="lazy"
-          decoding="async"
-          class="w-full rounded-[28px] object-cover shadow-corag-lg"
-        />
-        <div>
+  {/* ── Beat 5 — Ayuda Directa, the product shown ─────────────────────── */}
+  <section class="overflow-hidden bg-corag-bg-brand-strong">
+    <div class="main-container py-20 sm:py-24 lg:py-32">
+      <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+        <div class="lg:col-span-4">
           <p
             class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
           >
             {h.productEyebrow}
           </p>
           <h2
-            class="mt-3 font-display text-3xl font-bold text-corag sm:text-4xl"
+            class="mt-3 font-display text-3xl font-bold leading-[1.08] tracking-tight text-corag sm:text-4xl lg:text-5xl"
           >
             {h.productTitle}
           </h2>
@@ -343,29 +360,112 @@ const btnSecondary =
             <a href={APP_URL} class={btnPrimary}>{h.productCta}</a>
           </div>
         </div>
+        <div class="lg:col-span-8">
+          <div class="relative">
+            {/* CSS browser frame — the application, shown */}
+            <figure
+              class="overflow-hidden rounded-[28px] border border-corag-border bg-corag-bg-elevated shadow-corag-lg"
+            >
+              <div
+                class="flex items-center gap-1.5 border-b border-corag-border bg-corag-bg px-5 py-3"
+                aria-hidden="true"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-corag-primary/40"
+                ></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-corag-primary/25"
+                ></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-corag-primary/10"
+                ></span>
+              </div>
+              <img
+                src="/images/home/app/app-home-desktop-1280.webp"
+                srcset="/images/home/app/app-home-desktop-640.webp 640w, /images/home/app/app-home-desktop-960.webp 960w, /images/home/app/app-home-desktop-1280.webp 1280w, /images/home/app/app-home-desktop-1920.webp 1920w"
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                alt={h.productScreenshotDesktopAlt}
+                width={1280}
+                height={800}
+                loading="lazy"
+                decoding="async"
+                class="w-full"
+              />
+            </figure>
+            {/* CSS phone frame overlapping the corner */}
+            <div
+              class="absolute -bottom-10 -right-2 hidden w-44 overflow-hidden rounded-[1.9rem] border-[6px] border-corag-bg-dark bg-corag-bg-dark shadow-corag-lg sm:block lg:-right-6 lg:w-52"
+            >
+              <img
+                src="/images/home/app/app-aportar-mobile-390.webp"
+                srcset="/images/home/app/app-aportar-mobile-390.webp 390w, /images/home/app/app-aportar-mobile-780.webp 780w"
+                sizes="13rem"
+                alt={h.productScreenshotMobileAlt}
+                width={390}
+                height={844}
+                loading="lazy"
+                decoding="async"
+                class="w-full rounded-[1.5rem]"
+              />
+            </div>
+          </div>
+          <p class="mt-14 text-sm leading-relaxed text-corag-secondary sm:mt-16">
+            {h.productUiCaption}
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  {/* ── Interoperability — the developer thesis ───────────────────────── */}
+  {/* ── Interoperability — the developer thesis, code shown ───────────── */}
   <section class="bg-corag-bg">
-    <div class="main-container py-16 sm:py-24">
-      <div class="max-w-3xl">
-        <p
-          class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
-        >
-          {h.devEyebrow}
-        </p>
-        <h2
-          class="mt-3 font-display text-3xl font-semibold leading-tight text-corag sm:text-4xl"
-        >
-          {h.devTitle}
-        </h2>
-        <p class="mt-5 text-lg leading-relaxed text-corag-secondary">
-          {h.devBody}
-        </p>
-        <div class="mt-8">
-          <a href={routes.dev} class={btnSecondary}>{h.devCta}</a>
+    <div class="main-container py-20 sm:py-24 lg:py-32">
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <div class="lg:col-span-5">
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-corag-primary"
+          >
+            {h.devEyebrow}
+          </p>
+          <h2
+            class="mt-3 font-display text-3xl font-bold leading-[1.08] tracking-tight text-corag sm:text-4xl lg:text-5xl"
+          >
+            {h.devTitle}
+          </h2>
+          <p class="mt-5 text-lg leading-relaxed text-corag-secondary">
+            {h.devBody}
+          </p>
+          <div class="mt-8">
+            <a href={routes.dev} class={btnSecondary}>{h.devCta}</a>
+          </div>
+        </div>
+        <div class="lg:col-span-7">
+          <figure
+            class="overflow-hidden rounded-[28px] bg-corag-fill shadow-corag-lg"
+          >
+            <figcaption
+              class="flex items-center justify-between border-b border-white/10 px-6 py-3"
+            >
+              <span class="font-mono text-sm text-corag-on-fill/80"
+                >{h.devCodeTitle}</span
+              >
+              <span class="flex gap-1.5" aria-hidden="true">
+                <span class="h-2.5 w-2.5 rounded-full bg-corag-rosa/40"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-corag-rosa/20"></span>
+              </span>
+            </figcaption>
+            <pre
+              class="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-corag-on-fill/80"><code set:html={devCodeSample} /></pre>
+          </figure>
+          <p class="mt-6 text-sm font-semibold text-corag-secondary">
+            {h.devCategoriesLabel}
+          </p>
+          <ul class="mt-3 flex flex-wrap gap-2" role="list">
+            {
+              HELP_CATEGORIES.map((category) => (
+                <li class="rounded-full border border-corag-border bg-corag-bg-elevated px-3 py-1 font-mono text-xs text-corag-secondary">
+                  {category}
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </div>

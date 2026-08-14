@@ -59,6 +59,9 @@ atribuible a un responsable y a su evidencia.
 El producto insignia de Corag. Allí viven el mapa, los frentes de trabajo, los
 responsables y la evidencia: <https://ayuda.corag.app>
 
+Vistas reales de la aplicación. Lo que se ve son datos vivos de la aplicación
+en el momento de la captura.
+
 ---
 
 ## Muchas interfaces, una sola red de datos
@@ -67,6 +70,9 @@ En una emergencia aparecen varias aplicaciones al tiempo, cada una con su propia
 base de datos de necesidades. El resultado es más fragmentación, no menos. Por
 eso publicamos una API abierta: para que una aplicación nueva sea un cliente de
 la misma red, no otro silo.
+
+Publicar es un `POST /api/public/v1/help`. Categorías reales de la API:
+`alimentos`, `salud`, `refugio`, `transporte`, `acopio`, `rescate`, `otro`.
 
 Ver [documentación para desarrolladores](/developers).
 

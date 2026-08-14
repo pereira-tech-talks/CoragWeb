@@ -115,12 +115,20 @@ export interface HomeCopy {
   productBody: string;
   productCta: string;
   productPhotoAlt: string;
+  /** Rule-0 framing under the device composition: real app views, live data. */
+  productUiCaption: string;
+  productScreenshotDesktopAlt: string;
+  productScreenshotMobileAlt: string;
 
   // Interoperability — the developer thesis
   devEyebrow: string;
   devTitle: string;
   devBody: string;
   devCta: string;
+  /** Endpoint label on the code panel — literal in both locales. */
+  devCodeTitle: string;
+  /** Lead-in for the API category chips (values come from HELP_CATEGORIES). */
+  devCategoriesLabel: string;
 
   // Beat 6 — the invitation
   closingTitle: string;

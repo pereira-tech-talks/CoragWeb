@@ -90,12 +90,20 @@ export const es: SiteTranslations = {
     productCta: 'Únete al movimiento',
     productPhotoAlt:
       'Dos voluntarias entregan un paquete de mercado a un hombre en una vereda',
+    productUiCaption:
+      'Vistas reales de la aplicación. Lo que se ve son datos vivos de la aplicación en el momento de la captura.',
+    productScreenshotDesktopAlt:
+      'Pantalla principal de Ayuda Directa en escritorio, con la emergencia prioritaria y el avance global en vivo',
+    productScreenshotMobileAlt:
+      'Flujo «¿Cómo quieres ayudar?» de Ayuda Directa en un teléfono',
 
     devEyebrow: 'Interoperabilidad',
     devTitle: 'Muchas interfaces, una sola red de datos',
     devBody:
       'En una emergencia aparecen varias aplicaciones al tiempo, cada una con su propia base de datos de necesidades. El resultado es más fragmentación, no menos. Por eso publicamos una API abierta: para que una aplicación nueva sea un cliente de la misma red, no otro silo.',
     devCta: 'Documentación para desarrolladores',
+    devCodeTitle: 'POST /api/public/v1/help',
+    devCategoriesLabel: 'Categorías reales de la API',
 
     closingTitle: '¿Te sumas?',
     closingBody:
