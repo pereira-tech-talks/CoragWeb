@@ -737,6 +737,16 @@ export const es: SiteTranslations = {
       'Qué publicamos, qué significa cada número, cómo se revisa la evidencia antes de salir y qué cosas todavía no podemos comprobar. Sin adornos.',
     eyebrow: 'Las cuentas',
     lead: 'Decir que somos transparentes es fácil. Publicar el recibo requiere coraje. Esto es lo que publicamos, qué significa exactamente y dónde están los límites.',
+    heroFigure: {
+      srcBase: '/images/pages/app/app-avances-desktop',
+      widths: [640, 960, 1240],
+      alt: 'Banda de avance de Ayuda Directa: el total recibido junto al total donado con evidencia',
+      width: 1240,
+      height: 345,
+      frame: 'browser',
+      caption:
+        'Vista real de la aplicación. Los dos números que se ven son datos vivos: cambian con cada aporte y con cada evidencia aprobada.',
+    },
     sections: [
       {
         heading: 'Los dos números',
@@ -744,14 +754,15 @@ export const es: SiteTranslations = {
           'No son el mismo número y la diferencia entre ellos es el punto entero.',
         blocks: [
           {
-            kind: 'cards',
-            cards: [
+            kind: 'statPair',
+            relation: '≠',
+            items: [
               {
-                title: 'Recibido',
+                label: 'Recibido',
                 body: 'Lo que la red aportó. Se registra en el momento de la transferencia y no depende de nadie más.',
               },
               {
-                title: 'Utilizado con evidencia',
+                label: 'Utilizado con evidencia',
                 body: 'Lo que ya se entregó, se documentó y pasó revisión administrativa. Es el número que vale la pena mirar.',
               },
             ],

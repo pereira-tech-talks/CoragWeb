@@ -731,6 +731,16 @@ export const en: SiteTranslations = {
       'What we publish, what each number means, how evidence is reviewed before it goes out, and which things we still cannot prove. No decoration.',
     eyebrow: 'The accounts',
     lead: 'Saying you are transparent is easy. Publishing the receipt takes courage. Here is what we publish, what it means exactly, and where the limits are.',
+    heroFigure: {
+      srcBase: '/images/pages/app/app-avances-desktop',
+      widths: [640, 960, 1240],
+      alt: 'Ayuda Directa progress band: the total received beside the total donated with evidence',
+      width: 1240,
+      height: 345,
+      frame: 'browser',
+      caption:
+        'A real view of the application. Both numbers are live data: they move with every contribution and every approved piece of evidence.',
+    },
     sections: [
       {
         heading: 'The two numbers',
@@ -738,15 +748,16 @@ export const en: SiteTranslations = {
           'They are not the same number, and the gap between them is the entire point.',
         blocks: [
           {
-            kind: 'cards',
-            cards: [
+            kind: 'statPair',
+            relation: '≠',
+            items: [
               {
-                title: 'Received',
-                body: 'What the network contributed. Recorded at the moment of transfer and dependent on nobody else.',
+                label: 'Received',
+                body: 'What the network contributed. It is recorded at the moment of the transfer and depends on nobody else.',
               },
               {
-                title: 'Used with evidence',
-                body: 'What has been delivered, documented, and passed administrative review. This is the number worth looking at.',
+                label: 'Used with evidence',
+                body: 'What has already been delivered, documented and passed administrative review. It is the number worth looking at.',
               },
             ],
           },
