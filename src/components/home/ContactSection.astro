@@ -1,4 +1,5 @@
 ---
+import { SOCIAL_LINKS } from '@/lib/constances';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
@@ -46,87 +47,31 @@ const t = getTranslations(lang);
       {t.contactSection.description}
     </p>
 
-    <div class="mt-8 flex justify-center gap-3 sm:gap-4">
-      <a
-        href="https://github.com/pereira-tech-talks"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
-        data-umami-event="social_click"
-        data-umami-event-platform="github"
-      >
-        <img
-          src="/icons/github_white.svg"
-          alt=""
-          width={22}
-          height={22}
-          class="w-5 h-5"
-        />
-      </a>
-      <a
-        href="https://www.linkedin.com/company/pereira-tech-talks/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
-        data-umami-event="social_click"
-        data-umami-event-platform="linkedin"
-      >
-        <img
-          src="/icons/linkedin_white.svg"
-          alt=""
-          width={22}
-          height={22}
-          class="w-5 h-5"
-        />
-      </a>
-      <a
-        href="https://x.com/pertechtalks"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="X (Twitter)"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
-        data-umami-event="social_click"
-        data-umami-event-platform="twitter"
-      >
-        <img src="/icons/x_white.svg" alt="" width={22} height={22} class="w-5 h-5" />
-      </a>
-      <a
-        href="https://www.instagram.com/pertechtalks"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
-        data-umami-event="social_click"
-        data-umami-event-platform="instagram"
-      >
-        <img
-          src="/icons/instagram_white.svg"
-          alt=""
-          width={22}
-          height={22}
-          class="w-5 h-5"
-        />
-      </a>
-      <a
-        href="https://chat.whatsapp.com/GI5ZismAsqA4a4EPHnJ6RG"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-        class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 hover:bg-white/10 hover:text-white transition-colors"
-        data-umami-event="social_click"
-        data-umami-event-platform="whatsapp"
-      >
-        <img
-          src="/icons/whatsapp_white.svg"
-          alt=""
-          width={22}
-          height={22}
-          class="w-5 h-5"
-        />
-      </a>
-    </div>
+    <ul class="mt-8 flex justify-center gap-3 sm:gap-4" role="list">
+      {
+        SOCIAL_LINKS.map((social) => (
+          <li>
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/25 text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              <img
+                src={`/icons/${social.icon}_white.svg`}
+                alt=""
+                width={22}
+                height={22}
+                loading="lazy"
+                decoding="async"
+                class="h-5 w-5"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
 
     <a
       href={t.contactSection.ctaLink}

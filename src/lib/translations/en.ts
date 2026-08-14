@@ -12,31 +12,84 @@ export const en: SiteTranslations = {
     lead: 'We connect people who want to help with those who need it most, so that aid is transparent, measurable and consistent.',
     ctaPrimary: 'I want to help',
     ctaSecondary: 'How it works',
+
+    problemEyebrow: 'The problem',
     problemTitle: 'The intent is there. The connection is what fails.',
     problemBody:
-      'Plenty of people want to give or get involved, but cannot find a way to do it that feels trustworthy, close and meaningful. Aid ends up scattered across WhatsApp threads, one-off forms and spreadsheets nobody opens again.',
-    trustTitle: 'The bridge holds because of evidence',
-    trustBody:
-      'Saying you are transparent is easy. Publishing the receipt takes courage. That is why every contribution has a named person behind it, and every peso has a destination you can check.',
-    pillars: [
+      'Plenty of people want to give or get involved, but cannot find a way to do it that feels trustworthy, close and meaningful. Generosity is not the scarce resource — connection is. Aid ends up scattered across places that never talk to each other.',
+    problemFragments: [
+      'WhatsApp threads',
+      'One-off forms',
+      'Spreadsheets',
+      'Phone calls',
+      'Posts that get buried',
+      'Lists nobody updates',
+    ],
+
+    howEyebrow: 'How it works',
+    howTitle: 'A bridge between the person who needs and the person who can',
+    howBody:
+      'A need is published, located and categorized. Someone who can help finds it. It gets coordinated, delivered, and what happened is on the record.',
+    howSteps: [
       {
-        title: 'Transparent',
-        body: 'We publish how much came in and how much was spent with verified evidence. Two separate numbers, both public.',
+        title: 'It is published',
+        body: 'A person or community describes what they need, where, and how urgently.',
       },
       {
-        title: 'Measurable',
-        body: 'Every delivery is recorded with the person responsible, the date and the evidence. Nothing loses its trail.',
+        title: 'It is found',
+        body: 'Someone who can help sees it on the map, filtered by proximity and by type of aid.',
       },
       {
-        title: 'Consistent',
-        body: 'Not a campaign that appears and disappears. A network that keeps working between one emergency and the next.',
+        title: 'It is coordinated',
+        body: 'A named person organizes the delivery, often inside an operational front.',
+      },
+      {
+        title: 'The evidence stays',
+        body: 'Proof is uploaded, reviewed, and only then published.',
       },
     ],
+    howCta: 'See the whole path',
+
+    trustEyebrow: 'Transparency',
+    trustTitle:
+      'Saying you are transparent is easy. Publishing the receipt takes courage.',
+    trustBody:
+      'That is why every contribution has a named person behind it and every peso has a destination you can check. We publish two separate numbers, and both are public.',
+    pillars: [
+      {
+        title: 'Received',
+        body: 'How much came in. It is the easy number to show, and on its own it says nothing.',
+      },
+      {
+        title: 'Used with evidence',
+        body: 'How much was spent with verified proof: receipts, photos, results. This is the number that matters.',
+      },
+      {
+        title: 'Direct transfer',
+        body: 'Money goes to verified leaders’ accounts, not to a central treasury. Every contribution is attributable.',
+      },
+    ],
+    trustCta: 'How traceability works',
+
     productEyebrow: 'Flagship product',
     productTitle: 'Ayuda Directa',
     productBody:
-      'Publishing a need, offering help, contributing and tracking your contribution all happen in the application. That is where the map, the coordination and the evidence live.',
+      'Publishing a need, offering help, contributing and tracking your contribution all happen in the application. That is where the map, the operational fronts, the responsables and the evidence live.',
     productCta: 'Join the movement',
+    productPhotoAlt:
+      'Two volunteers hand a parcel of groceries to a man in a rural settlement',
+
+    devEyebrow: 'Interoperability',
+    devTitle: 'Many interfaces, one network of data',
+    devBody:
+      'During an emergency several applications appear at once, each with its own database of needs. The result is more fragmentation, not less. That is why we publish an open API: so a new application becomes a client of the same network rather than another silo.',
+    devCta: 'Developer documentation',
+
+    closingTitle: 'Will you join?',
+    closingBody:
+      'If you want to help, contribute or publish a need, that happens in the application. If you build software, want to become an ally, or want to join the team, start here.',
+    closingCtaApp: 'Go to the app',
+    closingCtaTeam: 'I want to contribute',
   },
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — The social impact ecosystem',
@@ -50,6 +103,7 @@ export const en: SiteTranslations = {
     blog: 'Blog',
     about: 'About Corag',
     contact: 'Contact',
+    community: 'Community',
     contributors: 'Contributors',
     channels: 'Channels',
     menu: 'Menu',

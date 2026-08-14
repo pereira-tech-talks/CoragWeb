@@ -12,31 +12,84 @@ export const es: SiteTranslations = {
     lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante.',
     ctaPrimary: 'Quiero ayudar',
     ctaSecondary: 'Cómo funciona',
+
+    problemEyebrow: 'El problema',
     problemTitle: 'La intención existe. La conexión falla.',
     problemBody:
-      'Muchas personas quieren donar o vincularse a una causa, pero no encuentran cómo hacerlo de manera confiable, cercana y significativa. La ayuda termina repartida entre cadenas de WhatsApp, formularios sueltos y hojas de cálculo que nadie vuelve a mirar.',
-    trustTitle: 'El puente se sostiene con evidencia',
-    trustBody:
-      'Decir que somos transparentes es fácil. Publicar la cuenta requiere coraje. Por eso cada aporte tiene un responsable con nombre, y cada peso tiene un destino que puedes revisar.',
-    pillars: [
+      'Muchas personas quieren donar o vincularse a una causa, pero no encuentran cómo hacerlo de manera confiable, cercana y significativa. No falta generosidad — falta conexión. La ayuda termina repartida en lugares que no se hablan entre sí.',
+    problemFragments: [
+      'Cadenas de WhatsApp',
+      'Formularios sueltos',
+      'Hojas de cálculo',
+      'Llamadas',
+      'Publicaciones que se pierden',
+      'Listas que nadie actualiza',
+    ],
+
+    howEyebrow: 'Cómo funciona',
+    howTitle: 'Un puente entre quien necesita y quien puede',
+    howBody:
+      'Una necesidad se publica, se ubica y se clasifica. Alguien que puede ayudar la encuentra. Se coordina, se entrega, y queda registro de lo que pasó.',
+    howSteps: [
       {
-        title: 'Transparente',
-        body: 'Publicamos cuánto se recibió y cuánto se usó con evidencia verificada. Son dos números distintos, y los dos son públicos.',
+        title: 'Se publica',
+        body: 'Una persona o comunidad describe qué necesita, dónde y con qué urgencia.',
       },
       {
-        title: 'Medible',
-        body: 'Cada entrega queda registrada con su responsable, su fecha y su evidencia. No se pierde el rastro.',
+        title: 'Se encuentra',
+        body: 'Quien puede ayudar la ve en el mapa, filtrada por cercanía y por tipo de ayuda.',
       },
       {
-        title: 'Constante',
-        body: 'No es una campaña que aparece y desaparece. Es una red que sigue funcionando entre una emergencia y la siguiente.',
+        title: 'Se coordina',
+        body: 'Un responsable con nombre organiza la entrega, muchas veces dentro de un frente de trabajo.',
+      },
+      {
+        title: 'Queda la evidencia',
+        body: 'Se sube el soporte, se revisa, y solo entonces se publica.',
       },
     ],
+    howCta: 'Ver el recorrido completo',
+
+    trustEyebrow: 'Transparencia',
+    trustTitle:
+      'Decir que somos transparentes es fácil. Publicar la cuenta requiere coraje.',
+    trustBody:
+      'Por eso cada aporte tiene un responsable con nombre y cada peso tiene un destino que puedes revisar. Publicamos dos números distintos, y los dos son públicos.',
+    pillars: [
+      {
+        title: 'Recibido',
+        body: 'Cuánto entró. Es el número fácil de mostrar, y por sí solo no dice nada.',
+      },
+      {
+        title: 'Usado con evidencia',
+        body: 'Cuánto se gastó con soporte verificado: recibos, fotos, resultados. Este es el número que importa.',
+      },
+      {
+        title: 'Transferencia directa',
+        body: 'El dinero va a cuentas de responsables verificados, no a una tesorería central. Cada aporte es atribuible.',
+      },
+    ],
+    trustCta: 'Cómo funciona la trazabilidad',
+
     productEyebrow: 'Producto insignia',
     productTitle: 'Ayuda Directa',
     productBody:
-      'Publicar una necesidad, ofrecer ayuda, aportar y seguir tu aporte ocurre en la aplicación. Allí vive el mapa, la coordinación y la evidencia.',
+      'Publicar una necesidad, ofrecer ayuda, aportar y seguir tu aporte ocurre en la aplicación. Allí viven el mapa, los frentes de trabajo, los responsables y la evidencia.',
     productCta: 'Únete al movimiento',
+    productPhotoAlt:
+      'Dos voluntarias entregan un paquete de mercado a un hombre en una vereda',
+
+    devEyebrow: 'Interoperabilidad',
+    devTitle: 'Muchas interfaces, una sola red de datos',
+    devBody:
+      'En una emergencia aparecen varias aplicaciones al tiempo, cada una con su propia base de datos de necesidades. El resultado es más fragmentación, no menos. Por eso publicamos una API abierta: para que una aplicación nueva sea un cliente de la misma red, no otro silo.',
+    devCta: 'Documentación para desarrolladores',
+
+    closingTitle: '¿Te sumas?',
+    closingBody:
+      'Si quieres ayudar, aportar o publicar una necesidad, eso ocurre en la aplicación. Si construyes software, quieres ser aliado o quieres colaborar con el equipo, empieza por aquí.',
+    closingCtaApp: 'Ir a la aplicación',
+    closingCtaTeam: 'Quiero colaborar',
   },
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — El ecosistema de impacto social',
@@ -50,6 +103,7 @@ export const es: SiteTranslations = {
     blog: 'Blog',
     about: 'Sobre Corag',
     contact: 'Contacto',
+    community: 'Comunidad',
     contributors: 'Colaboradores',
     channels: 'Canales',
     menu: 'Menú',

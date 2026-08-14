@@ -17,24 +17,64 @@ export interface HomePillar {
   body: string;
 }
 
+export interface HomeStep {
+  title: string;
+  body: string;
+}
+
 /**
- * Home page copy, structured around the six-beat argument in docs/MESSAGING.md.
+ * Home page copy, structured around the six-beat argument in docs/MESSAGING.md:
+ *   1 la intención existe → 2 la conexión falla → 3 Corag es el puente →
+ *   4 el puente se sostiene con evidencia → 5 Ayuda Directa → 6 únete al movimiento
+ *
+ * The home page is the only surface that runs all six beats.
  */
 export interface HomeCopy {
+  // Beat 3 + the coraje statement
   eyebrow: string;
   title: string;
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
+
+  // Beats 1 + 2 — the intent exists, the connection fails
+  problemEyebrow: string;
   problemTitle: string;
   problemBody: string;
+  problemFragments: string[];
+
+  // Beat 3 expanded — how the bridge works
+  howEyebrow: string;
+  howTitle: string;
+  howBody: string;
+  howSteps: HomeStep[];
+  howCta: string;
+
+  // Beat 4 — evidence
+  trustEyebrow: string;
   trustTitle: string;
   trustBody: string;
   pillars: HomePillar[];
+  trustCta: string;
+
+  // Beat 5 — the flagship product
   productEyebrow: string;
   productTitle: string;
   productBody: string;
   productCta: string;
+  productPhotoAlt: string;
+
+  // Interoperability — the developer thesis
+  devEyebrow: string;
+  devTitle: string;
+  devBody: string;
+  devCta: string;
+
+  // Beat 6 — the invitation
+  closingTitle: string;
+  closingBody: string;
+  closingCtaApp: string;
+  closingCtaTeam: string;
 }
 
 export interface SiteTranslations {
@@ -52,6 +92,8 @@ export interface SiteTranslations {
     blog: string;
     about: string;
     contact: string;
+    /** Label for the header dropdown holding about / contributors / channels. */
+    community: string;
     contributors: string;
     channels: string;
     menu: string;

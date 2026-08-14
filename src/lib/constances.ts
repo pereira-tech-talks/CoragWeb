@@ -42,11 +42,45 @@ export const ORGANIZATION_NAME = 'Corag';
 export const CONTACT_EMAIL = '';
 
 /**
- * Official social accounts, for the footer and the Organization JSON-LD
- * `sameAs`. Only add an entry once the account is confirmed to exist —
- * a fabricated `sameAs` is a structured-data error, not a placeholder.
+ * Official Corag accounts, in one place. The footer, the contact section and the
+ * Organization JSON-LD `sameAs` all render from this list, so an account is
+ * added or removed once.
+ *
+ * Only confirmed accounts belong here — a fabricated `sameAs` is a
+ * structured-data error, not a placeholder.
  */
-export const SOCIAL_LINKS: { label: string; href: string }[] = [];
+export interface SocialLink {
+  /** Human label, also used as the accessible name. */
+  label: string;
+  href: string;
+  /** Icon basename in `public/icons/` — `{icon}.svg` and `{icon}_white.svg`. */
+  icon: string;
+  /** Whether the account belongs in the JSON-LD `sameAs` array. */
+  sameAs: boolean;
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/appcorag',
+    icon: 'facebook',
+    sameAs: true,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/app.corag/',
+    icon: 'instagram',
+    sameAs: true,
+  },
+  {
+    // A group invite, not a profile — useful to link, but not an identity for
+    // `sameAs`, which is meant for pages that represent the organization.
+    label: 'WhatsApp',
+    href: 'https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2',
+    icon: 'whatsapp',
+    sameAs: false,
+  },
+];
 export const BLOG_PAGE_SIZE: number = 30;
 
 /** Default Open Graph / Twitter share image (1200×630), by language. */

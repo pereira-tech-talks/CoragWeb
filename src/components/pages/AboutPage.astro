@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import Section from '@/components/ui/Section.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { APP_URL } from '@/lib/constances';
+import { APP_URL, SOCIAL_LINKS } from '@/lib/constances';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -52,13 +52,9 @@ const organizationData = {
     'Public Speaking',
     'Tech Community Building',
   ],
-  sameAs: [
-    'https://github.com/pereira-tech-talks',
-    'https://www.linkedin.com/company/pereira-tech-talks/',
-    'https://x.com/pertechtalks',
-    'https://www.instagram.com/pertechtalks',
-    'https://chat.whatsapp.com/GI5ZismAsqA4a4EPHnJ6RG',
-  ],
+  sameAs: SOCIAL_LINKS.filter((social) => social.sameAs).map(
+    (social) => social.href
+  ),
 };
 
 const aboutPageData = {
