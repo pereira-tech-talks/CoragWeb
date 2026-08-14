@@ -1,97 +1,119 @@
 ---
-title: "Cómo contribuir a Pereira Tech Talks"
-description: "Cómo aportar a Pereira Tech Talks: dar una charla, escribir en el blog, mentorear o mantener el sitio open source. Cada camino es claro y tiene impacto real."
-lastUpdated: 2026-05-30
+title: "Cómo contribuir"
+description: "Formas concretas de aportar a Corag: desarrollo, diseño, traducción, contenido, coordinación en terreno y alianzas institucionales."
+lastUpdated: 2026-08-14
 ---
 
-## Por qué contribuir
+## Antes de empezar
 
-Pereira Tech Talks funciona con el tiempo y el cuidado de las personas que se asoman. No hay staff de tiempo completo, ni agencia, ni equipo de marketing. Cada meetup, cada charla, cada página de este sitio existen porque alguien decidió dedicarle unas horas a empujarlas hacia adelante.
-
-Contribuir de regreso es como la comunidad se mantiene viva — y como escala más allá de lo que cualquier organizador puede cargar solo. Abajo hay un mapa de los caminos para aportar, ordenados por el tipo de energía que cada uno pide.
-
----
-
-## Caminos para contribuir
-
-### 1. Habla en un meetup o en Pereira Tech Day
-
-La contribución de mayor apalancamiento: trae un tema, comparte lo que has aprendido y ayuda a otra persona a crecer hacia la siguiente etapa de su oficio.
-
-- **Qué buscamos:** charlas técnicas y prácticas, ancladas en experiencia real. Arquitectura, IA/agentes, devops, mobile, plataformas web, seguridad, ciclo de vida del software, programas comunitarios.
-- **Los ponentes primerizos son bienvenidos.** Hacemos mentoría a través de la Speaker School.
-- **Cómo proponer:** [Convocatoria de ponentes](/call-for-speakers).
-
-### 2. Acompaña a un ponente nuevo
-
-Si ya has dado charlas, lo más multiplicador que puedes hacer es acompañar a alguien preparando la primera. Las cohortes de Speaker School siempre necesitan mentores.
-
-- Escríbenos por el [formulario de contacto](/contact/?topic=collaboration) con asunto "Mentor en Speaker School" y cuéntanos tu área.
-
-### 3. Lidera o co-lidera un programa (vertical)
-
-Los programas (Speaker School, La Biblioteca del Mañana, AI Channel, Monthly Meetups) necesitan custodios — personas que asuman la responsabilidad de su cadencia, programación y dirección.
-
-- Habla con cualquier organizador en un meetup, o escribe a [pereiratechtalks@gmail.com](mailto:pereiratechtalks@gmail.com).
-
-### 4. Ayuda a organizar eventos
-
-Logística, comunicación, fotografía, grabación, hospedaje, conducción. Son los hilos invisibles que hacen que la experiencia presencial funcione.
-
-- Asiste a un meetup, busca a un organizador y cuéntanos cómo te gustaría aportar. O escríbenos.
-
-### 5. Escribe en el blog
-
-El blog es parte de cómo conectamos a Pereira con el ecosistema tech global. Publicamos recaps, deep-dives técnicos, charlas convertidas en ensayos y reflexiones comunitarias.
-
-- Trae un tema, un ángulo y un borrador. Co-escribimos y editamos antes de publicar.
-- Abre la conversación con el [formulario de contacto](/contact/?topic=collaboration) con asunto "Contribución al blog".
-
-### 6. Conecta a un patrocinador
-
-Si trabajas en — o tienes línea directa con — una empresa que se beneficia de una comunidad tech local fuerte, preséntanos. Los patrocinios sostienen todo lo que es gratis de asistir.
-
-- Mira [Patrocínanos](/sponsor-us) para el pitch.
-
-### 7. Contribuye al sitio open source
-
-Todo este sitio es open source. Cualquier cosa, desde un typo hasta una nueva página, un nuevo tipo de contenido o una mejora de Lighthouse, es bienvenida.
-
-- **Repositorio:** [github.com/pereira-tech-talks](https://github.com/pereira-tech-talks)
-- **Stack:** Astro 5, Svelte 5, Tailwind 4, TypeScript, Biome, MDX.
-- **Dev local:** `pnpm install && pnpm run dev` (Node 22+, pnpm 10+).
-- **Antes de abrir un PR:** corre `pnpm run biome:check`, `pnpm run astro:check`, `pnpm run test` y `pnpm run build` localmente.
-- **Contenido en español:** cada blog post, página y string mayor de UI debe existir en inglés y español. El español requiere ortografía correcta (ñ, vocales acentuadas, signos de interrogación).
-- **Conventional commits:** `<type>: <description>`, donde type es alguno de `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`.
-
-Para cambios grandes o continuos, abre primero un issue para discutir la dirección.
-
-### 8. Ayuda con fotografía, video o diseño
-
-Siempre nos hace falta ayuda capturando meetups, editando grabaciones y produciendo el branding de cada edición de Pereira Tech Day. Escríbenos por el formulario con asunto "Contribución de medios".
-
-### 9. Simplemente está
-
-Aparecerse es una contribución. Cada asistente devuelve energía que los ponentes y organizadores sienten. No hay rito de iniciación para pertenecer.
+Si lo que buscas es **pedir ayuda, ofrecer ayuda o aportar**, eso no ocurre en
+este sitio: ocurre en la aplicación. Este documento es para quien quiere aportar
+**construyendo Corag**.
 
 ---
 
-## Reconocimiento
+## Desarrollo
 
-Los contribuyentes aparecen en [Contribuyentes](/contributors). Los ponentes en [Ponentes](/speakers). Los patrocinadores en [Patrocinadores](/sponsors). Si has contribuido y aún no estás listado, escríbenos y te agregamos.
+El camino con más impacto no es construir otra aplicación de ayuda. Es
+integrarse con la que ya existe.
+
+> **Muchas interfaces, una sola red de datos.**
+
+En una emergencia aparecen varios equipos construyendo al tiempo, cada uno con
+su propia base de datos de necesidades. El resultado es más fragmentación, no
+menos. Por eso Corag publica una API abierta: para que una aplicación nueva sea
+un cliente de la misma red.
+
+**Cosas útiles que se pueden construir encima:**
+
+- Un bot de WhatsApp o Telegram que publique solicitudes.
+- Una PWA que funcione sin conexión, para zonas con mala señal.
+- Un importador desde hojas de cálculo, para organizaciones que ya trabajan así.
+- Un tablero para una alcaldía o una ONG.
+- Interfaces de accesibilidad: texto grande, lectura por voz, baja
+  conectividad.
+- Detección de duplicados y verificación de calidad de los datos.
+
+Empieza por [la documentación para desarrolladores](/desarrolladores).
+
+### Este sitio
+
+`corag.app` es abierto. Para contribuir aquí:
+
+```bash
+pnpm install
+pnpm run dev          # http://localhost:9999
+```
+
+Antes de abrir un pull request:
+
+```bash
+pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build
+```
+
+Convenciones que importan:
+
+- Todo el **código, los comentarios y la documentación en inglés**.
+- El **contenido público en español primero**, con su traducción real al inglés.
+  Las tildes y la ñ no son opcionales.
+- Sin texto de relleno. Nada de `[TODO]`, `[TBD]` ni Lorem ipsum.
+- Los tokens de diseño se usan, no se reemplazan por valores hexadecimales.
 
 ---
 
-## Algunos principios con los que trabajamos
+## Diseño
 
-- **Español e inglés por defecto.** Cualquier cosa visible para usuarios existe en ambos idiomas.
-- **Accesible por defecto.** WCAG AA, páginas rápidas, gemelos en Markdown legibles por agentes.
-- **Abierto por defecto.** Código, contenido y decisiones son públicos a menos que haya una razón clara para no serlo.
-- **Acogedor por defecto.** Personas principiantes, ponentes primerizos y gente que viene de caminos no tradicionales son parte central de quienes somos.
+Hace falta:
+
+- Un **máster vectorial del logo**. Hoy solo existe en mapa de bits, y el
+  favicon envuelve un raster.
+- Ilustración y diagramas que expliquen el modelo sin recurrir a fotografía de
+  sufrimiento.
+- Revisión de accesibilidad sobre pantallas reales.
+
+La [guía de marca](https://corag.app) y el sistema de diseño están documentados
+en el repositorio.
 
 ---
 
-## ¿Preguntas?
+## Contenido y traducción
 
-- Contacto general: [pereiratechtalks@gmail.com](mailto:pereiratechtalks@gmail.com)
-- Formulario: [Contáctanos](/contact)
+- Escribir en el blog sobre coordinación humanitaria, transparencia o tecnología
+  cívica.
+- Revisar que el español y el inglés digan lo mismo, no solo cosas correctas por
+  separado.
+- Documentar procesos que hoy solo viven en la cabeza de alguien.
+
+---
+
+## Coordinación en terreno
+
+El trabajo que sostiene todo lo demás:
+
+- Coordinar un frente operativo.
+- Verificar necesidades reportadas.
+- Acompañar entregas y documentar la evidencia.
+- Mantener el estado de las solicitudes al día.
+
+Para esto se postula como líder desde la aplicación.
+
+---
+
+## Organizaciones
+
+Si representas una fundación, una empresa, una alcaldía o una organización
+comunitaria, hay tres formas de sumarse:
+
+1. **Aportar capacidad** — transporte, bodega, personal, insumos.
+2. **Integrar tus sistemas** con la API, para no duplicar registros.
+3. **Respaldar la operación**, con recursos o con difusión.
+
+Escríbenos desde [contacto](/contact).
+
+---
+
+## Cómo se reconoce el trabajo
+
+Quien construye aparece en [colaboradores](/colaboradores), con su rol y su
+área. Quien dejó de estar activo no se borra: el tiempo que alguien donó no deja
+de contar.

@@ -1,17 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import {
-  CALENDAR_FORM_UUID,
-  CALENDAR_Q,
-  CONDUCT_FORM_UUID,
-  CONDUCT_Q,
-  CONTACT_FORM_UUID,
-  CONTACT_Q,
-  SPEAKER_SCHOOL_FORM_UUID,
-  SPEAKER_SCHOOL_Q,
-  SPONSORS_FORM_UUID,
-  SPONSORS_Q,
-} from '../../../functions/api/_dailybot';
 import { onRequestPost } from '../../../functions/api/contact';
 
 afterEach(() => {
@@ -19,9 +7,53 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+/*
+ * Form and question ids are configuration, not source. These fixtures stand in
+ * for what a deploy sets, and the tests assert the handler forwards whatever it
+ * was given rather than any hard-coded identifier.
+ */
+const CONTACT_Q = {
+  NAME: 'q-name',
+  EMAIL: 'q-email',
+  TOPIC: 'q-topic',
+  SUBJECT: 'q-subject',
+  MESSAGE: 'q-message',
+  LANG: 'q-lang',
+  PAGE_PATH: 'q-page',
+} as const;
+
+const CONDUCT_Q = {
+  INCIDENT: 'c-incident',
+  WHEN: 'c-when',
+  PEOPLE: 'c-people',
+  ANONYMOUS: 'c-anon',
+  REPORTER_NAME: 'c-name',
+  REPORTER_EMAIL: 'c-email',
+  FOLLOWUP: 'c-followup',
+  LANG: 'c-lang',
+  PAGE_PATH: 'c-page',
+} as const;
+
+const CONTACT_FORM_UUID = 'form-contact-uuid';
+const CONDUCT_FORM_UUID = 'form-conduct-uuid';
+
+const CONFIGURED_ENV = {
+  DAILYBOT_API_KEY: 'test-key',
+  // The rate-limit store is module scoped and shared across cases in this file.
+  CONTACT_RATE_LIMIT: '1000',
+  DAILYBOT_CONTACT_FORM: JSON.stringify({
+    uuid: CONTACT_FORM_UUID,
+    q: CONTACT_Q,
+  }),
+  DAILYBOT_CONDUCT_FORM: JSON.stringify({
+    uuid: CONDUCT_FORM_UUID,
+    q: CONDUCT_Q,
+  }),
+};
+
 function createContext(
   body: unknown,
-  env: { DAILYBOT_API_KEY?: string } = { DAILYBOT_API_KEY: 'test-key' }
+  env: Record<string, string | undefined> = CONFIGURED_ENV
 ) {
   const request = new Request('https://corag.app/api/contact', {
     method: 'POST',
@@ -48,6 +80,62 @@ describe('POST /api/contact → Dailybot', () => {
     expect(json.error).toBe('backend_not_configured');
   });
 
+  it('refuses to post when the form mapping is not configured', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+
+    const res = await onRequestPost(
+      createContext(
+        {
+          _form: 'contact',
+          name: 'Ada',
+          email: 'ada@example.com',
+          topic: 'general',
+          subject: 'Hello',
+          message: 'A question about how deliveries get verified.',
+          lang: 'es',
+          website: '',
+        },
+        { DAILYBOT_API_KEY: 'test-key' }
+      )
+    );
+
+    expect(res.status).toBe(503);
+    // The point of failing closed: nothing was sent anywhere.
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('refuses a mapping that is missing a question id', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { MESSAGE: _dropped, ...partial } = CONTACT_Q;
+    const res = await onRequestPost(
+      createContext(
+        {
+          _form: 'contact',
+          name: 'Ada',
+          email: 'ada@example.com',
+          topic: 'general',
+          subject: 'Hello',
+          message: 'A question about how deliveries get verified.',
+          lang: 'es',
+          website: '',
+        },
+        {
+          DAILYBOT_API_KEY: 'test-key',
+          DAILYBOT_CONTACT_FORM: JSON.stringify({
+            uuid: CONTACT_FORM_UUID,
+            q: partial,
+          }),
+        }
+      )
+    );
+
+    expect(res.status).toBe(503);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it('maps contact payload and posts automation content', async () => {
     const fetchMock = vi
       .fn()
@@ -63,7 +151,7 @@ describe('POST /api/contact → Dailybot', () => {
         email: 'ada@example.com',
         topic: 'general',
         subject: 'Hello',
-        message: 'Community question about meetups',
+        message: 'A question about how deliveries get verified.',
         lang: 'en',
         page_path: '/en/contact',
         website: '',
@@ -94,28 +182,56 @@ describe('POST /api/contact → Dailybot', () => {
     expect(body.content[CONTACT_Q.PAGE_PATH]).toBe('/en/contact');
   });
 
-  it('maps legacy reason tech-talk to cfs', async () => {
+  it('maps the Corag intake topics to their DailyBot labels', async () => {
+    for (const [sent, expected] of [
+      ['organization', 'Organization'],
+      ['ally', 'Ally'],
+      ['report', 'Report'],
+      ['press', 'Press'],
+    ] as const) {
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValue(
+          new Response(JSON.stringify({ uuid: 'resp' }), { status: 201 })
+        );
+      vi.stubGlobal('fetch', fetchMock);
+
+      const res = await onRequestPost(
+        createContext({
+          _form: 'contact',
+          name: 'Ada',
+          email: 'ada@example.com',
+          topic: sent,
+          subject: 'Hello',
+          message: 'We can move supplies from the warehouse this week.',
+          lang: 'es',
+          website: '',
+        })
+      );
+
+      expect(res.status).toBe(200);
+      const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+      const body = JSON.parse(init.body as string) as {
+        content: Record<string, string>;
+      };
+      expect(body.content[CONTACT_Q.TOPIC]).toBe(expected);
+    }
+  });
+
+  it('routes a conduct report even when only `reason` is sent', async () => {
     const fetchMock = vi
       .fn()
       .mockResolvedValue(
-        new Response(JSON.stringify({ uuid: 'resp-cfs' }), { status: 201 })
+        new Response(JSON.stringify({ uuid: 'resp-coc' }), { status: 201 })
       );
     vi.stubGlobal('fetch', fetchMock);
 
     const res = await onRequestPost(
       createContext({
-        reason: 'tech-talk',
+        reason: 'coc',
         name: 'Grace',
         email: 'grace@example.com',
-        subject: 'Talk proposal',
-        message: 'Notes',
-        talkTitle: 'Building with Astro',
-        format: 'regular',
-        abstract: 'A long enough abstract about Astro islands and DX.',
-        takeaways: 'Learn islands',
-        socialUrl: 'https://example.com',
-        firstTime: true,
-        speakerSchool: false,
+        message: 'Enough detail for the team to review what happened.',
         lang: 'es',
         website: '',
       })
@@ -123,128 +239,30 @@ describe('POST /api/contact → Dailybot', () => {
 
     expect(res.status).toBe(200);
     const json = (await res.json()) as { formType: string };
-    expect(json.formType).toBe('cfs');
+    expect(json.formType).toBe('conduct');
+    const [url] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(url).toContain(CONDUCT_FORM_UUID);
   });
 
   it('silently accepts honeypot spam', async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
+
     const res = await onRequestPost(
       createContext({
         _form: 'contact',
-        name: 'Bot',
-        email: 'bot@example.com',
+        name: 'Ada',
+        email: 'ada@example.com',
         topic: 'general',
-        subject: 'Spam',
-        message:
-          'Buy now https://x.com https://y.com https://z.com https://a.com https://b.com https://c.com https://d.com',
-        website: 'https://spam.example',
-        lang: 'en',
+        subject: 'Hello',
+        message: 'Hello there',
+        website: 'http://spam.example',
+        lang: 'es',
       })
     );
+
     expect(res.status).toBe(200);
     expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  it('maps speaker-school experience level labels', async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue(
-        new Response(JSON.stringify({ uuid: 'resp-ss' }), { status: 201 })
-      );
-    vi.stubGlobal('fetch', fetchMock);
-
-    const res = await onRequestPost(
-      createContext({
-        _form: 'speaker-school',
-        name: 'Ada',
-        email: 'ada@example.com',
-        experienceLevel: 'beginner',
-        goals: 'First meetup talk',
-        topicsOfInterest: 'Rust',
-        availability: 'Weeknights',
-        lang: 'es',
-        page_path: '/verticals/speaker-school',
-        website: '',
-      })
-    );
-
-    expect(res.status).toBe(200);
-    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(url).toContain(SPEAKER_SCHOOL_FORM_UUID);
-    const body = JSON.parse(init.body as string) as {
-      content: Record<string, string>;
-    };
-    expect(body.content[SPEAKER_SCHOOL_Q.EXPERIENCE_LEVEL]).toBe('Beginner');
-    expect(body.content[SPEAKER_SCHOOL_Q.GOALS]).toBe('First meetup talk');
-  });
-
-  it('maps sponsor tier and contribution labels', async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue(
-        new Response(JSON.stringify({ uuid: 'resp-sp' }), { status: 201 })
-      );
-    vi.stubGlobal('fetch', fetchMock);
-
-    const res = await onRequestPost(
-      createContext({
-        _form: 'sponsor',
-        name: 'Ada',
-        email: 'ada@example.com',
-        company: 'Acme',
-        contactRole: 'CMO',
-        tierInterest: 'gold',
-        contributionType: 'in-kind',
-        message: 'Interested in PTD support',
-        lang: 'en',
-        website: '',
-      })
-    );
-
-    expect(res.status).toBe(200);
-    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(url).toContain(SPONSORS_FORM_UUID);
-    const body = JSON.parse(init.body as string) as {
-      content: Record<string, string>;
-    };
-    expect(body.content[SPONSORS_Q.TIER]).toBe('Gold');
-    expect(body.content[SPONSORS_Q.CONTRIBUTION]).toBe('In-kind');
-  });
-
-  it('maps calendar intake fields', async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValue(
-        new Response(JSON.stringify({ uuid: 'resp-cal' }), { status: 201 })
-      );
-    vi.stubGlobal('fetch', fetchMock);
-
-    const res = await onRequestPost(
-      createContext({
-        _form: 'calendar',
-        name: 'Ada',
-        email: 'ada@example.com',
-        communityName: 'Pereira JS',
-        googleCalendarId: 'pereirajs@group.calendar.google.com',
-        shortDescription: 'Monthly JS meetups',
-        publicCalendarUrl: 'https://calendar.google.com/calendar/u/0?cid=abc',
-        communityWebsite: 'https://example.com',
-        lang: 'es',
-        website: '',
-      })
-    );
-
-    expect(res.status).toBe(200);
-    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(url).toContain(CALENDAR_FORM_UUID);
-    const body = JSON.parse(init.body as string) as {
-      content: Record<string, string>;
-    };
-    expect(body.content[CALENDAR_Q.COMMUNITY]).toBe('Pereira JS');
-    expect(body.content[CALENDAR_Q.CALENDAR_ID]).toBe(
-      'pereirajs@group.calendar.google.com'
-    );
   });
 
   it('maps anonymous conduct reports without identity', async () => {
@@ -259,8 +277,8 @@ describe('POST /api/contact → Dailybot', () => {
       _form: 'conduct',
       anonymous: true,
       incidentDescription:
-        'Enough detail about a confidential incident for organizers to review.',
-      incidentDate: 'Last meetup',
+        'Enough detail about a confidential incident for the team to review.',
+      incidentDate: 'Last week',
       peopleInvolved: '',
       name: 'ShouldClear',
       // Sneaked email must not reach Dailybot or trigger Resend ack.
@@ -299,14 +317,16 @@ describe('POST /api/contact → Dailybot', () => {
         email: 'ada@example.com',
         topic: 'general',
         subject: 'Hello',
-        message: 'Community question about meetups',
-        lang: 'en',
+        message: 'A question about how deliveries get verified.',
+        lang: 'es',
         website: '',
       })
     );
 
-    expect(res.status).toBeGreaterThanOrEqual(400);
-    const json = (await res.json()) as { ok: boolean };
-    expect(json.ok).toBe(false);
+    // A 401 from Dailybot is our misconfiguration, not the caller's: the
+    // client gets a 502 and a message that does not leak the upstream status.
+    expect(res.status).toBe(502);
+    const json = (await res.json()) as { error: string };
+    expect(json.error).toBe('backend_not_configured');
   });
 });

@@ -31,21 +31,32 @@ export const GET: APIRoute = async () => {
       return bio ? [row, `  ${bio}`] : [row];
     });
 
+  // The HTML shows an empty state rather than hiding the section, so the twin
+  // must say the same thing. Dropping the heading would report the directory as
+  // absent when the page reports it as not yet published.
+  const orEmpty = (lines: string[]): string[] =>
+    lines.length > 0
+      ? lines
+      : ['Aún no hay colaboradores publicados en esta sección.'];
+
   const markdown = serializeGenericToMarkdown({
-    title: 'Equipo — Pereira Tech Talks',
+    title: 'Colaboradores — Corag',
     description:
       'Las personas que construyen Corag, por área, y quienes colaboraron antes. Directorio en /contributors.',
     lang,
     canonical: `${SITE_URL}/contributors`,
     metadata: [
-      ['Organizadores activos', String(current.length)],
-      ['Alumni y anteriores', String(past.length)],
+      ['Colaboradores activos', String(current.length)],
+      ['Colaboradores anteriores', String(past.length)],
       ['Total en directorio', String(contributors.length)],
     ],
-    body: 'Quienes coordinan meetups, Pereira Tech Day, los programas de la comunidad y la operación diaria. Construyendo comunidad en Pereira desde 2014.',
+    body: 'Corag lo construye un equipo que dona su tiempo: desarrollo, diseño, contenido, coordinación en terreno y alianzas. Quien dejó de estar activo no se borra: el tiempo que alguien donó no deja de contar.',
     sections: [
-      { heading: 'Equipo organizador', lines: toLines(current) },
-      { heading: 'Alumni y organizadores anteriores', lines: toLines(past) },
+      { heading: 'Equipo activo', lines: orEmpty(toLines(current)) },
+      {
+        heading: 'Colaboradores anteriores',
+        lines: orEmpty(toLines(past)),
+      },
     ],
   });
 

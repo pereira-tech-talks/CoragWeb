@@ -1,50 +1,40 @@
 ---
-title: "Contacto — Pereira Tech Talks"
-description: "Escríbele a Pereira Tech Talks. Estamos abiertos a ponentes, patrocinadores, aliados y miembros de la comunidad que quieran participar, proponer ideas o colaborar."
-lastUpdated: 2026-08-07
+title: "Contacto — Corag"
+description: "Escríbenos si representas una organización, quieres ser aliado, eres prensa o necesitas reportar algo. Pedir y ofrecer ayuda ocurre en la aplicación. Para pedir u ofrecer ayuda, usa la aplicación."
+lastUpdated: 2026-08-14
 ---
 
-## Escríbenos
+## Hablemos
 
-Estamos siempre abiertas y abiertos a nuevas y nuevos ponentes, patrocinadores, aliados y miembros de la comunidad. Ya sea que tengas una charla por proponer, quieras patrocinar un meetup o solo decir hola — nos encantaría saber de ti.
+Este canal es para **conversaciones institucionales**.
 
-El formulario de contacto en [/contact](/contact/) cubre consultas generales, colaboración, La Biblioteca del Mañana, prensa y otros. Las rutas dedicadas son:
-
-- Charlas: [/call-for-speakers](/call-for-speakers/)
-- Patrocinio: [/sponsor-us](/sponsor-us/)
-- Speaker School: [/verticals/speaker-school/#speaker-school-form](/verticals/speaker-school/#speaker-school-form)
-- Calendario comunitario: [/calendar/#calendar-intake](/calendar/#calendar-intake)
-- Código de Conducta: [/conduct/#conduct-report-form](/conduct/#conduct-report-form)
+> ⚠️ **Si necesitas ayuda o quieres aportar, eso ocurre en la aplicación:**
+> <https://ayuda.corag.app>
+>
+> Este formulario no llega a nadie que pueda atender una emergencia.
 
 ---
 
-## Cómo participar
+## Temas
 
-- **Propón una charla** — Usa la [Convocatoria de ponentes](/call-for-speakers/).
-- **Patrocina un evento** — Usa el formulario de patrocinio / página de sponsors.
-- **Sé aliado de la comunidad** — Co-organiza un evento, comparte espacios o construye una colaboración entre comunidades (formulario de contacto → Colaboración).
-- **Súmate a La Biblioteca del Mañana** — Tema “La Biblioteca del Mañana” en el formulario de contacto.
-- **Escribe para el blog** — Comparte un artículo, una recapitulación de meetup o un tutorial con la comunidad.
+- **Contacto general**
+- **Soy una organización y quiero ayudar** — fundaciones, empresas, alcaldías y
+  organizaciones comunitarias que pueden aportar capacidad.
+- **Alianza institucional**
+- **Prensa**
+- **Reportar un problema con la información** — un dato incorrecto, una entrega
+  que no cuadra, una cuenta sospechosa.
 
----
-
-## Conéctate con nosotros
-
-- Correo: [pereiratechtalks@gmail.com](mailto:pereiratechtalks@gmail.com)
-- GitHub: [@pereira-tech-talks](https://github.com/pereira-tech-talks)
-- LinkedIn: [Pereira Tech Talks](https://www.linkedin.com/company/pereira-tech-talks/)
-- X (Twitter): [@pertechtalks](https://x.com/pertechtalks)
-- Instagram: [@pertechtalks](https://www.instagram.com/pertechtalks)
+Solo usamos estos datos para responderte. No los publicamos ni los compartimos.
 
 ---
 
-## Ubicación
+## Quizá buscabas
 
-Basados en Pereira, Risaralda, Colombia. Sitio disponible en español e inglés. Abiertos a aliados remotos y a ponentes internacionales en cualquier parte del mundo.
-
----
-
-## Más sobre la comunidad
-
-- [Sobre Pereira Tech Talks](/about)
-- [Lee el blog](/blog)
+- [Cómo funciona](/como-funciona) — el recorrido completo, de la necesidad a la
+  evidencia.
+- [Transparencia](/transparencia) — cuánto se recibió y cuánto se usó con
+  evidencia.
+- [Desarrolladores](/desarrolladores) — API pública, OpenAPI y MCP.
+- [Código de Conducta](/conduct) — para reportar un incidente de conducta,
+  incluso de forma anónima.

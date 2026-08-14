@@ -91,14 +91,6 @@ export function pageTypeOf(pagePath) {
   const [head, ...rest] = path.split('/');
   const isDetail = rest.length > 0;
 
-  if (head === 'meetups') return isDetail ? 'meetup-detail' : 'meetup-index';
-  if (head === 'speakers') return isDetail ? 'speaker-detail' : 'speaker-index';
-  if (head === 'sponsors') return isDetail ? 'sponsor-detail' : 'sponsor-index';
-  if (head === 'verticals')
-    return isDetail ? 'vertical-detail' : 'vertical-index';
-  if (head === 'slides') return isDetail ? 'slide-detail' : 'slide-index';
-  if (head === 'pereira-tech-days') return 'ptd-edition';
-  if (head === 'pereira-tech-day') return 'ptd-landing';
   if (head === 'blog') {
     if (rest[0] === 'series')
       return rest.length > 1 ? 'blog-series' : 'blog-series-index';
@@ -118,49 +110,12 @@ export function pageTypeOf(pagePath) {
  * page's own HTML, so "the page shows it, the twin does not" is the failure —
  * not "the section is absent from both".
  */
-/**
- * Schedule and Speakers are conditional: a past edition renders no agenda, and
- * an edition may deliberately withhold both (see `postponement.hideSections` in
- * docs/features/PEREIRA_TECH_DAYS.md). The probes match the section ids emitted
- * by `PtdScheduleSection` / `PtdSpeakersSection` and the past-edition Ponentes
- * block, so the gate still fails when the page shows one and the twin does not.
- */
-const PTD_SECTIONS = [
-  { names: ['Hero image', 'Imagen destacada'] },
-  { names: ['Schedule', 'Agenda'], whenHtmlHas: /id="schedule"/ },
-  {
-    names: ['Speakers', 'Ponentes'],
-    whenHtmlHas: /id="speakers"|id="ptd-speakers-title"/,
-  },
-  { names: ['Venue', 'Lugar'] },
-];
-
 export const REQUIRED_SECTIONS = {
-  'meetup-detail': [
-    {
-      names: ['Talks', 'Charlas'],
-      whenHtmlHas: /id="talks"|>\s*(Talks|Charlas)\s*</,
-    },
-    { names: ['Venue', 'Lugar'] },
+  contributors: [{ names: ['Active team', 'Equipo activo'] }],
+  channels: [
+    { names: ['Where it all happens', 'Donde ocurre todo'] },
+    { names: ['Network channels', 'Canales de la red'] },
   ],
-  'speaker-detail': [
-    { names: ['Photo', 'Foto'] },
-    {
-      names: ['Talk history', 'Historial de charlas'],
-      whenHtmlHas: /(Talk history|Historial de charlas)/,
-    },
-  ],
-  'sponsor-detail': [{ names: ['Logo', 'Logo'] }],
-  'vertical-detail': [
-    {
-      names: ['Related meetups', 'Meetups relacionados'],
-      whenHtmlHas: /(Related meetups|Meetups relacionados|Meetups asociados)/,
-    },
-  ],
-  'ptd-edition': PTD_SECTIONS,
-  'ptd-landing': PTD_SECTIONS,
-  contributors: [{ names: ['Organizing team', 'Equipo organizador'] }],
-  communities: [{ names: ['Allied communities', 'Comunidades aliadas'] }],
 };
 
 /** Headings the `.md` actually carries. */
@@ -252,13 +207,9 @@ export const CONTRACT_TARGET = 0.85;
  * not assumed. Every other type is held to the contract.
  */
 export const COVERAGE_FLOORS = {
-  'vertical-index': 0.7, // measured 0.734 — mission repeated as a hover affordance
-  'sponsor-us': 0.75, // measured 0.787 — multi-step inquiry form controls
-  'speaker-detail': 0.76, // measured 0.795 — talk-timeline chrome, date fragments
-  calendar: 0.77, // measured 0.809 — Google Calendar island + intake form labels
-  press: 0.78, // measured 0.813 — press-kit download labels and filenames
-  home: 0.79, // measured 0.823 (`/`) and 0.862 (`/en`) — countdown digits,
-  //             typewriter words, scroll cue
+  home: 0.75, // measured 0.792 both languages — icon labels inside the value
+  //             cards and the CTA button text repeat words the twin states once
+  contact: 0.78, // measured 0.815 — form control labels and validation strings
 };
 
 export function floorFor(type) {

@@ -9,7 +9,7 @@ export const es: SiteTranslations = {
   home: {
     eyebrow: 'El ecosistema de impacto social',
     title: 'Tenemos coraje para servir y transformar vidas',
-    lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante.',
+    lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.',
     ctaPrimary: 'Quiero ayudar',
     ctaSecondary: 'Cómo funciona',
 
@@ -94,7 +94,7 @@ export const es: SiteTranslations = {
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — El ecosistema de impacto social',
   siteDescription:
-    'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante.',
+    'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.',
 
   // Navigation
   nav: {
@@ -144,7 +144,7 @@ export const es: SiteTranslations = {
     title: 'Sobre Corag',
     subtitle: 'El ecosistema de impacto social',
     description:
-      'Qué es Corag, de dónde viene el nombre, cómo funciona el modelo y por qué la evidencia está en el centro.',
+      'Qué es Corag, de dónde viene el nombre, cómo funciona el modelo de responsables y evidencia, y por qué publicamos el recibo y no solo la intención.',
     heroDescription:
       'Nacimos de un grupo de jóvenes apasionados por el servicio social. De ahí salió el propósito de crear un puente digital entre quienes quieren ayudar y quienes más lo necesitan.',
     bioTitle: 'Tenemos coraje para servir y transformar vidas',
@@ -239,7 +239,7 @@ export const es: SiteTranslations = {
     title: 'Contacto',
     subtitle: 'Hablemos',
     description:
-      'Escríbenos si representas una organización, quieres ser aliado, eres prensa o quieres reportar algo.',
+      'Escríbenos si representas una organización, quieres ser aliado, eres prensa o necesitas reportar algo. Pedir y ofrecer ayuda ocurre en la aplicación.',
     heroDescription:
       'Este canal es para conversaciones institucionales. Si necesitas ayuda o quieres aportar, eso ocurre en la aplicación.',
     appNoticeTitle: '¿Necesitas ayuda o quieres aportar?',
@@ -311,11 +311,10 @@ export const es: SiteTranslations = {
   contributorsPage: {
     title: 'Colaboradores',
     description:
-      'Las personas que construyen Corag: desarrollo, diseño, producto, contenido y coordinación.',
+      'Las personas que construyen Corag: desarrollo, diseño, producto, contenido y coordinación en terreno. Quien donó su tiempo no deja de aparecer aquí.',
     eyebrow: 'El equipo',
     intro: (count: number) =>
       `Corag lo construyen ${count} personas que donan su tiempo. Estas son.`,
-    sinceLabel: (year: number) => `Desde ${year}`,
     currentTitle: 'Quienes están construyendo hoy',
     currentIntro:
       'Cada quien aporta desde su área. El trabajo es voluntario y el crédito es de todas y todos.',
@@ -425,7 +424,7 @@ export const es: SiteTranslations = {
   seriesListingPage: {
     title: 'Series del blog',
     description:
-      'Colecciones de artículos en varios capítulos — recorridos largos sobre el modelo, el terreno y la tecnología detrás de Corag.',
+      'Colecciones de artículos en varios capítulos: recorridos largos sobre el modelo de ayuda, el trabajo en terreno y la tecnología que hay detrás de Corag.',
     heading: 'Series',
     postsCount: (count) => `${count} ${count === 1 ? 'capítulo' : 'capítulos'}`,
     exploreSeries: 'Explorar series',

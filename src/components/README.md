@@ -1,6 +1,6 @@
 # Components (`src/components/`)
 
-This directory contains all reusable UI components for the Pereira Tech Talks website (v3.0.0). Components are organized by feature area and use both Astro (`.astro`) and Svelte (`.svelte`) formats.
+This directory contains all reusable UI components for the Corag website. Components are organized by feature area and use both Astro (`.astro`) and Svelte (`.svelte`) formats.
 
 ## Directory Structure
 

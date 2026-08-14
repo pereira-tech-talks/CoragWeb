@@ -9,7 +9,7 @@ export const en: SiteTranslations = {
   home: {
     eyebrow: 'The social impact ecosystem',
     title: 'We have the courage to serve and transform lives',
-    lead: 'We connect people who want to help with those who need it most, so that aid is transparent, measurable and consistent.',
+    lead: 'We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind.',
     ctaPrimary: 'I want to help',
     ctaSecondary: 'How it works',
 
@@ -94,7 +94,7 @@ export const en: SiteTranslations = {
   siteTitle: 'Corag',
   siteTitleFull: 'Corag — The social impact ecosystem',
   siteDescription:
-    'We connect people who want to help with those who need it most, so that aid is transparent, measurable and consistent.',
+    'We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind.',
 
   // Navigation
   nav: {
@@ -144,7 +144,7 @@ export const en: SiteTranslations = {
     title: 'About Corag',
     subtitle: 'The social impact ecosystem',
     description:
-      'What Corag is, where the name comes from, how the model works, and why evidence sits at the centre of it.',
+      'What Corag is, where the name comes from, how the model of named responsables and moderated evidence works, and why we publish the receipt.',
     heroDescription:
       'We started as a group of young people who cared about social service. Out of that came the purpose of building a digital bridge between those who want to help and those who need it most.',
     bioTitle: 'We have the courage to serve and transform lives',
@@ -239,7 +239,7 @@ export const en: SiteTranslations = {
     title: 'Contact',
     subtitle: 'Let us talk',
     description:
-      'Write to us if you represent an organization, want to become an ally, are press, or want to report something.',
+      'Write to us if you represent an organization, want to become an ally, are press, or need to report something. Asking for help happens in the app.',
     heroDescription:
       'This channel is for institutional conversations. If you need help or want to contribute, that happens in the application.',
     appNoticeTitle: 'Do you need help, or want to contribute?',
@@ -311,11 +311,10 @@ export const en: SiteTranslations = {
   contributorsPage: {
     title: 'Contributors',
     description:
-      'The people building Corag: engineering, design, product, content and coordination.',
+      'The people building Corag: engineering, design, product, content and field coordination. Anyone who donated their time keeps their place here.',
     eyebrow: 'The team',
     intro: (count: number) =>
       `Corag is built by ${count} people donating their time. These are they.`,
-    sinceLabel: (year: number) => `Since ${year}`,
     currentTitle: 'Building it today',
     currentIntro:
       'Everyone contributes from their own area. The work is voluntary and the credit is shared.',
@@ -386,7 +385,7 @@ export const en: SiteTranslations = {
   blogTitle: 'Blog',
   blogHeading: 'Articles & Stories',
   blogDescription:
-    'Articles on humanitarian coordination, transparency, civic technology, and how you build an aid network people can verify.',
+    'Articles on humanitarian coordination, donation transparency and civic technology, and how you build an aid network that anyone can actually verify.',
   allPosts: 'All Posts',
   showingArticles: (showing, total) =>
     `Showing ${showing} of ${total} articles`,
@@ -422,7 +421,7 @@ export const en: SiteTranslations = {
   seriesListingPage: {
     title: 'Blog Series',
     description:
-      'Multi-chapter article collections — long reads on the model, the field, and the technology behind Corag.',
+      'Multi-chapter article collections: long reads on the aid model, the work in the field, and the technology that holds the whole network together.',
     heading: 'Series',
     postsCount: (count) => `${count} ${count === 1 ? 'chapter' : 'chapters'}`,
     exploreSeries: 'Explore series',

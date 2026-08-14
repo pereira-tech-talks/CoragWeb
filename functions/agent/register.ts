@@ -25,7 +25,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
   const body = {
     status: 'public_no_auth_required',
     message:
-      'Pereira Tech Talks public content (blog, meetups, slides, Pereira Tech Day) is readable without registration. Agents should use /.well-known/api-catalog, /llms.txt, and Markdown twin endpoints. Contact the community for privileged write access.',
+      'Corag public content (blog, institutional pages, policies) is readable without registration. Agents should use /.well-known/api-catalog, /llms.txt, and the Markdown twin endpoints. Contact us for privileged write access.',
     skill: `${origin}/auth.md`,
     resource_metadata: `${origin}/.well-known/oauth-protected-resource`,
     scopes: ['public:read'],

@@ -60,7 +60,7 @@ export function buildOAuthProtectedResourceMetadata(
 ): OAuthProtectedResourceMetadata {
   return {
     resource: origin,
-    resource_name: 'Pereira Tech Talks',
+    resource_name: 'Corag',
     authorization_servers: [origin],
     scopes_supported: ['public:read'],
     bearer_methods_supported: ['header'],

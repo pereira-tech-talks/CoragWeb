@@ -26,7 +26,7 @@
  * before checking this allowlist first.
  *
  * corag.app migration note:
- *   The Pereira Tech Talks community routes (`/meetups`, `/talks`, `/speakers`,
+ *   The retired community routes (`/meetups`, `/talks`, `/speakers`,
  *   `/slides`, `/verticals`, `/pereira-tech-day(s)`, `/communities`,
  *   `/certificates`, `/press`, `/call-for-speakers`, `/calendar`, `/sponsors`)
  *   were removed with their collections. Each has a 301 in

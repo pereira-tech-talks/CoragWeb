@@ -1,56 +1,86 @@
 ---
-title: "Sobre Pereira Tech Talks"
-description: "Conoce a Pereira Tech Talks — la comunidad de tecnología de Pereira, Risaralda. 90+ meetups mensuales desde 2014, Pereira Tech Day, la Escuela de Speakers y el club de lectura La Biblioteca del Mañana."
-lastUpdated: 2026-08-07
+title: "Sobre Corag"
+description: "Qué es Corag, de dónde viene el nombre, cómo funciona el modelo de responsables y evidencia, y por qué publicamos el recibo y no solo la intención."
+lastUpdated: 2026-08-14
 ---
 
-## Una comunidad de tecnología desde Pereira al mundo
+## El ecosistema de impacto social
 
-Pereira Tech Talks (Corag) es la comunidad tecnológica de Pereira, Risaralda, Colombia. La historia empieza en febrero de 2014: ocho desarrolladores en un salón de la UTP para el primer meetup de PereiraJS. Doce años después, ese círculo pequeño es una comunidad de cuatro programas — meetups mensuales (84 y contando), la conferencia anual **Pereira Tech Day** (archivo 2024, próxima 2026), la **Escuela de Speakers** y el club de lectura **La Biblioteca del Mañana**. Todo construido por voluntariado. Todo abierto.
-
-El trabajo se sostiene gracias a patrocinadores (Veritran, GitHub, ASE-UTP, DailyBot, Aumentada, y aliados anteriores como Gorilla Logic, Made for Germany, Source Meridian y Cursor) y es abierto por defecto. El sitio que estás leyendo es un catálogo de meetups, charlas, slides, ponentes, contribuyentes y patrocinadores — disponible en español e inglés — estructurado para ser tan útil a agentes de IA como a personas.
-
----
-
-## Tres creencias que anclan la comunidad
-
-- **La tecnología crece más rápido cuando compartimos lo que aprendemos** — por eso cada recapitulación de meetup se publica esa misma semana.
-- **Pereira tiene talento de talla mundial que merece escenarios de talla mundial** — por eso existe la Escuela de Speakers y por eso egresadas y egresados de la comunidad hoy dan keynotes en Bogotá, Medellín, Ciudad de México y en startups respaldadas por YC.
-- **Una comunidad de tecnología debería parecerse a la ciudad en la que vive** — abierta, cálida, mixta, sin pretensiones. Por eso nuestros eventos son gratuitos, nuestros canales son públicos y nuestro contenido se publica en español e inglés.
+Nacimos de un grupo de jóvenes apasionados por el servicio social. De ahí salió
+el propósito de crear un puente digital entre quienes quieren ayudar y quienes
+más lo necesitan.
 
 ---
 
-## Lo que hacemos
+## Tenemos coraje para servir y transformar vidas
 
-- **[Meetups mensuales](/verticals/monthly-meetups)** — Sesiones presenciales e híbridas cada mes sobre IA, plataformas web, devops, móvil, seguridad y el oficio de publicar software.
-- **[Pereira Tech Day](/pereira-tech-day)** — Nuestra conferencia anual insignia: 2024 en archivo, 2026 a continuación. Un día completo de keynotes, talleres y networking con ponentes internacionales y aliados locales.
-- **[Escuela de Speakers](/verticals/speaker-school)** — Un programa para hacer crecer nuevas voces técnicas, desde la idea hasta el escenario, con mentoría y ensayos.
-- **[La Biblioteca del Mañana](/verticals/library-of-tomorrow)** — Un club de lectura que conecta ciencia ficción, filosofía y tecnología — explorando el futuro a través de los libros que lo moldean.
-- **[Canal de IA y Agentes](/verticals/ai-channel)** — Un track dedicado a IA, LLMs, agentes y la web agéntica — donde la comunidad se encuentra con la tecnología más disruptiva de la década.
-- **[Biblioteca de contenidos](/blog)** — Artículos, slides y recapitulaciones publicados en español e inglés — accesibles tanto para el talento local como para la comunidad tecnológica internacional.
+El nombre viene de **coraje**. El corazón que reemplaza la *o* lleva el **amor**.
+Nuestro logo transmite coraje, innovación y amor.
+
+Coraje no es bravuconería. Es aparecer cuando es incómodo, poner tu nombre en una
+entrega y publicar la cuenta después. Esa última parte es la que conecta la idea
+con el producto: los responsables, la transferencia directa y la evidencia
+moderada son el coraje vuelto mecanismo. Decir que somos transparentes es fácil;
+publicar el recibo requiere coraje.
+
+Corag surge al reconocer una realidad simple: muchas personas quieren donar o
+vincularse a una causa, pero no encuentran cómo hacerlo de manera confiable,
+cercana y significativa. No falta generosidad — falta conexión.
 
 ---
 
-## Datos rápidos
+## Nuestros valores
 
-- Fundada en Pereira, Risaralda, Colombia (febrero de 2014)
-- Sitio disponible en español (principal) e inglés
-- 90+ meetups mensuales desde 2014
-- Ediciones de Pereira Tech Day en 2024 y 2026
-- Voluntaria, sostenida por patrocinadores y gratuita
-- Contenido completamente legible por agentes de IA (AEO 100, Markdown-for-Agents en cada página)
-- Open source: el sitio, el contenido y el brand kit en GitHub
+- **Colaboración** — Unimos gobiernos, organizaciones, empresas y personas en una
+  sola red, en lugar de multiplicar sistemas aislados.
+- **Empatía** — Quien recibe ayuda es un vecino, no el telón de fondo de la
+  virtud de alguien más.
+- **Confianza** — Cada aporte tiene un responsable con nombre y un destino que
+  puedes revisar.
+- **Amor** — Está en el corazón del logo y en la razón por la que existe esto.
+- **Innovación social** — Una API pública, una especificación OpenAPI y un
+  servidor MCP para que otros construyan sobre la misma red.
+- **Transparencia** — Publicamos cuánto se recibió y cuánto se usó con evidencia.
+  Son dos números distintos y los dos son públicos.
+
+---
+
+## En resumen
+
+- Corag es el ecosistema; Ayuda Directa es el producto insignia.
+- La coordinación, los aportes y la evidencia ocurren en la aplicación.
+- El dinero va por transferencia directa a responsables verificados.
+- La evidencia se modera antes de publicarse.
+- API pública, OpenAPI 3.1 y servidor MCP abiertos a quien quiera integrarse.
+
+---
+
+## Las dos superficies
+
+- **corag.app** — este sitio. Explica qué es Corag, cómo funciona y cómo
+  integrarse.
+- **ayuda.corag.app** — **Ayuda Directa**, el producto insignia. Allí ocurre toda
+  la coordinación: necesidades, ofrecimientos, aportes, líderes y evidencia.
+
+Si algo guarda información sobre la necesidad de una persona real, va en la
+aplicación.
 
 ---
 
 ## ¿Quieres ser parte?
 
-Si quieres ser ponente, patrocinador, aliado o simplemente asistir — hay un lugar para ti.
+Publicar una necesidad, ofrecer ayuda o aportar ocurre en la aplicación. Si
+representas una organización, escríbenos.
 
-- [Lee el blog](/blog)
+- [Ir a la aplicación](https://ayuda.corag.app)
 - [Escríbenos](/contact)
-- [Quiero patrocinar](/sponsor-us)
-- GitHub: [@pereira-tech-talks](https://github.com/pereira-tech-talks)
-- LinkedIn: [Pereira Tech Talks](https://www.linkedin.com/company/pereira-tech-talks/)
-- X (Twitter): [@pertechtalks](https://x.com/pertechtalks)
-- Instagram: [@pertechtalks](https://www.instagram.com/pertechtalks)
+
+---
+
+## Enlaces
+
+- [Cómo funciona](/como-funciona)
+- [Transparencia](/transparencia)
+- [Colaboradores](/colaboradores)
+- [Gobernanza](/governance)
+- [Contacto](/contact)

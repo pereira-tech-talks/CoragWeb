@@ -1,63 +1,74 @@
 ---
-title: "Pereira Tech Talks — Technology community of Pereira, Colombia"
-description: "Pereira Tech Talks (Corag) — 90+ monthly meetups since 2014, Pereira Tech Day, an active Speaker School and La Biblioteca del Mañana reading club. Volunteer-run, open to the world. Website in Spanish and English."
-lastUpdated: 2026-08-07
+title: "Corag — The social impact ecosystem"
+description: "We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind."
+lastUpdated: 2026-08-14
 ---
 
-## Tech community · Pereira, Risaralda · Since 2014
+## We have the courage to serve and transform lives
 
-**Pereira Tech Talks (Corag)** is the technology community of Pereira (Risaralda, Colombia). 90+ monthly meetups since 2014. Pereira Tech Day (2024 archive, 2026 upcoming). An active Speaker School. La Biblioteca del Mañana reading club. A content library where Pereira's tech community ships to YC startups, conference stages across Latin America, and global engineering roles.
+**Corag** is the social impact ecosystem. We connect foundations, governments,
+companies and individuals with real, verifiable opportunities to help.
 
-**Next milestone:** Pereira Tech Day 2026 — August 22, 2026 at UTP (Auditorio Jorge Roa Martínez). Slogan: *Where talent, technology, and brands meet*.
-
----
-
-## Where we started
-
-We are an interdisciplinary community that connects local and regional talent — people who code, design, build companies, study, or are simply curious — around the technology we are building together. We gather to share what we learn, open stages to new voices, and weave networks across Pereira, Risaralda, and the rest of LATAM.
+This site explains what Corag is and how the model works. **Every action —
+publishing a need, offering help, contributing or tracking a contribution —
+happens in the application:** <https://ayuda.corag.app>
 
 ---
 
-## What we do
+## The intent is there. The connection is what fails.
 
-- **Monthly Meetups** — In-person and hybrid sessions every month covering AI, web platforms, devops, mobile, security, and the craft of building software.
-- **Pereira Tech Day** — Our flagship annual conference: a full day of keynotes, workshops, and networking with international speakers and local partners. 2024 archived; 2026 next.
-- **Speaker School** — A program to grow new technical speakers, from idea to stage, with mentorship, practice runs, and rehearsals. Alumni now keynote in Bogotá, Medellín, and Mexico City.
-- **La Biblioteca del Mañana** — A reading club connecting technology with science fiction, philosophy, and the broader human story.
-- **AI & Agents Channel** — A dedicated track on AI, LLMs, agents, and the agentic web — where the community meets the most disruptive technology of the decade.
-- **Content library** — Articles, slides, and recaps published in Spanish and English — accessible to local talent and the international tech ecosystem alike.
+Plenty of people want to give or get involved, but cannot find a way to do it
+that feels trustworthy, close and meaningful. Generosity is not the scarce
+resource — connection is. Aid ends up scattered across WhatsApp threads, one-off
+forms, spreadsheets, phone calls and lists nobody updates.
 
 ---
 
-## Quick facts
+## A bridge between the person who needs and the person who can
 
-- Founded in Pereira, Risaralda, Colombia (2014)
-- Website available in Spanish (primary) and English; slugs always English
-- 90+ monthly meetups since 2014
-- Pereira Tech Day editions in 2024 and 2026
-- Volunteer-run, sponsor-supported, free to attend
-- Fully AI-agent-readable content (AEO 100; Markdown-for-Agents on every page)
-- Open-source: site code, content, and brand kit live on GitHub
-
----
-
-## Explore the site
-
-- [About the community](/en/about)
-- [Meetups](/en/meetups)
-- [Community calendar](/en/calendar)
-- [Allied communities](/en/communities)
-- [Pereira Tech Day 2026](/en/pereira-tech-day)
-- [Read the blog](/en/blog)
-- [Get in touch](/en/contact)
-- [Become a sponsor](/en/sponsor-us)
+1. **It is published** — a person or community describes what they need, where,
+   and how urgently.
+2. **It is found** — someone who can help sees it on the map, filtered by
+   proximity and type of aid.
+3. **It is coordinated** — a named person organizes the delivery, often inside an
+   operational front.
+4. **The evidence stays** — proof is uploaded, reviewed, and only then published.
 
 ---
 
-## Connect with us
+## Saying you are transparent is easy. Publishing the receipt takes courage.
 
-- GitHub: [@pereira-tech-talks](https://github.com/pereira-tech-talks)
-- LinkedIn: [Pereira Tech Talks](https://www.linkedin.com/company/pereira-tech-talks/)
-- X (Twitter): [@pertechtalks](https://x.com/pertechtalks)
-- Instagram: [@pertechtalks](https://www.instagram.com/pertechtalks)
-- Email: [pereiratechtalks@gmail.com](mailto:pereiratechtalks@gmail.com)
+- **Received** — how much came in. It is the easy number to show, and on its own
+  it says nothing.
+- **Used with evidence** — how much was spent with verified proof. This is the
+  number that matters.
+- **Direct transfer** — money goes to verified leaders' accounts, not to a
+  central treasury. Every contribution is attributable.
+
+---
+
+## Ayuda Directa
+
+Corag's flagship product. The map, the operational fronts, the responsables and
+the evidence all live there: <https://ayuda.corag.app>
+
+---
+
+## Many interfaces, one network of data
+
+During an emergency several applications appear at once, each with its own
+database of needs. The result is more fragmentation, not less. That is why we
+publish an open API: so a new application becomes a client of the same network
+rather than another silo.
+
+See the [developer documentation](/en/developers).
+
+---
+
+## Links
+
+- [How it works](/en/how-it-works)
+- [Transparency](/en/transparency)
+- [Contributors](/en/contributors)
+- [Blog](/en/blog)
+- [Contact](/en/contact)

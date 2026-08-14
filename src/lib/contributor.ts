@@ -52,7 +52,7 @@ export const getContributorBySlug = async (
 
 /**
  * Resolve a list of contributor slugs, preserving the caller's order (e.g. the
- * `organizers` array on a Pereira Tech Day edition). Unknown slugs are dropped
+ * `organizers` array on another entry). Unknown slugs are dropped
  * rather than rendered as raw text.
  */
 export const getContributorsBySlugs = async (

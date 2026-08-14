@@ -44,7 +44,7 @@ const mockPostEmptyBody = {
 const mockPage = {
   id: 'en/about',
   data: {
-    title: 'About — Pereira Tech Talks',
+    title: 'About — Corag',
     description: 'El ecosistema de impacto social.',
     lastUpdated: new Date('2026-03-09'),
   },
@@ -54,7 +54,7 @@ const mockPage = {
 const mockPageNoLastUpdated = {
   id: 'es/contact',
   data: {
-    title: 'Contacto — Pereira Tech Talks',
+    title: 'Contacto — Corag',
     description: 'Conectemos y construyamos algo juntos.',
   },
   body: '## Ponte en Contacto\n\nSiempre abierto a conversaciones.',
@@ -168,11 +168,11 @@ describe('serializeBlogIndexToMarkdown', () => {
   it('should produce correct index structure', () => {
     const result = serializeBlogIndexToMarkdown(entries, {
       lang: 'en',
-      title: 'Pereira Tech Talks Blog',
+      title: 'Corag Blog',
       description: 'A technical blog.',
     });
 
-    expect(result).toContain('# Pereira Tech Talks Blog');
+    expect(result).toContain('# Corag Blog');
     expect(result).toContain('> A technical blog.');
     expect(result).toContain('Language: en');
     expect(result).toContain('Canonical: https://corag.app/en/blog');
@@ -194,7 +194,7 @@ describe('serializeBlogIndexToMarkdown', () => {
   it('should use no prefix for the Spanish (default) index', () => {
     const result = serializeBlogIndexToMarkdown(entries, {
       lang: 'es',
-      title: 'Blog de Pereira Tech Talks',
+      title: 'Blog de Corag',
       description: 'Blog técnico.',
     });
 
@@ -224,7 +224,7 @@ describe('serializePageToAgentMarkdown', () => {
       lang: 'en',
     });
 
-    expect(result).toContain('# About — Pereira Tech Talks');
+    expect(result).toContain('# About — Corag');
     expect(result).toContain('> El ecosistema de impacto social.');
     expect(result).toContain('Language: en');
     expect(result).toContain('Canonical: https://corag.app/en/about');

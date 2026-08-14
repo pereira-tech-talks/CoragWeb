@@ -2,19 +2,13 @@ import { describe, expect, it } from 'vitest';
 
 import {
   checkRateLimit,
-  composeCfsMessage,
   isValidContactEmail,
-  looksLikeGoogleCalendarId,
   normalizeTopic,
   pickAckCopy,
   resolveTopicFromSearchParams,
   sanitizeContactText,
-  validateCalendarIntakeForm,
-  validateCfsForm,
   validateConductReportForm,
   validateContactForm,
-  validateSpeakerSchoolForm,
-  validateSponsorForm,
 } from '@/lib/contact-form';
 
 describe('contact-form', () => {
@@ -34,26 +28,33 @@ describe('contact-form', () => {
   });
 
   it('normalizes topic aliases', () => {
-    expect(normalizeTopic('project')).toBe('sponsorship');
-    expect(normalizeTopic('speaker')).toBe('tech-talk');
+    expect(normalizeTopic('org')).toBe('organization');
+    expect(normalizeTopic('partner')).toBe('ally');
     expect(normalizeTopic('REASON')).toBe('reason');
     expect(normalizeTopic('press')).toBe('press');
   });
 
+  it('keeps old links working by mapping retired topics onto live ones', () => {
+    // Bookmarks and printed material from the previous site still carry these.
+    expect(normalizeTopic('sponsorship')).toBe('ally');
+    expect(normalizeTopic('collaboration')).toBe('ally');
+    expect(normalizeTopic('tech-talk')).toBe('general');
+  });
+
   it('resolves topic from topic or legacy reason query params', () => {
-    const allowed = new Set(['tech-talk', 'sponsorship', 'general']);
+    const allowed = new Set(['organization', 'ally', 'general']);
     expect(
       resolveTopicFromSearchParams(
-        new URLSearchParams('topic=tech-talk'),
+        new URLSearchParams('topic=organization'),
         allowed
       )
-    ).toBe('tech-talk');
+    ).toBe('organization');
     expect(
       resolveTopicFromSearchParams(
-        new URLSearchParams('reason=project'),
+        new URLSearchParams('reason=partner'),
         allowed
       )
-    ).toBe('sponsorship');
+    ).toBe('ally');
   });
 
   it('accepts a complete valid form', () => {
@@ -72,14 +73,14 @@ describe('contact-form', () => {
     expect(result.valid).toBe(true);
   });
 
-  it('accepts sponsorship alias project when allowlist has sponsorship', () => {
-    const allowed = new Set(['sponsorship']);
+  it('accepts the ally alias `partner` when the allowlist has ally', () => {
+    const allowed = new Set(['ally']);
     const result = validateContactForm(
       {
         name: 'Ada',
         email: 'ada@example.com',
-        reason: 'project',
-        subject: 'Sponsor',
+        reason: 'partner',
+        subject: 'Partnership',
         message: 'We want to help',
       },
       allowed,
@@ -122,82 +123,6 @@ describe('contact-form', () => {
     expect(result.errors.reason).toBe('Required');
   });
 
-  it('validates CFS payloads', () => {
-    const ok = validateCfsForm(
-      {
-        name: 'Ada',
-        email: 'ada@example.com',
-        reason: 'tech-talk',
-        subject: 'CFS',
-        message: 'notes',
-        talkTitle: 'Rust at the edge',
-        format: 'regular',
-        abstract: 'A long enough abstract about shipping Rust in production.',
-        takeaways: 'When to choose Rust',
-        socialUrl: 'https://linkedin.com/in/ada',
-        firstTime: true,
-        speakerSchool: true,
-      },
-      messages
-    );
-    expect(ok.valid).toBe(true);
-
-    const bad = validateCfsForm(
-      {
-        name: 'Ada',
-        email: 'ada@example.com',
-        reason: 'tech-talk',
-        subject: 'CFS',
-        message: '',
-        talkTitle: '',
-        format: 'nope',
-        abstract: 'short',
-        takeaways: '',
-        socialUrl: '',
-        firstTime: false,
-        speakerSchool: false,
-      },
-      messages
-    );
-    expect(bad.valid).toBe(false);
-    expect(bad.errors.talkTitle).toBe('Required');
-  });
-
-  it('validates sponsor payloads and composes CFS message', () => {
-    const ok = validateSponsorForm(
-      {
-        name: 'Ada',
-        email: 'ada@example.com',
-        reason: 'sponsorship',
-        subject: 'Sponsor',
-        message: 'We want Diamond support for PTD.',
-        company: 'Acme',
-        contactRole: 'CMO',
-        tierInterest: 'gold',
-        contributionType: 'cash',
-      },
-      messages
-    );
-    expect(ok.valid).toBe(true);
-
-    const composed = composeCfsMessage({
-      name: 'Ada',
-      email: 'ada@example.com',
-      reason: 'tech-talk',
-      subject: 'CFS',
-      message: 'Extra',
-      talkTitle: 'Title',
-      format: 'lightning',
-      abstract: 'Abstract body here for the talk proposal.',
-      takeaways: 'Takeaway',
-      socialUrl: 'https://x.com/ada',
-      firstTime: false,
-      speakerSchool: false,
-    });
-    expect(composed).toContain('Talk title: Title');
-    expect(composed).toContain('Additional notes:');
-  });
-
   it('validates conduct reports with anonymity rules', () => {
     const anonymousOk = validateConductReportForm(
       {
@@ -223,74 +148,22 @@ describe('contact-form', () => {
     expect(identifiedMissingEmail.errors.email).toBe('Required');
   });
 
-  it('validates calendar intake payloads', () => {
-    expect(
-      looksLikeGoogleCalendarId('community@group.calendar.google.com')
-    ).toBe(true);
-    expect(looksLikeGoogleCalendarId('short')).toBe(false);
+  it('picks localized ack copy and rate-limits', () => {
+    const es = pickAckCopy('organization', 'es');
+    expect(es.subject).toContain('Corag');
+    expect(es.text).toContain('organización');
+    const en = pickAckCopy('ally', 'en');
+    expect(en.subject.toLowerCase()).toContain('partnership');
 
-    const ok = validateCalendarIntakeForm(
-      {
-        name: 'Ada',
-        email: 'ada@example.com',
-        communityName: 'Pereira JS',
-        googleCalendarId: 'pereirajs@group.calendar.google.com',
-        shortDescription: 'Monthly JS meetups in Pereira',
-      },
-      messages
+    // A report gets pointed at the app, because that is where urgency belongs.
+    expect(pickAckCopy('report', 'es').text).toContain('ayuda.corag.app');
+    // A conduct report never is: it says to call emergency services instead.
+    expect(pickAckCopy('conduct', 'es').text).not.toContain('ayuda.corag.app');
+
+    // An unknown topic degrades to the general copy rather than throwing.
+    expect(pickAckCopy('not-a-topic', 'en').subject).toBe(
+      pickAckCopy('general', 'en').subject
     );
-    expect(ok.valid).toBe(true);
-
-    const bad = validateCalendarIntakeForm(
-      {
-        name: '',
-        email: 'bad',
-        communityName: '',
-        googleCalendarId: 'x',
-        shortDescription: '',
-      },
-      messages
-    );
-    expect(bad.valid).toBe(false);
-    expect(bad.errors.googleCalendarId).toBe('Required');
-  });
-
-  it('validates Speaker School payloads', () => {
-    const ok = validateSpeakerSchoolForm(
-      {
-        name: 'Ada',
-        email: 'ada@example.com',
-        experienceLevel: 'beginner',
-        goals: 'Ship my first meetup talk',
-        topicsOfInterest: 'Rust, platforms',
-        availability: 'Weeknight evenings',
-      },
-      messages
-    );
-    expect(ok.valid).toBe(true);
-
-    const bad = validateSpeakerSchoolForm(
-      {
-        name: '',
-        email: 'not-an-email',
-        experienceLevel: 'expert',
-        goals: '',
-        topicsOfInterest: '',
-        availability: '',
-      },
-      messages
-    );
-    expect(bad.valid).toBe(false);
-    expect(bad.errors.name).toBe('Required');
-    expect(bad.errors.email).toBe('Invalid email');
-    expect(bad.errors.experienceLevel).toBe('Required');
-  });
-
-  it('picks bilingual ack copy and rate-limits', () => {
-    const es = pickAckCopy('tech-talk', 'es');
-    expect(es.subject.toLowerCase()).toContain('postulación');
-    const en = pickAckCopy('sponsorship', 'en');
-    expect(en.subject.toLowerCase()).toContain('sponsorship');
 
     const store = new Map<string, number[]>();
     expect(checkRateLimit(store, '1.1.1.1', 2, 60_000).allowed).toBe(true);

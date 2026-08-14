@@ -27,30 +27,31 @@ const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
 const organizationData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Pereira Tech Talks',
-  alternateName: 'Corag',
+  name: 'Corag',
+  alternateName: 'Corag Ayuda Directa',
   url: Astro.site?.href,
   logo: new URL('/images/brand/corag-wordmark.png', Astro.site).href,
   description:
-    'Pereira Tech Talks — technology community of Pereira, Risaralda, Colombia. Since 2014: 90+ monthly meetups, 10 Pereira Tech Day editions, an active Speaker School, and La Biblioteca del Mañana reading club.',
-  foundingDate: '2014-02-27',
+    'Corag connects people who need help with people who can give it, and publishes the evidence of every delivery. Requests, contributions and proof live in one place.',
   foundingLocation: {
     '@type': 'Place',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Pereira',
-      addressRegion: 'Risaralda',
       addressCountry: 'CO',
     },
   },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Colombia',
+  },
   knowsLanguage: ['es', 'en'],
   knowsAbout: [
-    'Software Engineering',
-    'Artificial Intelligence',
-    'Web Development',
-    'DevOps',
-    'Public Speaking',
-    'Tech Community Building',
+    'Humanitarian Aid Coordination',
+    'Disaster Response',
+    'Donation Transparency',
+    'Civic Technology',
+    'Community Organizing',
+    'Social Impact',
   ],
   sameAs: SOCIAL_LINKS.filter((social) => social.sameAs).map(
     (social) => social.href
@@ -95,8 +96,8 @@ const breadcrumbs = [
   title={t.aboutPage.title}
   description={t.aboutPage.description}
   keywords={lang === 'en'
-    ? ['about Pereira Tech Talks', 'Corag community', 'tech community Pereira', 'Risaralda tech ecosystem', 'tech community Colombia', 'Pereira Tech Day organizers']
-    : ['sobre Pereira Tech Talks', 'comunidad Corag', 'comunidad tecnología Pereira', 'ecosistema tecnología Risaralda', 'comunidad tecnología Colombia', 'organizadores Pereira Tech Day']}
+    ? ['about Corag', 'how Corag works', 'verified aid Colombia', 'donation transparency', 'humanitarian coordination platform', 'aid with evidence']
+    : ['sobre Corag', 'cómo funciona Corag', 'ayuda verificada Colombia', 'transparencia en donaciones', 'plataforma de coordinación humanitaria', 'ayuda con evidencia']}
 >
   <Fragment slot="head">
     <JsonLd data={organizationData} />
@@ -119,10 +120,12 @@ const breadcrumbs = [
         </div>
         <div class="mt-10 lg:mt-0">
           <img
-            src="/images/pereira-tech-days/2024/memories/massive.png"
+            src="/images/home/entrega-mercados.webp"
+            srcset="/images/home/entrega-mercados-480.webp 480w, /images/home/entrega-mercados-768.webp 768w, /images/home/entrega-mercados-1280.webp 1280w"
+            sizes="(min-width: 1024px) 40vw, 100vw"
             alt={lang === 'es'
-              ? 'Auditorio lleno durante Pereira Tech Day 2024'
-              : 'Packed auditorium during Pereira Tech Day 2024'}
+              ? 'Voluntarios de Corag organizando mercados antes de una entrega'
+              : 'Corag volunteers organizing food supplies before a delivery'}
             width="640"
             height="360"
             loading="eager"

@@ -31,21 +31,29 @@ export const GET: APIRoute = async () => {
       return bio ? [row, `  ${bio}`] : [row];
     });
 
+  // The HTML shows an empty state rather than hiding the section, so the twin
+  // must say the same thing. Dropping the heading would report the directory as
+  // absent when the page reports it as not yet published.
+  const orEmpty = (lines: string[]): string[] =>
+    lines.length > 0
+      ? lines
+      : ['No contributors published in this section yet.'];
+
   const markdown = serializeGenericToMarkdown({
-    title: 'Team — Pereira Tech Talks',
+    title: 'Contributors — Corag',
     description:
       'The people building Corag, by area, plus those who contributed before. Directory at /en/contributors.',
     lang,
     canonical: `${SITE_URL}/en/contributors`,
     metadata: [
-      ['Active organizers', String(current.length)],
-      ['Alumni and past', String(past.length)],
+      ['Active contributors', String(current.length)],
+      ['Past contributors', String(past.length)],
       ['Total in directory', String(contributors.length)],
     ],
-    body: 'The people who coordinate meetups, Pereira Tech Day, the community programs and day-to-day operations. Building community in Pereira since 2014.',
+    body: 'Corag is built by a team donating their time: engineering, design, content, field coordination and partnerships. Anyone who stops being active is not deleted: time someone donated does not stop counting.',
     sections: [
-      { heading: 'Organizing team', lines: toLines(current) },
-      { heading: 'Alumni and past organizers', lines: toLines(past) },
+      { heading: 'Active team', lines: orEmpty(toLines(current)) },
+      { heading: 'Past contributors', lines: orEmpty(toLines(past)) },
     ],
   });
 

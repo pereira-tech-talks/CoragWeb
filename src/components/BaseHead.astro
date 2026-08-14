@@ -176,8 +176,8 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="keywords" content={keywords && keywords.length > 0 ? keywords.join(', ') : "Pereira Tech Talks, Pereira, Risaralda, Colombia, tech community, comunidad tecnología, meetups, software engineering, AI, web development, Pereira Tech Day, Speaker School, La Biblioteca del Mañana"} />
-<meta name="author" content="Pereira Tech Talks" />
+<meta name="keywords" content={keywords && keywords.length > 0 ? keywords.join(', ') : "Corag, ayuda directa, impacto social, ayuda humanitaria, transparencia, evidencia, donaciones verificadas, emergencias, Colombia, coordinación de ayuda, social impact, verified aid"} />
+<meta name="author" content="Corag" />
 
 <!-- Theme color for browser chrome -->
 <meta name="theme-color" content="#fbf8f5" media="(prefers-color-scheme: light)" />
@@ -226,34 +226,41 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
   }}
 />
 
-<!-- JSON-LD: Organization (Pereira Tech Talks) -->
+<!-- JSON-LD: Organization (Corag) -->
 <JsonLd
   data={{
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Pereira Tech Talks',
-    alternateName: 'Corag',
+    name: 'Corag',
+    alternateName: 'Corag Ayuda Directa',
     url: Astro.site?.href,
     logo: new URL('/images/brand/corag-wordmark.png', Astro.site).href,
     description:
-      'Tech community of Pereira, Risaralda, Colombia. Monthly meetups, Pereira Tech Day, Speaker School, La Biblioteca del Mañana, and the AI Channel.',
+      'Corag connects people who need help with people who can give it, and publishes the evidence of every delivery. Requests, contributions and proof live in one place.',
+    /*
+     * Country-level only. Corag operates across territories rather than from a
+     * single office, and claiming a city we cannot back would be exactly the
+     * kind of unverifiable detail the project exists to avoid.
+     */
     foundingLocation: {
       '@type': 'Place',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Pereira',
-        addressRegion: 'Risaralda',
         addressCountry: 'CO',
       },
     },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Colombia',
+    },
     knowsLanguage: ['es', 'en'],
     knowsAbout: [
-      'Software Engineering',
-      'Artificial Intelligence',
-      'Web Development',
-      'DevOps',
-      'Public Speaking',
-      'Tech Community Building',
+      'Humanitarian Aid Coordination',
+      'Disaster Response',
+      'Donation Transparency',
+      'Civic Technology',
+      'Community Organizing',
+      'Social Impact',
     ],
     /*
      * Only accounts that represent the organization. A WhatsApp group invite is

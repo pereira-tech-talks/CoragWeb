@@ -1,63 +1,75 @@
 ---
-title: "Pereira Tech Talks — Comunidad de tecnología de Pereira, Colombia"
-description: "Pereira Tech Talks (Corag) — 90+ meetups mensuales desde 2014, Pereira Tech Day, una Escuela de Speakers activa y el club de lectura La Biblioteca del Mañana. Voluntaria, abierta al mundo. Sitio en español e inglés."
-lastUpdated: 2026-08-07
+title: "Corag — El ecosistema de impacto social"
+description: "Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia."
+lastUpdated: 2026-08-14
 ---
 
-## Comunidad tecnológica · Pereira, Risaralda · Desde 2014
+## Tenemos coraje para servir y transformar vidas
 
-**Pereira Tech Talks (Corag)** es la comunidad tecnológica de Pereira (Risaralda, Colombia). 90+ meetups mensuales desde 2014. Pereira Tech Day (archivo 2024, próxima 2026). Una Escuela de Speakers activa. El club de lectura La Biblioteca del Mañana. Una biblioteca de contenidos donde la comunidad tech de Pereira sale a startups YC, escenarios de conferencias en toda Latinoamérica y roles globales de ingeniería.
+**Corag** es el ecosistema de impacto social. Conectamos a fundaciones,
+gobiernos, empresas y personas con oportunidades reales y verificables de ayudar.
 
-**Próximo hito:** Pereira Tech Day 2026 — 22 de agosto de 2026 en la UTP (Auditorio Jorge Roa Martínez). Eslogan: *Donde el talento, la tecnología y las marcas se encuentran*.
-
----
-
-## Dónde empezamos
-
-Somos una comunidad interdisciplinar que conecta el talento local y regional — quienes programan, diseñan, emprenden, estudian o simplemente tienen curiosidad — alrededor de la tecnología que estamos construyendo juntos. Nos reunimos para compartir lo que aprendemos, abrir escenarios a nuevas voces y tejer redes que cruzan Pereira, Risaralda y el resto de LATAM.
+Este sitio explica qué es Corag y cómo funciona el modelo. **Toda acción — publicar
+una necesidad, ofrecer ayuda, aportar o seguir un aporte — ocurre en la
+aplicación:** <https://ayuda.corag.app>
 
 ---
 
-## Lo que hacemos
+## La intención existe. La conexión falla.
 
-- **Meetups mensuales** — Sesiones presenciales e híbridas cada mes sobre IA, plataformas web, devops, móvil, seguridad y el oficio de construir software.
-- **Pereira Tech Day** — Nuestra conferencia anual insignia: un día completo de keynotes, talleres y networking con ponentes internacionales y aliados locales. 2024 en archivo; 2026 a continuación.
-- **Escuela de Speakers** — Un programa para hacer crecer nuevas voces técnicas, desde la idea hasta el escenario, con mentoría y ensayos. Sus egresadas y egresados hoy dan keynotes en Bogotá, Medellín y Ciudad de México.
-- **La Biblioteca del Mañana** — Un club de lectura que conecta la tecnología con la ciencia ficción, la filosofía y la historia humana en sentido amplio.
-- **Canal de IA y Agentes** — Un track dedicado a IA, LLMs, agentes y la web agéntica — donde la comunidad se encuentra con la tecnología más disruptiva de la década.
-- **Biblioteca de contenidos** — Artículos, slides y recapitulaciones publicados en español e inglés — accesibles tanto para el talento local como para la comunidad tecnológica internacional.
+Muchas personas quieren donar o vincularse a una causa, pero no encuentran cómo
+hacerlo de manera confiable, cercana y significativa. No falta generosidad —
+falta conexión. La ayuda termina repartida entre cadenas de WhatsApp,
+formularios sueltos, hojas de cálculo, llamadas y listas que nadie actualiza.
 
 ---
 
-## Datos rápidos
+## Un puente entre quien necesita y quien puede
 
-- Fundada en Pereira, Risaralda, Colombia (2014)
-- Sitio disponible en español (principal) e inglés; los slugs siempre en inglés
-- 90+ meetups mensuales desde 2014
-- Ediciones de Pereira Tech Day en 2024 y 2026
-- Voluntaria, sostenida por patrocinadores y gratuita
-- Contenido completamente legible por agentes de IA (AEO 100; Markdown-for-Agents en cada página)
-- Open source: el código del sitio, el contenido y el brand kit viven en GitHub
-
----
-
-## Explora el sitio
-
-- [Sobre la comunidad](/about)
-- [Meetups](/meetups)
-- [Calendario comunitario](/calendar)
-- [Comunidades aliadas](/communities)
-- [Pereira Tech Day 2026](/pereira-tech-day)
-- [Lee el blog](/blog)
-- [Escríbenos](/contact)
-- [Quiero patrocinar](/sponsor-us)
+1. **Se publica** — una persona o comunidad describe qué necesita, dónde y con
+   qué urgencia.
+2. **Se encuentra** — quien puede ayudar la ve en el mapa, filtrada por cercanía
+   y por tipo de ayuda.
+3. **Se coordina** — un responsable con nombre organiza la entrega, muchas veces
+   dentro de un frente de trabajo.
+4. **Queda la evidencia** — se sube el soporte, se revisa, y solo entonces se
+   publica.
 
 ---
 
-## Conéctate con nosotros
+## Decir que somos transparentes es fácil. Publicar la cuenta requiere coraje.
 
-- GitHub: [@pereira-tech-talks](https://github.com/pereira-tech-talks)
-- LinkedIn: [Pereira Tech Talks](https://www.linkedin.com/company/pereira-tech-talks/)
-- X (Twitter): [@pertechtalks](https://x.com/pertechtalks)
-- Instagram: [@pertechtalks](https://www.instagram.com/pertechtalks)
-- Correo: [pereiratechtalks@gmail.com](mailto:pereiratechtalks@gmail.com)
+- **Recibido** — cuánto entró. Es el número fácil de mostrar, y por sí solo no
+  dice nada.
+- **Usado con evidencia** — cuánto se gastó con soporte verificado. Este es el
+  número que importa.
+- **Transferencia directa** — el dinero va a cuentas de responsables verificados,
+  no a una tesorería central. Cada aporte es atribuible.
+
+---
+
+## Ayuda Directa
+
+El producto insignia de Corag. Allí viven el mapa, los frentes de trabajo, los
+responsables y la evidencia: <https://ayuda.corag.app>
+
+---
+
+## Muchas interfaces, una sola red de datos
+
+En una emergencia aparecen varias aplicaciones al tiempo, cada una con su propia
+base de datos de necesidades. El resultado es más fragmentación, no menos. Por
+eso publicamos una API abierta: para que una aplicación nueva sea un cliente de
+la misma red, no otro silo.
+
+Ver [documentación para desarrolladores](/desarrolladores).
+
+---
+
+## Enlaces
+
+- [Cómo funciona](/como-funciona)
+- [Transparencia](/transparencia)
+- [Colaboradores](/colaboradores)
+- [Blog](/blog)
+- [Contacto](/contact)

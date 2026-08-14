@@ -1,104 +1,113 @@
 ---
 title: "Governance"
-description: "How Pereira Tech Talks is governed — who makes which decisions, how programs and the annual conference are planned, how to escalate, and how the community holds itself accountable."
-lastUpdated: 2026-05-30
+description: "How decisions get made at Corag, how a leader is validated, how evidence is moderated, and what happens when something goes wrong."
+lastUpdated: 2026-08-14
 ---
 
-## A volunteer community, not a hierarchy
+## What this document covers
 
-Pereira Tech Talks has no shareholders, no boss, and no formal hierarchy. We are a volunteer-run community headquartered in Pereira, Risaralda, Colombia. This page exists so that anyone — newcomer, contributor, sponsor, or media — can understand how decisions actually get made.
+Corag moves real resources between real people. That requires saying out loud who
+decides what, within what limits, and what happens when someone fails to deliver.
 
-The short version: **we optimize for transparency over authority**. We are happy to explain any decision, and we change our minds when better arguments arrive.
-
----
-
-## Decision-making bodies
-
-There is no board. Decisions are made by the smallest group of people accountable for the outcome.
-
-### Founding organizers
-
-The small group that has carried the community since 2014. They steward the long-term mission of Pereira Tech Talks, hold institutional memory, and intervene only when there is a conflict the active organizers cannot resolve or when a decision crosses years (the brand, the annual conference, partnerships with other communities).
-
-### Active organizers
-
-The people who currently run the operational machine. They make day-to-day decisions: the next meetup's theme, venue, food, sponsors, communication. New active organizers are invited by the existing organizers based on demonstrated contribution and shared values.
-
-### Vertical leads
-
-The people responsible for each program (Speaker School, La Biblioteca del Mañana, AI Channel, Monthly Meetups). They define the cadence, content, and direction of their program in conversation with the active organizers. Vertical leads are accountable for their program's health.
-
-### Conduct team
-
-A subset of active organizers responsible for reviewing and acting on Code of Conduct reports. Their composition rotates to avoid burnout and bias. Decisions are made by the team; escalations beyond their authority go to the founding organizers.
+This document describes **what is defined today**. Where a process is still being
+built, we say so rather than inventing a structure that does not exist.
 
 ---
 
-## What gets decided where
+## The three levels
 
-| Decision | Who decides |
-| --- | --- |
-| Theme, venue, food for next meetup | Active organizers |
-| Sponsor for an individual meetup | Active organizers + sponsor liaison |
-| Direction of a program (Speaker School curriculum, La Biblioteca del Mañana reading list, AI Channel content, meetup cadence) | Vertical lead + active organizers |
-| Annual calendar | Founding + active organizers + vertical leads |
-| Pereira Tech Day theme, date, brand, partners | Founding + active organizers + vertical leads |
-| Annual sponsor agreements | Founding + active organizers + sponsor liaisons |
-| Code of Conduct enforcement | Conduct team (escalations to founding organizers) |
-| Inviting a new active organizer | Existing active organizers + founding organizers |
-| Naming/replacing a vertical lead | Founding + active organizers |
-| Changes to this governance page | Founding organizers (after public discussion) |
-| Changes to the Code of Conduct | Founding organizers (after public discussion) |
-| Open-source repository changes (site, content) | Anyone via PR · merged by active organizers with commit access |
+```text
+Person            →  publishes a need, offers help, contributes
+Leader            →  coordinates, executes, records and accounts for resources
+Administration    →  validates, moderates and verifies
+```
+
+None of these is a social rank. They are different responsibilities with
+different obligations.
 
 ---
 
-## How we communicate decisions
+## Leaders
 
-- **Operational decisions** (next meetup, theme, sponsors) are communicated via the channels: Luma, social media, the blog.
-- **Strategic decisions** (annual plan, Pereira Tech Day, partnerships) are announced via the blog and the newsletter, and visible in the public content collections on this site.
-- **Conduct decisions** are communicated privately to the parties involved. Patterns and outcomes that affect the broader community may be summarized publicly without identifying individuals.
+The leader system is the platform's critical trust dependency. If that validation
+fails, nothing else matters.
 
-If you ever want to know why something was decided, ask. We will answer.
+### How someone becomes one
 
----
+1. **Application**, which is private.
+2. **Validation** of identity and of the connection to the territory or
+   organization.
+3. **Approval**, which enables the role.
 
-## Conflict resolution
+### What a leader takes on
 
-When two organizers disagree and cannot resolve it, the founding organizers are the tiebreakers. When two founding organizers disagree, they resolve it by talking it through to consensus — that is the model that has worked for a decade.
+- Coordinating aid within a front or a specific delivery.
+- Receiving contributions into a verified account in their own name.
+- Recording what was delivered and **uploading the evidence within the window**.
+- Keeping the status of requests current.
 
-When a member of the community disagrees with a decision, the path is:
+### What happens when they do not
 
-1. Raise it with any active organizer at a meetup or via the contact form.
-2. If it is not addressed satisfactorily, raise it with the founding organizers (`pereiratechtalks@gmail.com`, subject "Governance question").
-3. If it relates to the Code of Conduct, follow the reporting process documented in [Code of Conduct](/en/conduct).
+Failing to provide evidence is the most serious lapse, because it breaks exactly
+what makes Corag verifiable. The response is proportionate and staged: a
+reminder, then suspension of the ability to receive contributions, then removal
+from the role.
 
----
-
-## Sponsorship and money
-
-We are a non-profit community. Sponsorship money goes only to:
-
-- Venue, food, and supplies for events.
-- Travel and accommodation for invited (non-local) speakers.
-- Speaker School scholarships.
-- Open-source tools, hosting, and infrastructure for the community.
-- Production of Pereira Tech Day (venues, AV, swag, food).
-
-Organizers do not receive compensation from the community. Speakers do not pay to speak and we do not pay speakers, except for travel and accommodation when explicitly agreed for invited international speakers.
-
-Annual financial summaries are published in the year-in-review blog post.
+> The specific windows and the appeals process are still being defined. They will
+> be published here once settled.
 
 ---
 
-## How this governance page changes
+## Evidence moderation
 
-This page is not frozen. As the community grows, the model will evolve. Material changes are proposed in writing, discussed publicly via the blog or a meetup, and merged by the founding organizers. Minor clarifications can be edited directly.
+Evidence is not published automatically. The path is:
 
-You can see the full revision history of this page in the [open-source repository](https://github.com/pereira-tech-talks).
+```text
+Contribution → Responsable → Execution → Evidence uploaded
+             → Administrative review → Approval → Publication
+```
+
+Only after review does the amount count as **used with evidence**. That is why
+that number differs from **received**, and why it is the one worth looking at.
 
 ---
 
-## Contact
+## Decisions about the platform
 
-Use the [contact form](/en/contact) and add the appropriate subject (for example, "Governance question").
+- **What gets built** is decided with partner organizations and the people
+  coordinating on the ground, prioritising whatever unblocks real deliveries.
+- **The site's code** is open: proposals arrive as pull requests and are reviewed
+  like any other change.
+- **Changes that affect people** — how data is displayed, what is published, what
+  is stored — are discussed before they are implemented, not after.
+
+---
+
+## Conflicts of interest
+
+Someone coordinating resources must not direct them toward an organization,
+company or person they have a financial or family interest in without declaring
+it first. Declaring it does not disqualify anyone; hiding it does.
+
+---
+
+## Complaints
+
+Conduct complaints go through the [Code of Conduct](/en/conduct). Complaints
+about the use of resources — a contribution with no evidence, a delivery that did
+not happen, a suspicious account — go through [contact](/en/contact) and are
+reviewed by administration.
+
+A report about resources is always reviewed, even when it arrives anonymously.
+
+---
+
+## What is not defined yet
+
+Saying so is part of the transparency:
+
+- The formal appeals process when a role is removed.
+- The maximum resources a leader may administer without an additional review.
+- The composition of a standing moderation committee.
+
+These are resolved as the network grows, and published here once settled.

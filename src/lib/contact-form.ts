@@ -6,22 +6,19 @@
 export const MAX_SUBJECT_LENGTH = 140;
 export const MAX_MESSAGE_LENGTH = 2000;
 export const MAX_NAME_LENGTH = 120;
-export const MAX_TALK_TITLE_LENGTH = 160;
-export const MAX_ABSTRACT_LENGTH = 2000;
-export const MAX_TAKEAWAYS_LENGTH = 800;
-export const MAX_SOCIAL_LENGTH = 300;
-export const MAX_COMPANY_LENGTH = 160;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Canonical topic values (dropdown + API allowlist). */
 export const CANONICAL_TOPICS = [
   'general',
-  'tech-talk',
-  'sponsorship',
-  'collaboration',
-  'the-library-of-tomorrow',
+  /** A foundation, company, municipality or community org offering capacity. */
+  'organization',
+  /** Institutional partnership. */
+  'ally',
   'press',
+  /** A problem with published information — wrong data, a delivery that does not add up. */
+  'report',
   'conduct',
   'other',
 ] as const;
@@ -30,56 +27,30 @@ export type CanonicalTopic = (typeof CANONICAL_TOPICS)[number];
 
 /** Legacy / alternate query values → canonical topic. */
 export const TOPIC_ALIASES: Record<string, CanonicalTopic> = {
-  project: 'sponsorship',
-  sponsor: 'sponsorship',
-  sponsorship: 'sponsorship',
-  speaker: 'tech-talk',
-  'tech-talk': 'tech-talk',
-  cfs: 'tech-talk',
+  general: 'general',
+  organization: 'organization',
+  org: 'organization',
+  ally: 'ally',
+  partner: 'ally',
+  alliance: 'ally',
   press: 'press',
   media: 'press',
+  report: 'report',
   conduct: 'conduct',
   coc: 'conduct',
-  collaboration: 'collaboration',
-  general: 'general',
   other: 'other',
-  'the-library-of-tomorrow': 'the-library-of-tomorrow',
+  /*
+   * Legacy values from the previous site. Kept so an old bookmarked link still
+   * lands on a real topic instead of falling through to an empty selection.
+   */
+  sponsor: 'ally',
+  sponsorship: 'ally',
+  collaboration: 'ally',
+  project: 'general',
+  speaker: 'general',
+  'tech-talk': 'general',
+  cfs: 'general',
 };
-
-export const CFS_FORMATS = [
-  'regular',
-  'lightning',
-  'panel',
-  'workshop',
-] as const;
-
-export type CfsFormat = (typeof CFS_FORMATS)[number];
-
-export const SPONSOR_TIERS = [
-  'diamond',
-  'gold',
-  'silver',
-  'bronze',
-  'community',
-  'unsure',
-] as const;
-
-export type SponsorTier = (typeof SPONSOR_TIERS)[number];
-
-export const CONTRIBUTION_TYPES = [
-  'cash',
-  'in-kind',
-  'both',
-  'unsure',
-] as const;
-export type ContributionType = (typeof CONTRIBUTION_TYPES)[number];
-
-export const SPEAKER_SCHOOL_LEVELS = [
-  'beginner',
-  'intermediate',
-  'advanced',
-] as const;
-export type SpeakerSchoolLevel = (typeof SPEAKER_SCHOOL_LEVELS)[number];
 
 export interface ContactFormFields {
   name: string;
@@ -96,79 +67,6 @@ export interface ContactFormErrors {
   reason: string;
   subject: string;
   message: string;
-}
-
-export interface CfsFormFields extends ContactFormFields {
-  talkTitle: string;
-  format: string;
-  abstract: string;
-  takeaways: string;
-  socialUrl: string;
-  firstTime: boolean;
-  speakerSchool: boolean;
-}
-
-export interface CfsFormErrors extends ContactFormErrors {
-  talkTitle: string;
-  format: string;
-  abstract: string;
-  takeaways: string;
-  socialUrl: string;
-}
-
-export interface SponsorFormFields extends ContactFormFields {
-  company: string;
-  contactRole: string;
-  tierInterest: string;
-  contributionType: string;
-}
-
-export interface SponsorFormErrors extends ContactFormErrors {
-  company: string;
-  contactRole: string;
-  tierInterest: string;
-  contributionType: string;
-}
-
-export interface SpeakerSchoolFormFields {
-  name: string;
-  email: string;
-  experienceLevel: string;
-  goals: string;
-  topicsOfInterest: string;
-  availability: string;
-  priorSpeaking?: string;
-  socialOrLinkedin?: string;
-  message?: string;
-  website?: string;
-}
-
-export interface SpeakerSchoolFormErrors {
-  name: string;
-  email: string;
-  experienceLevel: string;
-  goals: string;
-  topicsOfInterest: string;
-  availability: string;
-}
-
-export interface CalendarIntakeFormFields {
-  name: string;
-  email: string;
-  communityName: string;
-  googleCalendarId: string;
-  shortDescription: string;
-  publicCalendarUrl?: string;
-  communityWebsite?: string;
-  website?: string;
-}
-
-export interface CalendarIntakeFormErrors {
-  name: string;
-  email: string;
-  communityName: string;
-  googleCalendarId: string;
-  shortDescription: string;
 }
 
 export interface ConductReportFormFields {
@@ -268,210 +166,6 @@ export function validateContactForm(
   return { valid, errors };
 }
 
-export function validateCfsForm(
-  fields: CfsFormFields,
-  messages: { requiredField: string; invalidEmail: string }
-): { valid: boolean; errors: CfsFormErrors } {
-  const base = validateContactForm(
-    { ...fields, reason: 'tech-talk' },
-    new Set(['tech-talk']),
-    messages
-  );
-  const errors: CfsFormErrors = {
-    ...base.errors,
-    talkTitle: '',
-    format: '',
-    abstract: '',
-    takeaways: '',
-    socialUrl: '',
-  };
-  let valid = base.valid;
-
-  if (!fields.talkTitle.trim()) {
-    errors.talkTitle = messages.requiredField;
-    valid = false;
-  }
-  if (
-    !fields.format.trim() ||
-    !(CFS_FORMATS as readonly string[]).includes(fields.format)
-  ) {
-    errors.format = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.abstract.trim() || fields.abstract.trim().length < 20) {
-    errors.abstract = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.takeaways.trim()) {
-    errors.takeaways = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.socialUrl.trim()) {
-    errors.socialUrl = messages.requiredField;
-    valid = false;
-  }
-  if (fields.website?.trim()) {
-    valid = false;
-  }
-
-  return { valid, errors };
-}
-
-export function validateSponsorForm(
-  fields: SponsorFormFields,
-  messages: { requiredField: string; invalidEmail: string }
-): { valid: boolean; errors: SponsorFormErrors } {
-  const base = validateContactForm(
-    { ...fields, reason: 'sponsorship' },
-    new Set(['sponsorship']),
-    messages
-  );
-  const errors: SponsorFormErrors = {
-    ...base.errors,
-    company: '',
-    contactRole: '',
-    tierInterest: '',
-    contributionType: '',
-  };
-  let valid = base.valid;
-
-  if (!fields.company.trim()) {
-    errors.company = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.contactRole.trim()) {
-    errors.contactRole = messages.requiredField;
-    valid = false;
-  }
-  if (
-    !fields.tierInterest.trim() ||
-    !(SPONSOR_TIERS as readonly string[]).includes(fields.tierInterest)
-  ) {
-    errors.tierInterest = messages.requiredField;
-    valid = false;
-  }
-  if (
-    !fields.contributionType.trim() ||
-    !(CONTRIBUTION_TYPES as readonly string[]).includes(fields.contributionType)
-  ) {
-    errors.contributionType = messages.requiredField;
-    valid = false;
-  }
-  if (fields.website?.trim()) {
-    valid = false;
-  }
-
-  return { valid, errors };
-}
-
-export function validateSpeakerSchoolForm(
-  fields: SpeakerSchoolFormFields,
-  messages: { requiredField: string; invalidEmail: string }
-): { valid: boolean; errors: SpeakerSchoolFormErrors } {
-  const errors: SpeakerSchoolFormErrors = {
-    name: '',
-    email: '',
-    experienceLevel: '',
-    goals: '',
-    topicsOfInterest: '',
-    availability: '',
-  };
-  let valid = true;
-
-  if (!fields.name.trim()) {
-    errors.name = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.email.trim()) {
-    errors.email = messages.requiredField;
-    valid = false;
-  } else if (!isValidContactEmail(fields.email.trim())) {
-    errors.email = messages.invalidEmail;
-    valid = false;
-  }
-  if (
-    !fields.experienceLevel.trim() ||
-    !(SPEAKER_SCHOOL_LEVELS as readonly string[]).includes(
-      fields.experienceLevel
-    )
-  ) {
-    errors.experienceLevel = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.goals.trim()) {
-    errors.goals = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.topicsOfInterest.trim()) {
-    errors.topicsOfInterest = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.availability.trim()) {
-    errors.availability = messages.requiredField;
-    valid = false;
-  }
-  if (fields.website?.trim()) {
-    valid = false;
-  }
-
-  return { valid, errors };
-}
-
-/** Light check: non-empty calendar ID; prefer email-like Google Calendar IDs. */
-export function looksLikeGoogleCalendarId(value: string): boolean {
-  const trimmed = value.trim();
-  if (!trimmed) return false;
-  if (trimmed.includes('@')) return isValidContactEmail(trimmed);
-  // Public calendar IDs are usually email-shaped; allow short opaque tokens too.
-  return trimmed.length >= 8 && !/\s/.test(trimmed);
-}
-
-export function validateCalendarIntakeForm(
-  fields: CalendarIntakeFormFields,
-  messages: { requiredField: string; invalidEmail: string }
-): { valid: boolean; errors: CalendarIntakeFormErrors } {
-  const errors: CalendarIntakeFormErrors = {
-    name: '',
-    email: '',
-    communityName: '',
-    googleCalendarId: '',
-    shortDescription: '',
-  };
-  let valid = true;
-
-  if (!fields.name.trim()) {
-    errors.name = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.email.trim()) {
-    errors.email = messages.requiredField;
-    valid = false;
-  } else if (!isValidContactEmail(fields.email.trim())) {
-    errors.email = messages.invalidEmail;
-    valid = false;
-  }
-  if (!fields.communityName.trim()) {
-    errors.communityName = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.googleCalendarId.trim()) {
-    errors.googleCalendarId = messages.requiredField;
-    valid = false;
-  } else if (!looksLikeGoogleCalendarId(fields.googleCalendarId)) {
-    errors.googleCalendarId = messages.requiredField;
-    valid = false;
-  }
-  if (!fields.shortDescription.trim()) {
-    errors.shortDescription = messages.requiredField;
-    valid = false;
-  }
-  if (fields.website?.trim()) {
-    valid = false;
-  }
-
-  return { valid, errors };
-}
-
 export function validateConductReportForm(
   fields: ConductReportFormFields,
   messages: { requiredField: string; invalidEmail: string }
@@ -515,38 +209,6 @@ export function validateConductReportForm(
 }
 
 /** Compose a CFS message body for legacy inbox / ack helpers. */
-export function composeCfsMessage(fields: CfsFormFields): string {
-  return [
-    `Talk title: ${fields.talkTitle.trim()}`,
-    `Format: ${fields.format}`,
-    `First-time speaker: ${fields.firstTime ? 'yes' : 'no'}`,
-    `Speaker School interest: ${fields.speakerSchool ? 'yes' : 'no'}`,
-    `Social / portfolio: ${fields.socialUrl.trim()}`,
-    '',
-    'Abstract:',
-    fields.abstract.trim(),
-    '',
-    'Takeaways:',
-    fields.takeaways.trim(),
-    fields.message.trim()
-      ? `\nAdditional notes:\n${fields.message.trim()}`
-      : '',
-  ]
-    .filter(Boolean)
-    .join('\n');
-}
-
-export function composeSponsorMessage(fields: SponsorFormFields): string {
-  return [
-    `Company: ${fields.company.trim()}`,
-    `Role: ${fields.contactRole.trim()}`,
-    `Tier interest: ${fields.tierInterest}`,
-    `Contribution: ${fields.contributionType}`,
-    '',
-    fields.message.trim(),
-  ].join('\n');
-}
-
 export type AckLang = 'en' | 'es';
 
 export function pickAckCopy(
@@ -554,49 +216,55 @@ export function pickAckCopy(
   lang: AckLang
 ): { subject: string; text: string } {
   const t = normalizeTopic(topic) || 'general';
+
   if (lang === 'es') {
     const subjects: Record<string, string> = {
-      'tech-talk': 'Recibimos tu postulación — Pereira Tech Talks',
-      sponsorship: 'Recibimos tu consulta de patrocinio — Pereira Tech Talks',
-      press: 'Recibimos tu consulta de prensa — Pereira Tech Talks',
-      conduct: 'Recibimos tu reporte — Pereira Tech Talks',
-      general: 'Recibimos tu mensaje — Pereira Tech Talks',
+      organization: 'Recibimos tu mensaje — Corag',
+      ally: 'Recibimos tu propuesta de alianza — Corag',
+      press: 'Recibimos tu consulta de prensa — Corag',
+      report: 'Recibimos tu reporte — Corag',
+      conduct: 'Recibimos tu reporte — Corag',
+      general: 'Recibimos tu mensaje — Corag',
     };
     const bodies: Record<string, string> = {
-      'tech-talk':
-        'Gracias por postular tu charla. Revisamos propuestas continuamente y te respondemos en un máximo de 7 días hábiles para alinear fecha y formato. Si es tu primera vez, podemos conectarte con la Speaker School.\n\n— Pereira Tech Talks',
-      sponsorship:
-        'Gracias por tu interés en patrocinar Pereira Tech Talks. Un organizador te contactará en un máximo de 5 días hábiles para conversar sobre niveles y siguientes pasos.\n\n— Pereira Tech Talks',
+      organization:
+        'Gracias por escribirnos. Te contactamos para entender qué puede aportar tu organización y cómo coordinarlo.\n\n— Corag',
+      ally: 'Gracias por escribirnos. Te contactamos para hablar de la alianza y los siguientes pasos.\n\n— Corag',
       press:
-        'Gracias por escribirnos. El equipo de prensa revisará tu consulta y responderá lo antes posible.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Revisamos tu consulta y respondemos lo antes posible.\n\n— Corag',
+      report:
+        'Gracias por reportarlo. Revisamos lo que nos cuentas.\n\nSi se trata de algo urgente que afecta a alguien ahora mismo, repórtalo también en la aplicación: https://ayuda.corag.app\n\n— Corag',
       conduct:
-        'Gracias por contactarnos. Tu mensaje será tratado con confidencialidad por el equipo de conducta.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Tu mensaje se trata de forma confidencial.\n\nSi hay riesgo inmediato para la integridad de alguien, contacta primero a las autoridades locales: este canal no es un servicio de emergencia.\n\n— Corag',
       general:
-        'Gracias por escribirnos. Te responderemos tan pronto como podamos.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Te respondemos tan pronto como podamos.\n\nSi lo que necesitas es pedir ayuda o aportar, eso ocurre en la aplicación: https://ayuda.corag.app\n\n— Corag',
     };
     return {
       subject: subjects[t] || subjects.general,
       text: bodies[t] || bodies.general,
     };
   }
+
   const subjects: Record<string, string> = {
-    'tech-talk': 'We received your talk proposal — Pereira Tech Talks',
-    sponsorship: 'We received your sponsorship inquiry — Pereira Tech Talks',
-    press: 'We received your press inquiry — Pereira Tech Talks',
-    conduct: 'We received your report — Pereira Tech Talks',
-    general: 'We received your message — Pereira Tech Talks',
+    organization: 'We received your message — Corag',
+    ally: 'We received your partnership enquiry — Corag',
+    press: 'We received your press enquiry — Corag',
+    report: 'We received your report — Corag',
+    conduct: 'We received your report — Corag',
+    general: 'We received your message — Corag',
   };
   const bodies: Record<string, string> = {
-    'tech-talk':
-      'Thanks for submitting your talk. We review proposals year-round and reply within 7 business days to align on date and format. First-time speakers can be connected with Speaker School.\n\n— Pereira Tech Talks',
-    sponsorship:
-      'Thanks for your interest in sponsoring Pereira Tech Talks. An organizer will follow up within 5 business days about tiers and next steps.\n\n— Pereira Tech Talks',
+    organization:
+      'Thanks for writing. We will get in touch to understand what your organization can offer and how to coordinate it.\n\n— Corag',
+    ally: 'Thanks for writing. We will get in touch to discuss the partnership and next steps.\n\n— Corag',
     press:
-      'Thanks for reaching out. Our press contacts will review your inquiry and reply as soon as possible.\n\n— Pereira Tech Talks',
+      'Thanks for reaching out. We will review your enquiry and reply as soon as possible.\n\n— Corag',
+    report:
+      'Thanks for reporting it. We will review what you told us.\n\nIf this is urgent and affects someone right now, please also report it in the application: https://ayuda.corag.app\n\n— Corag',
     conduct:
-      'Thanks for contacting us. Your message will be handled confidentially by the conduct team.\n\n— Pereira Tech Talks',
+      'Thanks for writing. Your message is handled confidentially.\n\nIf anyone is in immediate danger, contact your local emergency services first — this channel is not an emergency service.\n\n— Corag',
     general:
-      "Thanks for writing. We'll get back to you as soon as we can.\n\n— Pereira Tech Talks",
+      'Thanks for writing. We will get back to you as soon as we can.\n\nIf what you need is to ask for help or contribute, that happens in the application: https://ayuda.corag.app\n\n— Corag',
   };
   return {
     subject: subjects[t] || subjects.general,

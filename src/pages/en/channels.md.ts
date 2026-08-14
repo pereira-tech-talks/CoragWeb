@@ -26,19 +26,19 @@ export const GET: APIRoute = async () => {
 
   const sections = [
     {
-      heading: 'Primary channel',
+      heading: 'Where it all happens',
       lines: primary.map(renderChannel),
     },
     {
-      heading: 'Other channels',
+      heading: 'Network channels',
       lines: secondary.map(renderChannel),
     },
   ];
 
   const markdown = serializeGenericToMarkdown({
-    title: 'Channels — Pereira Tech Talks',
+    title: 'Channels — Corag',
     description:
-      'All official Pereira Tech Talks channels: Luma (primary), social networks, GitHub, and Linktree, with guidance on where to start.',
+      'The official Corag channels: the application, the WhatsApp group, Instagram and Facebook, with a clear indication of where to start.',
     lang,
     canonical: `${SITE_URL}/en/channels`,
     metadata: [['Total channels', String(channels.length)]],

@@ -1,104 +1,116 @@
 ---
 title: "Gobernanza"
-description: "Cómo se gobierna Pereira Tech Talks: quién toma qué decisiones, cómo se planean los programas y la conferencia anual, cómo escalar y cómo la comunidad rinde cuentas."
-lastUpdated: 2026-05-30
+description: "Cómo se toman las decisiones en Corag, cómo se valida a un líder, cómo se modera la evidencia y qué pasa cuando alguien no rinde cuentas a tiempo."
+lastUpdated: 2026-08-14
 ---
 
-## Una comunidad voluntaria, no una jerarquía
+## Qué cubre este documento
 
-Pereira Tech Talks no tiene accionistas, ni jefe, ni jerarquía formal. Somos una comunidad organizada por voluntariado con sede en Pereira, Risaralda, Colombia. Esta página existe para que cualquier persona —recién llegada, contribuyente, patrocinador o medio— pueda entender cómo se toman las decisiones de verdad.
+Corag mueve recursos reales entre personas reales. Eso exige decir en voz alta
+quién decide qué, con qué límites y qué pasa cuando alguien incumple.
 
-La versión corta: **optimizamos por transparencia antes que por autoridad**. Estamos contentos de explicar cualquier decisión y cambiamos de opinión cuando llegan mejores argumentos.
-
----
-
-## Órganos de decisión
-
-No hay junta directiva. Las decisiones las toma el grupo más pequeño de personas responsables del resultado.
-
-### Organizadores fundadores
-
-El pequeño grupo que ha cargado la comunidad desde 2014. Custodian la misión de largo plazo de Pereira Tech Talks, sostienen la memoria institucional e intervienen solo cuando hay un conflicto que los organizadores activos no pueden resolver o cuando una decisión cruza años (la marca, la conferencia anual, las alianzas con otras comunidades).
-
-### Organizadores activos
-
-Las personas que actualmente operan la maquinaria. Toman las decisiones del día a día: el tema del próximo meetup, el venue, la comida, los patrocinadores, la comunicación. Los nuevos organizadores activos son invitados por los existentes con base en contribución demostrada y valores compartidos.
-
-### Líderes de programa (vertical leads)
-
-Las personas responsables de cada programa (Speaker School, La Biblioteca del Mañana, AI Channel, Monthly Meetups). Definen la cadencia, contenido y dirección de su programa en conversación con los organizadores activos. Los líderes de programa son responsables por la salud de su programa.
-
-### Equipo de conducta
-
-Un subconjunto de organizadores activos responsables de revisar y actuar sobre reportes del Código de Conducta. Su composición rota para evitar burnout y sesgo. Las decisiones las toma el equipo; las escalaciones más allá de su autoridad pasan a los organizadores fundadores.
+Este documento describe **lo que hoy está definido**. Donde un proceso todavía
+se está construyendo, lo decimos en lugar de inventar una estructura que no
+existe.
 
 ---
 
-## Qué se decide dónde
+## Los tres niveles
 
-| Decisión | Quién decide |
-| --- | --- |
-| Tema, venue, comida del próximo meetup | Organizadores activos |
-| Patrocinador de un meetup individual | Organizadores activos + sponsor liaison |
-| Dirección de un programa (currículo de Speaker School, lista de La Biblioteca del Mañana, contenido del AI Channel, cadencia de meetups) | Líder del programa + organizadores activos |
-| Calendario anual | Fundadores + organizadores activos + líderes de programa |
-| Tema, fecha, marca y aliados de Pereira Tech Day | Fundadores + organizadores activos + líderes de programa |
-| Acuerdos anuales con patrocinadores | Fundadores + organizadores activos + sponsor liaisons |
-| Aplicación del Código de Conducta | Equipo de conducta (escalación a fundadores) |
-| Invitar a un nuevo organizador activo | Organizadores activos existentes + fundadores |
-| Nombrar o reemplazar un líder de programa | Fundadores + organizadores activos |
-| Cambios a esta página de gobernanza | Organizadores fundadores (tras discusión pública) |
-| Cambios al Código de Conducta | Organizadores fundadores (tras discusión pública) |
-| Cambios al repositorio open source (sitio, contenido) | Cualquiera vía PR · merge por organizadores activos con permisos |
+```text
+Persona          →  publica una necesidad, ofrece ayuda, aporta
+Líder            →  coordina, ejecuta, registra y responde por recursos
+Administración   →  valida, modera y verifica
+```
+
+Ningún nivel es un rango social. Son responsabilidades distintas, con
+obligaciones distintas.
 
 ---
 
-## Cómo comunicamos decisiones
+## Líderes
 
-- **Decisiones operativas** (próximo meetup, tema, patrocinadores) se comunican por los canales: Luma, redes sociales, el blog.
-- **Decisiones estratégicas** (plan anual, Pereira Tech Day, alianzas) se anuncian en el blog y el newsletter, y se ven en las content collections públicas de este sitio.
-- **Decisiones de conducta** se comunican en privado a las partes involucradas. Patrones y resultados que afectan a la comunidad amplia pueden resumirse públicamente sin identificar a personas.
+El sistema de líderes es la dependencia crítica de confianza de toda la
+plataforma. Si esa validación falla, nada más importa.
 
-Si alguna vez quieres saber por qué se tomó algo, pregunta. Responderemos.
+### Cómo se llega
 
----
+1. **Postulación**, que es privada.
+2. **Validación** de identidad y de vínculo con el territorio o la organización.
+3. **Aprobación**, que habilita el rol.
 
-## Resolución de conflictos
+### Qué asume quien es líder
 
-Cuando dos organizadores discrepan y no logran resolverlo, los organizadores fundadores son los tie-breakers. Cuando dos fundadores discrepan, lo resuelven hablándolo hasta llegar a consenso — ese es el modelo que ha funcionado durante una década.
+- Coordinar la ayuda en un frente o una entrega concreta.
+- Recibir aportes en una cuenta verificada y a su nombre.
+- Registrar lo entregado y **subir la evidencia dentro del plazo**.
+- Mantener el estado de las solicitudes al día.
 
-Cuando un miembro de la comunidad discrepa con una decisión, el camino es:
+### Qué pasa si no cumple
 
-1. Plantearlo a cualquier organizador activo en un meetup o por el formulario de contacto.
-2. Si no se atiende satisfactoriamente, plantearlo a los organizadores fundadores (`pereiratechtalks@gmail.com`, asunto "Pregunta de gobernanza").
-3. Si se relaciona con el Código de Conducta, seguir el proceso de reporte documentado en [Código de Conducta](/conduct).
+No presentar evidencia es la falta más grave, porque rompe exactamente aquello
+que hace verificable a Corag. La respuesta es proporcional y escalonada:
+recordatorio, luego suspensión de la capacidad de recibir aportes, luego
+retiro del rol.
 
----
-
-## Patrocinios y dinero
-
-Somos una comunidad sin fines de lucro. El dinero de patrocinio se destina únicamente a:
-
-- Venue, comida e insumos para los eventos.
-- Viaje y alojamiento para ponentes invitados (no locales).
-- Becas de Speaker School.
-- Herramientas open source, hosting e infraestructura para la comunidad.
-- Producción de Pereira Tech Day (venues, AV, swag, comida).
-
-Los organizadores no reciben compensación de la comunidad. Los ponentes no pagan por hablar y nosotros no les pagamos, excepto viaje y alojamiento cuando se ha acordado explícitamente para ponentes internacionales invitados.
-
-Los resúmenes financieros anuales se publican en el post de cierre de año en el blog.
+> El detalle de los plazos y del proceso de apelación se está definiendo. Cuando
+> esté cerrado, se publica aquí.
 
 ---
 
-## Cómo cambia esta página de gobernanza
+## Moderación de evidencia
 
-Esta página no está congelada. A medida que la comunidad crece, el modelo evoluciona. Los cambios materiales se proponen por escrito, se discuten públicamente por el blog o un meetup, y los aprueban los organizadores fundadores. Las aclaraciones menores pueden editarse directamente.
+La evidencia no se publica automáticamente. El recorrido es:
 
-Puedes ver el historial completo de revisiones de esta página en el [repositorio open source](https://github.com/pereira-tech-talks).
+```text
+Aporte → Responsable → Ejecución → Carga de evidencia
+      → Revisión administrativa → Aprobación → Publicación
+```
+
+Solo después de la revisión el valor pasa a contarse como **utilizado con
+evidencia**. Esa es la razón por la que ese número es distinto del de
+**recibido**, y por la que vale la pena mirarlo.
 
 ---
 
-## Contacto
+## Decisiones sobre la plataforma
 
-Usa el [formulario de contacto](/contact) e indica el asunto correspondiente (por ejemplo, "Pregunta de gobernanza").
+- **Qué se construye** se decide con las organizaciones aliadas y con quienes
+  coordinan en terreno, priorizando lo que desbloquea entregas reales.
+- **El código del sitio** es abierto: las propuestas llegan por pull request y
+  se revisan como cualquier otro cambio.
+- **Los cambios que afectan a personas** — cómo se muestran los datos, qué se
+  publica, qué se guarda — se discuten antes de implementarse, no después.
+
+---
+
+## Conflictos de interés
+
+Quien coordina recursos no debe dirigirlos hacia una organización, empresa o
+persona con la que tenga un interés económico o familiar sin declararlo
+primero. Declararlo no descalifica; ocultarlo sí.
+
+---
+
+## Denuncias
+
+Las denuncias sobre conducta se tramitan por el
+[Código de Conducta](/conduct). Las denuncias sobre el uso de recursos —
+un aporte sin evidencia, una entrega que no ocurrió, una cuenta sospechosa —
+se envían por [contacto](/contact) y las revisa la administración.
+
+Un reporte sobre recursos siempre se revisa, incluso si llega de forma anónima.
+
+---
+
+## Lo que todavía no está definido
+
+Decirlo es parte de la transparencia:
+
+- El proceso formal de apelación cuando se retira un rol.
+- Los límites máximos de recursos que un líder puede administrar sin una
+  revisión adicional.
+- La composición de un comité permanente de moderación.
+
+Estos puntos se resuelven a medida que la red crece, y se publican aquí cuando
+se cierran.

@@ -177,7 +177,7 @@ function navClick(item: string) {
       <a
         href={prefix || '/'}
         class="flex min-w-0 items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        aria-label="Pereira Tech Talks"
+        aria-label="Corag"
         on:click={() => navClick('home')}
       >
         <img

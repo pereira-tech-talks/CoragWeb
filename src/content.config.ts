@@ -261,6 +261,7 @@ const channels = defineCollection({
       'x',
       'linkedin',
       'instagram',
+      'facebook',
       'github',
       'linktree',
       'newsletter',
@@ -327,7 +328,7 @@ const contributors = defineCollection({
 });
 
 /**
- * Public Google Calendars for allied Pereira tech communities.
+ * Public Google Calendars for allied organizations.
  * IDs must be embeddable (public); no API keys.
  */
 

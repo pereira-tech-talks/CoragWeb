@@ -12,7 +12,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
   const body = {
     status: 'not_applicable',
     message:
-      'No claim-complete ceremony is required for public:read access on Pereira Tech Talks. See /auth.md.',
+      'No claim-complete ceremony is required for public:read access on Corag. See /auth.md.',
     skill: `${origin}/auth.md`,
   };
 

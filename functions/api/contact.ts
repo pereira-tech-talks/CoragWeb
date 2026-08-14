@@ -1,43 +1,30 @@
 /**
- * Cloudflare Pages Function — community intake → Dailybot Forms API.
+ * Cloudflare Pages Function — Corag intake → Dailybot Forms API.
  *
  * Primary sink: Dailybot (`DAILYBOT_API_KEY`). Discriminator `_form`:
- *   contact | cfs | speaker-school | sponsor | calendar | conduct
+ *   contact | conduct
  *
- * Legacy clients that still send `reason` / `topic` (without `_form`) are
- * mapped: tech-talk→cfs, sponsorship→sponsor, conduct→conduct, else→contact.
+ * Clients that send only `reason` / `topic` (without `_form`) are mapped:
+ * conduct/report→conduct, everything else→contact.
  *
  * Optional Resend auto-ack after Dailybot 201 (never fails the request).
  *
  * Env:
  *   DAILYBOT_API_KEY — required
+ *   DAILYBOT_CONTACT_FORM, DAILYBOT_CONDUCT_FORM — required JSON form mappings
  *   RESEND_API_KEY, CONTACT_FROM_EMAIL — optional ack
  *   CONTACT_ALLOWED_ORIGINS, CONTACT_RATE_LIMIT, CONTACT_RATE_WINDOW_MS
  *   CONTACT_TURNSTILE_SECRET — reserved
  */
 
 import {
-  CALENDAR_FORM_UUID,
-  CALENDAR_Q,
-  CFS_FORM_UUID,
-  CFS_FORMAT_VALUES,
-  CFS_Q,
-  CONDUCT_FORM_UUID,
-  CONDUCT_Q,
-  CONTACT_FORM_UUID,
-  CONTACT_Q,
   CONTACT_TOPIC_VALUES,
-  CONTRIBUTION_TYPE_VALUES,
-  EXPERIENCE_LEVEL_VALUES,
+  type DailyBotFormConfig,
   LANG_VALUES,
-  SPEAKER_SCHOOL_FORM_UUID,
-  SPEAKER_SCHOOL_Q,
-  SPONSOR_TIER_VALUES,
-  SPONSORS_FORM_UUID,
-  SPONSORS_Q,
   booleanToDailyBot,
   lookupChoice,
   normalizePagePath,
+  resolveFormConfig,
   submitFormResponse,
 } from './_dailybot';
 import {
@@ -50,25 +37,15 @@ import {
 const MAX_NAME_LENGTH = 120;
 const MAX_SUBJECT_LENGTH = 140;
 const MAX_MESSAGE_LENGTH = 2000;
-const MAX_TALK_TITLE_LENGTH = 160;
-const MAX_ABSTRACT_LENGTH = 2000;
-const MAX_TAKEAWAYS_LENGTH = 800;
-const MAX_SOCIAL_LENGTH = 300;
-const MAX_COMPANY_LENGTH = 160;
 const MAX_EMAIL_LENGTH = 254;
 
-const FORM_TYPES = [
-  'contact',
-  'cfs',
-  'speaker-school',
-  'sponsor',
-  'calendar',
-  'conduct',
-] as const;
+const FORM_TYPES = ['contact', 'conduct'] as const;
 type FormType = (typeof FORM_TYPES)[number];
 
 interface Env {
   DAILYBOT_API_KEY?: string;
+  DAILYBOT_CONTACT_FORM?: string;
+  DAILYBOT_CONDUCT_FORM?: string;
   RESEND_API_KEY?: string;
   CONTACT_FROM_EMAIL?: string;
   CONTACT_ALLOWED_ORIGINS?: string;
@@ -139,8 +116,6 @@ function resolveFormType(data: Record<string, unknown>): FormType {
   const reason = normalizeTopic(
     sanitiseText(data.reason ?? data.topic, 64)
   );
-  if (reason === 'tech-talk') return 'cfs';
-  if (reason === 'sponsorship') return 'sponsor';
   if (reason === 'conduct') return 'conduct';
   return 'contact';
 }
@@ -168,6 +143,7 @@ function requireNonEmpty(
 
 function buildContent(
   formType: FormType,
+  config: DailyBotFormConfig,
   fields: Record<string, string>,
   flags: Record<string, boolean>,
   pagePath: string,
@@ -179,6 +155,7 @@ function buildContent(
   if (!lang) {
     return { ok: false, error: 'lang_invalid' };
   }
+  const q = config.q;
 
   if (formType === 'contact') {
     const missing = requireNonEmpty(fields, [
@@ -193,153 +170,16 @@ function buildContent(
     if (topic === null) return { ok: false, error: 'topic_invalid' };
     return {
       ok: true,
-      formUuid: CONTACT_FORM_UUID,
-      ackTopic: 'general',
+      formUuid: config.uuid,
+      ackTopic: fields.topic || 'general',
       content: {
-        [CONTACT_Q.NAME]: fields.name,
-        [CONTACT_Q.EMAIL]: fields.email,
-        [CONTACT_Q.TOPIC]: topic as string,
-        [CONTACT_Q.SUBJECT]: fields.subject,
-        [CONTACT_Q.MESSAGE]: fields.message,
-        [CONTACT_Q.LANG]: lang,
-        [CONTACT_Q.PAGE_PATH]: pagePath,
-      },
-    };
-  }
-
-  if (formType === 'cfs') {
-    const missing = requireNonEmpty(fields, [
-      'name',
-      'email',
-      'talkTitle',
-      'format',
-      'abstract',
-      'takeaways',
-      'socialUrl',
-    ]);
-    if (missing) return missing;
-    if (fields.abstract.trim().length < 20) {
-      return { ok: false, error: 'abstract_too_short' };
-    }
-    const format = lookupChoice(fields.format, CFS_FORMAT_VALUES);
-    if (format === null) return { ok: false, error: 'format_invalid' };
-    return {
-      ok: true,
-      formUuid: CFS_FORM_UUID,
-      ackTopic: 'tech-talk',
-      content: {
-        [CFS_Q.NAME]: fields.name,
-        [CFS_Q.EMAIL]: fields.email,
-        [CFS_Q.TALK_TITLE]: fields.talkTitle,
-        [CFS_Q.FORMAT]: format as string,
-        [CFS_Q.ABSTRACT]: fields.abstract,
-        [CFS_Q.TAKEAWAYS]: fields.takeaways,
-        [CFS_Q.SOCIAL_URL]: fields.socialUrl,
-        [CFS_Q.FIRST_TIME]: booleanToDailyBot(flags.firstTime),
-        [CFS_Q.SPEAKER_SCHOOL]: booleanToDailyBot(flags.speakerSchool),
-        [CFS_Q.NOTES]: fields.message || fields.notes || '',
-        [CFS_Q.LANG]: lang,
-        [CFS_Q.PAGE_PATH]: pagePath,
-      },
-    };
-  }
-
-  if (formType === 'speaker-school') {
-    const missing = requireNonEmpty(fields, [
-      'name',
-      'email',
-      'experienceLevel',
-      'goals',
-      'topicsOfInterest',
-      'availability',
-    ]);
-    if (missing) return missing;
-    const level = lookupChoice(
-      fields.experienceLevel,
-      EXPERIENCE_LEVEL_VALUES
-    );
-    if (level === null) return { ok: false, error: 'experience_level_invalid' };
-    return {
-      ok: true,
-      formUuid: SPEAKER_SCHOOL_FORM_UUID,
-      ackTopic: 'general',
-      content: {
-        [SPEAKER_SCHOOL_Q.NAME]: fields.name,
-        [SPEAKER_SCHOOL_Q.EMAIL]: fields.email,
-        [SPEAKER_SCHOOL_Q.EXPERIENCE_LEVEL]: level as string,
-        [SPEAKER_SCHOOL_Q.GOALS]: fields.goals,
-        [SPEAKER_SCHOOL_Q.TOPICS]: fields.topicsOfInterest,
-        [SPEAKER_SCHOOL_Q.AVAILABILITY]: fields.availability,
-        [SPEAKER_SCHOOL_Q.PRIOR_SPEAKING]: fields.priorSpeaking || '',
-        [SPEAKER_SCHOOL_Q.SOCIAL]: fields.socialOrLinkedin || '',
-        [SPEAKER_SCHOOL_Q.MESSAGE]: fields.message || '',
-        [SPEAKER_SCHOOL_Q.LANG]: lang,
-        [SPEAKER_SCHOOL_Q.PAGE_PATH]: pagePath,
-      },
-    };
-  }
-
-  if (formType === 'sponsor') {
-    const missing = requireNonEmpty(fields, [
-      'name',
-      'email',
-      'company',
-      'contactRole',
-      'tierInterest',
-      'contributionType',
-      'message',
-    ]);
-    if (missing) return missing;
-    const tier = lookupChoice(fields.tierInterest, SPONSOR_TIER_VALUES);
-    const contribution = lookupChoice(
-      fields.contributionType,
-      CONTRIBUTION_TYPE_VALUES
-    );
-    if (tier === null) return { ok: false, error: 'tier_invalid' };
-    if (contribution === null) {
-      return { ok: false, error: 'contribution_invalid' };
-    }
-    return {
-      ok: true,
-      formUuid: SPONSORS_FORM_UUID,
-      ackTopic: 'sponsorship',
-      content: {
-        [SPONSORS_Q.NAME]: fields.name,
-        [SPONSORS_Q.EMAIL]: fields.email,
-        [SPONSORS_Q.COMPANY]: fields.company,
-        [SPONSORS_Q.ROLE]: fields.contactRole,
-        [SPONSORS_Q.TIER]: tier as string,
-        [SPONSORS_Q.CONTRIBUTION]: contribution as string,
-        [SPONSORS_Q.MESSAGE]: fields.message,
-        [SPONSORS_Q.LANG]: lang,
-        [SPONSORS_Q.PAGE_PATH]: pagePath,
-      },
-    };
-  }
-
-  if (formType === 'calendar') {
-    const missing = requireNonEmpty(fields, [
-      'name',
-      'email',
-      'communityName',
-      'googleCalendarId',
-      'shortDescription',
-    ]);
-    if (missing) return missing;
-    return {
-      ok: true,
-      formUuid: CALENDAR_FORM_UUID,
-      ackTopic: 'collaboration',
-      content: {
-        [CALENDAR_Q.NAME]: fields.name,
-        [CALENDAR_Q.EMAIL]: fields.email,
-        [CALENDAR_Q.COMMUNITY]: fields.communityName,
-        [CALENDAR_Q.CALENDAR_ID]: fields.googleCalendarId,
-        [CALENDAR_Q.CALENDAR_URL]: fields.publicCalendarUrl || '',
-        [CALENDAR_Q.WEBSITE]: fields.communityWebsite || '',
-        [CALENDAR_Q.DESCRIPTION]: fields.shortDescription,
-        [CALENDAR_Q.LANG]: lang,
-        [CALENDAR_Q.PAGE_PATH]: pagePath,
+        [q.NAME]: fields.name,
+        [q.EMAIL]: fields.email,
+        [q.TOPIC]: topic as string,
+        [q.SUBJECT]: fields.subject,
+        [q.MESSAGE]: fields.message,
+        [q.LANG]: lang,
+        [q.PAGE_PATH]: pagePath,
       },
     };
   }
@@ -349,23 +189,23 @@ function buildContent(
   if (missing) return missing;
   const anonymous = flags.anonymous;
   const content: Record<string, string | boolean> = {
-    [CONDUCT_Q.INCIDENT]: fields.incidentDescription,
-    [CONDUCT_Q.WHEN]: fields.incidentDate || '',
-    [CONDUCT_Q.PEOPLE]: fields.peopleInvolved || '',
-    [CONDUCT_Q.ANONYMOUS]: booleanToDailyBot(anonymous),
-    [CONDUCT_Q.REPORTER_NAME]: anonymous ? '' : fields.name || '',
-    [CONDUCT_Q.REPORTER_EMAIL]: anonymous ? '' : fields.email || '',
-    [CONDUCT_Q.FOLLOWUP]: fields.preferredFollowup || '',
-    [CONDUCT_Q.LANG]: lang,
-    [CONDUCT_Q.PAGE_PATH]: pagePath,
+    [q.INCIDENT]: fields.incidentDescription,
+    [q.WHEN]: fields.incidentDate || '',
+    [q.PEOPLE]: fields.peopleInvolved || '',
+    [q.ANONYMOUS]: booleanToDailyBot(anonymous),
+    [q.REPORTER_NAME]: anonymous ? '' : fields.name || '',
+    [q.REPORTER_EMAIL]: anonymous ? '' : fields.email || '',
+    [q.FOLLOWUP]: fields.preferredFollowup || '',
+    [q.LANG]: lang,
+    [q.PAGE_PATH]: pagePath,
   };
   // Legacy contact-shaped conduct: use message as incident if needed
-  if (!content[CONDUCT_Q.INCIDENT] && fields.message) {
-    content[CONDUCT_Q.INCIDENT] = fields.message;
+  if (!content[q.INCIDENT] && fields.message) {
+    content[q.INCIDENT] = fields.message;
   }
   return {
     ok: true,
-    formUuid: CONDUCT_FORM_UUID,
+    formUuid: config.uuid,
     ackTopic: 'conduct',
     content,
   };
@@ -487,7 +327,7 @@ export async function onRequestPost(
   const reason = normalizeTopic(sanitiseText(data.reason ?? data.topic, 64));
   const topicForContact =
     formType === 'contact'
-      ? reason && reason !== 'tech-talk' && reason !== 'sponsorship' && reason !== 'conduct'
+      ? reason && reason !== 'conduct'
         ? reason
         : sanitiseText(data.topic, 64) || 'general'
       : '';
@@ -498,27 +338,6 @@ export async function onRequestPost(
     topic: topicForContact || sanitiseText(data.topic, 64) || reason,
     subject: sanitiseText(data.subject, MAX_SUBJECT_LENGTH),
     message: sanitiseText(data.message, MAX_MESSAGE_LENGTH),
-    notes: sanitiseText(data.notes, MAX_MESSAGE_LENGTH),
-    talkTitle: sanitiseText(data.talkTitle, MAX_TALK_TITLE_LENGTH),
-    format: sanitiseText(data.format, 32),
-    abstract: sanitiseText(data.abstract, MAX_ABSTRACT_LENGTH),
-    takeaways: sanitiseText(data.takeaways, MAX_TAKEAWAYS_LENGTH),
-    socialUrl: sanitiseText(data.socialUrl, MAX_SOCIAL_LENGTH),
-    company: sanitiseText(data.company, MAX_COMPANY_LENGTH),
-    contactRole: sanitiseText(data.contactRole, 120),
-    tierInterest: sanitiseText(data.tierInterest, 32),
-    contributionType: sanitiseText(data.contributionType, 32),
-    experienceLevel: sanitiseText(data.experienceLevel, 32),
-    goals: sanitiseText(data.goals, MAX_MESSAGE_LENGTH),
-    topicsOfInterest: sanitiseText(data.topicsOfInterest, MAX_MESSAGE_LENGTH),
-    availability: sanitiseText(data.availability, MAX_MESSAGE_LENGTH),
-    priorSpeaking: sanitiseText(data.priorSpeaking, MAX_MESSAGE_LENGTH),
-    socialOrLinkedin: sanitiseText(data.socialOrLinkedin, MAX_SOCIAL_LENGTH),
-    communityName: sanitiseText(data.communityName, MAX_COMPANY_LENGTH),
-    googleCalendarId: sanitiseText(data.googleCalendarId, 300),
-    publicCalendarUrl: sanitiseText(data.publicCalendarUrl, 300),
-    communityWebsite: sanitiseText(data.communityWebsite, 300),
-    shortDescription: sanitiseText(data.shortDescription, MAX_MESSAGE_LENGTH),
     incidentDescription: sanitiseText(
       data.incidentDescription ?? data.message,
       MAX_MESSAGE_LENGTH
@@ -528,14 +347,22 @@ export async function onRequestPost(
     preferredFollowup: sanitiseText(data.preferredFollowup, MAX_MESSAGE_LENGTH),
   };
 
-  const flags = {
-    firstTime: asBool(data.firstTime),
-    speakerSchool: asBool(data.speakerSchool),
-    anonymous: asBool(data.anonymous),
-  };
+  const flags = { anonymous: asBool(data.anonymous) };
+
+  const config = resolveFormConfig(
+    context.env as Record<string, string | undefined>,
+    formType
+  );
+  if (!config) {
+    return jsonResponse(
+      { ok: false, error: 'backend_not_configured' },
+      503,
+      origin
+    );
+  }
 
   const pagePath = normalizePagePath(data.page_path ?? data.pagePath);
-  const built = buildContent(formType, fields, flags, pagePath, langRaw);
+  const built = buildContent(formType, config, fields, flags, pagePath, langRaw);
   if (!built.ok) {
     return jsonResponse({ ok: false, error: built.error }, 400, origin);
   }

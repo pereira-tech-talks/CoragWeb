@@ -77,8 +77,8 @@ Each locale file exports a complete `SiteTranslations` object:
 import type { SiteTranslations } from './types';
 
 export const en: SiteTranslations = {
-  siteTitle: 'Pereira Tech Talks',
-  siteDescription: 'Tech community of Pereira, Colombia',
+  siteTitle: 'Corag',
+  siteDescription: 'El ecosistema de impacto social',
   nav: { /* ... */ },
   // ... all keys
 };
@@ -356,7 +356,7 @@ The alias is configured in `tsconfig.json`:
 // src/lib/dates.ts — calendar dates from content collections (midnight UTC)
 import { formatCalendarDate, getCalendarDateString } from '@/lib/dates';
 
-export function displayMeetupDate(date: Date, lang: 'en' | 'es'): string {
+export function displayPostDate(date: Date, lang: 'en' | 'es'): string {
   return formatCalendarDate(date, lang, {
     year: 'numeric',
     month: 'long',
@@ -364,15 +364,15 @@ export function displayMeetupDate(date: Date, lang: 'en' | 'es'): string {
   });
 }
 
-export function meetupDatetimeAttr(date: Date): string {
+export function postDatetimeAttr(date: Date): string {
   return getCalendarDateString(date);
 }
 
-// Real timestamps (certificates, verification) — GMT-5
-formatInstantInSiteTimezone(issuedAt, 'es-CO');
+// Real timestamps — GMT-5
+formatInstantInSiteTimezone(publishedAt, 'es-CO');
 
-// Wall-clock PTD start → ISO with -05:00
-combineCalendarDateAndTime(editionDate, '08:00');
+// Wall-clock start → ISO with -05:00
+combineCalendarDateAndTime(eventDate, '08:00');
 ```
 
 ### Adding a New Translation

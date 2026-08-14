@@ -86,7 +86,7 @@ export function buildMetaDescription({
     const candidate = text ? `${text}${separator}${next}` : next;
 
     // A clause is appended whole or not at all. Truncating one mid-way leaves
-    // a description ending in "Pereira Tech Talks meetup on…", which reads
+    // a description ending in "Published on the Corag blog on…", which reads
     // worse than the shorter version it replaced — so try the next clause,
     // which may be compact enough to fit.
     if (candidate.length > max) continue;
@@ -118,27 +118,22 @@ export function buildMetaDescription({
 /** Localized connectors for the clause builders below. */
 const PHRASES = {
   en: {
-    meetupContext: (date: string, venue: string) =>
-      `Pereira Tech Talks meetup on ${date} at ${venue}`,
-    talkCount: (n: number) => `${n} ${n === 1 ? 'talk' : 'talks'} on the night`,
-    speakerRole: (role: string) => role,
-    speakerTalks: (n: number) =>
-      `${n} ${n === 1 ? 'talk' : 'talks'} in the Pereira Tech Talks archive`,
+    authorRole: (role: string) => role,
+    postCount: (n: number) =>
+      `${n} ${n === 1 ? 'article' : 'articles'} on the Corag blog`,
+    series: (name: string) => `Part of the ${name} series`,
     community:
-      'Part of the Pereira Tech Talks community archive in Pereira, Risaralda, Colombia.',
-    sinceYear: (year: number) => `Active in the community since ${year}`,
+      'Published by Corag, where aid gets coordinated and every delivery is backed by evidence.',
+    sinceYear: (year: number) => `Contributing to Corag since ${year}`,
   },
   es: {
-    meetupContext: (date: string, venue: string) =>
-      `Meetup de Pereira Tech Talks el ${date} en ${venue}`,
-    talkCount: (n: number) =>
-      `${n} ${n === 1 ? 'charla' : 'charlas'} esa noche`,
-    speakerRole: (role: string) => role,
-    speakerTalks: (n: number) =>
-      `${n} ${n === 1 ? 'charla' : 'charlas'} en el archivo de Pereira Tech Talks`,
+    authorRole: (role: string) => role,
+    postCount: (n: number) =>
+      `${n} ${n === 1 ? 'artículo' : 'artículos'} en el blog de Corag`,
+    series: (name: string) => `Parte de la serie ${name}`,
     community:
-      'Parte del archivo de la comunidad Pereira Tech Talks en Pereira, Risaralda, Colombia.',
-    sinceYear: (year: number) => `Activo en la comunidad desde ${year}`,
+      'Publicado por Corag, donde la ayuda se coordina y cada entrega queda respaldada con evidencia.',
+    sinceYear: (year: number) => `Colaborando con Corag desde ${year}`,
   },
 } as const;
 

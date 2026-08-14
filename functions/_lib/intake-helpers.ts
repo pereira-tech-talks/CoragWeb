@@ -2,48 +2,41 @@
 
 export const CANONICAL_TOPICS = [
   'general',
-  'tech-talk',
-  'sponsorship',
-  'collaboration',
-  'the-library-of-tomorrow',
+  /** A foundation, company, municipality or community org offering capacity. */
+  'organization',
+  /** Institutional partnership. */
+  'ally',
   'press',
+  /** A problem with published information — wrong data, a delivery that does not add up. */
+  'report',
   'conduct',
   'other',
 ] as const;
 
-export const CFS_FORMATS = [
-  'regular',
-  'lightning',
-  'panel',
-  'workshop',
-] as const;
-
-export const SPONSOR_TIERS = [
-  'diamond',
-  'gold',
-  'silver',
-  'bronze',
-  'community',
-  'unsure',
-] as const;
-
-export const CONTRIBUTION_TYPES = ['cash', 'in-kind', 'both', 'unsure'] as const;
-
 const TOPIC_ALIASES: Record<string, string> = {
-  project: 'sponsorship',
-  sponsor: 'sponsorship',
-  sponsorship: 'sponsorship',
-  speaker: 'tech-talk',
-  'tech-talk': 'tech-talk',
-  cfs: 'tech-talk',
+  general: 'general',
+  organization: 'organization',
+  org: 'organization',
+  ally: 'ally',
+  partner: 'ally',
+  alliance: 'ally',
   press: 'press',
   media: 'press',
+  report: 'report',
   conduct: 'conduct',
   coc: 'conduct',
-  collaboration: 'collaboration',
-  general: 'general',
   other: 'other',
-  'the-library-of-tomorrow': 'the-library-of-tomorrow',
+  /*
+   * Legacy values from the previous site. Kept so an old bookmarked link still
+   * lands on a real topic instead of falling through to an empty selection.
+   */
+  sponsor: 'ally',
+  sponsorship: 'ally',
+  collaboration: 'ally',
+  project: 'general',
+  speaker: 'general',
+  'tech-talk': 'general',
+  cfs: 'general',
 };
 
 export function normalizeTopic(raw: string | null | undefined): string {
@@ -91,49 +84,55 @@ export function pickAckCopy(
   lang: 'en' | 'es'
 ): { subject: string; text: string } {
   const t = normalizeTopic(topic) || 'general';
+
   if (lang === 'es') {
     const subjects: Record<string, string> = {
-      'tech-talk': 'Recibimos tu postulación — Pereira Tech Talks',
-      sponsorship: 'Recibimos tu consulta de patrocinio — Pereira Tech Talks',
-      press: 'Recibimos tu consulta de prensa — Pereira Tech Talks',
-      conduct: 'Recibimos tu reporte — Pereira Tech Talks',
-      general: 'Recibimos tu mensaje — Pereira Tech Talks',
+      organization: 'Recibimos tu mensaje — Corag',
+      ally: 'Recibimos tu propuesta de alianza — Corag',
+      press: 'Recibimos tu consulta de prensa — Corag',
+      report: 'Recibimos tu reporte — Corag',
+      conduct: 'Recibimos tu reporte — Corag',
+      general: 'Recibimos tu mensaje — Corag',
     };
     const bodies: Record<string, string> = {
-      'tech-talk':
-        'Gracias por postular tu charla. Revisamos propuestas continuamente y te respondemos en un máximo de 7 días hábiles para alinear fecha y formato.\n\n— Pereira Tech Talks',
-      sponsorship:
-        'Gracias por tu interés en patrocinar Pereira Tech Talks. Un organizador te contactará en un máximo de 5 días hábiles.\n\n— Pereira Tech Talks',
+      organization:
+        'Gracias por escribirnos. Te contactamos para entender qué puede aportar tu organización y cómo coordinarlo.\n\n— Corag',
+      ally: 'Gracias por escribirnos. Te contactamos para hablar de la alianza y los siguientes pasos.\n\n— Corag',
       press:
-        'Gracias por escribirnos. El equipo de prensa revisará tu consulta y responderá lo antes posible.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Revisamos tu consulta y respondemos lo antes posible.\n\n— Corag',
+      report:
+        'Gracias por reportarlo. Revisamos lo que nos cuentas.\n\nSi se trata de algo urgente que afecta a alguien ahora mismo, repórtalo también en la aplicación: https://ayuda.corag.app\n\n— Corag',
       conduct:
-        'Gracias por contactarnos. Tu mensaje será tratado con confidencialidad por el equipo de conducta.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Tu mensaje se trata de forma confidencial.\n\nSi hay riesgo inmediato para la integridad de alguien, contacta primero a las autoridades locales: este canal no es un servicio de emergencia.\n\n— Corag',
       general:
-        'Gracias por escribirnos. Te responderemos tan pronto como podamos.\n\n— Pereira Tech Talks',
+        'Gracias por escribirnos. Te respondemos tan pronto como podamos.\n\nSi lo que necesitas es pedir ayuda o aportar, eso ocurre en la aplicación: https://ayuda.corag.app\n\n— Corag',
     };
     return {
       subject: subjects[t] || subjects.general,
       text: bodies[t] || bodies.general,
     };
   }
+
   const subjects: Record<string, string> = {
-    'tech-talk': 'We received your talk proposal — Pereira Tech Talks',
-    sponsorship: 'We received your sponsorship inquiry — Pereira Tech Talks',
-    press: 'We received your press inquiry — Pereira Tech Talks',
-    conduct: 'We received your report — Pereira Tech Talks',
-    general: 'We received your message — Pereira Tech Talks',
+    organization: 'We received your message — Corag',
+    ally: 'We received your partnership enquiry — Corag',
+    press: 'We received your press enquiry — Corag',
+    report: 'We received your report — Corag',
+    conduct: 'We received your report — Corag',
+    general: 'We received your message — Corag',
   };
   const bodies: Record<string, string> = {
-    'tech-talk':
-      'Thanks for submitting your talk. We review proposals year-round and reply within 7 business days.\n\n— Pereira Tech Talks',
-    sponsorship:
-      'Thanks for your interest in sponsoring Pereira Tech Talks. An organizer will follow up within 5 business days.\n\n— Pereira Tech Talks',
+    organization:
+      'Thanks for writing. We will get in touch to understand what your organization can offer and how to coordinate it.\n\n— Corag',
+    ally: 'Thanks for writing. We will get in touch to discuss the partnership and next steps.\n\n— Corag',
     press:
-      'Thanks for reaching out. Our press contacts will reply as soon as possible.\n\n— Pereira Tech Talks',
+      'Thanks for reaching out. We will review your enquiry and reply as soon as possible.\n\n— Corag',
+    report:
+      'Thanks for reporting it. We will review what you told us.\n\nIf this is urgent and affects someone right now, please also report it in the application: https://ayuda.corag.app\n\n— Corag',
     conduct:
-      'Thanks for contacting us. Your message will be handled confidentially by the conduct team.\n\n— Pereira Tech Talks',
+      'Thanks for writing. Your message is handled confidentially.\n\nIf anyone is in immediate danger, contact your local emergency services first — this channel is not an emergency service.\n\n— Corag',
     general:
-      "Thanks for writing. We'll get back to you as soon as we can.\n\n— Pereira Tech Talks",
+      'Thanks for writing. We will get back to you as soon as we can.\n\nIf what you need is to ask for help or contribute, that happens in the application: https://ayuda.corag.app\n\n— Corag',
   };
   return {
     subject: subjects[t] || subjects.general,

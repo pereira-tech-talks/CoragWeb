@@ -4,11 +4,9 @@ import {
   booleanToDailyBot,
   CONTACT_FORM_UUID,
   CONTACT_TOPIC_VALUES,
-  EXPERIENCE_LEVEL_VALUES,
   LANG_VALUES,
   lookupChoice,
   normalizePagePath,
-  SPONSOR_TIER_VALUES,
   slugify,
   submitFormResponse,
 } from '../../../functions/api/_dailybot';
@@ -45,13 +43,16 @@ describe('lookupChoice (label values for Corag org)', () => {
   it('maps internal slugs and labels to canonical DailyBot labels', () => {
     expect(lookupChoice('general', CONTACT_TOPIC_VALUES)).toBe('General');
     expect(lookupChoice('General', CONTACT_TOPIC_VALUES)).toBe('General');
-    expect(lookupChoice('the-library-of-tomorrow', CONTACT_TOPIC_VALUES)).toBe(
-      'The Library of Tomorrow'
+    expect(lookupChoice('organization', CONTACT_TOPIC_VALUES)).toBe(
+      'Organization'
     );
+    expect(lookupChoice('organización', CONTACT_TOPIC_VALUES)).toBe(
+      'Organization'
+    );
+    expect(lookupChoice('partner', CONTACT_TOPIC_VALUES)).toBe('Ally');
+    expect(lookupChoice('report', CONTACT_TOPIC_VALUES)).toBe('Report');
     expect(lookupChoice('es', LANG_VALUES)).toBe('Spanish');
     expect(lookupChoice('en', LANG_VALUES)).toBe('English');
-    expect(lookupChoice('beginner', EXPERIENCE_LEVEL_VALUES)).toBe('Beginner');
-    expect(lookupChoice('gold', SPONSOR_TIER_VALUES)).toBe('Gold');
   });
 
   it('returns null for unknown choices', () => {

@@ -1,6 +1,6 @@
 # Source Directory (`src/`)
 
-This is the main source directory for the Pereira Tech Talks Astro website (v3.0.0). All application code, components, pages, and content live here.
+This is the main source directory for the Corag Astro website. All application code, components, pages, and content live here.
 
 ## Directory Structure
 

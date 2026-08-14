@@ -22,7 +22,7 @@ export const GET: APIRoute = async () => {
   const page = pages.find((p) => p.id === 'en/contact');
 
   const markdown = serializeGenericToMarkdown({
-    title: `${t.title} — Pereira Tech Talks`,
+    title: `${t.title} — Corag`,
     description: t.description,
     lang,
     canonical: `${SITE_URL}/en/contact`,

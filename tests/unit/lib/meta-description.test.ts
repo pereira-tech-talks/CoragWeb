@@ -17,7 +17,7 @@ import {
 } from '@/lib/meta-description';
 
 const LONG =
-  'How to contribute to Pereira Tech Talks — from giving a talk to writing for the blog to maintaining the open-source website. Every kind of contribution has a clear path and a real impact for the community.';
+  'How to contribute to Corag — from integrating with the open API to writing for the blog to coordinating an operational front. Every kind of contribution has a clear path and a real effect on what gets delivered.';
 
 describe('truncateToBand', () => {
   it('leaves text already inside the band alone', () => {
@@ -47,8 +47,8 @@ describe('truncateToBand', () => {
     // appending a clause to a 126-char lead and then trimming returned the
     // 126-char lead — a silent no-op on 131 pages.
     const lead =
-      'Pereira Tech Talks meetup — Internal programming marathon at UTP. Community archive page with the program.';
-    const extended = `${lead} Part of the Pereira Tech Talks community archive in Pereira, Risaralda, Colombia.`;
+      'How a delivery gets verified: the window, the evidence, and the administrative review between a contribution and a receipt.';
+    const extended = `${lead} Published by Corag, where aid gets coordinated and every delivery is backed by evidence.`;
     const out = truncateToBand(extended, DESCRIPTION_MAX, DESCRIPTION_MIN);
     expect(out.length).toBeGreaterThanOrEqual(DESCRIPTION_MIN);
     expect(out.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
@@ -68,7 +68,7 @@ describe('buildMetaDescription', () => {
   it('extends a short lead into the band using the given facts', () => {
     const out = buildMetaDescription({
       lead: 'Electrical engineer and researcher.',
-      clauses: [phrases.speakerTalks(3), phrases.community],
+      clauses: [phrases.postCount(3), phrases.community],
       lang: 'en',
     });
     expect(out.length).toBeGreaterThanOrEqual(DESCRIPTION_MIN);
@@ -90,7 +90,7 @@ describe('buildMetaDescription', () => {
       clauses: [clause],
       lang: 'en',
     });
-    expect(out.split('Part of the Pereira Tech Talks').length - 1).toBe(1);
+    expect(out.split('Published by Corag').length - 1).toBe(1);
   });
 
   it('skips a clause that would overshoot and tries the next', () => {
@@ -122,13 +122,13 @@ describe('buildMetaDescription', () => {
 
   it('carries Spanish phrasing on Spanish pages', () => {
     const es = metaPhrases('es');
-    expect(es.community).toContain('Parte del archivo');
-    expect(es.talkCount(2)).toBe('2 charlas esa noche');
-    expect(es.talkCount(1)).toBe('1 charla esa noche');
+    expect(es.community).toContain('Publicado por Corag');
+    expect(es.postCount(2)).toBe('2 artículos en el blog de Corag');
+    expect(es.postCount(1)).toBe('1 artículo en el blog de Corag');
   });
 
   it('pluralizes English clauses correctly', () => {
-    expect(phrases.talkCount(1)).toBe('1 talk on the night');
-    expect(phrases.talkCount(4)).toBe('4 talks on the night');
+    expect(phrases.postCount(1)).toBe('1 article on the Corag blog');
+    expect(phrases.postCount(4)).toBe('4 articles on the Corag blog');
   });
 });

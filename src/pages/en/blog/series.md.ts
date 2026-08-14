@@ -27,7 +27,7 @@ export const GET: APIRoute = async () => {
   const t = getTranslations('en').seriesListingPage;
   const markdown = serializeSeriesListingToMarkdown(entries, {
     lang: 'en',
-    title: `Pereira Tech Talks — ${t.title}`,
+    title: `Corag — ${t.title}`,
     description: t.description,
   });
 

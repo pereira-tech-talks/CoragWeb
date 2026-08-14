@@ -22,9 +22,9 @@ export const GET: APIRoute = async () => {
 
   const markdown = serializeBlogIndexToMarkdown(entries, {
     lang: 'en',
-    title: 'Pereira Tech Talks Blog — Articles & Stories',
+    title: 'Corag Blog — Articles & Stories',
     description:
-      'Articles from the Pereira Tech Talks community: technology, AI, building things, and the people behind them.',
+      'How aid gets coordinated, how deliveries get verified, and what we learn operating in the field.',
   });
 
   return new Response(markdown, {

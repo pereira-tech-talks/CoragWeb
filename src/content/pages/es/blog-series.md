@@ -1,18 +1,20 @@
 ---
-title: "Series del Blog — Pereira Tech Talks"
-description: "Colecciones curadas de artículos en varios capítulos de la comunidad Pereira Tech Talks — análisis profundos sobre tecnología, ingeniería de software y el oficio de construir."
-lastUpdated: 2026-05-30
+title: "Series del blog — Corag"
+description: "Colecciones de artículos en varios capítulos sobre el modelo de Corag, el terreno y la tecnología detrás de la red."
+lastUpdated: 2026-08-14
 ---
 
-## Artículos curados en varios capítulos
+## Artículos en varios capítulos
 
-Las series agrupan artículos relacionados en narrativas profundas de varios capítulos. Son ideales cuando un tema merece una exploración sostenida — de los fundamentos a la práctica avanzada — a través de varios autores y semanas.
+Las series agrupan artículos relacionados en recorridos largos. Sirven cuando un
+tema merece una exploración sostenida — de los fundamentos a la práctica — a lo
+largo de varias entregas.
 
-Durante la transición a Pereira Tech Talks v3.0.0, la colección de series se está reconstruyendo alrededor de los nuevos programas comunitarios (ediciones del Pereira Tech Day, verticales y canal de IA). Aquí aparecerán nuevas series a medida que la comunidad las publique.
+Aquí aparecerán las series a medida que se publiquen.
 
 ---
 
-## Explora el blog
+## Explora
 
 - [Todos los artículos](/blog)
-- [Sobre Pereira Tech Talks](/about)
+- [Sobre Corag](/about)

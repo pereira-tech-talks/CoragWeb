@@ -78,7 +78,7 @@ function closeAllDropdowns() {
     <a
       href={prefix || '/'}
       class="flex items-center select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-      aria-label="Pereira Tech Talks"
+      aria-label="Corag"
     >
       <img
         class="h-8 w-auto md:h-9 dark:hidden"

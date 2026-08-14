@@ -24,14 +24,19 @@ const contactPageSchema = {
   name: t.contactPage.title,
   description: t.contactPage.description,
   url: `${siteUrl}${prefix}/contact`,
+  /*
+   * No `email` until Corag publishes one. Declaring a contact point without a
+   * reachable address is worse than declaring none: search engines surface it
+   * and the message goes nowhere.
+   */
   mainEntity: {
     '@type': 'Organization',
-    name: 'Pereira Tech Talks',
+    name: 'Corag',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'general',
-      email: 'pereiratechtalks@gmail.com',
-      availableLanguage: ['English', 'Spanish'],
+      url: `${siteUrl}${prefix}/contact`,
+      availableLanguage: ['Spanish', 'English'],
     },
   },
 };
@@ -71,8 +76,8 @@ const quickLinks = t.contactPage.quickLinks.map((link) => ({
   title={t.contactPage.title}
   description={t.contactPage.description}
   keywords={lang === 'en'
-    ? ['contact Pereira Tech Talks', 'Corag contact', 'speak at meetup', 'Pereira Tech Day call for speakers', 'sponsor Pereira tech community', 'collaborate Pereira Tech Talks']
-    : ['contactar Pereira Tech Talks', 'contacto Corag', 'ser ponente meetup', 'Pereira Tech Day convocatoria conferencistas', 'patrocinar comunidad tecnología Pereira', 'colaborar Pereira Tech Talks']}
+    ? ['contact Corag', 'Corag partnerships', 'offer capacity to Corag', 'report a problem Corag', 'Corag press enquiries', 'collaborate with Corag']
+    : ['contactar Corag', 'alianzas Corag', 'aportar capacidad a Corag', 'reportar un problema Corag', 'prensa Corag', 'colaborar con Corag']}
 >
   <Fragment slot="head">
     <JsonLd data={contactPageSchema} />

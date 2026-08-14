@@ -33,7 +33,7 @@ function buildTools(activeLang: 'en' | 'es'): WebMCPTool[] {
     {
       name: 'search_blog',
       description:
-        'Search Pereira Tech Talks blog posts by keyword. Returns titles, descriptions, slugs, and URLs.',
+        'Search Corag blog posts by keyword. Returns titles, descriptions, slugs, and URLs.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -68,7 +68,7 @@ function buildTools(activeLang: 'en' | 'es'): WebMCPTool[] {
     },
     {
       name: 'list_series',
-      description: 'List all blog series published on Pereira Tech Talks.',
+      description: 'List all blog series published on Corag.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -110,7 +110,7 @@ function buildTools(activeLang: 'en' | 'es'): WebMCPTool[] {
     {
       name: 'list_meetups',
       description:
-        'Fetch the Pereira Tech Talks meetups listing as Markdown (for-agents endpoint).',
+        'Fetch a Corag listing page as Markdown (for-agents endpoint).',
       inputSchema: {
         type: 'object',
         properties: {
