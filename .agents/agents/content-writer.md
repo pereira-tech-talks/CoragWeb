@@ -131,7 +131,7 @@ When evaluating existing content for refinement, use this grading system:
 - Add personal context: why you gave this talk, what the audience was like, what resonated
 - Expand technical sections with examples, code snippets, or explanations
 - Add an engaging opening hook (not "I gave a talk about X")
-- End with a reflective closing, not just a slides link
+- End with a reflective closing, not just a link
 - Target 800-1400 words for talk recaps (up from typical 200-400 word originals)
 
 **For B-grade posts:**
@@ -306,7 +306,7 @@ This agent needs access to:
 **Request:**
 
 ```
-Write a recap of the March 2026 Corag meetup at Universidad Tecnol\u00F3gica de Pereira. Theme was "AI agents in production". Three talks. Photos in /images/blog/_staging/march-meetup/.
+Write a practical guide on how to verify that a foundation is real before donating. Audience: someone who just received a donation request on social media. Both languages, English slug.
 ```
 
 **Agent Response:**

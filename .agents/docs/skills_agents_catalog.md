@@ -43,10 +43,6 @@ Everyday development work.
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
 | add-blog-post | create   | `/add-blog-post` | sonnet | **Mandatory for new blog posts** — topic mode (writes content) or content mode (scaffolding). |
-| add-slide-deck | create  | `/add-slide-deck` | sonnet | **Mandatory for new slide decks** — internal Reveal.js, external-embed, or external-link. |
-| add-meetup    | create   | `/add-meetup`    | sonnet | **Mandatory for new meetups** — bilingual entries in the `meetups` collection with optional talk/speaker/sponsor references. |
-| add-talk      | create   | `/add-talk`      | sonnet | **Mandatory for new talks** — bilingual talk files linked to speakers + meetup/PTD event. |
-| add-event     | create   | `/add-event`     | sonnet | **Mandatory for new events** — workshops, hackathons, conferences, webinars in the `events` collection. |
 | audit-post    | review   | `/audit-post`    | sonnet | Pre-publication audit for blog posts — SEO, AEO, accessibility, images, content quality, i18n parity, and project conventions. |
 | audit-series  | review   | `/audit-series`  | sonnet | Pre-publication audit for blog series — series definition, post ordering, cross-post consistency, navigation, and individual post summary checks. |
 | audit-taxonomy | review  | `/audit-taxonomy` | sonnet | Read-only audit of the blog tag taxonomy — frequency, orphans, hierarchy, and proposals for new subtopic tags. Writes report to `tmp/audit-taxonomy/`. See [Blog Posts → Tags](../../docs/features/BLOG_POSTS.md). |
@@ -63,8 +59,6 @@ Complex planning and architecture.
 
 | Skill | Intent | Invocation | Model | Description |
 |-------|--------|-------------|-------|-------------|
-| add-ptd-edition | create | `/add-ptd-edition` | sonnet | **Mandatory for new Pereira Tech Day editions** — annual conference with schedule, keynotes, brand kit, organizers, and gallery. |
-| issue-certificates | create | `#issue-certificates` | sonnet | Batch-issue signed attendance certificates from CSV (import → sign → verify → build). Never commit private keys or attendee emails. |
 
 ---
 
@@ -118,7 +112,6 @@ This diagram shows how skills and agents interact during typical workflows.
   │                                          ┌────────────────┐  │
   │                                          │ Tier 2 Skills  │  │
   │                                          │ add-blog-post  │  │
-  │                                          │ add-slide-deck │  │
   │                                          │ audit-post     │  │
   │                                          │ audit-series   │  │
   │                                          │ write-tests    │  │
@@ -182,21 +175,6 @@ Skills, commands, and agents for creating and managing blog content.
 **Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. After creation, use `/audit-post` for individual post review and `/audit-series` for series-level validation (ordering, cross-post consistency, navigation). After publishing, use `/promote-post` to generate social media content for distribution.
 
 **Mandatory policy:** Any new file creation in `src/content/blog/` must go through `add-blog-post` to enforce multilingual parity and schema/frontmatter consistency.
-
-### 2. Slides & Presentations
-
-Skills and resources for creating and managing presentation decks (Reveal.js internal, external-embed, external-link).
-
-| Resource | Type | Description |
-|----------|------|-------------|
-| add-slide-deck | Skill (T2) | **Mandatory for new decks** — creates internal Reveal.js, external-embed, or external-link deck files |
-| optimize-image | Skill (T1) | Convert and optimize hero images to WebP for slide decks |
-| translate-sync | Skill (T1) | Synchronize deck content between EN and ES versions |
-| i18n-guardian | Agent (T2) | Translation quality verification for deck metadata |
-
-**Relationship:** `/add-slide-deck` creates the deck files in `src/content/slides/{en,es}/`. Use `/optimize-image` for hero images in `public/images/slides/<slug>/`. The feature documentation lives in `docs/features/SLIDES.md`.
-
-**Mandatory policy:** Any new file creation in `src/content/slides/` must go through `add-slide-deck` to enforce multilingual parity, schema consistency, and correct slug conventions.
 
 ### 3. i18n & Translation
 

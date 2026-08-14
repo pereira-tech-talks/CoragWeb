@@ -227,7 +227,7 @@ function check_devcontainer() {
 		echo ""
 		echo "   To work with this project:"
 		echo "   1. Start Docker services: cd docker/local && bash docker.sh up"
-		echo "   2. Access the container: bash docker.sh bash pertechtalks"
+		echo "   2. Access the container: bash docker.sh bash corag"
 		echo "   3. Or use VS Code Dev Containers if configured"
 		return 1
 	fi
@@ -333,7 +333,7 @@ alias help='show_welcome'
 # Welcome message
 function show_welcome() {
     echo ""
-    print.success "🚀 Pereira Tech Talks Development Container"
+    print.success "🚀 Corag Development Container"
     echo ""
 
     # Check container status

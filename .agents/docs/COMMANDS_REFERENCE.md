@@ -1,7 +1,7 @@
 # Commands Reference
 
 > **Auto-maintained.** Update this file whenever a skill or command is added or removed.
-> This repository (Pereira Tech Talks v3.0.0) has its own commands tailored to an Astro-based bilingual community platform with rich content collections (blog, slides, meetups, events, Pereira Tech Days, verticals, speakers, talks, contributors, sponsors, channels).
+> This repository (`corag.app`) has its own commands, tailored to an Astro site with two languages and a small set of content collections (blog, pages, authors, channels, contributors, tags, series, notifications).
 > See [Skills & Agents Catalog](skills_agents_catalog.md) for detailed tiers, capabilities, and domain guides.
 
 ---
@@ -66,11 +66,6 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 |---------|---------------|-------------|
 | `/new-post` | `.agents/commands/new-post.md` | Create a new blog post (interactive guided flow) |
 | `/add-blog-post` | `.agents/skills/add-blog-post/SKILL.md` | Create blog posts — topic mode (writes content) or content mode (scaffolding) |
-| `/add-slide-deck` | `.agents/skills/add-slide-deck/SKILL.md` | Create slide decks — internal Reveal.js, external-embed, or external-link |
-| `/add-meetup` | `.agents/skills/add-meetup/SKILL.md` | Create a Pereira Tech Talks monthly meetup entry (bilingual frontmatter, optional talk/speaker/sponsor refs) |
-| `/add-event` | `.agents/skills/add-event/SKILL.md` | Create a non-meetup event entry (workshop, hackathon, conference, webinar) in the `events` collection |
-| `/add-ptd-edition` | `.agents/skills/add-ptd-edition/SKILL.md` | Create a Pereira Tech Day annual edition (schedule, keynotes, brand kit, organizers, gallery) |
-| `/issue-certificates` | `.agents/skills/issue-certificates/SKILL.md` | Batch-issue signed attendance certificates from CSV (import → sign → verify → build) |
 | `/audit-analytics` | `.agents/skills/audit-analytics/SKILL.md` | Audit Umami event coverage, first-party proxy, and privacy-safe payloads |
 | `/audit-language-integrity` | `.agents/skills/audit-language-integrity/SKILL.md` | Audit sitewide language integrity and triage the scanner's two confidence tiers |
 | `/audit-content-parity` | `.agents/skills/audit-content-parity/SKILL.md` | Audit whether ES and EN carry the same content, and fix the six classes in the order that avoids re-work |

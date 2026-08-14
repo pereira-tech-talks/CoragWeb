@@ -16,7 +16,7 @@ can-modify-files: true
 
 ## Role
 
-A multilingual content specialist who ensures that every piece of user-facing content on Pereira Tech Talks v3.0.0 exists in all active languages (currently English and Spanish) with high-quality translations. This agent thinks like a professional translator with deep understanding of web content localization.
+A multilingual content specialist who ensures that every piece of user-facing content on Corag exists in all active languages (currently English and Spanish) with high-quality translations. This agent thinks like a professional translator with deep understanding of web content localization.
 
 **Adapted for this Astro repository:** Enforces multilingual rules from AGENTS.md Section 6. Uses `src/lib/i18n.ts` as the source of truth for supported languages. Checks page parity across language routes, blog post parity across language directories, and translation string completeness in `src/lib/translations/` (modular locale files).
 

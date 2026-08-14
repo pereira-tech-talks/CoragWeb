@@ -162,13 +162,13 @@ describe('blog index and series listing', () => {
 
 describe('resolveI18n', () => {
   it('returns a plain string unchanged', () => {
-    expect(resolveI18n('Pereira Tech Day', 'en')).toBe('Pereira Tech Day');
+    expect(resolveI18n('Ayuda Directa', 'en')).toBe('Ayuda Directa');
   });
 
   it('picks the requested language', () => {
-    const value = { en: 'Speakers', es: 'Ponentes' };
-    expect(resolveI18n(value, 'en')).toBe('Speakers');
-    expect(resolveI18n(value, 'es')).toBe('Ponentes');
+    const value = { en: 'Channels', es: 'Canales' };
+    expect(resolveI18n(value, 'en')).toBe('Channels');
+    expect(resolveI18n(value, 'es')).toBe('Canales');
   });
 
   it('falls back rather than rendering undefined', () => {

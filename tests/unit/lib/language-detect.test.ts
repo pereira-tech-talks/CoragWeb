@@ -95,7 +95,7 @@ describe('detectLanguage', () => {
 
   it('reports low confidence for genuinely mixed text', () => {
     const score = detectLanguage(
-      'Talk by Diana at the Pereira Tech Talks meetup Librerías para manipulación del DOM'
+      'Guide by Diana on Corag about Librerías para manipulación del DOM'
     );
     expect(score.confidence).toBeLessThan(CONFIDENT_MISMATCH_CONFIDENCE);
   });
@@ -193,7 +193,7 @@ describe('analyzeDocument', () => {
     // Correct English prose carrying an untranslated proper noun — measured at
     // 1/12 precision as a defect, so it must never fail a build.
     const verdict = analyzeDocument(
-      'Talk by Carlos Álvaro at the Pereira Tech Talks meetup Visión artificial con OpenCV and functional programming.',
+      'Guide by Carlos Álvaro on Corag about Visión artificial con OpenCV and functional programming.',
       'en'
     );
     expect(verdict.flagged).toBe(false);

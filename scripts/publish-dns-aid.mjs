@@ -4,8 +4,8 @@
  *
  * Requirements:
  *   CF_API_TOKEN   — token with Zone.DNS Edit (and Zone.DNSSEC Edit to enable DNSSEC)
- *   CF_ZONE_ID     — zone id for pereiratechtalks.org
- *                    (or set CF_ZONE_NAME=pereiratechtalks.org to look it up)
+ *   CF_ZONE_ID     — zone id for corag.app
+ *                    (or set CF_ZONE_NAME=corag.app to look it up)
  *
  * Optional:
  *   DNS_AID_HOSTS  — comma-separated hosts to advertise (default: apex + v3)
@@ -19,20 +19,18 @@
  *   DNS_AID_DRY_RUN=1 node scripts/publish-dns-aid.mjs
  */
 
-const ZONE_NAME = process.env.CF_ZONE_NAME || 'pereiratechtalks.org';
+const ZONE_NAME = process.env.CF_ZONE_NAME || 'corag.app';
 const API = 'https://api.cloudflare.com/client/v4';
 const DRY_RUN = process.env.DNS_AID_DRY_RUN === '1';
 
 /** Hostnames that agents / scanners resolve (FQDN without trailing dot). */
-const TARGET_HOSTS = (
-  process.env.DNS_AID_HOSTS || 'pereiratechtalks.org,pereiratechtalks.org'
-)
+const TARGET_HOSTS = (process.env.DNS_AID_HOSTS || 'corag.app')
   .split(',')
   .map((h) => h.trim())
   .filter(Boolean);
 
 /**
- * For zone pereiratechtalks.org:
+ * For zone corag.app:
  *   apex scan → name `_index._agents`
  *   v3 scan   → name `_index._agents.v3`
  */
@@ -223,7 +221,7 @@ async function main() {
     );
   }
   console.log(
-    '\nRe-scan: POST https://isitagentready.com/api/scan {"url":"https://pereiratechtalks.org"}'
+    '\nRe-scan: POST https://isitagentready.com/api/scan {"url":"https://corag.app"}'
   );
 }
 

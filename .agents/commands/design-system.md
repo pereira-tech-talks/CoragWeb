@@ -7,7 +7,7 @@ description: Create or refresh this repo's DESIGN.md (design tokens + rules for 
 
 Create or refresh this repository's [`docs/DESIGN.md`](../../docs/DESIGN.md) — the
 agent-facing UI contract indexed from `AGENTS.md` — so coding agents generate
-interface output consistent with Pereira Tech Talks' **own** conventions rather
+interface output consistent with Corag' **own** conventions rather
 than generic defaults. This command is a **thin delegator** to the DeepWorkPlan
 `deepworkplan-addon-design-system` addon; it carries no logic of its own.
 
@@ -40,11 +40,10 @@ than generic defaults. This command is a **thin delegator** to the DeepWorkPlan
     scales, per-edition kits.
   - `src/components/ui/` primitives (`Pill.astro`, `EmptyState.astro`) and
     `src/components/pages/*Page.astro` for real component patterns.
-  - `src/content/pereiraTechDays/{year}.{json,yaml}` — per-edition `brandKit`s.
 - **Integrity rules to enforce:** body text ≥ WCAG AA 4.5:1 (`text-corag`,
   `text-corag-secondary`); `text-gray-400/500` and their `dark:` variants are
   **forbidden** for body text; `--corag-accent` (~2.4:1 on `--corag-bg`) is never body
-  text; `--corag-*` is never set outside `global.css` or a `[data-edition-theme]`
+  text; `--color-corag-*` is never set outside `global.css`
   scope; light **and** dark verified; motion gated by `prefers-reduced-motion`.
 - Reason about the real tokens — never paste a third-party brand's `DESIGN.md`.
 - Keep `DESIGN.md` and `BRAND_GUIDE.md` consistent: `DESIGN.md` documents

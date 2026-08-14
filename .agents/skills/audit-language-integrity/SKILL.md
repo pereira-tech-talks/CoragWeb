@@ -48,7 +48,7 @@ content edits to close what it finds.
 | Input | Required | Notes |
 |---|---|---|
 | A current build | yes | The scanner reads `dist/`, not `src/` |
-| `$SCOPE` | no | A collection to focus on (`meetups`, `speakers`, …) |
+| `$SCOPE` | no | A collection or route family to focus on (`blog`, `pages`, …) |
 
 ## Steps
 
@@ -87,20 +87,20 @@ is the price of not flagging every heading and venue name.
 
 ### Step 3: Fix in this order — it collapses the count fastest
 
-1. **Bodies.** A missing `{slug}.en.md` sibling makes the whole English page
-   Spanish. One file fixes dozens of blocks. Check first:
+1. **Bodies.** A missing English file makes the whole English page Spanish.
+   One file fixes dozens of blocks. Check first:
    ```bash
-   for f in src/content/meetups/*.md; do
-     case "$f" in *.en.md) continue;; esac
-     [ -f "${f%.md}.en.md" ] || echo "missing EN body: $f"
+   for f in src/content/blog/es/*.md; do
+     [ -f "src/content/blog/en/$(basename "$f")" ] || echo "missing EN: $f"
    done
    ```
-2. **Frontmatter titles.** A Spanglish `title.en` ("Web Development Moderno")
-   surfaces on the detail page, the index, and every speaker who spoke there.
-3. **Referenced collections.** Talk titles and abstracts render on meetup and
-   speaker pages, so an untranslated `title.en` in `talks` leaks onto both.
-4. **Section labels inside bodies.** `### Fuentes` vs `### Sources`, `por` vs
-   `by`, `**Ponente:**` vs `**Speaker:**`.
+2. **Frontmatter titles.** A Spanglish English title ("Web Development
+   Moderno") surfaces on the detail page and on every listing that renders it.
+3. **Bilingual fields in YAML collections.** `authors.bio`, `channels.description`
+   and `contributors.role` all render in both languages; an untranslated `en`
+   leaks onto every surface that reads them.
+4. **Section labels inside bodies.** `## Sigue leyendo` vs `## Keep reading`,
+   `por` vs `by`.
 5. **Rendered slugs.** A component printing `slug.replace(/-/g, ' ')` instead of
    the entry's title leaks a Spanish slug onto an English page. Grep for it.
 
@@ -116,7 +116,7 @@ fixing them took the sitewide count from 3 flagged to 0:
 | Symptom | Actual cause |
 |---|---|
 | An English sentence scored confidently Spanish | `(EN/ES)` lowercases into `en` + `es`, two of the strongest Spanish stopwords |
-| A Reveal deck's `<figcaption>` scored as prose | `markdownToText` did not strip embedded HTML |
+| A `<figcaption>` scored as prose | `markdownToText` did not strip embedded HTML |
 | A cited English book title in a Spanish post | `confidence` measured one-sidedness, so a single marker scored 1.00 |
 
 The classifier is `src/lib/language-detect.ts`, covered by
@@ -146,16 +146,17 @@ pnpm run biome:check
 - [ ] No allowlist, ignore file, or suppression was added.
 - [ ] Spanish edits keep their diacritics (Standards greps in
       [`docs/STANDARDS.md`](../../../docs/STANDARDS.md)).
-- [ ] No fact was invented to fill a gap in a historical meetup.
+- [ ] No fact was invented to fill a gap. A missing translation is recorded,
+      never fabricated.
 - [ ] A classifier change ships with a regression test quoting the real sentence.
 
 ## Stop Conditions
 
 **Stop and ask** if:
 
-- A flagged page needs content that does not exist (an untranslated body for an
-  event nobody recorded) — record the gap, do not invent it.
-- The fix would change a proper noun, an event name, or a venue.
+- A flagged page needs content that does not exist — record the gap, do not
+  invent it.
+- The fix would change a proper noun, an organization name, or a place name.
 - Flagged count **rises** after a change — you have translated something that
   was already correct.
 
@@ -169,7 +170,7 @@ pnpm run biome:check
 ## Related
 
 - [`translate-sync`](../translate-sync/SKILL.md) — parity between language pairs
-- [`add-meetup`](../add-meetup/SKILL.md) — writes both bodies for new meetups
+- [`add-blog-post`](../add-blog-post/SKILL.md) — writes both language versions
 - [`i18n-guardian`](../../agents/i18n-guardian.md) — reads this skill's report
 - [`docs/I18N_GUIDE.md`](../../../docs/I18N_GUIDE.md) · [`docs/features/CONTENT_QA_CHECKLIST.md`](../../../docs/features/CONTENT_QA_CHECKLIST.md)
 

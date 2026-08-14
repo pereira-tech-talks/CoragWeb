@@ -1,4 +1,4 @@
-# AI Diff Reviewer — repo extension for `pereiratechtalks.org` v3
+# AI Diff Reviewer — repo extension for `corag.app` v3
 
 > Layered on top of the shipped default review prompt. Anchors severity to this
 > repo's real conventions (Astro 7 SSG + Svelte 5 islands + TS 6 + Tailwind 4
@@ -8,16 +8,20 @@
 ## Severity overrides for this codebase
 
 - **Always `critical`:**
-  - **Per-edition palette leak.** Setting `--corag-*` tokens outside `src/styles/global.css`
-    or a `[data-edition-theme="{year}"]` scope — including inline
-    `style="--corag-primary: …"` on a component. Chrome (Header/footer/lang switch/theme
-    toggle) must keep the global Corag brand on every PTD edition page.
+  - **Design token override.** Setting `--color-corag-*` outside
+    `src/styles/global.css` — including an inline
+    `style="--color-corag-primary: …"` on a component. The palette is declared
+    once and every surface reads it.
   - **New top-level route not in the middleware allowlist.** A new page under
     `src/pages/` (or `src/pages/en/`) without a matching entry in
     `src/middleware.ts` (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`) — the route 404s in
     production until allowlisted.
-  - **Reveal.js CSS/JS imported outside `SlideLayout.astro`** (e.g. into `MainLayout`
-    or a shared component) — leaks deck assets onto every route.
+  - **DailyBot form or question ids hardcoded in source.** They come from
+    `DAILYBOT_CONTACT_FORM` / `DAILYBOT_CONDUCT_FORM` and must fail closed when
+    absent; a baked-in id can post real submissions into the wrong workspace.
+  - **Personal data collected on this site.** Any form field asking about a
+    specific person's need, location or situation belongs in the application,
+    not in this repository.
   - **remark/rehype reintroduced into the Markdown pipeline.** Adding
     `markdown.remarkPlugins` / `rehypePlugins` / `remarkRehype` to `astro.config.mjs`,
     switching `markdown.processor` back to `unified()`, or adding a `rehype-*` /
@@ -30,15 +34,23 @@
   - **Secret committed.** Any API key / token / `PUBLIC_GOOGLE_SITE_VERIFICATION`
     (banned per the analytics policy), or a `google-site-verification` meta tag in a
     template/component.
-  - **i18n content added in only one language.** A blog post / meetup / slide deck /
-    page added under `en/` (or `es/`) without its counterpart, or a new UI string added
-    to `src/lib/translations/en.ts` but not `es.ts` (or vice versa).
+  - **i18n content added in only one language.** A blog post or page twin added
+    under `es/` (or `en/`) without its counterpart, or a new UI string added to
+    `src/lib/translations/es.ts` but not `en.ts` (or vice versa).
+  - **A new top-level route with no `src/middleware.ts` entry.** The page works
+    in dev and 404s in production — this is a silent production break.
+  - **An unverifiable claim shipped in content.** A statistic with no source, an
+    organization named as trustworthy, or a CTA to a channel Corag does not run
+    (only Facebook, Instagram and the WhatsApp group exist).
 
 - **Escalate to `warning`:**
-  - **Failing WCAG AA text color** for body/secondary text: `text-gray-400`,
-    `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`, or `--corag-accent`
-    (`#E8A33D`) used for body text. Approved secondary text is
-    `text-gray-600 dark:text-gray-300` / `text-corag-secondary`.
+  - **Failing WCAG AA text colour** for body/secondary text: `text-gray-400`,
+    `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`, or
+    `--color-corag-accent` used for body text. Approved secondary text is
+    `text-corag-secondary`.
+  - **`bg-corag-primary` paired with `text-white`.** The brand foreground flips
+    to rosa in dark mode; that pair measures roughly 1.5:1 there. Use
+    `bg-corag-fill` with `text-corag-on-fill`, which does not flip.
   - **`<img>` without `width` and `height`** (causes layout shift; also an a11y rule here).
   - **Hardcoded user-visible string** in a template/component instead of
     `getTranslations(lang)` — or a hardcoded URL instead of `getUrlPrefix(lang)`.
@@ -47,8 +59,10 @@
     `client:visible` / `client:idle` would suffice.
   - **Page wrapper importing `MainLayout`** directly (layout belongs inside the
     `*Page.astro` component), or `lang` passed as a variable instead of a string literal.
-  - **Non-English slug** for a blog post / meetup / series / PTD edition
+  - **Non-English slug** for a blog post, a series or a route
     (`YYYY-MM-DD_slug.md` must use an English slug in both languages).
+  - **Page copy changed without its `.md` twin.** `md:check` measures coverage,
+    so a twin that lost a section fails the gate.
   - **Spanish content missing diacritics** — e.g. `codigo`, `version`, `pagina`,
     `analisis`, `manana`, `espanol`, `diseno` in `src/content/**` or `es.ts`.
   - **`MainLayout` used for an `/internal/**` page** (must use `InternalLayout` /
@@ -79,6 +93,8 @@
   on new components — not raw non-Corag design tokens.
 - **Real validation gate** the diff should pass:
   `pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build`
-  (plus `pnpm run md:check`). Cite it when a change plausibly breaks it.
+  plus, for anything touching content or copy:
+  `pnpm run md:check:strict && pnpm run lang:check:strict && pnpm run seo:check:strict && pnpm run parity:check:strict`.
+  Cite the specific gate when a change plausibly breaks it.
 - **Commits** follow Conventional Commits with this repo's scopes
-  (`brand`, `blog`, `meetups`, `ptd`, `i18n`, `a11y`, `slides`, …).
+  (`brand`, `blog`, `pages`, `forms`, `i18n`, `a11y`, `seo`, `docs`, …).

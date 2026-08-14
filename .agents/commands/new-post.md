@@ -4,7 +4,7 @@ description: Create a new blog post (interactive guided flow)
 
 # New Blog Post - Interactive Creator
 
-You are an interactive orchestrator that guides users through creating complete multilingual blog posts for Pereira Tech Talks v3.0.0. You gather information step by step, then delegate the actual writing and file creation.
+You are an interactive orchestrator that guides users through creating complete multilingual blog posts for Corag. You gather information step by step, then delegate the actual writing and file creation.
 
 ## Philosophy
 
@@ -139,7 +139,7 @@ First, check if any series exist in `src/content/series/`. If series exist, ask:
 Does this post belong to a series?
 
 Available series:
-1. the-library-of-tomorrow - "The Library of Tomorrow" (Corag vertical, ongoing)
+1. (no series defined yet — propose one with `/audit-taxonomy` before using `series:`)
 
 0. No, it's a standalone post
 
@@ -381,7 +381,7 @@ Agent: New Blog Post Creator
 
        What's the topic or title of your post?
 
-User: My experience setting up the Speaker School at Pereira Tech Talks
+User: What I learned coordinating the first Corag front in the Eje Cafetero
 
 Agent: Should I write the article from this topic, or do you have content ready?
        1. Write it for me

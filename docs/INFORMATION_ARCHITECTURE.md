@@ -146,9 +146,9 @@ chain redirects and the first match wins.
 Three families:
 
 1. **Language swap** — every previously published `/es/...` path.
-2. **Retired route families** — meetups, talks, speakers, slides, verticals,
-   Pereira Tech Days, certificates, sponsors, press, and the localized route
-   slugs used briefly during the migration.
+2. **Retired route families** — every route family from the site this codebase
+   was forked from, plus the localized route slugs used briefly during the
+   migration.
 3. **Blog archive** — 52 rules mapping the Spanish source slugs from the
    previous site onto their English equivalents.
 

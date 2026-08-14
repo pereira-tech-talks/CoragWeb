@@ -85,12 +85,12 @@ node scripts/audit-content-parity.mjs --report tmp/parity-audit
 
 ### Step 4: The four traps
 
-**A URL returning 200 is not the right URL.** Meetup.com resolves an event by ID
-and ignores the group slug in the path, so `/pereira-tech-talks/events/{id}`
-renders *any* event under our URL. 47 archive links returned 200 while showing
-*Paleopalooza*, *Yoga for Teens 13-17*, a French NLP workshop. Verify the page is
-the event you mean — match its JSON-LD `startDate` to the entry's `date` and its
-`og:title` to the topic:
+**A URL returning 200 is not the right URL.** Plenty of platforms resolve a
+record by id and ignore the slug in the path, so a link can render *somebody
+else's* content under a URL that looks like ours. A previous audit found 47
+archive links returning 200 while showing entirely unrelated pages. Verify the
+page is the one you mean — match its JSON-LD or its `og:title` to what the entry
+claims:
 
 ```bash
 curl -sL -A 'Mozilla/5.0' "$URL" | grep -o '"startDate":"[^"]*"' | head -1
@@ -108,10 +108,10 @@ curl -s "https://www.youtube.com/oembed?url=$URL&format=json"
 URL in the first audit was fabricated or dead, and copying would have carried the
 defect into the language that was correct.
 
-**A metric can improve while the page gets worse.** Injecting 133 generated talk
-abstracts of the form *"Charla de {speaker} en el meetup {title} de Pereira Tech
-Talks"* cut thin pairs 42 → 4 and read as padding. Only 38 of 171 abstracts are
-real. **Read the output, not just the number.**
+**A metric can improve while the page gets worse.** A previous pass closed a
+thin-pair gap by injecting generated boilerplate on one side. The count fell
+from 42 to 4 and every affected page read as padding. **Read the output, not
+just the number.**
 
 **Verify the measuring tool before trusting a large count.** 86 of 111 structural
 findings once came from the scanner's own regex eating a blank line. A finding
@@ -164,7 +164,7 @@ Stop and ask if:
 - [`audit-language-integrity`](../audit-language-integrity/SKILL.md) — the sibling
   question: is each page in the language its URL promises?
 - [`translate-sync`](../translate-sync/SKILL.md) — translation quality.
-- [`add-meetup`](../add-meetup/SKILL.md) — produces 1:1 bodies by construction.
+- [`add-blog-post`](../add-blog-post/SKILL.md) — produces both languages by construction.
 - [`audit-post`](../audit-post/SKILL.md) — single-post quality review.
 
 ## Changelog

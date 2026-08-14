@@ -1,110 +1,98 @@
 # AGENTS.md — Documentation for AI Agents
 
-**Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others) operating on the Pereira Tech Talks v3.0.0 codebase.
+**Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others) operating on the `corag.app` codebase.
 
 ## Detailed Documentation
 
 | Category | Guide | Purpose |
 |----------|-------|---------|
-| Architecture | [Architecture](docs/ARCHITECTURE.md) | Components, Content Collections, Svelte integration, project structure, per-edition theming runtime |
+| Architecture | [Architecture](docs/ARCHITECTURE.md) | Components, Content Collections, Svelte integration, project structure |
 | Standards | [Standards](docs/STANDARDS.md) | Canonical coding rules, orthography, import order |
-| Brand | [Brand Guide](docs/BRAND_GUIDE.md) | Corag global identity, per-edition kits, voice & tone |
-| Design | [Design System](docs/DESIGN.md) | Agent-facing UI contract — `--corag-*` tokens, type/spacing/radius scales, component patterns |
-| Product | [Product Spec](docs/PRODUCT_SPEC.md) | Vision, audiences, verticals, success metrics |
+| Brand | [Brand Guide](docs/BRAND_GUIDE.md) | Palette, typography, logo usage, voice and tone |
+| Design | [Design System](docs/DESIGN.md) | Agent-facing UI contract — `--color-corag-*` tokens, type/spacing/radius scales, component patterns |
+| Messaging | [Messaging](docs/MESSAGING.md) | The coraje narrative and where each beat belongs |
+| Product | [Product Spec](docs/PRODUCT_SPEC.md) | Vision, audiences, the aid model, success metrics |
+| Information architecture | [Information Architecture](docs/INFORMATION_ARCHITECTURE.md) | URL surface, navigation, content relationships |
 | Blog | [Blog Posts](docs/features/BLOG_POSTS.md) | Tags, series, hero layouts, images, content lifecycle |
-| Blog Lifecycle | [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md) | End-to-end blog workflow |
-| Forms | [Forms](docs/features/FORMS.md) | Dailybot intakes — Contact, CFS, Speaker School, Sponsors, Calendar, CoC |
-| Forms | [Forms](docs/features/FORMS.md) | Dailybot intakes — Contact, CFS, Speaker School, Sponsors, Calendar, CoC |
-| Certificates | [Certificates](docs/features/CERTIFICATES.md) | Individual diploma pages, print/PDF, verify UX, fixtures |
-| Authors | [Authors](docs/features/AUTHORS.md) | Multi-author support, YAML schema, AuthorCard, JSON-LD |
-| Contributors | [Contributors](docs/features/CONTRIBUTORS.md) | Equipo directory — flat organizers + unified alumni |
-| Sponsors | [Sponsors](docs/features/SPONSORS.md) | Community partners — current/past (tiers on PTD only) |
-| Community stats | [Community Stats](docs/features/COMMUNITY_STATS.md) | Derived About counters via `getCommunityStats()` |
-| Talks | [Talks](docs/features/TALKS.md) | Talk entries, speaker history, meetup/PTD linkage |
+| Blog Lifecycle | [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md) | Draft, scheduled, published, demo visibility |
+| Forms | [Forms](docs/features/FORMS.md) | DailyBot intake — contact and conduct |
+| Authors | [Authors](docs/features/AUTHORS.md) | Author YAML schema, `AuthorCard`, JSON-LD |
+| Contributors | [Contributors](docs/features/CONTRIBUTORS.md) | The team directory |
 | Writing Voice | [Writing Voice Guide](docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop checklist, Corag voice, vocabulary blocklist |
-| Content QA | [Content QA Checklist](docs/features/CONTENT_QA_CHECKLIST.md) | Bilingual parity, orthography, SEO/AEO, automated gates |
-| Writing Craft | [Writing Craft Guide](docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, fact verification, quote handling, refinement |
+| Content QA | [Content QA Checklist](docs/features/CONTENT_QA_CHECKLIST.md) | Parity, orthography, SEO/AEO, automated gates |
+| Writing Craft | [Writing Craft Guide](docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, fact verification, refinement |
 | Testing | [Testing](docs/TESTING_GUIDE.md) | Vitest setup, conventions, writing tests |
 | Commands | [Development Commands](docs/DEVELOPMENT_COMMANDS.md) | npm scripts, Astro CLI, build workflows |
-| i18n | [I18N Guide](docs/I18N_GUIDE.md) | Spanish primary + English first-class international |
-| Performance | [Performance](docs/PERFORMANCE.md) | Astro SSG optimization, image handling, caching, per-edition perf |
-| Accessibility | [Accessibility](docs/ACCESSIBILITY.md) | WCAG AA, contrast ratios, ARIA, per-edition palette verification |
-| SEO | [SEO](docs/SEO.md) | Meta tags, Organization/Event/Person JSON-LD, hreflang, AEO |
-| Security | [Security](docs/SECURITY.md) | Static site + community-form threat model |
+| i18n | [I18N Guide](docs/I18N_GUIDE.md) | Spanish primary at `/`, English at `/en` |
+| Performance | [Performance](docs/PERFORMANCE.md) | Astro SSG optimization, images, caching |
+| Accessibility | [Accessibility](docs/ACCESSIBILITY.md) | WCAG AA, measured contrast, ARIA |
+| SEO | [SEO](docs/SEO.md) | Meta tags, JSON-LD, hreflang, AEO |
+| Security | [Security](docs/SECURITY.md) | Static site + public intake threat model |
 | Documentation | [Documentation Guide](docs/DOCUMENTATION_GUIDE.md) | When and how to update docs |
-| Analytics | [Analytics](docs/ANALYTICS.md) | Tracking, GSC, verification |
-| Community | [Code of Conduct](docs/CODE_OF_CONDUCT.md) · [Contributing](docs/CONTRIBUTING.md) · [Governance](docs/GOVERNANCE.md) · [Community Guidelines](docs/COMMUNITY_GUIDELINES.md) | Operational community rules |
-| Channels & Forms | [Communication Channels](docs/COMMUNICATION_CHANNELS.md) · [Call for Speakers](docs/CALL_FOR_SPEAKERS.md) · [Sponsorship](docs/SPONSORSHIP.md) | Public-facing community processes |
+| Analytics | [Analytics](docs/ANALYTICS.md) | Cookieless tracking, GSC, verification |
+| Community | [Code of Conduct](docs/CODE_OF_CONDUCT.md) · [Contributing](docs/CONTRIBUTING.md) · [Governance](docs/GOVERNANCE.md) | Operational rules |
 | AI Agents | [Agent Onboarding](docs/AI_AGENT_ONBOARDING.md), [Agent Collaboration](docs/AI_AGENT_COLLAB.md) | Setup, handoff, coordination |
 | Skills/Agents | [Skills & Agents Catalog](.agents/docs/skills_agents_catalog.md) | Available skills and agents |
 | Commands | [Commands Reference](.agents/docs/COMMANDS_REFERENCE.md) | All slash commands with procedure files |
 
 ## Project Overview
 
-**Pereira Tech Talks** (`pereiratechtalks.org`) — bilingual community website for the Pereira technical community (Risaralda, Colombia). Running monthly meetups since 2017, the annual **Pereira Tech Day** conference, the **Speaker School** mentorship track, **La Biblioteca del Mañana** reading group, the AI/agents channel, and an active blog and slide library. Static site architecture deployed to Cloudflare Pages.
+**Corag** (`corag.app`) — the site that explains Corag: what it is, how the aid model works, what gets published, and how to integrate with it.
 
-This is **v3.0.0** — the third major iteration of the website, rebuilt on the modern Astro stack and designed to be **fully understandable and operable by AI agents**.
+Corag connects people who need help with people who can give it, and publishes the evidence of every delivery. The name comes from **coraje** — courage. The heart replacing the *o* in the mark carries **love**.
+
+> **This repository is not the application.** Publishing a need, offering help, contributing, and uploading evidence all happen at **`ayuda.corag.app`**, which is a separate codebase. Nothing in this repository should ever hold information about a real person's situation.
 
 **Technology Stack:**
 
-- **Astro 7.x** — Static site generator (islands architecture). The Rust `.astro` compiler is the default (the old `experimental.rustCompiler` flag was removed)
+- **Astro 7.x** — Static site generator (islands architecture). The Rust `.astro` compiler is the default
 - **Sätteri** — the Rust Markdown/MDX compiler, configured via `markdown.processor: satteri({ hastPlugins: [...] })` from `@astrojs/markdown-satteri`. It does **not** run remark/rehype plugins: markdown transforms live in `src/lib/satteri-plugins.ts` as HAST plugins. `@astrojs/mdx` inherits the processor, so `.md` and `.mdx` share one pipeline. **Never** add `markdown.remarkPlugins`/`rehypePlugins` (deprecated) or a `rehype-*` dependency — port the transform to a Sätteri HAST plugin instead
 - **Svelte 5.x** — Interactive components (with `client:visible`/`client:idle`/`client:only` hydration directives)
-- **TypeScript 6.x** — Type-safe development. **Pinned to 6.x on purpose:** TypeScript 7's native compiler does not yet expose the programmatic API `astro check` relies on, so upgrading breaks the type-check gate. Do not bump until [withastro/roadmap#1321](https://github.com/withastro/roadmap/discussions/1321) ships
+- **TypeScript 6.x** — **Pinned to 6.x on purpose:** TypeScript 7's native compiler does not yet expose the programmatic API `astro check` relies on, so upgrading breaks the type-check gate. Do not bump until [withastro/roadmap#1321](https://github.com/withastro/roadmap/discussions/1321) ships
 - **Tailwind CSS 4.x** — Utility-first styling with the Corag `@theme` token system
 - **Biome 2.x** — Linter and formatter (replaces ESLint + Prettier)
 - **MDX** — Enhanced Markdown for blog posts
-- **Reveal.js 6.x** — Slide system for talks
-- **Cloudflare Pages** — Hosting; Cloudflare Pages Functions for forms
+- **Cloudflare Pages** — Hosting; Cloudflare Pages Functions for the intake forms
 
 ## Project Structure
 
-> Full tree with all files: **[Architecture Guide](docs/ARCHITECTURE.md#project-structure)**
+> Full tree: **[Architecture Guide](docs/ARCHITECTURE.md#project-structure)**
 
 ```
 src/
-├── components/                # UI components (Astro + Svelte)
-│   ├── home/                  # Homepage sections
-│   ├── meetups/               # MeetupCard, MeetupTimeline, RSVP widget
-│   ├── events/                # EventCard, EventCalendar, Countdown
-│   ├── pereira-tech-days/     # PTD edition components, EditionScope, schedule
-│   ├── verticals/             # Speaker School, La Biblioteca del Mañana, AI Channel
-│   ├── speakers/ talks/       # Directories + detail components
-│   ├── community/             # Contributors, sponsors (tiered), channels, press
+├── components/
+│   ├── pages/                 # One *Page.astro per route + InstitutionalPage
 │   ├── blog/                  # BlogCard, BlogGrid, Search, SeriesNav
-│   ├── slides/                # SlideEmbed for talk pages
-│   ├── layout/                # Header.svelte, MobileMenu.svelte, LanguageSwitcher
-│   ├── pages/                 # Shared page components (*Page.astro)
-│   └── forms/                 # ContactForm, CallForSpeakersForm, SponsorForm
-├── content/                   # Astro Content Collections
-│   ├── authors/               # YAML, one per author/contributor
-│   ├── blog/{en,es}/          # Community blog posts (YYYY-MM-DD_slug.md)
-│   ├── slides/{en,es}/        # Talk decks (3 types: internal/external-embed/external-link)
-│   ├── tags/ series/          # Tag definitions + series
-│   ├── meetups/               # Monthly meetups — single bilingual file per meetup
-│   ├── events/                # Calendar events (workshops, hackathons, etc.)
-│   ├── pereiraTechDays/       # PTD editions with brandKit per edition
-│   ├── verticals/             # Vertical metadata (Speaker School, etc.)
-│   ├── speakers/ talks/       # Speakers + talks directory
-│   ├── contributors/          # Organizers, mentors, vertical leads
-│   ├── sponsors/              # Tiered sponsors (Diamond/Gold/Silver/Bronze/Community)
-│   ├── channels/              # Communication channels metadata
-│   └── pages/{en,es}/         # Markdown-for-Agents endpoints
-├── layouts/                   # MainLayout, InternalLayout, ShowcaseLayout, SlideLayout
-├── lib/                       # blog.ts, meetups.ts, events.ts, ptd.ts, i18n.ts, translations/
-├── pages/                     # File-based routing
-│   ├── (root ES routes)       # /, /about, /meetups, /events, /pereira-tech-days, ...
-│   ├── en/                    # Mirror in English (Spanish is the primary language, served at /)
-│   ├── internal/              # Dev-only hub (brand book, design system, admin views)
-│   └── api/                   # JSON endpoints (search index, sitemap helpers)
-└── styles/                    # global.css (Tailwind 4 @theme Corag tokens), slides.css
+│   ├── home/                  # Homepage sections
+│   ├── layout/                # Header.svelte, MobileMenu.svelte, ThemeToggle
+│   ├── contact/               # ContactForm, ConductReportForm
+│   ├── cards/ ui/             # ContributorCard; Section, Eyebrow, Breadcrumbs, …
+│   └── agent/                 # WebMCPBridge
+├── content/
+│   ├── blog/{es,en}/          # Posts (YYYY-MM-DD_slug.md), English slugs both sides
+│   ├── pages/{es,en}/         # Markdown twins; conduct/governance/contributing
+│   │                          # are ALSO the live page bodies
+│   ├── authors/               # YAML, one per author
+│   ├── channels/              # Official channel inventory
+│   ├── contributors/          # The team directory
+│   ├── tags/ series/          # Three-tier taxonomy + series definitions
+│   └── notifications/         # Top banner, date-bounded
+├── layouts/                   # MainLayout, InternalLayout, ShowcaseLayout
+├── lib/                       # blog.ts, i18n.ts, translations/, markdown-for-agents.ts, …
+├── pages/
+│   ├── (root ES routes)       # /, /about, /how-it-works, /transparency, …
+│   ├── en/                    # Mirror in English
+│   ├── internal/              # Dev-only hub (brand book, design system)
+│   └── api/                   # JSON endpoints (search index)
+└── styles/                    # global.css (Tailwind 4 @theme Corag tokens)
 
-public/images/                  # Brand · blog · meetups · events · pereira-tech-days · speakers · sponsors
-scripts/                        # Build utilities (image optimization, agent skills index)
+functions/                      # Cloudflare Pages Functions (intake, agent endpoints)
+public/images/                  # brand · blog · home
+scripts/                        # Gate scripts and build utilities
 docs/                           # Project documentation
 .agents/                        # Cross-agent skills, commands, agents, settings (canonical)
 .claude → .agents               # Backward-compat symlink for Claude Code
-.dwp/                           # Deep Work Plan outputs — plans/ + drafts/ (git-ignored)
+.dwp/                           # Deep Work Plan outputs (git-ignored)
 tmp/                            # Temporary workspace (git-ignored)
 ```
 
@@ -118,26 +106,39 @@ The `tmp/` directory is a **git-ignored scratch space** for agents and developer
 
 ## Skills, Commands, and Agents (`.agents/`)
 
-The `.agents/` directory is the **canonical, cross-agent home** for everything that defines how AI assistants behave in this repo: skills, slash commands, agent definitions, internal documentation, and settings. The same content is consumed by Claude Code, Cursor AI, OpenAI Codex, Gemini, and any other coding agent that picks up local skills/commands.
+The `.agents/` directory is the **canonical, cross-agent home** for everything that defines how AI assistants behave in this repo: skills, slash commands, agent definitions, internal documentation, and settings.
 
 ```
 .agents/
 ├── agents/        # Agent definitions (architect, executor, reviewer, ...)
 ├── commands/      # Slash commands (commit, pr, branch, dwp-*, ...)
-├── skills/        # Skill procedures (add-blog-post, add-meetup, fix-lint, ...)
-├── docs/          # Catalogs and references (skills_agents_catalog.md, COMMANDS_REFERENCE.md)
+├── skills/        # Skill procedures (add-blog-post, fix-lint, ...)
+├── docs/          # Catalogs and references
 ├── README.md      # Conventions for authoring skills, agents, and commands
-├── settings.json  # Claude Code env (env vars, experimental flags)
+├── settings.json  # Claude Code env
 └── settings.local.json # Claude Code local permissions (git-tracked)
 ```
 
-**Backward compatibility — `.claude/` symlink:** Claude Code historically reads from `.claude/`. To keep that working without duplicating files, **`.claude` is a symlink to `.agents`**. Use `.agents/...` as the canonical path in **all new documentation, prompts, and skill/command files**. Do not edit files via the `.claude/` symlink.
+**Backward compatibility — `.claude/` symlink:** `.claude` is a symlink to `.agents`. Use `.agents/...` as the canonical path in **all new documentation, prompts, and skill/command files**. Do not edit files via the `.claude/` symlink.
 
 ## CRITICAL: Mandatory Requirements
 
+### 0. Never publish a claim you cannot back
+
+This one outranks the rest, because it is the argument the project makes.
+
+Corag's whole proposition is that unverified numbers are the problem. A page, a post or a metadata string that invents a statistic, endorses an organization we have not verified, or promises a channel we do not run does more damage than a weaker version that stays honest.
+
+Concretely:
+
+- **No fabricated figures.** If a case needs numbers we do not have, describe the shape of the thing and say the numbers are not ours.
+- **No endorsements we cannot maintain.** We do not publish lists of "trustworthy organizations"; we publish the method for verifying one.
+- **State the limit.** "The public specification is not published yet" is better copy than an evasion.
+- **Social channels are Facebook, Instagram and the WhatsApp group.** Nothing else exists. Do not write a CTA to a channel we do not run.
+
 ### 1. Language Standards
 
-**ALL code, comments, and documentation MUST be in English.** Always update documentation after important changes. Public content is bilingual (Spanish primary, English first-class international).
+**ALL code, comments, and documentation MUST be in English.** Always update documentation after important changes. Public content is written in Spanish first, with English as a first-class rendition.
 
 ### 2. Orthography & Diacritical Marks (MANDATORY)
 
@@ -165,7 +166,7 @@ import { z } from 'astro:content';
 // 3. Internal project modules (using @ alias)
 import Header from '@/components/layout/Header.svelte';
 import { SITE_TITLE } from '@/lib/constances';
-import { getMeetups } from '@/lib/meetups';
+import { getTranslations } from '@/lib/translations';
 
 // 4. Type imports (separate group)
 import type { APIRoute } from 'astro';
@@ -174,7 +175,7 @@ import type { CollectionEntry } from 'astro:content';
 
 ### 4. Type Hints (RECOMMENDED)
 
-Prefer explicit types on function signatures. Biome allows `any` for flexibility, but explicit types are better. See **[Standards Guide](docs/STANDARDS.md)** for examples.
+Prefer explicit types on function signatures. Biome allows `any` for flexibility, but explicit types are better. See **[Standards Guide](docs/STANDARDS.md)**.
 
 ### 5. Code Quality (MANDATORY)
 
@@ -198,73 +199,64 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 
 ### 7. Multilingual Content Synchronization (MANDATORY)
 
-**ALL content changes MUST be synchronized across both active languages (es as primary, en as international).** No exceptions.
+**ALL content changes MUST be synchronized across both languages (Spanish primary, English international).** No exceptions.
 
 **Content type rules:**
 
-- **Pages:** Create 1 shared `*Page.astro` in `src/components/pages/` + thin 3-line wrappers in `src/pages/` (Spanish primary, served at `/`) and `src/pages/en/` (English, served at `/en`) passing `lang` as string literal.
-- **Blog Posts:** Both `src/content/blog/en/` and `src/content/blog/es/` MUST have the equivalent post. Translate `title`, `description`, body. Preserve `pubDate`, `heroImage`, `tags`, `author`, code blocks. **Use `/add-blog-post` skill for new posts.**
-- **Meetups:** One entry per meetup in `src/content/meetups/` holding the structured data (`title`/`description` with `en`/`es`), **plus a `{slug}.en.md` sibling carrying the English body**. The entry's own body is Spanish. A missing sibling falls back to Spanish behind a visible notice — it is not silent. **Use `/add-meetup` skill.** Same shape for `verticals`.
-- **Events / PTD editions:** Define in single source-of-truth collection (`events`, `pereiraTechDays`); translatable fields use `{ en, es }` shape per the Zod schema (Task 4).
-- **Authors / Contributors:** Defined as YAML with localized `role`/`bio` (`en`/`es` keys required by schema). Posts and talks reference by slug.
-- **Translation Strings:** Add to BOTH `src/lib/translations/en.ts` and `es.ts`. Update `types.ts` with any new interface keys.
-- **Components:** Use `getTranslations(lang)` from `@/lib/translations`. **Never hardcode user-visible strings.**
-- **Agent-Friendly Markdown (MANDATORY):** When page or translation content changes, update the corresponding `src/content/pages/{en,es}/*.md` files. These serve as Markdown endpoints for AI agents and MUST stay in sync. See **[Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)**.
+- **Pages:** Create 1 shared `*Page.astro` in `src/components/pages/` + thin 3-line wrappers in `src/pages/` (Spanish, served at `/`) and `src/pages/en/` (English, served at `/en`) passing `lang` as a string literal.
+- **Institutional pages:** Add an `InstitutionalPageCopy` to both locale files and point both wrappers at `InstitutionalPage.astro`. The `.md` twin serializes from the same copy object, so it cannot drift.
+- **Blog Posts:** Both `src/content/blog/es/` and `src/content/blog/en/` MUST have the equivalent post, sharing the English slug and the date prefix. Translate `title`, `description`, body. Preserve `pubDate`, `heroImage`, `tags`, `author`, code blocks. **Use `/add-blog-post` for new posts.**
+- **Authors / Contributors / Channels:** YAML with localized `role`/`bio`/`description` (`en`/`es` keys required by schema).
+- **Translation Strings:** Add to BOTH `src/lib/translations/en.ts` and `es.ts`. `types.ts` makes both exhaustive, so a missing key is a type error.
+- **Components:** Use `getTranslations(lang)`. **Never hardcode user-visible strings.**
+- **Agent-Friendly Markdown (MANDATORY):** When page or translation content changes, update the corresponding `src/content/pages/{en,es}/*.md`. See **[Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)**.
 
 **Compliance checklist:**
 
 - [ ] Pages exist in both `src/pages/` (ES, root) and `src/pages/en/` (EN)
-- [ ] Blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
-- [ ] Meetup entries have both `en` and `es` frontmatter fields **and** a `{slug}.en.md` body sibling (same for `verticals`)
-- [ ] `title.en` is real English, not the Spanish title with a word swapped
-- [ ] Same `author` slug used in EN and ES versions of a post
-- [ ] New/updated authors and contributors have both `role.en`/`role.es` and `bio.en`/`bio.es` filled in
+- [ ] Blog posts exist in both `src/content/blog/es/` and `src/content/blog/en/`
+- [ ] The English title is real English, not the Spanish title with a word swapped
+- [ ] Same `author` slug used in both versions of a post
 - [ ] UI strings in both `en.ts` and `es.ts`
 - [ ] No hardcoded user-visible text
-- [ ] Page Markdown files updated in both `src/content/pages/en/` and `src/content/pages/es/`
-- [ ] `pnpm run parity:check` clean — the two languages carry the **same content**, not merely correct content in each. Same sources, same structure, same talks; only section labels differ
+- [ ] Page Markdown twins updated in both languages
+- [ ] `pnpm run parity:check` clean — the two languages carry the **same content**, not merely correct content in each
 
-**Tools:** `/translate-sync` skill, `i18n-guardian` agent. Adding a new language: see **[I18N Guide](docs/I18N_GUIDE.md)**.
+**Tools:** `/translate-sync` skill, `i18n-guardian` agent. Adding a new language: **[I18N Guide](docs/I18N_GUIDE.md)**.
 
-### 8. Brand & Per-Edition Theming (MANDATORY)
+### 8. Brand & Design Tokens (MANDATORY)
 
-Pereira Tech Talks v3.0.0 uses a global Corag brand **plus** per-edition brand kits for each Pereira Tech Day.
+1. The Corag palette is declared **once**, in `src/styles/global.css` via Tailwind 4 `@theme`. Every colour on the site comes from a `--color-corag-*` token.
+2. **Never set `--color-corag-*` variables outside `src/styles/global.css`.** No inline `style="--color-corag-primary: …"` on components.
+3. **The brand foreground flips in dark mode; the fill pair does not.** `--color-corag-primary` becomes rosa on dark; `--color-corag-fill` / `--color-corag-on-fill` stay fixed because they are a measured 9.54:1 pair in both themes. Pairing `bg-corag-primary` with `text-white` is the bug this split exists to prevent.
+4. `--color-corag-accent` **fails WCAG AA on every light ground** — reserve it for icons, large text and decorative motifs. Use `--color-corag-accent-strong` when it must carry text.
+5. Every documented token appears on `/internal/ui/colors`, which reads the computed values at runtime. `tests/unit/lib/design-tokens.test.ts` fails if a token is declared and not shown, or shown and not declared.
 
-**Hard rules:**
-
-1. The global Corag palette (`--corag-primary`, `--corag-bg`, `--corag-text`, etc., declared in `src/styles/global.css` via Tailwind 4 `@theme`) is the **default identity** of `pereiratechtalks.org`. Use it on every public page that is NOT a Pereira Tech Day edition route.
-2. Per-edition kits override the palette **only inside `[data-edition-theme="{year}"]`** wrappers (the `EditionScope` component). Header, footer, language switcher, and theme toggle render as siblings (not descendants) of the wrapper, so the umbrella Corag brand stays visible on every PTD page.
-3. **Never set `--corag-*` variables outside global stylesheets or `[data-edition-theme]` scopes.** No inline `style="--corag-primary: ..."` on individual components.
-4. The accent color (`--corag-accent`, `#E8A33D` light) **fails WCAG AA on `--corag-bg`** — reserve it for icons, pills with `--corag-bg-elevated`, large text, or decorative motifs. **Never** use it for body text.
-5. Each per-edition kit MUST include estimated WCAG ratios in its definition (validated by Task 1's contrast script).
-
-Full reference: **[Brand Guide](docs/BRAND_GUIDE.md)** + dev-only **[`/internal/brand`](http://localhost:9999/internal/brand)** Brand Book.
+Full reference: **[Brand Guide](docs/BRAND_GUIDE.md)** + **[Design System](docs/DESIGN.md)** + the dev-only **[`/internal/brand`](http://localhost:9999/internal/brand)**.
 
 ### 9. Performance-First Mindset (MANDATORY)
 
 1. **Prefer static over dynamic** — use `.astro` for non-interactive content
-2. **Choose the laziest hydration** — `client:visible` or `client:idle` over `client:load`. `client:only="svelte"` only when DOM is truly required (e.g., Reveal.js)
-3. **Minimize JavaScript** — prefer CSS-only solutions over JS
+2. **Choose the laziest hydration** — `client:visible` or `client:idle` over `client:load`
+3. **Minimize JavaScript** — prefer CSS-only solutions
 4. **Use native browser APIs** — IntersectionObserver over scroll listeners, native `loading="lazy"`
 5. **Optimize images** — always include dimensions, lazy load below-fold content
 6. **Avoid layout shifts** — reserve space for async content, `font-display: swap`
 7. **Keep search payload lean** — language-sharded endpoints, minimal index schema
-8. **Per-edition kits** — must NOT cause FOUC on edition pages (palette CSS is in the build output, applied via attribute selector at SSR time)
-9. **Protect Lighthouse scores** — run `pnpm run search:budgets` after search changes; aim for 100% across categories
+8. **Protect Lighthouse scores** — run `pnpm run search:budgets` after search changes
 
 See **[Performance Guide](docs/PERFORMANCE.md)**.
 
 ### 10. Accessibility Standards (MANDATORY)
 
-1. **WCAG AA contrast** — 4.5:1 normal text, 3:1 large text
-2. **Approved text colors** — `text-gray-600 dark:text-gray-300` (or Corag tokens `text-corag-secondary`) for secondary text. **NEVER** `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`
+1. **WCAG AA contrast** — 4.5:1 normal text, 3:1 large text and non-text UI
+2. **Approved text colours** — the `--color-corag-*` tokens. **NEVER** `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500`
 3. **Image dimensions** — every `<img>` must have `width` and `height`
 4. **Semantic HTML** — proper heading hierarchy, landmarks, button vs link
 5. **Text alternatives** — meaningful `alt` for informative images, `alt=""` for decorative
 6. **Keyboard navigation** — all interactive elements focusable and operable
 7. **ARIA** — disclosure pattern for nav dropdowns (not `role="menu"`)
-8. **Per-edition palette verification** — every PTD edition kit must clear WCAG AA on body text and large text combinations before publishing
-9. **Reduced motion** — all non-essential animations honor `prefers-reduced-motion: reduce`
+8. **Reduced motion** — all non-essential animations honour `prefers-reduced-motion: reduce`
 
 See **[Accessibility Guide](docs/ACCESSIBILITY.md)**.
 
@@ -272,7 +264,7 @@ See **[Accessibility Guide](docs/ACCESSIBILITY.md)**.
 
 1. Do not add or reintroduce `PUBLIC_GOOGLE_SITE_VERIFICATION`
 2. Do not add `google-site-verification` meta tags in templates/components
-3. Keep Bing verification as optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`)
+3. Keep Bing verification as an optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`)
 4. GSC verification is DNS-only (Domain property DNS TXT)
 
 ## Shared Agent Coordination
@@ -281,7 +273,7 @@ Multiple AI agents collaborate on this codebase. When updating agent guidance, m
 
 ### DWP Security Review augmentation — AI Diff Reviewer addon (optional, local-only / Flow A)
 
-The [AI Diff Reviewer addon](.agents/skills/deepworkplan/addons/ai-diff-reviewer/SKILL.md) is installed in **Flow A (local-only)**: vendored skill at `.agents/skills/ai-diff-reviewer/` + a repo-tailored `.review/extension.md`. The mandatory DWP **Security Review** task gains an additional local-review step — invoke *"Review my current branch"*, then append the verdict + findings table under `## AI Diff Reviewer local review` in `analysis_results/SECURITY_REVIEW.md`. A `critical` finding follows the Security Review contract (blocks until fixed or explicitly accepted); `warning`/`info` are reported but do not block. Best-effort and **never-block** — skipped (with one warning) if the skill or extension is absent. **No CI workflow** is installed (Flow B deferred); Flow A needs **no** provider secret.
+The [AI Diff Reviewer addon](.agents/skills/deepworkplan/addons/ai-diff-reviewer/SKILL.md) is installed in **Flow A (local-only)**: vendored skill at `.agents/skills/ai-diff-reviewer/` + a repo-tailored `.review/extension.md`. The mandatory DWP **Security Review** task gains an additional local-review step — invoke *"Review my current branch"*, then append the verdict + findings table under `## AI Diff Reviewer local review` in `analysis_results/SECURITY_REVIEW.md`. A `critical` finding blocks until fixed or explicitly accepted; `warning`/`info` are reported but do not block. Best-effort and **never-block** — skipped (with one warning) if the skill or extension is absent. **No CI workflow** is installed (Flow B deferred); Flow A needs **no** provider secret.
 
 ## Quick Commands
 
@@ -295,14 +287,14 @@ pnpm run astro:check        # TypeScript type checking
 pnpm run test               # Run unit tests
 pnpm run test:coverage      # Tests with coverage
 pnpm run images:optimize    # Process staged images
-pnpm run md:check           # Verify every page has a COMPLETE .md twin, in the right language
-pnpm run md:check:strict    # Same as above; exits 1 on failure (CI gate)
+pnpm run md:check           # Verify every page has a COMPLETE .md twin
+pnpm run md:check:strict    # Same; exits 1 on failure (CI gate)
 pnpm run lang:check         # Sitewide language-integrity audit (ES at /, EN at /en)
-pnpm run lang:check:strict  # Same as above; exits 1 on failure (CI gate)
+pnpm run lang:check:strict  # Same; exits 1 on failure (CI gate)
 pnpm run seo:check          # Per-URL SEO + structured-data audit
-pnpm run seo:check:strict   # Same as above; exits 1 on failure (CI gate)
-pnpm run parity:check       # ES and EN carry the SAME content, not just correct content
-pnpm run parity:check:strict # Same as above; exits 1 on failure (CI gate)
+pnpm run seo:check:strict   # Same; exits 1 on failure (CI gate)
+pnpm run parity:check       # ES and EN carry the SAME content
+pnpm run parity:check:strict # Same; exits 1 on failure (CI gate)
 pnpm run search:budgets     # Search payload budgets
 pnpm run lighthouse         # Lighthouse audit
 pnpm run release            # Bump version and release commit
@@ -317,7 +309,7 @@ Full command reference: **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)**
 
 ### 1. Astro Components
 
-`.astro` files are the foundation. Script block (frontmatter) runs at build time. Use for all non-interactive content. Svelte is only for interactive components.
+`.astro` files are the foundation. The script block runs at build time. Use for all non-interactive content. Svelte is only for interactive components.
 
 ```astro
 ---
@@ -329,17 +321,17 @@ const { title, count = 5 } = Astro.props;
 ---
 
 <section class="py-12">
-  <h2 class="text-2xl font-bold text-corag dark:text-corag">{title}</h2>
+  <h2 class="text-2xl font-bold text-corag">{title}</h2>
 </section>
 ```
 
 ### 2. Content Collections
 
-All structured content (blog, meetups, events, PTDs, verticals, speakers, talks, contributors, sponsors, channels, tags, series, authors) uses Astro Content Collections with Zod schemas defined in `src/content.config.ts`. See [Architecture Guide](docs/ARCHITECTURE.md) and Task 4 for the full schema.
+All structured content (blog, pages, authors, channels, contributors, tags, series, notifications) uses Astro Content Collections with Zod schemas in `src/content.config.ts`.
 
 ### 3. Svelte Integration
 
-Use Svelte for interactive components. Always include a `client:*` directive (`client:visible` preferred over `client:load`). `client:only="svelte"` only when DOM is required (e.g., Reveal.js).
+Use Svelte for interactive components. Always include a `client:*` directive (`client:visible` preferred over `client:load`).
 
 ### 4. Page Wrapper Pattern (MANDATORY)
 
@@ -349,135 +341,49 @@ Pages in `src/pages/` are ultra-minimal 3-line routing wrappers. All logic lives
 
 - Page components handle `MainLayout` internally — wrappers **never** import `MainLayout`
 - The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
-- For a new page: create **1 `*Page.astro` component** + **N thin wrappers** (one per language)
+- For a new page: create **1 `*Page.astro` component** + **2 thin wrappers**
 - All user-visible text uses `getTranslations(lang)`, all URLs use `getUrlPrefix(lang)`
 
-**Page component** (`src/components/pages/AboutUsPage.astro`):
+**Wrapper** (`src/pages/about.astro` — 3 lines):
 
 ```astro
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
-import { getTranslations } from '@/lib/translations';
-import { getUrlPrefix, type Language } from '@/lib/i18n';
-
-interface Props { lang: Language; }
-const { lang } = Astro.props;
-const t = getTranslations(lang);
-const prefix = getUrlPrefix(lang);
+import AboutPage from '@/components/pages/AboutPage.astro';
 ---
-
-<MainLayout lang={lang} title={t.aboutUsPage.title} description={t.aboutUsPage.description}>
-  <!-- page content using t.* for text, prefix for URLs -->
-</MainLayout>
-```
-
-**Wrapper** (`src/pages/about-us.astro` — 3 lines):
-
-```astro
----
-import AboutUsPage from '@/components/pages/AboutUsPage.astro';
----
-<AboutUsPage lang="en" />
+<AboutPage lang="es" />
 ```
 
 ### 5. i18n Routing
 
-Spanish pages at root (`src/pages/` → `/`), English in `src/pages/en/` (→ `/en`). Language is **URL-first**: there is no automatic redirect from browser language or `localStorage` — see [I18N Guide → Language selection](docs/I18N_GUIDE.md#language-selection-url-first). The switcher may still write `localStorage['corag:lang']` as a soft preference; only `?lang=` may pin/redirect. Page components in `src/components/pages/` receive `lang` and handle translations internally. Spanish is the **primary language** of the community and therefore the unprefixed default; English is first-class international. Never hardcode a `/en` or `/es` prefix — derive it from `getUrlPrefix(lang)`.
+Spanish pages at root (`src/pages/` → `/`), English in `src/pages/en/` (→ `/en`). Language is **URL-first**: there is no automatic redirect from browser language or `localStorage`. Route slugs are **English in both languages**. Never hardcode a `/en` prefix — derive it from `getUrlPrefix(lang)`.
 
-### 6. Per-Edition Theming Runtime
+### 6. Institutional pages
 
-Each Pereira Tech Day edition ships its own `brandKit` in the content entry under `src/content/pereiraTechDays/{year}.{json,yaml}`. The runtime (`EditionThemeProvider` / `EditionScope`) writes scoped CSS variables under `[data-edition-theme="{year}"]` so only the edition body re-skins, never chrome. See [Brand Guide §9](docs/BRAND_GUIDE.md) and `/internal/brand/per-edition-kits`.
+The seven pages under "How Corag works" share one renderer. Their copy is an `InstitutionalPageCopy` in each locale file, and `serializeInstitutionalPageToMarkdown` produces the `.md` twin from the same object — so the twin cannot fall behind the page.
 
 ### 7. Internal Hub (Dev-Only)
 
-Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (never `MainLayout`). English-only, no Page Wrapper pattern. Automatically excluded from production builds via three layers (post-build deletion, sitemap filter, noindex meta). Sub-sections include `brand/` (Brand Book), `ui/` (Component Showcase), `authors/`, `meetups/`, `events/`, `ptd/` (admin views), `guide/` (style guides).
+Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (never `MainLayout`). English-only, no Page Wrapper pattern. Excluded from production builds via three layers (post-build deletion, sitemap filter, noindex meta).
 
 ## Blog Post Conventions
 
 > Full reference: **[Blog Posts Guide](docs/features/BLOG_POSTS.md)**
 
-The blog hosts **community blog posts** (recaps, deep-dives, vertical announcements, speaker spotlights, technical guides). It is **separate** from the meetups collection — meetups have their own dedicated content type, listing, and detail pages.
+**File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{es,en}/`. Date prefix stripped from URLs. **Slugs MUST always be in English** — both versions use the same one.
 
-**File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{en,es}/`. Date prefix stripped from URLs. **Slugs MUST always be in English** — both `en/` and `es/` versions use the same English slug.
+**Tags:** Flat `tags` array in frontmatter. Three tiers (primary / secondary / subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 0-3 secondary + 0-3 subtopic; ≥ 1 primary required). Never auto-create tags without user approval — propose with [`/audit-taxonomy`](.agents/skills/audit-taxonomy/SKILL.md).
 
-**Tags:** Flat `tags` array in frontmatter. Three tiers (primary / secondary / subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 0-3 secondary + 0-3 subtopic; max 3 subtopics; ≥ 1 primary required). Never auto-create tags without user approval — propose with [`/audit-taxonomy`](.agents/skills/audit-taxonomy/SKILL.md) and let the user approve.
+**Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}`. **Series slugs MUST be in English.**
 
-**Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}`. Series defined in `src/content/series/`. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
+**Authors:** Posts reference `author: "{slug}"`, defined as YAML in `src/content/authors/{slug}.yaml` with localized `role`/`bio`. Both versions of a post use the same slug.
 
-**Authors:** Posts reference `author: "{slug}"`. Authors are Corag contributors (organizers, speakers, community writers) defined as YAML in `src/content/authors/{slug}.yaml` with localized `role`/`bio` (`en`/`es`) and avatar at `public/images/authors/{slug}.webp`. Both EN and ES versions of a post must use the same `author` slug. Internal directory: `/internal/authors`.
+**Resources section:** Include external links. Do NOT list related articles or previous chapters — the series navigation covers that.
 
-**Resources section:** Include external links (docs, repos, tools). Do NOT list related articles or previous chapters — they appear in the series navigation below.
+**Hero layouts:** `banner` (default, landscape), `side-by-side` (square), `minimal` (thumbnail), `none` (text-only).
 
-**Hero layouts:** `banner` (default, landscape), `side-by-side` (square), `minimal` (thumbnail), `none` (text-only). Set based on image aspect ratio.
+**Images:** Stored in `public/images/blog/posts/{slug}/`. Hero: `hero.webp` plus the 480/768/1280 responsive set. Provenance for any third-party image is recorded in `public/images/blog/posts/CREDITS.json`.
 
-**Demo posts:** In `_demo/` folders only. Never shown in listings/search. Accessible by direct URL in dev only.
-
-**Images:** Stored in `public/images/blog/posts/{slug}/`. Hero: `hero.{ext}`. Use `pnpm run images:optimize` for staged images.
-
-**New post workflow:** Use `/add-blog-post` skill (mandatory). Do not create blog post files manually.
-
-## Meetups Conventions
-
-> Full reference: **[Meetups Guide](docs/features/MEETUPS.md)** (created in Task 4 onwards)
-
-**File naming:** `YYYY-MM-DD_slug.md` in `src/content/meetups/`, plus
-`YYYY-MM-DD_slug.en.md` holding the English body. **Slugs MUST be in English.**
-
-**Bodies are bilingual by sibling file.** The entry carries the structured data
-and the **Spanish** body; the `.en.md` sibling carries **only** the English body
-(no frontmatter). `generateId` strips `.en`, so the two share an id and need no
-mapping table. `getMeetupBodyEntry(meetup, lang)` picks the right one and
-reports `untranslated` when it had to fall back, which the page renders as a
-visible notice. Same mechanism for `verticals` (`verticalBodiesEn`). See
-**[I18N Guide](docs/I18N_GUIDE.md)**.
-
-**Frontmatter:** `title`, `description`, `date`, `vertical` (Speaker School / La Biblioteca del Mañana / AI Channel / general), `format` (online / in-person / hybrid), `venue` (optional), `speakers` (array of slugs), `talks` (array of slugs, optional), `recordingUrl` (optional), `slidesUrl` (optional), `coverImage`.
-
-**URL surface:** `/meetups` (timeline) + `/meetups/{slug}` (detail). English: `/en/meetups`, `/en/meetups/{slug}`. Spanish is unprefixed at `/`.
-
-**New meetup workflow:** Use `/add-meetup` skill.
-
-## Events & Pereira Tech Days Conventions
-
-> Full reference: **[Events Guide](docs/features/EVENTS.md)** (created in Task 4 onwards)
-
-**Events** are calendar items (workshops, hackathons, ad-hoc gatherings). Listed at `/events`.
-
-**Pereira Tech Days** are the annual flagship conferences. Each year has:
-
-- A content entry at `src/content/pereiraTechDays/{year}.{json,yaml}` containing the `brandKit` (palette, typography, hero motifs).
-- A landing page at `/pereira-tech-days/{year}` (and `/es/pereira-tech-days/{year}`) wrapped by `EditionScope` so the kit applies only inside.
-- Optional sub-routes for the schedule, sponsors, speakers, recap, etc.
-
-**Slug rule:** Always English at the year level (e.g., `2024`, `2025`, `2026`). Per-edition slugs for nested routes also English.
-
-## Speakers, Talks & Slides Linkage
-
-- **Speakers** live in `src/content/speakers/{slug}.yaml` with localized `bio`, `role`, social links, avatar.
-- **Talks** live in `src/content/talks/{slug}.yaml` (or `.md` for recap content) referencing one or more `speakers`, an optional `slides` slug, an optional `recordingUrl`, and the `event`/`meetup` it belongs to.
-- **Slides** are managed by the existing slides system (`src/content/slides/{en,es}/`). A talk page embeds its deck via `<SlideEmbed deck={slidesEntry} />` (Task 13).
-
-## Slides Conventions
-
-> Full reference: **[Slides Guide](docs/features/SLIDES.md)**
-
-**Three deck types:** `internal` (Reveal.js Markdown), `external-embed` (iframe), `external-link` (stub info page). All three share one `slides` Zod discriminated-union collection in `src/content.config.ts`.
-
-**File naming:** `YYYY-MM-DD_slug.md` in `src/content/slides/{en,es}/`. **Slugs MUST be in English** on both languages.
-
-**URL surface:** `/slides/<slug>` (and `/es/slides/<slug>`). Catalog at `/slides` and `/es/slides`.
-
-**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector. Palette derives from Corag global brand by default; per-edition decks may opt-in by setting `--slide-accent` inside `[data-edition-theme]`.
-
-**Chrome UI:** Back-link (top-left) uses site logo on Corag dark background; toolbar (top-right) with language toggle, theme toggle, fullscreen.
-
-**Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
-
-**Images:** Stored in `public/images/slides/<slug>/`. Hero: `hero.{ext}`.
-
-**Hydration:** `RevealDeck.svelte` uses `client:only="svelte"` (documented exception to `client:visible` preference — Reveal needs DOM).
-
-**New deck workflow:** Use `/add-slide-deck` skill (mandatory).
+**New post workflow:** Use `/add-blog-post` (mandatory). Do not create blog post files manually.
 
 ## Documentation Standards
 
@@ -488,49 +394,46 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 ### DON'T:
 
 1. Put interactive logic in `.astro` files (use Svelte)
-2. Skip `client:*` directive for interactive Svelte components
+2. Skip the `client:*` directive for interactive Svelte components
 3. Import `MainLayout` in page wrappers (it belongs inside `*Page.astro`)
 4. Hardcode translatable text in templates
-5. Create content without covering both Spanish (primary) and English
+5. Create content in only one language
 6. Use `client:load` when `client:visible` or `client:idle` would suffice
-7. Add JS solutions when CSS can achieve the same result
+7. Add JS where CSS achieves the same result
 8. Use `text-gray-400`, `dark:text-gray-400`, or `dark:text-gray-500` for body text (fails WCAG AA)
-9. Use `role="menu"` for nav dropdowns (use disclosure pattern)
-10. Skip heading levels (e.g., h1 → h3 without h2)
+9. Use `role="menu"` for nav dropdowns (use the disclosure pattern)
+10. Skip heading levels (e.g. h1 → h3 without h2)
 11. Forget `alt=""` on decorative images or `aria-label` on icon-only links
-12. Use `MainLayout` for internal hub pages (use `InternalLayout` or `ShowcaseLayout`)
-13. Add multilingual variants for internal pages (English-only, dev-only)
-14. Reference `/internal/` pages from public pages
-15. Name blog/meetup/slide files without date prefix (use `YYYY-MM-DD_slug.md`)
-16. Put blog images outside `public/images/blog/posts/{slug}/` (or meetup images outside `public/images/meetups/{slug}/`, etc.)
-17. Put demo posts outside `_demo/` folders
-18. Write Spanish content without proper accents/tildes/ñ
-19. List related articles or previous chapters in the Resources section when the post belongs to a series
-20. **Leave placeholder content** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published content must be complete. Zero tolerance.
-21. **Use Spanish slugs for blog posts, meetups, series, or PTD editions** — all slugs MUST be in English
-22. **Override `--corag-*` tokens outside `src/styles/global.css` or `[data-edition-theme]` scopes** — per-edition kits must be scoped; no inline `style="--corag-primary: ..."`
-23. **Let per-edition palette leak outside `/pereira-tech-days/{year}/*`** — header/footer/lang switcher/theme toggle must keep the global Corag brand even on edition pages
-24. **Import Reveal CSS outside `SlideLayout`** — Reveal styles must not leak to non-deck routes
-25. **Add a new top-level page without updating `src/middleware.ts`** — the middleware has a hardcoded allowlist (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`). New top-level routes return 404 until added to the allowlist. See [Architecture → Middleware Allowlist](docs/ARCHITECTURE.md#middleware-allowlist-critical).
-26. Use `--corag-accent` for body text — it fails WCAG AA on `--corag-bg`. Reserve for icons, large text, pills with `--corag-bg-elevated`.
+12. Use `MainLayout` for internal hub pages
+13. Reference `/internal/` pages from public pages
+14. Name blog files without the date prefix (`YYYY-MM-DD_slug.md`)
+15. Put blog images outside `public/images/blog/posts/{slug}/`
+16. Write Spanish content without proper accents and ñ
+17. **Leave placeholder content** — `[AUTHOR: …]`, `[TODO: …]`, `[TBD]`. Zero tolerance
+18. **Use Spanish slugs** for blog posts, series or routes — all slugs MUST be in English
+19. **Override `--color-corag-*` tokens outside `src/styles/global.css`**
+20. Pair `bg-corag-primary` with `text-white` — use the `fill` / `on-fill` pair
+21. Use `--color-corag-accent` for body text — it fails WCAG AA on light grounds
+22. **Add a new top-level page without updating `src/middleware.ts`** — the middleware has a hardcoded allowlist (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`). New top-level routes return 404 in production until added
+23. **Change page copy without updating its `.md` twin**
+24. **Publish a figure you cannot back**, or endorse an organization we have not verified
+25. Write a CTA to a channel we do not run
 
 ### DO:
 
 1. Use Biome for linting (`pnpm run biome:check` before commits)
-2. Use Svelte for interactive components with appropriate `client:*` directive
-3. Support dark mode with Tailwind's `dark:` variant and Corag tokens
-4. Use `@` path alias for imports
+2. Use Svelte for interactive components with the lightest `client:*` directive
+3. Support dark mode through the Corag token layer
+4. Use the `@` path alias for imports
 5. Use the Page wrapper pattern (thin wrappers + `*Page.astro`)
-6. Create/update content in both Spanish (primary) and English
-7. Use `text-gray-600 dark:text-gray-300` (or `text-corag-secondary`) for secondary text (WCAG AA)
+6. Create content in both languages
+7. Use the `--color-corag-*` tokens for every colour
 8. Include `width` and `height` on all `<img>` elements
-9. Use date-prefix naming for blog posts, meetups, and slide decks (`YYYY-MM-DD_slug.md`)
+9. Use date-prefix naming for blog posts
 10. Verify Spanish diacritical marks before committing
 11. Ensure no placeholder content (`grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/` → zero matches)
-12. Use discriminated union narrowing for deck type checks (`if (deck.data.type === 'internal')`)
-13. Add both EN and ES versions for all blog posts, meetups, and slide decks
-14. Wrap PTD edition pages in `EditionScope` and verify chrome stays on global Corag brand
-15. Use `text-corag`/`bg-corag-bg`/`border-corag-border` Corag tokens (Task 5) on new components
+12. Add both language versions of every post
+13. State the limit when there is one, rather than writing around it
 
 ## Pre-Commit Checklist
 
@@ -544,22 +447,23 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] `pnpm run seo:check` reports 0 flagged URLs
 - [ ] `pnpm run parity:check` reports 0 content-loss and 0 structural findings
 - [ ] Dark mode works in new components
-- [ ] Content in both Spanish (primary) and English
+- [ ] Content in both languages
 - [ ] Translation strings in both locale files
 - [ ] Spanish content has correct diacritical marks
-- [ ] No placeholder content (`[AUTHOR:`, `[TODO:`, etc.)
+- [ ] No placeholder content (`[AUTHOR:`, `[TODO:`, …)
 - [ ] Meta descriptions: 130-160 characters
-- [ ] Accessibility: approved text contrast, image dimensions, heading hierarchy
+- [ ] Accessibility: token text colours, image dimensions, heading hierarchy
 - [ ] Performance: lightest hydration, minimal JS
-- [ ] Corag tokens used (no leftover non-Corag design tokens)
-- [ ] Per-edition palettes scoped to `[data-edition-theme]` only
+- [ ] Corag tokens used, no raw greys
+- [ ] Every figure in new copy is one we can back
+- [ ] New top-level route added to `src/middleware.ts`
 - [ ] Commit message in English (conventional format)
 
 ## Skills & Agents
 
-- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `add-meetup`, `add-talk`, `add-slide-deck`, `add-event`, `add-ptd-edition`, `issue-certificates`, `promote-post`, `optimize-image`, `audit-post`, `audit-series`, `audit-taxonomy`, `audit-analytics`, `audit-language-integrity`, `audit-content-parity`
+- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `add-page`, `add-component`, `promote-post`, `optimize-image`, `audit-post`, `audit-series`, `audit-taxonomy`, `audit-analytics`, `audit-language-integrity`, `audit-content-parity`
 - **Agents** — Specialized workers: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`
-- **Critical policy:** New blog posts MUST use `/add-blog-post`; new meetups MUST use `/add-meetup`; new talks MUST use `/add-talk`; new slide decks MUST use `/add-slide-deck`; new PTD editions MUST use `/add-ptd-edition`
+- **Critical policy:** New blog posts MUST use `/add-blog-post`
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
 - **Full catalog:** [Skills & Agents Catalog](.agents/docs/skills_agents_catalog.md)
 
@@ -571,8 +475,6 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 | Subagents | Claude Code | Helper agents within session |
 | Team Agents | Claude Code only | Parallel instances with shared coordination |
 | Orchestrator | All agents | Child DWPs in sub-repos |
-
-See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details.
 
 ## Slash Commands (All Agents)
 
@@ -587,7 +489,7 @@ See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details
 | **Cursor AI** | `#` | `#add-blog-post` |
 | **Gemini / others** | `#` | `#add-blog-post` |
 
-> **Why `#` for non-Claude agents?** Most AI CLIs (Codex, Cursor) intercept `/` as their own system commands. Using `#` avoids interception. You can also write the command name in plain text: "run add-blog-post".
+> **Why `#` for non-Claude agents?** Most AI CLIs intercept `/` as their own system commands. Using `#` avoids interception. You can also write the command name in plain text.
 
 When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
@@ -596,20 +498,17 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 3. **FOLLOW** its step-by-step instructions exactly
 4. **DO NOT** improvise or skip steps — the procedure file IS the spec
 
-> **If a user prompt starts with `#`** (e.g., `#add-blog-post`, `#quick-fix`), treat it as a command invocation — look up the command name (without `#`) in the [Commands Reference](.agents/docs/COMMANDS_REFERENCE.md) and execute its procedure.
-
 ## Conventional Commits
 
 **Format:** `<type>(<scope>): <description>`
 
-**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `content`
 
-**Common scopes:** `brand`, `meetups`, `events`, `ptd`, `verticals`, `speakers`, `talks`, `blog`, `slides`, `i18n`, `a11y`, `seo`, `aeo`, `forms`, `community`, `home`, `nav`
+**Common scopes:** `brand`, `blog`, `pages`, `i18n`, `a11y`, `seo`, `aeo`, `forms`, `home`, `nav`, `docs`, `agents`
 
 Examples:
 
-- `feat(brand): bootstrap Corag v3.0.0 brand & design system`
-- `feat(meetups): add monthly meetup timeline + detail pages`
-- `feat(ptd): add Pereira Tech Day 2024 edition with brandKit`
-- `fix(a11y): resolve contrast on navigation dropdown`
-- `docs: rewrite documentation for pereiratechtalks.org v3.0.0`
+- `feat(pages): build the seven institutional pages`
+- `content(blog): migrate posts 12-17 of the corag.org archive`
+- `fix(a11y): resolve contrast on the navigation dropdown`
+- `refactor(forms): rework intakes for the Corag intent set`

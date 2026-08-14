@@ -463,7 +463,7 @@ This skill is **complete** when ALL of the following are true:
 
 **Input:**
 ```
-$SLUG: march-2026-meetup-recap
+$SLUG: how-to-tell-if-a-foundation-is-trustworthy
 ```
 
 **Result:** All 10 steps pass. Verdict: READY TO PUBLISH.
@@ -484,7 +484,7 @@ $SLUG: from-programmer-to-orchestrator
 /audit-post
 ```
 
-**Result:** Skill lists recent posts and asks: "Which post would you like to audit? Provide the slug (e.g., `march-2026-meetup-recap`)."
+**Result:** Skill lists recent posts and asks: "Which post would you like to audit? Provide the slug (e.g., `how-to-tell-if-a-foundation-is-trustworthy`)."
 
 ### Example 4: Post Not Found
 

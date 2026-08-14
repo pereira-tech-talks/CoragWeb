@@ -18,7 +18,7 @@ max-loc: 1200
 
 ## Objective
 
-Create multilingual blog posts (currently English + Spanish) for Pereira Tech Talks v3.0.0 using Astro Content Collections. Supports two modes:
+Create multilingual blog posts (currently English + Spanish) for Corag using Astro Content Collections. Supports two modes:
 
 - **Topic mode:** Given a topic or brief, writes the full article with personal-professional voice and narrative structure.
 - **Content mode:** Given pre-written content, scaffolds the post files with proper frontmatter and multilingual versions.
@@ -188,7 +188,7 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
 
 **Topic mode — voice rules:**
 - Use the voice defined in `docs/WRITING_VOICE_GUIDE.md`. Corag is a community: default to "we" / "the community", and only use first person ("I", "my") in clearly attributed essays where the `author` slug identifies the writer.
-- Conversational and human — like talking to a peer in the meetup
+- Conversational and human — like explaining it to someone who just asked
 - No marketing language, no empty superlatives
 - Specific details over vague claims
 - Honest reflections — what worked, what didn't, what was learned
@@ -396,19 +396,19 @@ content: add blog post "{title}" (en + es)
 
 ## Examples
 
-### Example 1: Topic Mode — Meetup Recap
+### Example 1: Topic Mode — practical guide
 
 **Input:**
 ```
-$TOPIC: Recap of the March 2026 Corag meetup at UTP. Theme: AI agents in production. Three talks (Speaker 1 — agent observability, Speaker 2 — RAG patterns, Speaker 3 — agent guardrails).
+$TOPIC: How to verify that a foundation is real before donating. Audience: someone who just received a donation request on social media and is about to transfer.
 $TAG: ai-agents
 $PUB_DATE: 2026-03-22
-$HERO_IMAGE: /images/blog/posts/march-2026-meetup-recap/hero.jpg
+$HERO_IMAGE: /images/blog/posts/how-to-tell-if-a-foundation-is-trustworthy/hero.webp
 ```
 
 **Creates:**
-- `src/content/blog/en/2026-03-22_march-2026-meetup-recap.md` (written from scratch)
-- `src/content/blog/es/2026-03-22_march-2026-meetup-recap.md` (translated)
+- `src/content/blog/es/2026-03-22_how-to-tell-if-a-foundation-is-trustworthy.md` (written first)
+- `src/content/blog/en/2026-03-22_how-to-tell-if-a-foundation-is-trustworthy.md` (translated)
 - Narrative recap with sections per speaker, takeaways, photo references, and links to the three talk pages
 
 ### Example 2: Content Mode — Post with Provided Content
