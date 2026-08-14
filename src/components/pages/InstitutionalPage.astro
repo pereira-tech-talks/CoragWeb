@@ -197,7 +197,7 @@ const slugify = (heading: string): string =>
                         ]}
                       >
                         <span
-                          class="font-display text-5xl font-bold leading-none text-corag-primary opacity-20 lg:text-6xl"
+                          class="font-display text-5xl font-bold leading-none text-corag-primary opacity-50 lg:text-6xl"
                           aria-hidden="true"
                         >
                           {String(stepIndex + 1).padStart(2, '0')}
@@ -276,9 +276,10 @@ const slugify = (heading: string): string =>
                     block.items.length >= 4 ? 'sm:grid-cols-2' : 'max-w-3xl',
                   ]}
                 >
+                  {/* min-w-0 on the item: a grid item defaults to
+                      min-width:auto, which lets an unbreakable inline URL
+                      widen the whole page (measured on /developers at 320px). */}
                   {block.items.map((item) => (
-                    {/* min-w-0: a grid item defaults to min-width:auto, which
-                        lets an unbreakable inline URL widen the whole page. */}
                     <li
                       class="flex min-w-0 gap-4 rounded-[18px] border border-corag-border bg-corag-bg-elevated p-5 leading-relaxed text-corag-secondary"
                       data-reveal

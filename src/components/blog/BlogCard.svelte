@@ -187,12 +187,12 @@ $: displayDescription = searchQuery
           {formatCalendarDateLocale(postData.pubDate, t.dateLocale)}
         </time>
         {#if isScheduled}
-          <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+          <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
             {t.scheduledBadge}
           </span>
         {/if}
         {#if isDraft}
-          <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+          <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
             {t.draftBadge}
           </span>
         {/if}
@@ -201,14 +201,14 @@ $: displayDescription = searchQuery
             {#if seriesSlug}
               <a
                 href={`${prefix}/blog/series/${seriesSlug}/`}
-                class="inline-flex items-center rounded-full border-2 border-corag-primary/30 bg-corag-primary-soft px-2.5 py-0.5 text-[11px] font-medium text-corag-primary transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/50"
+                class="inline-flex items-center rounded-full border-2 border-corag-primary/30 bg-corag-primary-soft px-2.5 py-0.5 text-xs font-medium text-corag-primary transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/50"
                 title={seriesBadgeLabel}
               >
                 {seriesCurrent}/{seriesTotal}
               </a>
             {:else}
               <span
-                class="inline-flex items-center rounded-full border-2 border-corag-primary/30 bg-corag-primary-soft px-2.5 py-0.5 text-[11px] font-medium text-corag-primary"
+                class="inline-flex items-center rounded-full border-2 border-corag-primary/30 bg-corag-primary-soft px-2.5 py-0.5 text-xs font-medium text-corag-primary"
                 title={seriesBadgeLabel}
               >
                 {seriesCurrent}/{seriesTotal}
@@ -216,7 +216,7 @@ $: displayDescription = searchQuery
             {/if}
             {#if seriesTitle}
               <span
-                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-corag-bg-dark px-2 py-1 text-[10px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover/series:opacity-100 group-focus-within/series:opacity-100"
+                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-corag-bg-dark px-2 py-1 text-xs font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover/series:opacity-100 group-focus-within/series:opacity-100"
                 role="tooltip"
               >
                 {seriesTitle}

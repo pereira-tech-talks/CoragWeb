@@ -112,7 +112,11 @@ export function pageTypeOf(pagePath) {
  */
 export const REQUIRED_SECTIONS = {
   contributors: [
-    { names: ['Active team', 'Equipo activo'] },
+    { names: ['Internal team', 'Equipo interno'] },
+    {
+      names: ['Contributors', 'Colaboradores'],
+      whenHtmlHas: /id=["']collaborators["']/,
+    },
     {
       names: ['Allied communities', 'Comunidades aliadas'],
       whenHtmlHas: /Allied communities|Comunidades aliadas/,

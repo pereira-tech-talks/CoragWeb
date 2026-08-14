@@ -225,7 +225,7 @@ function resetForm() {
     <label class="flex items-start gap-3 min-h-[44px] cursor-pointer">
       <input
         type="checkbox"
-        class="mt-1 h-5 w-5 rounded border-corag-border"
+        class="mt-1 h-6 w-6 shrink-0 rounded border-corag-border"
         bind:checked={anonymous}
         on:change={onAnonymousChange}
         disabled={formState === 'submitting'}

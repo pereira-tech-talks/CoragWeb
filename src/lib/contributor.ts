@@ -66,24 +66,36 @@ export const getContributorsBySlugs = async (
 
 export const getOrganizers = async (): Promise<Contributor[]> => {
   const all = await getActiveContributors();
-  return all.filter(
-    (c) =>
-      c.data.roles.includes('organizer') ||
-      c.data.roles.includes('founding-organizer')
-  );
+  return all.filter(isInternalTeamMember);
 };
+
+const INTERNAL_TEAM_ROLES: ReadonlySet<ContributorRole> = new Set([
+  'organizer',
+  'founding-organizer',
+]);
+
+/** Active organizers / founding organizers — the internal team grid. */
+export const isInternalTeamMember = (contributor: Contributor): boolean =>
+  !contributor.data.inactiveSince &&
+  contributor.data.roles.some((role) => INTERNAL_TEAM_ROLES.has(role));
+
+/**
+ * Active people who are not on the internal team — mentors, volunteers,
+ * contributor-role profiles, etc.
+ */
+export const isPublishedCollaborator = (contributor: Contributor): boolean =>
+  !contributor.data.inactiveSince && !isInternalTeamMember(contributor);
 
 /** Active organizers for the Equipo page (flat current-team grid). */
 export const filterCurrentTeamOrganizers = (
   contributors: Contributor[]
+): Contributor[] => sortContributors(contributors.filter(isInternalTeamMember));
+
+/** Active non-organizer people for the Colaboradores grid. */
+export const filterPublishedCollaborators = (
+  contributors: Contributor[]
 ): Contributor[] =>
-  sortContributors(
-    filterActiveContributors(contributors).filter(
-      (c) =>
-        c.data.roles.includes('organizer') ||
-        c.data.roles.includes('founding-organizer')
-    )
-  );
+  sortContributors(contributors.filter(isPublishedCollaborator));
 
 /** Past / alumni members for the unified Equipo past section. */
 export const filterPastTeamMembers = (
@@ -93,6 +105,11 @@ export const filterPastTeamMembers = (
 export const getCurrentTeamOrganizers = async (): Promise<Contributor[]> => {
   const all = await getContributors();
   return filterCurrentTeamOrganizers(all);
+};
+
+export const getPublishedCollaborators = async (): Promise<Contributor[]> => {
+  const all = await getContributors();
+  return filterPublishedCollaborators(all);
 };
 
 export const getPastTeamMembers = async (): Promise<Contributor[]> => {

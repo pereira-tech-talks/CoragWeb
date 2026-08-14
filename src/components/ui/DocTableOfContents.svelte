@@ -48,7 +48,7 @@ onMount(() => {
       <li>
         <a
           href={`#${heading.id}`}
-          class="block text-sm leading-snug transition-colors {activeId === heading.id
+          class="flex min-h-[24px] items-center text-sm leading-snug transition-colors {activeId === heading.id
             ? 'font-semibold text-corag-primary dark:text-corag-primary-light'
             : 'text-corag-secondary hover:text-corag'}"
           on:click={(e) => handleClick(e, heading.id)}

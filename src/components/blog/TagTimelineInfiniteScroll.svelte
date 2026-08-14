@@ -203,13 +203,13 @@ function buildSeriesBadgeLabel(
                 </time>
 
                 {#if isPostScheduled(post.pubDate)}
-                  <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                  <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                     {t.scheduledBadge}
                   </span>
                 {/if}
 
                 {#if post.isDraft}
-                  <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                  <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
                     {t.draftBadge}
                   </span>
                 {/if}
@@ -220,14 +220,14 @@ function buildSeriesBadgeLabel(
                   {#if post.seriesSlug}
                     <a
                       href={`${prefix}/blog/series/${post.seriesSlug}/`}
-                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-[11px] font-medium text-corag-primary transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/60"
+                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-xs font-medium text-corag-primary transition-colors hover:bg-corag-primary/15 hover:border-corag-primary/60"
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}
                     </a>
                   {:else}
                     <span
-                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-[11px] font-medium text-corag-primary"
+                      class="inline-flex items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-xs font-medium text-corag-primary"
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}

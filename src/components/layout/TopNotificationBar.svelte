@@ -279,7 +279,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
             >
               {#if n.severity === 'important'}
                 <span
-                  class="hidden min-[360px]:inline shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide leading-none bg-white text-corag-bg-dark"
+                  class="hidden min-[360px]:inline shrink-0 rounded px-1.5 py-0.5 text-xs font-bold uppercase tracking-wide leading-none bg-white text-corag-bg-dark"
                 >
                   {importantLabel}
                 </span>
@@ -396,7 +396,7 @@ function severityClass(severity: LocalizedNotification['severity']): string {
       >
         {#if openEntry.severity === 'important'}
           <p
-            class="text-[11px] font-bold uppercase tracking-[0.16em] text-corag-primary dark:text-corag-primary-light"
+            class="text-xs font-bold uppercase tracking-[0.16em] text-corag-primary dark:text-corag-primary-light"
           >
             {importantLabel}
           </p>

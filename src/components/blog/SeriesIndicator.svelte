@@ -47,7 +47,7 @@ onMount(() => {
     aria-label="{buttonText} — {seriesTitle}"
   >
     <span
-      class="inline-flex shrink-0 items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-[11px] font-medium text-corag-primary"
+      class="inline-flex shrink-0 items-center rounded-full border-2 border-corag-primary/40 bg-corag-primary-soft px-2 py-0.5 text-xs font-medium text-corag-primary"
       aria-hidden="true"
       title={`${seriesTitle} · ${buttonText}`}
     >
@@ -56,7 +56,7 @@ onMount(() => {
     <!-- Label -->
     <span class="flex flex-col items-start leading-tight">
       <span class="text-xs text-corag">{buttonText}</span>
-      <span class="text-[10px] text-corag-secondary">{t.seriesToC} &darr;</span>
+      <span class="text-xs text-corag-secondary">{t.seriesToC} &darr;</span>
     </span>
   </button>
 {/if}

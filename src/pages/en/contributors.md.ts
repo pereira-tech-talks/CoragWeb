@@ -4,6 +4,7 @@ import { getAlliesByKind } from '@/lib/ally';
 import { SITE_URL } from '@/lib/constances';
 import {
   filterCurrentTeamOrganizers,
+  filterPublishedCollaborators,
   getContributors,
 } from '@/lib/contributor';
 import {
@@ -15,9 +16,11 @@ import {
 export const GET: APIRoute = async () => {
   const lang = 'en';
   const contributors = await getContributors();
-  const current = filterCurrentTeamOrganizers(contributors);
+  const team = filterCurrentTeamOrganizers(contributors);
+  const collaborators = filterPublishedCollaborators(contributors);
   const communities = await getAlliesByKind('community');
   const companies = await getAlliesByKind('company');
+  const peopleCount = team.length + collaborators.length;
 
   const toLines = (list: typeof contributors): string[] =>
     list.flatMap((c) => {
@@ -44,15 +47,21 @@ export const GET: APIRoute = async () => {
     });
 
   const orEmpty = (lines: string[]): string[] =>
-    lines.length > 0
-      ? lines
-      : ['No contributors published in this section yet.'];
+    lines.length > 0 ? lines : ['No people published in this section yet.'];
 
   const sections = [
     {
-      heading: 'Active team',
-      lines: ['Building it today.', ...orEmpty(toLines(current))],
+      heading: 'Internal team',
+      lines: orEmpty(toLines(team)),
     },
+    ...(collaborators.length > 0
+      ? [
+          {
+            heading: 'Contributors',
+            lines: toLines(collaborators),
+          },
+        ]
+      : []),
     ...(communities.length > 0
       ? [{ heading: 'Allied communities', lines: allyLines(communities) }]
       : []),
@@ -75,15 +84,15 @@ export const GET: APIRoute = async () => {
     lang,
     canonical: `${SITE_URL}/en/contributors`,
     metadata: [
-      ['Active contributors', String(current.length)],
+      ['Internal team', String(team.length)],
+      ['Contributors', String(collaborators.length)],
       ['Allied communities', String(communities.length)],
       ['Allied companies', String(companies.length)],
-      ['Total in directory', String(contributors.length)],
     ],
     body: [
       'Who we are.',
-      `Corag is built by ${current.length} people donating their time. These are they.`,
-      'Everyone contributes from their own area. The work is voluntary and the credit is shared.',
+      `Corag is built by ${peopleCount} people donating their time. These are they.`,
+      'First the internal team; then people who contribute without being the operating core.',
       'Allied communities and companies also add capacity, reach or infrastructure to the network.',
     ].join(' '),
     sections,

@@ -339,9 +339,12 @@ export const es: SiteTranslations = {
     eyebrow: 'Quiénes somos',
     intro: (count: number) =>
       `Corag lo construyen ${count} personas que donan su tiempo. Estas son.`,
-    currentTitle: 'Quienes están construyendo hoy',
-    currentIntro:
-      'Cada quien aporta desde su área. El trabajo es voluntario y el crédito es de todas y todos.',
+    teamTitle: 'Equipo interno',
+    teamIntro:
+      'Quienes sostienen el día a día de Corag: producto, ingeniería, diseño, contenido y coordinación.',
+    collaboratorsTitle: 'Colaboradores',
+    collaboratorsIntro:
+      'Personas que aportan tiempo y oficio sin ser el equipo interno: mentores, voluntariado y apoyo puntual.',
     communitiesTitle: 'Comunidades aliadas',
     communitiesIntro:
       'Comunidades que suman capacidad, difusión o infraestructura a la red.',

@@ -332,8 +332,10 @@ export interface SiteTranslations {
     description: string;
     eyebrow: string;
     intro: (count: number) => string;
-    currentTitle: string;
-    currentIntro: string;
+    teamTitle: string;
+    teamIntro: string;
+    collaboratorsTitle: string;
+    collaboratorsIntro: string;
     communitiesTitle: string;
     communitiesIntro: string;
     companiesTitle: string;
