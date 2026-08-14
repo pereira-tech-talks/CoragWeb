@@ -177,7 +177,38 @@ describe('serializeBlogIndexToMarkdown', () => {
     expect(result).toContain('Language: en');
     expect(result).toContain('Canonical: https://corag.app/en/blog');
     expect(result).toContain('Total posts: 2');
-    expect(result).toContain('## Posts');
+    expect(result).toContain('## All articles (2 available)');
+  });
+
+  it('mirrors the tag filter the HTML renders, ordered by frequency', () => {
+    const result = serializeBlogIndexToMarkdown(
+      [
+        { ...entries[0], tags: ['volunteering', 'colombia'] },
+        { ...entries[1], tags: ['volunteering'] },
+      ],
+      { lang: 'en', title: 'Blog', description: 'Test.' }
+    );
+
+    expect(result).toContain('## Topics');
+    expect(result).toContain(
+      '- [#volunteering](/en/blog/tag/volunteering) — 2'
+    );
+    expect(result).toContain('- [#colombia](/en/blog/tag/colombia) — 1');
+    // The most-used tag leads, as it does in the filter.
+    expect(result.indexOf('#volunteering')).toBeLessThan(
+      result.indexOf('#colombia')
+    );
+  });
+
+  it('omits the topics block entirely when no post carries a tag', () => {
+    const untagged = entries.map(({ tags: _tags, ...rest }) => rest);
+    const result = serializeBlogIndexToMarkdown(untagged, {
+      lang: 'en',
+      title: 'Blog',
+      description: 'Test.',
+    });
+
+    expect(result).not.toContain('## Topics');
   });
 
   it('should include post links with .md URLs', () => {
@@ -211,7 +242,7 @@ describe('serializeBlogIndexToMarkdown', () => {
     });
 
     expect(result).toContain('Total posts: 0');
-    expect(result).toContain('## Posts');
+    expect(result).toContain('## All articles (0 available)');
   });
 });
 
