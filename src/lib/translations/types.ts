@@ -17,12 +17,59 @@ export interface PagePassion {
  * these pages explain a model, and a model is prose, an ordered sequence, a
  * set of parallel facts, or a warning. Anything else belongs on its own page.
  */
+/**
+ * An image inside an institutional page.
+ *
+ * `srcBase` + `widths` name a responsive set produced by the asset pipeline
+ * (`{srcBase}-{width}.webp`), so the renderer derives `src` and `srcset`
+ * instead of every page hand-writing them.
+ *
+ * A screenshot of the application MUST carry a `caption` declaring that the
+ * data shown is live application data — this site never states a figure of its
+ * own (AGENTS.md rule 0).
+ */
+export interface InstitutionalFigure {
+  srcBase: string;
+  widths: number[];
+  alt: string;
+  /** Intrinsic dimensions of the largest variant, for layout stability. */
+  width: number;
+  height: number;
+  caption?: string;
+  /** CSS-drawn frame. `plain` renders the image with no chrome. */
+  frame?: 'browser' | 'phone' | 'plain';
+}
+
+export interface InstitutionalStat {
+  label: string;
+  body: string;
+}
+
 export type InstitutionalBlock =
   | { kind: 'prose'; paragraphs: string[] }
-  | { kind: 'steps'; steps: { title: string; body: string }[] }
+  | {
+      kind: 'steps';
+      steps: { title: string; body: string; figure?: InstitutionalFigure }[];
+    }
   | { kind: 'cards'; cards: { title: string; body: string }[] }
   | { kind: 'list'; items: string[] }
-  | { kind: 'callout'; tone: 'info' | 'warning'; title: string; body: string };
+  | { kind: 'callout'; tone: 'info' | 'warning'; title: string; body: string }
+  /** A standalone captioned image. */
+  | { kind: 'figure'; figure: InstitutionalFigure }
+  /** Copy beside an image; `reverse` puts the image first at desktop. */
+  | {
+      kind: 'split';
+      paragraphs: string[];
+      figure: InstitutionalFigure;
+      reverse?: boolean;
+    }
+  /** Two things that are deliberately not the same thing. */
+  | {
+      kind: 'statPair';
+      items: [InstitutionalStat, InstitutionalStat];
+      /** Glyph shown between the pair, e.g. the not-equal sign. */
+      relation?: string;
+    };
 
 export interface InstitutionalSection {
   heading: string;
@@ -47,6 +94,13 @@ export interface InstitutionalPageCopy {
   description: string;
   eyebrow: string;
   lead: string;
+  /** Fills the hero's second column. Without it the hero draws the brand motif. */
+  heroFigure?: InstitutionalFigure;
+  /**
+   * Heading for the in-page section index. Present only on long,
+   * imagery-free policy pages, where navigability is the real need.
+   */
+  sectionIndexLabel?: string;
   sections: InstitutionalSection[];
   cta: {
     title: string;

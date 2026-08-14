@@ -2,7 +2,10 @@ import type { CollectionEntry } from 'astro:content';
 import { SITE_URL } from '@/lib/constances';
 import { DEFAULT_LANGUAGE, getUrlPrefix, isValidLanguage } from '@/lib/i18n';
 import { navHref, navLabel, SITE_NAVIGATION } from '@/lib/site-navigation';
-import type { InstitutionalPageCopy } from '@/lib/translations/types';
+import type {
+  InstitutionalFigure,
+  InstitutionalPageCopy,
+} from '@/lib/translations/types';
 
 /**
  * The Site Navigation block every agent-Markdown output ends with.
@@ -669,6 +672,16 @@ export function serializePageToAgentMarkdown(
  * which is exactly how the previous site ended up with `.md` files that were
  * summaries of pages rather than twins of them.
  */
+/**
+ * A figure in the Markdown twin: the image plus its caption, so an agent
+ * reading the twin learns the same thing a person reading the page does.
+ */
+function figureToMarkdown(figure: InstitutionalFigure): string {
+  const src = `${figure.srcBase}-${Math.max(...figure.widths)}.webp`;
+  const image = `![${figure.alt}](${src})`;
+  return figure.caption ? `${image}\n\n_${figure.caption}_` : image;
+}
+
 export function serializeInstitutionalPageToMarkdown(
   copy: InstitutionalPageCopy,
   options: { lang: string; canonical: string }
@@ -678,24 +691,56 @@ export function serializeInstitutionalPageToMarkdown(
     if (section.intro) {
       lines.push(section.intro, '');
     }
+    /*
+     * Exhaustive by construction: the `never` check below turns "a new block
+     * kind was added to the union but not serialized" into a type error. It
+     * used to be an `else` catch-all, which would have silently serialized any
+     * new kind as a callout and quietly desynced the twin from the page.
+     */
     for (const block of section.blocks) {
-      if (block.kind === 'prose') {
-        for (const paragraph of block.paragraphs) lines.push(paragraph, '');
-      } else if (block.kind === 'steps') {
-        block.steps.forEach((step, index) => {
-          lines.push(`${index + 1}. **${step.title}** — ${step.body}`);
-        });
-        lines.push('');
-      } else if (block.kind === 'cards') {
-        for (const card of block.cards) {
-          lines.push(`- **${card.title}** — ${card.body}`);
+      switch (block.kind) {
+        case 'prose':
+          for (const paragraph of block.paragraphs) lines.push(paragraph, '');
+          break;
+        case 'steps':
+          block.steps.forEach((step, index) => {
+            lines.push(`${index + 1}. **${step.title}** — ${step.body}`);
+            if (step.figure) lines.push(`   ${figureToMarkdown(step.figure)}`);
+          });
+          lines.push('');
+          break;
+        case 'cards':
+          for (const card of block.cards) {
+            lines.push(`- **${card.title}** — ${card.body}`);
+          }
+          lines.push('');
+          break;
+        case 'list':
+          for (const item of block.items) lines.push(`- ${item}`);
+          lines.push('');
+          break;
+        case 'callout':
+          lines.push(`> **${block.title}** — ${block.body}`, '');
+          break;
+        case 'figure':
+          lines.push(figureToMarkdown(block.figure), '');
+          break;
+        case 'split':
+          for (const paragraph of block.paragraphs) lines.push(paragraph, '');
+          lines.push(figureToMarkdown(block.figure), '');
+          break;
+        case 'statPair':
+          for (const item of block.items) {
+            lines.push(`- **${item.label}** — ${item.body}`);
+          }
+          lines.push('');
+          break;
+        default: {
+          const exhaustive: never = block;
+          throw new Error(
+            `Unserialized institutional block kind: ${JSON.stringify(exhaustive)}`
+          );
         }
-        lines.push('');
-      } else if (block.kind === 'list') {
-        for (const item of block.items) lines.push(`- ${item}`);
-        lines.push('');
-      } else {
-        lines.push(`> **${block.title}** — ${block.body}`, '');
       }
     }
     while (lines.length > 0 && lines[lines.length - 1] === '') lines.pop();

@@ -104,6 +104,53 @@ describe('serializeInstitutionalPageToMarkdown', () => {
           },
         ],
       },
+      {
+        heading: 'Figure section',
+        blocks: [
+          {
+            kind: 'figure',
+            figure: {
+              srcBase: '/images/pages/app/app-avances-desktop',
+              widths: [640, 1240],
+              alt: 'The application progress band',
+              width: 1240,
+              height: 345,
+              caption: 'A real view of the application; the data is live.',
+              frame: 'browser',
+            },
+          },
+        ],
+      },
+      {
+        heading: 'Split section',
+        blocks: [
+          {
+            kind: 'split',
+            paragraphs: ['Copy beside an image.'],
+            figure: {
+              srcBase: '/images/pages/app/app-seguimiento-mobile',
+              widths: [390, 780],
+              alt: 'The private follow-up search',
+              width: 390,
+              height: 844,
+              frame: 'phone',
+            },
+          },
+        ],
+      },
+      {
+        heading: 'Stat pair section',
+        blocks: [
+          {
+            kind: 'statPair',
+            relation: '≠',
+            items: [
+              { label: 'Received', body: 'What came in.' },
+              { label: 'Used with evidence', body: 'What was proven.' },
+            ],
+          },
+        ],
+      },
     ],
     cta: {
       title: 'Go to the app',
@@ -171,16 +218,50 @@ describe('serializeInstitutionalPageToMarkdown', () => {
     // The failure this guards is silent: an unhandled kind produces a twin that
     // still passes the front-block and navigation checks.
     const kinds = copy.sections.flatMap((s) => s.blocks.map((b) => b.kind));
-    expect(new Set(kinds).size).toBe(5);
+    expect(new Set(kinds).size).toBe(8);
     for (const marker of [
       'First para.',
       '**Publish**',
       '**Received**',
       '- One item',
       '**Not an emergency service**',
+      '![The application progress band]',
+      'Copy beside an image.',
+      '![The private follow-up search]',
+      '**Used with evidence**',
     ]) {
       expect(md).toContain(marker);
     }
+  });
+
+  it('carries a figure caption into the twin, not just the image', () => {
+    // An agent reading the twin must learn what a reader of the page learns —
+    // including the rule-0 declaration that a screenshot shows live app data.
+    expect(md).toContain('_A real view of the application; the data is live._');
+  });
+
+  it('resolves a figure to its largest responsive variant', () => {
+    expect(md).toContain('/images/pages/app/app-avances-desktop-1240.webp');
+  });
+
+  it('refuses to serialize an unknown block kind instead of guessing', () => {
+    // Regression guard for the old `else` catch-all, which silently rendered
+    // any new kind as a callout and desynced the twin from the page.
+    const rogue = {
+      ...copy,
+      sections: [
+        {
+          heading: 'Rogue',
+          blocks: [{ kind: 'not-a-real-kind' } as never],
+        },
+      ],
+    };
+    expect(() =>
+      serializeInstitutionalPageToMarkdown(rogue, {
+        lang: 'en',
+        canonical: 'https://corag.app/en/x',
+      })
+    ).toThrow(/Unserialized institutional block kind/);
   });
 
   it('omits the secondary CTA link when there is none', () => {
