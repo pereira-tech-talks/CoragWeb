@@ -212,16 +212,51 @@ export function serializeBlogIndexToMarkdown(
   lines.push('');
   lines.push('---');
   lines.push('');
-  lines.push('## Posts');
+
+  /*
+   * The HTML renders a tag filter above the list, and the twin used to drop
+   * it — which read as "this blog has no taxonomy" to anything consuming the
+   * Markdown. Ordered by frequency, the way the filter itself is.
+   */
+  const tagCounts = new Map<string, number>();
+  for (const entry of entries) {
+    for (const tag of entry.tags ?? []) {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    }
+  }
+  if (tagCounts.size > 0) {
+    lines.push(lang === 'es' ? '## Temas' : '## Topics');
+    lines.push('');
+    const sorted = [...tagCounts.entries()].sort(
+      (a, b) => b[1] - a[1] || a[0].localeCompare(b[0])
+    );
+    for (const [tag, count] of sorted) {
+      lines.push(`- [#${tag}](${prefix}/blog/tag/${tag}) — ${count}`);
+    }
+    lines.push('');
+  }
+
+  lines.push(
+    lang === 'es'
+      ? `## Todos los artículos (${entries.length} disponibles)`
+      : `## All articles (${entries.length} available)`
+  );
   lines.push('');
 
   for (const entry of entries) {
     const postMdUrl = `${prefix}/blog/${entry.slug}.md`;
     const date = formatDate(entry.pubDate);
+    const tags = (entry.tags ?? []).map((tag) => `#${tag}`).join(' ');
     lines.push(
-      `- [${entry.title}](${postMdUrl}) — ${entry.description} (${date})`
+      `- [${entry.title}](${postMdUrl}) — ${entry.description} (${date})${tags ? ` ${tags}` : ''}`
     );
   }
+  lines.push('');
+  lines.push(
+    lang === 'es'
+      ? `[Explorar series](${prefix}/blog/series)`
+      : `[Explore series](${prefix}/blog/series)`
+  );
 
   lines.push(generateSiteNavigation(lang));
 

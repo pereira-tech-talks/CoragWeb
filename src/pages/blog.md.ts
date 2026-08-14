@@ -3,6 +3,7 @@ import type { APIRoute } from 'astro';
 
 import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { serializeBlogIndexToMarkdown } from '@/lib/markdown-for-agents';
+import { getTranslations } from '@/lib/translations';
 
 export const GET: APIRoute = async () => {
   const allPosts = await getCollection('blog');
@@ -22,9 +23,9 @@ export const GET: APIRoute = async () => {
 
   const markdown = serializeBlogIndexToMarkdown(entries, {
     lang: 'es',
-    title: 'Blog de Corag — Art\u00EDculos e Historias',
-    description:
-      'C\u00F3mo se coordina la ayuda, c\u00F3mo se verifica lo que se entrega y qu\u00E9 aprendemos operando en terreno.',
+    // Same strings the HTML renders, so the twin cannot drift from the page.
+    title: `Blog de Corag \u2014 ${getTranslations('es').blogTitle}`,
+    description: getTranslations('es').blogDescription,
   });
 
   return new Response(markdown, {
