@@ -17,12 +17,28 @@ Corag publishes its network so a new application becomes a client of the same
 data instead of a competing copy. Things worth building on top of it are listed
 on [`/developers`](https://corag.app/developers).
 
-## Working on this site
+## Start here
+
+**Ask your AI assistant to run `/setup`** (`#setup` in Cursor or Codex).
+
+It is a doctor: it creates the local config files this repo needs, checks
+whether Docker and your editor are ready, tells you the single next step, and is
+safe to re-run as often as you like — finished items show ✅.
+
+If you have never used Docker or dev containers, follow
+[Onboarding](./ONBOARDING.md) instead: same path, click by click, with the
+jargon explained.
+
+Once you are inside the container:
 
 ```bash
-pnpm install
-pnpm run dev          # http://localhost:9999
+install        # dependencies
+pnpm run dev   # http://localhost:9999
 ```
+
+Type `help` for every command available in the container.
+
+## Working on this site
 
 Before opening a pull request, every one of these must pass:
 
@@ -43,6 +59,28 @@ can gain a paragraph its English sibling never gets while every other check
 stays green — which is how a previous version of this site ended up with 88 of
 94 pairs drifted. `redirects:check` exists because a rule can 301 a live page
 away from itself into a 404, and nothing else in the toolchain notices.
+
+## How a change reaches `main`
+
+**Every change goes through a pull request. No direct pushes to `main`.**
+
+```bash
+gcob feat/my-change      # branch first — never work on main
+# …make the change, run the gates above…
+gc "feat(pages): …"      # conventional commit, or use /commit
+gp                       # push
+```
+
+Then open a pull request against `main`. `/pr` drafts the description from
+your diff.
+
+Commit format is [Conventional Commits](https://www.conventionalcommits.org/):
+`<type>(<scope>): <description>`. Types: `feat`, `fix`, `docs`, `style`,
+`refactor`, `test`, `chore`, `perf`, `ci`, `build`, `content`. Common scopes:
+`brand`, `blog`, `pages`, `i18n`, `a11y`, `seo`, `forms`, `agents`.
+
+CI runs lint, types, tests and the build. **It does not run the five content
+gates** — those are on you, locally, before you open the pull request.
 
 ## Conventions that matter
 
