@@ -12,7 +12,7 @@
  */
 
 import { getEntry, render } from 'astro:content';
-
+import AppInvite from '@/components/cta/AppInvite.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -101,4 +101,5 @@ const lastUpdatedPrefix = lang === 'es' ? 'Actualizado el' : 'Last updated';
       </div>
     </div>
   </article>
+  <AppInvite lang={lang} variant="band" surface="doc-end" />
 </MainLayout>

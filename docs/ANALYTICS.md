@@ -335,7 +335,7 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | Event | Description | Data Payload | Source Component(s) |
 |-------|-------------|-------------|---------------------|
 | `nav_click` | Navigation link click | `{ item, source }` | Header.svelte, MobileMenu.svelte |
-| `app_cta_click` | Click on a CTA into the application — **the site's conversion** | `{ surface }` — `hero`, `product`, `closing`, `channels`, `institutional-cta` | HomePage.astro, InstitutionalPage.astro |
+| `app_cta_click` | Click on a CTA into the application — **the site's conversion** | `{ surface }` — see the surface table below | HomePage.astro, InstitutionalPage.astro, AppInvite.astro, FloatingAppCta.svelte, Header.svelte, MobileMenu.svelte |
 | `language_switch` | Language toggle | `{ from, to }` | Header.svelte, MobileMenu.svelte |
 | `mobile_menu_toggle` | Hamburger menu open/close | `{ action }` | Header.svelte |
 | `theme_toggle` | Dark/light mode switch | `{ theme }` | ThemeToggle.astro |
@@ -362,6 +362,26 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `unknown_bot_visit` | Unknown bot crawl (server-side) | `{ bot, path, method, user_agent }` | `functions/_middleware.ts` (edge middleware) |
 | `markdown_request` | Markdown endpoint request (server-side) | `{ bot, path, source, user_agent }` | `functions/_middleware.ts` (edge middleware) |
 
+### `app_cta_click` surfaces
+
+Reaching `ayuda.corag.app` is the only conversion this site has, so every route
+into it reports where it was. The `surface` value is what makes the layers
+comparable — which of them earns clicks, and which is only taking up room.
+
+| Surface | Where | Layer |
+|---|---|---|
+| `header-desktop`, `header-mobile` | The always-visible chrome pill | Persistent |
+| `mobile-menu`, `mobile-menu-evidence` | Inside the mobile navigation sheet | Persistent |
+| `floating` | The dismissible pill/bar, after 35% scroll | Floating |
+| `hero`, `product`, `closing`, `channels` | Home page sections | In-content |
+| `institutional-cta` | A page's own CTA, only when it truly points at the app | In-content |
+| `{page}-end` | The `AppInvite` block closing a page — `blog-post-end`, `blog-listing-end`, `institutional-end`, `about-end`, `contact-end`, `contributors-end`, `policy-end`, `doc-end` | In-content |
+
+Each `AppInvite` reports three variants, because the block offers three routes:
+`{surface}` for *I want to help*, `{surface}-need` for *I need help*, and
+`{surface}-evidence` for the published evidence. Comparing the first two is the
+cheapest read there is on who the site is actually reaching.
+
 ### How to Verify Events
 
 1. Run `pnpm run dev` and open the site in a browser
@@ -377,6 +397,8 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 |-------|---------------|---------------|
 | `nav_click` | Click any nav link in header | `item: "blog"`, `source: "desktop"` |
 | `app_cta_click` | Click "Quiero ayudar" in the home hero | `surface: "hero"` |
+| `app_cta_click` | Scroll past 35% of any page but the home, click the floating pill | `surface: "floating"` |
+| `app_cta_click` | Click the header pill at any width | `surface: "header-mobile"` or `"header-desktop"` |
 | `language_switch` | Click EN/ES toggle | `from: "en"`, `to: "es"` |
 | `theme_toggle` | Click sun/moon button | `theme: "dark"` or `"light"` |
 | `blog_search` | Type 2+ chars in blog search | `query: "donar"`, `results: 8` |

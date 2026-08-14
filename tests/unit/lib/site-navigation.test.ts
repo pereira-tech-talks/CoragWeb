@@ -39,9 +39,11 @@ function chromePathsFrom(file: string): Set<string> {
   }
   // The logo links `prefix || '/'`, which is the home entry.
   if (/href=\{prefix \|\| '\/'\}/.test(source)) found.add('/');
-  // The application CTA is an external link bound to the APP_URL constant
-  // rather than a prefixed path, so it is matched by identifier.
+  // The application CTAs are external links built from the APP_URL constant
+  // rather than prefixed paths, so they are matched by identifier: either the
+  // bare host or a verified deep link via `appUrl(APP_PATHS.*)`.
   if (/href=\{APP_URL\}/.test(source)) found.add(APP_URL);
+  if (/href=\{appUrl\(APP_PATHS\.\w+\)\}/.test(source)) found.add(APP_URL);
   return found;
 }
 

@@ -8,11 +8,13 @@
  * bespoke template that drifts from the other six.
  */
 
+import AppInvite from '@/components/cta/AppInvite.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import InstitutionalFigure from '@/components/ui/InstitutionalFigure.astro';
 import Section from '@/components/ui/Section.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import { APP_URL } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { renderInlineMarkdown } from '@/lib/inline-markdown';
 import { getTranslations } from '@/lib/translations';
@@ -48,6 +50,15 @@ const btnSecondary =
 
 const externalAttrs = (link: InstitutionalLink) =>
   link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+
+/**
+ * `external` only means "leaves this site" — the developers page CTA is an
+ * external link to `openapi.json`, which is documentation, not a conversion.
+ * Counting it as one inflated `app_cta_click` with clicks that never reached
+ * the application.
+ */
+const isAppLink = (link: InstitutionalLink): boolean =>
+  link.external === true && link.href.startsWith(APP_URL);
 
 /** Section headings become anchor targets for the in-page index. */
 const slugify = (heading: string): string =>
@@ -464,10 +475,8 @@ const slugify = (heading: string): string =>
         <a
           href={hrefOf(copy.cta.primary)}
           class={btnPrimary}
-          data-umami-event={
-            copy.cta.primary.external ? 'app_cta_click' : undefined
-          }
-          data-umami-event-surface="institutional-cta"
+          data-umami-event={isAppLink(copy.cta.primary) ? 'app_cta_click' : undefined}
+          data-umami-event-surface={isAppLink(copy.cta.primary) ? 'institutional-cta' : undefined}
           {...externalAttrs(copy.cta.primary)}
         >
           {copy.cta.primary.label}
@@ -486,4 +495,10 @@ const slugify = (heading: string): string =>
       </div>
     </div>
   </Section>
+
+  {/* The CTA above moves the reader along the argument — most of these point at
+      another page on this site. None of them reaches the application, which is
+      why every institutional page measured with no route to it. This closes
+      that. */}
+  <AppInvite lang={lang} surface="institutional-end" />
 </MainLayout>

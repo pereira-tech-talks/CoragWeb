@@ -210,7 +210,10 @@ export interface SiteTranslations {
 
   // Navigation
   nav: {
-    /** The Ayuda Directa application CTA in the chrome. */
+    /**
+     * The application CTA in the chrome. Phrased as the act, not the
+     * destination — see the `appCta` copy rule below.
+     */
     app: string;
     home: string;
     /** Trigger label for the "How Corag works" dropdown. */
@@ -235,6 +238,48 @@ export interface SiteTranslations {
     menu: string;
     closeMenu: string;
     openMenu: string;
+  };
+
+  /**
+   * Every route into the application. This site explains the model; the
+   * application is where a need gets published, help gets offered and evidence
+   * gets uploaded — so these strings carry the only conversion the site has.
+   *
+   * Two copy rules, and the second outranks the first:
+   *
+   * 1. Verb + concrete benefit. "Go to the app" names a destination; "I want
+   *    to help" names an act.
+   * 2. **Never address only the giver.** The application serves the person who
+   *    needs help just as much as the person offering it, so the persistent
+   *    chrome must read as a door for both. Only inside the invite block, where
+   *    there is room for two buttons, does the copy split by intent.
+   */
+  appCta: {
+    /**
+     * Mobile header pill. Short enough not to displace the wordmark, and a
+     * noun rather than a verb so it reads both ways.
+     */
+    short: string;
+    /** Accessible name for the pill, which shows an abbreviated label. */
+    shortAria: string;
+    /** The floating invitation — one line, so it carries the differentiator. */
+    floating: {
+      lead: string;
+      action: string;
+      dismiss: string;
+    };
+    /** The in-content invitation block, which has room to explain. */
+    invite: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      /** For the person offering help. */
+      primary: string;
+      /** For the person who needs it. */
+      secondary: string;
+      /** The evidence — quieter, because it backs the other two. */
+      tertiary: string;
+    };
   };
 
   // Footer

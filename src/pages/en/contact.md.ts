@@ -3,6 +3,7 @@ import type { APIRoute } from 'astro';
 
 import { SITE_URL } from '@/lib/constances';
 import {
+  appInviteSection,
   entityLine,
   serializeGenericToMarkdown,
 } from '@/lib/markdown-for-agents';
@@ -43,6 +44,7 @@ export const GET: APIRoute = async () => {
           entityLine(link.label, link.href, link.description)
         ),
       },
+      appInviteSection(lang),
     ],
   });
 

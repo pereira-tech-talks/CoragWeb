@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import { EVENTS, trackEvent } from '@/lib/analytics';
-import { APP_URL } from '@/lib/constances';
+import { APP_PATHS, appUrl } from '@/lib/constances';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -211,10 +211,16 @@ function closeAllDropdowns() {
       <!-- The application. Every transactional action happens there, so this is
            the primary action in the chrome. -->
       <a
-        href={APP_URL}
-        class="inline-flex min-h-[44px] items-center rounded-full bg-corag-fill px-5 py-2 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'app' })}
-      >{t.nav.app}</a>
+        href={appUrl(APP_PATHS.home)}
+        class="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-corag-fill px-5 py-2 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        data-umami-event="app_cta_click"
+        data-umami-event-surface="header-desktop"
+      >
+        <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9A5.6 5.6 0 0 1 12 6.2 5.6 5.6 0 0 1 21.6 12c-2.1 4.4-9.6 9-9.6 9z" />
+        </svg>
+        {t.nav.app}
+      </a>
 
       <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
       <div
@@ -273,8 +279,29 @@ function closeAllDropdowns() {
       <ThemeToggle {lang} placement="header" />
     </div>
 
+    <!--
+      Below lg the desktop nav is hidden, and with it the only route to the
+      application: measured at 390px and 768px, zero app CTAs were visible, and
+      the one inside the mobile menu sat below the fold. This pill restores on
+      mobile what the desktop chrome always had. It abbreviates under 400px so
+      it can never push the wordmark.
+    -->
+    <div class="flex items-center gap-1 lg:hidden {open ? 'pointer-events-none invisible' : ''}">
+      <a
+        href={appUrl(APP_PATHS.home)}
+        class="inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-corag-fill px-3.5 py-2 text-sm font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary sm:px-4"
+        aria-label={t.appCta.shortAria}
+        data-umami-event="app_cta_click"
+        data-umami-event-surface="header-mobile"
+      >
+        <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 21s-7.5-4.6-9.6-9A5.6 5.6 0 0 1 12 6.2 5.6 5.6 0 0 1 21.6 12c-2.1 4.4-9.6 9-9.6 9z" />
+        </svg>
+        <span>{t.appCta.short}</span>
+      </a>
+
     <button
-      class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center p-2 lg:hidden {open
+      class="inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center p-2 {open
         ? 'pointer-events-none invisible'
         : 'block'}"
       aria-label={t.nav.openMenu}
@@ -287,6 +314,7 @@ function closeAllDropdowns() {
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
+    </div>
   </nav>
   <MobileMenu {lang} {open} {toggleMenu} />
 </header>

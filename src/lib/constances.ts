@@ -26,6 +26,32 @@ export function appUrl(path = '/'): string {
 }
 
 /**
+ * The application paths this site is allowed to link to.
+ *
+ * Every entry was requested and answered 200 before being written down. Linking
+ * a path the application does not serve is the same failure as advertising a
+ * DNS record that 404s: the visitor follows our invitation and lands nowhere.
+ * Add a path here only after verifying it, and never deep-link a slug that
+ * belongs to one emergency — those come and go, and a dead CTA in the site
+ * chrome outlives the emergency that justified it.
+ */
+export const APP_PATHS = {
+  /**
+   * The dual door. Someone who needs help and someone who wants to give it
+   * both belong here — the root lists the active emergencies and their help
+   * points. The application has no dedicated "request help" route, so this is
+   * the honest destination for that half of the audience; do not invent one.
+   */
+  home: '/',
+  /** Contribute to an active need. The primary conversion. */
+  contribute: '/aportar',
+  /** Published progress — the evidence behind the argument. */
+  evidence: '/avances',
+  /** Follow where a contribution landed. */
+  tracking: '/seguimiento',
+} as const;
+
+/**
  * The `category` enum of the public Ayuda Directa API, verbatim from the
  * OpenAPI 3.1 document (`/api/public/openapi.json`) and the `/developers`
  * page. API values — never translated.
