@@ -6,6 +6,7 @@ import {
   filterCurrentTeamOrganizers,
   filterPastContributors,
   filterPastTeamMembers,
+  filterPublishedCollaborators,
   sortContributors,
 } from '@/lib/contributor';
 
@@ -82,6 +83,36 @@ describe('contributor helpers', () => {
       'sergio',
       'founder-compat',
     ]);
+  });
+
+  it('filterPublishedCollaborators keeps active non-organizers only', () => {
+    const contributors = [
+      makeContributor('sergio', {
+        roles: ['organizer'],
+        order: 0,
+        name: 'Sergio',
+      }),
+      makeContributor('mentor-only', {
+        roles: ['mentor'],
+        order: 1,
+        name: 'Mentor',
+      }),
+      makeContributor('volunteer', {
+        roles: ['contributor'],
+        order: 2,
+        name: 'Volunteer',
+      }),
+      makeContributor('past-contributor', {
+        roles: ['contributor'],
+        inactiveSince: new Date('2025-12-31'),
+        order: 3,
+        name: 'Past',
+      }),
+    ];
+
+    expect(filterPublishedCollaborators(contributors).map((c) => c.id)).toEqual(
+      ['mentor-only', 'volunteer']
+    );
   });
 
   it('filterPastTeamMembers returns everyone with inactiveSince sorted', () => {

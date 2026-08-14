@@ -2,13 +2,8 @@
  * Shared helpers for POSTing form responses to the DailyBot Forms public API.
  *
  * Corag has two public intakes — the contact form and the conduct report — and
- * each maps to one DailyBot form.
- *
- * **Form and question UUIDs come from the environment, never from source.** The
- * values that used to live here belonged to a different DailyBot workspace;
- * baking any UUID in as a default would mean a misconfigured deploy silently
- * posting real submissions into somebody else's forms. Missing configuration
- * fails closed instead. See `docs/features/FORMS.md`.
+ * each maps to one DailyBot form in the Corag org. Form and question UUIDs are
+ * baked in here; the only runtime secret is `DAILYBOT_API_KEY`.
  *
  * API contract:
  *   POST https://api.dailybot.com/v1/forms/{form_uuid}/responses/
@@ -22,7 +17,7 @@
  */
 
 // ────────────────────────────────────────────────────────────────────────────
-// Form identifiers
+// Form identifiers (Corag org — baked in; only the API key stays in env)
 // ────────────────────────────────────────────────────────────────────────────
 
 export interface DailyBotFormConfig {
@@ -32,64 +27,48 @@ export interface DailyBotFormConfig {
 
 export type IntakeForm = 'contact' | 'conduct';
 
-/** Question keys each intake must supply, so a partial config fails loudly. */
-const REQUIRED_QUESTIONS: Record<IntakeForm, readonly string[]> = {
-  contact: ['NAME', 'EMAIL', 'TOPIC', 'SUBJECT', 'MESSAGE', 'LANG', 'PAGE_PATH'],
-  conduct: [
-    'INCIDENT',
-    'WHEN',
-    'PEOPLE',
-    'ANONYMOUS',
-    'REPORTER_NAME',
-    'REPORTER_EMAIL',
-    'FOLLOWUP',
-    'LANG',
-    'PAGE_PATH',
-  ],
+/** Corag — Contact (`a467e863-…`). */
+export const CONTACT_FORM_UUID = 'a467e863-e808-4e7e-97f6-173ab512cb96';
+
+/** Corag — Code of Conduct report (`cf0b575b-…`). */
+export const CONDUCT_FORM_UUID = 'cf0b575b-8d49-4b3c-822a-4eafd9dbc3ee';
+
+export const CONTACT_FORM: DailyBotFormConfig = {
+  uuid: CONTACT_FORM_UUID,
+  q: {
+    NAME: '98e5abf3-d984-4177-8876-fdfceac55b0c',
+    EMAIL: 'ddd1d374-54ab-4bb6-80a1-c805038c0548',
+    TOPIC: '016c0453-4754-4154-ac32-22f0a1f66a13',
+    SUBJECT: 'fa754422-6f49-4c02-8512-8b01e5c21a13',
+    MESSAGE: '87a71695-0de4-4f30-89a1-8ca7a7cb31b9',
+    LANG: '4f3172a3-7bb1-4103-aa87-0f01cb9317a3',
+    PAGE_PATH: 'b1d7a7f9-803c-4cf7-a712-e81bcd1b0379',
+  },
 };
 
-const ENV_KEY: Record<IntakeForm, string> = {
-  contact: 'DAILYBOT_CONTACT_FORM',
-  conduct: 'DAILYBOT_CONDUCT_FORM',
+export const CONDUCT_FORM: DailyBotFormConfig = {
+  uuid: CONDUCT_FORM_UUID,
+  q: {
+    INCIDENT: '4ac6b4e4-a11c-4e25-94a1-9cc6209b2bd1',
+    WHEN: 'c12c9e6f-80b2-408e-bcfd-56733e475fdf',
+    PEOPLE: '819259fd-f307-4e57-9cc9-96ae11a18790',
+    ANONYMOUS: 'efbc4ca8-90f3-452b-a436-a38253aa1f61',
+    REPORTER_NAME: '5d163446-3099-46ef-9daa-34af11300363',
+    REPORTER_EMAIL: '2adb6f0f-2dfe-4041-a565-39e3c4bbd0bd',
+    FOLLOWUP: '0884b869-aa00-40bc-9f2e-20e19c4c7e5f',
+    LANG: '3b3663d7-6b6c-48f9-9d8a-0d990fd4e781',
+    PAGE_PATH: '5f5badd2-66c2-488f-a2a4-e757bd5941ae',
+  },
 };
 
-/**
- * Read one intake's DailyBot mapping from the environment.
- *
- * Expected shape (single-line JSON):
- *   {"uuid":"<form-uuid>","q":{"NAME":"<question-uuid>", ...}}
- *
- * Returns `null` when the variable is absent, unparseable, or missing a
- * question the intake needs — the caller turns that into a 503 rather than
- * posting an incomplete response.
- */
-export function resolveFormConfig(
-  env: Record<string, string | undefined>,
-  form: IntakeForm
-): DailyBotFormConfig | null {
-  const raw = env[ENV_KEY[form]];
-  if (!raw) return null;
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(raw);
-  } catch {
-    console.error(`[dailybot] ${ENV_KEY[form]} is not valid JSON`);
-    return null;
-  }
-  const candidate = parsed as Partial<DailyBotFormConfig>;
-  if (typeof candidate?.uuid !== 'string' || !candidate.uuid) return null;
-  const q = candidate.q;
-  if (!q || typeof q !== 'object') return null;
-  const missing = REQUIRED_QUESTIONS[form].filter(
-    (key) => typeof q[key] !== 'string' || !q[key]
-  );
-  if (missing.length > 0) {
-    console.error(
-      `[dailybot] ${ENV_KEY[form]} is missing question ids: ${missing.join(', ')}`
-    );
-    return null;
-  }
-  return { uuid: candidate.uuid, q: q as Record<string, string> };
+const INTAKE_FORMS: Record<IntakeForm, DailyBotFormConfig> = {
+  contact: CONTACT_FORM,
+  conduct: CONDUCT_FORM,
+};
+
+/** Return the baked-in DailyBot form + question map for an intake. */
+export function getFormConfig(form: IntakeForm): DailyBotFormConfig {
+  return INTAKE_FORMS[form];
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -175,6 +154,7 @@ export const CONTACT_TOPIC_VALUES = buildChoiceLookup([
   { aliases: ['Ally', 'ally', 'partner', 'alliance', 'aliado', 'alianza'] },
   { aliases: ['Press', 'press', 'media', 'prensa'] },
   { aliases: ['Report', 'report', 'reporte'] },
+  { aliases: ['Conduct', 'conduct', 'coc', 'código de conducta', 'codigo de conducta'] },
   { aliases: ['Other', 'other', 'otro'] },
 ]);
 

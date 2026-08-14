@@ -129,14 +129,14 @@ describe('contributor directory', () => {
 
   it('builds the Equipo page split the page actually renders', async () => {
     const current = await contributor.getCurrentTeamOrganizers();
+    const collaborators = await contributor.getPublishedCollaborators();
     const past = await contributor.getPastTeamMembers();
     expect(current.map((c) => c.id)).toEqual([
       'sergio-florez',
       'eliana-osorio',
     ]);
+    expect(collaborators.map((c) => c.id)).toEqual(['zoe-mentor']);
     expect(past.map((c) => c.id)).toEqual(['alumni-person']);
-    // A mentor who is not an organizer belongs in neither.
-    expect([...current, ...past].map((c) => c.id)).not.toContain('zoe-mentor');
   });
 
   it('does not reorder the array it was given', async () => {

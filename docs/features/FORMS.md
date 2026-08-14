@@ -13,41 +13,53 @@ junk responses afterwards.
 
 ## The two forms
 
-| Form | UI | Route | `_form` |
-|------|----|-------|---------|
-| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` |
-| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` |
+| Form | UI | Route | `_form` | DailyBot form (Corag org) |
+|------|----|-------|---------|--------------------------|
+| Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` | **Corag — Contact** (`a467e863-e808-4e7e-97f6-173ab512cb96`) |
+| Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` | **Corag — Code of Conduct report** (`cf0b575b-8d49-4b3c-822a-4eafd9dbc3ee`) |
 
-Newsletter signup is disabled in the UI and has no backend.
+Both report to Slack channel `#all-corag`. Newsletter signup is disabled in the UI and has no backend.
 
-## Form and question ids come from the environment
+### Client feedback
 
-This is the part most likely to surprise you. The DailyBot form uuid and its
-question uuids are **not** in source. They are read at request time from:
+Both Svelte forms already:
 
-| Variable | Shape |
-|----------|-------|
-| `DAILYBOT_CONTACT_FORM` | `{"uuid":"<form-uuid>","q":{"NAME":"…","EMAIL":"…","TOPIC":"…","SUBJECT":"…","MESSAGE":"…","LANG":"…","PAGE_PATH":"…"}}` |
-| `DAILYBOT_CONDUCT_FORM` | `{"uuid":"…","q":{"INCIDENT":"…","WHEN":"…","PEOPLE":"…","ANONYMOUS":"…","REPORTER_NAME":"…","REPORTER_EMAIL":"…","FOLLOWUP":"…","LANG":"…","PAGE_PATH":"…"}}` |
+- Validate on submit and show **per-field** errors (`aria-invalid`, red border, `aria-live` messages)
+- Focus the first invalid field
+- Show a **success** panel (`role="status"`) after a `2xx` from `/api/contact`
+- Show a form-level error if the API fails or is not configured
 
-`resolveFormConfig()` in `functions/api/_dailybot.ts` parses them and validates
-that every required question id is present. **A missing, unparseable or partial
-mapping returns 503 and sends nothing.**
+### Contact topics → DailyBot choices
 
-That is deliberate. The ids used to be baked into source, and they belonged to a
-different workspace — a misconfigured deploy would have silently posted real
-submissions into somebody else's forms. Failing closed is the safe direction.
+Site slug → DailyBot multiple-choice **label** (value === label):
+
+`general`→General · `organization`→Organization · `ally`→Ally · `press`→Press · `report`→Report · `conduct`→Conduct · `other`→Other
+
+## Form and question ids are baked into source
+
+Form and question UUIDs for the Corag DailyBot org live in
+`functions/api/_dailybot.ts` (`CONTACT_FORM` / `CONDUCT_FORM`). The **only**
+runtime secret for intake is:
+
+| Variable | Where | Notes |
+|----------|-------|-------|
+| `DAILYBOT_API_KEY` | Cloudflare / local Functions | **Never** `PUBLIC_*`. Sent as `X-API-KEY`. |
+
+Without `DAILYBOT_API_KEY` the endpoint returns 503/`backend_not_configured`
+and sends nothing.
 
 ## Environment
 
 | Variable | Where | Notes |
 |----------|-------|-------|
-| `DAILYBOT_API_KEY` | Cloudflare / local Functions only | **Never** `PUBLIC_*`. Sent as `X-API-KEY`. |
-| `DAILYBOT_CONTACT_FORM`, `DAILYBOT_CONDUCT_FORM` | Same | Required. Without them the endpoint 503s. |
+| `DAILYBOT_API_KEY` | Cloudflare / local Functions only | **Never** `PUBLIC_*`. Sent as `X-API-KEY`. Required. |
 | `PUBLIC_CONTACT_API_ENDPOINT` | Build | Optional override. Defaults to `/api/contact`. |
 | `RESEND_API_KEY` + `CONTACT_FROM_EMAIL` | Optional | Submitter acknowledgement after DailyBot success |
 | `CONTACT_RATE_LIMIT` / `CONTACT_RATE_WINDOW_MS` | Optional | Default 8 requests / 600000 ms |
 | `CONTACT_ALLOWED_ORIGINS` | Optional | CORS allowlist |
+
+Form and question UUIDs are **not** env vars — they live in
+`functions/api/_dailybot.ts`.
 
 **Local Functions:** plain `pnpm run dev` does **not** run Cloudflare Pages
 Functions. Use `wrangler pages dev` (or a preview deploy) with the variables
@@ -111,7 +123,6 @@ the case where a client sneaks an address into an anonymous payload.
 | Upstream | Returned | `error` |
 |----------|----------|---------|
 | No `DAILYBOT_API_KEY` | 503 | `backend_not_configured` |
-| Form mapping missing or partial | 503 | `backend_not_configured` |
 | DailyBot 401 / 403 | 502 | `backend_not_configured` |
 | DailyBot rejects a choice | 400 | `invalid_choice` |
 | DailyBot missing required | 400 | `missing_required` |

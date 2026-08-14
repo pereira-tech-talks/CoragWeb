@@ -51,6 +51,8 @@ describe('lookupChoice (label values for Corag org)', () => {
     );
     expect(lookupChoice('partner', CONTACT_TOPIC_VALUES)).toBe('Ally');
     expect(lookupChoice('report', CONTACT_TOPIC_VALUES)).toBe('Report');
+    expect(lookupChoice('conduct', CONTACT_TOPIC_VALUES)).toBe('Conduct');
+    expect(lookupChoice('coc', CONTACT_TOPIC_VALUES)).toBe('Conduct');
     expect(lookupChoice('es', LANG_VALUES)).toBe('Spanish');
     expect(lookupChoice('en', LANG_VALUES)).toBe('English');
   });

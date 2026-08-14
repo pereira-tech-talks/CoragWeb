@@ -16,9 +16,10 @@
     `src/pages/` (or `src/pages/en/`) without a matching entry in
     `src/middleware.ts` (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`) — the route 404s in
     production until allowlisted.
-  - **DailyBot form or question ids hardcoded in source.** They come from
-    `DAILYBOT_CONTACT_FORM` / `DAILYBOT_CONDUCT_FORM` and must fail closed when
-    absent; a baked-in id can post real submissions into the wrong workspace.
+  - **DailyBot API key exposed to the client.** `DAILYBOT_API_KEY` must stay
+    server-only (Cloudflare / local Functions env — never `PUBLIC_*`). Form and
+    question UUIDs for the Corag org are intentionally baked into
+    `functions/api/_dailybot.ts`.
   - **Personal data collected on this site.** Any form field asking about a
     specific person's need, location or situation belongs in the application,
     not in this repository.

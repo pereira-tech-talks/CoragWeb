@@ -11,10 +11,11 @@
  *
  * Env:
  *   DAILYBOT_API_KEY — required
- *   DAILYBOT_CONTACT_FORM, DAILYBOT_CONDUCT_FORM — required JSON form mappings
  *   RESEND_API_KEY, CONTACT_FROM_EMAIL — optional ack
  *   CONTACT_ALLOWED_ORIGINS, CONTACT_RATE_LIMIT, CONTACT_RATE_WINDOW_MS
  *   CONTACT_TURNSTILE_SECRET — reserved
+ *
+ * Form and question UUIDs are baked into `./_dailybot.ts` (Corag org).
  */
 
 import {
@@ -22,9 +23,9 @@ import {
   type DailyBotFormConfig,
   LANG_VALUES,
   booleanToDailyBot,
+  getFormConfig,
   lookupChoice,
   normalizePagePath,
-  resolveFormConfig,
   submitFormResponse,
 } from './_dailybot';
 import {
@@ -44,8 +45,6 @@ type FormType = (typeof FORM_TYPES)[number];
 
 interface Env {
   DAILYBOT_API_KEY?: string;
-  DAILYBOT_CONTACT_FORM?: string;
-  DAILYBOT_CONDUCT_FORM?: string;
   RESEND_API_KEY?: string;
   CONTACT_FROM_EMAIL?: string;
   CONTACT_ALLOWED_ORIGINS?: string;
@@ -349,17 +348,7 @@ export async function onRequestPost(
 
   const flags = { anonymous: asBool(data.anonymous) };
 
-  const config = resolveFormConfig(
-    context.env as Record<string, string | undefined>,
-    formType
-  );
-  if (!config) {
-    return jsonResponse(
-      { ok: false, error: 'backend_not_configured' },
-      503,
-      origin
-    );
-  }
+  const config = getFormConfig(formType);
 
   const pagePath = normalizePagePath(data.page_path ?? data.pagePath);
   const built = buildContent(formType, config, fields, flags, pagePath, langRaw);

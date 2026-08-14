@@ -1,5 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import {
+  CONDUCT_FORM,
+  CONDUCT_FORM_UUID,
+  CONTACT_FORM,
+  CONTACT_FORM_UUID,
+} from '../../../functions/api/_dailybot';
 import { onRequestPost } from '../../../functions/api/contact';
 
 afterEach(() => {
@@ -7,48 +13,13 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-/*
- * Form and question ids are configuration, not source. These fixtures stand in
- * for what a deploy sets, and the tests assert the handler forwards whatever it
- * was given rather than any hard-coded identifier.
- */
-const CONTACT_Q = {
-  NAME: 'q-name',
-  EMAIL: 'q-email',
-  TOPIC: 'q-topic',
-  SUBJECT: 'q-subject',
-  MESSAGE: 'q-message',
-  LANG: 'q-lang',
-  PAGE_PATH: 'q-page',
-} as const;
-
-const CONDUCT_Q = {
-  INCIDENT: 'c-incident',
-  WHEN: 'c-when',
-  PEOPLE: 'c-people',
-  ANONYMOUS: 'c-anon',
-  REPORTER_NAME: 'c-name',
-  REPORTER_EMAIL: 'c-email',
-  FOLLOWUP: 'c-followup',
-  LANG: 'c-lang',
-  PAGE_PATH: 'c-page',
-} as const;
-
-const CONTACT_FORM_UUID = 'form-contact-uuid';
-const CONDUCT_FORM_UUID = 'form-conduct-uuid';
+const CONTACT_Q = CONTACT_FORM.q;
+const CONDUCT_Q = CONDUCT_FORM.q;
 
 const CONFIGURED_ENV = {
   DAILYBOT_API_KEY: 'test-key',
   // The rate-limit store is module scoped and shared across cases in this file.
   CONTACT_RATE_LIMIT: '1000',
-  DAILYBOT_CONTACT_FORM: JSON.stringify({
-    uuid: CONTACT_FORM_UUID,
-    q: CONTACT_Q,
-  }),
-  DAILYBOT_CONDUCT_FORM: JSON.stringify({
-    uuid: CONDUCT_FORM_UUID,
-    q: CONDUCT_Q,
-  }),
 };
 
 function createContext(
@@ -74,65 +45,27 @@ function createContext(
 
 describe('POST /api/contact → Dailybot', () => {
   it('returns 503 when DAILYBOT_API_KEY is missing', async () => {
-    const res = await onRequestPost(createContext({}, {}));
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+
+    const res = await onRequestPost(
+      createContext(
+        {
+          _form: 'contact',
+          name: 'Ada',
+          email: 'ada@example.com',
+          topic: 'general',
+          subject: 'Hello',
+          message: 'A question about how deliveries get verified.',
+          lang: 'es',
+          website: '',
+        },
+        {}
+      )
+    );
     expect(res.status).toBe(503);
     const json = (await res.json()) as { error: string };
     expect(json.error).toBe('backend_not_configured');
-  });
-
-  it('refuses to post when the form mapping is not configured', async () => {
-    const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
-
-    const res = await onRequestPost(
-      createContext(
-        {
-          _form: 'contact',
-          name: 'Ada',
-          email: 'ada@example.com',
-          topic: 'general',
-          subject: 'Hello',
-          message: 'A question about how deliveries get verified.',
-          lang: 'es',
-          website: '',
-        },
-        { DAILYBOT_API_KEY: 'test-key' }
-      )
-    );
-
-    expect(res.status).toBe(503);
-    // The point of failing closed: nothing was sent anywhere.
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  it('refuses a mapping that is missing a question id', async () => {
-    const fetchMock = vi.fn();
-    vi.stubGlobal('fetch', fetchMock);
-
-    const { MESSAGE: _dropped, ...partial } = CONTACT_Q;
-    const res = await onRequestPost(
-      createContext(
-        {
-          _form: 'contact',
-          name: 'Ada',
-          email: 'ada@example.com',
-          topic: 'general',
-          subject: 'Hello',
-          message: 'A question about how deliveries get verified.',
-          lang: 'es',
-          website: '',
-        },
-        {
-          DAILYBOT_API_KEY: 'test-key',
-          DAILYBOT_CONTACT_FORM: JSON.stringify({
-            uuid: CONTACT_FORM_UUID,
-            q: partial,
-          }),
-        }
-      )
-    );
-
-    expect(res.status).toBe(503);
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -188,6 +121,7 @@ describe('POST /api/contact → Dailybot', () => {
       ['ally', 'Ally'],
       ['report', 'Report'],
       ['press', 'Press'],
+      ['conduct', 'Conduct'],
     ] as const) {
       const fetchMock = vi
         .fn()
@@ -293,7 +227,7 @@ describe('POST /api/contact → Dailybot', () => {
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     expect(url).toContain(CONDUCT_FORM_UUID);
     const body = JSON.parse(init.body as string) as {
-      content: Record<string, string>;
+      content: Record<string, string | boolean>;
     };
     expect(body.content[CONDUCT_Q.ANONYMOUS]).toBe(true);
     expect(body.content[CONDUCT_Q.REPORTER_NAME]).toBe('');

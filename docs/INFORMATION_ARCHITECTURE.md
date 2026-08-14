@@ -128,6 +128,16 @@ Content         Blog · Blog series
 Ayuda Directa   Go to the app  (external)
 ```
 
+Chrome (header / mobile) exposes that surface as:
+
+```text
+Cómo funciona ▾   (How Corag works group)
+Comunidad ▾       (About + Community group)
+Blog · Contacto · Ir a la aplicación
+```
+
+About sits in the Community dropdown (with the people/policy pages) rather than as a
+top-level link, so the bar stays short while every public page stays one click away.
 ## The middleware allowlist
 
 `src/middleware.ts` holds `KNOWN_ROOT_PATHS` and `KNOWN_EN_PATHS`. Single-segment

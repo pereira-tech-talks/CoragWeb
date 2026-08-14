@@ -38,9 +38,13 @@ Canonical: https://corag.app/en/contributors
 
 Corag is built by a team donating their time.
 
-## Active team
+## Internal team
 
 - [Juan Pérez](/en/contributors) — Engineering
+
+## Contributors
+
+- [Ana Ruiz](/en/contributors) — Mentoring
 
 ## Allied communities
 
@@ -115,20 +119,41 @@ describe('required sections', () => {
     expect(missingSections(GOOD_CONTRIBUTORS_MD, 'contributors')).toEqual([]);
   });
 
-  it('FIXTURE: fails when the Active team section is dropped', () => {
+  it('FIXTURE: fails when the Internal team section is dropped', () => {
     const broken = GOOD_CONTRIBUTORS_MD.replace(
-      '## Active team',
+      '## Internal team',
       '## Something else'
     );
-    expect(missingSections(broken, 'contributors')).toEqual(['Active team']);
+    expect(missingSections(broken, 'contributors')).toEqual(['Internal team']);
   });
 
   it('accepts the Spanish heading for the same section', () => {
     const spanish = GOOD_CONTRIBUTORS_MD.replace(
-      '## Active team',
-      '## Equipo activo'
+      '## Internal team',
+      '## Equipo interno'
     );
     expect(missingSections(spanish, 'contributors')).toEqual([]);
+  });
+
+  it('requires Contributors only when the HTML exposes that section', () => {
+    const withoutCollaboratorsHeading = GOOD_CONTRIBUTORS_MD.replace(
+      '## Contributors\n\n- [Ana Ruiz](/en/contributors) — Mentoring\n\n',
+      ''
+    );
+    expect(
+      missingSections(
+        withoutCollaboratorsHeading,
+        'contributors',
+        '<main></main>'
+      )
+    ).toEqual([]);
+    expect(
+      missingSections(
+        withoutCollaboratorsHeading,
+        'contributors',
+        '<main><section id="collaborators"></section></main>'
+      )
+    ).toEqual(['Contributors']);
   });
 
   it('reads both h2 and h3 headings', () => {
@@ -204,8 +229,10 @@ describe('evaluatePage', () => {
   const html = wrapMain(
     `<h1>Contributors — Corag</h1>
      <p>Corag is built by a team donating their time.</p>
-     <h2>Active team</h2>
+     <h2>Internal team</h2>
      <p>Juan Pérez Engineering</p>
+     <section id="collaborators"><h2>Contributors</h2>
+     <p>Ana Ruiz Mentoring</p></section>
      <h2>Allied communities</h2>
      <p>Pereira Tech Talks Allied community</p>
      <h2>Allied companies</h2>

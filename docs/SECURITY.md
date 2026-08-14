@@ -156,14 +156,12 @@ To add a calendar, organizers must make the Google Calendar public and submit th
 
 ### Community intakes (`/api/contact` → Dailybot)
 
-Both public forms (`ContactForm`, `ConductReportForm`) post to `POST /api/contact`, which forwards to **DailyBot Forms**. Three server-only secrets are involved and none may be `PUBLIC_*`:
+Both public forms (`ContactForm`, `ConductReportForm`) post to `POST /api/contact`, which forwards to **DailyBot Forms**. The server-only secret is:
 
 - `DAILYBOT_API_KEY`
-- `DAILYBOT_CONTACT_FORM` / `DAILYBOT_CONDUCT_FORM` — JSON holding the form and question ids
 
-The form ids are **configuration, not source**. Baking them in would mean a
-misconfigured deploy silently posting real submissions into another workspace's
-forms, so a missing or partial mapping returns 503 and sends nothing. See
+Form and question UUIDs for the Corag org are baked into `functions/api/_dailybot.ts`.
+Without the API key the endpoint fails closed (503) and sends nothing. See
 [FORMS.md](./features/FORMS.md).
 
 | Control | Implementation |
@@ -176,7 +174,7 @@ forms, so a missing or partial mapping returns 503 and sends nothing. See
 | Rate limiting | Isolate-local sliding window (default 8 / 10 min) |
 | Turnstile | Deferred — `CONTACT_TURNSTILE_SECRET` reserved |
 | Optional Resend ack | Best-effort after Dailybot `201`; ack failure does not fail the request |
-| CoC privacy | Restricted Dailybot form (`owner_and_admins`, no public link, no Slack report channel). Anonymous mode clears reporter identity. Analytics must not include incident text |
+| CoC privacy | Restricted Dailybot form (`owner_and_admins`, no public link). Anonymous mode clears reporter identity. Analytics must not include incident text |
 | Validation tests | `tests/unit/lib/contact-form.test.ts`, `tests/unit/functions/dailybot.test.ts`, `tests/unit/functions/contact-dailybot.test.ts` |
 
 Prefill query params on Contact (`topic` preferred, legacy `reason`, plus `subject`, `message`) are sanitized on mount; never render raw query strings as HTML.

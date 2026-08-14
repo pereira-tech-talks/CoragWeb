@@ -136,8 +136,9 @@ Defined in `src/content.config.ts`:
 - **`parity:check` compares the two languages against each other**, not each
   against correctness. A paragraph added to one side and not the other fails.
 - **Route slugs are English in both languages.** Spanish is served unprefixed.
-- **The DailyBot form ids come from the environment.** Without them the intake
-  endpoint returns 503 and sends nothing, by design.
+- **DailyBot form UUIDs are baked into `functions/api/_dailybot.ts`.** Only
+  `DAILYBOT_API_KEY` is env-bound; without it the intake returns 503 and sends
+  nothing, by design.
 
 ## Commands
 

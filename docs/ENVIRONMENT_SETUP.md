@@ -10,7 +10,7 @@ Copy `docker/local/pertechtalks/.env.example` → `.env` inside the same directo
 
 | Variable | Required | Notes |
 |----------|----------|-------|
-| `DAILYBOT_API_KEY` | Yes (Functions) | Personal API key from Dailybot user settings. Server-only. See [FORMS.md](./features/FORMS.md). |
+| `DAILYBOT_API_KEY` | Yes (Functions) | Personal API key from Dailybot user settings. Server-only. Form UUIDs are baked into `functions/api/_dailybot.ts`. See [FORMS.md](./features/FORMS.md). |
 | `PUBLIC_CONTACT_API_ENDPOINT` | Optional | Defaults to `/api/contact` in code. Override only if the Function is mounted elsewhere. |
 | `RESEND_API_KEY` | Optional | Submitter ack after Dailybot success |
 | `CONTACT_FROM_EMAIL` | Optional with Resend | Verified sender |
