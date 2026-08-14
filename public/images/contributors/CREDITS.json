@@ -1,5 +1,5 @@
 {
-  "note": "Contributor portraits carried over from pereiratechtalks.org, the community these organizers run. Cropped square and re-encoded; no other edit.",
+  "note": "Contributor portraits. Older entries come from pereiratechtalks.org; newer Corag portraits are supplied by the person or their team.",
   "fetchedAt": "2026-08-14",
   "portraits": [
     {
@@ -29,6 +29,25 @@
       "original": "832x806",
       "shipped": "256x256",
       "bytes": 6374
+    },
+    {
+      "slug": "alejandro-kratc",
+      "source": "supplied by Alejandro Kratc (team upload, 2026-08-14)",
+      "original": "400x400",
+      "shipped": "256x256",
+      "bytes": 4368
+    },
+    {
+      "slug": "juliana-correa",
+      "source": "portrait pending — ships /images/contributors/_placeholder.svg until a photo is provided",
+      "shipped": "svg-placeholder"
+    },
+    {
+      "slug": "andres-m-prieto",
+      "source": "supplied by Andrés M Prieto (team upload, 2026-08-14)",
+      "original": "800x800",
+      "shipped": "256x256",
+      "bytes": 4972
     }
   ]
 }

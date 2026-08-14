@@ -1,12 +1,12 @@
 name: Sebastián Agudelo Morales
 avatar: /images/contributors/sebastian-agudelo.webp
-roles: [contributor]
+roles: [organizer]
 role:
-  en: Operations
-  es: Operación
+  en: Operations lead
+  es: Líder de operación
 bio:
-  en: Supports event production and program coordination, experience he brings from the Pereira Tech Talks organizing crew.
-  es: Apoya la producción de eventos y la coordinación de programación, experiencia que trae del equipo organizador de Pereira Tech Talks.
+  en: Leads operations for Corag, with experience from the Pereira Tech Talks organizing crew.
+  es: Lidera la operación de Corag, con experiencia del equipo organizador de Pereira Tech Talks.
 social:
   linkedin: https://www.linkedin.com/in/sebastianamo/
-order: 3
+order: 2

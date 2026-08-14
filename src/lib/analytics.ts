@@ -32,6 +32,15 @@ export const PII_DENYLIST_KEYS = [
  */
 export const EVENTS = {
   NAV_CLICK: 'nav_click',
+  /**
+   * A click on any CTA that sends someone to the application.
+   *
+   * This is the site's conversion: everything here exists to move a visitor to
+   * ayuda.corag.app. `surface` says which piece of the argument earned the
+   * click (hero, closing, an institutional page's CTA…), which is the part a
+   * plain nav_click cannot tell you.
+   */
+  APP_CTA_CLICK: 'app_cta_click',
   LANGUAGE_SWITCH: 'language_switch',
   MOBILE_MENU_TOGGLE: 'mobile_menu_toggle',
   THEME_TOGGLE: 'theme_toggle',
@@ -43,7 +52,6 @@ export const EVENTS = {
   COPY_LINK: 'copy_link',
   SERIES_NAV: 'series_nav',
   SERIES_INDICATOR_CLICK: 'series_indicator_click',
-  POST_INDICATOR_CLICK: 'post_indicator_click',
   LIGHTBOX_OPEN: 'lightbox_open',
   CONTACT_FORM_SUBMIT: 'contact_form_submit',
   CONTACT_FORM_ERROR: 'contact_form_error',
@@ -53,9 +61,17 @@ export const EVENTS = {
   SCROLL_DEPTH: 'scroll_depth',
   SCROLL_TO_TIMELINE: 'scroll_to_timeline',
   TIMELINE_CLICK: 'timeline_click',
+  /*
+   * Edge-fired events. These do not go through `trackEvent` — they are sent
+   * server-side from `functions/_middleware.ts` straight to Umami's API, so a
+   * bot that never runs JavaScript still gets counted. They live here because
+   * this is the canonical name list: the middleware writes the string
+   * literally, and this is what it has to match.
+   */
   AI_BOT_VISIT: 'ai_bot_visit',
   UNKNOWN_BOT_VISIT: 'unknown_bot_visit',
   MARKDOWN_REQUEST: 'markdown_request',
+
   NOTIFICATION_CTA: 'notification_cta',
   NOTIFICATION_MODAL_OPEN: 'notification_modal_open',
   CONDUCT_REPORT_SUBMIT: 'conduct_report_submit',

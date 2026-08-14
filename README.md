@@ -44,9 +44,22 @@ Markdown is compiled by **Sätteri**; transforms are HAST plugins in
 
 ## Getting started
 
+This repository is container-first: the dev container carries the right Node,
+pnpm and tooling, so you install none of them.
+
+**The fastest path is to ask your AI assistant for `/setup`** (`#setup` in
+Cursor or Codex). It scaffolds the local config, checks your machine, and tells
+you the one next step. It is safe to re-run any time.
+
+Never used Docker or dev containers? [Onboarding](./docs/ONBOARDING.md) is the
+same path click by click.
+
+Once you are inside the container:
+
 ```bash
-pnpm install
+install               # dependencies
 pnpm run dev          # http://localhost:9999
+help                  # every command available in the container
 ```
 
 ### Everyday commands
@@ -154,16 +167,24 @@ Wrappers never import `MainLayout`, and `lang` is always a string literal.
 
 Corag is built by volunteers. If you want to help:
 
-- **Developers** — see [`/desarrolladores`](https://corag.app/desarrolladores) for
-  the integration surface, and `docs/CONTRIBUTING.md` for this repo.
+- **Developers** — [Contributing](./docs/CONTRIBUTING.md) covers this repo;
+  [`/developers`](https://corag.app/developers) covers the public API you can
+  build on.
+- **First time with a project like this** — [Onboarding](./docs/ONBOARDING.md).
 - **Everyone else** — the fastest way to help is through the application at
   [ayuda.corag.app](https://ayuda.corag.app).
 
-Before opening a pull request, run the full gate:
+**Every change reaches `main` through a pull request.** Before opening one:
 
 ```bash
 pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build
+pnpm run md:check:strict && pnpm run lang:check:strict && pnpm run seo:check:strict
+pnpm run parity:check:strict && pnpm run redirects:check:strict
 ```
+
+CI runs the first four. The last five — the content gates — run locally only,
+and they are the ones that catch a page whose two languages drifted apart.
+[Contributing](./docs/CONTRIBUTING.md) explains what each protects.
 
 ---
 

@@ -335,6 +335,7 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | Event | Description | Data Payload | Source Component(s) |
 |-------|-------------|-------------|---------------------|
 | `nav_click` | Navigation link click | `{ item, source }` | Header.svelte, MobileMenu.svelte |
+| `app_cta_click` | Click on a CTA into the application — **the site's conversion** | `{ surface }` — `hero`, `product`, `closing`, `channels`, `institutional-cta` | HomePage.astro, InstitutionalPage.astro |
 | `language_switch` | Language toggle | `{ from, to }` | Header.svelte, MobileMenu.svelte |
 | `mobile_menu_toggle` | Hamburger menu open/close | `{ action }` | Header.svelte |
 | `theme_toggle` | Dark/light mode switch | `{ theme }` | ThemeToggle.astro |
@@ -375,6 +376,7 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | Event | How to Trigger | Expected Data |
 |-------|---------------|---------------|
 | `nav_click` | Click any nav link in header | `item: "blog"`, `source: "desktop"` |
+| `app_cta_click` | Click "Quiero ayudar" in the home hero | `surface: "hero"` |
 | `language_switch` | Click EN/ES toggle | `from: "en"`, `to: "es"` |
 | `theme_toggle` | Click sun/moon button | `theme: "dark"` or `"light"` |
 | `blog_search` | Type 2+ chars in blog search | `query: "donar"`, `results: 8` |

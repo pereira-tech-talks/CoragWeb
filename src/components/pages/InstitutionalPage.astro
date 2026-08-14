@@ -464,6 +464,10 @@ const slugify = (heading: string): string =>
         <a
           href={hrefOf(copy.cta.primary)}
           class={btnPrimary}
+          data-umami-event={
+            copy.cta.primary.external ? 'app_cta_click' : undefined
+          }
+          data-umami-event-surface="institutional-cta"
           {...externalAttrs(copy.cta.primary)}
         >
           {copy.cta.primary.label}

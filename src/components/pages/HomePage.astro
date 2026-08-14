@@ -187,7 +187,12 @@ const btnSecondary =
             {h.lead}
           </p>
           <div class="hero-ctas mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
-            <a href={appUrl('/aportar')} class={btnOnDark}>{h.ctaPrimary}</a>
+            <a
+              href={appUrl('/aportar')}
+              class={btnOnDark}
+              data-umami-event="app_cta_click"
+              data-umami-event-surface="hero"
+            >{h.ctaPrimary}</a>
             <a href={routes.how} class={btnGhostOnDark}>{h.ctaSecondary}</a>
           </div>
           <ul
@@ -491,7 +496,12 @@ const btnSecondary =
             {h.productBody}
           </p>
           <div class="mt-8">
-            <a href={APP_URL} class={btnPrimary}>{h.productCta}</a>
+            <a
+              href={APP_URL}
+              class={btnPrimary}
+              data-umami-event="app_cta_click"
+              data-umami-event-surface="product"
+            >{h.productCta}</a>
           </div>
         </div>
         <div class="lg:col-span-8">
@@ -637,7 +647,12 @@ const btnSecondary =
         {h.closingBody}
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href={APP_URL} class={btnOnDark}>{h.closingCtaApp}</a>
+        <a
+          href={APP_URL}
+          class={btnOnDark}
+          data-umami-event="app_cta_click"
+          data-umami-event-surface="closing"
+        >{h.closingCtaApp}</a>
         <a href={routes.team} class={btnGhostOnDark}>{h.closingCtaTeam}</a>
       </div>
       {/* The channels that exist — nothing else (rule 0) */}
@@ -655,6 +670,8 @@ const btnSecondary =
             <a
               href={APP_URL}
               class="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-corag-rosa/60 px-5 py-2 font-semibold text-corag-rosa transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-rosa"
+              data-umami-event="app_cta_click"
+              data-umami-event-surface="channels"
             >
               <svg class="h-4 w-4" viewBox="0 0 512 512" aria-hidden="true">
                 <path
@@ -673,6 +690,9 @@ const btnSecondary =
                   rel="noopener noreferrer"
                   target="_blank"
                   aria-label={channel.label}
+                  data-umami-event="social_click"
+                  data-umami-event-platform={channel.icon}
+                  data-umami-event-source="home-channels"
                   class="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-corag-rosa transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-rosa"
                 >
                   <svg
