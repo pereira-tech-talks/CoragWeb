@@ -47,7 +47,7 @@ Complete reference for all GitHub Actions workflows in this repository.
 | Step | Name | What it does |
 |------|------|-------------|
 | — | Checkout | `actions/checkout@v4` with `AUTOMATION_GITHUB_TOKEN`, fetch-depth: 2 |
-| 1 | Setup GitHub Config | Git identity `Pereira Tech Talks` + `gh auth login` |
+| 1 | Setup GitHub Config | Git identity `Corag` + `gh auth login` |
 | 2 | Check PR size label | Reads existing size label from PR |
 | 3 | Calculate PR Size | `git diff --shortstat` → apply size label |
 | 4 | Check title length | Minimum 5 characters |
@@ -132,7 +132,7 @@ For L/XL/XXL PRs, a warning comment is automatically posted.
 | **Trigger** | `pull_request` to `main`, type: `closed` (only when merged) |
 | **Concurrency** | Single group `release-and-publish-main`, **never** cancels in-flight releases |
 | **Permissions** | `contents: write`, `pull-requests: read` |
-| **Git identity** | `Pereira Tech Talks <pereiratechtalks@gmail.com>` |
+| **Git identity** | `Corag <bot@corag.org>` |
 
 **Deployment:** Cloudflare Pages deploys automatically on push to `main`. This workflow does **not** deploy.
 
@@ -172,14 +172,14 @@ Without bypass, Prepare release fails with “Changes must be made through a pul
 |------|-------------|
 | Checkout | Full history (`fetch-depth: 0`), `AUTOMATION_GITHUB_TOKEN`, credentials persisted for push |
 | Setup Node / pnpm cache | Node 24.15.0 + pnpm store cache |
-| Configure git identity | Pereira Tech Talks bot |
+| Configure git identity | Corag bot |
 | Build release notes | `.github/scripts/get_github_release_log.sh` — commits since last tag |
 | Prepare release | `pnpm run release` (bump/commit/tag) → `git push --follow-tags origin HEAD:main` |
 | Publish GitHub Release | `ncipollo/release-action@v1` with `allowUpdates: true` |
 
 **Helper scripts:**
 
-- `prepare_release.sh` — patch bump via Node, commit `[🤖 Pereira Tech Talks] New release to vX.Y.Z launched 🚀`, annotated tag
+- `prepare_release.sh` — patch bump via Node, commit `[🤖 Corag] New release to vX.Y.Z launched 🚀`, annotated tag
 - `get_github_release_log.sh` — changelog from last tag (skips merge + prior release commits)
 
 ### Job 2: `cleanup_caches` (depends on: Job 1)

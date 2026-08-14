@@ -1,16 +1,16 @@
 {
   "linkset": [
     {
-      "anchor": "https://pereiratechtalks.org/api/",
+      "anchor": "https://corag.org/api/",
       "links": [
         {
           "rel": "service-desc",
-          "href": "https://pereiratechtalks.org/openapi.json",
+          "href": "https://corag.org/openapi.json",
           "type": "application/json"
         },
         {
           "rel": "service-doc",
-          "href": "https://pereiratechtalks.org/llms.txt",
+          "href": "https://corag.org/llms.txt",
           "type": "text/plain"
         }
       ]

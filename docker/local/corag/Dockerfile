@@ -1,5 +1,5 @@
 FROM node:24.18.1-trixie-slim
-LABEL maintainer="pereiratechtalks@gmail.com"
+LABEL maintainer="Corag <https://corag.org>"
 
 # System packages (apt requires root)
 RUN apt-get update -y && \

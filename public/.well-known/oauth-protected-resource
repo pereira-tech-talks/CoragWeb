@@ -1,7 +1,7 @@
 {
-  "resource": "https://pereiratechtalks.org",
-  "resource_name": "Pereira Tech Talks",
-  "authorization_servers": ["https://pereiratechtalks.org"],
+  "resource": "https://corag.org",
+  "resource_name": "Corag",
+  "authorization_servers": ["https://corag.org"],
   "scopes_supported": ["public:read"],
   "bearer_methods_supported": ["header"]
 }

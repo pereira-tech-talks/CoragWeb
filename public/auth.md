@@ -1,6 +1,6 @@
 # auth.md
 
-You are an agent. **Pereira Tech Talks** is a static community website available in Spanish and English. Public content is readable under the `public:read` scope **without privileged credentials**.
+You are an agent. **Corag** is a static institutional website available in Spanish and English. Public content is readable under the `public:read` scope **without privileged credentials**.
 
 ## auth.md Registration
 
@@ -8,7 +8,7 @@ Discover registration metadata, then call the advertised endpoints. Live privile
 
 ### Audience
 
-AI agents and tools that need to discover how (or whether) to register before reading Pereira Tech Talks content.
+AI agents and tools that need to discover how (or whether) to register before reading Corag content.
 
 ### Discovery
 
@@ -58,7 +58,7 @@ Write access (forms, sponsorship, speaking) stays human-mediated:
 - Contact: `/contact/`
 - Call for speakers: `/call-for-speakers/`
 - Sponsor us: `/sponsor-us/`
-- Email: `pereiratechtalks@gmail.com`
+- Contact form: `https://corag.org/contacto`
 
 Do not ask humans to paste API secrets into chat.
 
@@ -66,7 +66,6 @@ Do not ask humans to paste API secrets into chat.
 
 - Home: `/`
 - Meetups: `/meetups/`
-- Pereira Tech Days: `/pereira-tech-days/`
 - Blog: `/blog/`
 - Agent skills: `/.well-known/agent-skills/index.json`
 - MCP server card: `/.well-known/mcp/server-card.json`

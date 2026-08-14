@@ -31,20 +31,6 @@
 /es/blog/aeo-score-100-on-isitagentready/    /blog/aeo-score-100-on-isitagentready/     301
 
 # ---------------------------------------------------------------------------
-# Pereira Tech Day — hub index removed; singular landing is canonical
-# ---------------------------------------------------------------------------
-# `/pereira-tech-days` (no year) permanently redirects to `/pereira-tech-day`.
-# Year archives stay at `/pereira-tech-days/{year}/` (exact paths below do not
-# match those deeper URLs).
-
-/pereira-tech-days            /pereira-tech-day/            301
-/pereira-tech-days/           /pereira-tech-day/            301
-/pereira-tech-days.md         /pereira-tech-day.md          301
-/en/pereira-tech-days         /en/pereira-tech-day/         301
-/en/pereira-tech-days/        /en/pereira-tech-day/         301
-/en/pereira-tech-days.md      /en/pereira-tech-day.md       301
-
-# ---------------------------------------------------------------------------
 # Language swap: Spanish moved from /es to the site root
 # ---------------------------------------------------------------------------
 # Spanish is the community's primary language and is now served at `/`, with
@@ -54,5 +40,82 @@
 # Note: the old English URLs (`/about`, `/blog/...`) cannot be redirected to
 # `/en/...` — those paths now legitimately serve Spanish. English content is
 # re-announced through the updated sitemap and hreflang tags instead.
+# ---------------------------------------------------------------------------
+# corag.org migration — retired Pereira Tech Talks route families
+# ---------------------------------------------------------------------------
+# The site became corag.org. These route families no longer exist; each is sent
+# to the closest surviving page rather than 404ing, because external links and
+# search indexes still point at them.
+#
+# Ordered most-specific first. These MUST appear before the `/es/*` catch-all.
+
+# Community programme -> how Corag works
+/verticals                    /como-funciona/                301
+/verticals/*                  /como-funciona/                301
+/en/verticals                 /en/how-it-works/              301
+/en/verticals/*               /en/how-it-works/              301
+
+# People directories -> the team
+/speakers                     /colaboradores/                301
+/speakers/*                   /colaboradores/                301
+/contributors                 /colaboradores/                301
+/contributors/*               /colaboradores/                301
+/en/speakers                  /en/contributors/              301
+/en/speakers/*                /en/contributors/              301
+/en/contributors              /en/contributors/              301
+
+# Partner organizations -> allies
+/communities                  /aliados/                      301
+/communities/*                /aliados/                      301
+/sponsors                     /aliados/                      301
+/sponsors/*                   /aliados/                      301
+/sponsor-us                   /aliados/                      301
+/en/communities               /en/allies/                    301
+/en/communities/*             /en/allies/                    301
+/en/sponsors                  /en/allies/                    301
+/en/sponsors/*                /en/allies/                    301
+/en/sponsor-us                /en/allies/                    301
+
+# Press and speaker calls -> about / contact
+/press                        /sobre-corag/                  301
+/call-for-speakers            /contacto/                     301
+/en/press                     /en/about/                     301
+/en/call-for-speakers         /en/contact/                   301
+
+# Event programme -> home
+/meetups                      /                              301
+/meetups/*                    /                              301
+/talks                        /                              301
+/talks/*                      /                              301
+/slides                       /                              301
+/slides/*                     /                              301
+/calendar                     /                              301
+/pereira-tech-day             /                              301
+/pereira-tech-day/*           /                              301
+/pereira-tech-days            /                              301
+/pereira-tech-days/*          /                              301
+/certificates                 /                              301
+/certificates/*               /                              301
+/en/meetups                   /en/                           301
+/en/meetups/*                 /en/                           301
+/en/talks                     /en/                           301
+/en/talks/*                   /en/                           301
+/en/slides                    /en/                           301
+/en/slides/*                  /en/                           301
+/en/calendar                  /en/                           301
+/en/pereira-tech-day          /en/                           301
+/en/pereira-tech-day/*        /en/                           301
+/en/pereira-tech-days         /en/                           301
+/en/pereira-tech-days/*       /en/                           301
+/en/certificates              /en/                           301
+/en/certificates/*            /en/                           301
+
+# Renamed institutional pages
+/about                        /sobre-corag/                  301
+/community                    /aliados/                      301
+/channels                     /contacto/                     301
+/en/community                 /en/allies/                    301
+/en/channels                  /en/contact/                   301
+
 /es                               /                                               301
 /es/*                             /:splat                                         301

@@ -1,194 +1,172 @@
-<div align="center">
+# corag.org
 
-# Pereira Tech Talks
+**El ecosistema de impacto social.**
 
-**Community website (Spanish & English)** · `pereiratechtalks.org` · v3.0.0
+This repository is the institutional website for **Corag** — a social-impact
+ecosystem connecting foundations, governments, entrepreneurs and individuals with
+real opportunities to help, transparently and traceably.
 
-[![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?logo=astro)](https://astro.build)
-[![Svelte](https://img.shields.io/badge/Svelte-5.x-FF3E00?logo=svelte)](https://svelte.dev)
-[![Tailwind](https://img.shields.io/badge/Tailwind-4.x-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-[Live Site](https://pereiratechtalks.org) · [Architecture](./docs/ARCHITECTURE.md) · [Product Spec](./docs/PRODUCT_SPEC.md) · [Brand Book](./docs/BRAND_GUIDE.md)
-
-</div>
+> **Tenemos coraje para servir y transformar vidas.**
 
 ---
 
-## Overview
+## Two surfaces, one project
 
-Pereira Tech Talks is the technical community of Pereira (Risaralda, Colombia), running meetups, the annual **Pereira Tech Day** conference, the **Speaker School** mentorship track, **La Biblioteca del Mañana** reading group, an AI/agents channel, and an active blog and slide library — since 2017.
+| Surface | What it is | Repository |
+|---|---|---|
+| **`corag.org`** | The institutional site: what Corag is, how the model works, why it can be trusted, how to integrate with it. Static, bilingual. | **this repo** |
+| **`app.corag.org`** | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | separate |
 
-This repository hosts the v3.0.0 community website: a fully bilingual (Spanish primary, English first-class international) static site built on the modern Astro stack, designed to be **fully understandable and operable by AI agents**.
+Every *transactional* action — publishing a need, offering help, contributing,
+tracking a contribution, applying as a leader — happens in the **application**.
+This site explains and hands over; it holds no aid data and has no write API.
 
-### Highlights
-
-| Feature | Description |
-| :------ | :---------- |
-| **Bilingual** | Full Spanish & English with route parity (Spanish primary; English international) |
-| **Verticals** | Speaker School · La Biblioteca del Mañana · AI Channel · Monthly Meetups |
-| **Pereira Tech Day** | Per-edition pages with their own brand kit (palette + typography), scoped so the umbrella Corag brand stays in chrome |
-| **Slides system** | Reveal.js decks for talks, embeddable in talk detail pages |
-| **Community-driven** | Contributors, organizers, mentors, sponsors — all first-class content collections |
-| **AEO-ready** | Markdown-for-Agents endpoints for every public page |
-| **Dark mode** | Petroleum-teal canvas (`#08191A`) per the v3.0.0 brand identity |
-| **Performance** | Lighthouse 100 target across Performance / SEO / Best Practices / Accessibility |
-| **AI-first** | Every workflow documented for AI agents: skills, agents, slash commands |
+Getting that split wrong is the most common way to write incorrect copy or code
+here. When in doubt: **if it stores something about a real person's need, it
+belongs in the app.**
 
 ---
 
-## Quick Start
+## Stack
+
+- **[Astro](https://astro.build)** — static site generation, islands architecture
+- **[Svelte](https://svelte.dev)** — the few genuinely interactive components
+- **[Tailwind CSS 4](https://tailwindcss.com)** — with the Corag `@theme` tokens
+- **TypeScript** — pinned to 6.x on purpose (see `AGENTS.md`)
+- **[Biome](https://biomejs.dev)** — linting and formatting (never ESLint/Prettier)
+- **[Vitest](https://vitest.dev)** — unit tests
+- **Cloudflare Pages** — hosting, plus Pages Functions for the contact forms
+
+Markdown is compiled by **Sätteri**; transforms are HAST plugins in
+`src/lib/satteri-plugins.ts`. Never add remark/rehype plugins.
+
+---
+
+## Getting started
 
 ```bash
-# Use Node 24.15.0+ (defined in .nvmrc) and pnpm 11.x
 pnpm install
-
-# Dev server
 pnpm run dev          # http://localhost:9999
-
-# Build
-pnpm run build
-
-# Preview production build
-pnpm run astro:preview
 ```
 
-### Quality gates
+### Everyday commands
 
 ```bash
-pnpm run biome:check        # Lint + format check (Biome)
-pnpm run astro:check        # TypeScript + Astro diagnostics
-pnpm run test               # Vitest unit tests
-pnpm run md:check           # Markdown-for-Agents parity
-pnpm run search:budgets     # Search payload budgets
-pnpm run lighthouse         # Lighthouse CI
+pnpm run build                # astro check && astro build
+pnpm run astro:preview        # serve the production build
+
+pnpm run biome:check          # lint + format
+pnpm run biome:fix            # auto-fix
+pnpm run astro:check          # TypeScript
+pnpm run test                 # Vitest
+pnpm run test:coverage
 ```
 
-Full command reference: [Development Commands](./docs/DEVELOPMENT_COMMANDS.md).
+### Content and quality gates
+
+```bash
+pnpm run md:check:strict      # every page has a COMPLETE .md twin
+pnpm run lang:check:strict    # Spanish at /, English at /en
+pnpm run seo:check:strict     # per-URL SEO + structured data
+pnpm run parity:check:strict  # both languages carry the same content
+pnpm run search:budgets       # search payload budgets
+pnpm run lighthouse
+```
+
+### Brand assets
+
+Shipped assets are **derived by script** from the official masters in
+`assets/brand/`, so the pipeline is reproducible:
+
+```bash
+node scripts/build-brand-assets.mjs --dry-run
+node scripts/build-brand-assets.mjs
+```
 
 ---
 
-## Project Structure
+## Bilingual by construction
+
+Spanish is the **primary** language and is served at the root (`/`). English is
+first-class and served under `/en`. Both carry the same content — not merely
+correct content in each.
+
+Spanish is also the **source** language: copy is written in Spanish first and
+translated to English, never the reverse. Diacritics are mandatory.
+
+---
+
+## Project layout
 
 ```
 src/
-├── components/                # UI components (Astro + Svelte)
-│   ├── home/                  # Homepage sections
-│   ├── meetups/               # Meetup cards & timeline
-│   ├── events/                # Event cards & calendar
-│   ├── pereira-tech-days/     # PTD edition components
-│   ├── verticals/             # Vertical pages (Speaker School, etc.)
-│   ├── speakers/ talks/       # Speaker & talk directories
-│   ├── community/             # Contributors, sponsors, channels
-│   ├── blog/                  # Blog cards, search, series
-│   ├── layout/                # Header.svelte, MobileMenu.svelte
-│   └── pages/                 # Shared page components (*Page.astro)
-├── content/                   # Astro Content Collections
-│   ├── authors/ blog/{en,es}/ slides/{en,es}/ tags/ series/
-│   ├── meetups/               # Monthly meetups — single bilingual file per meetup
-│   ├── events/                # Calendar events
-│   ├── pereiraTechDays/       # PTD editions (with brandKit per edition)
-│   ├── verticals/ speakers/ talks/
-│   ├── contributors/ sponsors/ channels/
-├── layouts/                   # MainLayout, InternalLayout, ShowcaseLayout, SlideLayout
-├── lib/                       # blog.ts, i18n.ts, translations/, content helpers
-├── pages/                     # File-based routing (EN root, ES under /es/)
-│   ├── internal/              # Dev-only hub (brand book, design system, admin)
-│   └── api/                   # JSON endpoints (search index, sitemap helpers)
-└── styles/                    # global.css (Tailwind 4 @theme tokens), slides.css
+├── components/     UI components (.astro + .svelte)
+│   └── pages/      one *Page.astro per route, shared across languages
+├── content/        Astro Content Collections (Zod-validated)
+├── layouts/        MainLayout, InternalLayout, ShowcaseLayout
+├── lib/            data helpers, i18n, translations
+├── pages/          file-based routing — thin 3-line wrappers
+│   └── internal/   dev-only hub (brand book, UI showcase, guides)
+└── styles/         global.css — the Corag design tokens
 
-public/images/                  # Brand, blog, meetups, events, PTDs, speakers, sponsors
-docs/                           # Project documentation
-.agents/                        # Cross-agent skills, commands, agents, settings
-.dwp/                           # Deep Work Plan outputs — plans/ + drafts/ (git-ignored)
-tmp/                            # Git-ignored scratch space
+assets/brand/       official brand masters (manual + logo variants)
+public/             static assets, agent-facing files, redirects
+functions/          Cloudflare Pages Functions (contact intake)
+docs/               project documentation
+.agents/            skills, agents, commands for AI assistants
 ```
 
-Full tree with all files: [Architecture Guide](./docs/ARCHITECTURE.md#project-structure).
+### The page-wrapper pattern
 
+Every route is a **3-line wrapper** delegating to a shared page component:
+
+```astro
 ---
-
-## The Brand Foundation
-
-Pereira Tech Talks v3.0.0 is built on a deliberate visual identity:
-
-- **Global Corag primary** — Petroleum Teal `#1F6F73` (light) / `#3FA8AD` (dark)
-- **Dark canvas** — Deep green-teal `#08191A`
-- **Accent** — Warm amber `#E8A33D` (icons, pills, large text only)
-- **Typography** — Inter Variable (display, headings, body, mono via system stack)
-- **Per-edition kits** — Each Pereira Tech Day edition (e.g. PTD 2024 with `Bebas Neue` uppercase + coral `#F06D6D`) overrides the palette inside `[data-edition-theme]` only — the umbrella Corag brand stays visible in header, footer, language switcher, and theme toggle on every edition page.
-
-Full guide: [Brand Book](./docs/BRAND_GUIDE.md). Live in dev: [`/internal/brand`](http://localhost:9999/internal/brand).
-
+import HomePage from '@/components/pages/HomePage.astro';
 ---
+<HomePage lang="es" />
+```
 
-## Multilingual Content (Mandatory)
+Wrappers never import `MainLayout`, and `lang` is always a string literal.
 
-Every public page exists in both Spanish and English. Translation strings live in `src/lib/translations/{en,es}.ts` with types in `types.ts`. Spanish content **always** uses ñ, accented vowels, and interrogative accents — verified by greps in [`AGENTS.md`](./AGENTS.md#2-orthography--diacritical-marks-mandatory).
-
-Adding a new language: see [I18N Guide](./docs/I18N_GUIDE.md).
-
----
-
-## AI Agent-First
-
-Every workflow that humans use is also documented for AI agents:
-
-- **Skills** — reusable procedures invoked via slash commands (`/add-blog-post`, `/add-meetup`, `/audit-post`, …). See [`.agents/skills/`](./.agents/skills/) and the [Skills & Agents Catalog](./.agents/docs/skills_agents_catalog.md).
-- **Agents** — specialized workers (`reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`).
-- **Markdown-for-Agents** — every public HTML page has a parallel `.md` endpoint that AI assistants can fetch directly.
-
-Single source of truth for all AI assistants: [`AGENTS.md`](./AGENTS.md). Onboarding: [`docs/AI_AGENT_ONBOARDING.md`](./docs/AI_AGENT_ONBOARDING.md).
+> ⚠️ **New top-level routes must be registered in `src/middleware.ts`**
+> (`KNOWN_ROOT_PATHS` / `KNOWN_EN_PATHS`) or they 404 in production while working
+> fine in dev.
 
 ---
 
 ## Documentation
 
-**Operational docs** for organizers, contributors, and sponsors:
-
-- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
-- [Contributing](./docs/CONTRIBUTING.md)
-- [Governance](./docs/GOVERNANCE.md)
-- [Community Guidelines](./docs/COMMUNITY_GUIDELINES.md)
-- [Communication Channels](./docs/COMMUNICATION_CHANNELS.md)
-- [Call for Speakers](./docs/CALL_FOR_SPEAKERS.md)
-- [Sponsorship](./docs/SPONSORSHIP.md)
-
-**Engineering docs:**
-
-- [Architecture](./docs/ARCHITECTURE.md) · [Standards](./docs/STANDARDS.md) · [Brand Guide](./docs/BRAND_GUIDE.md)
-- [Testing](./docs/TESTING_GUIDE.md) · [Development Commands](./docs/DEVELOPMENT_COMMANDS.md) · [Performance](./docs/PERFORMANCE.md)
-- [I18N](./docs/I18N_GUIDE.md) · [SEO](./docs/SEO.md) · [Accessibility](./docs/ACCESSIBILITY.md) · [Security](./docs/SECURITY.md)
-- [Writing Voice](./docs/WRITING_VOICE_GUIDE.md) · [Writing Craft](./docs/WRITING_CRAFT_GUIDE.md)
-
-**Product:**
-
-- [Product Spec](./docs/PRODUCT_SPEC.md) — vision, audiences, verticals, success metrics
+| Read this | For |
+|---|---|
+| **[`AGENTS.md`](./AGENTS.md)** | The single source of truth for anyone — human or AI — working in this repo |
+| [`docs/BRAND_GUIDE.md`](./docs/BRAND_GUIDE.md) | Identity, palette, typography, voice |
+| [`docs/DESIGN.md`](./docs/DESIGN.md) | The UI contract — tokens, patterns, anti-patterns |
+| [`docs/PRODUCT_SPEC.md`](./docs/PRODUCT_SPEC.md) | Vision, audiences, the model |
+| [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | How the site is put together |
+| [`docs/I18N_GUIDE.md`](./docs/I18N_GUIDE.md) | Bilingual conventions |
+| [`docs/TESTING_GUIDE.md`](./docs/TESTING_GUIDE.md) | Test setup and conventions |
+| [`docs/SECURITY.md`](./docs/SECURITY.md) | Threat model |
 
 ---
 
-## Deployment
+## Contributing
 
-Deployed to **Cloudflare Pages**. The build runs `astro check && astro build`, then post-build scripts strip the dev-only `/internal/*` routes from the production output.
+Corag is built by volunteers. If you want to help:
 
-DNS: `pereiratechtalks.org` (Domain property; GSC verification via DNS TXT). Bing verification optional via `PUBLIC_BING_SITE_VERIFICATION` env var.
+- **Developers** — see [`/desarrolladores`](https://corag.org/desarrolladores) for
+  the integration surface, and `docs/CONTRIBUTING.md` for this repo.
+- **Everyone else** — the fastest way to help is through the application at
+  [app.corag.org](https://app.corag.org).
+
+Before opening a pull request, run the full gate:
+
+```bash
+pnpm run biome:check && pnpm run astro:check && pnpm run test && pnpm run build
+```
 
 ---
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
-
-Pereira Tech Talks is a community organization. Trademarks (logos, the "Pereira Tech Talks" and "Pereira Tech Day" names) are reserved.
-
----
-
-## Contact
-
-- General: <pereiratechtalks@gmail.com>
-- Speakers: <speakers@pereiratechtalks.org>
-- Sponsors: <sponsors@pereiratechtalks.org>
-- Press: <press@pereiratechtalks.org>
-- Code of Conduct reports: <conduct@pereiratechtalks.org>
-
-Channels: see [Communication Channels](./docs/COMMUNICATION_CHANNELS.md).
+MIT — see [`LICENSE`](./LICENSE).

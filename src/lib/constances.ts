@@ -8,13 +8,45 @@ export const SITE_TIMEZONE_OFFSET = '-05:00';
  * Must match `astro.config.mjs` → `site` / `PUBLIC_SITE_URL`.
  */
 export const SITE_URL: string = (
-  import.meta.env.SITE || 'https://pereiratechtalks.org'
+  import.meta.env.SITE || 'https://corag.org'
 ).replace(/\/$/, '');
 
-export const SITE_TITLE: string =
-  'Pereira Tech Talks — Comunidad técnica de Pereira';
+/**
+ * The Ayuda Directa application. Every transactional action — publicar una
+ * necesidad, ofrecer ayuda, aportar, seguir un aporte, postularse como líder —
+ * happens there, not here. Defined once so no component hardcodes the host.
+ */
+export const APP_URL: string = (
+  import.meta.env.PUBLIC_APP_URL || 'https://app.corag.org'
+).replace(/\/$/, '');
+
+/** Build a link into the application. */
+export function appUrl(path = '/'): string {
+  return `${APP_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
+export const SITE_TITLE: string = 'Corag — El ecosistema de impacto social';
 export const SITE_DESCRIPTION: string =
-  'Pereira Tech Talks v3.0.0 — comunidad técnica de Pereira (Risaralda, Colombia). Meetups mensuales, Pereira Tech Day, Speaker School, La Biblioteca del Mañana, AI Channel, blog y slides.';
+  'Conectamos a quienes quieren ayudar con quienes más lo necesitan. Corag une gobiernos, organizaciones y personas para que la ayuda sea transparente, medible y constante.';
+
+/** Legal entity behind the project. */
+export const ORGANIZATION_NAME = 'Corag';
+
+/**
+ * Public contact address.
+ *
+ * Deliberately empty until a real mailbox is confirmed — an invented address
+ * silently drops messages from people asking for help. While empty, every
+ * consumer must fall back to the contact form at `/contacto`.
+ */
+export const CONTACT_EMAIL = '';
+
+/**
+ * Official social accounts, for the footer and the Organization JSON-LD
+ * `sameAs`. Only add an entry once the account is confirmed to exist —
+ * a fabricated `sameAs` is a structured-data error, not a placeholder.
+ */
+export const SOCIAL_LINKS: { label: string; href: string }[] = [];
 export const BLOG_PAGE_SIZE: number = 30;
 
 /** Default Open Graph / Twitter share image (1200×630), by language. */

@@ -12,7 +12,7 @@
 # prior failed release that pushed a tag but not main cannot collide.
 set -euo pipefail
 
-BOT_NAME="${RELEASE_BOT_NAME:-Pereira Tech Talks}"
+BOT_NAME="${RELEASE_BOT_NAME:-Corag}"
 
 if ! git diff --quiet HEAD -- .; then
   echo "Tracked files have uncommitted changes. Refusing to prepare a release."

@@ -10,37 +10,37 @@ describe('oauth metadata helpers', () => {
     it('strips path and query', () => {
       expect(
         getRequestOrigin(
-          'https://pereiratechtalks.org/.well-known/oauth-protected-resource'
+          'https://corag.org/.well-known/oauth-protected-resource'
         )
-      ).toBe('https://pereiratechtalks.org');
+      ).toBe('https://corag.org');
     });
   });
 
   describe('buildOAuthProtectedResourceMetadata', () => {
     it('matches request origin for apex and v3', () => {
       const apex = buildOAuthProtectedResourceMetadata(
-        'https://pereiratechtalks.org'
+        'https://corag.org'
       );
-      expect(apex.resource).toBe('https://pereiratechtalks.org');
+      expect(apex.resource).toBe('https://corag.org');
       expect(apex.authorization_servers).toEqual([
-        'https://pereiratechtalks.org',
+        'https://corag.org',
       ]);
       expect(apex.bearer_methods_supported).toContain('header');
       expect(apex.scopes_supported).toContain('public:read');
 
       const v3 = buildOAuthProtectedResourceMetadata(
-        'https://pereiratechtalks.org'
+        'https://corag.org'
       );
-      expect(v3.resource).toBe('https://pereiratechtalks.org');
+      expect(v3.resource).toBe('https://corag.org');
       expect(v3.authorization_servers).toEqual([
-        'https://pereiratechtalks.org',
+        'https://corag.org',
       ]);
     });
   });
 
   describe('buildOAuthAuthorizationServerMetadata', () => {
     it('includes top-level claim_uri for anonymous authMd scanners', () => {
-      const origin = 'https://pereiratechtalks.org';
+      const origin = 'https://corag.org';
       const meta = buildOAuthAuthorizationServerMetadata(origin);
       expect(meta.issuer).toBe(origin);
       expect(meta.agent_auth.skill).toBe(`${origin}/auth.md`);

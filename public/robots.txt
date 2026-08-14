@@ -1,5 +1,5 @@
-# robots.txt for Pereira Tech Talks
-# https://pereiratechtalks.org
+# robots.txt for Corag — el ecosistema de impacto social
+# https://corag.org
 
 # Default: allow all crawlers
 User-agent: *
@@ -8,11 +8,11 @@ Disallow: /api/
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Sitemap location
-Sitemap: https://pereiratechtalks.org/sitemap-index.xml
+Sitemap: https://corag.org/sitemap-index.xml
 
 # LLM guidance files
-# https://pereiratechtalks.org/llms.txt
-# https://pereiratechtalks.org/llms-full.txt
+# https://corag.org/llms.txt
+# https://corag.org/llms-full.txt
 
 # AI/LLM Crawlers - Explicitly allowed
 User-agent: GPTBot

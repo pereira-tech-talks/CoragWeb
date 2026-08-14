@@ -2,7 +2,7 @@ name: Release and Publish
 
 # Auto-release on every merge to main:
 # 1) bump package.json patch
-# 2) commit + tag as the Pereira Tech Talks bot
+# 2) commit + tag as the Corag bot
 # 3) push with AUTOMATION_GITHUB_TOKEN (must bypass rulesets on main)
 # 4) create a GitHub Release
 #
@@ -72,8 +72,8 @@ jobs:
 
       - name: Configure git identity
         env:
-          RELEASE_BOT_NAME: Pereira Tech Talks
-          RELEASE_BOT_EMAIL: pereiratechtalks@gmail.com
+          RELEASE_BOT_NAME: Corag
+          RELEASE_BOT_EMAIL: bot@corag.org
         run: |
           git config user.name "${RELEASE_BOT_NAME}"
           git config user.email "${RELEASE_BOT_EMAIL}"
@@ -85,7 +85,7 @@ jobs:
       - name: Prepare release (bump, commit, tag)
         id: prepare
         env:
-          RELEASE_BOT_NAME: Pereira Tech Talks
+          RELEASE_BOT_NAME: Corag
         run: |
           corepack pnpm install --frozen-lockfile
           corepack pnpm run release

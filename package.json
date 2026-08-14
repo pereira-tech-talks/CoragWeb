@@ -1,12 +1,12 @@
 {
-  "name": "pereiratechtalks.org",
-  "description": "Pereira Tech Talks v3.0.0 — bilingual community website for the Pereira tech community (Risaralda, Colombia). Meetups, Pereira Tech Days, La Biblioteca del Mañana, Speaker School, contributors, sponsors.",
-  "author": "Pereira Tech Talks <pereiratechtalks@gmail.com>",
+  "name": "corag.org",
+  "description": "Corag \u2014 el ecosistema de impacto social. Institutional website for Corag, connecting foundations, governments, organizations and people with real opportunities to help, transparently and traceably. The Ayuda Directa application lives at app.corag.org.",
+  "author": "Corag",
   "license": "MIT",
-  "homepage": "https://pereiratechtalks.org",
+  "homepage": "https://corag.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pereira-tech-talks/pereiratechtalks.org"
+    "url": "https://github.com/asauliainc/CoragWeb"
   },
   "type": "module",
   "version": "3.0.11",
@@ -34,7 +34,7 @@
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:optimize:slides": "node scripts/optimize-images.mjs --target=slides",
-    "images:webp": "echo 'All images are natively WebP — no generation needed'",
+    "images:webp": "echo 'All images are natively WebP \u2014 no generation needed'",
     "search:budgets": "node scripts/check-search-performance-budgets.mjs",
     "md:check": "node scripts/check-md-parity.mjs",
     "md:check:strict": "node scripts/check-md-parity.mjs --strict",

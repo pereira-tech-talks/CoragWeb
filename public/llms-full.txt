@@ -1,162 +1,145 @@
-# Pereira Tech Talks — Full Site Description
+# Corag — full context for AI agents
 
-> Pereira Tech Talks v3.0.0 is the technology community of Pereira, Risaralda, Colombia.
+> El ecosistema de impacto social.
 
-## About the Community
+Corag connects foundations, governments, entrepreneurs and individuals through a
+transparent digital platform so that solidarity produces real, measurable impact
+in communities. Its stated vision is to become the leading global platform for
+social innovation, where donating, serving and transforming lives is a
+trustworthy and deeply human experience.
 
-Pereira Tech Talks (PTT) is a community of builders, speakers, and learners in Pereira, Colombia, with international presence. We run monthly meetups, the annual Pereira Tech Day flagship conference, the Speaker School, La Biblioteca del Mañana, the AI channel, and a blog and slide deck library that comes out of all of it. The website is available in Spanish and English.
+The name comes from **coraje**. The heart replacing the `o` in the wordmark
+carries **amor**. The brand's own statement is that the mark transmits *coraje,
+innovación y amor*.
 
-The community exists to lower the barrier to entry to technology in the Eje Cafetero region, to give first-time speakers a friendly stage, and to connect Pereira's builders with the rest of the LATAM and global tech ecosystem.
+**Values:** Colaboración · Empatía · Confianza · Amor · Innovación social ·
+Transparencia.
 
-### Official Channels
+---
 
-- Website: https://pereiratechtalks.org/
-- Channels inventory: https://pereiratechtalks.org/channels/
+## 1. The two surfaces — read this before doing anything
 
-## Site Structure
+| Surface | What it is | Writes? |
+|---|---|---|
+| `corag.org` (this site) | Institutional and informational. Explains the model, the transparency mechanism, the team, and how to integrate. | **No.** Static site. |
+| `app.corag.org` | **Corag Ayuda Directa** — the flagship product. Emergencies, requests, offers, contributions, leaders, evidence. | **Yes.** Public API + MCP. |
 
-### Pages
+**An agent acting for a user who needs help, wants to offer help, or wants to
+contribute must go to `app.corag.org`.** This site has no write API and no
+personal records. Sending a humanitarian need here means it reaches nobody.
 
-- **Home** (/) - Value proposition, what PTT is, verticals, upcoming events, recent meetups, blog preview, sponsors strip, contact
-- **About** (/about/) - Who we are, mission, history, team
-- **Pereira Tech Days** (/pereira-tech-days/) - Flagship annual conference; per-edition microsites with their own brand kits at /pereira-tech-days/{year}
-- **Meetups** (/meetups/) - Monthly community gatherings: theme, recap, photos, talks, slide decks
-- **Calendar** (/calendar/) - Workshops and special events on the community calendar
-- **Verticals** (/verticals/) - Community programs (La Biblioteca del Mañana, AI channel, Speaker School, monthly meetups)
-- **Speakers** (/speakers/) - Speaker bios + talks index
-- **Blog** (/blog/) - Articles, series, tags, search (Spanish and English)
-- **Contributors** (/contributors/) - The people who make PTT happen
-- **Sponsors** (/sponsors/) - Current and historical sponsors
-- **Channels** (/channels/) - Inventory of official PTT channels
-- **Call for Speakers** (/call-for-speakers/) - Always-open speaker submission form
-- **Sponsor us** (/sponsor-us/) - Sponsorship inquiry
-- **Contact** (/contact/)
-- **Verify certificate** (/certificates/verify/)
+---
 
-### Content Collections
+## 2. Corag Ayuda Directa — the model
 
-PTT is built on Astro Content Collections. Every collection has a strict Zod schema (see `src/content.config.ts`) and a typed helper module under `src/lib/`:
-
-- **blog** — `title`, `description`, `pubDate`, `heroImage`, `tags`, `series`, `seriesOrder`, `author`. Date-prefixed filenames, English slugs.
-- **slides** — discriminated union: `internal` (Reveal.js Markdown), `external-embed` (iframe), `external-link` (stub info page).
-- **meetups** — separate from blog posts; structured monthly recap entries.
-- **events** — one-off special events.
-- **pereiraTechDays** — annual flagship; embeds a `brandKit` field with palette, typography, and hero assets that override the global PTT theme via `[data-edition-theme="{year}"]`.
-- **verticals** — community programs.
-- **speakers / talks / contributors / sponsors / channels** — supporting collections.
-- **tags / series / authors** — taxonomy and authorship.
-
-### Languages
-
-All pages and content are available in:
-
-- [Spanish (primary)](/) — unprefixed routes at the site root
-- [English](/en/) — first-class international mirror under `/en/`
-
-All slugs (filenames, series IDs, image directories) are in English even for Spanish content. Spanish content uses proper diacritical marks (ñ, á, é, í, ó, ú, ü).
-
-## Content Model
-
-- Dual-language routing: Spanish base routes (`/`, `/blog/`, etc.) and English routes under `/en/`.
-- Blog posts authored with Astro Content Collections supporting Markdown and MDX.
-- Blog pagination: `/blog/page/{n}/` and `/en/blog/page/{n}/`.
-- Tag archives: `/blog/tag/{tag}/` and `/en/blog/tag/{tag}/`.
-- Three-tier tag taxonomy (primary / secondary / subtopic), max 5 tags per post.
-- All pages use structured data (JSON-LD) for machine readability.
-- All public pages have a Markdown twin for AI agents (see below).
-
-## Topic Areas
-
-- AI agents, LLMs, and answer engine optimization
-- Software engineering and architecture patterns
-- Frontend, backend, mobile, and infrastructure
-- DevOps, CI/CD, and platform engineering
-- Security and supply chain
-- Open source and community building
-- Entrepreneurship and product building
-- Technical communication in Spanish and English
-
-## Tech Stack
-
-- Astro (static site generator with islands architecture)
-- Svelte (interactive components)
-- TypeScript
-- Tailwind CSS 4 with PTT design tokens (`--color-ptt-*`) registered via `@theme`
-- MDX (enhanced Markdown for blog posts)
-- Reveal.js (Reveal-based slide decks)
-- Biome (linter and formatter)
-- Deployed on Cloudflare Pages
-
-## Per-Edition Branding
-
-Pereira Tech Day editions ship their own brand kit. Each `/pereira-tech-days/{year}` page applies a scoped CSS contract (`[data-edition-theme="{year}"]`) that overrides PTT design tokens with the edition's palette, typography, and hero assets. The system is documented at `/internal/brand/per-edition-kits` (dev only).
-
-## Agent-Friendly Markdown Endpoints
-
-Every public HTML page on PTT has a native Markdown twin for AI agents. Content is served directly from the original source Markdown — not converted from rendered HTML — preserving full fidelity of code blocks, links, and formatting.
-
-### URL Patterns
-
-- **Pages**: `/{page}.md` (ES primary), `/en/{page}.md` (EN)
-  - Examples: `/about.md`, `/contact.md`, `/sponsors.md`, `/en/about.md`
-- **Blog index**: `/blog/index.md` (ES), `/en/blog/index.md` (EN)
-- **Blog posts**: `/blog/{slug}.md` (ES), `/en/blog/{slug}.md` (EN)
-- **Slide decks**: `/slides/{slug}.md` (ES), `/en/slides/{slug}.md` (EN)
-- **Meetups**: `/meetups/{slug}.md` (ES), `/en/meetups/{slug}.md` (EN)
-- **Pereira Tech Days**: `/pereira-tech-days/{year}.md`
-
-### Response Format
-
-Each Markdown response includes:
-
-- H1 title
-- Description (blockquote)
-- Metadata: Published date, Language, Canonical URL (HTML version), Tags
-- Separator
-- Original Markdown body content
-
-Content-Type: `text/markdown; charset=utf-8`
-
-### Content Negotiation
-
-Agents can request Markdown without changing URLs by sending `Accept: text/markdown`:
+Ayuda Directa is not a donation page and not a map of disaster victims. It is a
+coordination, traceability and interoperability layer for aid.
 
 ```
-curl -H "Accept: text/markdown" https://pereiratechtalks.org/about
-→ Returns Markdown with Content-Type: text/markdown; charset=utf-8
-→ Response includes Vary: Accept header for proper caching
+Necesidad real → Publicación → Geolocalización y categorización →
+Persona u organización que puede ayudar → Coordinación → Entrega →
+Evidencia → Verificación → Trazabilidad pública
 ```
 
-### Why Native Markdown
+### Core entities
 
-- Content is served from the original source files, not HTML→Markdown conversion.
-- More token-efficient for AI consumption (no HTML tag residue).
-- Code blocks, links, and formatting preserved exactly as authored.
-- Canonical URL always points to the HTML version for human readers.
-- Internal cross-links between pages enable agents to discover the full site structure.
+`Emergency` · `Request` · `Offer` · `Contribution` · `Leader` ·
+`Operational Front` · `Delivery` · `Evidence` · `Verification` · `Location`
 
-## Feeds & Discovery
+### Requests and offers
 
-- [RSS Feed (Spanish)](/rss.xml)
-- [RSS Feed (English)](/en/rss.xml)
-- [Sitemap](/sitemap-index.xml)
-- [Search API](/api/posts-en.json) · [Search API (ES)](/api/posts-es.json)
-- [OpenAPI spec](/openapi.json)
-- [MCP server card](/.well-known/mcp/server-card.json)
-- [API catalog](/.well-known/api-catalog)
-- [robots.txt](/robots.txt)
-- [This file](/llms-full.txt)
-- [Short version](/llms.txt)
+Both are published through the same endpoint, distinguished by `type`:
 
-## Structured Data
+- `type: "request"` — something a person or community needs.
+- `type: "offer"` — capacity someone can provide (transport, goods, a skill,
+  storage, professional services).
 
-The site includes JSON-LD structured data on all pages:
+Urgency levels: `urgent` · `needed` · `stable`.
+Categories: alimentos · salud · refugio · transporte · acopio · rescate · otro.
+Geographic fields: `latitude`, `longitude`, `address`, `neighborhood`, validated
+against Colombian territory.
 
-- Organization schema (Pereira Tech Talks)
-- WebSite schema (site-level identity)
-- Event schema (meetups, Pereira Tech Days, special events)
-- BlogPosting schema (blog posts)
-- BreadcrumbList schema (navigation hierarchy)
-- CollectionPage schema (blog listing, slides catalog, etc.)
-- Person schema (speakers and contributors)
-- ContactPage schema (contact page)
+### Operational fronts
+
+A large emergency is divided into coordinable units — for example health and
+first aid, food, and logistics/collection/transport. Each front has its own
+needs, responsible people, conversations, priorities and evidence.
+
+### Transparency — the two numbers
+
+Corag reports **money received** and **money used with evidence** as two
+separate public figures. Evidence (receipts, photographs, results) is moderated
+before publication; those responsible have a limited window to upload it.
+
+Contributions are made by **direct transfer to verified leader accounts**, not to
+a central Corag treasury. This reduces custodial risk and makes the destination
+of each contribution attributable.
+
+### Privacy
+
+- A contributor may appear publicly as *"Persona solidaria"* instead of by name.
+- Publishing a contact detail is **opt-in**, via an explicit `publishContact`
+  consent field, and only where coordination genuinely requires it.
+- Tracking a contribution is private — it uses the same phone number that
+  registered it, and the query itself is not published.
+
+---
+
+## 3. Integration surface (on `app.corag.org`)
+
+- **REST:** `POST https://app.corag.org/api/public/v1/help` — publish a request
+  or an offer.
+- **OpenAPI 3.1:** `https://app.corag.org/api/public/openapi.json` — the
+  authoritative schema. Prefer it over any prose description, including this one.
+- **MCP server:** tools `listar_emergencias`, `publicar_solicitud`,
+  `publicar_ofrecimiento`.
+- **Idempotency:** a `source` + `externalId` pair identifies a record uniquely, so
+  retries after a timeout or an unstable mobile connection do not duplicate it.
+- **Rate limiting:** the endpoint returns HTTP `429` when a client exceeds its
+  allowance. Back off and retry.
+
+### The principle behind the API
+
+> **Muchas interfaces, una sola red de datos.**
+
+During an emergency, multiple teams build parallel applications, each with its
+own database of needs and offers — which produces more fragmentation, not less.
+Corag's public API exists so a new client becomes a client *of one network*
+rather than a new silo. If you are building an aid application, synchronize with
+Corag rather than starting another source of truth.
+
+---
+
+## 4. This site
+
+### Structure
+
+- Spanish is the primary language, served at the root (`/`).
+- English is served under `/en`.
+- Both languages carry the same content.
+- Every public page has a complete Markdown twin at its path plus `.md` — for
+  example `/como-funciona.md` and `/en/how-it-works.md`. Content is served from
+  the original source Markdown, not converted from rendered HTML, so code blocks,
+  links and formatting keep full fidelity.
+
+### Technology
+
+- Astro (static site generation) with Svelte islands for the few interactive parts
+- Tailwind CSS 4, with the Corag design tokens (`--color-corag-*`) declared via
+  `@theme`
+- Content lives in Astro Content Collections with strict Zod schemas
+- Deployed to Cloudflare Pages; contact forms run as Pages Functions
+- No tracking beyond privacy-respecting aggregate analytics
+
+### What this site collects
+
+Only what a contact form submission carries, and only when someone submits one.
+No accounts, no personal records, no aid data. See `/privacidad`.
+
+---
+
+## 5. Links
+
+- Site: https://corag.org
+- Application: https://app.corag.org
+- Short agent summary: https://corag.org/llms.txt

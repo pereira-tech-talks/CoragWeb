@@ -23,16 +23,16 @@ const __dirname = dirname(__filename);
 /**
  * Absolute origin baked into canonical / og:url / og:image / sitemap.
  *
- * Must match the hostname people actually share. The apex
- * `pereiratechtalks.org` currently 301s asset URLs toward the legacy
- * `.com` / `www` stack (and the OG image ends in 404), so Facebook falls
- * back to the favicon. While the public surface is the v3 preview host,
- * default to that; override with PUBLIC_SITE_URL (or SITE) at cutover.
+ * Must match the hostname people actually share. Defaults to the production
+ * apex; override with PUBLIC_SITE_URL (or SITE) for preview deployments.
+ *
+ * Note the split: this site is `corag.org`. The Ayuda Directa application is a
+ * separate deployment at `app.corag.org` — see `APP_URL` in `src/lib/constances.ts`.
  */
 const site =
   process.env.PUBLIC_SITE_URL?.replace(/\/$/, '') ||
   process.env.SITE?.replace(/\/$/, '') ||
-  'https://pereiratechtalks.org';
+  'https://corag.org';
 
 // https://astro.build/config
 export default defineConfig({

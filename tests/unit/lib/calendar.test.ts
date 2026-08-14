@@ -29,7 +29,7 @@ const makeEntry = (
 
 describe('isValidGoogleCalendarId', () => {
   it('accepts email-style calendar IDs', () => {
-    expect(isValidGoogleCalendarId('pereiratechtalks@gmail.com')).toBe(true);
+    expect(isValidGoogleCalendarId('contacto@corag.org')).toBe(true);
   });
 
   it('accepts group calendar IDs', () => {
@@ -56,7 +56,7 @@ describe('isValidPublicHttpsUrl', () => {
   });
 
   it('rejects http URLs', () => {
-    expect(isValidPublicHttpsUrl('http://pereiratechtalks.org')).toBe(false);
+    expect(isValidPublicHttpsUrl('http://corag.org')).toBe(false);
   });
 
   it('rejects javascript URLs', () => {
