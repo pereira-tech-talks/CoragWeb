@@ -122,14 +122,23 @@ export const en: SiteTranslations = {
   nav: {
     app: 'Go to the app',
     home: 'Home',
+    howCoragWorks: 'How it works',
     howItWorks: 'How it works',
     transparency: 'Transparency',
+    emergencies: 'Emergencies',
+    leaders: 'Leaders',
+    partners: 'Partners',
+    developers: 'Developers',
     blog: 'Blog',
     about: 'About Corag',
     contact: 'Contact',
     community: 'Community',
     contributors: 'Team & contributors',
     channels: 'Channels',
+    contributing: 'Contributing',
+    governance: 'Governance',
+    conduct: 'Code of Conduct',
+    privacy: 'Privacy',
     menu: 'Menu',
     closeMenu: 'Close menu',
     openMenu: 'Open menu',
@@ -172,6 +181,8 @@ export const en: SiteTranslations = {
     heroDescription:
       'We started as a group of young people who cared about social service. Out of that came the purpose of building a digital bridge between those who want to help and those who need it most.',
     bioTitle: 'We have the courage to serve and transform lives',
+    bioIllustrationAlt:
+      'Illustration: a group of people on one side of a gap and a house with a family on the other, joined by an arched bridge whose keystone is a heart; the far half of the bridge is still forming',
     bioText:
       'The name comes from <strong>coraje</strong> — courage. The heart replacing the <em>o</em> carries <strong>love</strong>. Our mark is built to transmit courage, innovation and love.<br /><br />Courage here is not bravado. It is showing up when it is inconvenient, putting your name on a delivery, and publishing the account afterwards. That last part is what connects the idea to the product: named responsables, direct transfer and moderated evidence are courage turned into a mechanism. Saying you are transparent is easy; publishing the receipt takes courage.<br /><br />Corag exists because of a simple reality: plenty of people want to give or get involved, but cannot find a way to do it that feels trustworthy, close and meaningful. Generosity is not the scarce resource — connection is.',
     passionsTitle: 'Our values',
@@ -926,14 +937,12 @@ export const en: SiteTranslations = {
     eyebrow: 'Responsables',
     lead: 'The responsable system is the critical trust dependency of the whole platform. If that validation fails, nothing else matters.',
     heroFigure: {
-      srcBase: '/images/pages/app/app-registro-lider-desktop',
-      widths: [640, 1280],
-      alt: 'Ayuda Directa leader application screen, with the form empty',
-      width: 1280,
-      height: 800,
-      frame: 'browser',
-      caption:
-        'A real view of the application: the application happens there, not on this site.',
+      srcBase: '/images/pages/illustrations/illustration-leaders',
+      widths: [480, 768, 1024],
+      alt: 'Illustration: a coordinator holding a checklist beside a verification badge, standing between a house with a family on the left and hands offering a package, a coin and a heart on the right',
+      width: 1378,
+      height: 659,
+      frame: 'none',
     },
     sections: [
       {
@@ -954,6 +963,19 @@ export const en: SiteTranslations = {
       {
         heading: 'How you become one',
         blocks: [
+          {
+            kind: 'figure',
+            figure: {
+              srcBase: '/images/pages/app/app-registro-lider-desktop',
+              widths: [640, 1280],
+              alt: 'Ayuda Directa leader application screen, with the form empty',
+              width: 1280,
+              height: 800,
+              frame: 'browser',
+              caption:
+                'A real view of the application: the application happens there, not on this site.',
+            },
+          },
           {
             kind: 'steps',
             steps: [
@@ -1020,6 +1042,14 @@ export const en: SiteTranslations = {
       'How a foundation, a company, a municipality or a community organization joins: contribute capacity, integrate systems, or back the operation.',
     eyebrow: 'Organizations',
     lead: 'An organization already working in the field does not need another platform. It needs its own to stop being isolated from everyone else’s.',
+    heroFigure: {
+      srcBase: '/images/pages/illustrations/illustration-partners',
+      widths: [480, 768, 1024],
+      alt: 'Illustration: a warehouse, a truck, a clinic and a community hall, each on its own platform, joined by continuous lines that pass through a heart at the centre',
+      width: 1269,
+      height: 706,
+      frame: 'none',
+    },
     sections: [
       {
         heading: 'Three ways in',

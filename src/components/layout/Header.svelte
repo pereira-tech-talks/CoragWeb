@@ -15,6 +15,7 @@ import ThemeToggle from './ThemeToggle.svelte';
 
 export let lang: string = 'es';
 let open: boolean = false;
+let howOpen = false;
 let communityOpen = false;
 let languageOpen = false;
 
@@ -58,11 +59,13 @@ function toggleMenu() {
 }
 
 function openDropdown(which: string) {
+  howOpen = which === 'how';
   communityOpen = which === 'community';
   languageOpen = which === 'language';
 }
 
 function closeAllDropdowns() {
+  howOpen = false;
   communityOpen = false;
   languageOpen = false;
 }
@@ -101,10 +104,57 @@ function closeAllDropdowns() {
     </a>
 
     <div class="hidden lg:flex items-center gap-6">
-      <a href="{prefix}/how-it-works" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'how-it-works' })}>{t.nav.howItWorks}</a>
-      <a href="{prefix}/transparency" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'transparency' })}>{t.nav.transparency}</a>
-      <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
+      <!-- How Corag works — institutional model pages (matches footer column). -->
+      <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
+      <div
+        role="group"
+        class="relative group"
+        on:mouseenter={() => openDropdown('how')}
+        on:mouseleave={() => howOpen = false}
+        on:click|stopPropagation={() => {}}
+      >
+        <button
+          class="nav-link flex items-center gap-1 cursor-pointer select-none"
+          aria-expanded={howOpen}
+          aria-haspopup="true"
+          aria-controls="how-dropdown"
+          type="button"
+          on:click={() => howOpen ? closeAllDropdowns() : openDropdown('how')}
+        >
+          {t.nav.howCoragWorks}
+          <svg
+            class="w-4 h-4 transition-transform duration-200"
+            style="transform: rotate({howOpen ? '180deg' : '0deg'});"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        {#if howOpen}
+          <div
+            class="absolute left-1/2 -translate-x-1/2 top-full w-64"
+            style="height: 12px; pointer-events: auto;"
+          ></div>
+          <div
+            id="how-dropdown"
+            class="absolute left-1/2 -translate-x-1/2 top-full w-64 bg-corag-bg-elevated text-corag rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+            style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
+          >
+            <a href="{prefix}/how-it-works" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'how-it-works' })}>{t.nav.howItWorks}</a>
+            <a href="{prefix}/transparency" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'transparency' })}>{t.nav.transparency}</a>
+            <a href="{prefix}/emergencies" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'emergencies' })}>{t.nav.emergencies}</a>
+            <a href="{prefix}/leaders" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'leaders' })}>{t.nav.leaders}</a>
+            <a href="{prefix}/partners" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'partners' })}>{t.nav.partners}</a>
+            <a href="{prefix}/developers" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'developers' })}>{t.nav.developers}</a>
+          </div>
+        {/if}
+      </div>
 
+      <!-- Community — people, channels, and policy pages. -->
       <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
       <div
         role="group"
@@ -136,21 +186,26 @@ function closeAllDropdowns() {
         </button>
         {#if communityOpen}
           <div
-            class="absolute left-1/2 -translate-x-1/2 top-full w-56"
+            class="absolute left-1/2 -translate-x-1/2 top-full w-64"
             style="height: 12px; pointer-events: auto;"
           ></div>
           <div
             id="community-dropdown"
-            class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-corag-bg-elevated text-corag rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+            class="absolute left-1/2 -translate-x-1/2 top-full w-64 bg-corag-bg-elevated text-corag rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
             style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
           >
             <a href="{prefix}/about" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about' })}>{t.nav.about}</a>
             <a href="{prefix}/contributors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributors' })}>{t.nav.contributors}</a>
             <a href="{prefix}/channels" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'channels' })}>{t.nav.channels}</a>
+            <a href="{prefix}/contributing" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributing' })}>{t.nav.contributing}</a>
+            <a href="{prefix}/governance" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'governance' })}>{t.nav.governance}</a>
+            <a href="{prefix}/conduct" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'conduct' })}>{t.nav.conduct}</a>
+            <a href="{prefix}/privacy" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'privacy' })}>{t.nav.privacy}</a>
           </div>
         {/if}
       </div>
 
+      <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
       <a href="{prefix}/contact" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contact' })}>{t.nav.contact}</a>
 
       <!-- The application. Every transactional action happens there, so this is

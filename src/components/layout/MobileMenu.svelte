@@ -34,6 +34,7 @@ function portal(node: HTMLElement) {
   };
 }
 
+let howOpen = true;
 let communityOpen = true;
 let languageOpen = false;
 let lockedScrollY = 0;
@@ -218,23 +219,45 @@ function navClick(item: string) {
         class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
         on:click={() => navClick('home')}
       >{t.nav.home}</a>
-      <a
-        href="{prefix}/how-it-works"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('how-it-works')}
-      >{t.nav.howItWorks}</a>
-      <a
-        href="{prefix}/transparency"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('transparency')}
-      >{t.nav.transparency}</a>
-      <a
-        href="{prefix}/blog"
-        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
-        on:click={() => navClick('blog')}
-      >{t.nav.blog}</a>
 
       <div class="mt-2 border-t border-corag-border pt-2 dark:border-white/10">
+        <button
+          class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+          on:click={() => (howOpen = !howOpen)}
+          aria-expanded={howOpen}
+          aria-controls="mobile-how-links"
+          type="button"
+        >
+          <span>{t.nav.howCoragWorks}</span>
+          <svg
+            class="h-5 w-5 shrink-0 transition-transform duration-200 motion-reduce:transition-none"
+            class:rotate-180={howOpen}
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        {#if howOpen}
+          <div
+            id="mobile-how-links"
+            class="mb-1 flex flex-col gap-0.5 border-l-2 border-corag-primary/30 pl-3 ml-3"
+            transition:fade={{ duration: 120 }}
+          >
+            <a href="{prefix}/how-it-works" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('how-it-works')}>{t.nav.howItWorks}</a>
+            <a href="{prefix}/transparency" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('transparency')}>{t.nav.transparency}</a>
+            <a href="{prefix}/emergencies" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('emergencies')}>{t.nav.emergencies}</a>
+            <a href="{prefix}/leaders" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('leaders')}>{t.nav.leaders}</a>
+            <a href="{prefix}/partners" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('partners')}>{t.nav.partners}</a>
+            <a href="{prefix}/developers" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('developers')}>{t.nav.developers}</a>
+          </div>
+        {/if}
+      </div>
+
+      <div class="border-t border-corag-border pt-2 dark:border-white/10">
         <button
           class="nav-link flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-left text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
           on:click={() => (communityOpen = !communityOpen)}
@@ -264,9 +287,19 @@ function navClick(item: string) {
             <a href="{prefix}/about" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('about')}>{t.nav.about}</a>
             <a href="{prefix}/contributors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributors')}>{t.nav.contributors}</a>
             <a href="{prefix}/channels" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('channels')}>{t.nav.channels}</a>
+            <a href="{prefix}/contributing" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributing')}>{t.nav.contributing}</a>
+            <a href="{prefix}/governance" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('governance')}>{t.nav.governance}</a>
+            <a href="{prefix}/conduct" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('conduct')}>{t.nav.conduct}</a>
+            <a href="{prefix}/privacy" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('privacy')}>{t.nav.privacy}</a>
           </div>
         {/if}
       </div>
+
+      <a
+        href="{prefix}/blog"
+        class="nav-link rounded-lg px-3 py-3 text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary"
+        on:click={() => navClick('blog')}
+      >{t.nav.blog}</a>
 
       <a
         href="{prefix}/contact"

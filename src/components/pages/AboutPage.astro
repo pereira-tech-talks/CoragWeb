@@ -138,8 +138,29 @@ const breadcrumbs = [
 
 
 
+  {/* The origin story beside the picture of it: courage becoming a bridge.
+      The illustration is transparent, so it needs no frame and works on both
+      themes. */}
   <Section title={t.aboutPage.bioTitle}>
-    <div class="prose prose-lg dark:prose-invert max-w-3xl prose-p:text-corag-secondary" set:html={t.aboutPage.bioText} />
+    <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
+      <div
+        class="prose prose-lg dark:prose-invert prose-p:text-corag-secondary lg:col-span-6"
+        set:html={t.aboutPage.bioText}
+      />
+      <figure class="lg:col-span-6">
+        <img
+          src="/images/pages/illustrations/illustration-about-1024.webp"
+          srcset="/images/pages/illustrations/illustration-about-480.webp 480w, /images/pages/illustrations/illustration-about-768.webp 768w, /images/pages/illustrations/illustration-about-1024.webp 1024w"
+          sizes="(min-width: 1024px) 46vw, 100vw"
+          alt={t.aboutPage.bioIllustrationAlt}
+          width="1412"
+          height="422"
+          loading="lazy"
+          decoding="async"
+          class="w-full"
+        />
+      </figure>
+    </div>
   </Section>
 
   <Section title={t.aboutPage.passionsTitle} surface="alt">

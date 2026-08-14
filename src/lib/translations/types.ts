@@ -5,10 +5,12 @@
  * Each locale file (en.ts, es.ts) must satisfy the SiteTranslations interface.
  */
 
+export type PassionIcon = 'users' | 'heart' | 'shield' | 'sparkles' | 'eye';
+
 export interface PagePassion {
   title: string;
   description: string;
-  icon: string;
+  icon: PassionIcon;
   link: string;
 }
 
@@ -36,8 +38,12 @@ export interface InstitutionalFigure {
   width: number;
   height: number;
   caption?: string;
-  /** CSS-drawn frame. `plain` renders the image with no chrome. */
-  frame?: 'browser' | 'phone' | 'plain';
+  /**
+   * CSS-drawn frame. `plain` is a bordered card; `none` is bare, which is what
+   * a transparent illustration needs — a card around it would draw a box the
+   * artwork does not have.
+   */
+  frame?: 'browser' | 'phone' | 'plain' | 'none';
 }
 
 export interface InstitutionalStat {
@@ -207,15 +213,25 @@ export interface SiteTranslations {
     /** The Ayuda Directa application CTA in the chrome. */
     app: string;
     home: string;
+    /** Trigger label for the "How Corag works" dropdown. */
+    howCoragWorks: string;
     howItWorks: string;
     transparency: string;
+    emergencies: string;
+    leaders: string;
+    partners: string;
+    developers: string;
     blog: string;
     about: string;
     contact: string;
-    /** Label for the header dropdown holding about / contributors / channels. */
+    /** Label for the header dropdown holding community + policy links. */
     community: string;
     contributors: string;
     channels: string;
+    contributing: string;
+    governance: string;
+    conduct: string;
+    privacy: string;
     menu: string;
     closeMenu: string;
     openMenu: string;
@@ -255,6 +271,8 @@ export interface SiteTranslations {
     description: string;
     heroDescription: string;
     bioTitle: string;
+    /** Alt text for the origin-story illustration beside the bio. */
+    bioIllustrationAlt: string;
     bioText: string;
     passionsTitle: string;
     passions: PagePassion[];

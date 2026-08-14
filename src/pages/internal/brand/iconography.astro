@@ -16,9 +16,10 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100">Iconography</h1>
       <p class="text-base text-gray-600 dark:text-gray-300 max-w-3xl">
         Corag standardizes on the
-        <a href="https://lucide.dev/" class="underline">Lucide</a> icon pack:
-        broad coverage, consistent geometric language, MIT licensed, easy to
-        tree-shake, and well-supported in Astro/Svelte islands.
+        <a href="https://lucide.dev/" class="underline">Lucide</a> icon pack
+        via <code>@lucide/astro</code>: broad coverage, consistent geometric
+        language, ISC licensed, easy to tree-shake, and well-supported in
+        Astro/Svelte islands.
       </p>
     </header>
 
@@ -75,7 +76,7 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
       <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Astro / Svelte usage</h2>
       <pre class="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 overflow-x-auto text-xs text-gray-800 dark:text-gray-100"><code>{`---
 // Astro: import only the icons you use; tree-shaking strips the rest.
-import { Calendar, Mic, Users } from 'lucide-astro';
+import { Calendar, Mic, Users } from '@lucide/astro';
 ---
 
 <button class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-corag-fill text-corag-on-fill">
@@ -83,7 +84,7 @@ import { Calendar, Mic, Users } from 'lucide-astro';
   <span>Next meetup</span>
 </button>
 
-<a href="/cfs" aria-label="Apply as a speaker" class="p-2 rounded-md hover:bg-corag-primary-soft">
+<a href="/contact" aria-label="Contact Corag" class="p-2 rounded-md hover:bg-corag-primary-soft">
   <Mic size={20} aria-hidden="true" stroke-width={1.5} />
 </a>`}</code></pre>
     </section>

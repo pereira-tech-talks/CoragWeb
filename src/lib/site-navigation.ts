@@ -73,12 +73,22 @@ export const SITE_NAVIGATION: NavGroup[] = [
       {
         label: { en: 'Emergencies', es: 'Emergencias' },
         path: '/emergencies',
+        inChrome: true,
       },
-      { label: { en: 'Leaders', es: 'Líderes' }, path: '/leaders' },
-      { label: { en: 'Partners', es: 'Aliados' }, path: '/partners' },
+      {
+        label: { en: 'Leaders', es: 'Líderes' },
+        path: '/leaders',
+        inChrome: true,
+      },
+      {
+        label: { en: 'Partners', es: 'Aliados' },
+        path: '/partners',
+        inChrome: true,
+      },
       {
         label: { en: 'Developers', es: 'Desarrolladores' },
         path: '/developers',
+        inChrome: true,
       },
     ],
   },
@@ -98,13 +108,23 @@ export const SITE_NAVIGATION: NavGroup[] = [
       {
         label: { en: 'Contributing', es: 'Cómo contribuir' },
         path: '/contributing',
+        inChrome: true,
       },
-      { label: { en: 'Governance', es: 'Gobernanza' }, path: '/governance' },
+      {
+        label: { en: 'Governance', es: 'Gobernanza' },
+        path: '/governance',
+        inChrome: true,
+      },
       {
         label: { en: 'Code of Conduct', es: 'Código de Conducta' },
         path: '/conduct',
+        inChrome: true,
       },
-      { label: { en: 'Privacy', es: 'Privacidad' }, path: '/privacy' },
+      {
+        label: { en: 'Privacy', es: 'Privacidad' },
+        path: '/privacy',
+        inChrome: true,
+      },
     ],
   },
   {

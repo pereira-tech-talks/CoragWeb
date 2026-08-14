@@ -102,14 +102,44 @@ async function handleSubmit() {
           typeof window !== 'undefined' ? window.location.pathname : '/',
       }),
     });
-    if (!response.ok) throw new Error('fail');
+    if (!response.ok) {
+      let payload;
+      try {
+        payload = await response.json();
+      } catch {
+        payload = null;
+      }
+      const errorCode =
+        (payload && typeof payload === 'object' && payload?.error) ||
+        `http_${response.status}`;
+      throw new Error(errorCode);
+    }
     formState = 'success';
     trackEvent(EVENTS.CONDUCT_REPORT_SUBMIT, { anonymous });
     setTimeout(() => successRef?.focus(), 100);
-  } catch {
-    submitError = cp.submitError;
+  } catch (err) {
+    const code = err instanceof Error ? err.message : 'submit_failed';
+    const next = { incidentDescription: '', email: '' };
+    if (code === 'missing_incidentDescription' || code === 'missing_required') {
+      next.incidentDescription = cp.requiredField;
+    } else if (code === 'missing_email' || code === 'email_invalid') {
+      next.email =
+        code === 'email_invalid' ? cp.invalidEmail : cp.requiredField;
+    }
+    errors = next;
+    if (next.incidentDescription || next.email) {
+      focusFirstInvalidField(
+        [
+          { key: 'incidentDescription', id: 'coc-incident' },
+          { key: 'email', id: 'coc-email' },
+        ],
+        errors
+      );
+    } else {
+      submitError = cp.submitError;
+    }
     formState = 'idle';
-    trackEvent(EVENTS.CONTACT_FORM_ERROR, { reason: 'submit_failed' });
+    trackEvent(EVENTS.CONTACT_FORM_ERROR, { reason: code });
   }
 }
 

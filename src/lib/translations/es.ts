@@ -122,14 +122,23 @@ export const es: SiteTranslations = {
   nav: {
     app: 'Ir a la aplicación',
     home: 'Inicio',
+    howCoragWorks: 'Cómo funciona',
     howItWorks: 'Cómo funciona',
     transparency: 'Transparencia',
+    emergencies: 'Emergencias',
+    leaders: 'Líderes',
+    partners: 'Aliados',
+    developers: 'Desarrolladores',
     blog: 'Blog',
     about: 'Sobre Corag',
     contact: 'Contacto',
     community: 'Comunidad',
     contributors: 'Equipo y colaboradores',
     channels: 'Canales',
+    contributing: 'Cómo contribuir',
+    governance: 'Gobernanza',
+    conduct: 'Código de Conducta',
+    privacy: 'Privacidad',
     menu: 'Menú',
     closeMenu: 'Cerrar menú',
     openMenu: 'Abrir menú',
@@ -172,6 +181,8 @@ export const es: SiteTranslations = {
     heroDescription:
       'Nacimos de un grupo de jóvenes apasionados por el servicio social. De ahí salió el propósito de crear un puente digital entre quienes quieren ayudar y quienes más lo necesitan.',
     bioTitle: 'Tenemos coraje para servir y transformar vidas',
+    bioIllustrationAlt:
+      'Ilustración: un grupo de personas a un lado de un vacío y una casa con una familia al otro, unidos por un puente en arco cuya clave es un corazón; la mitad lejana del puente todavía se está formando',
     bioText:
       'El nombre viene de <strong>coraje</strong>. El corazón que reemplaza la <em>o</em> lleva el <strong>amor</strong>. Nuestro logo transmite coraje, innovación y amor.<br /><br />Coraje no es bravuconería. Es aparecer cuando es incómodo, poner tu nombre en una entrega y publicar la cuenta después. Esa última parte es la que conecta la idea con el producto: los responsables, la transferencia directa y la evidencia moderada son el coraje vuelto mecanismo. Decir que somos transparentes es fácil; publicar el recibo requiere coraje.<br /><br />Corag surge al reconocer una realidad simple: muchas personas quieren donar o vincularse a una causa, pero no encuentran cómo hacerlo de manera confiable, cercana y significativa. No falta generosidad — falta conexión.',
     passionsTitle: 'Nuestros valores',
@@ -940,14 +951,12 @@ export const es: SiteTranslations = {
     eyebrow: 'Responsables',
     lead: 'El sistema de responsables es la dependencia crítica de toda la plataforma. Si esa validación falla, nada de lo demás importa.',
     heroFigure: {
-      srcBase: '/images/pages/app/app-registro-lider-desktop',
-      widths: [640, 1280],
-      alt: 'Pantalla de postulación para líder en Ayuda Directa, con el formulario vacío',
-      width: 1280,
-      height: 800,
-      frame: 'browser',
-      caption:
-        'Vista real de la aplicación: la postulación ocurre allí, no en este sitio.',
+      srcBase: '/images/pages/illustrations/illustration-leaders',
+      widths: [480, 768, 1024],
+      alt: 'Ilustración: una persona coordinadora con una lista de verificación y un distintivo de validación, entre una casa con una familia a la izquierda y manos que ofrecen un paquete, una moneda y un corazón a la derecha',
+      width: 1378,
+      height: 659,
+      frame: 'none',
     },
     sections: [
       {
@@ -968,6 +977,19 @@ export const es: SiteTranslations = {
       {
         heading: 'Cómo se llega',
         blocks: [
+          {
+            kind: 'figure',
+            figure: {
+              srcBase: '/images/pages/app/app-registro-lider-desktop',
+              widths: [640, 1280],
+              alt: 'Pantalla de postulación para líder en Ayuda Directa, con el formulario vacío',
+              width: 1280,
+              height: 800,
+              frame: 'browser',
+              caption:
+                'Vista real de la aplicación: la postulación ocurre allí, no en este sitio.',
+            },
+          },
           {
             kind: 'steps',
             steps: [
@@ -1034,6 +1056,14 @@ export const es: SiteTranslations = {
       'Cómo se suma una fundación, una empresa, una alcaldía o una organización comunitaria: aportar capacidad, integrar sistemas o respaldar la operación.',
     eyebrow: 'Organizaciones',
     lead: 'Una organización que ya trabaja en terreno no necesita otra plataforma. Necesita que la suya deje de estar aislada de las demás.',
+    heroFigure: {
+      srcBase: '/images/pages/illustrations/illustration-partners',
+      widths: [480, 768, 1024],
+      alt: 'Ilustración: una bodega, un camión, un centro de salud y un salón comunal, cada uno sobre su plataforma, unidos por líneas continuas que pasan por un corazón en el centro',
+      width: 1269,
+      height: 706,
+      frame: 'none',
+    },
     sections: [
       {
         heading: 'Tres formas de sumarse',

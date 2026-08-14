@@ -2,6 +2,7 @@
 import { onMount } from 'svelte';
 import { EVENTS, trackEvent } from '@/lib/analytics';
 import {
+  emptyContactFormErrors,
   MAX_MESSAGE_LENGTH,
   MAX_SUBJECT_LENGTH,
   normalizeTopic,
@@ -176,10 +177,30 @@ async function handleSubmit() {
     formState = 'success';
     trackEvent(EVENTS.CONTACT_FORM_SUBMIT, { reason: reason || 'unspecified' });
     setTimeout(() => successRef?.focus(), 100);
-  } catch {
-    submitError = t.contactPage.submitError;
+  } catch (err) {
+    const code = err instanceof Error ? err.message : 'submit_failed';
+    const next = emptyContactFormErrors();
+    if (code === 'missing_name') next.name = t.contactPage.requiredField;
+    else if (code === 'missing_email' || code === 'email_invalid')
+      next.email =
+        code === 'email_invalid'
+          ? t.contactPage.invalidEmail
+          : t.contactPage.requiredField;
+    else if (code === 'missing_topic' || code === 'topic_invalid')
+      next.reason = t.contactPage.requiredField;
+    else if (code === 'missing_subject')
+      next.subject = t.contactPage.requiredField;
+    else if (code === 'missing_message')
+      next.message = t.contactPage.requiredField;
+    errors = next;
+    const hasFieldError = Object.values(next).some(Boolean);
+    if (hasFieldError) {
+      focusInvalid();
+    } else {
+      submitError = t.contactPage.submitError;
+    }
     formState = 'idle';
-    trackEvent(EVENTS.CONTACT_FORM_ERROR, { reason: 'submit_failed' });
+    trackEvent(EVENTS.CONTACT_FORM_ERROR, { reason: code });
   }
 }
 

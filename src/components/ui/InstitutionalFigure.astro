@@ -44,7 +44,9 @@ const frameClass =
     ? 'overflow-hidden rounded-[28px] border border-corag-border bg-corag-bg-elevated shadow-corag-lg'
     : frame === 'phone'
       ? 'overflow-hidden rounded-[2rem] border-[6px] border-corag-bg-dark bg-corag-bg-dark shadow-corag-lg'
-      : 'overflow-hidden rounded-[28px] border border-corag-border shadow-corag-sm';
+      : frame === 'none'
+        ? ''
+        : 'overflow-hidden rounded-[28px] border border-corag-border shadow-corag-sm';
 ---
 
 <figure class={className}>
