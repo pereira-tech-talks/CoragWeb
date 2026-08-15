@@ -11,7 +11,7 @@ El ecosistema de impacto social.
 **Corag** conecta a quienes quieren ayudar con quienes más lo necesitan, para que
 la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.
 
-- [Quiero ayudar](https://ayuda.corag.app/aportar)
+- [Quiero ayudar](https://ayuda.corag.app/)
 - [Cómo funciona](/how-it-works)
 
 Se publica. Se entrega. Queda la evidencia.

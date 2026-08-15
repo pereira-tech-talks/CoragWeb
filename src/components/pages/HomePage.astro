@@ -15,6 +15,7 @@ import EvidenceNumbers from '@/components/home/EvidenceNumbers.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { channelIconPath } from '@/lib/channel-icons';
 import {
+  APP_PATHS,
   APP_URL,
   appUrl,
   getDefaultOgImage,
@@ -188,7 +189,7 @@ const btnSecondary =
           </p>
           <div class="hero-ctas mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <a
-              href={appUrl('/aportar')}
+              href={appUrl(APP_PATHS.home)}
               class={btnOnDark}
               data-umami-event="app_cta_click"
               data-umami-event-surface="hero"
