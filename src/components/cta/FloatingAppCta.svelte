@@ -67,7 +67,10 @@ function dismiss() {
 
 function footerCoversCta(): boolean {
   if (!footerEl) return false;
-  return footerEl.getBoundingClientRect().top < window.innerHeight - FOOTER_HIDE_INSET_PX;
+  return (
+    footerEl.getBoundingClientRect().top <
+    window.innerHeight - FOOTER_HIDE_INSET_PX
+  );
 }
 
 function inviteOnScreen(): boolean {
@@ -76,7 +79,8 @@ function inviteOnScreen(): boolean {
     const r = node.getBoundingClientRect();
     const visiblePx = Math.min(r.bottom, vh) - Math.max(r.top, 0);
     if (visiblePx <= 0) continue;
-    if (visiblePx / Math.min(r.height || 1, vh) >= INVITE_HIDE_RATIO) return true;
+    if (visiblePx / Math.min(r.height || 1, vh) >= INVITE_HIDE_RATIO)
+      return true;
   }
   return false;
 }
