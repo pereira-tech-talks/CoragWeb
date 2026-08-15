@@ -94,6 +94,37 @@
           "bytes": 40300
         }
       ]
+    },
+    {
+      "key": "illustration-movement",
+      "page": "/movement",
+      "source": "tmp/ilustrations/ilustracion-movimiento.png",
+      "original": {
+        "width": 1672,
+        "height": 941
+      },
+      "trimmed": {
+        "width": 1328,
+        "height": 860
+      },
+      "backgroundKeyed": "source already transparent",
+      "files": [
+        {
+          "file": "illustration-movement-480.webp",
+          "width": 480,
+          "bytes": 95868
+        },
+        {
+          "file": "illustration-movement-768.webp",
+          "width": 768,
+          "bytes": 202956
+        },
+        {
+          "file": "illustration-movement-1024.webp",
+          "width": 1024,
+          "bytes": 327360
+        }
+      ]
     }
   ]
 }

@@ -64,6 +64,11 @@ const ILLUSTRATIONS = [
     source: 'ilustracion-sobre-corag.png',
     page: '/about',
   },
+  {
+    key: 'illustration-movement',
+    source: 'ilustracion-movimiento.png',
+    page: '/movement',
+  },
 ];
 
 const distance = (data, i, bg) =>
@@ -144,6 +149,32 @@ function keyBackground(data, width, height, channels, bg) {
   return out;
 }
 
+/** True when every pixel on the outer frame is already fully transparent. */
+function isBorderTransparent(data, info) {
+  const { width, height, channels } = info;
+  const clear = (x, y) => data[(y * width + x) * channels + 3] <= 10;
+  for (let x = 0; x < width; x++) {
+    if (!clear(x, 0) || !clear(x, height - 1)) return false;
+  }
+  for (let y = 0; y < height; y++) {
+    if (!clear(0, y) || !clear(width - 1, y)) return false;
+  }
+  return true;
+}
+
+/** Widen raw pixels to RGBA without touching them. */
+function toRgba(data, info) {
+  if (info.channels === 4) return Buffer.from(data);
+  const out = Buffer.alloc(info.width * info.height * 4);
+  for (let i = 0, o = 0; i < data.length; i += info.channels, o += 4) {
+    out[o] = data[i];
+    out[o + 1] = data[i + 1];
+    out[o + 2] = data[i + 2];
+    out[o + 3] = 255;
+  }
+  return out;
+}
+
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   const assets = [];
@@ -154,16 +185,25 @@ async function main() {
       .raw()
       .toBuffer({ resolveWithObject: true });
 
-    // The corner is background by definition of these compositions.
-    const bg = [data[0], data[1], data[2]];
+    /*
+     * A source that already carries transparency must not be keyed again.
+     * Keying reads the corner pixel as the background colour, and on an
+     * already-cut-out PNG that corner is (0, 0, 0, 0) — so the flood fill
+     * would run against black and eat into the deep wine figures, which are
+     * the darkest thing in the palette. Detect it and pass the art through.
+     */
+    const borderTransparent =
+      info.channels === 4 && isBorderTransparent(data, info);
 
-    const rgba = keyBackground(
-      data,
-      info.width,
-      info.height,
-      info.channels,
-      bg
-    );
+    const rgba = borderTransparent
+      ? toRgba(data, info)
+      : keyBackground(data, info.width, info.height, info.channels, [
+          // The corner is background by definition of these compositions.
+          data[0],
+          data[1],
+          data[2],
+        ]);
+    const bg = borderTransparent ? null : [data[0], data[1], data[2]];
 
     // Trim the transparent margin so the art fills its column.
     const trimmed = await sharp(rgba, {
@@ -213,7 +253,9 @@ async function main() {
       source: `tmp/ilustrations/${spec.source}`,
       original: { width: info.width, height: info.height },
       trimmed: { width: trimmed.info.width, height: trimmed.info.height },
-      backgroundKeyed: `rgb(${bg.join(', ')})`,
+      backgroundKeyed: bg
+        ? `rgb(${bg.join(', ')})`
+        : 'source already transparent',
       files,
     });
 

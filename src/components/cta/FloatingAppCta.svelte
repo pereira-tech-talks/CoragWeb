@@ -3,20 +3,18 @@
  * A persistent, dismissible route into the application.
  *
  * Corag's argument is that saying you are transparent is easy and publishing
- * the receipt is not. A CTA that follows you, blinks, blocks the text or
- * cannot be closed would contradict that in the one place a visitor is most
- * likely to be weighing whether to believe us. So this element is deliberately
- * constrained, and each rule below exists to keep it on the right side of that
+ * the receipt is not. A CTA that blinks, blocks the text or cannot be closed
+ * would contradict that. Each rule below keeps it on the right side of that
  * line:
  *
- *   1. It waits until 35% of the page has been read — attention is earned.
- *   2. It never renders on the home page, whose hero already fills the
- *      viewport with the same ask.
- *   3. It can be dismissed, and the dismissal is remembered for the session.
- *   4. It hides while a real in-content invitation is on screen, so the
- *      visitor is never asked for the same thing twice at once.
- *   5. It hides over the footer rather than cover those links.
- *   6. It does not animate under `prefers-reduced-motion`.
+ *   1. It appears once the visitor has scrolled a little — attention is earned,
+ *      but the bar is low so short pages still get a window to show it.
+ *   2. It can be dismissed, and the dismissal is remembered for the session.
+ *   3. It hides while a real in-content invitation is substantially on screen,
+ *      so the visitor is never asked for the same thing twice at once.
+ *   4. It hides when the footer reaches the pill's bottom strip, rather than
+ *      cover those links — without vanishing for most of a short page.
+ *   5. It does not animate under `prefers-reduced-motion`.
  */
 import { onDestroy, onMount } from 'svelte';
 import { APP_PATHS, appUrl } from '@/lib/constances';
@@ -26,17 +24,24 @@ export let lang: string = 'es';
 
 /** Session-scoped, so a dismissal does not silence the site forever. */
 const DISMISS_KEY = 'corag:app-cta-dismissed';
-/** How much of the page must be behind the reader before we ask. */
-const REVEAL_RATIO = 0.35;
+/** Pixels scrolled before the pill may appear. */
+const REVEAL_PX = 120;
+/**
+ * How much of an in-content invite must be visible before we yield to it.
+ * A tiny peek at the edge of the viewport should not kill the floating ask.
+ */
+const INVITE_HIDE_RATIO = 0.2;
+/** Footer top must enter this many px from the bottom before we hide. */
+const FOOTER_HIDE_INSET_PX = 96;
 
 let visible = false;
 let dismissed = false;
-/** True while an `AppInvite` block or the footer occupies the viewport. */
+/** True while an `AppInvite` block or the footer occupies the CTA strip. */
 let suppressed = false;
 let reduceMotion = false;
 
-let observer: IntersectionObserver | undefined;
 let ticking = false;
+let footerEl: HTMLElement | null = null;
 
 $: t = getTranslations(lang);
 
@@ -60,58 +65,49 @@ function dismiss() {
   }
 }
 
-function evaluateScroll() {
+function footerCoversCta(): boolean {
+  if (!footerEl) return false;
+  return footerEl.getBoundingClientRect().top < window.innerHeight - FOOTER_HIDE_INSET_PX;
+}
+
+function inviteOnScreen(): boolean {
+  const vh = window.innerHeight;
+  for (const node of document.querySelectorAll('[data-app-invite]')) {
+    const r = node.getBoundingClientRect();
+    const visiblePx = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    if (visiblePx <= 0) continue;
+    if (visiblePx / Math.min(r.height || 1, vh) >= INVITE_HIDE_RATIO) return true;
+  }
+  return false;
+}
+
+function evaluate() {
   ticking = false;
   if (dismissed) return;
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  // A page shorter than its own viewport has no "further down" to reward.
-  if (scrollable < 400) {
-    visible = false;
-    return;
-  }
-  visible = window.scrollY / scrollable >= REVEAL_RATIO;
+  visible = window.scrollY >= REVEAL_PX;
+  suppressed = inviteOnScreen() || footerCoversCta();
 }
 
 function onScroll() {
   if (ticking) return;
   ticking = true;
-  requestAnimationFrame(evaluateScroll);
+  requestAnimationFrame(evaluate);
 }
 
 onMount(() => {
   dismissed = readDismissal();
   reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Rule 4 and 5: anything that already offers the same route wins over this.
-  const competing = [
-    ...document.querySelectorAll('[data-app-invite]'),
-    ...document.querySelectorAll('footer'),
-  ];
-  if (competing.length > 0) {
-    const onScreen = new Set<Element>();
-    observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) onScreen.add(entry.target);
-          else onScreen.delete(entry.target);
-        }
-        suppressed = onScreen.size > 0;
-      },
-      { rootMargin: '0px 0px -10% 0px' }
-    );
-    for (const node of competing) observer.observe(node);
-  }
+  footerEl = document.querySelector('footer');
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
-  evaluateScroll();
+  evaluate();
 });
 
 onDestroy(() => {
   if (typeof window === 'undefined') return;
   window.removeEventListener('scroll', onScroll);
   window.removeEventListener('resize', onScroll);
-  observer?.disconnect();
 });
 
 $: shown = visible && !dismissed && !suppressed;

@@ -150,7 +150,9 @@ const lead = body ?? copy.body;
       <a
         href={appUrl(APP_PATHS.evidence)}
         class:list={[
-          'underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2',
+          // inline-flex + min-height so the target clears the WCAG 2.2 AA
+          // floor: as a bare inline link it measured 20px tall.
+          'inline-flex min-h-[44px] items-center underline underline-offset-4 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2',
           isBand ? 'focus-visible:outline-corag-rosa' : 'focus-visible:outline-corag-primary',
         ]}
         data-umami-event="app_cta_click"

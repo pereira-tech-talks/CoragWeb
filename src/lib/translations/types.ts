@@ -410,6 +410,8 @@ export interface SiteTranslations {
     title: string;
     description: string;
     eyebrow: string;
+    /** Describes what the crowd forms — the image carries the argument too. */
+    illustrationAlt: string;
     lead: string;
     /** Three short statements. Deliberately not cards — this page is spare. */
     beats: ReadonlyArray<{ title: string; body: string }>;

@@ -366,6 +366,8 @@ export const en: SiteTranslations = {
     description:
       'Corag is a social movement that mobilises people and aid. The name comes from coraje — the courage we all have when we love, care and serve.',
     eyebrow: 'The movement',
+    illustrationAlt:
+      'Illustration: around a hundred and fifty faceless human silhouettes, all the same size, whose arrangement forms the outline of a heart; some hold hands, some carry boxes, and the lighter ones along the outer edge are still joining',
     lead: 'Corag comes from <strong>coraje</strong>, the Spanish word for courage. Not the courage of great feats: the kind we all have when we love, when we want to care for someone, when we decide to serve. That is the movement, and it does not rest on anyone’s name. It rests on someone showing up.',
     beats: [
       {

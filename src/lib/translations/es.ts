@@ -366,6 +366,8 @@ export const es: SiteTranslations = {
     description:
       'Corag es un movimiento social que moviliza personas y ayuda. El nombre viene de coraje: el que todos tenemos cuando amamos, cuidamos y servimos.',
     eyebrow: 'El movimiento',
+    illustrationAlt:
+      'Ilustración: alrededor de ciento cincuenta siluetas de personas, sin rostro y todas del mismo tamaño, que al agruparse forman la silueta de un corazón; algunas se dan la mano, otras cargan cajas, y las del borde exterior, más claras, todavía se están sumando',
     lead: 'Corag viene de <strong>coraje</strong>. No el de las hazañas: el que todos tenemos cuando amamos, cuando queremos cuidar, cuando decidimos servir. Ese es el movimiento, y no se sostiene en nombres propios. Se sostiene en que alguien aparezca.',
     beats: [
       {
