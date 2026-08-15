@@ -9,7 +9,8 @@
  *
  *   1. It appears once the visitor has scrolled a little — attention is earned,
  *      but the bar is low so short pages still get a window to show it.
- *   2. It can be dismissed, and the dismissal is remembered for the session.
+ *   2. Dismissal survives in-tab page navigations, but a full reload clears it
+ *      so the ask can return.
  *   3. It hides while a real in-content invitation is substantially on screen,
  *      so the visitor is never asked for the same thing twice at once.
  *   4. It hides when the footer reaches the pill's bottom strip, rather than
@@ -22,7 +23,10 @@ import { getTranslations } from '@/lib/translations';
 
 export let lang: string = 'es';
 
-/** Session-scoped, so a dismissal does not silence the site forever. */
+/**
+ * Survives Astro full-document navigations within the tab, but is cleared on
+ * reload (see `isBrowserReload`).
+ */
 const DISMISS_KEY = 'corag:app-cta-dismissed';
 /** Pixels scrolled before the pill may appear. */
 const REVEAL_PX = 120;
@@ -45,12 +49,27 @@ let footerEl: HTMLElement | null = null;
 
 $: t = getTranslations(lang);
 
+function isBrowserReload(): boolean {
+  const entry = performance.getEntriesByType(
+    'navigation'
+  )[0] as PerformanceNavigationTiming | undefined;
+  if (entry) return entry.type === 'reload';
+  // Legacy PathNavigationTiming fallback (Safari < 15).
+  const legacy = (
+    performance as Performance & { navigation?: { type?: number } }
+  ).navigation;
+  return legacy?.type === 1;
+}
+
 function readDismissal(): boolean {
   try {
+    if (isBrowserReload()) {
+      window.sessionStorage.removeItem(DISMISS_KEY);
+      return false;
+    }
     return window.sessionStorage.getItem(DISMISS_KEY) === '1';
   } catch {
-    // Storage disabled (private mode) — the CTA simply stays dismissible
-    // for as long as the page is open.
+    // Storage disabled (private mode) — dismissal only lasts this document.
     return false;
   }
 }
@@ -61,7 +80,7 @@ function dismiss() {
   try {
     window.sessionStorage.setItem(DISMISS_KEY, '1');
   } catch {
-    // Nothing to persist to; the in-memory flag still holds for this page.
+    // Nothing to persist; in-memory flag still holds until next navigation.
   }
 }
 
