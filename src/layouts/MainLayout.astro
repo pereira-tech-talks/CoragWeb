@@ -80,12 +80,6 @@ const activeNotifications = suppressTopNotifications
  */
 const metaDescription = truncateToBand(description, DESCRIPTION_MAX);
 
-/**
- * The floating CTA everywhere except the home, whose hero already fills the
- * viewport with the same invitation — repeating it there is noise, not reach.
- */
-const pathname = Astro.url.pathname.replace(/\/$/, '');
-const isHome = pathname === '' || pathname === `${prefix}`;
 ---
 
 <html lang={lang}>
@@ -224,9 +218,9 @@ const isHome = pathname === '' || pathname === `${prefix}`;
       <slot />
     </main>
     <Footer lang={lang} />
-    {/* client:idle — it cannot appear before 35% of a scroll anyway, so it has
-        no business competing with LCP. */}
-    {!isHome && <FloatingAppCta client:idle lang={lang} />}
+    {/* client:idle — it waits for a short scroll before showing, so it has no
+        business competing with LCP. Ships on every MainLayout page. */}
+    <FloatingAppCta client:idle lang={lang} />
     {/* client:load — WebMCP scanners detect tools on first paint; client:visible misses them. */}
     <WebMCPBridge client:load lang={lang as 'en' | 'es'} />
     {/*
