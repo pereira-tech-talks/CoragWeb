@@ -229,7 +229,7 @@ export interface SiteTranslations {
     contact: string;
     /** Label for the header dropdown holding community + policy links. */
     community: string;
-    contributors: string;
+    movement: string;
     channels: string;
     contributing: string;
     governance: string;
@@ -390,23 +390,34 @@ export interface SiteTranslations {
     successMessage: string;
   };
 
-  contributorsPage: {
+  /**
+   * `/movement` — what Corag is as a collective, and why this page carries no
+   * roster.
+   *
+   * It replaced a directory of named people and allied organizations. That was
+   * a deliberate product decision, not a data gap: a movement that presents
+   * itself through representatives asks you to trust the representatives. The
+   * copy has to make the absence read as a position, or it reads as an
+   * unfinished page.
+   *
+   * Two rules for anything added here:
+   * - **No names.** No people, no partner organizations, no communities.
+   * - **No counts.** A roster of zero is honest; "hundreds of volunteers" is a
+   *   figure we would have to keep true, and rule 0 applies to this page as
+   *   much as to any other.
+   */
+  movementPage: {
     title: string;
     description: string;
     eyebrow: string;
-    intro: (count: number) => string;
-    teamTitle: string;
-    teamIntro: string;
-    collaboratorsTitle: string;
-    collaboratorsIntro: string;
-    communitiesTitle: string;
-    communitiesIntro: string;
-    companiesTitle: string;
-    companiesIntro: string;
-    joinLabel: string;
-    contributeLabel: string;
-    emptyTitle: string;
-    emptyDesc: string;
+    lead: string;
+    /** Three short statements. Deliberately not cards — this page is spare. */
+    beats: ReadonlyArray<{ title: string; body: string }>;
+    /** Answers the question the missing roster provokes. */
+    closingTitle: string;
+    closingBody: string;
+    /** Link out to the channels, the one place people actually gather. */
+    channelsLabel: string;
   };
 
   // Homepage Let's Connect section

@@ -303,7 +303,7 @@ function navClick(item: string) {
             transition:fade={{ duration: 120 }}
           >
             <a href="{prefix}/about" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('about')}>{t.nav.about}</a>
-            <a href="{prefix}/contributors" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributors')}>{t.nav.contributors}</a>
+            <a href="{prefix}/movement" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('movement')}>{t.nav.movement}</a>
             <a href="{prefix}/channels" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('channels')}>{t.nav.channels}</a>
             <a href="{prefix}/contributing" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('contributing')}>{t.nav.contributing}</a>
             <a href="{prefix}/governance" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('governance')}>{t.nav.governance}</a>

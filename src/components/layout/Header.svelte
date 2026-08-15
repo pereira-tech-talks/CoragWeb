@@ -195,7 +195,7 @@ function closeAllDropdowns() {
             style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
           >
             <a href="{prefix}/about" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about' })}>{t.nav.about}</a>
-            <a href="{prefix}/contributors" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributors' })}>{t.nav.contributors}</a>
+            <a href="{prefix}/movement" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'movement' })}>{t.nav.movement}</a>
             <a href="{prefix}/channels" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'channels' })}>{t.nav.channels}</a>
             <a href="{prefix}/contributing" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contributing' })}>{t.nav.contributing}</a>
             <a href="{prefix}/governance" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'governance' })}>{t.nav.governance}</a>

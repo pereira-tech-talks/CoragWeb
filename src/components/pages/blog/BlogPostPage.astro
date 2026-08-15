@@ -83,17 +83,24 @@ const blogPostingData = {
   image: heroImage ? new URL(heroImage, Astro.site).href : undefined,
   datePublished: pubDate.toISOString(),
   dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+  /*
+   * Corag is the author and the publisher — an Organization, not a Person.
+   * These two fields were the last place a founder's name reached the public
+   * site, in the structured data rather than the copy, which is exactly where
+   * it would have outlived the decision to present Corag as a movement.
+   */
   author: {
-    '@type': 'Person',
-    name: authorData?.name ?? 'Sergio Alexander Florez Galeano',
+    '@type': 'Organization',
+    name: authorData?.name ?? t.siteTitle,
     url: new URL('/about/', Astro.site).href,
-    image: new URL(authorData?.avatar ?? getDefaultOgImage(lang), Astro.site)
+    logo: new URL(authorData?.avatar ?? getDefaultOgImage(lang), Astro.site)
       .href,
   },
   publisher: {
-    '@type': 'Person',
-    name: 'Sergio Alexander Florez Galeano',
+    '@type': 'Organization',
+    name: t.siteTitle,
     url: new URL('/about/', Astro.site).href,
+    logo: new URL(getDefaultOgImage(lang), Astro.site).href,
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
