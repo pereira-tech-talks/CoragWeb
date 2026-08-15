@@ -96,8 +96,8 @@ export const SITE_NAVIGATION: NavGroup[] = [
     title: { en: 'Community', es: 'Comunidad' },
     entries: [
       {
-        label: { en: 'Team & contributors', es: 'Equipo y colaboradores' },
-        path: '/contributors',
+        label: { en: 'Serving takes courage', es: 'Servir requiere coraje' },
+        path: '/movement',
         inChrome: true,
       },
       {

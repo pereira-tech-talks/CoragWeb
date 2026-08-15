@@ -51,7 +51,7 @@ describe('getTranslations', () => {
     expect(t).toHaveProperty('siteDescription');
     expect(t).toHaveProperty('contact');
     expect(t).toHaveProperty('aboutPage');
-    expect(t).toHaveProperty('contributorsPage');
+    expect(t).toHaveProperty('movementPage');
   });
 
   it('returns different string values for different languages', () => {

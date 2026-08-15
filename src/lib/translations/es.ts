@@ -133,7 +133,7 @@ export const es: SiteTranslations = {
     about: 'Sobre Corag',
     contact: 'Contacto',
     community: 'Comunidad',
-    contributors: 'Equipo y colaboradores',
+    movement: 'Servir requiere coraje',
     channels: 'Canales',
     contributing: 'Cómo contribuir',
     governance: 'Gobernanza',
@@ -361,30 +361,32 @@ export const es: SiteTranslations = {
     ],
   },
 
-  contributorsPage: {
-    title: 'Equipo y colaboradores',
+  movementPage: {
+    title: 'Servir requiere coraje',
     description:
-      'Las personas que construyen Corag: desarrollo, diseño, producto, contenido y coordinación en terreno. También las comunidades y empresas aliadas.',
-    eyebrow: 'Quiénes somos',
-    intro: (count: number) =>
-      `Corag lo construyen ${count} personas que donan su tiempo. Estas son.`,
-    teamTitle: 'Equipo interno',
-    teamIntro:
-      'Quienes sostienen el día a día de Corag: producto, ingeniería, diseño, contenido y coordinación.',
-    collaboratorsTitle: 'Colaboradores',
-    collaboratorsIntro:
-      'Personas que aportan tiempo y oficio sin ser el equipo interno: mentores, voluntariado y apoyo puntual.',
-    communitiesTitle: 'Comunidades aliadas',
-    communitiesIntro:
-      'Comunidades que suman capacidad, difusión o infraestructura a la red.',
-    companiesTitle: 'Empresas aliadas',
-    companiesIntro:
-      'Empresas que aportan herramientas, operación o apoyo a Corag.',
-    joinLabel: 'Quiero colaborar',
-    contributeLabel: 'Cómo contribuir',
-    emptyTitle: 'Aún no hay colaboradores publicados',
-    emptyDesc:
-      'Estamos armando el directorio. Si construiste algo de Corag y no apareces, escríbenos.',
+      'Corag es un movimiento social que moviliza personas y ayuda. El nombre viene de coraje: el que todos tenemos cuando amamos, cuidamos y servimos.',
+    eyebrow: 'El movimiento',
+    illustrationAlt:
+      'Ilustración: alrededor de ciento cincuenta siluetas de personas, sin rostro y todas del mismo tamaño, que al agruparse forman la silueta de un corazón; algunas se dan la mano, otras cargan cajas, y las del borde exterior, más claras, todavía se están sumando',
+    lead: 'Corag viene de <strong>coraje</strong>. No el de las hazañas: el que todos tenemos cuando amamos, cuando queremos cuidar, cuando decidimos servir. Ese es el movimiento, y no se sostiene en nombres propios. Se sostiene en que alguien aparezca.',
+    beats: [
+      {
+        title: 'Movilizamos personas, no audiencias',
+        body: 'Un movimiento no se mide en seguidores. Se mide en cuánta ayuda llegó y en cuántas manos la movieron.',
+      },
+      {
+        title: 'No hace falta permiso',
+        body: 'Nadie tiene que ser designado para servir. Se entra ayudando: una entrega, una hora, una herramienta, una necesidad publicada.',
+      },
+      {
+        title: 'El coraje se demuestra después',
+        body: 'Lo difícil no es prometer. Es publicar la cuenta cuando ya pasó. Cada entrega deja evidencia, y por eso el movimiento se puede revisar en vez de solo creer.',
+      },
+    ],
+    closingTitle: '¿Quién hace Corag?',
+    closingBody:
+      'Quien aparece. Quienes coordinan una entrega, quienes escriben código, quienes prestan una bodega o un camión, quienes revisan una evidencia a las once de la noche. Y mañana, quien decida sumarse. Corag no es un grupo al que se entra: es lo que ocurre cada vez que alguien decide que sí.',
+    channelsLabel: 'Dónde nos encontramos',
   },
 
   conductForm: {

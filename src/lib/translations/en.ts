@@ -133,7 +133,7 @@ export const en: SiteTranslations = {
     about: 'About Corag',
     contact: 'Contact',
     community: 'Community',
-    contributors: 'Team & contributors',
+    movement: 'Serving takes courage',
     channels: 'Channels',
     contributing: 'Contributing',
     governance: 'Governance',
@@ -361,30 +361,32 @@ export const en: SiteTranslations = {
     ],
   },
 
-  contributorsPage: {
-    title: 'Team & contributors',
+  movementPage: {
+    title: 'Serving takes courage',
     description:
-      'The people building Corag: engineering, design, product, content and field coordination — plus the allied communities and companies.',
-    eyebrow: 'Who we are',
-    intro: (count: number) =>
-      `Corag is built by ${count} people donating their time. These are they.`,
-    teamTitle: 'Internal team',
-    teamIntro:
-      'The people who run Corag day to day: product, engineering, design, content and coordination.',
-    collaboratorsTitle: 'Contributors',
-    collaboratorsIntro:
-      'People who give time and craft without being the internal team: mentors, volunteers and focused support.',
-    communitiesTitle: 'Allied communities',
-    communitiesIntro:
-      'Communities that add capacity, reach or infrastructure to the network.',
-    companiesTitle: 'Allied companies',
-    companiesIntro:
-      'Companies that contribute tools, operations or support to Corag.',
-    joinLabel: 'I want to contribute',
-    contributeLabel: 'How to contribute',
-    emptyTitle: 'No contributors published yet',
-    emptyDesc:
-      'We are putting the directory together. If you built part of Corag and are missing, write to us.',
+      'Corag is a social movement that mobilises people and aid. The name comes from coraje — the courage we all have when we love, care and serve.',
+    eyebrow: 'The movement',
+    illustrationAlt:
+      'Illustration: around a hundred and fifty faceless human silhouettes, all the same size, whose arrangement forms the outline of a heart; some hold hands, some carry boxes, and the lighter ones along the outer edge are still joining',
+    lead: 'Corag comes from <strong>coraje</strong>, the Spanish word for courage. Not the courage of great feats: the kind we all have when we love, when we want to care for someone, when we decide to serve. That is the movement, and it does not rest on anyone’s name. It rests on someone showing up.',
+    beats: [
+      {
+        title: 'We mobilise people, not an audience',
+        body: 'A movement is not measured in followers. It is measured in how much help arrived, and how many hands moved it.',
+      },
+      {
+        title: 'Nobody has to be appointed',
+        body: 'No one needs permission to serve. You join by helping: a delivery, an hour, a tool, a need made public.',
+      },
+      {
+        title: 'Courage is proven afterwards',
+        body: 'Promising is not the hard part. Publishing the account once it is done — that is. Every delivery leaves evidence, so the movement can be checked rather than merely believed.',
+      },
+    ],
+    closingTitle: 'Who makes Corag?',
+    closingBody:
+      'Whoever shows up. The people who coordinate a delivery, who write code, who lend a warehouse or a truck, who review a piece of evidence at eleven at night. And tomorrow, whoever decides to join. Corag is not a group you get into: it is what happens every time someone decides yes.',
+    channelsLabel: 'Where we gather',
   },
 
   conductForm: {

@@ -6,6 +6,11 @@
  * Use `onDark={true}` when rendering inside a dark hero (e.g., meetup or
  * a dark hero). The component switches to light-on-dark colors
  * for WCAG AA contrast.
+ *
+ * Link targets are 32px tall rather than the 24px that WCAG 2.2 AA (2.5.8)
+ * requires exactly: the trail is the smallest tap target on every page, and
+ * sitting on the floor leaves no margin. It does not change how the trail
+ * reads.
  */
 
 import { SITE_URL } from '@/lib/constances';
@@ -62,7 +67,7 @@ const separatorClass = onDark ? 'text-white/50' : 'text-corag-secondary';
           {item.href && index < items.length - 1 ? (
             <a
               href={item.href}
-              class={`inline-flex min-h-[24px] items-center ${linkHoverClass} transition-colors`}
+              class={`inline-flex min-h-[32px] items-center py-1 ${linkHoverClass} transition-colors`}
             >
               {item.label}
             </a>

@@ -34,14 +34,22 @@
 /en/verticals                 /en/how-it-works/              301
 /en/verticals/*               /en/how-it-works/              301
 
-# People directories -> the team
-/speakers                     /contributors/                 301
-/speakers/*                   /contributors/                 301
-/en/speakers                  /en/contributors/              301
-/en/speakers/*                /en/contributors/              301
+# People directories -> the movement page that replaced them.
+# `/contributors` listed named people, allied communities and allied companies.
+# Corag presents itself as a movement rather than through representatives, so
+# the roster was removed and the URL renamed. These all point straight at the
+# final destination — Cloudflare does not chain redirects.
+/speakers                     /movement/                     301
+/speakers/*                   /movement/                     301
+/en/speakers                  /en/movement/                  301
+/en/speakers/*                /en/movement/                  301
+/contributors                 /movement/                     301
+/contributors/*               /movement/                     301
+/en/contributors              /en/movement/                  301
+/en/contributors/*            /en/movement/                  301
 
 # Localized slugs briefly used during the migration
-/colaboradores                /contributors/                 301
+/colaboradores                /movement/                     301
 /como-funciona                /how-it-works/                 301
 /transparencia                /transparency/                 301
 /desarrolladores              /developers/                   301
