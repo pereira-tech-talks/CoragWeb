@@ -50,9 +50,9 @@ let footerEl: HTMLElement | null = null;
 $: t = getTranslations(lang);
 
 function isBrowserReload(): boolean {
-  const entry = performance.getEntriesByType(
-    'navigation'
-  )[0] as PerformanceNavigationTiming | undefined;
+  const entry = performance.getEntriesByType('navigation')[0] as
+    | PerformanceNavigationTiming
+    | undefined;
   if (entry) return entry.type === 'reload';
   // Legacy PathNavigationTiming fallback (Safari < 15).
   const legacy = (
