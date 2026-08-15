@@ -12,7 +12,7 @@ The social impact ecosystem.
 is transparent, measurable and consistent. Every delivery leaves evidence
 behind.
 
-- [I want to help](https://ayuda.corag.app/aportar)
+- [I want to help](https://ayuda.corag.app/)
 - [How it works](/en/how-it-works)
 
 It is published. It is delivered. The evidence stays.
