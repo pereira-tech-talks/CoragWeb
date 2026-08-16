@@ -1,0 +1,23 @@
+name: ayuda.red
+url: https://ayuda.red/
+aliases: []
+category: logistics
+featured: false
+order: 40
+logo: /images/ecosystem/ayudared/logo.webp
+logoAuthorization: pending_contact
+monogram: AR
+tagline:
+  es: Acopio, albergues y guías
+  en: Collection, shelters and guides
+what:
+  es: >-
+    Mapa de puntos de acopio, albergues, voluntariado e instituciones; registro
+    de personas desaparecidas; canales de donación y guías oficiales.
+  en: >-
+    A map of collection points, shelters, volunteering and institutions;
+    a missing-persons registry; donation channels and official guides.
+how:
+  es: Exploras la infraestructura de ayuda y los registros públicos del sitio.
+  en: Explore the site’s aid infrastructure and public registries.
+active: true

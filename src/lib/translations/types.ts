@@ -223,6 +223,7 @@ export interface SiteTranslations {
     emergencies: string;
     leaders: string;
     partners: string;
+    ecosystem: string;
     developers: string;
     blog: string;
     about: string;
@@ -604,6 +605,72 @@ export interface SiteTranslations {
   partnersPage: InstitutionalPageCopy;
   developersPage: InstitutionalPageCopy;
   privacyPage: InstitutionalPageCopy;
+
+  /** Complementary apps network directory + join form. */
+  ecosystemPage: {
+    title: string;
+    description: string;
+    eyebrow: string;
+    headline: string;
+    lead: string;
+    ctaApp: string;
+    ctaDirectory: string;
+    ctaHow: string;
+    featuredEyebrow: string;
+    featuredImageAlt: string;
+    directoryEyebrow: string;
+    directoryTitle: string;
+    directoryLead: string;
+    categories: {
+      matching: string;
+      damage: string;
+      logistics: string;
+      pets: string;
+      people: string;
+    };
+    categoryLeads: {
+      matching: string;
+      damage: string;
+      logistics: string;
+      pets: string;
+      people: string;
+    };
+    whatLabel: string;
+    howLabel: string;
+    visit: string;
+    apiDocs: string;
+    disclosure: string;
+    joinEyebrow: string;
+    joinTitle: string;
+    joinLead: string;
+    joinForm: {
+      disclaimer: string;
+      appName: string;
+      appUrl: string;
+      what: string;
+      how: string;
+      category: string;
+      categoryPlaceholder: string;
+      catMatching: string;
+      catDamage: string;
+      catLogistics: string;
+      catPets: string;
+      catPeople: string;
+      catOther: string;
+      contactName: string;
+      contactEmail: string;
+      notes: string;
+      submit: string;
+      submitting: string;
+      successTitle: string;
+      successBody: string;
+      errRequired: string;
+      errEmail: string;
+      errUrl: string;
+      errCategory: string;
+      errSubmit: string;
+    };
+  };
 
   // Errors
   searchError: string;

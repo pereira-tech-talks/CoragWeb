@@ -270,6 +270,7 @@ function navClick(item: string) {
             <a href="{prefix}/emergencies" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('emergencies')}>{t.nav.emergencies}</a>
             <a href="{prefix}/leaders" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('leaders')}>{t.nav.leaders}</a>
             <a href="{prefix}/partners" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('partners')}>{t.nav.partners}</a>
+            <a href="{prefix}/ecosystem" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('ecosystem')}>{t.nav.ecosystem}</a>
             <a href="{prefix}/developers" class="nav-link rounded-lg px-3 py-2.5 text-base text-corag-secondary dark:text-white/80" on:click={() => navClick('developers')}>{t.nav.developers}</a>
           </div>
         {/if}

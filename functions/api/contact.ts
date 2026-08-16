@@ -2,7 +2,7 @@
  * Cloudflare Pages Function — Corag intake → Dailybot Forms API.
  *
  * Primary sink: Dailybot (`DAILYBOT_API_KEY`). Discriminator `_form`:
- *   contact | conduct
+ *   contact | conduct | ecosystem
  *
  * Clients that send only `reason` / `topic` (without `_form`) are mapped:
  * conduct/report→conduct, everything else→contact.
@@ -20,6 +20,7 @@
 
 import {
   CONTACT_TOPIC_VALUES,
+  ECOSYSTEM_CATEGORY_VALUES,
   type DailyBotFormConfig,
   LANG_VALUES,
   booleanToDailyBot,
@@ -39,8 +40,9 @@ const MAX_NAME_LENGTH = 120;
 const MAX_SUBJECT_LENGTH = 140;
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_EMAIL_LENGTH = 254;
+const MAX_URL_LENGTH = 500;
 
-const FORM_TYPES = ['contact', 'conduct'] as const;
+const FORM_TYPES = ['contact', 'conduct', 'ecosystem'] as const;
 type FormType = (typeof FORM_TYPES)[number];
 
 interface Env {
@@ -177,6 +179,48 @@ function buildContent(
         [q.TOPIC]: topic as string,
         [q.SUBJECT]: fields.subject,
         [q.MESSAGE]: fields.message,
+        [q.LANG]: lang,
+        [q.PAGE_PATH]: pagePath,
+      },
+    };
+  }
+
+  if (formType === 'ecosystem') {
+    const missing = requireNonEmpty(fields, [
+      'appName',
+      'appUrl',
+      'what',
+      'how',
+      'category',
+      'name',
+      'email',
+    ]);
+    if (missing) return missing;
+    const category = lookupChoice(fields.category, ECOSYSTEM_CATEGORY_VALUES);
+    if (category === null) return { ok: false, error: 'category_invalid' };
+    let appUrl = fields.appUrl;
+    try {
+      const parsed = new URL(appUrl);
+      if (parsed.protocol !== 'https:') {
+        return { ok: false, error: 'app_url_invalid' };
+      }
+      appUrl = parsed.toString();
+    } catch {
+      return { ok: false, error: 'app_url_invalid' };
+    }
+    return {
+      ok: true,
+      formUuid: config.uuid,
+      ackTopic: 'ecosystem',
+      content: {
+        [q.APP_NAME]: fields.appName,
+        [q.APP_URL]: appUrl,
+        [q.WHAT]: fields.what,
+        [q.HOW]: fields.how,
+        [q.CATEGORY]: category as string,
+        [q.CONTACT_NAME]: fields.name,
+        [q.CONTACT_EMAIL]: fields.email,
+        [q.NOTES]: fields.notes || '',
         [q.LANG]: lang,
         [q.PAGE_PATH]: pagePath,
       },
@@ -344,6 +388,12 @@ export async function onRequestPost(
     incidentDate: sanitiseText(data.incidentDate, 120),
     peopleInvolved: sanitiseText(data.peopleInvolved, MAX_MESSAGE_LENGTH),
     preferredFollowup: sanitiseText(data.preferredFollowup, MAX_MESSAGE_LENGTH),
+    appName: sanitiseText(data.appName, MAX_NAME_LENGTH),
+    appUrl: sanitiseText(data.appUrl, MAX_URL_LENGTH),
+    what: sanitiseText(data.what, MAX_MESSAGE_LENGTH),
+    how: sanitiseText(data.how, MAX_MESSAGE_LENGTH),
+    category: sanitiseText(data.category, 64),
+    notes: sanitiseText(data.notes, MAX_MESSAGE_LENGTH),
   };
 
   const flags = { anonymous: asBool(data.anonymous) };

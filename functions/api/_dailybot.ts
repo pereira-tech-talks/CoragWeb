@@ -1,9 +1,9 @@
 /**
  * Shared helpers for POSTing form responses to the DailyBot Forms public API.
  *
- * Corag has two public intakes — the contact form and the conduct report — and
- * each maps to one DailyBot form in the Corag org. Form and question UUIDs are
- * baked in here; the only runtime secret is `DAILYBOT_API_KEY`.
+ * Corag has three public intakes — contact, conduct report, and ecosystem app
+ * request — each mapped to one DailyBot form in the Corag org. Form and
+ * question UUIDs are baked in here; the only runtime secret is `DAILYBOT_API_KEY`.
  *
  * API contract:
  *   POST https://api.dailybot.com/v1/forms/{form_uuid}/responses/
@@ -25,13 +25,16 @@ export interface DailyBotFormConfig {
   q: Record<string, string>;
 }
 
-export type IntakeForm = 'contact' | 'conduct';
+export type IntakeForm = 'contact' | 'conduct' | 'ecosystem';
 
 /** Corag — Contact (`a467e863-…`). */
 export const CONTACT_FORM_UUID = 'a467e863-e808-4e7e-97f6-173ab512cb96';
 
 /** Corag — Code of Conduct report (`cf0b575b-…`). */
 export const CONDUCT_FORM_UUID = 'cf0b575b-8d49-4b3c-822a-4eafd9dbc3ee';
+
+/** Corag — Ecosystem app request (`9b51bedd-…`). */
+export const ECOSYSTEM_FORM_UUID = '9b51bedd-d8ef-428d-8c1b-36fc78d37336';
 
 export const CONTACT_FORM: DailyBotFormConfig = {
   uuid: CONTACT_FORM_UUID,
@@ -61,9 +64,26 @@ export const CONDUCT_FORM: DailyBotFormConfig = {
   },
 };
 
+export const ECOSYSTEM_FORM: DailyBotFormConfig = {
+  uuid: ECOSYSTEM_FORM_UUID,
+  q: {
+    APP_NAME: '76c53af1-cdd2-4dca-8375-f2cd165e2eeb',
+    APP_URL: 'd140ab1b-e4f0-4d49-9fcb-568526f54a2a',
+    WHAT: '71359860-43ee-476e-866d-d9c8362ace5f',
+    HOW: '51b7f190-c2c8-495c-a54f-b519a9ba0d0d',
+    CATEGORY: '4144639d-5c2d-4642-baca-2c61aa231964',
+    CONTACT_NAME: 'f1d55b91-273d-497f-aec7-b978b8414912',
+    CONTACT_EMAIL: '58b6e36f-1285-4c22-b2e8-fcbcdb8cc521',
+    NOTES: '57d567f1-5695-4f14-8543-71c32aa38cd9',
+    LANG: '1d0375a2-3394-47be-9d84-40475c49f691',
+    PAGE_PATH: '0cf25afc-cab2-4f55-bddb-3cf22ac282b4',
+  },
+};
+
 const INTAKE_FORMS: Record<IntakeForm, DailyBotFormConfig> = {
   contact: CONTACT_FORM,
   conduct: CONDUCT_FORM,
+  ecosystem: ECOSYSTEM_FORM,
 };
 
 /** Return the baked-in DailyBot form + question map for an intake. */
@@ -155,6 +175,45 @@ export const CONTACT_TOPIC_VALUES = buildChoiceLookup([
   { aliases: ['Press', 'press', 'media', 'prensa'] },
   { aliases: ['Report', 'report', 'reporte'] },
   { aliases: ['Conduct', 'conduct', 'coc', 'código de conducta', 'codigo de conducta'] },
+  { aliases: ['Other', 'other', 'otro'] },
+]);
+
+/** Ecosystem join-form categories — labels must match the DailyBot choices. */
+export const ECOSYSTEM_CATEGORY_VALUES = buildChoiceLookup([
+  {
+    aliases: [
+      'Direct aid matching',
+      'matching',
+      'ayuda directa',
+      'direct aid',
+    ],
+  },
+  {
+    aliases: [
+      'Damage and reports',
+      'damage',
+      'daños',
+      'danos',
+      'damage and reports',
+    ],
+  },
+  {
+    aliases: [
+      'Collection and logistics',
+      'logistics',
+      'acopio',
+      'collection and logistics',
+    ],
+  },
+  { aliases: ['Pets', 'pets', 'mascotas'] },
+  {
+    aliases: [
+      'People reunification',
+      'people',
+      'personas',
+      'people reunification',
+    ],
+  },
   { aliases: ['Other', 'other', 'otro'] },
 ]);
 

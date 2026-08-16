@@ -1,0 +1,19 @@
+name: Gravitas
+url: https://mapa.gravitasworld.com/
+aliases: []
+category: damage
+featured: false
+order: 60
+logo: /images/ecosystem/gravitas/logo.webp
+logoAuthorization: pending_contact
+monogram: GV
+tagline:
+  es: Mapeo ciudadano de emergencia
+  en: Citizen emergency mapping
+what:
+  es: Reporta y consulta en tiempo real edificios, centros de acopio y logística.
+  en: Report and consult buildings, collection centers and logistics in real time.
+how:
+  es: Usas el mapa vivo para publicar o leer la situación en campo.
+  en: Use the live map to publish or read the situation on the ground.
+active: true

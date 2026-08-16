@@ -1,0 +1,19 @@
+name: Mapa de Ayuda — Gogó
+url: https://soygogo.com/pereira-ayuda
+aliases: []
+category: logistics
+featured: false
+order: 50
+logo: /images/ecosystem/gogo/logo.webp
+logoAuthorization: public_favicon_only
+monogram: GG
+tagline:
+  es: Mapa de ayuda en Pereira
+  en: Help map in Pereira
+what:
+  es: Mapa de ayuda para Pereira publicado por Gogó.
+  en: A Pereira help map published by Gogó.
+how:
+  es: Consultas puntos de ayuda sobre el mapa de Pereira.
+  en: Browse help points on the Pereira map.
+active: true

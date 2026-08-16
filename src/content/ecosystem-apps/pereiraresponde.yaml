@@ -1,0 +1,29 @@
+name: Pereira Responde
+url: https://pereiraresponde.co/
+aliases: []
+category: damage
+featured: false
+order: 10
+logo: /images/ecosystem/pereiraresponde/logo.webp
+logoAuthorization: public_favicon_only
+monogram: PR
+tagline:
+  es: Infraestructura en el mapa
+  en: Infrastructure on the map
+what:
+  es: >-
+    Mapa ciudadano de infraestructura en Pereira: edificios, vías y centros de
+    apoyo. Cada registro puede llevar hasta tres fotos.
+  en: >-
+    A citizen map of infrastructure in Pereira: buildings, roads and support
+    centers. Each report can include up to three photos.
+how:
+  es: >-
+    Marcas el lugar, eliges el tipo de afectación, adjuntas fotos y publicas.
+    Hay atajos a acopio y refugio cercanos, descarga de datos y una API pública
+    documentada.
+  en: >-
+    Mark the place, choose the damage type, attach photos and publish. Nearby
+    collection and shelter shortcuts, data download, and a documented public API.
+apiDocsUrl: https://pereiraresponde.co/api/docs
+active: true

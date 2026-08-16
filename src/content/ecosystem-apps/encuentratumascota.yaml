@@ -1,0 +1,19 @@
+name: Encuentra tu mascota
+url: https://encuentratumascota.co/anuncios/se-busca
+aliases: []
+category: pets
+featured: false
+order: 10
+logo: /images/ecosystem/encuentratumascota/logo.webp
+logoAuthorization: pending_contact
+monogram: EM
+tagline:
+  es: Clasificados de mascotas
+  en: Pet classifieds
+what:
+  es: Clasificados para reunir mascotas perdidas con su familia.
+  en: Classifieds to reunite lost pets with their families.
+how:
+  es: Publicas o buscas anuncios «se busca» con fotos y datos de la mascota.
+  en: Post or browse “missing” listings with photos and pet details.
+active: true

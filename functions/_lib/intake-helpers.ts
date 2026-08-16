@@ -92,6 +92,7 @@ export function pickAckCopy(
       press: 'Recibimos tu consulta de prensa — Corag',
       report: 'Recibimos tu reporte — Corag',
       conduct: 'Recibimos tu reporte — Corag',
+      ecosystem: 'Recibimos tu solicitud de ecosistema — Corag',
       general: 'Recibimos tu mensaje — Corag',
     };
     const bodies: Record<string, string> = {
@@ -104,6 +105,8 @@ export function pickAckCopy(
         'Gracias por reportarlo. Revisamos lo que nos cuentas.\n\nSi se trata de algo urgente que afecta a alguien ahora mismo, repórtalo también en la aplicación: https://ayuda.corag.app\n\n— Corag',
       conduct:
         'Gracias por escribirnos. Tu mensaje se trata de forma confidencial.\n\nSi hay riesgo inmediato para la integridad de alguien, contacta primero a las autoridades locales: este canal no es un servicio de emergencia.\n\n— Corag',
+      ecosystem:
+        'Gracias por pedirnos incluir tu app en el ecosistema. Revisamos la solicitud a mano — no es publicación automática — y te escribimos si hace falta algo más.\n\n— Corag',
       general:
         'Gracias por escribirnos. Te respondemos tan pronto como podamos.\n\nSi lo que necesitas es pedir ayuda o aportar, eso ocurre en la aplicación: https://ayuda.corag.app\n\n— Corag',
     };
@@ -119,6 +122,7 @@ export function pickAckCopy(
     press: 'We received your press enquiry — Corag',
     report: 'We received your report — Corag',
     conduct: 'We received your report — Corag',
+    ecosystem: 'We received your ecosystem request — Corag',
     general: 'We received your message — Corag',
   };
   const bodies: Record<string, string> = {
@@ -131,6 +135,8 @@ export function pickAckCopy(
       'Thanks for reporting it. We will review what you told us.\n\nIf this is urgent and affects someone right now, please also report it in the application: https://ayuda.corag.app\n\n— Corag',
     conduct:
       'Thanks for writing. Your message is handled confidentially.\n\nIf anyone is in immediate danger, contact your local emergency services first — this channel is not an emergency service.\n\n— Corag',
+    ecosystem:
+      'Thanks for asking to list your app in the ecosystem. A human reviews every request — this is not automatic publishing — and we will write back if we need anything else.\n\n— Corag',
     general:
       'Thanks for writing. We will get back to you as soon as we can.\n\nIf what you need is to ask for help or contribute, that happens in the application: https://ayuda.corag.app\n\n— Corag',
   };

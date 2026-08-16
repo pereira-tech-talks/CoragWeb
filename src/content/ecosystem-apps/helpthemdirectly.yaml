@@ -1,0 +1,27 @@
+name: Help Them Directly
+url: https://helpthemdirectly.org/en/
+aliases: []
+category: matching
+featured: false
+order: 30
+logo: /images/ecosystem/helpthemdirectly/logo.webp
+logoAuthorization: public_favicon_only
+monogram: HT
+tagline:
+  es: Ayuda directa a familias
+  en: Direct help to families
+what:
+  es: >-
+    Directorio voluntario que conecta a quien quiere aportar con familias que
+    recogen fondos por su cuenta. La campaña principal es el terremoto en
+    Venezuela (2026); también hay un formulario para casos del terremoto en
+    Colombia. El sitio no administra donaciones.
+  en: >-
+    A volunteer directory that connects people who want to give with families
+    fundraising on their own. The primary campaign is the Venezuela earthquake
+    (2026); there is also a form for Colombia earthquake cases. The site does
+    not collect or manage donations.
+how:
+  es: Eliges una campaña familiar y donas por los canales que la familia publica.
+  en: You pick a family campaign and donate through the channels that family publishes.
+active: true

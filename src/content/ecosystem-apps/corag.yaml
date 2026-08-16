@@ -1,0 +1,28 @@
+name: Corag Ayuda Directa
+url: https://ayuda.corag.app
+aliases: []
+category: matching
+featured: true
+order: 0
+logo: /images/ecosystem/corag/logo.webp
+logoDark: /images/ecosystem/corag/logo-light.webp
+logoAuthorization: authorized
+monogram: C
+tagline:
+  es: Ayuda con evidencia
+  en: Aid with evidence
+what:
+  es: >-
+    La aplicación donde se publica una necesidad, se ofrece ayuda, se aporta
+    y se revisa la evidencia de cada entrega.
+  en: >-
+    The application where a need is published, help is offered, contributions
+    happen, and the evidence of every delivery is reviewed.
+how:
+  es: >-
+    Mapa vivo de solicitudes y personas disponibles. Corag es un nodo de esta
+    red: no reemplaza a las demás apps — se alimenta con ellas.
+  en: >-
+    A live map of requests and people ready to help. Corag is one node in this
+    network: it does not replace the other apps — it feeds with them.
+active: true

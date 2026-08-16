@@ -55,6 +55,8 @@ export const EVENTS = {
   LIGHTBOX_OPEN: 'lightbox_open',
   CONTACT_FORM_SUBMIT: 'contact_form_submit',
   CONTACT_FORM_ERROR: 'contact_form_error',
+  ECOSYSTEM_FORM_SUBMIT: 'ecosystem_form_submit',
+  ECOSYSTEM_FORM_ERROR: 'ecosystem_form_error',
   NEWSLETTER_SUBSCRIBE: 'newsletter_subscribe',
   SOCIAL_CLICK: 'social_click',
   OUTBOUND_CLICK: 'outbound_click',

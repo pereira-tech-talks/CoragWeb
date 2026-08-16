@@ -149,6 +149,7 @@ function closeAllDropdowns() {
             <a href="{prefix}/emergencies" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'emergencies' })}>{t.nav.emergencies}</a>
             <a href="{prefix}/leaders" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'leaders' })}>{t.nav.leaders}</a>
             <a href="{prefix}/partners" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'partners' })}>{t.nav.partners}</a>
+            <a href="{prefix}/ecosystem" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'ecosystem' })}>{t.nav.ecosystem}</a>
             <a href="{prefix}/developers" class="block px-4 py-2 hover:bg-corag-primary-soft text-corag-secondary transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'developers' })}>{t.nav.developers}</a>
           </div>
         {/if}

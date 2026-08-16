@@ -55,6 +55,7 @@ from an `InstitutionalPageCopy` in each locale file.
 | `/emergencies` | What a front is, how to take part — opening with the warning that this is not an emergency service |
 | `/leaders` | What the responsable role commits you to |
 | `/partners` | Three ways an organization joins |
+| `/ecosystem` | Complementary civic apps network — directory + join form |
 | `/developers` | Many interfaces, one network — and the honest state of public access |
 
 ### Community

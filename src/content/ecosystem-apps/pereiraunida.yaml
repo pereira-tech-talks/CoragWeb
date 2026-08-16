@@ -1,0 +1,24 @@
+name: Pereira Unida
+url: https://pereiraunida.com/
+aliases:
+  - https://pereira-unida.vercel.app
+category: matching
+featured: false
+order: 10
+logo: /images/ecosystem/pereiraunida/logo.webp
+logoAuthorization: pending_contact
+monogram: PU
+tagline:
+  es: Ayuda ciudadana en tiempo real
+  en: Real-time civic help
+what:
+  es: >-
+    Coordina y solicita ayuda ciudadana en Pereira y Dosquebradas: alimentos,
+    herramientas, medicinas, voluntariado, red familiar y puntos de acopio.
+  en: >-
+    Coordinate and request civic help in Pereira and Dosquebradas: food, tools,
+    medicine, volunteering, family networks and collection points.
+how:
+  es: Las personas publican necesidades y ofertas; otras responden en tiempo real.
+  en: People publish needs and offers; others respond in real time.
+active: true

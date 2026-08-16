@@ -17,6 +17,7 @@ junk responses afterwards.
 |------|----|-------|---------|--------------------------|
 | Contact | `ContactForm.svelte` | `/contact`, `/en/contact` | `contact` | **Corag — Contact** (`a467e863-e808-4e7e-97f6-173ab512cb96`) |
 | Code of Conduct | `ConductReportForm.svelte` | `/conduct#conduct-report-form` | `conduct` | **Corag — Code of Conduct report** (`cf0b575b-8d49-4b3c-822a-4eafd9dbc3ee`) |
+| Ecosystem join | `EcosystemJoinForm.svelte` | `/ecosystem#ecosystem-join` | `ecosystem` | **Corag — Ecosystem app request** (`9b51bedd-d8ef-428d-8c1b-36fc78d37336`) |
 
 Both report to Slack channel `#all-corag`. Newsletter signup is disabled in the UI and has no backend.
 
@@ -81,7 +82,7 @@ bound for an end-to-end smoke test.
 }
 ```
 
-- `_form`: `contact` | `conduct`
+- `_form`: `contact` | `conduct` | `ecosystem`
 - Without `_form`, `reason`/`topic` maps `conduct`/`coc` → `conduct`, everything
   else → `contact`
 - Honeypot `website` must be empty. If filled, the endpoint returns a fake `200`
