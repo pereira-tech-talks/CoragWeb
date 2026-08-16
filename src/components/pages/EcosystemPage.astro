@@ -9,7 +9,10 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { APP_URL } from '@/lib/constances';
-import { loadEcosystemDirectory } from '@/lib/ecosystem';
+import {
+  formatEcosystemDisplayUrl,
+  loadEcosystemDirectory,
+} from '@/lib/ecosystem';
 import {
   ECOSYSTEM_CATEGORIES,
   type EcosystemCategory,
@@ -117,9 +120,19 @@ const howLabel = p.howLabel;
                     decoding="async"
                   />
                 ) : null}
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-                  {featured.data.name}
-                </h2>
+                <div class="min-w-0">
+                  <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+                    {featured.data.name}
+                  </h2>
+                  <a
+                    href={featured.data.url}
+                    class="mt-1 block truncate text-sm text-corag-on-fill/80 underline-offset-2 hover:underline"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {formatEcosystemDisplayUrl(featured.data.url)}
+                  </a>
+                </div>
               </div>
               <p class="mt-4 text-lg font-medium text-corag-on-fill/95">
                 {featured.data.tagline[lang]}
@@ -224,6 +237,14 @@ const howLabel = p.howLabel;
                           <h4 class="text-lg font-semibold text-corag">
                             {app.data.name}
                           </h4>
+                          <a
+                            href={app.data.url}
+                            class="mt-0.5 block truncate text-sm text-corag-accent-strong underline-offset-2 hover:underline"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                          >
+                            {formatEcosystemDisplayUrl(app.data.url)}
+                          </a>
                           <p class="mt-0.5 text-sm text-corag-secondary">
                             {app.data.tagline[lang]}
                           </p>

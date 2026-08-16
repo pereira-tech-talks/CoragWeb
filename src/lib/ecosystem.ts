@@ -8,6 +8,21 @@ import {
 
 export type EcosystemApp = CollectionEntry<'ecosystemApps'>;
 
+/**
+ * Human-readable host (+ path when meaningful) for card display.
+ * Strips protocol, `www.`, and a trailing slash.
+ */
+export function formatEcosystemDisplayUrl(rawUrl: string): string {
+  try {
+    const u = new URL(rawUrl);
+    const host = u.hostname.replace(/^www\./i, '');
+    const path = u.pathname === '/' ? '' : u.pathname.replace(/\/$/, '');
+    return `${host}${path}`;
+  } catch {
+    return rawUrl.replace(/^https?:\/\//i, '').replace(/\/$/, '');
+  }
+}
+
 /** Active apps, featured first, then order, then name. */
 export async function getEcosystemApps(): Promise<EcosystemApp[]> {
   const all = await getCollection('ecosystemApps');
