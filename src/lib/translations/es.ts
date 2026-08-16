@@ -1388,9 +1388,11 @@ export const es: SiteTranslations = {
     categoryLeads: {
       matching: 'Conectan a quien necesita ayuda con quien puede darla.',
       damage: 'Mapean daños de infraestructura, grietas y reportes de campo.',
-      logistics: 'Centros de acopio, albergues, hospitales y coordinación de insumos.',
+      logistics:
+        'Centros de acopio, albergues, hospitales y coordinación de insumos.',
       pets: 'Ayudan a reunir animales perdidos con su familia.',
-      people: 'Herramientas de personas desaparecidas y reencuentros para equipos y familias.',
+      people:
+        'Herramientas de personas desaparecidas y reencuentros para equipos y familias.',
     },
     whatLabel: 'Qué hace:',
     howLabel: 'Cómo funciona:',

@@ -1374,9 +1374,11 @@ export const en: SiteTranslations = {
     categoryLeads: {
       matching: 'Connect people who need help with people who can give it.',
       damage: 'Map infrastructure damage, cracks, and field reports.',
-      logistics: 'Collection centers, shelters, hospitals and supply coordination.',
+      logistics:
+        'Collection centers, shelters, hospitals and supply coordination.',
       pets: 'Help reunite lost animals with their families.',
-      people: 'Missing persons and reunification tools for responders and families.',
+      people:
+        'Missing persons and reunification tools for responders and families.',
     },
     whatLabel: 'What it does:',
     howLabel: 'How it works:',
