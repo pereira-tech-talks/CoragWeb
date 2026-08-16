@@ -1,7 +1,10 @@
 import type { APIRoute } from 'astro';
 
 import { SITE_URL } from '@/lib/constances';
-import { loadEcosystemDirectory } from '@/lib/ecosystem';
+import {
+  formatEcosystemAppMarkdown,
+  loadEcosystemDirectory,
+} from '@/lib/ecosystem';
 import { ECOSYSTEM_CATEGORIES } from '@/lib/ecosystem-apps';
 import { serializeGenericToMarkdown } from '@/lib/markdown-for-agents';
 import { getTranslations } from '@/lib/translations';
@@ -10,28 +13,29 @@ export const GET: APIRoute = async () => {
   const lang = 'es';
   const t = getTranslations(lang).ecosystemPage;
   const { featured, groups } = await loadEcosystemDirectory();
+  const mdLabels = {
+    whatLabel: t.whatLabel,
+    howLabel: t.howLabel,
+    overview: t.overview,
+    features: t.features,
+    tools: t.tools,
+    publicApi: t.publicApi,
+    publicMcp: t.publicMcp,
+    limits: t.limits,
+  };
 
   const sections = [
     {
       heading: t.featuredEyebrow,
       lines: featured
-        ? [
-            `- **${featured.data.name}** — ${featured.data.url}`,
-            `  - ${featured.data.what[lang]}`,
-            `  - ${featured.data.how[lang]}`,
-          ]
+        ? [formatEcosystemAppMarkdown(featured, lang, mdLabels)]
         : [],
     },
     ...ECOSYSTEM_CATEGORIES.map((category) => ({
       heading: t.categories[category],
-      lines: groups[category].map((app) => {
-        const api = app.data.apiDocsUrl ? ` · API: ${app.data.apiDocsUrl}` : '';
-        return [
-          `- **${app.data.name}** — ${app.data.url}${api}`,
-          `  - ${t.whatLabel} ${app.data.what[lang]}`,
-          `  - ${t.howLabel} ${app.data.how[lang]}`,
-        ].join('\n');
-      }),
+      lines: groups[category].map((app) =>
+        formatEcosystemAppMarkdown(app, lang, mdLabels)
+      ),
     })),
     {
       heading: t.joinTitle,

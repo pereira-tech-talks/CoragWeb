@@ -218,6 +218,12 @@ const allies = defineCollection({
  * Descriptive directory — not an endorsement ranking. Logos: local paths only;
  * `logoAuthorization` records how we may show them.
  */
+const ecosystemI18n = z.object({ en: z.string(), es: z.string() });
+const ecosystemI18nList = z.array(ecosystemI18n).max(12).default([]);
+const ecosystemAvailability = z
+  .enum(['yes', 'no', 'unknown'])
+  .default('unknown');
+
 const ecosystemApps = defineCollection({
   loader: glob({ base: './src/content/ecosystem-apps', pattern: '**/*.yaml' }),
   schema: z.object({
@@ -240,9 +246,42 @@ const ecosystemApps = defineCollection({
       .default('text_only'),
     /** Initials / short mark when there is no logo file. */
     monogram: z.string().optional(),
-    tagline: z.object({ en: z.string(), es: z.string() }),
-    what: z.object({ en: z.string(), es: z.string() }),
-    how: z.object({ en: z.string(), es: z.string() }),
+    tagline: ecosystemI18n,
+    what: ecosystemI18n,
+    how: ecosystemI18n,
+    /** Longer modal intro; falls back to `what` when omitted. */
+    overview: ecosystemI18n.optional(),
+    /** Concrete capabilities the public site describes. */
+    features: ecosystemI18nList,
+    /** Named tools / product surfaces (UI actions, MCP tools, etc.). */
+    tools: ecosystemI18nList,
+    audience: ecosystemI18n.optional(),
+    coverage: ecosystemI18n.optional(),
+    /** Honest limits — never invent capabilities. */
+    limits: ecosystemI18n.optional(),
+    /**
+     * Integration surface as verified from public docs/sites.
+     * `unknown` means we have not confirmed a public API or MCP — not a denial.
+     */
+    integrations: z
+      .object({
+        publicApi: ecosystemAvailability,
+        publicMcp: ecosystemAvailability,
+        apiDocsUrl: z.url().optional(),
+        openApiUrl: z.url().optional(),
+        mcpUrl: z.url().optional(),
+        /** Absolute https URL or site path like `/developers`. */
+        developersUrl: z
+          .string()
+          .refine(
+            (v) => v.startsWith('/') || /^https?:\/\//i.test(v),
+            'developersUrl must be a path or http(s) URL'
+          )
+          .optional(),
+        notes: ecosystemI18n.optional(),
+      })
+      .default({ publicApi: 'unknown', publicMcp: 'unknown' }),
+    /** Fallback when an entry still lists docs at the root (prefer integrations). */
     apiDocsUrl: z.url().optional(),
     active: z.boolean().default(true),
   }),
