@@ -4,7 +4,8 @@ aliases: []
 category: matching
 featured: false
 order: 30
-logoAuthorization: text_only
+logo: /images/ecosystem/helpthemdirectly/logo.webp
+logoAuthorization: public_favicon_only
 monogram: HT
 tagline:
   es: Ayuda directa a familias

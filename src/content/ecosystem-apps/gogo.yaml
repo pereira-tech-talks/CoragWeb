@@ -4,7 +4,8 @@ aliases: []
 category: logistics
 featured: false
 order: 50
-logoAuthorization: text_only
+logo: /images/ecosystem/gogo/logo.webp
+logoAuthorization: public_favicon_only
 monogram: GG
 tagline:
   es: Mapa de ayuda en Pereira

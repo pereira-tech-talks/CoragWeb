@@ -4,7 +4,8 @@ aliases: []
 category: damage
 featured: false
 order: 20
-logoAuthorization: text_only
+logo: /images/ecosystem/sismovision/logo.webp
+logoAuthorization: pending_contact
 monogram: SV
 tagline:
   es: Mapa de grietas

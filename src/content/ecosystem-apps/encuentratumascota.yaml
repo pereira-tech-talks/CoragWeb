@@ -4,7 +4,8 @@ aliases: []
 category: pets
 featured: false
 order: 10
-logoAuthorization: text_only
+logo: /images/ecosystem/encuentratumascota/logo.webp
+logoAuthorization: pending_contact
 monogram: EM
 tagline:
   es: Clasificados de mascotas

@@ -4,7 +4,8 @@ aliases: []
 category: people
 featured: false
 order: 10
-logoAuthorization: text_only
+logo: /images/ecosystem/encontrados/logo.webp
+logoAuthorization: pending_contact
 monogram: EN
 tagline:
   es: Reencuentros con foto

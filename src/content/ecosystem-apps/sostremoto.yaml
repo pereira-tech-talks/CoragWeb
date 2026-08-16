@@ -4,7 +4,8 @@ aliases: []
 category: matching
 featured: false
 order: 20
-logoAuthorization: text_only
+logo: /images/ecosystem/sostremoto/logo.webp
+logoAuthorization: pending_contact
 monogram: SOS
 tagline:
   es: Tablero de solicitudes

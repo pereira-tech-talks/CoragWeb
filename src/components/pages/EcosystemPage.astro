@@ -112,7 +112,7 @@ const howLabel = p.howLabel;
                     alt=""
                     width="72"
                     height="72"
-                    class="h-16 w-16 rounded-2xl bg-corag-on-fill/10 object-contain p-2"
+                    class="h-16 w-16 rounded-2xl border border-white/60 bg-white object-contain p-1 shadow-sm dark:border-white/70 dark:bg-white dark:shadow-black/40"
                     loading="eager"
                     decoding="async"
                   />
@@ -208,13 +208,13 @@ const howLabel = p.howLabel;
                             alt=""
                             width="56"
                             height="56"
-                            class="h-14 w-14 shrink-0 rounded-xl border border-corag-border bg-corag-primary-soft object-contain p-1.5"
+                            class="h-14 w-14 shrink-0 rounded-xl border border-corag-border bg-white object-contain p-0.5 shadow-sm dark:border-white/40 dark:bg-white dark:shadow-black/40"
                             loading="lazy"
                             decoding="async"
                           />
                         ) : (
                           <div
-                            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-corag-primary-soft text-sm font-bold text-corag"
+                            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-corag-border bg-white text-sm font-bold text-corag-fill shadow-sm dark:border-white/40 dark:bg-white dark:shadow-black/40"
                             aria-hidden="true"
                           >
                             {app.data.monogram || app.data.name.slice(0, 2)}

@@ -4,7 +4,8 @@ aliases: []
 category: people
 featured: false
 order: 20
-logoAuthorization: text_only
+logo: /images/ecosystem/sospereira/logo.webp
+logoAuthorization: pending_contact
 monogram: SP
 tagline:
   es: Portal ciudadano de Pereira
