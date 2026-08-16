@@ -1,0 +1,18 @@
+name: SOS Terremoto
+url: https://conectando-ayudas-colombia.com/
+aliases: []
+category: matching
+featured: false
+order: 20
+logoAuthorization: text_only
+monogram: SOS
+tagline:
+  es: Tablero de solicitudes
+  en: Help-request board
+what:
+  es: Tablero para publicar y atender solicitudes de ayuda tras el terremoto.
+  en: A board to publish and fulfill help requests after the earthquake.
+how:
+  es: Publica una solicitud o toma una que ya esté abierta en el tablero compartido.
+  en: Post a request or pick up one that is already open on the shared board.
+active: true

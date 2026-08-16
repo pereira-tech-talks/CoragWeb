@@ -1,0 +1,19 @@
+name: Unidos por Pereira
+url: https://unidosporpereira.com/
+aliases: []
+category: logistics
+featured: false
+order: 20
+logo: /images/ecosystem/unidosporpereira/logo.webp
+logoAuthorization: public_favicon_only
+monogram: UP
+tagline:
+  es: Albergues, acopio y más
+  en: Shelters, collection and more
+what:
+  es: Albergues, centros de acopio, comidas, ayuda y mascotas tras el sismo, con hora de última actualización.
+  en: Shelters, collection centers, meals, help and pets after the quake, with last-updated times.
+how:
+  es: Consultas la información de emergencia organizada por temas y con marcas de tiempo.
+  en: Browse emergency information organized by topic with timestamps.
+active: true

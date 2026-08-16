@@ -1,0 +1,19 @@
+name: Terremoto Colombia
+url: https://terremotocolombia.co/
+aliases: []
+category: damage
+featured: false
+order: 50
+logo: /images/ecosystem/terremotocolombia/logo.webp
+logoAuthorization: public_favicon_only
+monogram: TC
+tagline:
+  es: Reportes y fuentes oficiales
+  en: Reports and official sources
+what:
+  es: Plataforma ciudadana para reportes, mapa de afectación y acceso a fuentes oficiales de emergencia.
+  en: A citizen platform for reports, an impact map and access to official emergency sources.
+how:
+  es: Eliges qué necesitas hacer — reportar, ver el mapa o consultar fuentes oficiales.
+  en: Choose what you need — report, view the map or check official sources.
+active: true

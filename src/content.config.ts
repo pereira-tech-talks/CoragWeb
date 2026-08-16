@@ -214,6 +214,41 @@ const allies = defineCollection({
 });
 
 /**
+ * Complementary civic / emergency apps listed on /ecosystem.
+ * Descriptive directory — not an endorsement ranking. Logos: local paths only;
+ * `logoAuthorization` records how we may show them.
+ */
+const ecosystemApps = defineCollection({
+  loader: glob({ base: './src/content/ecosystem-apps', pattern: '**/*.yaml' }),
+  schema: z.object({
+    name: z.string(),
+    url: z.url(),
+    aliases: z.array(z.string()).default([]),
+    category: z.enum(['matching', 'damage', 'logistics', 'pets', 'people']),
+    featured: z.boolean().default(false),
+    order: z.number().default(0),
+    /** Site-root path to a local WebP, e.g. `/images/ecosystem/foo/logo.webp`. */
+    logo: z.string().optional(),
+    logoDark: z.string().optional(),
+    logoAuthorization: z
+      .enum([
+        'authorized',
+        'pending_contact',
+        'public_favicon_only',
+        'text_only',
+      ])
+      .default('text_only'),
+    /** Initials / short mark when there is no logo file. */
+    monogram: z.string().optional(),
+    tagline: z.object({ en: z.string(), es: z.string() }),
+    what: z.object({ en: z.string(), es: z.string() }),
+    how: z.object({ en: z.string(), es: z.string() }),
+    apiDocsUrl: z.url().optional(),
+    active: z.boolean().default(true),
+  }),
+});
+
+/**
  * Public Google Calendars for allied organizations.
  * IDs must be embeddable (public); no API keys.
  */
@@ -273,5 +308,6 @@ export const collections = {
   channels,
   contributors,
   allies,
+  ecosystemApps,
   notifications,
 };

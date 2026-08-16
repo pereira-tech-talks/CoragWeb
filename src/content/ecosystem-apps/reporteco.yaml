@@ -1,0 +1,23 @@
+name: Reporte CO
+url: https://co.crafter.run/
+aliases: []
+category: damage
+featured: false
+order: 40
+logo: /images/ecosystem/reporteco/logo.webp
+logoAuthorization: public_favicon_only
+monogram: CO
+tagline:
+  es: Mapa ciudadano del sismo
+  en: Citizen quake map
+what:
+  es: >-
+    Plataforma abierta y privada por diseño para mapear daños, personas
+    atrapadas, heridos, albergues y falta de servicios.
+  en: >-
+    An open, privacy-minded platform to map damage, people trapped, injuries,
+    shelters and service outages.
+how:
+  es: Reportas y consultas incidentes en el mapa compartido.
+  en: Report and consult incidents on the shared map.
+active: true

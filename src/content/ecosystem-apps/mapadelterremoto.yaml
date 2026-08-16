@@ -1,0 +1,23 @@
+name: Mapa del terremoto
+url: https://www.mapadelterremoto.com/
+aliases: []
+category: damage
+featured: false
+order: 30
+logo: /images/ecosystem/mapadelterremoto/logo.webp
+logoAuthorization: public_favicon_only
+monogram: MT
+tagline:
+  es: Daños en un solo mapa
+  en: Damage on one map
+what:
+  es: >-
+    Mapa abierto de daños del sismo del 10 de agosto de 2026 en Colombia:
+    puntos de daño, albergues y acopio en varias ciudades.
+  en: >-
+    An open damage map for Colombia’s 10 August 2026 quake: damage points,
+    shelters and collection sites across several cities.
+how:
+  es: Exploras el mapa y aportas puntos de daño o de logística de ayuda.
+  en: Explore the map and add damage or aid-logistics points.
+active: true

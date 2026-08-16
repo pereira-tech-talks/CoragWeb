@@ -86,6 +86,11 @@ export const SITE_NAVIGATION: NavGroup[] = [
         inChrome: true,
       },
       {
+        label: { en: 'Ecosystem', es: 'Ecosistema' },
+        path: '/ecosystem',
+        inChrome: true,
+      },
+      {
         label: { en: 'Developers', es: 'Desarrolladores' },
         path: '/developers',
         inChrome: true,

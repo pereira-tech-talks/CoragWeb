@@ -1,0 +1,22 @@
+name: SOS Pereira 2026
+url: https://sospereira.com/
+aliases: []
+category: people
+featured: false
+order: 20
+logoAuthorization: text_only
+monogram: SP
+tagline:
+  es: Portal ciudadano de Pereira
+  en: Pereira citizen portal
+what:
+  es: >-
+    Portal ciudadano de la Alcaldía de Pereira: personas desaparecidas,
+    reporte de edificaciones, censo de empresarios afectados y listados públicos.
+  en: >-
+    Pereira’s municipal citizen portal: missing persons, building reports,
+    a census of affected businesses and public lists.
+how:
+  es: Reportas una persona o una estructura, o consultas las listas públicas del portal.
+  en: Report a person or a structure, or browse the portal’s public lists.
+active: true

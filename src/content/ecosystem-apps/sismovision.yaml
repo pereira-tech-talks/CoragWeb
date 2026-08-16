@@ -1,0 +1,22 @@
+name: SismoVision
+url: https://sismovision.com/
+aliases: []
+category: damage
+featured: false
+order: 20
+logoAuthorization: text_only
+monogram: SV
+tagline:
+  es: Mapa de grietas
+  en: Crack map
+what:
+  es: >-
+    Reportes ciudadanos de daño estructural (grietas) después de un sismo.
+    Ofrece orientación preliminar; no reemplaza una inspección profesional.
+  en: >-
+    Citizen reports of structural damage (cracks) after a quake. Offers
+    preliminary guidance; it does not replace a professional inspection.
+how:
+  es: Subes fotos de una grieta, revisas tus reportes locales y, si aplica, el canal profesional.
+  en: Upload crack photos, review local reports, and use the professional channel when relevant.
+active: true

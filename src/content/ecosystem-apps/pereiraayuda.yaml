@@ -1,0 +1,23 @@
+name: Pereira Ayuda
+url: https://pereiraayuda.com/
+aliases: []
+category: logistics
+featured: false
+order: 30
+logo: /images/ecosystem/pereiraayuda/logo.webp
+logoAuthorization: public_favicon_only
+monogram: PA
+tagline:
+  es: Albergues y hospitales con fecha
+  en: Shelters and hospitals with dates
+what:
+  es: >-
+    Dónde hay albergue, dónde llevar donaciones y qué hospitales están abiertos
+    en Pereira y Dosquebradas. Cada dato con su fecha.
+  en: >-
+    Where to shelter, where to donate and which hospitals are open in Pereira
+    and Dosquebradas. Every datum carries its date.
+how:
+  es: Revisas el directorio fechado de albergues, acopios y hospitales.
+  en: Browse the dated directory of shelters, collection points and hospitals.
+active: true

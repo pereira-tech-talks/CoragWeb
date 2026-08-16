@@ -1,0 +1,24 @@
+name: Acopio
+url: https://alluda.online/
+aliases:
+  - https://ayudaspereira.com/
+category: logistics
+featured: false
+order: 10
+logo: /images/ecosystem/alluda/logo.webp
+logoAuthorization: public_favicon_only
+monogram: AC
+tagline:
+  es: Centros de acopio por ciudad
+  en: Collection centers by city
+what:
+  es: >-
+    Coordinación de centros de acopio: elige tu ciudad para ver qué falta y
+    dónde sobra; también voluntariado y transporte.
+  en: >-
+    Collection-center coordination: pick your city to see what is missing and
+    where there is surplus; volunteering and transport too.
+how:
+  es: Entras por ciudad, revisas centros y urgencias, y te sumas como voluntario o transportista.
+  en: Enter by city, review centers and urgencies, and join as a volunteer or transporter.
+active: true
