@@ -13,29 +13,54 @@ export const GET: APIRoute = async () => {
   const lang = 'es';
   const t = getTranslations(lang).ecosystemPage;
   const { featured, groups } = await loadEcosystemDirectory();
+  const developersUrlBase = SITE_URL;
   const mdLabels = {
     whatLabel: t.whatLabel,
     howLabel: t.howLabel,
     overview: t.overview,
     features: t.features,
     tools: t.tools,
+    audience: t.audience,
+    coverage: t.coverage,
+    limits: t.limits,
+    integrations: t.integrations,
     publicApi: t.publicApi,
     publicMcp: t.publicMcp,
-    limits: t.limits,
+    availabilityYes: t.availabilityYes,
+    availabilityNo: t.availabilityNo,
+    availabilityUnknown: t.availabilityUnknown,
+    apiDocs: t.apiDocs,
+    openApi: t.openApi,
+    mcpEndpoint: t.mcpEndpoint,
+    developers: t.developers,
   };
 
   const sections = [
     {
       heading: t.featuredEyebrow,
       lines: featured
-        ? [formatEcosystemAppMarkdown(featured, lang, mdLabels)]
+        ? [
+            formatEcosystemAppMarkdown(
+              featured,
+              lang,
+              mdLabels,
+              developersUrlBase
+            ),
+          ]
         : [],
+    },
+    {
+      heading: t.directoryTitle,
+      lines: [t.directoryLead],
     },
     ...ECOSYSTEM_CATEGORIES.map((category) => ({
       heading: t.categories[category],
-      lines: groups[category].map((app) =>
-        formatEcosystemAppMarkdown(app, lang, mdLabels)
-      ),
+      lines: [
+        t.categoryLeads[category],
+        ...groups[category].map((app) =>
+          formatEcosystemAppMarkdown(app, lang, mdLabels, developersUrlBase)
+        ),
+      ],
     })),
     {
       heading: t.joinTitle,

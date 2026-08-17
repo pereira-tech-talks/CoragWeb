@@ -9,6 +9,7 @@ import {
   type EcosystemAppView,
   formatEcosystemDisplayUrl,
   pickEcosystemI18n,
+  resolveEcosystemDevelopersUrl,
 } from '@/lib/ecosystem-view';
 import type { Language } from '@/lib/i18n';
 
@@ -126,24 +127,49 @@ export interface EcosystemMarkdownLabels {
   overview: string;
   features: string;
   tools: string;
+  audience: string;
+  coverage: string;
+  limits: string;
+  integrations: string;
   publicApi: string;
   publicMcp: string;
-  limits: string;
+  availabilityYes: string;
+  availabilityNo: string;
+  availabilityUnknown: string;
+  apiDocs: string;
+  openApi: string;
+  mcpEndpoint: string;
+  developers: string;
 }
 
-/** Rich markdown block for one ecosystem app (agent twin). */
+function availabilityLabel(
+  value: 'yes' | 'no' | 'unknown' | undefined,
+  labels: EcosystemMarkdownLabels
+): string {
+  if (value === 'yes') return labels.availabilityYes;
+  if (value === 'no') return labels.availabilityNo;
+  return labels.availabilityUnknown;
+}
+
+/**
+ * Rich markdown block for one ecosystem app (agent twin).
+ * Carries the FULL detail-modal payload: tagline, overview, features, tools,
+ * audience, coverage, limits, integration availability, notes, and links.
+ * `developersUrlBase` makes site-relative `developersUrl` values absolute
+ * (e.g. `https://corag.app` or `https://corag.app/en`).
+ */
 export function formatEcosystemAppMarkdown(
   entry: EcosystemApp,
   lang: Language,
-  labels: EcosystemMarkdownLabels
+  labels: EcosystemMarkdownLabels,
+  developersUrlBase = ''
 ): string {
   const d = entry.data;
   const integrations = d.integrations ?? {};
-  const apiUrl = integrations.apiDocsUrl ?? d.apiDocsUrl;
-  const api = apiUrl ? ` · API: ${apiUrl}` : '';
-  const mcp = integrations.mcpUrl ? ` · MCP: ${integrations.mcpUrl}` : '';
+  const apiDocsUrl = integrations.apiDocsUrl ?? d.apiDocsUrl;
   const lines = [
-    `- **${d.name}** — ${d.url}${api}${mcp}`,
+    `- **${d.name}** — ${d.url}`,
+    `  - _${d.tagline[lang]}_`,
     `  - ${labels.whatLabel} ${d.what[lang]}`,
     `  - ${labels.howLabel} ${d.how[lang]}`,
   ];
@@ -160,11 +186,37 @@ export function formatEcosystemAppMarkdown(
       `  - ${labels.tools}: ${d.tools.map((x) => x[lang]).join('; ')}`
     );
   }
-  lines.push(
-    `  - ${labels.publicApi}: ${integrations.publicApi ?? 'unknown'} · ${labels.publicMcp}: ${integrations.publicMcp ?? 'unknown'}`
-  );
+  if (d.audience?.[lang]) {
+    lines.push(`  - ${labels.audience}: ${d.audience[lang]}`);
+  }
+  if (d.coverage?.[lang]) {
+    lines.push(`  - ${labels.coverage}: ${d.coverage[lang]}`);
+  }
   if (d.limits?.[lang]) {
     lines.push(`  - ${labels.limits}: ${d.limits[lang]}`);
+  }
+  lines.push(
+    `  - ${labels.publicApi}: ${availabilityLabel(integrations.publicApi, labels)} · ${labels.publicMcp}: ${availabilityLabel(integrations.publicMcp, labels)}`
+  );
+  const notes = pickEcosystemI18n(integrations.notes, lang);
+  if (notes) {
+    lines.push(`  - ${labels.integrations}: ${notes}`);
+  }
+  if (apiDocsUrl) {
+    lines.push(`  - ${labels.apiDocs}: ${apiDocsUrl}`);
+  }
+  if (integrations.openApiUrl && integrations.openApiUrl !== apiDocsUrl) {
+    lines.push(`  - ${labels.openApi}: ${integrations.openApiUrl}`);
+  }
+  if (integrations.mcpUrl) {
+    lines.push(`  - ${labels.mcpEndpoint}: ${integrations.mcpUrl}`);
+  }
+  const developersUrl = resolveEcosystemDevelopersUrl(
+    integrations.developersUrl,
+    developersUrlBase
+  );
+  if (developersUrl) {
+    lines.push(`  - ${labels.developers}: ${developersUrl}`);
   }
   return lines.join('\n');
 }
