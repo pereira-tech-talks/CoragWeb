@@ -14,6 +14,7 @@ export const es: SiteTranslations = {
     lead: 'Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.',
     ctaPrimary: 'Quiero ayudar',
     ctaSecondary: 'Cómo funciona',
+    ctaWhatsapp: 'Únete a la comunidad de WhatsApp',
     heroChips: ['Se publica', 'Se entrega', 'Queda la evidencia'],
     heroAppCardAlt:
       'Pantalla de la aplicación Ayuda Directa en un teléfono, con la emergencia de mayor prioridad',

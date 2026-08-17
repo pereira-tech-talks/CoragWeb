@@ -1,7 +1,7 @@
 ---
 title: "Corag — The social impact ecosystem"
 description: "We connect people who want to help with those who need it most, so aid is transparent, measurable and consistent. Every delivery leaves evidence behind."
-lastUpdated: 2026-08-14
+lastUpdated: 2026-08-17
 ---
 
 ## We have the courage to serve and transform lives
@@ -14,6 +14,7 @@ behind.
 
 - [I want to help](https://ayuda.corag.app/)
 - [How it works](/en/how-it-works)
+- [Join the WhatsApp community](https://chat.whatsapp.com/LNFdlL69Uvx6674cpmPKKo?s=cl&p=i&mlu=4&amv=2)
 
 It is published. It is delivered. The evidence stays.
 
@@ -156,7 +157,7 @@ team, start here.
 - [I want to contribute](/en/contributors)
 
 Official channels: [Ayuda Directa](https://ayuda.corag.app),
-[WhatsApp](https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2),
+[WhatsApp](https://chat.whatsapp.com/LNFdlL69Uvx6674cpmPKKo?s=cl&p=i&mlu=4&amv=2),
 [Instagram](https://www.instagram.com/app.corag/) and
 [Facebook](https://www.facebook.com/appcorag).
 

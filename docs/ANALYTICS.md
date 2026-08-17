@@ -353,7 +353,7 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `ecosystem_app_modal_open` | Ecosystem app detail modal opened | `{ id, surface, lang }` | EcosystemAppsExplorer.svelte |
 | `contact_form_error` | Form validation failure | `{ field_count }` | ContactForm.svelte |
 | `newsletter_subscribe` | Newsletter signup | — | NewsletterForm.svelte |
-| `social_click` | Footer social link | `{ platform }` | Footer.astro |
+| `social_click` | Social link (footer, home hero WhatsApp CTA, home channels strip) | `{ platform, source? }` | Footer.astro, HomePage.astro |
 | `outbound_click` | External link click | `{ url }` | MainLayout.astro (delegated) |
 | `scroll_depth` | Scroll milestone | `{ depth }` | MainLayout.astro (long-form policy) |
 | `scroll_to_timeline` | Scroll-to-timeline button | — | ScrollToTimeline.svelte |
@@ -409,7 +409,7 @@ cheapest read there is on who the site is actually reaching.
 | `blog_card_click` | Click a blog post title | `slug: "how-to-donate-safely-in-colombia"` |
 | `share_click` | Click a share button on a post | `platform: "twitter"` |
 | `contact_form_submit` | Submit the contact form | `reason: "ally"` |
-| `social_click` | Click a social link in the footer | `platform: "instagram"` |
+| `social_click` | Click a social link (footer or home) | `platform: "instagram"` |
 | `scroll_depth` | Scroll to bottom of a blog post | `depth: "100"` |
 | `timeline_click` | Click a post title in any timeline | `page: "portfolio"`, `slug: "..."` |
 
