@@ -27,9 +27,17 @@ features:
     en: Photos and pet details
   - es: Publicación y búsqueda de anuncios
     en: Post and browse listings
+  - es: API pública documentada (JSON:API) con clave de acceso, filtros por tipo, ciudad y estado
+    en: Documented public API (JSON:API) with an access key and filters by type, city, and status
 tools:
   - es: Clasificados de mascotas perdidas
     en: Lost-pet classifieds
+  - es: GET /api/v1/pet-ads — listar anuncios activos con filtros y paginación
+    en: GET /api/v1/pet-ads — list active listings with filters and pagination
+  - es: GET /api/v1/pet-ads/{uuid} — consultar un anuncio
+    en: GET /api/v1/pet-ads/{uuid} — fetch one listing
+  - es: POST /api/v1/pet-ads/{uuid}/reports — dejar una pista con teléfono de contacto
+    en: POST /api/v1/pet-ads/{uuid}/reports — leave a tip with a contact phone
 audience:
   es: Familias que buscan o reportan mascotas perdidas.
   en: Families searching for or reporting lost pets.
@@ -40,8 +48,9 @@ limits:
   es: No es un servicio veterinario ni de rescate oficial.
   en: Not a veterinary service or official rescue agency.
 integrations:
-  publicApi: unknown
-  publicMcp: unknown
+  publicApi: yes
+  publicMcp: no
+  apiDocsUrl: https://encuentratumascota.co/references
   notes:
-    es: No encontramos documentación pública de API ni MCP en el sitio. Si la tienen, indícalo en el formulario de inclusión.
-    en: We did not find public API or MCP documentation on the site. If you have either, note it in the listing request form.
+    es: "API JSON:API documentada en /references. Requiere clave (Authorization Bearer o X-Api-Key) que entrega el servicio; escribe a info@encuentratumascota.co. Límites: 120 lecturas/min y 2 reportes/min por clave. Sin OpenAPI ni MCP anunciados."
+    en: "JSON:API documented at /references. Requires a key (Authorization Bearer or X-Api-Key) issued by the service; write to info@encuentratumascota.co. Limits: 120 reads/min and 2 reports/min per key. No OpenAPI spec or MCP announced."

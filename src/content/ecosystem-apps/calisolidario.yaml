@@ -1,0 +1,48 @@
+name: CaliSolidario
+url: https://calisolidario.triadaaliados.com/
+aliases: []
+category: matching
+featured: false
+order: 40
+logoAuthorization: text_only
+monogram: CS
+tagline:
+  es: Tablero abierto de ayuda en Cali
+  en: Open aid board for Cali
+what:
+  es: Tablero abierto que conecta necesidades y ofrecimientos de ayuda en Cali tras la emergencia, con avisos «necesito ayuda» y «quiero ayudar».
+  en: An open board connecting needs and offers of help in Cali after the emergency, with “I need help” and “I want to help” notices.
+how:
+  es: Publicas un aviso de necesidad u ofrecimiento y lo filtras por categoría, comuna o municipio; la coordinación se hace directamente entre las personas.
+  en: Post a need or an offer and filter notices by category, district, or municipality; coordination happens directly between people.
+active: true
+overview:
+  es: "CaliSolidario («ayuda que llega») es un tablero abierto de avisos para Cali: quien necesita ayuda publica una necesidad y quien puede darla publica un ofrecimiento. El propio sitio aclara que no verifica los avisos ni a quienes los publican — la coordinación va por cuenta de cada persona."
+  en: "CaliSolidario (“help that arrives”) is an open notice board for Cali: whoever needs help posts a need and whoever can give it posts an offer. The site itself states it does not verify notices or the people posting them — coordination is up to each person."
+features:
+  - es: Avisos «necesito ayuda» y «quiero ayudar»
+    en: “I need help” and “I want to help” notices
+  - es: Filtros por categoría de ayuda (agua, alimentos, medicamentos, albergue, transporte y más)
+    en: Filters by aid category (water, food, medication, shelter, transportation, and more)
+  - es: Filtros por comuna, corregimiento o municipio
+    en: Filters by district, corregimiento, or municipality
+  - es: Recomendaciones de seguridad — no pide dinero ni datos bancarios
+    en: Safety guidance — no money or banking requests
+tools:
+  - es: Tablero público de necesidades y ofrecimientos
+    en: Public board of needs and offers
+audience:
+  es: Personas afectadas en Cali y alrededores, y voluntarios que quieren ayudar de forma directa.
+  en: Affected people in and around Cali, and volunteers who want to help directly.
+coverage:
+  es: Cali — sus 22 comunas y corregimientos — y municipios cercanos afectados por la emergencia.
+  en: Cali — its 22 districts and corregimientos — and nearby municipalities affected by the emergency.
+limits:
+  es: El sitio no verifica avisos ni identidades — «es un tablero abierto, la coordinación va por tu cuenta». No identifica públicamente a su operador.
+  en: The site does not verify notices or identities — “it is an open board; coordination is your responsibility.” It does not publicly identify its operator.
+integrations:
+  publicApi: unknown
+  publicMcp: unknown
+  notes:
+    es: No encontramos documentación pública de API ni MCP en el sitio. Si la tienen, indícalo en el formulario de inclusión.
+    en: We did not find public API or MCP documentation on the site. If you have either, note it in the listing request form.
