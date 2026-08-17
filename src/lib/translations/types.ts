@@ -142,6 +142,8 @@ export interface HomeCopy {
   ctaSecondary: string;
   /** Hero invitation to the WhatsApp community group (SOCIAL_LINKS href). */
   ctaWhatsapp: string;
+  /** Short variant for narrow viewports — the WhatsApp icon carries the brand. */
+  ctaWhatsappShort: string;
   /** Three verb-phrase chips under the hero CTAs, drawn from the howSteps vocabulary. */
   heroChips: string[];
   /** Alt text for the phone-framed app screenshot overlapping the hero photo. */

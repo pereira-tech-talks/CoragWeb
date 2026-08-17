@@ -210,6 +210,7 @@ const btnSecondary =
                   target="_blank"
                   rel="noopener noreferrer"
                   class={`${btnGhostOnDark} border-corag-rosa`}
+                  aria-label={h.ctaWhatsapp}
                   data-umami-event="social_click"
                   data-umami-event-platform="whatsapp"
                   data-umami-event-source="hero"
@@ -222,7 +223,10 @@ const btnSecondary =
                   >
                     <path d={whatsappChannel.iconPath} />
                   </svg>
-                  {h.ctaWhatsapp}
+                  {/* The icon names the network, so narrow viewports drop
+                      "de WhatsApp" to keep the label on one line. */}
+                  <span class="sm:hidden">{h.ctaWhatsappShort}</span>
+                  <span class="hidden sm:inline">{h.ctaWhatsapp}</span>
                 </a>
               )
             }

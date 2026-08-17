@@ -15,6 +15,7 @@ export const en: SiteTranslations = {
     ctaPrimary: 'I want to help',
     ctaSecondary: 'How it works',
     ctaWhatsapp: 'Join the WhatsApp community',
+    ctaWhatsappShort: 'Join the community',
     heroChips: ['It is published', 'It is delivered', 'The evidence stays'],
     heroAppCardAlt:
       'Ayuda Directa application screen on a phone, showing the highest-priority emergency',
