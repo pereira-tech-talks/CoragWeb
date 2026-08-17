@@ -1,7 +1,7 @@
 ---
 title: "Corag — El ecosistema de impacto social"
 description: "Conectamos a quienes quieren ayudar con quienes más lo necesitan, para que la ayuda sea transparente, medible y constante. Cada entrega deja evidencia."
-lastUpdated: 2026-08-14
+lastUpdated: 2026-08-17
 ---
 
 ## Tenemos coraje para servir y transformar vidas
@@ -13,6 +13,7 @@ la ayuda sea transparente, medible y constante. Cada entrega deja evidencia.
 
 - [Quiero ayudar](https://ayuda.corag.app/)
 - [Cómo funciona](/how-it-works)
+- [Únete a la comunidad de WhatsApp](https://chat.whatsapp.com/LNFdlL69Uvx6674cpmPKKo?s=cl&p=i&mlu=4&amv=2)
 
 Se publica. Se entrega. Queda la evidencia.
 
@@ -154,7 +155,7 @@ el equipo, empieza por aquí.
 - [Quiero colaborar](/contributors)
 
 Canales oficiales: [Ayuda Directa](https://ayuda.corag.app),
-[WhatsApp](https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2),
+[WhatsApp](https://chat.whatsapp.com/LNFdlL69Uvx6674cpmPKKo?s=cl&p=i&mlu=4&amv=2),
 [Instagram](https://www.instagram.com/app.corag/) y
 [Facebook](https://www.facebook.com/appcorag).
 

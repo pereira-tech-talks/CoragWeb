@@ -117,7 +117,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     // A group invite, not a profile — useful to link, but not an identity for
     // `sameAs`, which is meant for pages that represent the organization.
     label: 'WhatsApp',
-    href: 'https://chat.whatsapp.com/LtP2Cb1oS99BWNf1CFEtV5?s=cl&p=i&ilr=2',
+    href: 'https://chat.whatsapp.com/LNFdlL69Uvx6674cpmPKKo?s=cl&p=i&mlu=4&amv=2',
     icon: 'whatsapp',
     sameAs: false,
   },

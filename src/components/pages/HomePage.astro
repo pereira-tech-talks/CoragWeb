@@ -108,6 +108,14 @@ const channelLinks = SOCIAL_LINKS.map((social) => ({
   iconPath: channelIconPath(social.icon),
 })).filter((social) => social.iconPath);
 
+/*
+ * The WhatsApp community invite gets its own hero CTA — same single source of
+ * truth (SOCIAL_LINKS), so the group link is still changed in one place.
+ */
+const whatsappChannel = channelLinks.find(
+  (channel) => channel.icon === 'whatsapp'
+);
+
 const btnPrimary =
   'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-corag-fill px-7 py-3 font-semibold text-corag-on-fill transition-colors hover:bg-corag-fill-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corag-primary';
 const btnOnDark =
@@ -195,6 +203,29 @@ const btnSecondary =
               data-umami-event-surface="hero"
             >{h.ctaPrimary}</a>
             <a href={routes.how} class={btnGhostOnDark}>{h.ctaSecondary}</a>
+            {
+              whatsappChannel && (
+                <a
+                  href={whatsappChannel.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${btnGhostOnDark} border-corag-rosa`}
+                  data-umami-event="social_click"
+                  data-umami-event-platform="whatsapp"
+                  data-umami-event-source="hero"
+                >
+                  <svg
+                    class="h-5 w-5 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d={whatsappChannel.iconPath} />
+                  </svg>
+                  {h.ctaWhatsapp}
+                </a>
+              )
+            }
           </div>
           <ul
             class="hero-chips mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3"
