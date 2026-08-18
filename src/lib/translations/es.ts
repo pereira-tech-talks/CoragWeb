@@ -1420,6 +1420,32 @@ export const es: SiteTranslations = {
     badgeMcp: 'MCP',
     disclosure:
       'Este directorio describe herramientas públicas complementarias a partir de lo que cada sitio dice de sí mismo. Listar no es un aval a ninguna organización. Para pedir inclusión o retiro, usa el formulario de abajo o escríbenos.',
+    api: {
+      eyebrow: 'Para desarrolladores y agentes',
+      title: 'Consume este directorio por API',
+      lead: 'Todo lo que ves en esta página — apps, categorías, integraciones y límites honestos — está publicado como un JSON abierto para que otras apps y agentes lo consuman.',
+      open: 'Ver detalles técnicos',
+      modalTitle: 'API del directorio',
+      endpointLabel: 'Endpoint',
+      copy: 'Copiar',
+      copied: 'Copiado',
+      factsTitle: 'Cómo funciona',
+      facts: [
+        'JSON estático generado en cada build: sin autenticación y con CORS abierto, cualquier app puede leerlo desde el navegador o el servidor.',
+        'Cada campo de texto llega en los dos idiomas (es y en); una sola URL sirve para ambos.',
+        'Incluye la disponibilidad de API pública y MCP de cada app (yes, no o unknown) con los enlaces a su documentación.',
+        'La respuesta se cachea una hora. Los logos solo aparecen cuando su dueño los autorizó.',
+        'Listar no es un aval: el directorio describe lo que cada sitio público dice de sí mismo.',
+      ],
+      shapeTitle: 'Estructura de la respuesta',
+      curlTitle: 'Ejemplo',
+      agentTitle: 'Para agentes de IA',
+      agentLead:
+        'Copia este prompt y pégalo en tu agente para que consuma el directorio correctamente.',
+      copyPrompt: 'Copiar prompt',
+      prompt:
+        'Consulta GET https://corag.app/api/ecosystem.json — JSON estático, sin autenticación y con CORS abierto — para obtener el directorio de apps ciudadanas del ecosistema Corag. La respuesta trae "apps" (cada una con id, name, url, category, textos bilingües {es, en} en tagline, what, how, overview, features, tools, audience, coverage y limits, y un bloque "integrations" con publicApi y publicMcp en yes/no/unknown más apiDocsUrl, openApiUrl, mcpUrl, developersUrl y notes), "categories" con etiqueta y descripción por categoría (matching, damage, logistics, pets, people) y "counts" con totales. Este directorio describe lo que cada sitio público dice de sí mismo; listar no es un aval de Corag. Si una app anuncia publicApi yes, su documentación está en su apiDocsUrl. Para publicar necesidades u ofrecimientos de ayuda no uses corag.app: la operación vive en https://ayuda.corag.app y su API y MCP están documentados en https://corag.app/developers.',
+    },
     joinEyebrow: 'Crece la red',
     joinTitle: '¿Construyes otra app?',
     joinLead:

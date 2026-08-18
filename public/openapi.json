@@ -174,7 +174,249 @@
           }
         }
       }
+    },
+    "/api/ecosystem.json": {
+      "get": {
+        "summary": "Ecosystem directory of complementary aid apps",
+        "description": "Machine-readable twin of https://corag.app/ecosystem. A bilingual (es/en) directory of the complementary civic apps around the emergency response: what each app does, how it works, its honest limits, and its public API / MCP availability with documentation links. Static JSON regenerated on every deploy; no authentication; open CORS; cached one hour. The directory describes what each public site says about itself \u2014 listing is not an endorsement.",
+        "responses": {
+          "200": {
+            "description": "Ecosystem directory",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "integer",
+                      "const": 1
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "$ref": "#/components/schemas/EcosystemI18nText"
+                    },
+                    "site": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "endpoint": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "page": {
+                      "$ref": "#/components/schemas/EcosystemI18nText"
+                    },
+                    "markdownTwins": {
+                      "$ref": "#/components/schemas/EcosystemI18nText"
+                    },
+                    "disclosure": {
+                      "$ref": "#/components/schemas/EcosystemI18nText"
+                    },
+                    "generatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "apps": {
+                          "type": "integer"
+                        },
+                        "byCategory": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "$ref": "#/components/schemas/EcosystemI18nText"
+                          },
+                          "lead": {
+                            "$ref": "#/components/schemas/EcosystemI18nText"
+                          },
+                          "count": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "apps": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EcosystemApp"
+                      }
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "endpoint",
+                    "categories",
+                    "apps"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
-  "components": {}
+  "components": {
+    "schemas": {
+      "EcosystemI18nText": {
+        "type": "object",
+        "description": "Bilingual text \u2014 Spanish and English renditions of the same content.",
+        "properties": {
+          "es": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "es",
+          "en"
+        ]
+      },
+      "EcosystemAvailability": {
+        "type": "string",
+        "enum": [
+          "yes",
+          "no",
+          "unknown"
+        ],
+        "description": "As verified from each app's public docs. \"unknown\" means unconfirmed, not a denial."
+      },
+      "EcosystemApp": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "displayUrl": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "matching",
+              "damage",
+              "logistics",
+              "pets",
+              "people"
+            ]
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "logo": {
+            "type": "string",
+            "format": "uri",
+            "description": "Present only when the app's owner authorized the logo."
+          },
+          "tagline": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "what": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "how": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "overview": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EcosystemI18nText"
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EcosystemI18nText"
+            }
+          },
+          "audience": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "limits": {
+            "$ref": "#/components/schemas/EcosystemI18nText"
+          },
+          "integrations": {
+            "type": "object",
+            "properties": {
+              "publicApi": {
+                "$ref": "#/components/schemas/EcosystemAvailability"
+              },
+              "publicMcp": {
+                "$ref": "#/components/schemas/EcosystemAvailability"
+              },
+              "apiDocsUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "openApiUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "mcpUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "developersUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "notes": {
+                "$ref": "#/components/schemas/EcosystemI18nText"
+              }
+            },
+            "required": [
+              "publicApi",
+              "publicMcp"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "url",
+          "category",
+          "featured",
+          "tagline",
+          "what",
+          "how",
+          "overview",
+          "features",
+          "tools",
+          "integrations"
+        ]
+      }
+    }
+  }
 }
