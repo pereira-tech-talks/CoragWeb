@@ -51,6 +51,7 @@ integration can retry safely. The endpoint is rate limited (HTTP 429).
 - [Leaders](https://corag.app/leaders): the responsable role
 - [Partners](https://corag.app/partners): how organizations join
 - [Developers](https://corag.app/developers): API, OpenAPI and MCP
+- [Ecosystem](https://corag.app/ecosystem): the network of complementary aid apps, with each app's API/MCP availability
 - [Blog](https://corag.app/blog): articles and series
 - [Contact](https://corag.app/contact): institutional contact form
 - [Team & contributors](https://corag.app/contributors): who builds Corag
@@ -76,6 +77,7 @@ silently become a summary.
 - [Leaders (Markdown)](https://corag.app/leaders.md)
 - [Partners (Markdown)](https://corag.app/partners.md)
 - [Developers (Markdown)](https://corag.app/developers.md)
+- [Ecosystem (Markdown)](https://corag.app/ecosystem.md)
 - [Privacy (Markdown)](https://corag.app/privacy.md)
 - [Blog index (Markdown)](https://corag.app/blog.md)
 - [Code of Conduct (Markdown)](https://corag.app/conduct.md)
@@ -84,6 +86,7 @@ silently become a summary.
 
 ## Optional
 
+- [Ecosystem directory (JSON)](https://corag.app/api/ecosystem.json): bilingual machine-readable directory of complementary aid apps — no auth, open CORS
 - [Full context for agents](https://corag.app/llms-full.txt): longer catalogue and model notes
 - [llms.txt](https://corag.app/llms.txt): this file
 - [Sitemap](https://corag.app/sitemap-index.xml)

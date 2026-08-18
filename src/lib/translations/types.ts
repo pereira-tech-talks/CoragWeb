@@ -661,6 +661,25 @@ export interface SiteTranslations {
     badgeApi: string;
     badgeMcp: string;
     disclosure: string;
+    /** Public JSON endpoint — banner, technical modal, and agent prompt. */
+    api: {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      open: string;
+      modalTitle: string;
+      endpointLabel: string;
+      copy: string;
+      copied: string;
+      factsTitle: string;
+      facts: string[];
+      shapeTitle: string;
+      curlTitle: string;
+      agentTitle: string;
+      agentLead: string;
+      copyPrompt: string;
+      prompt: string;
+    };
     joinEyebrow: string;
     joinTitle: string;
     joinLead: string;

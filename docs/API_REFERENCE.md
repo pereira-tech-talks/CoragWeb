@@ -11,6 +11,7 @@ Corag is primarily a static site, but includes a few API endpoints and data feed
 | `/api/posts-en.json` | JSON API | Blog search index (English shard) |
 | `/api/posts-es.json` | JSON API | Blog search index (Spanish shard) |
 | `/api/posts.json` | JSON API | Blog search index (compatibility aggregate) |
+| `/api/ecosystem.json` | JSON API | Ecosystem directory of complementary aid apps (bilingual, open CORS) |
 | `/rss.xml` | RSS Feed | Blog subscription |
 | `/sitemap-index.xml` | Sitemap | Search engine indexing |
 
@@ -110,6 +111,51 @@ async function searchPosts(query: string) {
   );
 }
 ```
+
+### GET /api/ecosystem.json
+
+The machine-readable twin of the `/ecosystem` directory — the full catalog of
+complementary civic aid apps for other apps and agents to consume.
+
+**Location:** `src/pages/api/ecosystem.json.ts` (payload built by
+`src/lib/ecosystem-api.ts` from the `ecosystemApps` content collection)
+
+Key properties:
+
+- **Bilingual by design.** Every text field ships `{ es, en }`, so one
+  canonical URL serves both languages.
+- **Open CORS.** `public/_headers` sets `Access-Control-Allow-Origin: *` for
+  this path; the JSON is static, read-only, and cached for one hour.
+- **Honest by contract.** `integrations.publicApi` / `publicMcp` are
+  `yes | no | unknown` as verified from each app's public docs (`unknown`
+  means unconfirmed, not a denial); `disclosure` repeats that listing is not
+  an endorsement; `logo` is present only when the owner authorized it.
+- **Documented for humans and agents** in the "Consume this directory via
+  API" section of `/ecosystem` (technical-details modal with a copyable agent
+  prompt), in `public/openapi.json` (full response schema), and in
+  `public/llms.txt`.
+
+#### Response (top level)
+
+```typescript
+interface EcosystemApiPayload {
+  version: 1;
+  name: string;
+  description: { es: string; en: string };
+  site: string;                       // https://corag.app
+  endpoint: string;                   // canonical URL of this payload
+  page: { es: string; en: string };   // the human directory pages
+  markdownTwins: { es: string; en: string };
+  disclosure: { es: string; en: string };
+  generatedAt: string;                // build timestamp, ISO-8601
+  counts: { apps: number; byCategory: Record<Category, number> };
+  categories: Array<{ id: Category; label: I18n; lead: I18n; count: number }>;
+  apps: EcosystemApiApp[];            // featured first, then order, then name
+}
+```
+
+See `src/lib/ecosystem-api.ts` for `EcosystemApiApp` and
+`public/openapi.json` for the authoritative JSON Schema.
 
 ## Data Feeds
 

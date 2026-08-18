@@ -58,6 +58,8 @@ export const EVENTS = {
   ECOSYSTEM_FORM_SUBMIT: 'ecosystem_form_submit',
   ECOSYSTEM_FORM_ERROR: 'ecosystem_form_error',
   ECOSYSTEM_APP_MODAL_OPEN: 'ecosystem_app_modal_open',
+  ECOSYSTEM_API_MODAL_OPEN: 'ecosystem_api_modal_open',
+  ECOSYSTEM_API_COPY: 'ecosystem_api_copy',
   NEWSLETTER_SUBSCRIBE: 'newsletter_subscribe',
   SOCIAL_CLICK: 'social_click',
   OUTBOUND_CLICK: 'outbound_click',

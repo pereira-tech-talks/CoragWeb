@@ -63,6 +63,12 @@
 /.well-known/agent-skills/index.json
   Cache-Control: public, max-age=300, must-revalidate
 
+# Ecosystem directory — consumed cross-origin by other apps, hence open CORS.
+# Read-only static JSON; the build regenerates it, so an hour of cache is safe.
+/api/ecosystem.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 

@@ -351,6 +351,8 @@ Custom events may include stable dimensions via `trackEventWithContext()` or `ge
 | `ecosystem_form_submit` | Ecosystem join form submitted | `{ status }` | EcosystemJoinForm.svelte |
 | `ecosystem_form_error` | Ecosystem join form failed | `{ error }` | EcosystemJoinForm.svelte |
 | `ecosystem_app_modal_open` | Ecosystem app detail modal opened | `{ id, surface, lang }` | EcosystemAppsExplorer.svelte |
+| `ecosystem_api_modal_open` | Ecosystem directory API docs modal opened | `{ lang }` | EcosystemApiDocs.svelte |
+| `ecosystem_api_copy` | Ecosystem API endpoint/curl/prompt copied | `{ what, lang }` | EcosystemApiDocs.svelte |
 | `contact_form_error` | Form validation failure | `{ field_count }` | ContactForm.svelte |
 | `newsletter_subscribe` | Newsletter signup | — | NewsletterForm.svelte |
 | `social_click` | Social link (footer, home hero WhatsApp CTA, home channels strip) | `{ platform, source? }` | Footer.astro, HomePage.astro |

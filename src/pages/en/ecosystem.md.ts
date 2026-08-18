@@ -5,6 +5,7 @@ import {
   formatEcosystemAppMarkdown,
   loadEcosystemDirectory,
 } from '@/lib/ecosystem';
+import { ECOSYSTEM_API_PATH } from '@/lib/ecosystem-api';
 import { ECOSYSTEM_CATEGORIES } from '@/lib/ecosystem-apps';
 import { serializeGenericToMarkdown } from '@/lib/markdown-for-agents';
 import { getTranslations } from '@/lib/translations';
@@ -62,6 +63,16 @@ export const GET: APIRoute = async () => {
         ),
       ],
     })),
+    {
+      heading: t.api.title,
+      lines: [
+        t.api.lead,
+        `\`GET ${SITE_URL}${ECOSYSTEM_API_PATH}\``,
+        ...t.api.facts.map((fact) => `- ${fact}`),
+        t.api.agentLead,
+        t.api.prompt,
+      ],
+    },
     {
       heading: t.joinTitle,
       lines: [t.joinLead, t.disclosure],

@@ -4,13 +4,15 @@
  * response. Corag is featured as one node; peers are listed by category.
  * Closing band hosts the DailyBot-backed join form.
  */
+import EcosystemApiDocs from '@/components/ecosystem/EcosystemApiDocs.svelte';
 import EcosystemAppsExplorer from '@/components/ecosystem/EcosystemAppsExplorer.svelte';
 import EcosystemJoinForm from '@/components/ecosystem/EcosystemJoinForm.svelte';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Eyebrow from '@/components/ui/Eyebrow.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { APP_URL } from '@/lib/constances';
+import { APP_URL, SITE_URL } from '@/lib/constances';
 import { loadEcosystemDirectoryViews } from '@/lib/ecosystem';
+import { ECOSYSTEM_API_PATH } from '@/lib/ecosystem-api';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -69,6 +71,9 @@ const explorerLabels = {
   badgeApi: p.badgeApi,
   badgeMcp: p.badgeMcp,
 };
+
+const apiDocsLabels = { ...p.api, close: p.close };
+const ecosystemApiUrl = `${SITE_URL}${ECOSYSTEM_API_PATH}`;
 ---
 
 <MainLayout lang={lang} title={p.title} description={p.description}>
@@ -134,6 +139,14 @@ const explorerLabels = {
     featured={featured ?? null}
     groups={groups}
     labels={explorerLabels}
+  />
+
+  <!-- DIRECTORY API -->
+  <EcosystemApiDocs
+    client:visible
+    lang={lang}
+    endpointUrl={ecosystemApiUrl}
+    labels={apiDocsLabels}
   />
 
   <!-- JOIN -->
